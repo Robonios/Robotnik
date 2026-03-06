@@ -6,27 +6,6 @@
 <title>Robotniks — Structured Intelligence for Robotics & Semiconductors</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-async function loadLivePrices() {
-  try {
-    const resp = await fetch('prices.json');
-    const data = await resp.json();
-    // Update the companies array with live data
-    data.companies.forEach(live => {
-      const existing = uniqueCompanies.find(c => c.ticker === live.ticker);
-      if (existing) {
-        existing.price = live.price;
-        existing.change = live.change;
-      }
-    });
-    renderMarkets();
-    renderTicker();
-    document.querySelector('.data-note').textContent =
-      `Prices updated: ${data.updated} · Source: ${data.source}`;
-  } catch (e) {
-    console.log('Using baked-in prices (prices.json not found)');
-  }
-}
-loadLivePrices();
   :root {
     --yellow: #F5D921;
     --yellow-dim: #D4BA0E;
@@ -1023,6 +1002,28 @@ loadLivePrices();
 </footer>
 
 <script>
+async function loadLivePrices() {
+  try {
+    const resp = await fetch('prices.json');
+    const data = await resp.json();
+    // Update the companies array with live data
+    data.companies.forEach(live => {
+      const existing = uniqueCompanies.find(c => c.ticker === live.ticker);
+      if (existing) {
+        existing.price = live.price;
+        existing.change = live.change;
+      }
+    });
+    renderMarkets();
+    renderTicker();
+    document.querySelector('.data-note').textContent =
+      `Prices updated: ${data.updated} · Source: ${data.source}`;
+  } catch (e) {
+    console.log('Using baked-in prices (prices.json not found)');
+  }
+}
+// Call it on page load
+loadLivePrices();
 // ===== IMAGE HANDLING =====
 // The robot image needs to be hosted. For local preview, we use a data approach.
 // When deploying, replace 'robot-bg.png' with your actual image URL everywhere.
