@@ -2,8 +2,9 @@
 """
 Robotnik Price History Fetcher
 ==============================
-Fetches 90 days of daily price history for all tracked entities.
-Uses EODHD bulk EOD endpoint for equities, CoinGecko /market_chart for tokens.
+Fetches extended daily price history for all tracked entities.
+- Equities: 5 years via EODHD (daily OHLCV)
+- Tokens: 365 days via CoinGecko /market_chart (daily close)
 
 Outputs:
     data/prices/history/  — one JSON file per entity (TICKER.json)
@@ -47,7 +48,8 @@ COINGECKO_KEY = os.environ.get("COINGECKO_API_KEY", "")
 sys.path.insert(0, str(ROOT / "scripts"))
 from fetch_prices import EQUITIES, TOKENS, ticker_to_eodhd
 
-DAYS_BACK = 90
+EQUITY_DAYS_BACK = 1825  # ~5 years for equities
+TOKEN_DAYS_BACK  = 365   # 1 year for tokens (CoinGecko demo plan max)
 
 
 def fetch_url(url, timeout=20):
@@ -61,9 +63,9 @@ def fetch_url(url, timeout=20):
 
 
 def fetch_equity_history(ticker, country):
-    """Fetch daily OHLCV for one equity from EODHD."""
+    """Fetch daily OHLCV for one equity from EODHD (5 years)."""
     eodhd_ticker = ticker_to_eodhd(ticker, country)
-    from_date = (date.today() - timedelta(days=DAYS_BACK)).isoformat()
+    from_date = (date.today() - timedelta(days=EQUITY_DAYS_BACK)).isoformat()
     to_date = date.today().isoformat()
 
     url = (
@@ -93,10 +95,10 @@ def fetch_equity_history(ticker, country):
 
 
 def fetch_token_history(coingecko_id):
-    """Fetch daily prices for one token from CoinGecko (90 days)."""
+    """Fetch daily prices for one token from CoinGecko (365 days)."""
     url = (
         f"https://api.coingecko.com/api/v3/coins/{coingecko_id}"
-        f"/market_chart?vs_currency=usd&days={DAYS_BACK}&interval=daily"
+        f"/market_chart?vs_currency=usd&days={TOKEN_DAYS_BACK}&interval=daily"
     )
     if COINGECKO_KEY:
         url += f"&x_cg_demo_api_key={COINGECKO_KEY}"
@@ -200,7 +202,8 @@ def main():
     index_data = {
         "fetched_at": datetime.now(timezone.utc).isoformat() + "Z",
         "count": len(index),
-        "days_back": DAYS_BACK,
+        "equity_days_back": EQUITY_DAYS_BACK,
+        "token_days_back": TOKEN_DAYS_BACK,
         "entities": index,
     }
     with open(INDEX_FILE, "w") as f:

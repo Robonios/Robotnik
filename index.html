@@ -1365,13 +1365,31 @@
   }
   .compare-add:hover { border-color: var(--text-dim); color: var(--text); }
 
+  /* Asset column headers */
+  .asset-col-headers {
+    display: grid;
+    grid-template-columns: 24px 1fr 70px 58px;
+    align-items: center;
+    padding: 0.3rem 0.6rem;
+    gap: 0.35rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.55rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    flex-shrink: 0;
+  }
+  .asset-col-headers .ach-rank { text-align: center; }
+  .asset-col-headers .ach-price { text-align: right; }
+  .asset-col-headers .ach-chg { text-align: right; }
+
   /* Chart area */
   .chart-area-wrap {
     flex: 1;
     position: relative;
     min-height: 480px;
   }
-  .chart-container { height: 100%; width: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+  .chart-container { width: 100%; height: 480px; min-height: 480px; }
   .chart-loading {
     display: flex; align-items: center; justify-content: center;
     height: 100%; color: var(--text-dim); font-size: 0.85rem;
@@ -1511,6 +1529,12 @@
           <button data-filter="cross" onclick="setFilter(this)">Cross-stack</button>
           <button data-filter="token" onclick="setFilter(this)">Tokens</button>
         </div>
+        <div class="asset-col-headers">
+          <span class="ach-rank">#</span>
+          <span class="ach-name">Asset</span>
+          <span class="ach-price">EOD Price</span>
+          <span class="ach-chg">1D %</span>
+        </div>
         <div class="asset-list-scroll" id="asset-list-scroll">
           <!-- Robotnik Index pinned row + asset rows rendered by JS -->
         </div>
@@ -1531,10 +1555,10 @@
             <button data-range="7" onclick="setChartRange(this)">1W</button>
             <button class="active" data-range="30" onclick="setChartRange(this)">1M</button>
             <button data-range="90" onclick="setChartRange(this)">3M</button>
-            <button data-range="ytd" class="disabled" title="Extended history coming soon">YTD</button>
-            <button data-range="365" class="disabled" title="Extended history coming soon">1Y</button>
-            <button data-range="1095" class="disabled" title="Extended history coming soon">3Y</button>
-            <button data-range="1825" class="disabled" title="Extended history coming soon">5Y</button>
+            <button data-range="ytd" onclick="setChartRange(this)">YTD</button>
+            <button data-range="365" onclick="setChartRange(this)">1Y</button>
+            <button data-range="1095" onclick="setChartRange(this)">3Y</button>
+            <button data-range="1825" onclick="setChartRange(this)">5Y</button>
           </div>
         </div>
         <div class="chart-compare-bar" id="chart-compare-bar">
@@ -1984,10 +2008,11 @@ function tickerColor(ticker) {
 // Load price data from JSON, merge with market caps if available
 async function loadPriceData() {
   try {
+    const cb = '?v=' + Date.now();
     const [priceResp, mcapResp, summaryResp] = await Promise.allSettled([
-      fetch('data/prices/all_prices.json'),
-      fetch('data/index/market_caps.json'),
-      fetch('data/index/summary.json'),
+      fetch('data/prices/all_prices.json' + cb),
+      fetch('data/index/market_caps.json' + cb),
+      fetch('data/index/summary.json' + cb),
     ]);
 
     let priceData = null;
@@ -2264,10 +2289,15 @@ async function loadHistory(ticker) {
 async function loadIndexSeries() {
   if (indexSeries) return indexSeries;
   try {
-    const resp = await fetch('data/index/robotnik_index.json');
+    const resp = await fetch('data/index/robotnik_index.json?v=' + Date.now());
     if (resp.ok) {
       const data = await resp.json();
       indexSeries = data.series || [];
+      // Update the Robotnik Index display value from actual data
+      if (data.current_value) {
+        window.robotnikIndexValue = data.current_value;
+        window.robotnikBaseDate = data.base_date;
+      }
       return indexSeries;
     }
   } catch (e) { /* continue */ }
@@ -2301,24 +2331,18 @@ function filterByRange(series) {
 }
 
 // Main chart render
+let activeIdxSeries = null;
+let activeCompSeries = null;
+
 async function renderChart() {
   const container = document.getElementById('chart-container');
-  const loading = document.getElementById('chart-loading');
   const legend = document.getElementById('chart-legend');
 
-  loading.style.display = 'flex';
-  container.style.display = 'none';
-
-  // Destroy previous chart
-  if (activeChart) { activeChart.remove(); activeChart = null; }
-  container.innerHTML = '';
-
-  // Load index series
+  // Load data (async)
   const rawIndex = await loadIndexSeries();
   let idxSeries = rawIndex.map(s => ({ time: s.date, value: s.value }));
   idxSeries = filterByRange(idxSeries);
 
-  // Load compare asset if selected
   let compareSeries = [];
   let compareColor = '#3b82f6';
   let compareName = '';
@@ -2331,117 +2355,85 @@ async function renderChart() {
     compareSeries = filterByRange(compareSeries);
   }
 
-  // Apply % mode
   if (chartMode === 'pct') {
     idxSeries = toPctChange(idxSeries);
     compareSeries = toPctChange(compareSeries);
   }
 
-  loading.style.display = 'none';
-  container.style.display = '';
-
   if (idxSeries.length === 0 && compareSeries.length === 0) {
+    if (activeChart) { try { activeChart.remove(); } catch(e) {} activeChart = null; }
     container.innerHTML = '<div class="chart-no-data">Index data not yet available. Run calculate_index.py to generate.</div>';
     legend.innerHTML = '';
+    activeIdxSeries = null;
+    activeCompSeries = null;
     return;
   }
 
-  // Create chart
-  const chart = LightweightCharts.createChart(container, {
-    width: container.clientWidth,
-    height: container.clientHeight || 450,
-    layout: {
-      background: { type: 'solid', color: '#1a1e27' },
-      textColor: '#8b92a5',
-      fontFamily: "'Roboto Mono', monospace",
-      fontSize: 11,
-    },
-    grid: {
-      vertLines: { color: '#252a3622' },
-      horzLines: { color: '#252a3644' },
-    },
-    crosshair: {
-      mode: LightweightCharts.CrosshairMode.Normal,
-      vertLine: { color: '#F5D92155', style: 0, width: 1, labelBackgroundColor: '#F5D921' },
-      horzLine: { color: '#F5D92155', style: 0, width: 1, labelBackgroundColor: '#F5D921' },
-    },
-    rightPriceScale: {
-      borderColor: '#252a36',
-      scaleMargins: { top: 0.1, bottom: 0.1 },
-    },
-    timeScale: {
-      borderColor: '#252a36',
-      timeVisible: false,
-    },
-    handleScroll: { mouseWheel: true, pressedMouseMove: true },
-    handleScale: { mouseWheel: true, pinch: true },
-  });
-
-  // Index line (always yellow)
-  if (idxSeries.length > 0) {
-    const indexLine = chart.addLineSeries({
-      color: '#F5D921',
-      lineWidth: 2,
-      crosshairMarkerBackgroundColor: '#F5D921',
-      crosshairMarkerBorderColor: '#fff',
-      crosshairMarkerRadius: 4,
-      priceFormat: chartMode === 'pct'
-        ? { type: 'custom', formatter: v => v.toFixed(2) + '%' }
-        : { type: 'price', precision: 2 },
+  // Create chart only on first render; reuse on subsequent calls
+  if (!activeChart) {
+    container.innerHTML = '';
+    const chart = LightweightCharts.createChart(container, {
+      autoSize: true,
+      layout: {
+        background: { type: 'solid', color: '#1a1e27' },
+        textColor: '#8b92a5',
+      },
+      grid: {
+        vertLines: { color: '#252a3622' },
+        horzLines: { color: '#252a3644' },
+      },
     });
-    indexLine.setData(idxSeries);
+    activeChart = chart;
   }
 
-  // Compare line
+  // Remove old series
+  if (activeIdxSeries) { try { activeChart.removeSeries(activeIdxSeries); } catch(e) {} activeIdxSeries = null; }
+  if (activeCompSeries) { try { activeChart.removeSeries(activeCompSeries); } catch(e) {} activeCompSeries = null; }
+
+  // Add index area series
+  if (idxSeries.length > 0) {
+    activeIdxSeries = activeChart.addAreaSeries({
+      lineColor: '#F5D921',
+      lineWidth: 2,
+      topColor: 'rgba(245,217,33,0.25)',
+      bottomColor: 'rgba(245,217,33,0.02)',
+    });
+    activeIdxSeries.setData(idxSeries);
+  }
+
+  // Add compare line series
   if (compareSeries.length > 0) {
-    const compLine = chart.addLineSeries({
+    activeCompSeries = activeChart.addLineSeries({
       color: compareColor,
       lineWidth: 2,
-      crosshairMarkerBackgroundColor: compareColor,
-      crosshairMarkerBorderColor: '#fff',
-      crosshairMarkerRadius: 4,
-      priceFormat: chartMode === 'pct'
-        ? { type: 'custom', formatter: v => v.toFixed(2) + '%' }
-        : { type: 'price', precision: 2 },
     });
-    compLine.setData(compareSeries);
+    activeCompSeries.setData(compareSeries);
   }
 
-  chart.timeScale().fitContent();
-  activeChart = chart;
-
-  // Resize observer
-  const ro = new ResizeObserver(() => {
-    chart.applyOptions({ width: container.clientWidth, height: container.clientHeight || 450 });
-  });
-  ro.observe(container);
+  activeChart.timeScale().fitContent();
 
   // Render legend
   let legendHtml = '';
   if (idxSeries.length > 1) {
-    const idxStart = idxSeries[0].value;
     const idxEnd = idxSeries[idxSeries.length - 1].value;
-    const idxChg = chartMode === 'pct' ? idxEnd : ((idxEnd - idxStart) / idxStart * 100);
+    const idxChg = chartMode === 'pct' ? idxEnd : ((idxEnd - idxSeries[0].value) / idxSeries[0].value * 100);
     const idxChgStr = (idxChg >= 0 ? '+' : '') + idxChg.toFixed(2) + '%';
-    const idxChgBg = idxChg >= 0 ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)';
     const idxChgCol = idxChg >= 0 ? '#22c55e' : '#ef4444';
     legendHtml += `<div class="chart-legend-item">
       <span class="cl-dot" style="background:#F5D921;"></span>
       <span style="color:var(--yellow);">RBTK Index</span>
-      <span class="cl-chg" style="background:${idxChgBg};color:${idxChgCol};">${idxChgStr}</span>
+      <span class="cl-chg" style="color:${idxChgCol};">${idxChgStr}</span>
     </div>`;
   }
   if (compareSeries.length > 1) {
-    const cStart = compareSeries[0].value;
     const cEnd = compareSeries[compareSeries.length - 1].value;
-    const cChg = chartMode === 'pct' ? cEnd : ((cEnd - cStart) / cStart * 100);
+    const cChg = chartMode === 'pct' ? cEnd : ((cEnd - compareSeries[0].value) / compareSeries[0].value * 100);
     const cChgStr = (cChg >= 0 ? '+' : '') + cChg.toFixed(2) + '%';
-    const cChgBg = cChg >= 0 ? 'rgba(34,197,94,0.15)' : 'rgba(239,68,68,0.15)';
     const cChgCol = cChg >= 0 ? '#22c55e' : '#ef4444';
     legendHtml += `<div class="chart-legend-item">
       <span class="cl-dot" style="background:${compareColor};"></span>
       <span style="color:${compareColor};">${compareName}</span>
-      <span class="cl-chg" style="background:${cChgBg};color:${cChgCol};">${cChgStr}</span>
+      <span class="cl-chg" style="color:${cChgCol};">${cChgStr}</span>
     </div>`;
   }
   legend.innerHTML = legendHtml;
