@@ -1400,23 +1400,7 @@
     height: 100%; color: var(--text-muted); font-size: 0.85rem;
   }
 
-  /* Legend overlay (bottom-right like Messari) */
-  .chart-legend {
-    position: absolute; bottom: 40px; right: 16px;
-    display: flex; flex-direction: column; gap: 0.25rem;
-    pointer-events: none;
-  }
-  .chart-legend-item {
-    display: flex; align-items: center; gap: 0.4rem;
-    font-size: 0.7rem; font-family: var(--font);
-  }
-  .chart-legend-item .cl-dot {
-    width: 10px; height: 3px; border-radius: 1px;
-  }
-  .chart-legend-item .cl-chg {
-    font-weight: 600; padding: 1px 6px; border-radius: 3px;
-    font-size: 0.65rem;
-  }
+  /* Legend removed — compare pills serve as legend */
 
   /* Mobile: stack vertically */
   @media (max-width: 860px) {
@@ -1567,7 +1551,7 @@
         <div class="chart-area-wrap" id="chart-area">
           <div class="chart-loading" id="chart-loading" style="display:none">Loading chart data...</div>
           <div class="chart-container" id="chart-container"></div>
-          <div class="chart-legend" id="chart-legend"></div>
+          <!-- legend removed -->
         </div>
       </div>
     </div>
@@ -2140,6 +2124,8 @@ let chartMode = 'pct';  // 'pct' or 'price'
 let chartRange = 30;
 let compareAsset = null; // single compare ticker (free tier)
 let activeChart = null;
+let activeIdxSeries = null;   // persistent LightweightCharts series ref
+let activeCompSeries = null;  // persistent LightweightCharts series ref
 let chartHistoryCache = {};
 let indexSeries = null;  // Robotnik Index series
 
@@ -2330,26 +2316,61 @@ function filterByRange(series) {
   return series.filter(s => s.time >= cutoffStr);
 }
 
-// Main chart render
-let activeIdxSeries = null;
-let activeCompSeries = null;
-
-async function renderChart() {
+// Ensure chart is created (called once, reused for all renders)
+function ensureChart() {
+  if (activeChart) return;
   const container = document.getElementById('chart-container');
-  const legend = document.getElementById('chart-legend');
+  container.innerHTML = '';
+  const chart = LightweightCharts.createChart(container, {
+    width: container.clientWidth || 800,
+    height: 480,
+    layout: {
+      background: { type: 'solid', color: '#1a1e27' },
+      textColor: '#8b92a5',
+      fontFamily: "'Roboto Mono', monospace",
+      fontSize: 11,
+    },
+    grid: {
+      vertLines: { color: '#252a3622' },
+      horzLines: { color: '#252a3644' },
+    },
+    rightPriceScale: {
+      borderColor: '#252a36',
+      scaleMargins: { top: 0.1, bottom: 0.1 },
+    },
+    timeScale: {
+      borderColor: '#252a36',
+      timeVisible: false,
+    },
+  });
+  activeChart = chart;
+  // Create both series upfront — hide compare by giving it empty data
+  activeIdxSeries = chart.addAreaSeries({
+    lineColor: '#F5D921', lineWidth: 2,
+    topColor: 'rgba(245,217,33,0.25)',
+    bottomColor: 'rgba(245,217,33,0.02)',
+    lastValueVisible: true, priceLineVisible: false,
+  });
+  activeCompSeries = chart.addLineSeries({
+    color: '#3b82f6', lineWidth: 2,
+    lastValueVisible: false, priceLineVisible: false,
+  });
+}
 
-  // Load data (async)
+// Main chart render — reuses persistent chart, updates series data
+async function renderChart() {
+  ensureChart();
+
+  // Load data
   const rawIndex = await loadIndexSeries();
   let idxSeries = rawIndex.map(s => ({ time: s.date, value: s.value }));
   idxSeries = filterByRange(idxSeries);
 
   let compareSeries = [];
   let compareColor = '#3b82f6';
-  let compareName = '';
   if (compareAsset) {
     const c = uniqueCompanies.find(x => x.ticker === compareAsset);
     compareColor = c ? (c.color || tickerColor(c.ticker)) : '#3b82f6';
-    compareName = c ? c.ticker : compareAsset;
     const rawCompare = await loadHistory(compareAsset);
     compareSeries = rawCompare.map(s => ({ time: s.date, value: s.close ?? s.price ?? 0 }));
     compareSeries = filterByRange(compareSeries);
@@ -2361,82 +2382,22 @@ async function renderChart() {
   }
 
   if (idxSeries.length === 0 && compareSeries.length === 0) {
-    if (activeChart) { try { activeChart.remove(); } catch(e) {} activeChart = null; }
-    container.innerHTML = '<div class="chart-no-data">Index data not yet available. Run calculate_index.py to generate.</div>';
-    legend.innerHTML = '';
-    activeIdxSeries = null;
-    activeCompSeries = null;
+    activeIdxSeries.setData([]);
+    activeCompSeries.setData([]);
     return;
   }
 
-  // Create chart only on first render; reuse on subsequent calls
-  if (!activeChart) {
-    container.innerHTML = '';
-    const chart = LightweightCharts.createChart(container, {
-      autoSize: true,
-      layout: {
-        background: { type: 'solid', color: '#1a1e27' },
-        textColor: '#8b92a5',
-      },
-      grid: {
-        vertLines: { color: '#252a3622' },
-        horzLines: { color: '#252a3644' },
-      },
-    });
-    activeChart = chart;
-  }
+  // Update index series data
+  activeIdxSeries.setData(idxSeries);
 
-  // Remove old series
-  if (activeIdxSeries) { try { activeChart.removeSeries(activeIdxSeries); } catch(e) {} activeIdxSeries = null; }
-  if (activeCompSeries) { try { activeChart.removeSeries(activeCompSeries); } catch(e) {} activeCompSeries = null; }
-
-  // Add index area series
-  if (idxSeries.length > 0) {
-    activeIdxSeries = activeChart.addAreaSeries({
-      lineColor: '#F5D921',
-      lineWidth: 2,
-      topColor: 'rgba(245,217,33,0.25)',
-      bottomColor: 'rgba(245,217,33,0.02)',
-    });
-    activeIdxSeries.setData(idxSeries);
-  }
-
-  // Add compare line series
-  if (compareSeries.length > 0) {
-    activeCompSeries = activeChart.addLineSeries({
-      color: compareColor,
-      lineWidth: 2,
-    });
-    activeCompSeries.setData(compareSeries);
-  }
+  // Update compare series — set color and data (empty array hides it)
+  activeCompSeries.applyOptions({
+    color: compareColor,
+    lastValueVisible: compareSeries.length > 0,
+  });
+  activeCompSeries.setData(compareSeries);
 
   activeChart.timeScale().fitContent();
-
-  // Render legend
-  let legendHtml = '';
-  if (idxSeries.length > 1) {
-    const idxEnd = idxSeries[idxSeries.length - 1].value;
-    const idxChg = chartMode === 'pct' ? idxEnd : ((idxEnd - idxSeries[0].value) / idxSeries[0].value * 100);
-    const idxChgStr = (idxChg >= 0 ? '+' : '') + idxChg.toFixed(2) + '%';
-    const idxChgCol = idxChg >= 0 ? '#22c55e' : '#ef4444';
-    legendHtml += `<div class="chart-legend-item">
-      <span class="cl-dot" style="background:#F5D921;"></span>
-      <span style="color:var(--yellow);">RBTK Index</span>
-      <span class="cl-chg" style="color:${idxChgCol};">${idxChgStr}</span>
-    </div>`;
-  }
-  if (compareSeries.length > 1) {
-    const cEnd = compareSeries[compareSeries.length - 1].value;
-    const cChg = chartMode === 'pct' ? cEnd : ((cEnd - compareSeries[0].value) / compareSeries[0].value * 100);
-    const cChgStr = (cChg >= 0 ? '+' : '') + cChg.toFixed(2) + '%';
-    const cChgCol = cChg >= 0 ? '#22c55e' : '#ef4444';
-    legendHtml += `<div class="chart-legend-item">
-      <span class="cl-dot" style="background:${compareColor};"></span>
-      <span style="color:${compareColor};">${compareName}</span>
-      <span class="cl-chg" style="color:${cChgCol};">${cChgStr}</span>
-    </div>`;
-  }
-  legend.innerHTML = legendHtml;
 }
 
 // ===== FUNDRAISING RENDERING =====
