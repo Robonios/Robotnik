@@ -2344,20 +2344,16 @@ function ensureChart() {
     },
   });
   activeChart = chart;
-  // Create both series upfront — hide compare by giving it empty data
+  // Create index series (always present)
   activeIdxSeries = chart.addAreaSeries({
     lineColor: '#F5D921', lineWidth: 2,
     topColor: 'rgba(245,217,33,0.25)',
     bottomColor: 'rgba(245,217,33,0.02)',
     lastValueVisible: true, priceLineVisible: false,
   });
-  activeCompSeries = chart.addLineSeries({
-    color: '#3b82f6', lineWidth: 2,
-    lastValueVisible: false, priceLineVisible: false,
-  });
 }
 
-// Main chart render — reuses persistent chart, updates series data
+// Main chart render — persistent chart, dynamic compare series
 async function renderChart() {
   ensureChart();
 
@@ -2381,21 +2377,23 @@ async function renderChart() {
     compareSeries = toPctChange(compareSeries);
   }
 
-  if (idxSeries.length === 0 && compareSeries.length === 0) {
-    activeIdxSeries.setData([]);
-    activeCompSeries.setData([]);
-    return;
+  // Update index series
+  activeIdxSeries.setData(idxSeries.length > 0 ? idxSeries : []);
+
+  // Remove old compare series if it exists
+  if (activeCompSeries) {
+    try { activeChart.removeSeries(activeCompSeries); } catch(e) {}
+    activeCompSeries = null;
   }
 
-  // Update index series data
-  activeIdxSeries.setData(idxSeries);
-
-  // Update compare series — set color and data (empty array hides it)
-  activeCompSeries.applyOptions({
-    color: compareColor,
-    lastValueVisible: compareSeries.length > 0,
-  });
-  activeCompSeries.setData(compareSeries);
+  // Create fresh compare series with data (only when we have data)
+  if (compareSeries.length > 0) {
+    activeCompSeries = activeChart.addLineSeries({
+      color: compareColor, lineWidth: 2,
+      lastValueVisible: true, priceLineVisible: false,
+    });
+    activeCompSeries.setData(compareSeries);
+  }
 
   activeChart.timeScale().fitContent();
 }
