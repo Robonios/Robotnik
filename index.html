@@ -1177,15 +1177,16 @@
     border-radius: 8px;
     background: var(--bg-card);
     overflow: hidden;
-    min-height: 650px;
+    /* Fixed height: chart controls (~90px) + chart (480px) + note (~25px) */
+    height: 600px;
   }
 
-  /* Left panel — compact asset list */
+  /* Left panel — compact asset list, height matches chart panel */
   .asset-list-panel {
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
-    max-height: 750px;
+    overflow: hidden;
   }
   .asset-list-header {
     padding: 0.75rem 1rem;
@@ -1385,9 +1386,8 @@
 
   /* Chart area */
   .chart-area-wrap {
-    flex: 1;
     position: relative;
-    min-height: 480px;
+    height: 480px;
   }
   .chart-container { width: 100%; height: 480px; min-height: 480px; }
   .chart-loading {
@@ -1406,6 +1406,7 @@
   @media (max-width: 860px) {
     .prices-chart-layout {
       grid-template-columns: 1fr;
+      height: auto;
     }
     .asset-list-panel {
       max-height: 350px;
