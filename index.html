@@ -2316,103 +2316,95 @@ function filterByRange(series) {
   return series.filter(s => s.time >= cutoffStr);
 }
 
-// Chart render — collects data, then builds chart synchronously in rAF
-let _chartRenderId = 0;
+// Chart created once during page init, never destroyed.
+// Index series: updated via setData (works for first series).
+// Compare series: removed + re-added as fresh AreaSeries each render.
+let _chartReady = false;
 
-function renderChart() {
-  const myId = ++_chartRenderId;
+async function renderChart() {
+  // ---- Load all data (async) ----
+  const rawIndex = await loadIndexSeries();
+  let idxSeries = rawIndex.map(s => ({ time: s.date, value: s.value }));
+  idxSeries = filterByRange(idxSeries);
 
-  // Collect data (may be async on first call, sync from cache after)
-  Promise.all([
-    loadIndexSeries(),
-    compareAsset ? loadHistory(compareAsset) : Promise.resolve([]),
-  ]).then(function([rawIndex, rawCompare]) {
-    // Stale check — a newer render was requested
-    if (myId !== _chartRenderId) return;
-
-    let idxSeries = rawIndex.map(function(s) { return { time: s.date, value: s.value }; });
-    idxSeries = filterByRange(idxSeries);
-
-    let compareSeries = rawCompare.map(function(s) { return { time: s.date, value: s.close || s.price || 0 }; });
+  let compareSeries = [];
+  let compareColor = '#3b82f6';
+  let hasCompare = false;
+  if (compareAsset) {
+    const c = uniqueCompanies.find(x => x.ticker === compareAsset);
+    compareColor = c ? (c.color || tickerColor(c.ticker)) : '#3b82f6';
+    const rawCompare = await loadHistory(compareAsset);
+    compareSeries = rawCompare.map(s => ({ time: s.date, value: s.close ?? s.price ?? 0 }));
     compareSeries = filterByRange(compareSeries);
+    hasCompare = compareSeries.length > 0;
+  }
 
-    let compareColor = '#3b82f6';
-    if (compareAsset) {
-      const c = uniqueCompanies.find(function(x) { return x.ticker === compareAsset; });
-      compareColor = c ? (c.color || tickerColor(c.ticker)) : '#3b82f6';
-    }
+  if (chartMode === 'pct') {
+    idxSeries = toPctChange(idxSeries);
+    if (hasCompare) compareSeries = toPctChange(compareSeries);
+  }
 
-    if (chartMode === 'pct') {
-      idxSeries = toPctChange(idxSeries);
-      compareSeries = toPctChange(compareSeries);
-    }
-
-    // Schedule DOM work in a clean animation frame
-    requestAnimationFrame(function() {
-      // Stale check again after rAF
-      if (myId !== _chartRenderId) return;
-
-      var container = document.getElementById('chart-container');
-
-      // Destroy previous chart completely
-      if (activeChart) { try { activeChart.remove(); } catch(e) {} activeChart = null; }
-      activeIdxSeries = null;
-      activeCompSeries = null;
-      container.innerHTML = '';
-
-      if (idxSeries.length === 0 && compareSeries.length === 0) {
-        container.innerHTML = '<div class="chart-no-data">Index data not yet available.</div>';
-        return;
-      }
-
-      // Create fresh chart + all series in one synchronous block
-      var chart = LightweightCharts.createChart(container, {
-        width: container.clientWidth || 800,
-        height: 480,
-        layout: {
-          background: { type: 'solid', color: '#1a1e27' },
-          textColor: '#8b92a5',
-          fontFamily: "'Roboto Mono', monospace",
-          fontSize: 11,
-        },
-        grid: {
-          vertLines: { color: '#252a3622' },
-          horzLines: { color: '#252a3644' },
-        },
-        rightPriceScale: {
-          borderColor: '#252a36',
-          scaleMargins: { top: 0.1, bottom: 0.1 },
-        },
-        timeScale: {
-          borderColor: '#252a36',
-          timeVisible: false,
-        },
-      });
-
-      // Add index area series
-      if (idxSeries.length > 0) {
-        activeIdxSeries = chart.addAreaSeries({
-          lineColor: '#F5D921', lineWidth: 2,
-          topColor: 'rgba(245,217,33,0.25)',
-          bottomColor: 'rgba(245,217,33,0.02)',
-          lastValueVisible: true, priceLineVisible: false,
-        });
-        activeIdxSeries.setData(idxSeries);
-      }
-
-      // Add compare line series
-      if (compareSeries.length > 0) {
-        activeCompSeries = chart.addLineSeries({
-          color: compareColor, lineWidth: 2,
-          lastValueVisible: true, priceLineVisible: false,
-        });
-        activeCompSeries.setData(compareSeries);
-      }
-
-      chart.timeScale().fitContent();
-      activeChart = chart;
+  // ---- Create chart once (first call, during page init) ----
+  const container = document.getElementById('chart-container');
+  if (!_chartReady) {
+    _chartReady = true;
+    container.innerHTML = '';
+    const chart = LightweightCharts.createChart(container, {
+      width: container.clientWidth || 800,
+      height: 480,
+      layout: {
+        background: { type: 'solid', color: '#1a1e27' },
+        textColor: '#8b92a5',
+        fontFamily: "'Roboto Mono', monospace",
+        fontSize: 11,
+      },
+      grid: {
+        vertLines: { color: '#252a3622' },
+        horzLines: { color: '#252a3644' },
+      },
+      rightPriceScale: {
+        borderColor: '#252a36',
+        scaleMargins: { top: 0.1, bottom: 0.1 },
+      },
+      timeScale: {
+        borderColor: '#252a36',
+        timeVisible: false,
+      },
     });
-  });
+
+    activeIdxSeries = chart.addAreaSeries({
+      lineColor: '#F5D921', lineWidth: 2,
+      topColor: 'rgba(245,217,33,0.25)',
+      bottomColor: 'rgba(245,217,33,0.02)',
+      lastValueVisible: true, priceLineVisible: false,
+    });
+    activeIdxSeries.setData(idxSeries);
+    chart.timeScale().fitContent();
+    activeChart = chart;
+    return;
+  }
+
+  // ---- Subsequent renders ----
+  // Update index (setData works on the first series)
+  activeIdxSeries.setData(idxSeries.length > 0 ? idxSeries : [{ time: '2000-01-01', value: 0 }]);
+
+  // Remove old compare series, add fresh one
+  if (activeCompSeries) {
+    try { activeChart.removeSeries(activeCompSeries); } catch(e) {}
+    activeCompSeries = null;
+  }
+
+  if (hasCompare) {
+    activeCompSeries = activeChart.addAreaSeries({
+      lineColor: compareColor, lineWidth: 2,
+      topColor: 'rgba(0,0,0,0)',
+      bottomColor: 'rgba(0,0,0,0)',
+      lastValueVisible: true, priceLineVisible: false,
+    });
+    activeCompSeries.setData(compareSeries);
+  }
+
+  activeChart.timeScale().fitContent();
 }
 
 // ===== FUNDRAISING RENDERING =====
