@@ -2198,16 +2198,31 @@ function showMore() {
 }
 
 // Select an asset to compare against the Robotnik Index
+let _preCompareMode = null; // remember mode before compare
 function selectAsset(ticker) {
   if (ticker === 'RBTK_INDEX') {
-    // Clicking index removes compare asset
     compareAsset = null;
   } else if (compareAsset === ticker) {
-    // Toggle off
     compareAsset = null;
   } else {
     compareAsset = ticker;
   }
+
+  // Auto-switch to % mode when comparing (standard for multi-asset charts)
+  if (compareAsset && chartMode !== 'pct') {
+    _preCompareMode = chartMode;
+    chartMode = 'pct';
+    document.querySelectorAll('.chart-mode-btns button').forEach(b => {
+      b.classList.toggle('active', b.textContent.trim() === '%');
+    });
+  } else if (!compareAsset && _preCompareMode) {
+    chartMode = _preCompareMode;
+    _preCompareMode = null;
+    document.querySelectorAll('.chart-mode-btns button').forEach(b => {
+      b.classList.toggle('active', b.textContent.trim() === (chartMode === 'pct' ? '%' : 'Price'));
+    });
+  }
+
   renderAssetList();
   renderComparePills();
   renderChart();
@@ -2317,9 +2332,103 @@ function filterByRange(series) {
 }
 
 // Chart created once during page init, never destroyed.
-// Index series: updated via setData (works for first series).
-// Compare series: removed + re-added as fresh AreaSeries each render.
+// Index: LightweightCharts AreaSeries (setData works for first series).
+// Compare: drawn on a canvas overlay using chart coordinate mapping
+//   (LightweightCharts won't repaint additional series added after init).
 let _chartReady = false;
+let _compareOverlay = null; // canvas element
+let _compareData = null;    // { series, color }
+
+function _drawCompareOverlay() {
+  if (!_compareOverlay || !activeChart || !activeIdxSeries) return;
+  const canvas = _compareOverlay;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const container = document.getElementById('chart-container');
+  const w = container.clientWidth;
+  const h = 480;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+
+  if (!_compareData || !_compareData.series || _compareData.series.length < 2) return;
+
+  const ts = activeChart.timeScale();
+  const series = _compareData.series;
+  const color = _compareData.color;
+
+  // Get visible time range to filter points
+  const visRange = ts.getVisibleRange();
+  if (!visRange) return;
+
+  // Get all index data to compute combined Y scale
+  const idxData = activeIdxSeries.data();
+  let allVals = [];
+  for (let i = 0; i < idxData.length; i++) {
+    if (idxData[i].time >= visRange.from && idxData[i].time <= visRange.to) {
+      allVals.push(idxData[i].value);
+    }
+  }
+  for (let i = 0; i < series.length; i++) {
+    if (series[i].time >= visRange.from && series[i].time <= visRange.to) {
+      allVals.push(series[i].value);
+    }
+  }
+  if (allVals.length === 0) return;
+
+  const yMin = Math.min.apply(null, allVals);
+  const yMax = Math.max.apply(null, allVals);
+  const yPad = (yMax - yMin) * 0.1 || 1;
+
+  // Chart area dimensions (exclude axes) — use the first index point as reference
+  const refX0 = ts.timeToCoordinate(visRange.from);
+  const refX1 = ts.timeToCoordinate(visRange.to);
+  const refY0 = activeIdxSeries.priceToCoordinate(yMax + yPad);
+  const refY1 = activeIdxSeries.priceToCoordinate(yMin - yPad);
+  if (refY0 === null || refY1 === null) return;
+  const plotTop = Math.min(refY0, refY1);
+  const plotBottom = Math.max(refY0, refY1);
+  const plotH = plotBottom - plotTop;
+
+  // Map value to Y pixel using our own scale (matching chart's visible range)
+  function valToY(v) {
+    return plotBottom - ((v - (yMin - yPad)) / ((yMax + yPad) - (yMin - yPad))) * plotH;
+  }
+
+  // Map data to pixel coordinates
+  const points = [];
+  for (let i = 0; i < series.length; i++) {
+    const x = ts.timeToCoordinate(series[i].time);
+    if (x === null || !isFinite(x)) continue;
+    const y = valToY(series[i].value);
+    if (isFinite(y)) points.push({ x, y });
+  }
+
+  if (points.length < 2) return;
+
+  // Draw the line
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.lineJoin = 'round';
+  ctx.moveTo(points[0].x, points[0].y);
+  for (let i = 1; i < points.length; i++) {
+    ctx.lineTo(points[i].x, points[i].y);
+  }
+  ctx.stroke();
+
+  // Draw last value label
+  const last = points[points.length - 1];
+  const lastVal = series[series.length - 1].value;
+  const label = chartMode === 'pct' ? lastVal.toFixed(2) + '%' : lastVal.toFixed(2);
+  ctx.font = '11px "Roboto Mono", monospace';
+  ctx.fillStyle = color;
+  ctx.textAlign = 'left';
+  ctx.fillText(label, last.x + 5, last.y - 5);
+}
 
 async function renderChart() {
   // ---- Load all data (async) ----
@@ -2349,6 +2458,7 @@ async function renderChart() {
   if (!_chartReady) {
     _chartReady = true;
     container.innerHTML = '';
+    container.style.position = 'relative';
     const chart = LightweightCharts.createChart(container, {
       width: container.clientWidth || 800,
       height: 480,
@@ -2381,30 +2491,33 @@ async function renderChart() {
     activeIdxSeries.setData(idxSeries);
     chart.timeScale().fitContent();
     activeChart = chart;
+
+    // Create overlay canvas for compare line
+    _compareOverlay = document.createElement('canvas');
+    _compareOverlay.style.position = 'absolute';
+    _compareOverlay.style.top = '0';
+    _compareOverlay.style.left = '0';
+    _compareOverlay.style.pointerEvents = 'none';
+    _compareOverlay.style.zIndex = '3';
+    container.appendChild(_compareOverlay);
+
+    // Redraw overlay when chart scrolls/zooms
+    chart.timeScale().subscribeVisibleLogicalRangeChange(_drawCompareOverlay);
     return;
   }
 
   // ---- Subsequent renders ----
-  // Update index (setData works on the first series)
   activeIdxSeries.setData(idxSeries.length > 0 ? idxSeries : [{ time: '2000-01-01', value: 0 }]);
-
-  // Remove old compare series, add fresh one
-  if (activeCompSeries) {
-    try { activeChart.removeSeries(activeCompSeries); } catch(e) {}
-    activeCompSeries = null;
-  }
-
-  if (hasCompare) {
-    activeCompSeries = activeChart.addAreaSeries({
-      lineColor: compareColor, lineWidth: 2,
-      topColor: 'rgba(0,0,0,0)',
-      bottomColor: 'rgba(0,0,0,0)',
-      lastValueVisible: true, priceLineVisible: false,
-    });
-    activeCompSeries.setData(compareSeries);
-  }
-
   activeChart.timeScale().fitContent();
+
+  // Store compare data and draw overlay
+  if (hasCompare) {
+    _compareData = { series: compareSeries, color: compareColor };
+  } else {
+    _compareData = null;
+  }
+  // Delay overlay draw to let chart finish its layout update
+  setTimeout(_drawCompareOverlay, 50);
 }
 
 // ===== FUNDRAISING RENDERING =====
