@@ -78,15 +78,22 @@ def fetch_equity_history(ticker, country):
         return None
 
     # Convert to standard format: [{date, open, high, low, close, volume}, ...]
+    # Use adjusted_close for split-adjusted prices (critical for stocks like
+    # NVDA 10:1 split Jun 2024, AMZN 20:1 split Jun 2022, etc.)
     series = []
     for d in data:
         try:
+            adj = d.get("adjusted_close")
+            raw = d.get("close")
+            close_price = adj if adj is not None else raw
+            # Calculate adjustment factor to adjust OHLC consistently
+            factor = (adj / raw) if (adj and raw and raw != 0) else 1.0
             series.append({
                 "date": d["date"],
-                "open": d.get("open"),
-                "high": d.get("high"),
-                "low": d.get("low"),
-                "close": d.get("close") or d.get("adjusted_close"),
+                "open": round(d.get("open", 0) * factor, 4) if d.get("open") else None,
+                "high": round(d.get("high", 0) * factor, 4) if d.get("high") else None,
+                "low": round(d.get("low", 0) * factor, 4) if d.get("low") else None,
+                "close": close_price,
                 "volume": d.get("volume"),
             })
         except (KeyError, TypeError):

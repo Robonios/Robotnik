@@ -2398,16 +2398,55 @@ async function renderChart() {
   // ---- Load all data (async) ----
   const rawIndex = await loadIndexSeries();
   let idxSeries = rawIndex.map(s => ({ time: s.date, value: s.value }));
-  idxSeries = filterByRange(idxSeries);
 
   let compareSeries = [];
   let compareColor = '#3b82f6';
   let hasCompare = false;
+  let rawCompare = [];
   if (compareAsset) {
     const c = uniqueCompanies.find(x => x.ticker === compareAsset);
     compareColor = c ? (c.color || tickerColor(c.ticker)) : '#3b82f6';
-    const rawCompare = await loadHistory(compareAsset);
+    rawCompare = await loadHistory(compareAsset);
     compareSeries = rawCompare.map(s => ({ time: s.date, value: s.close ?? s.price ?? 0 }));
+  }
+
+  // ---- Update range button availability based on data ----
+  // Use the longest available data range (index or compare) for button state
+  const idxDays = idxSeries.length > 1
+    ? Math.round((new Date(idxSeries[idxSeries.length-1].time) - new Date(idxSeries[0].time)) / 86400000)
+    : 0;
+  const compDays = compareSeries.length > 1
+    ? Math.round((new Date(compareSeries[compareSeries.length-1].time) - new Date(compareSeries[0].time)) / 86400000)
+    : 0;
+  const availDays = Math.max(idxDays, compDays);
+  // Enable/disable range buttons based on available data
+  document.querySelectorAll('#chart-range-btns button[data-range]').forEach(btn => {
+    const r = btn.dataset.range;
+    if (r === '0.5' || r === '1') return; // intraday stays disabled
+    const rangeDays = r === 'ytd' ? 90 : parseFloat(r); // ytd always available
+    if (rangeDays > availDays + 30) { // +30 day buffer
+      btn.classList.add('disabled');
+      btn.title = `Only ${Math.round(availDays/365*10)/10}Y of data available`;
+    } else {
+      btn.classList.remove('disabled');
+      btn.title = '';
+    }
+  });
+
+  // Auto-downgrade range if current selection exceeds available data
+  if (chartRange !== 'ytd' && chartRange > availDays + 30) {
+    // Find the largest available range that fits the data
+    const ranges = [7, 30, 90, 365, 1095, 1825];
+    chartRange = ranges.filter(r => r <= availDays + 30).pop() || 30;
+    // Update active button
+    document.querySelectorAll('#chart-range-btns button').forEach(b => {
+      b.classList.toggle('active', parseFloat(b.dataset.range) === chartRange);
+    });
+  }
+
+  // Apply range filter
+  idxSeries = filterByRange(idxSeries);
+  if (compareSeries.length > 0) {
     compareSeries = filterByRange(compareSeries);
     hasCompare = compareSeries.length > 0;
   }
