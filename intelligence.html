@@ -14,67 +14,238 @@
 <div id="nav-container"></div>
 
 <div class="main-content">
-<section class="main-section" id="content">
-  <div class="section-head">
-    <div>
-      <div class="section-tag">Intelligence Feed</div>
-      <h2>Intelligence</h2>
+<div class="intel-layout">
+
+  <!-- ===== LEFT: FEED ===== -->
+  <div>
+
+    <!-- A. Header -->
+    <div class="intel-header">
+      <div class="intel-title">Intelligence</div>
+      <div class="intel-subtitle">News, research, and analysis from across the frontier technology stack</div>
     </div>
-  </div>
-  <p class="section-oneliner">Access the full intelligence archive</p>
 
-  <div class="subtab-nav">
-    <button class="subtab-btn active" data-subtab="feed" onclick="switchSubtab('feed')">Feed</button>
-    <button class="subtab-btn" data-subtab="robotniks" onclick="switchSubtab('robotniks')">Robotnik Insights</button>
-  </div>
-
-  <div class="subtab-content active" id="subtab-feed">
-    <div class="controls">
-      <input type="text" class="search-box" placeholder="Scan for signals..." id="intelligence-search" oninput="renderIntelligence()" />
-      <div class="filters">
-        <button class="fbtn active" data-itype="all" onclick="setInsightType(this)">All</button>
-        <button class="fbtn" data-itype="news" onclick="setInsightType(this)">News</button>
-        <button class="fbtn" data-itype="research" onclick="setInsightType(this)">Research</button>
-        <button class="fbtn" data-itype="filings" onclick="setInsightType(this)">Filings</button>
-        <button class="fbtn" data-itype="reports" onclick="setInsightType(this)">Reports</button>
+    <!-- B. Filters -->
+    <div class="intel-filters">
+      <div class="intel-filter-group" data-label="Type">
+        <button class="intel-filter-btn active">All</button>
+        <button class="intel-filter-btn">News</button>
+        <button class="intel-filter-btn">Research</button>
+        <button class="intel-filter-btn">Reports</button>
+        <button class="intel-filter-btn">Filings</button>
       </div>
-      <div class="filters">
-        <button class="fbtn active" data-icat="all" onclick="setInsightCat(this)">All</button>
-        <button class="fbtn" data-icat="robo" onclick="setInsightCat(this)">Robotics</button>
-        <button class="fbtn" data-icat="semi" onclick="setInsightCat(this)">Semis</button>
-        <button class="fbtn" data-icat="ai" onclick="setInsightCat(this)">AI/ML</button>
-        <button class="fbtn" data-icat="supply" onclick="setInsightCat(this)">Supply Chain</button>
+      <div class="intel-filter-group" data-label="Sector">
+        <button class="intel-filter-btn active">All sectors</button>
+        <button class="intel-filter-btn">Semi</button>
+        <button class="intel-filter-btn">Robotics</button>
+        <button class="intel-filter-btn">Space</button>
       </div>
-    </div>
-
-    <div class="fund-stats">
-      <div class="fund-stat"><div class="fs-label">Field signals</div><div class="fs-val" id="stat-news-count">&mdash;</div><div class="fs-sub">Via communication lines</div></div>
-      <div class="fund-stat"><div class="fs-label">Research intercepts</div><div class="fs-val" id="stat-paper-count">&mdash;</div><div class="fs-sub">Via OpenAlex network</div></div>
-      <div class="fund-stat"><div class="fs-label">SEC transmissions</div><div class="fs-val" id="stat-filing-count">&mdash;</div><div class="fs-sub">10-K, 10-Q, 8-K</div></div>
-      <div class="fund-stat"><div class="fs-label">Last transmission</div><div class="fs-val" id="stat-updated">&mdash;</div><div class="fs-sub">Awaiting next scan cycle</div></div>
-    </div>
-
-    <div id="intelligence-content"></div>
-    <div style="text-align:center;margin-top:1rem;">
-      <button class="btn-ghost" id="intelligence-load-more" onclick="loadMoreIntelligence()" style="display:none;">Extend scan range</button>
-    </div>
-    <div class="data-note">Data via OpenAlex network, ~30 communication lines, SEC EDGAR, IFR · Awaiting next scan cycle</div>
-  </div>
-
-  <div class="subtab-content" id="subtab-robotniks">
-    <div style="text-align:center;padding:4rem 2rem;">
-      <div style="font-size:var(--fs-body);font-weight:700;color:var(--text);margin-bottom:0.5rem;">Robotnik Insights</div>
-      <div style="font-size:var(--fs-table);color:var(--text-dim);max-width:400px;margin:0 auto;line-height:1.7;">
-        Original intelligence and analysis from the Robotnik team. Transmission incoming.
+      <div class="intel-filter-group" data-label="Time">
+        <button class="intel-filter-btn">24h</button>
+        <button class="intel-filter-btn">7d</button>
+        <button class="intel-filter-btn active">30d</button>
+        <button class="intel-filter-btn">All</button>
       </div>
     </div>
-  </div>
-</section>
 
-<footer>
-  <p>&copy; 2026 Robotnik. Mapping the machine economy since re-entry.</p>
-  <p style="margin-top: 0.5rem; font-size: 0.65rem; opacity: 0.5;">Data provided by <a href="https://www.coingecko.com" target="_blank" rel="noopener" style="color: var(--text-muted);">CoinGecko</a></p>
-</footer>
+    <!-- C. Feed -->
+    <div class="dash-widget" style="padding:0;">
+      <div class="intel-feed">
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">TSMC CoWoS expansion signals capacity shift for AI chip packaging — foundry now targeting 2x output by Q4</div>
+            <div class="feed-meta"><span class="feed-source">Reuters</span> · 2h ago <span class="feed-sector sector-semi">Semi</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">Rocket Lab secures Neutron launch contract with major defense partner, first flight slated for H2 2026</div>
+            <div class="feed-meta"><span class="feed-source">SpaceNews</span> · 5h ago <span class="feed-sector sector-space">Space</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">Humanoid robotics funding crosses $5B mark in trailing twelve months, led by Figure and 1X Technologies</div>
+            <div class="feed-meta"><span class="feed-source">TechCrunch</span> · 8h ago <span class="feed-sector sector-robo">Robo</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">NVIDIA Jetson Thor enters mass production for autonomous systems across robotics and industrial applications</div>
+            <div class="feed-meta"><span class="feed-source">IEEE Spectrum</span> · 12h ago <span class="feed-sector sector-semi">Semi</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">AST SpaceMobile begins commercial direct-to-cell service with initial coverage across five markets</div>
+            <div class="feed-meta"><span class="feed-source">Payload</span> · 1d ago <span class="feed-sector sector-space">Space</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-research">R</div>
+          <div class="feed-body">
+            <div class="feed-headline">Sim-to-real transfer learning achieves 94% success rate in dexterous manipulation tasks using reinforcement learning</div>
+            <div class="feed-meta"><span class="feed-source">arXiv cs.RO</span> · 1d ago <span class="feed-sector sector-robo">Robo</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-filing">F</div>
+          <div class="feed-body">
+            <div class="feed-headline">Intel 10-K filing reveals $4.2B restructuring charge and updated foundry services roadmap through 2028</div>
+            <div class="feed-meta"><span class="feed-source">SEC EDGAR</span> · 1d ago <span class="feed-sector sector-semi">Semi</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-report">★</div>
+          <div class="feed-body">
+            <div class="feed-headline">IFR World Robotics 2026: Industrial robot installations reach 590,000 units globally, China accounts for 52%</div>
+            <div class="feed-meta"><span class="feed-source">IFR</span> · 2d ago <span class="feed-sector sector-robo">Robo</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">Samsung announces 2nm GAA process enters risk production, targets HPC and mobile SoCs for early 2027</div>
+            <div class="feed-meta"><span class="feed-source">SemiEngineering</span> · 2d ago <span class="feed-sector sector-semi">Semi</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">Boston Dynamics Atlas performs autonomous warehouse logistics in multi-robot coordination demo</div>
+            <div class="feed-meta"><span class="feed-source">The Robot Report</span> · 2d ago <span class="feed-sector sector-robo">Robo</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-research">R</div>
+          <div class="feed-body">
+            <div class="feed-headline">Novel chiplet interconnect architecture achieves 10TB/s bandwidth with sub-pJ/bit energy efficiency</div>
+            <div class="feed-meta"><span class="feed-source">IEEE</span> · 3d ago <span class="feed-sector sector-semi">Semi</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">Relativity Space pivots Terran R to fully reusable architecture, delays first orbital attempt to Q3 2026</div>
+            <div class="feed-meta"><span class="feed-source">Ars Technica</span> · 3d ago <span class="feed-sector sector-space">Space</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-filing">F</div>
+          <div class="feed-body">
+            <div class="feed-headline">ARM Holdings 8-K discloses expanded licensing agreement with major Chinese semiconductor manufacturer</div>
+            <div class="feed-meta"><span class="feed-source">SEC EDGAR</span> · 3d ago <span class="feed-sector sector-semi">Semi</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">Covariant's AI brain for warehouse robots achieves 99.8% pick accuracy across 10,000+ SKU environments</div>
+            <div class="feed-meta"><span class="feed-source">VentureBeat</span> · 4d ago <span class="feed-sector sector-robo">Robo</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-report">★</div>
+          <div class="feed-body">
+            <div class="feed-headline">SIA global semiconductor sales reach $62.8B in February, marking 23% year-over-year growth</div>
+            <div class="feed-meta"><span class="feed-source">SIA</span> · 4d ago <span class="feed-sector sector-semi">Semi</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-research">R</div>
+          <div class="feed-body">
+            <div class="feed-headline">Foundation models for robot learning: a survey of multi-task generalization across embodied systems</div>
+            <div class="feed-meta"><span class="feed-source">arXiv cs.AI</span> · 5d ago <span class="feed-sector sector-robo">Robo</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">SpaceX Starship completes sixth test flight with successful booster catch and extended orbital coast</div>
+            <div class="feed-meta"><span class="feed-source">SpaceNews</span> · 5d ago <span class="feed-sector sector-space">Space</span></div>
+          </div>
+        </div>
+
+        <div class="feed-card">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline">ON Semiconductor reports record silicon carbide revenue as EV power electronics demand accelerates</div>
+            <div class="feed-meta"><span class="feed-source">EE Times</span> · 6d ago <span class="feed-sector sector-cross">Cross</span></div>
+          </div>
+        </div>
+
+      </div>
+      <button class="load-more-btn">Extend scan range →</button>
+    </div>
+
+  </div>
+
+  <!-- ===== RIGHT: SIDEBAR WIDGETS ===== -->
+  <div class="dash-sidebar-widgets">
+
+    <!-- Trending Topics -->
+    <div class="dash-widget">
+      <div class="dash-widget-title">Trending Topics</div>
+      <div class="topic-tag"><span class="topic-name">CoWoS Packaging</span><span class="topic-count">47 mentions</span></div>
+      <div class="topic-tag"><span class="topic-name">Humanoid Robotics</span><span class="topic-count">38 mentions</span></div>
+      <div class="topic-tag"><span class="topic-name">2nm Process</span><span class="topic-count">31 mentions</span></div>
+      <div class="topic-tag"><span class="topic-name">Edge Inference</span><span class="topic-count">24 mentions</span></div>
+      <div class="topic-tag"><span class="topic-name">Chiplet Interconnect</span><span class="topic-count">19 mentions</span></div>
+    </div>
+
+    <!-- Field Transmissions -->
+    <div class="dash-widget">
+      <div class="dash-widget-title">Field Transmissions</div>
+      <div class="substack-item">
+        <div class="substack-title">Weekly Briefing #12: The packaging wars heat up</div>
+        <div class="substack-date">Mar 20, 2026</div>
+      </div>
+      <div class="substack-item">
+        <div class="substack-title">Deep Dive: Who supplies the humanoid stack?</div>
+        <div class="substack-date">Mar 13, 2026</div>
+      </div>
+      <div class="substack-item">
+        <div class="substack-title">Weekly Briefing #11: Samsung's foundry gambit</div>
+        <div class="substack-date">Mar 6, 2026</div>
+      </div>
+      <a href="#" class="view-all-link">Subscribe on Substack →</a>
+    </div>
+
+    <!-- Contributors -->
+    <div class="dash-widget">
+      <div class="dash-widget-title">Contributors</div>
+      <div class="contributor-row"><span class="contributor-dot"></span> Prof. J. Kober — TU Delft</div>
+      <div class="contributor-row"><span class="contributor-dot"></span> Dr. S. Levine — UC Berkeley</div>
+      <div class="contributor-row"><span class="contributor-dot"></span> Prof. M. Riedl — Georgia Tech</div>
+      <div class="contributor-row"><span class="contributor-dot"></span> Dr. A. Saxena — Stanford</div>
+      <div class="contributor-row"><span class="contributor-dot"></span> Prof. K. Lynch — Northwestern</div>
+    </div>
+
+  </div>
+
+</div>
 </div><!-- .main-content -->
 
 <script src="js/nav.js"></script>

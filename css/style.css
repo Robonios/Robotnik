@@ -583,6 +583,192 @@
     .sub-indices { grid-template-columns: repeat(2, 1fr); }
   }
 
+  /* ===== INTELLIGENCE PAGE ===== */
+  .intel-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 1rem;
+    padding: 1rem;
+    max-width: 1400px;
+  }
+
+  .intel-header {
+    margin-bottom: 0.75rem;
+  }
+
+  .intel-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--yellow);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .intel-subtitle {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .intel-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #1E2330;
+  }
+
+  .intel-filter-group {
+    display: flex;
+    gap: 0.2rem;
+  }
+
+  .intel-filter-group::before {
+    content: attr(data-label);
+    font-size: 9px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    align-self: center;
+    margin-right: 0.3rem;
+  }
+
+  .intel-filter-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    font-family: var(--font);
+    font-size: 10px;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .intel-filter-btn:hover { color: var(--text); background: var(--bg-hover); }
+  .intel-filter-btn.active { color: var(--yellow); border-color: var(--yellow); background: var(--yellow-subtle); }
+
+  .intel-feed { display: flex; flex-direction: column; gap: 0; }
+
+  .feed-card {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.7rem 0.75rem;
+    border-bottom: 1px solid rgba(30,35,48,0.5);
+    transition: background 0.15s;
+    text-decoration: none;
+  }
+  .feed-card:hover { background: rgba(255,255,255,0.02); }
+
+  .feed-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background: var(--bg-hover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    color: var(--text-muted);
+  }
+
+  .feed-icon.type-news { color: var(--blue); }
+  .feed-icon.type-research { color: var(--purple); }
+  .feed-icon.type-report { color: var(--yellow); }
+  .feed-icon.type-filing { color: var(--green); }
+
+  .feed-body { flex: 1; min-width: 0; }
+
+  .feed-headline {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 0.25rem;
+  }
+
+  .feed-meta {
+    font-size: 9px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .feed-source { font-weight: 600; }
+
+  .feed-sector {
+    font-size: 8px;
+    font-weight: 600;
+    padding: 0.1rem 0.35rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .load-more-btn {
+    display: block;
+    width: 100%;
+    padding: 0.6rem;
+    background: none;
+    border: 1px solid #1E2330;
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-family: var(--font);
+    font-size: 11px;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    transition: all 0.15s;
+  }
+  .load-more-btn:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  /* Intel sidebar widgets */
+  .topic-tag {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    font-size: 11px;
+    border-bottom: 1px solid rgba(30,35,48,0.4);
+  }
+  .topic-tag:last-child { border-bottom: none; }
+  .topic-name { color: var(--text-dim); }
+  .topic-count { color: var(--text-muted); font-size: 10px; }
+
+  .substack-item {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(30,35,48,0.4);
+  }
+  .substack-item:last-child { border-bottom: none; }
+  .substack-title {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.4;
+    margin-bottom: 0.15rem;
+  }
+  .substack-date { font-size: 9px; color: var(--text-muted); }
+
+  .contributor-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+  .contributor-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .intel-layout { grid-template-columns: 1fr; }
+  }
+
   /* ===== TICKER BAR ===== */
   .ticker-bar {
     background: var(--bg-raised);
