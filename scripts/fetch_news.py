@@ -1,8 +1,8 @@
 """
-Robotniks RSS News Aggregator
+Robotnik RSS News Aggregator
 ==============================
-Fetches news from ~30 RSS feeds covering robotics, semiconductors,
-AI/ML hardware, and supply chain. Outputs news.json.
+Fetches news from ~38 RSS feeds covering robotics, semiconductors,
+space technology, AI/ML hardware, and supply chain. Outputs news.json.
 
 Setup:
   pip install feedparser
@@ -70,6 +70,16 @@ FEEDS = [
     {"url": "https://community.arm.com/arm-community-blogs/b/announcements/rss", "source": "ARM Community", "category": "semi", "broad": False},
     {"url": "https://pr.tsmc.com/english/rss", "source": "TSMC Newsroom", "category": "semi", "broad": False},
 
+    # Space technology
+    {"url": "https://spacenews.com/feed/", "source": "SpaceNews", "category": "space", "broad": False},
+    {"url": "https://payloadspace.com/feed/", "source": "Payload Space", "category": "space", "broad": False},
+    {"url": "https://www.nasaspaceflight.com/feed/", "source": "NASASpaceflight", "category": "space", "broad": False},
+    {"url": "https://www.space.com/feeds/all", "source": "Space.com", "category": "space", "broad": True},
+    {"url": "https://www.theverge.com/rss/space/index.xml", "source": "The Verge Space", "category": "space", "broad": True},
+    {"url": "https://feeds.arstechnica.com/arstechnica/science", "source": "Ars Technica Science", "category": "space", "broad": True},
+    {"url": "https://spaceref.com/feed/", "source": "SpaceRef", "category": "space", "broad": False},
+    {"url": "https://www.esa.int/rssfeed/Our_Activities/Space_News", "source": "ESA News", "category": "space", "broad": False},
+
     # Research aggregators (keyword-filtered)
     {"url": "https://rss.arxiv.org/rss/cs.RO", "source": "arXiv Robotics", "category": "robo", "broad": False},
     {"url": "https://rss.arxiv.org/rss/cs.AI", "source": "arXiv AI", "category": "ai", "broad": True},
@@ -85,6 +95,11 @@ KEYWORDS = [
     "lidar", "sensor fusion", "actuator", "motor control",
     "supply chain", "fab", "manufacturing",
     "boston dynamics", "figure ai", "tesla bot", "optimus",
+    # Space technology
+    "satellite", "launch vehicle", "rocket", "orbit", "spacecraft",
+    "spacex", "rocket lab", "starlink", "space station", "lunar",
+    "mars", "constellation", "spaceport", "reusable rocket",
+    "space debris", "earth observation", "cubesat", "smallsat",
 ]
 
 MAX_ITEMS = 150

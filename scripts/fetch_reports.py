@@ -1,8 +1,8 @@
 """
-Robotniks Industry Reports Scraper
+Robotnik Industry Reports Scraper
 ====================================
-Scrapes press releases from IFR, SEMI, and SIA.
-Outputs reports.json.
+Scrapes press releases from IFR, SEMI, SIA, Satellite Industry Association,
+Space Foundation, and BryceTech. Outputs reports.json.
 
 Setup:
   pip install beautifulsoup4 lxml
@@ -300,6 +300,125 @@ def fetch_sia():
         return []
 
 
+# ── Satellite Industry Association (SIA — space) ──────────────────────────────
+
+def fetch_sat_sia():
+    """Scrape Satellite Industry Association press releases."""
+    url = "https://sia.org/news-resources/press-releases/"
+    print(f"  [SAT-SIA] Fetching {url}")
+    try:
+        html = fetch_html(url)
+        soup = BeautifulSoup(html, "lxml")
+        items = []
+        for el in soup.select("a[href*='press-release'], a[href*='news'], h2 a, h3 a"):
+            link = el.get("href", "")
+            if not link:
+                continue
+            if not link.startswith("http"):
+                link = "https://sia.org" + link
+            title = el.get_text(strip=True)
+            if not title or len(title) < 10:
+                continue
+            items.append({
+                "id": make_id(link),
+                "title": title,
+                "url": link,
+                "source": "Satellite Industry Association",
+                "date": "",
+                "summary": "",
+                "category": "space",
+            })
+        seen = set()
+        unique = []
+        for item in items:
+            if item["url"] not in seen:
+                seen.add(item["url"])
+                unique.append(item)
+        print(f"  [SAT-SIA] {len(unique)} press releases")
+        return unique[:15]
+    except Exception as e:
+        print(f"  [SAT-SIA] FAILED: {e}")
+        return []
+
+
+def fetch_space_foundation():
+    """Scrape Space Foundation news."""
+    url = "https://www.spacefoundation.org/news/"
+    print(f"  [SpaceFdn] Fetching {url}")
+    try:
+        html = fetch_html(url)
+        soup = BeautifulSoup(html, "lxml")
+        items = []
+        for el in soup.select("article a, .post a, h2 a, h3 a"):
+            link = el.get("href", "")
+            if not link:
+                continue
+            if not link.startswith("http"):
+                link = "https://www.spacefoundation.org" + link
+            title = el.get_text(strip=True)
+            if not title or len(title) < 10:
+                continue
+            items.append({
+                "id": make_id(link),
+                "title": title,
+                "url": link,
+                "source": "Space Foundation",
+                "date": "",
+                "summary": "",
+                "category": "space",
+            })
+        seen = set()
+        unique = []
+        for item in items:
+            if item["url"] not in seen:
+                seen.add(item["url"])
+                unique.append(item)
+        print(f"  [SpaceFdn] {len(unique)} articles")
+        return unique[:15]
+    except Exception as e:
+        print(f"  [SpaceFdn] FAILED: {e}")
+        return []
+
+
+def fetch_brycetech():
+    """Scrape BryceTech reports/news."""
+    url = "https://brycetech.com/reports"
+    print(f"  [BryceTech] Fetching {url}")
+    try:
+        html = fetch_html(url)
+        soup = BeautifulSoup(html, "lxml")
+        items = []
+        for el in soup.select("a[href*='report'], a[href*='briefing'], h2 a, h3 a"):
+            link = el.get("href", "")
+            if not link:
+                continue
+            if not link.startswith("http"):
+                link = "https://brycetech.com" + link
+            title = el.get_text(strip=True)
+            if not title or len(title) < 10:
+                continue
+            items.append({
+                "id": make_id(link),
+                "title": title,
+                "url": link,
+                "source": "BryceTech",
+                "date": "",
+                "summary": "",
+                "category": "space",
+            })
+        seen = set()
+        unique = []
+        for item in items:
+            if item["url"] not in seen:
+                seen.add(item["url"])
+                unique.append(item)
+        print(f"  [BryceTech] {len(unique)} reports")
+        return unique[:15]
+    except Exception as e:
+        print(f"  [BryceTech] FAILED: {e}")
+        return []
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
@@ -312,6 +431,13 @@ def main():
     all_reports.extend(fetch_ifr())
     all_reports.extend(fetch_semi())
     all_reports.extend(fetch_sia())
+
+    # Space industry sources (continue on error — scraping can be flaky)
+    for fetcher, label in [(fetch_sat_sia, "SAT-SIA"), (fetch_space_foundation, "SpaceFdn"), (fetch_brycetech, "BryceTech")]:
+        try:
+            all_reports.extend(fetcher())
+        except Exception as e:
+            print(f"  [{label}] SKIPPED (error): {e}")
 
     # Archive all reports
     current_reports = archive_and_filter(

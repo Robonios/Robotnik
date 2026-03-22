@@ -1,8 +1,8 @@
 """
-Robotniks OpenAlex Research Fetcher
+Robotnik OpenAlex Research Fetcher
 =====================================
-Fetches recent academic papers on robotics and semiconductors
-from the OpenAlex API. Outputs research.json.
+Fetches recent academic papers on robotics, semiconductors, and space
+technology from the OpenAlex API. Outputs research.json.
 
 No external dependencies — uses urllib from stdlib.
 
@@ -36,6 +36,13 @@ SEARCH_QUERIES = [
     {"query": "semiconductor supply chain resilience", "category": "supply"},
     {"query": "robot perception vision transformer", "category": "robo"},
     {"query": "chiplet advanced packaging integration", "category": "semi"},
+    # Space technology
+    {"query": "satellite constellation orbital deployment", "category": "space"},
+    {"query": "launch vehicle reusable rocket propulsion", "category": "space"},
+    {"query": "in-orbit servicing space debris removal", "category": "space"},
+    {"query": "radiation hardened semiconductor space", "category": "space"},
+    {"query": "space robotics autonomous spacecraft", "category": "space"},
+    {"query": "Earth observation satellite remote sensing", "category": "space"},
 ]
 
 PER_PAGE = 25

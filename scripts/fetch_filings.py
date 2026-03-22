@@ -1,8 +1,8 @@
 """
-Robotniks SEC EDGAR Filings Fetcher
+Robotnik SEC EDGAR Filings Fetcher
 =====================================
 Fetches recent SEC filings (10-K, 10-Q, 8-K, 20-F) for tracked
-robotics and semiconductor companies. Outputs filings.json.
+robotics, semiconductor, and space technology companies. Outputs filings.json.
 
 No API key needed — SEC EDGAR is free and public.
 No external dependencies — uses urllib from stdlib.
@@ -47,6 +47,34 @@ COMPANIES = [
     {"ticker": "TER", "name": "Teradyne"},
     {"ticker": "SYM", "name": "Symbotic"},
     {"ticker": "CGNX", "name": "Cognex"},
+    # Space technology
+    {"ticker": "RKLB", "name": "Rocket Lab"},
+    {"ticker": "PL", "name": "Planet Labs"},
+    {"ticker": "ASTS", "name": "AST SpaceMobile"},
+    {"ticker": "RDW", "name": "Redwire"},
+    {"ticker": "LUNR", "name": "Intuitive Machines"},
+    {"ticker": "BKSY", "name": "BlackSky Technology"},
+    {"ticker": "SPIR", "name": "Spire Global"},
+    {"ticker": "VSAT", "name": "Viasat"},
+    {"ticker": "SATS", "name": "EchoStar"},
+    {"ticker": "IRDM", "name": "Iridium Communications"},
+    {"ticker": "GSAT", "name": "Globalstar"},
+    {"ticker": "SPCE", "name": "Virgin Galactic"},
+    {"ticker": "FLY", "name": "Firefly Aerospace"},
+    {"ticker": "SATL", "name": "Satellogic"},
+    {"ticker": "SIDU", "name": "Sidus Space"},
+    {"ticker": "MNTS", "name": "Momentus"},
+    {"ticker": "KRMN", "name": "Karman Holdings"},
+    {"ticker": "VOYG", "name": "Voyager Technologies"},
+    {"ticker": "HEI", "name": "HEICO"},
+    {"ticker": "HXL", "name": "Hexcel"},
+    {"ticker": "DCO", "name": "Ducommun"},
+    {"ticker": "GOGO", "name": "Gogo"},
+    {"ticker": "NN", "name": "NextNav"},
+    {"ticker": "PSN", "name": "Parsons"},
+    {"ticker": "ESE", "name": "ESCO Technologies"},
+    {"ticker": "TTMI", "name": "TTM Technologies"},
+    {"ticker": "TSAT", "name": "Telesat"},
 ]
 
 # Filing types we care about
