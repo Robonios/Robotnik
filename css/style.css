@@ -491,6 +491,11 @@
     position: relative;
   }
 
+  /* Hide TradingView watermark from lightweight-charts free tier */
+  #index-chart-container a[href*="tradingview"] {
+    display: none !important;
+  }
+
   #index-chart-container:has(.chart-placeholder) {
     height: 160px;
   }
