@@ -14,110 +14,172 @@
 <div id="nav-container"></div>
 
 <div class="main-content">
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-badge">Mission active</div>
-      <h1>The <span class="em">intelligence layer</span> for robotics & semiconductors</h1>
-      <p class="hero-desc">Track public markets, startup funding, supply chains, and technical milestones — all in one structured, time-aware platform. Think Messari, but for the physical AI stack.</p>
-      <div class="hero-actions">
-        <a href="thesis.html#signup" class="btn-y">Request security clearance</a>
-        <a href="#content" class="btn-ghost">View live signals ↓</a>
-      </div>
+<div class="dash-layout">
+
+  <!-- ===== LEFT COLUMN ===== -->
+  <div class="dash-main">
+
+    <!-- A. Compact header -->
+    <div class="dash-header">
+      <span class="dash-title"><span style="color:var(--yellow)">ROBOTNIK</span> RE-ENTRY IN PROGRESS<span class="animated-dots"></span></span>
+      <span class="dash-subtitle">The intelligence layer for the frontier technology stack</span>
     </div>
-    <div class="hero-visual">
-      <div class="reentry-panel">
-        <h2 class="boot-title"><span class="brand-underline">ROBOTNIK</span> RE-ENTRY IN PROGRESS<span class="animated-dots"></span></h2>
-        <div class="boot-systems">
-          <div class="boot-line boot-line-calibrating"><span>Communication systems</span> <span class="status-calibrating">CALIBRATING</span></div>
-          <div class="boot-line"><span>Data modules</span> <span class="status-offline">OFFLINE</span></div>
-          <div class="boot-line"><span>Market signals</span> <span class="status-offline">OFFLINE</span></div>
-          <div class="boot-line"><span>Intelligence reports</span> <span class="status-offline">OFFLINE</span></div>
-          <div class="boot-line"><span>Funding operations</span> <span class="status-offline">OFFLINE</span></div>
-          <div class="boot-line boot-line-online"><span>Recreation Bay</span> <span class="status-online">ONLINE</span></div>
+
+    <!-- B. Composite Index Widget -->
+    <div class="dash-widget">
+      <div class="index-hero">
+        <span class="index-name">Robotnik Index</span>
+        <span class="index-value">1,000.00</span>
+        <span class="index-change v-green">+0.00%</span>
+      </div>
+      <div class="index-sparkline">Sparkline loading...</div>
+      <div class="sub-indices">
+        <div class="sub-index-card">
+          <div class="sub-index-name">Semi</div>
+          <div class="sub-index-val">1,024.30</div>
+          <div class="sub-index-chg v-green">+1.42%</div>
+        </div>
+        <div class="sub-index-card">
+          <div class="sub-index-name">Robotics</div>
+          <div class="sub-index-val">987.15</div>
+          <div class="sub-index-chg v-red">-0.83%</div>
+        </div>
+        <div class="sub-index-card">
+          <div class="sub-index-name">Space</div>
+          <div class="sub-index-val">1,102.50</div>
+          <div class="sub-index-chg v-green">+2.17%</div>
+        </div>
+        <div class="sub-index-card">
+          <div class="sub-index-name">Token</div>
+          <div class="sub-index-val">843.60</div>
+          <div class="sub-index-chg v-red">-1.54%</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- MARKETS -->
-<section class="main-section" id="content">
-  <div class="section-head">
-    <div>
-      <div class="section-tag">Sector Telemetry</div>
-      <h2>Prices & Chart</h2>
-    </div>
-  </div>
-
-  <!-- Messari-style side-by-side layout -->
-  <div class="prices-chart-layout">
-    <!-- LEFT: Compact asset list -->
-    <div class="asset-list-panel">
-      <div class="asset-list-header">
-        <input type="text" class="asset-search" placeholder="Search assets..." id="market-search" oninput="renderAssetList()" />
-      </div>
-      <div class="asset-filter-row" id="asset-filters">
-        <button class="active" data-filter="all" onclick="setFilter(this)">All</button>
-        <button data-filter="semi" onclick="setFilter(this)">Semis</button>
-        <button data-filter="robo" onclick="setFilter(this)">Robotics</button>
-        <button data-filter="cross" onclick="setFilter(this)">Cross-stack</button>
-        <button data-filter="token" onclick="setFilter(this)">Tokens</button>
-      </div>
-      <div class="asset-col-headers">
-        <span class="ach-rank">#</span>
-        <span class="ach-name">Asset</span>
-        <span class="ach-price">EOD Price</span>
-        <span class="ach-chg">1D %</span>
-      </div>
-      <div class="asset-list-scroll" id="asset-list-scroll">
-        <!-- Robotnik Index pinned row + asset rows rendered by JS -->
-      </div>
-    </div>
-
-    <!-- RIGHT: Chart panel -->
-    <div class="chart-main-panel">
-      <div class="chart-top-bar">
-        <div class="chart-top-left">
-          <div class="chart-mode-btns">
-            <button class="active" onclick="setChartMode(this,'pct')">%</button>
-            <button onclick="setChartMode(this,'price')">Price</button>
-          </div>
+    <!-- C. Market Table -->
+    <div class="dash-widget" style="padding:0.5rem 0;">
+      <div style="padding:0 1rem;">
+        <div class="market-tabs">
+          <button class="market-tab active">All (303)</button>
+          <button class="market-tab">Semi (45)</button>
+          <button class="market-tab">Robotics (152)</button>
+          <button class="market-tab">Space (41)</button>
+          <button class="market-tab">Cross-stack (22)</button>
+          <button class="market-tab">Tokens (43)</button>
         </div>
-        <div class="chart-range-btns" id="chart-range-btns">
-          <button data-range="0.5" class="disabled" title="Intraday data coming soon">12H</button>
-          <button data-range="1" class="disabled" title="Intraday data coming soon">1D</button>
-          <button data-range="7" onclick="setChartRange(this)">1W</button>
-          <button class="active" data-range="30" onclick="setChartRange(this)">1M</button>
-          <button data-range="90" onclick="setChartRange(this)">3M</button>
-          <button data-range="ytd" onclick="setChartRange(this)">YTD</button>
-          <button data-range="365" onclick="setChartRange(this)">1Y</button>
-          <button data-range="1095" onclick="setChartRange(this)">3Y</button>
-          <button data-range="1825" onclick="setChartRange(this)">5Y</button>
+        <div class="market-search-row">
+          <input type="text" class="market-search-input" placeholder="Search tickers, companies..." />
         </div>
       </div>
-      <div class="chart-compare-bar" id="chart-compare-bar">
-        <!-- Compare pills rendered by JS -->
-      </div>
-      <div class="chart-area-wrap" id="chart-area">
-        <div class="chart-loading" id="chart-loading" style="display:none">Loading chart data...</div>
-        <div class="chart-container" id="chart-container"></div>
-      </div>
-      <div class="data-note" id="chart-composition-note" style="margin-top:4px;font-size:10px;opacity:0.5;"></div>
+      <table class="market-table">
+        <thead>
+          <tr>
+            <th style="width:30px">#</th>
+            <th>Ticker</th>
+            <th>Company</th>
+            <th>Sector</th>
+            <th class="r">Price</th>
+            <th class="r">24h %</th>
+            <th class="r">Mkt Cap</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td class="ticker">NVDA</td><td class="company-name">NVIDIA Corp</td><td><span class="sector-tag sector-semi">Semi</span></td><td class="r">$131.28</td><td class="r v-green">+2.87%</td><td class="r">$3.21T</td></tr>
+          <tr><td>2</td><td class="ticker">TSM</td><td class="company-name">Taiwan Semiconductor</td><td><span class="sector-tag sector-semi">Semi</span></td><td class="r">$186.54</td><td class="r v-green">+1.12%</td><td class="r">$966B</td></tr>
+          <tr><td>3</td><td class="ticker">AVGO</td><td class="company-name">Broadcom Inc</td><td><span class="sector-tag sector-semi">Semi</span></td><td class="r">$224.87</td><td class="r v-red">-0.45%</td><td class="r">$1.05T</td></tr>
+          <tr><td>4</td><td class="ticker">AMD</td><td class="company-name">Advanced Micro Devices</td><td><span class="sector-tag sector-semi">Semi</span></td><td class="r">$119.42</td><td class="r v-green">+1.83%</td><td class="r">$193B</td></tr>
+          <tr><td>5</td><td class="ticker">INTC</td><td class="company-name">Intel Corp</td><td><span class="sector-tag sector-semi">Semi</span></td><td class="r">$23.15</td><td class="r v-red">-2.11%</td><td class="r">$99B</td></tr>
+          <tr><td>6</td><td class="ticker">ARM</td><td class="company-name">ARM Holdings</td><td><span class="sector-tag sector-semi">Semi</span></td><td class="r">$164.30</td><td class="r v-green">+0.92%</td><td class="r">$172B</td></tr>
+          <tr><td>7</td><td class="ticker">ISRG</td><td class="company-name">Intuitive Surgical</td><td><span class="sector-tag sector-robo">Robo</span></td><td class="r">$542.10</td><td class="r v-green">+0.67%</td><td class="r">$191B</td></tr>
+          <tr><td>8</td><td class="ticker">ROK</td><td class="company-name">Rockwell Automation</td><td><span class="sector-tag sector-robo">Robo</span></td><td class="r">$268.45</td><td class="r v-red">-0.38%</td><td class="r">$30B</td></tr>
+          <tr><td>9</td><td class="ticker">RKLB</td><td class="company-name">Rocket Lab USA</td><td><span class="sector-tag sector-space">Space</span></td><td class="r">$24.87</td><td class="r v-green">+4.23%</td><td class="r">$11.8B</td></tr>
+          <tr><td>10</td><td class="ticker">ASTS</td><td class="company-name">AST SpaceMobile</td><td><span class="sector-tag sector-space">Space</span></td><td class="r">$28.15</td><td class="r v-green">+3.41%</td><td class="r">$9.2B</td></tr>
+          <tr><td>11</td><td class="ticker">MRVL</td><td class="company-name">Marvell Technology</td><td><span class="sector-tag sector-semi">Semi</span></td><td class="r">$88.72</td><td class="r v-green">+1.15%</td><td class="r">$76B</td></tr>
+          <tr><td>12</td><td class="ticker">FANUY</td><td class="company-name">FANUC Corp</td><td><span class="sector-tag sector-robo">Robo</span></td><td class="r">$14.85</td><td class="r v-red">-0.62%</td><td class="r">$28B</td></tr>
+          <tr><td>13</td><td class="ticker">ABB</td><td class="company-name">ABB Ltd</td><td><span class="sector-tag sector-robo">Robo</span></td><td class="r">$52.30</td><td class="r v-green">+0.44%</td><td class="r">$98B</td></tr>
+          <tr><td>14</td><td class="ticker">ON</td><td class="company-name">ON Semiconductor</td><td><span class="sector-tag sector-cross">Cross</span></td><td class="r">$48.92</td><td class="r v-red">-1.23%</td><td class="r">$21B</td></tr>
+          <tr><td>15</td><td class="ticker">ASML</td><td class="company-name">ASML Holding</td><td><span class="sector-tag sector-semi">Semi</span></td><td class="r">$714.50</td><td class="r v-green">+0.88%</td><td class="r">$281B</td></tr>
+          <tr><td>16</td><td class="ticker">TER</td><td class="company-name">Teradyne Inc</td><td><span class="sector-tag sector-cross">Cross</span></td><td class="r">$98.14</td><td class="r v-green">+1.56%</td><td class="r">$15B</td></tr>
+          <tr><td>17</td><td class="ticker">IRDM</td><td class="company-name">Iridium Communications</td><td><span class="sector-tag sector-space">Space</span></td><td class="r">$27.40</td><td class="r v-red">-0.71%</td><td class="r">$3.3B</td></tr>
+          <tr><td>18</td><td class="ticker">PATH</td><td class="company-name">UiPath Inc</td><td><span class="sector-tag sector-robo">Robo</span></td><td class="r">$13.25</td><td class="r v-green">+2.14%</td><td class="r">$7.5B</td></tr>
+          <tr><td>19</td><td class="ticker">RENDER</td><td class="company-name">Render Token</td><td><span class="sector-tag sector-token">Token</span></td><td class="r">$7.42</td><td class="r v-green">+5.81%</td><td class="r">$3.8B</td></tr>
+          <tr><td>20</td><td class="ticker">FET</td><td class="company-name">Fetch.ai</td><td><span class="sector-tag sector-token">Token</span></td><td class="r">$2.18</td><td class="r v-red">-2.35%</td><td class="r">$5.4B</td></tr>
+        </tbody>
+      </table>
+      <a href="signals.html" class="view-all-link">View all 303 assets →</a>
     </div>
+
   </div>
 
-  <div class="data-note" id="market-note">Loading price data...</div>
-</section>
+  <!-- ===== RIGHT COLUMN ===== -->
+  <div class="dash-sidebar-widgets">
 
-<footer>
-  <p>&copy; 2026 Robotnik. Mapping the machine economy since re-entry.</p>
-  <p style="margin-top: 0.5rem; font-size: 0.65rem; opacity: 0.5;">Data provided by <a href="https://www.coingecko.com" target="_blank" rel="noopener" style="color: var(--text-muted);">CoinGecko</a></p>
-</footer>
+    <!-- D. Market Overview -->
+    <div class="dash-widget">
+      <div class="dash-widget-title">Market Overview</div>
+      <div class="overview-row">
+        <span class="overview-label">Total Market Cap</span>
+        <span class="overview-val">$8.42T</span>
+      </div>
+      <div class="overview-row">
+        <span class="overview-label">24h Change</span>
+        <span class="overview-val v-green">+1.24%</span>
+      </div>
+      <div class="overview-row">
+        <span class="overview-label">Tracked Assets</span>
+        <span class="overview-val">303</span>
+      </div>
+      <div class="overview-row">
+        <span class="overview-label">Largest Asset</span>
+        <span class="overview-val">NVDA <span class="v-green">+2.87%</span></span>
+      </div>
+      <div class="overview-row">
+        <span class="overview-label">Top Gainer</span>
+        <span class="overview-val">RENDER <span class="v-green">+5.81%</span></span>
+      </div>
+      <div class="overview-row">
+        <span class="overview-label">Top Loser</span>
+        <span class="overview-val">FET <span class="v-red">-2.35%</span></span>
+      </div>
+    </div>
+
+    <!-- E. News Feed -->
+    <div class="dash-widget">
+      <div class="dash-widget-title">Latest Intelligence</div>
+      <div class="news-toggle">
+        <button class="news-toggle-btn active">Limited</button>
+        <button class="news-toggle-btn disabled" title="Priority clearance required">All</button>
+      </div>
+      <div class="news-item">
+        <div class="news-headline">TSMC CoWoS expansion signals capacity shift for AI chip packaging</div>
+        <div class="news-meta">2h ago · Reuters</div>
+      </div>
+      <div class="news-item">
+        <div class="news-headline">Rocket Lab secures Neutron launch contract with major defense partner</div>
+        <div class="news-meta">5h ago · SpaceNews</div>
+      </div>
+      <div class="news-item">
+        <div class="news-headline">Humanoid robotics funding crosses $5B mark in trailing twelve months</div>
+        <div class="news-meta">8h ago · TechCrunch</div>
+      </div>
+      <div class="news-item">
+        <div class="news-headline">NVIDIA Jetson Thor enters mass production for autonomous systems</div>
+        <div class="news-meta">12h ago · IEEE Spectrum</div>
+      </div>
+      <div class="news-item">
+        <div class="news-headline">AST SpaceMobile begins commercial direct-to-cell service</div>
+        <div class="news-meta">1d ago · Payload</div>
+      </div>
+      <a href="intelligence.html" class="view-all-link">View all intelligence →</a>
+    </div>
+
+  </div>
+
+</div>
 </div><!-- .main-content -->
 
-<script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+<!-- TODO: Re-add lightweight-charts when live price data is connected -->
 <script src="js/nav.js"></script>
 <script src="js/main.js"></script>
 </body>
