@@ -3,31 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robotniks — Structured Intelligence for Robotics & Semiconductors</title>
+<title>Robotnik — Structured Intelligence for Robotics & Semiconductors</title>
 <link rel="icon" type="image/png" href="robotlogo.png">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="home">
 
 <div class="bg-layer"></div>
-
-<!-- NAV -->
-<nav>
-  <a class="logo" href="#">
-    <div class="logo-mark"><img src="robotlogo.png" alt="Robotniks"></div>
-    <span class="logo-text">Robotniks</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#content" class="hm" onclick="switchTab('markets')">Market Signals</a></li>
-    <li><a href="#content" class="hm" onclick="switchTab('fundraising')">Funding Operations</a></li>
-    <li><a href="#content" class="hm" onclick="switchTab('intelligence')">Intelligence</a></li>
-    <li><a href="#products-section" class="hm">Products</a></li>
-    <li><a href="#thesis-section" class="hm">Thesis</a></li>
-    <li><a href="#roadmap-section" class="hm">Roadmap</a></li>
-    <li><a href="#signup" class="btn-y">Request clearance</a></li>
-  </ul>
-</nav>
+<div id="nav-container"></div>
 
 <!-- HERO -->
 <section class="hero">
@@ -37,7 +21,7 @@
       <h1>The <span class="em">intelligence layer</span> for robotics & semiconductors</h1>
       <p class="hero-desc">Track public markets, startup funding, supply chains, and technical milestones — all in one structured, time-aware platform. Think Messari, but for the physical AI stack.</p>
       <div class="hero-actions">
-        <a href="#signup" class="btn-y">Request security clearance</a>
+        <a href="thesis.html#signup" class="btn-y">Request security clearance</a>
         <a href="#content" class="btn-ghost">View live signals ↓</a>
       </div>
     </div>
@@ -57,448 +41,82 @@
   </div>
 </section>
 
-<!-- MAIN CONTENT WITH TABS -->
+<!-- MARKETS -->
 <section class="main-section" id="content">
-  <div class="tab-nav">
-    <button class="tab-btn active" data-tab="markets" onclick="switchTab('markets')">Market Signals</button>
-    <button class="tab-btn" data-tab="fundraising" onclick="switchTab('fundraising')">Funding Operations</button>
-    <button class="tab-btn" data-tab="intelligence" onclick="switchTab('intelligence')">Intelligence</button>
+  <div class="section-head">
+    <div>
+      <div class="section-tag">Sector Telemetry</div>
+      <h2>Prices & Chart</h2>
+    </div>
   </div>
 
-  <!-- ===== MARKETS TAB ===== -->
-  <div class="tab-content active" id="tab-markets">
-    <div class="section-head">
-      <div>
-        <div class="section-tag">Sector Telemetry</div>
-        <h2>Prices & Chart</h2>
+  <!-- Messari-style side-by-side layout -->
+  <div class="prices-chart-layout">
+    <!-- LEFT: Compact asset list -->
+    <div class="asset-list-panel">
+      <div class="asset-list-header">
+        <input type="text" class="asset-search" placeholder="Search assets..." id="market-search" oninput="renderAssetList()" />
+      </div>
+      <div class="asset-filter-row" id="asset-filters">
+        <button class="active" data-filter="all" onclick="setFilter(this)">All</button>
+        <button data-filter="semi" onclick="setFilter(this)">Semis</button>
+        <button data-filter="robo" onclick="setFilter(this)">Robotics</button>
+        <button data-filter="cross" onclick="setFilter(this)">Cross-stack</button>
+        <button data-filter="token" onclick="setFilter(this)">Tokens</button>
+      </div>
+      <div class="asset-col-headers">
+        <span class="ach-rank">#</span>
+        <span class="ach-name">Asset</span>
+        <span class="ach-price">EOD Price</span>
+        <span class="ach-chg">1D %</span>
+      </div>
+      <div class="asset-list-scroll" id="asset-list-scroll">
+        <!-- Robotnik Index pinned row + asset rows rendered by JS -->
       </div>
     </div>
 
-    <!-- Messari-style side-by-side layout -->
-    <div class="prices-chart-layout">
-      <!-- LEFT: Compact asset list -->
-      <div class="asset-list-panel">
-        <div class="asset-list-header">
-          <input type="text" class="asset-search" placeholder="Search assets..." id="market-search" oninput="renderAssetList()" />
-        </div>
-        <div class="asset-filter-row" id="asset-filters">
-          <button class="active" data-filter="all" onclick="setFilter(this)">All</button>
-          <button data-filter="semi" onclick="setFilter(this)">Semis</button>
-          <button data-filter="robo" onclick="setFilter(this)">Robotics</button>
-          <button data-filter="cross" onclick="setFilter(this)">Cross-stack</button>
-          <button data-filter="token" onclick="setFilter(this)">Tokens</button>
-        </div>
-        <div class="asset-col-headers">
-          <span class="ach-rank">#</span>
-          <span class="ach-name">Asset</span>
-          <span class="ach-price">EOD Price</span>
-          <span class="ach-chg">1D %</span>
-        </div>
-        <div class="asset-list-scroll" id="asset-list-scroll">
-          <!-- Robotnik Index pinned row + asset rows rendered by JS -->
-        </div>
-      </div>
-
-      <!-- RIGHT: Chart panel -->
-      <div class="chart-main-panel">
-        <div class="chart-top-bar">
-          <div class="chart-top-left">
-            <div class="chart-mode-btns">
-              <button class="active" onclick="setChartMode(this,'pct')">%</button>
-              <button onclick="setChartMode(this,'price')">Price</button>
-            </div>
-          </div>
-          <div class="chart-range-btns" id="chart-range-btns">
-            <button data-range="0.5" class="disabled" title="Intraday data coming soon">12H</button>
-            <button data-range="1" class="disabled" title="Intraday data coming soon">1D</button>
-            <button data-range="7" onclick="setChartRange(this)">1W</button>
-            <button class="active" data-range="30" onclick="setChartRange(this)">1M</button>
-            <button data-range="90" onclick="setChartRange(this)">3M</button>
-            <button data-range="ytd" onclick="setChartRange(this)">YTD</button>
-            <button data-range="365" onclick="setChartRange(this)">1Y</button>
-            <button data-range="1095" onclick="setChartRange(this)">3Y</button>
-            <button data-range="1825" onclick="setChartRange(this)">5Y</button>
+    <!-- RIGHT: Chart panel -->
+    <div class="chart-main-panel">
+      <div class="chart-top-bar">
+        <div class="chart-top-left">
+          <div class="chart-mode-btns">
+            <button class="active" onclick="setChartMode(this,'pct')">%</button>
+            <button onclick="setChartMode(this,'price')">Price</button>
           </div>
         </div>
-        <div class="chart-compare-bar" id="chart-compare-bar">
-          <!-- Compare pills rendered by JS -->
-        </div>
-        <div class="chart-area-wrap" id="chart-area">
-          <div class="chart-loading" id="chart-loading" style="display:none">Loading chart data...</div>
-          <div class="chart-container" id="chart-container"></div>
-          <!-- legend removed -->
-        </div>
-        <div class="data-note" id="chart-composition-note" style="margin-top:4px;font-size:10px;opacity:0.5;"></div>
-      </div>
-    </div>
-
-    <div class="data-note" id="market-note">Loading price data...</div>
-  </div>
-
-  <!-- ===== FUNDRAISING TAB ===== -->
-  <div class="tab-content" id="tab-fundraising">
-    <div class="section-head">
-      <div>
-        <div class="section-tag">Funding Operations</div>
-        <h2>Funding Operations</h2>
-      </div>
-      <div class="controls">
-        <input type="text" class="search-box" placeholder="Scan for signals..." id="fund-search" oninput="renderFundraising()" />
-        <div class="filters" id="fund-filters">
-          <button class="fbtn active" data-ffilter="all" onclick="setFundFilter(this)">All</button>
-          <button class="fbtn" data-ffilter="robo" onclick="setFundFilter(this)">Robotics</button>
-          <button class="fbtn" data-ffilter="semi" onclick="setFundFilter(this)">Semis</button>
-          <button class="fbtn" data-ffilter="infra" onclick="setFundFilter(this)">Infra</button>
-        </div>
-        <button class="dl-btn" onclick="exportCSV()">Commence export</button>
-      </div>
-    </div>
-
-    <!-- Summary stats -->
-    <div class="fund-stats">
-      <div class="fund-stat">
-        <div class="fs-label">Total raised (trailing 12m)</div>
-        <div class="fs-val">$18.7B</div>
-        <div class="fs-sub">Across robotics & semis</div>
-      </div>
-      <div class="fund-stat">
-        <div class="fs-label">Deal count</div>
-        <div class="fs-val">247</div>
-        <div class="fs-sub">Tracked raises</div>
-      </div>
-      <div class="fund-stat">
-        <div class="fs-label">Median round size</div>
-        <div class="fs-val">$42M</div>
-        <div class="fs-sub">All stages</div>
-      </div>
-      <div class="fund-stat">
-        <div class="fs-label">Top sector</div>
-        <div class="fs-val v-yellow">Humanoid</div>
-        <div class="fs-sub">By capital deployed</div>
-      </div>
-    </div>
-
-    <div class="table-wrap">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width:35px">#</th>
-            <th style="width:17%">Company</th>
-            <th style="width:8%">Stage</th>
-            <th class="r" style="width:10%">Amount</th>
-            <th style="width:8%">Date</th>
-            <th class="r" style="width:10%">Valuation</th>
-            <th style="width:22%">Lead Investors</th>
-            <th style="width:10%">Sector</th>
-            <th style="width:7%">Source</th>
-          </tr>
-        </thead>
-        <tbody id="fund-body"></tbody>
-      </table>
-    </div>
-    <div class="data-note">Data compiled from public sources · Updated weekly · <span style="color:var(--yellow);cursor:pointer;">Pro users can export full dataset</span></div>
-  </div>
-
-  <!-- ===== INTELLIGENCE TAB ===== -->
-  <div class="tab-content" id="tab-intelligence">
-    <p class="section-oneliner">Access the full intelligence archive</p>
-
-    <div class="subtab-nav">
-      <button class="subtab-btn active" data-subtab="feed" onclick="switchSubtab('feed')">Feed</button>
-      <button class="subtab-btn" data-subtab="robotniks" onclick="switchSubtab('robotniks')">Robotniks Insights</button>
-    </div>
-
-    <div class="subtab-content active" id="subtab-feed">
-      <div class="controls">
-        <input type="text" class="search-box" placeholder="Scan for signals..." id="intelligence-search" oninput="renderIntelligence()" />
-        <div class="filters">
-          <button class="fbtn active" data-itype="all" onclick="setInsightType(this)">All</button>
-          <button class="fbtn" data-itype="news" onclick="setInsightType(this)">News</button>
-          <button class="fbtn" data-itype="research" onclick="setInsightType(this)">Research</button>
-          <button class="fbtn" data-itype="filings" onclick="setInsightType(this)">Filings</button>
-          <button class="fbtn" data-itype="reports" onclick="setInsightType(this)">Reports</button>
-        </div>
-        <div class="filters">
-          <button class="fbtn active" data-icat="all" onclick="setInsightCat(this)">All</button>
-          <button class="fbtn" data-icat="robo" onclick="setInsightCat(this)">Robotics</button>
-          <button class="fbtn" data-icat="semi" onclick="setInsightCat(this)">Semis</button>
-          <button class="fbtn" data-icat="ai" onclick="setInsightCat(this)">AI/ML</button>
-          <button class="fbtn" data-icat="supply" onclick="setInsightCat(this)">Supply Chain</button>
+        <div class="chart-range-btns" id="chart-range-btns">
+          <button data-range="0.5" class="disabled" title="Intraday data coming soon">12H</button>
+          <button data-range="1" class="disabled" title="Intraday data coming soon">1D</button>
+          <button data-range="7" onclick="setChartRange(this)">1W</button>
+          <button class="active" data-range="30" onclick="setChartRange(this)">1M</button>
+          <button data-range="90" onclick="setChartRange(this)">3M</button>
+          <button data-range="ytd" onclick="setChartRange(this)">YTD</button>
+          <button data-range="365" onclick="setChartRange(this)">1Y</button>
+          <button data-range="1095" onclick="setChartRange(this)">3Y</button>
+          <button data-range="1825" onclick="setChartRange(this)">5Y</button>
         </div>
       </div>
-
-      <div class="fund-stats">
-        <div class="fund-stat"><div class="fs-label">Field signals</div><div class="fs-val" id="stat-news-count">&mdash;</div><div class="fs-sub">Via communication lines</div></div>
-        <div class="fund-stat"><div class="fs-label">Research intercepts</div><div class="fs-val" id="stat-paper-count">&mdash;</div><div class="fs-sub">Via OpenAlex network</div></div>
-        <div class="fund-stat"><div class="fs-label">SEC transmissions</div><div class="fs-val" id="stat-filing-count">&mdash;</div><div class="fs-sub">10-K, 10-Q, 8-K</div></div>
-        <div class="fund-stat"><div class="fs-label">Last transmission</div><div class="fs-val" id="stat-updated">&mdash;</div><div class="fs-sub">Awaiting next scan cycle</div></div>
+      <div class="chart-compare-bar" id="chart-compare-bar">
+        <!-- Compare pills rendered by JS -->
       </div>
-
-      <div id="intelligence-content"></div>
-      <div style="text-align:center;margin-top:1rem;">
-        <button class="btn-ghost" id="intelligence-load-more" onclick="loadMoreIntelligence()" style="display:none;">Extend scan range</button>
+      <div class="chart-area-wrap" id="chart-area">
+        <div class="chart-loading" id="chart-loading" style="display:none">Loading chart data...</div>
+        <div class="chart-container" id="chart-container"></div>
       </div>
-      <div class="data-note">Data via OpenAlex network, ~30 communication lines, SEC EDGAR, IFR · Awaiting next scan cycle</div>
-    </div>
-
-    <div class="subtab-content" id="subtab-robotniks">
-      <div style="text-align:center;padding:4rem 2rem;">
-        <div style="font-size:var(--fs-body);font-weight:700;color:var(--text);margin-bottom:0.5rem;">Robotniks Insights</div>
-        <div style="font-size:var(--fs-table);color:var(--text-dim);max-width:400px;margin:0 auto;line-height:1.7;">
-          Original intelligence and analysis from the Robotniks team. Transmission incoming.
-        </div>
-      </div>
+      <div class="data-note" id="chart-composition-note" style="margin-top:4px;font-size:10px;opacity:0.5;"></div>
     </div>
   </div>
-</section>
 
-<div class="divider"><hr></div>
-
-<!-- PRODUCTS -->
-<section class="main-section" id="products-section">
-  <div class="section-tag">Mission Equipment</div>
-  <h2 style="font-size:clamp(1.2rem,2.5vw,1.75rem);font-weight:700;letter-spacing:-0.02em;">Three systems, one data backbone</h2>
-  <div class="products-grid">
-    <div class="pcard">
-      <div class="pcard-icon">[SIG]</div>
-      <h3>Market Signal Array</h3>
-      <p>Real-time prices and charts for publicly listed robotics and semiconductor companies. Free, daily, open to all.</p>
-      <span class="pcard-tag">Free — live now</span>
-    </div>
-    <div class="pcard">
-      <div class="pcard-icon">[OPS]</div>
-      <h3>Funding Operations Center</h3>
-      <p>Every robotics and semi startup raise — by stage, amount, investors, sector. Exportable CSV. Built for VCs.</p>
-      <span class="pcard-tag">Pro — coming soon</span>
-    </div>
-    <div class="pcard">
-      <div class="pcard-icon">[REC]</div>
-      <h3>Innovation Reconnaissance Map</h3>
-      <p>A world map of robotics and semi activity — news, research, funding, launches — in real time.</p>
-      <span class="pcard-tag">Pro — coming soon</span>
-    </div>
-  </div>
-</section>
-
-<div class="divider"><hr></div>
-
-<!-- THESIS -->
-<section class="main-section" id="thesis-section">
-  <div class="section-tag">Mission Directive</div>
-  <h2 style="font-size:clamp(1.2rem,2.5vw,1.75rem);font-weight:700;letter-spacing:-0.02em;">One Strategic Stack</h2>
-  <div class="thesis-quote">Robotics and semiconductors are converging into a single strategic stack. Tracking them separately misses the dependency chain that determines which systems scale, which bottleneck, and where the value concentrates.</div>
-  <div class="thesis-body">
-    <p>Robotics is becoming the primary demand driver for a specific class of semiconductor: edge inference chips, motor control MCUs, sensor fusion processors, power electronics, and advanced packaging. Semiconductors are the enabling layer without which robotics cannot scale beyond prototypes.</p>
-    <p>Existing intelligence tools treat these as separate sectors. Chip-only platforms miss the demand signal. Robot-only platforms miss the supply constraint. Neither captures the relationships that actually determine outcomes.</p>
-    <p>Robotniks exists to map the full stack — from the robot on the factory floor down through its sensors, compute modules, chip designers, packaging houses, and foundries — because the people making the most expensive decisions in this space need to see the whole chain, not half of it.</p>
-  </div>
-  <h3 style="font-size:var(--fs-body);font-weight:700;color:var(--yellow);margin-top:1.5rem;margin-bottom:0.5rem;">This thesis guides everything</h3>
-  <div class="thesis-points">
-    <div class="thesis-point">
-      <span class="thesis-point-num">1.</span>
-      <div><span class="thesis-point-label">Definitions:</span><span class="thesis-point-text">A company is in scope if its products or services are material to the robotics-semiconductor dependency chain.</span></div>
-    </div>
-    <div class="thesis-point">
-      <span class="thesis-point-num">2.</span>
-      <div><span class="thesis-point-label">The Robotniks Index:</span><span class="thesis-point-text">Tracks the full stack because no existing ETF does. ROBO and BOTZ cover robotics but barely touch semiconductors. SOXX and SMH cover semiconductors but ignore robotics entirely.</span></div>
-    </div>
-    <div class="thesis-point">
-      <span class="thesis-point-num">3.</span>
-      <div><span class="thesis-point-label">Source of truth:</span><span class="thesis-point-text">Robotniks is the structured intelligence layer for this converging stack — not just a database, not just news, not just research.</span></div>
-    </div>
-    <div class="thesis-point">
-      <span class="thesis-point-num">4.</span>
-      <div><span class="thesis-point-label">Market direction:</span><span class="thesis-point-text">As robotics moves from prototypes to deployment, the semiconductor supply chain underneath becomes strategic infrastructure. Robotniks maps where this stack is strengthening, where it is brittle, and where bottlenecks and opportunities are forming.</span></div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"><hr></div>
-
-<!-- BUSINESS MODEL -->
-<section class="main-section" id="model-section">
-  <div class="section-tag">Clearance Levels</div>
-  <h2 style="font-size:clamp(1.2rem,2.5vw,1.75rem);font-weight:700;letter-spacing:-0.02em;">Clearance Levels</h2>
-  <div class="biz-grid">
-    <div class="biz-card">
-      <h4>Standard Clearance (Free)</h4>
-      <ul>
-        <li>Centralised news, research, and reports for robotics + semiconductors</li>
-        <li>Weekly and monthly Robotniks insight reports</li>
-        <li>Public markets dashboard (including the Robotniks composite index)</li>
-        <li>Fundraising dashboard (view-only, no export)</li>
-      </ul>
-    </div>
-    <div class="biz-card">
-      <h4>Priority Clearance (Paid)</h4>
-      <ul>
-        <li>Custom watchlists, favourites, and price/event alerts</li>
-        <li>Fundraising data exports (CSV/JSON)</li>
-        <li>Supply chain graph and data exports</li>
-        <li>Premium and sponsored research reports</li>
-        <li>Robotniks co-pilot (AI research assistant)</li>
-      </ul>
-    </div>
-  </div>
-  <p style="font-size:var(--fs-label);color:var(--text-muted);margin-top:0.75rem;line-height:1.65;max-width:640px;">The Robotniks Index is open to all operatives. Priority clearance unlocks the granular data underneath.</p>
-</section>
-
-<div class="divider"><hr></div>
-
-<!-- ROADMAP -->
-<section class="main-section" id="roadmap-section">
-  <div class="section-tag">Mission Timeline</div>
-  <h2 style="font-size:clamp(1.2rem,2.5vw,1.75rem);font-weight:700;letter-spacing:-0.02em;">Milestone-based. No fixed timelines.</h2>
-  <p style="color:var(--text-dim);font-size:var(--fs-table);max-width:520px;margin-top:0.25rem;line-height:1.65;">v3.0 — March 2026</p>
-
-  <div class="roadmap-timeline">
-    <div class="milestone done">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Current state</div>
-      <div class="milestone-title">What Exists Today</div>
-      <div class="milestone-desc">Landing page, market tracker (20 companies), fundraising dashboard (18 raises), Alpha Vantage integration, MailChimp email capture, thesis and roadmap defined.</div>
-    </div>
-
-    <div class="milestone">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Milestone 1</div>
-      <div class="milestone-title">Research & News Aggregation</div>
-      <div class="milestone-desc">A curated, attributed feed of robotics and semiconductor intelligence from academic, industry, and news sources.</div>
-      <div class="milestone-items">
-        <span class="milestone-item">OpenAlex API</span>
-        <span class="milestone-item">RSS feeds (25-35)</span>
-        <span class="milestone-item">SEC EDGAR</span>
-        <span class="milestone-item">IFR / SEMI / SIA reports</span>
-        <span class="milestone-item">Dedup logic</span>
-      </div>
-    </div>
-
-    <div class="milestone">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Milestone 2</div>
-      <div class="milestone-title">Robotniks Co-pilot (Internal)</div>
-      <div class="milestone-desc">An in-house AI research assistant trained on curated news, research, and market data via RAG with the Anthropic API.</div>
-      <div class="milestone-items">
-        <span class="milestone-item">Anthropic API + RAG</span>
-        <span class="milestone-item">Source citations</span>
-        <span class="milestone-item">Weekly briefings</span>
-        <span class="milestone-item">Trend analysis</span>
-      </div>
-    </div>
-
-    <div class="milestone">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Milestone 3</div>
-      <div class="milestone-title">Generated Insights & Publishing</div>
-      <div class="milestone-desc">Regular Robotniks-branded intelligence reports — weekly digests and monthly deep-dives that build audience and credibility.</div>
-      <div class="milestone-items">
-        <span class="milestone-item">Weekly digest</span>
-        <span class="milestone-item">Monthly deep-dives</span>
-        <span class="milestone-item">Substack / blog</span>
-        <span class="milestone-item">Sector taxonomy</span>
-      </div>
-    </div>
-
-    <div class="milestone">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Milestone 4</div>
-      <div class="milestone-title">Ticker Feed & Robotniks Index</div>
-      <div class="milestone-desc">Comprehensive live market tracker with 300+ companies, 90+ ETFs, 50+ tokens, and the flagship RBTK composite index.</div>
-      <div class="milestone-items">
-        <span class="milestone-item">300+ tickers</span>
-        <span class="milestone-item">RBTK index</span>
-        <span class="milestone-item">Interactive chart</span>
-        <span class="milestone-item">Historical backtest</span>
-      </div>
-    </div>
-
-    <div class="milestone">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Milestone 5</div>
-      <div class="milestone-title">Website Redesign & Pre-Launch</div>
-      <div class="milestone-desc">Polished site layout integrating all data products, mobile audit, feedback round, and public launch.</div>
-      <div class="milestone-items">
-        <span class="milestone-item">Full redesign</span>
-        <span class="milestone-item">Mobile responsive</span>
-        <span class="milestone-item">Analytics</span>
-        <span class="milestone-item">Product Hunt launch</span>
-      </div>
-    </div>
-
-    <div class="milestone">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Milestone 6</div>
-      <div class="milestone-title">Fundraising Intelligence</div>
-      <div class="milestone-desc">Comprehensive fundraising database with 100+ raises, semi-automated pipeline, and gated CSV/JSON exports.</div>
-      <div class="milestone-items">
-        <span class="milestone-item">100+ raises</span>
-        <span class="milestone-item">RSS extraction</span>
-        <span class="milestone-item">Summary charts</span>
-        <span class="milestone-item">Paid exports</span>
-      </div>
-    </div>
-
-    <div class="milestone">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Milestone 7</div>
-      <div class="milestone-title">Supply Chain Graph</div>
-      <div class="milestone-desc">Interactive, traversable map of supplier-customer dependencies — the core differentiator showing where bottlenecks sit.</div>
-      <div class="milestone-items">
-        <span class="milestone-item">D3.js graph</span>
-        <span class="milestone-item">200+ relationships</span>
-        <span class="milestone-item">Bottleneck detection</span>
-        <span class="milestone-item">Deep-dive reports</span>
-      </div>
-    </div>
-
-    <div class="milestone">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Milestone 8</div>
-      <div class="milestone-title">Robotniks Co-pilot (Public Release)</div>
-      <div class="milestone-desc">AI research assistant released to paid users — answers cross-dataset questions with source citations across all data.</div>
-      <div class="milestone-items">
-        <span class="milestone-item">Chat interface</span>
-        <span class="milestone-item">Cross-dataset queries</span>
-        <span class="milestone-item">Formatted exports</span>
-      </div>
-    </div>
-
-    <div class="milestone">
-      <div class="milestone-dot"></div>
-      <div class="milestone-tag">Milestone 9</div>
-      <div class="milestone-title">Innovation World Map</div>
-      <div class="milestone-desc">Geographic visualisation of robotics and semiconductor activity worldwide — companies, funding, research, and supply chain nodes by location.</div>
-      <div class="milestone-items">
-        <span class="milestone-item">Leaflet.js / Mapbox</span>
-        <span class="milestone-item">Hub profiles</span>
-        <span class="milestone-item">Timeline slider</span>
-        <span class="milestone-item">Heat map mode</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"><hr></div>
-
-<!-- CTA -->
-<section class="cta-section" id="signup">
-  <div class="cta-box">
-    <h2>Request Security Clearance</h2>
-    <p>Join the mission, tovarishch. Help Robotnik map the frontier.</p>
-    <div class="cta-form">
-      <input type="email" placeholder="you@company.com" id="email-input" />
-      <button class="btn-y" onclick="handleSignup()">Join the mission</button>
-    </div>
-    <p id="signup-msg" style="display:none;"></p>
-  </div>
+  <div class="data-note" id="market-note">Loading price data...</div>
 </section>
 
 <footer>
-  <p>© 2026 Robotniks. Mapping the machine economy since re-entry.</p>
+  <p>&copy; 2026 Robotnik. Mapping the machine economy since re-entry.</p>
   <p style="margin-top: 0.5rem; font-size: 0.65rem; opacity: 0.5;">Data provided by <a href="https://www.coingecko.com" target="_blank" rel="noopener" style="color: var(--text-muted);">CoinGecko</a></p>
 </footer>
 
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+<script src="js/nav.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

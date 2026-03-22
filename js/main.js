@@ -863,18 +863,23 @@ function handleSignup() {
   }
 }
 
-// Smooth scroll
+// Smooth scroll (only for pure in-page anchors)
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    const href = a.getAttribute('href');
+    if (href.length > 1 && !href.includes('.html')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
 
-// (Chart functions are now in the Messari-style section above)
-
-// Init
-loadPriceData();  // Loads prices + market caps, then calls renderMarkets() and renderTicker()
-renderFundraising();
-loadIntelligenceData();
+// Page-gated initialization
+const _page = document.body.dataset.page;
+if (_page === 'home') {
+  loadPriceData();
+}
+if (_page === 'intelligence') {
+  loadIntelligenceData();
+}
