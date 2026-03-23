@@ -189,6 +189,12 @@
     line-height: 1.6;
   }
   .sidebar-bottom a { color: var(--text-muted); }
+  .sidebar-tagline {
+    font-size: 10px;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+  }
   .sidebar-version { margin-bottom: 0.25rem; }
 
   /* ===== TOP BAR ===== */
@@ -486,7 +492,7 @@
   }
 
   #index-chart-container {
-    height: 280px;
+    height: 240px;
     width: 100%;
     position: relative;
   }
@@ -1814,7 +1820,7 @@
   @media (max-width: 900px) {
     .products-grid { grid-template-columns: 1fr; }
     .sidebar { width: 60px; }
-    .sidebar-logo-text, .nav-label, .sidebar-version, .sidebar-attrib { display: none; }
+    .sidebar-logo-text, .nav-label, .sidebar-version, .sidebar-attrib, .sidebar-tagline { display: none; }
     .sidebar-logo { padding: 0 0.5rem 1rem; }
     .sidebar-nav { padding: 0 0.25rem; }
     .nav-item { justify-content: center; padding: 0.6rem; }

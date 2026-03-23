@@ -116,6 +116,60 @@ async function loadPriceData() {
   renderComparePills();
   renderChart();
   renderTicker();
+  updateMarketOverview();
+}
+
+// Populate Market Overview panel from live price data
+function updateMarketOverview() {
+  if (!uniqueCompanies.length) return;
+
+  // Total market cap (USD-denominated equities only for meaningful total)
+  var totalMcap = 0;
+  for (var i = 0; i < uniqueCompanies.length; i++) totalMcap += (uniqueCompanies[i].mcap || 0);
+  var mcapEl = document.getElementById('ov-mcap');
+  if (mcapEl) mcapEl.textContent = totalMcap >= 1e12 ? '$' + (totalMcap / 1e12).toFixed(2) + 'T' : totalMcap >= 1e9 ? '$' + (totalMcap / 1e9).toFixed(0) + 'B' : '--';
+
+  // Tracked count
+  var countEl = document.getElementById('ov-count');
+  if (countEl) countEl.textContent = String(uniqueCompanies.length);
+
+  // Find top gainer, top loser, largest
+  var largest = uniqueCompanies[0]; // already sorted by mcap
+  var gainer = uniqueCompanies[0], loser = uniqueCompanies[0];
+  var avgChg = 0, chgCount = 0;
+  for (var j = 0; j < uniqueCompanies.length; j++) {
+    var c = uniqueCompanies[j];
+    if (c.change !== undefined && c.change !== null) {
+      avgChg += c.change;
+      chgCount++;
+      if (c.change > gainer.change) gainer = c;
+      if (c.change < loser.change) loser = c;
+    }
+  }
+  avgChg = chgCount ? avgChg / chgCount : 0;
+
+  var chgEl = document.getElementById('ov-24h');
+  if (chgEl) {
+    chgEl.textContent = (avgChg >= 0 ? '+' : '') + avgChg.toFixed(2) + '%';
+    chgEl.className = 'overview-val ' + (avgChg >= 0 ? 'v-green' : 'v-red');
+  }
+
+  var largestEl = document.getElementById('ov-largest');
+  if (largestEl && largest) {
+    var lCls = largest.change >= 0 ? 'v-green' : 'v-red';
+    var lSign = largest.change >= 0 ? '+' : '';
+    largestEl.innerHTML = largest.ticker + ' <span class="' + lCls + '">' + lSign + largest.change.toFixed(2) + '%</span>';
+  }
+
+  var gainerEl = document.getElementById('ov-gainer');
+  if (gainerEl && gainer) {
+    gainerEl.innerHTML = gainer.ticker + ' <span class="v-green">+' + gainer.change.toFixed(2) + '%</span>';
+  }
+
+  var loserEl = document.getElementById('ov-loser');
+  if (loserEl && loser) {
+    loserEl.innerHTML = loser.ticker + ' <span class="v-red">' + loser.change.toFixed(2) + '%</span>';
+  }
 }
 
 // ===== FUNDRAISING DATA (sample — you'll replace with real data) =====
@@ -935,6 +989,24 @@ function initIndexChart() {
               if (sub[jsonKey]) {
                 var s = Array.isArray(sub[jsonKey]) ? sub[jsonKey] : (sub[jsonKey].series || []);
                 indexChartData[chartKey] = s;
+                // Update sub-index card in the dashboard
+                var card = document.querySelector('[data-sub="' + jsonKey + '"]');
+                if (card && sub[jsonKey].current_value) {
+                  var cv = sub[jsonKey].current_value;
+                  var valEl = card.querySelector('.sub-index-val');
+                  if (valEl) valEl.textContent = cv.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
+                  // Calculate % change from series
+                  var seriesArr = sub[jsonKey].series || [];
+                  if (seriesArr.length > 1) {
+                    var firstV = seriesArr[0].value, lastV = seriesArr[seriesArr.length - 1].value;
+                    var pctChg = firstV ? ((lastV - firstV) / firstV * 100) : 0;
+                    var chgCardEl = card.querySelector('.sub-index-chg');
+                    if (chgCardEl) {
+                      chgCardEl.textContent = (pctChg >= 0 ? '+' : '') + pctChg.toFixed(2) + '%';
+                      chgCardEl.className = 'sub-index-chg ' + (pctChg >= 0 ? 'v-green' : 'v-red');
+                    }
+                  }
+                }
                 break;
               }
             }
@@ -951,7 +1023,7 @@ function initIndexChart() {
 function createIndexChart(container, data) {
   indexChart = LightweightCharts.createChart(container, {
     width: container.clientWidth,
-    height: 280,
+    height: 240,
     layout: {
       background: { type: 'solid', color: 'transparent' },
       textColor: '#8B92A5',

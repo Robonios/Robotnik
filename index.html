@@ -25,12 +25,6 @@
   <!-- ===== LEFT COLUMN ===== -->
   <div class="dash-main">
 
-    <!-- A. Compact header -->
-    <div class="dash-header">
-      <span class="dash-title"><span style="color:var(--yellow)">ROBOTNIK</span> RE-ENTRY IN PROGRESS<span class="animated-dots"></span></span>
-      <span class="dash-subtitle">The intelligence layer for the frontier technology stack</span>
-    </div>
-
     <!-- B. Composite Index Widget -->
     <div class="dash-widget">
       <div class="index-hero">
@@ -38,31 +32,31 @@
         <span class="index-value">1,000.00</span>
         <span class="index-change v-green">+0.00%</span>
       </div>
-      <div class="sub-indices">
-        <div class="sub-index-card">
+      <div class="sub-indices" id="sub-indices">
+        <div class="sub-index-card" data-sub="semiconductor">
           <div class="sub-index-name">Semi</div>
-          <div class="sub-index-val">1,024.30</div>
-          <div class="sub-index-chg v-green">+1.42%</div>
+          <div class="sub-index-val">--</div>
+          <div class="sub-index-chg">&mdash;</div>
         </div>
-        <div class="sub-index-card">
+        <div class="sub-index-card" data-sub="robotics">
           <div class="sub-index-name">Robotics</div>
-          <div class="sub-index-val">987.15</div>
-          <div class="sub-index-chg v-red">-0.83%</div>
+          <div class="sub-index-val">--</div>
+          <div class="sub-index-chg">&mdash;</div>
         </div>
-        <div class="sub-index-card">
+        <div class="sub-index-card" data-sub="space">
           <div class="sub-index-name">Space</div>
-          <div class="sub-index-val">1,102.50</div>
-          <div class="sub-index-chg v-green">+2.17%</div>
+          <div class="sub-index-val">--</div>
+          <div class="sub-index-chg">&mdash;</div>
         </div>
-        <div class="sub-index-card">
+        <div class="sub-index-card" data-sub="cross_stack">
           <div class="sub-index-name">Cross-stack</div>
-          <div class="sub-index-val">1,015.80</div>
-          <div class="sub-index-chg v-green">+0.62%</div>
+          <div class="sub-index-val">--</div>
+          <div class="sub-index-chg">&mdash;</div>
         </div>
-        <div class="sub-index-card">
+        <div class="sub-index-card" data-sub="token">
           <div class="sub-index-name">Token</div>
-          <div class="sub-index-val">843.60</div>
-          <div class="sub-index-chg v-red">-1.54%</div>
+          <div class="sub-index-val">--</div>
+          <div class="sub-index-chg">&mdash;</div>
         </div>
       </div>
     </div>
@@ -71,8 +65,6 @@
     <div class="dash-widget">
       <div class="chart-widget-header">
         <span class="chart-widget-title">Robotnik Index</span>
-        <span class="chart-widget-val" id="chart-index-val">1,000.00</span>
-        <span class="chart-widget-chg v-green" id="chart-index-chg">+0.00%</span>
       </div>
       <div class="chart-controls">
         <div class="chart-range-group">
@@ -170,31 +162,31 @@
   <div class="dash-sidebar-widgets">
 
     <!-- D. Market Overview -->
-    <div class="dash-widget">
+    <div class="dash-widget" id="market-overview">
       <div class="dash-widget-title">Market Overview</div>
       <div class="overview-row">
         <span class="overview-label">Total Market Cap</span>
-        <span class="overview-val">$8.42T</span>
+        <span class="overview-val" id="ov-mcap">--</span>
       </div>
       <div class="overview-row">
         <span class="overview-label">24h Change</span>
-        <span class="overview-val v-green">+1.24%</span>
+        <span class="overview-val" id="ov-24h">--</span>
       </div>
       <div class="overview-row">
         <span class="overview-label">Tracked Assets</span>
-        <span class="overview-val">303</span>
+        <span class="overview-val" id="ov-count">--</span>
       </div>
       <div class="overview-row">
         <span class="overview-label">Largest Asset</span>
-        <span class="overview-val">NVDA <span class="v-green">+2.87%</span></span>
+        <span class="overview-val" id="ov-largest">--</span>
       </div>
       <div class="overview-row">
         <span class="overview-label">Top Gainer</span>
-        <span class="overview-val">RENDER <span class="v-green">+5.81%</span></span>
+        <span class="overview-val" id="ov-gainer">--</span>
       </div>
       <div class="overview-row">
         <span class="overview-label">Top Loser</span>
-        <span class="overview-val">FET <span class="v-red">-2.35%</span></span>
+        <span class="overview-val" id="ov-loser">--</span>
       </div>
     </div>
 
