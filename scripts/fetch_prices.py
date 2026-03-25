@@ -324,6 +324,51 @@ EQUITIES = [
     ("TTMI", "TTM Technologies", "Space", "United States"),
     ("VOYG", "Voyager Technologies", "Space", "United States"),
     ("9348 JP", "ispace Inc", "Space", "Japan"),
+    # ── Materials & Inputs (44 companies) ──
+    ("4063 JP", "Shin-Etsu Chemical", "Materials", "Japan"),
+    ("3436 JP", "SUMCO Corp", "Materials", "Japan"),
+    ("6488 TT", "GlobalWafers", "Materials", "Taiwan"),
+    ("WAF GR", "Siltronic", "Materials", "Germany"),
+    ("010060 KS", "OCI Holdings", "Materials", "South Korea"),
+    ("4043 JP", "Tokuyama Corp", "Materials", "Japan"),
+    ("WCH GR", "Wacker Chemie", "Materials", "Germany"),
+    ("SOI FP", "Soitec", "Materials", "France"),
+    ("6153 TT", "Coretronic", "Materials", "Taiwan"),
+    ("WOLF", "Wolfspeed", "Materials", "United States"),
+    ("LIN", "Linde plc", "Materials", "United States"),
+    ("AI FP", "Air Liquide", "Materials", "France"),
+    ("APD", "Air Products", "Materials", "United States"),
+    ("4091 JP", "Nippon Sanso", "Materials", "Japan"),
+    ("4186 JP", "Tokyo Ohka Kogyo", "Materials", "Japan"),
+    ("MRK GR", "Merck KGaA", "Materials", "Germany"),
+    ("BAS GR", "BASF", "Materials", "Germany"),
+    ("4112 JP", "Daicel Corp", "Materials", "Japan"),
+    ("4005 JP", "Sumitomo Chemical", "Materials", "Japan"),
+    ("4208 JP", "UBE Corp", "Materials", "Japan"),
+    ("3407 JP", "Asahi Kasei", "Materials", "Japan"),
+    ("5384 JP", "Fujimi Inc", "Materials", "Japan"),
+    ("5706 JP", "Mitsui Mining", "Materials", "Japan"),
+    ("MTRN", "Materion Corp", "Materials", "United States"),
+    ("4062 JP", "Ibiden", "Materials", "Japan"),
+    ("3037 TT", "Unimicron", "Materials", "Taiwan"),
+    ("2802 JP", "Ajinomoto Co", "Materials", "Japan"),
+    ("6971 JP", "Kyocera", "Materials", "Japan"),
+    ("LYC AU", "Lynas Rare Earths", "Materials", "Australia"),
+    ("ILU AU", "Iluka Resources", "Materials", "Australia"),
+    ("ARU AU", "Arafura Rare Earths", "Materials", "Australia"),
+    ("600111 C1", "Northern Rare Earth", "Materials", "China"),
+    ("6680 HK", "China Rare Earth Resources", "Materials", "China"),
+    ("ALB", "Albemarle Corp", "Materials", "United States"),
+    ("SQM", "Sociedad Quimica y Minera", "Materials", "Chile"),
+    ("AMG NA", "AMG Critical Materials", "Materials", "Netherlands"),
+    ("3402 JP", "Toray Industries", "Materials", "Japan"),
+    ("3401 JP", "Teijin Ltd", "Materials", "Japan"),
+    ("4188 JP", "Mitsubishi Chemical", "Materials", "Japan"),
+    ("SGL GR", "SGL Carbon", "Materials", "Germany"),
+    ("ATI", "ATI Inc", "Materials", "United States"),
+    ("CRS", "Carpenter Technology", "Materials", "United States"),
+    ("CSTM FP", "Constellium", "Materials", "France"),
+    ("MRSN FP", "Mersen", "Materials", "France"),
 ]
 
 
@@ -536,13 +581,26 @@ def load_eodhd_mapping():
     return None
 
 _EODHD_MAP = None
+_PENDING_TICKERS = None
+
+def load_pending_tickers():
+    """Load list of tickers with pending EODHD coverage (new IPOs etc)."""
+    path = ROOT / "data" / "mappings" / "pending_tickers.json"
+    if path.exists():
+        with open(path) as f:
+            return set(json.load(f))
+    return set()
 
 def fetch_all_equities():
-    global _EODHD_MAP
+    global _EODHD_MAP, _PENDING_TICKERS
     if _EODHD_MAP is None:
         _EODHD_MAP = load_eodhd_mapping()
+    if _PENDING_TICKERS is None:
+        _PENDING_TICKERS = load_pending_tickers()
     if _EODHD_MAP:
         print("  Using explicit EODHD ticker mapping ({} entries)".format(len(_EODHD_MAP)))
+    if _PENDING_TICKERS:
+        print("  Pending coverage tickers: {}".format(len(_PENDING_TICKERS)))
 
     results = []
     errors = []
@@ -579,8 +637,12 @@ def fetch_all_equities():
             })
             print("{} ({})".format(data["price"], data["currency"]))
         else:
-            errors.append("{} ({}) — EODHD: {}".format(ticker, company, eodhd_sym))
-            print("FAILED")
+            if _PENDING_TICKERS and eodhd_sym in _PENDING_TICKERS:
+                print("PENDING (new IPO)")
+                # Don't count as error — just info
+            else:
+                errors.append("{} ({}) — EODHD: {}".format(ticker, company, eodhd_sym))
+                print("FAILED")
 
         time.sleep(0.2)
 

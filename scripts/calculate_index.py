@@ -43,6 +43,8 @@ SECTOR_MAP = {
     "Robotics":      "Robotics",
     "Space":         "Space",
     "Cross-stack":   "Cross-stack",
+    "Materials":     "Materials",
+    "Materials & Inputs": "Materials",
     "Token":         "Token",
 }
 
@@ -365,7 +367,7 @@ def main():
     save_json(INDEX_PATH, index_output)
 
     # ── sub-indices (with backfill) ──────────────────────────────────
-    sub_sectors = ["Semiconductor", "Robotics", "Space", "Cross-stack", "Token"]
+    sub_sectors = ["Semiconductor", "Robotics", "Space", "Cross-stack", "Materials", "Token"]
     sub_indices = {}
 
     for sector in sub_sectors:

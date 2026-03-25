@@ -1,45 +1,50 @@
 {
-  "calculated_at": "2026-03-25T13:03:59.025710+00:00Z",
+  "calculated_at": "2026-03-25T19:25:08.524716+00:00Z",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 1765.82,
-    "daily_change_pct": 2.17,
+    "value": 1751.76,
+    "daily_change_pct": 2.27,
     "base_date": "2025-03-25",
     "base_value": 1000.0,
-    "entities": 260
+    "entities": 302
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 3763.18,
+    "value": 3799.67,
     "base_date": "2021-03-26",
     "base_value": 1000.0,
-    "entities": 225
+    "entities": 265
   },
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 2127.78,
+      "value": 2124.03,
       "entities": 44
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
-      "value": 1540.26,
-      "entities": 139
+      "value": 1539.96,
+      "entities": 138
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 1732.79,
-      "entities": 21
+      "value": 1910.58,
+      "entities": 41
     },
     "cross_stack": {
       "name": "Robotnik Cross-stack Index",
-      "value": 1752.56,
+      "value": 1752.13,
+      "entities": 21
+    },
+    "materials": {
+      "name": "Robotnik Materials Index",
+      "value": 1000.0,
       "entities": 21
     },
     "token": {
       "name": "Robotnik Token Index",
-      "value": 3547223.45,
-      "entities": 35
+      "value": 2596444.73,
+      "entities": 37
     }
   },
   "top_10_weights": [
@@ -47,71 +52,71 @@
       "ticker": "NVDA",
       "name": "NVIDIA",
       "sector": "Cross-stack",
-      "market_cap_usd": 4258235940864,
+      "market_cap_usd": 4343668146176,
       "weight_pct": 5.0
     },
     {
       "ticker": "GOOG",
       "name": "Alphabet",
       "sector": "Robotics",
-      "market_cap_usd": 3498452713472,
+      "market_cap_usd": 3489742716928,
       "weight_pct": 5.0
     },
     {
       "ticker": "AMZN",
       "name": "Amazon",
       "sector": "Robotics",
-      "market_cap_usd": 2224704978944,
+      "market_cap_usd": 2270114611200,
       "weight_pct": 5.0
     },
     {
       "ticker": "TSM",
       "name": "TSMC ADR",
       "sector": "Cross-stack",
-      "market_cap_usd": 1780267745280,
+      "market_cap_usd": 1799095189504,
       "weight_pct": 5.0
     },
     {
       "ticker": "AVGO",
       "name": "Broadcom",
       "sector": "Cross-stack",
-      "market_cap_usd": 1509099962368,
+      "market_cap_usd": 1508199104512,
       "weight_pct": 5.0
     },
     {
       "ticker": "TSLA",
       "name": "Tesla",
       "sector": "Robotics",
-      "market_cap_usd": 1437294002176,
+      "market_cap_usd": 1450389536768,
       "weight_pct": 5.0
     },
     {
       "ticker": "ASML",
       "name": "ASML Holding ADR",
       "sector": "Cross-stack",
-      "market_cap_usd": 549494423552,
-      "weight_pct": 4.5091
+      "market_cap_usd": 547888431104,
+      "weight_pct": 4.0759
     },
     {
       "ticker": "MU",
       "name": "Micron Technology",
       "sector": "Semiconductor",
-      "market_cap_usd": 446052630528,
-      "weight_pct": 3.6602
+      "market_cap_usd": 429091520512,
+      "weight_pct": 3.1921
     },
     {
       "ticker": "PLTR",
       "name": "Palantir Technologies",
       "sector": "Robotics",
-      "market_cap_usd": 370183569408,
-      "weight_pct": 3.0377
+      "market_cap_usd": 372986576896,
+      "weight_pct": 2.7748
     },
     {
-      "ticker": "CAT",
-      "name": "Caterpillar",
-      "sector": "Robotics",
-      "market_cap_usd": 335368224768,
-      "weight_pct": 2.752
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
+      "sector": "Cross-stack",
+      "market_cap_usd": 360418639872,
+      "weight_pct": 2.6813
     }
   ]
 }

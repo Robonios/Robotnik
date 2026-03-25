@@ -5,6 +5,7 @@
     { href: 'index.html', page: 'home', label: 'Home', online: true },
     { href: 'intelligence.html', page: 'intelligence', label: 'Intelligence', online: true },
     { href: 'signals.html', page: 'signals', label: 'Market Signals', online: false },
+    { href: 'commodities.html', page: 'commodities', label: 'Commodities', online: false },
     { href: 'funding.html', page: 'funding', label: 'Funding Ops', online: false },
     { href: 'thesis.html', page: 'thesis', label: 'Thesis', online: true },
     { href: 'recreation.html', page: 'recreation', label: 'Recreation Bay', online: true },

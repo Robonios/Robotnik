@@ -53,6 +53,11 @@
           <div class="sub-index-val">--</div>
           <div class="sub-index-chg">&mdash;</div>
         </div>
+        <div class="sub-index-card" data-sub="materials">
+          <div class="sub-index-name">Materials</div>
+          <div class="sub-index-val">--</div>
+          <div class="sub-index-chg">&mdash;</div>
+        </div>
         <div class="sub-index-card" data-sub="token">
           <div class="sub-index-name">Token</div>
           <div class="sub-index-val">--</div>
@@ -83,6 +88,7 @@
           <button class="chart-index-btn" data-idx="semi" onclick="setIndexSeries(this)">Semi</button>
           <button class="chart-index-btn" data-idx="robotics" onclick="setIndexSeries(this)">Robotics</button>
           <button class="chart-index-btn" data-idx="space" onclick="setIndexSeries(this)">Space</button>
+          <button class="chart-index-btn" data-idx="materials" onclick="setIndexSeries(this)">Materials</button>
           <button class="chart-index-btn" data-idx="token" onclick="setIndexSeries(this)">Token</button>
           <button class="chart-compare-btn" onclick="toggleCompareInput()">+ Compare</button>
         </div>
@@ -106,6 +112,7 @@
           <button class="market-tab" data-sector="robo" onclick="filterMarketTable(this)">Robotics</button>
           <button class="market-tab" data-sector="space" onclick="filterMarketTable(this)">Space</button>
           <button class="market-tab" data-sector="cross" onclick="filterMarketTable(this)">Cross-stack</button>
+          <button class="market-tab" data-sector="materials" onclick="filterMarketTable(this)">Materials</button>
           <button class="market-tab" data-sector="token" onclick="filterMarketTable(this)">Tokens</button>
         </div>
         <div style="display:flex;gap:0.5rem;align-items:center;">
@@ -151,7 +158,7 @@
       </div>
       <div class="overview-row">
         <span class="overview-label">Universe</span>
-        <span class="overview-val" id="ov-universe">303</span>
+        <span class="overview-val" id="ov-universe">347</span>
       </div>
       <div class="overview-row">
         <span class="overview-label">Live Data</span>
@@ -175,8 +182,8 @@
     <div class="dash-widget">
       <div class="dash-widget-title">Robotnik Index</div>
       <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
-        The Robotnik Composite Index tracks 303 frontier technology assets across semiconductors, robotics, and space technology. Market-cap weighted with a 5% single-entity cap.
-        <div style="margin-top:0.5rem;">Sub-indices: Semi &middot; Robotics &middot; Space &middot; Cross-stack &middot; Tokens</div>
+        The Robotnik Composite Index tracks 347 frontier technology assets across semiconductors, robotics, space technology, and critical materials. Market-cap weighted with a 5% single-entity cap.
+        <div style="margin-top:0.5rem;">Sub-indices: Semi &middot; Robotics &middot; Space &middot; Cross-stack &middot; Materials &middot; Tokens</div>
         <div style="margin-top:0.3rem;">Sourced from EODHD + CoinGecko.</div>
         <div style="margin-top:0.3rem;" id="explainer-base">Base: 1,000.00</div>
       </div>

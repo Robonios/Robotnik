@@ -12,6 +12,7 @@ function mapSector(s) {
   if (sl.includes('robotics')) return 'robo';
   if (sl.includes('space')) return 'space';
   if (sl.includes('cross')) return 'cross';
+  if (sl.includes('material')) return 'materials';
   if (sl.includes('token')) return 'token';
   return 'semi';
 }
@@ -983,7 +984,8 @@ function initIndexChart() {
             robotics: ['robotics'],
             space: ['space'],
             token: ['token'],
-            cross_stack: ['cross_stack', 'cross-stack']
+            cross_stack: ['cross_stack', 'cross-stack'],
+            materials: ['materials']
           };
           for (var chartKey in keyMap) {
             for (var i = 0; i < keyMap[chartKey].length; i++) {
@@ -1237,8 +1239,8 @@ function renderComparePillsChart() {
 var mktSector = 'all';
 var mktSort = 'mcap';
 var mktSortDir = -1; // -1 = desc, 1 = asc
-var SECTOR_LABELS = {semi:'Semi', robo:'Robo', space:'Space', cross:'Cross', token:'Token'};
-var SECTOR_CSS = {semi:'sector-semi', robo:'sector-robo', space:'sector-space', cross:'sector-cross', token:'sector-token'};
+var SECTOR_LABELS = {semi:'Semi', robo:'Robo', space:'Space', cross:'Cross', materials:'Materials', token:'Token'};
+var SECTOR_CSS = {semi:'sector-semi', robo:'sector-robo', space:'sector-space', cross:'sector-cross', materials:'sector-materials', token:'sector-token'};
 
 function filterMarketTable(btn) {
   document.querySelectorAll('.market-tab').forEach(b => b.classList.remove('active'));
@@ -1290,11 +1292,11 @@ function renderMarketTable() {
 
   // Update tab counts
   var tabs = document.querySelectorAll('.market-tab');
-  var counts = {all: uniqueCompanies.length, semi:0, robo:0, space:0, cross:0, token:0};
+  var counts = {all: uniqueCompanies.length, semi:0, robo:0, space:0, cross:0, materials:0, token:0};
   uniqueCompanies.forEach(function(c) { if (counts[c.sector] !== undefined) counts[c.sector]++; });
   tabs.forEach(function(t) {
     var s = t.dataset.sector;
-    var label = s === 'all' ? 'All' : s === 'semi' ? 'Semi' : s === 'robo' ? 'Robotics' : s === 'space' ? 'Space' : s === 'cross' ? 'Cross-stack' : 'Tokens';
+    var label = s === 'all' ? 'All' : s === 'semi' ? 'Semi' : s === 'robo' ? 'Robotics' : s === 'space' ? 'Space' : s === 'cross' ? 'Cross-stack' : s === 'materials' ? 'Materials' : 'Tokens';
     t.textContent = label + ' (' + (counts[s] || 0) + ')';
   });
 
