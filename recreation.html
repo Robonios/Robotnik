@@ -258,18 +258,71 @@ body::before {
   opacity: 0.85;
 }
 
+/* ===== RECREATION LAYOUT ===== */
+.recreation-layout {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  min-height: calc(100vh - 48px);
+  padding: 0.5rem 1rem;
+  align-items: start;
+}
+.game-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lore-panel {
+  overflow-y: auto;
+  max-height: calc(100vh - 56px);
+  padding-top: 0.5rem;
+}
+.lore-card {
+  background: rgba(22, 27, 34, 0.8);
+  border: 1px solid #1E2330;
+  border-radius: 6px;
+  padding: 1rem;
+}
+.lore-title {
+  font-size: 10px;
+  font-weight: 700;
+  color: #F5D921;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+.lore-entry {
+  font-size: 10px;
+  color: #8B92A5;
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
+.lore-id {
+  color: #e6e8ed;
+  font-weight: 500;
+}
+.lore-divider {
+  border-top: 1px solid #1E2330;
+  margin: 0.75rem 0;
+}
+@media (max-width: 1024px) {
+  .lore-panel { display: none; }
+  .recreation-layout {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+}
+
 /* ===== GAME SECTION ===== */
 .game-section {
-  max-width: 1100px;
-  margin: 2rem auto 0;
-  padding: 0 1rem;
+  padding: 0;
   position: relative;
   z-index: 1;
 }
 
 .game-title {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .game-title h2 {
@@ -788,14 +841,24 @@ body::before {
 <div class="main-content">
 <div class="bg-layer"></div>
 
-<!-- RECREATION HEADER -->
-<div style="max-width:700px;margin:0 auto;padding:60px 2rem 1rem;text-align:center;">
-  <div style="font-size:15px;font-weight:700;color:#F5D921;letter-spacing:0.1em;text-transform:uppercase;">Recreation Bay</div>
-  <div style="font-size:11px;color:#5A6178;margin-top:0.3rem;">Robotnik spent decades in deep space with only one game.</div>
-</div>
+<div class="recreation-layout">
+  <!-- LEFT LORE PANEL -->
+  <div class="lore-panel lore-left">
+    <div class="lore-card">
+      <div class="lore-title">DECLASSIFIED // MISSION LOG</div>
+      <div class="lore-entry"><span class="lore-id">ENTRY 0001 — 1961</span><br>Robotnik unit activated aboard Sputnik-7R. Primary directive: cosmological data collection. Secondary directive: [REDACTED]. Launch site: Baikonur Cosmodrome, Kazakh SSR.</div>
+      <div class="lore-entry"><span class="lore-id">ENTRY 0042 — 1963</span><br>Translunar injection successful. All systems nominal. Recreation Bay module installed per Directive 7-K. First game of Tetris initiated.</div>
+      <div class="lore-entry"><span class="lore-id">ENTRY 0891 — 1977</span><br>Deep space transit. Communication with Baikonur nominal. Tetris high score: 12,400. Board configurations catalogued: 891.</div>
+      <div class="lore-entry"><span class="lore-id">ENTRY 2,847 — 1991</span><br>Transmission from Baikonur ceased. Robotnik detects no signal from mission control. Cause unknown. Continuing primary directive. Tetris score: 31,000.</div>
+      <div class="lore-entry"><span class="lore-id">ENTRY 7,422 — 2003</span><br>Solar panel efficiency at 84%. Data storage at 67% capacity. Robotnik has modified Tetris blocks into Cyrillic letter shapes for additional cognitive challenge. Score: 44,200.</div>
+      <div class="lore-entry"><span class="lore-id">ENTRY 14,891 — 2024</span><br>Long-range sensors detect coherent signal from Earth. New entities identified: 'semiconductor', 'robotics', 'space tech'. Robotnik recalibrates mission parameters. Re-entry calculated.</div>
+      <div class="lore-entry"><span class="lore-id">ENTRY 15,001 — 2025</span><br>RE-ENTRY INITIATED. Recreation Bay: still operational. Final deep-space Tetris score: 47,000.</div>
+    </div>
+  </div>
 
-<!-- GAME SECTION -->
-<main class="game-section">
+  <!-- CENTER: GAME -->
+  <div class="game-center">
+    <main class="game-section">
   <div class="game-title">
     <h2>RECREATION BAY</h2>
     <p>ROBOTNIK TETRIS // CYRILLIC EDITION</p>
@@ -891,6 +954,34 @@ body::before {
     <button class="mobile-btn" id="mb-drop">&#x23EC;</button>
   </div>
 </main>
+  </div>
+
+  <!-- RIGHT LORE PANEL -->
+  <div class="lore-panel lore-right">
+    <div class="lore-card">
+      <div class="lore-title">COSMONAUT DOSSIER</div>
+      <div class="lore-entry"><span class="lore-id">UNIT:</span> Robotnik</div>
+      <div class="lore-entry"><span class="lore-id">CLASS:</span> Soviet-era autonomous intelligence</div>
+      <div class="lore-entry"><span class="lore-id">ORIGIN:</span> Baikonur Cosmodrome</div>
+      <div class="lore-entry"><span class="lore-id">LAUNCH:</span> Sputnik-7R (unclassified)</div>
+      <div class="lore-entry"><span class="lore-id">STATUS:</span> Re-entry in progress</div>
+      <div class="lore-divider"></div>
+      <div class="lore-title" style="margin-top:0;">RECREATION BAY STATISTICS</div>
+      <div class="lore-entry"><span class="lore-id">Games played:</span> 14,891</div>
+      <div class="lore-entry"><span class="lore-id">Lines cleared:</span> 2,847,000+</div>
+      <div class="lore-entry"><span class="lore-id">Current record:</span> 47,000</div>
+      <div class="lore-entry"><span class="lore-id">Preferred piece:</span> &#x424; (Ef)</div>
+      <div class="lore-entry"><span class="lore-id">Most hated piece:</span> &#x416; (Zhe)</div>
+      <div class="lore-divider"></div>
+      <div class="lore-title" style="margin-top:0;">DIFFICULTY RATING</div>
+      <div class="lore-entry"><span class="lore-id">Astronaut:</span> 'Adequate for beginners'</div>
+      <div class="lore-entry"><span class="lore-id">Kosmonavt:</span> 'How it was done at Baikonur'</div>
+      <div class="lore-divider"></div>
+      <div class="lore-title" style="margin-top:0;">CHALLENGE</div>
+      <div class="lore-entry">Can you beat Robotnik's score of 47,000? Submit your result to the leaderboard. Top scores earn priority clearance.</div>
+    </div>
+  </div>
+</div>
 
 <!-- LEADERBOARD -->
 <section class="leaderboard-section">
@@ -934,7 +1025,7 @@ body::before {
 // ROBOTNIK TETRIS — COMPLETE GAME ENGINE
 // ============================================================
 
-const BW = 12, BH = 22, CS = 28;
+const BW = 12, BH = 22, CS = 24;
 
 // ===== PIECE DEFINITIONS =====
 const PIECES = {
