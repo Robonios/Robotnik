@@ -13,6 +13,33 @@
 <link rel="icon" type="image/png" href="robotlogo.png">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+.briefing-card { background:#161B22; border-left:3px solid #F5D921; border-radius:0 6px 6px 0; padding:1rem 1.25rem; margin-bottom:1rem; }
+.briefing-header { font-size:11px; font-weight:700; color:#F5D921; letter-spacing:0.08em; margin-bottom:0.75rem; }
+.briefing-body { font-size:11px; color:#e6e8ed; line-height:1.7; }
+.briefing-body ul { margin:0.5rem 0 0 1rem; list-style:disc; }
+.briefing-body li { margin-bottom:0.3rem; }
+.briefing-gated { margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid #1E2330; }
+.briefing-blur { font-size:10px; color:#5A6178; filter:blur(2px); user-select:none; line-height:1.6; }
+.sample-note { font-size:10px; color:#5A6178; font-style:italic; margin-bottom:0.75rem; padding:0 0.25rem; }
+.ticker-pill { display:inline-block; font-size:9px; background:#252A36; color:#e6e8ed; padding:0.1rem 0.35rem; border-radius:3px; margin-left:0.3rem; font-weight:500; }
+.feed-card { position:relative; }
+.feed-expand { padding:0.75rem 0 0; font-size:11px; color:#8B92A5; line-height:1.6; }
+.feed-excerpt { margin-bottom:0.5rem; }
+.feed-read-more { color:#F5D921; font-size:10px; text-decoration:none; }
+.feed-read-more:hover { text-decoration:underline; }
+.feed-analysis-gate { margin-top:0.75rem; }
+.feed-analysis-locked { background:#161B22; border:1px solid #252A36; border-radius:4px; padding:0.75rem; }
+.analysis-blur { font-size:10px; color:#5A6178; filter:blur(3px); user-select:none; line-height:1.5; }
+.bookmark-btn { position:absolute; top:0.75rem; right:0.5rem; background:none; border:none; color:#5A6178; font-size:14px; cursor:pointer; padding:0.2rem; font-family:var(--font); }
+.bookmark-btn:hover { color:#F5D921; }
+.bookmark-btn.saved { color:#F5D921; }
+.gating-divider { text-align:center; color:#5A6178; font-size:10px; padding:0.75rem 0; letter-spacing:0.05em; }
+.gated-item .feed-excerpt { filter:blur(4px); user-select:none; }
+.sector-materials { color:#111318; background:#FB923C; }
+.feed-headline { cursor:pointer; }
+.feed-headline:hover { color:#F5D921; }
+</style>
 </head>
 <body data-page="intelligence">
 
@@ -25,185 +52,648 @@
   <!-- ===== LEFT: FEED ===== -->
   <div>
 
-    <!-- A. Header -->
+    <!-- 1. Header -->
     <div class="intel-header">
       <div class="intel-title">Intelligence</div>
       <div class="intel-subtitle">News, research, and analysis from across the frontier technology stack</div>
     </div>
 
-    <!-- B. Filters -->
-    <div class="intel-filters">
-      <div class="intel-filter-group" data-label="Type">
-        <button class="intel-filter-btn active">All</button>
-        <button class="intel-filter-btn">News</button>
-        <button class="intel-filter-btn">Research</button>
-        <button class="intel-filter-btn">Reports</button>
-        <button class="intel-filter-btn">Filings</button>
+    <!-- 2. Daily Mission Briefing -->
+    <div class="briefing-card">
+      <div class="briefing-header">DAILY MISSION BRIEFING // <span id="briefing-date"></span></div>
+      <div class="briefing-body">
+        <p>Tovarishch, three signals detected today:</p>
+        <ul>
+          <li>TSMC expanded CoWoS capacity by 40%, targeting 2x output by Q4 <span class="feed-sector sector-semi">Semi</span></li>
+          <li>Humanoid robotics funding crosses $5B in trailing twelve months <span class="feed-sector sector-robo">Robo</span></li>
+          <li>Rocket Lab secures Neutron launch contract with major defense partner <span class="feed-sector sector-space">Space</span></li>
+        </ul>
+        <p style="margin-top:0.5rem;font-size:10px;color:#5A6178;">Full intelligence below.</p>
       </div>
-      <div class="intel-filter-group" data-label="Sector">
-        <button class="intel-filter-btn active">All sectors</button>
-        <button class="intel-filter-btn">Semi</button>
-        <button class="intel-filter-btn">Robotics</button>
-        <button class="intel-filter-btn">Space</button>
-      </div>
-      <div class="intel-filter-group" data-label="Time">
-        <button class="intel-filter-btn">24h</button>
-        <button class="intel-filter-btn">7d</button>
-        <button class="intel-filter-btn active">30d</button>
-        <button class="intel-filter-btn">All</button>
+      <div class="briefing-gated">
+        <div class="briefing-blur">Full daily briefing with cross-references, supply chain impact analysis, and Robotnik context is available to mission operatives with enterprise clearance.</div>
+        <a href="thesis.html#signup" class="btn-y" style="font-size:11px;margin-top:0.5rem;">Request clearance &rarr;</a>
       </div>
     </div>
 
-    <!-- C. Feed -->
+    <!-- 3. Filter Bar -->
+    <div class="intel-filters">
+      <div class="intel-filter-group" data-filter="type">
+        <button class="intel-filter-btn active" data-val="all" onclick="setIntelFilter('type',this)">All</button>
+        <button class="intel-filter-btn" data-val="news" onclick="setIntelFilter('type',this)">News</button>
+        <button class="intel-filter-btn" data-val="research" onclick="setIntelFilter('type',this)">Research</button>
+        <button class="intel-filter-btn" data-val="reports" onclick="setIntelFilter('type',this)">Reports</button>
+        <button class="intel-filter-btn" data-val="filings" onclick="setIntelFilter('type',this)">Filings</button>
+        <button class="intel-filter-btn" data-val="saved" onclick="setIntelFilter('type',this)">&starf; Saved <span id="saved-count"></span></button>
+      </div>
+      <div class="intel-filter-group" data-filter="sector">
+        <button class="intel-filter-btn active" data-val="all" onclick="setIntelFilter('sector',this)">All sectors</button>
+        <button class="intel-filter-btn" data-val="semi" onclick="setIntelFilter('sector',this)">Semi</button>
+        <button class="intel-filter-btn" data-val="robo" onclick="setIntelFilter('sector',this)">Robotics</button>
+        <button class="intel-filter-btn" data-val="space" onclick="setIntelFilter('sector',this)">Space</button>
+        <button class="intel-filter-btn" data-val="materials" onclick="setIntelFilter('sector',this)">Materials</button>
+        <button class="intel-filter-btn" data-val="cross" onclick="setIntelFilter('sector',this)">Cross-stack</button>
+      </div>
+      <div class="intel-filter-group" data-filter="time">
+        <button class="intel-filter-btn" data-val="24h" onclick="setIntelFilter('time',this)">24h</button>
+        <button class="intel-filter-btn" data-val="7d" onclick="setIntelFilter('time',this)">7d</button>
+        <button class="intel-filter-btn active" data-val="30d" onclick="setIntelFilter('time',this)">30d</button>
+        <button class="intel-filter-btn" data-val="all" onclick="setIntelFilter('time',this)">All</button>
+      </div>
+    </div>
+
+    <!-- 4. Sample Data Note -->
+    <div class="sample-note">(Sample data &mdash; live intelligence feed calibrating. Content shown is illustrative.)</div>
+
+    <!-- 5. Feed Cards -->
     <div class="dash-widget" style="padding:0;">
       <div class="intel-feed">
 
-        <div class="feed-card">
+        <!-- TSMC CoWoS -->
+        <div class="feed-card" data-type="news" data-sector="semi" data-hours="2" data-tickers="TSM,NVDA,AMD,ASML">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">TSMC CoWoS expansion signals capacity shift for AI chip packaging — foundry now targeting 2x output by Q4</div>
-            <div class="feed-meta"><span class="feed-source">Reuters</span> · 2h ago <span class="feed-sector sector-semi">Semi</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">TSMC CoWoS expansion signals capacity shift for AI chip packaging &mdash; foundry now targeting 2x output by Q4</div>
+            <div class="feed-meta">
+              <span class="feed-source">Reuters</span> &middot; 2h ago
+              <span class="feed-sector sector-semi">Semi</span>
+              <span class="ticker-pill">TSM</span><span class="ticker-pill">NVDA</span><span class="ticker-pill">AMD</span><span class="ticker-pill">ASML</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">TSMC is expanding its Chip-on-Wafer-on-Substrate packaging capacity by 40%, signaling a major shift in how advanced AI chips are manufactured. The move comes as demand from NVIDIA, AMD, and other hyperscalers continues to outstrip available capacity.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <!-- TODO: When enterprise auth exists, call Claude API to generate contextual analysis -->
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Cross-referencing against 347 universe entities shows supply chain impact concentrated in advanced packaging ecosystem. Key beneficiaries include substrate manufacturers and EDA tooling providers...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Rocket Lab -->
+        <div class="feed-card" data-type="news" data-sector="space" data-hours="5" data-tickers="RKLB">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">Rocket Lab secures Neutron launch contract with major defense partner, first flight slated for H2 2026</div>
-            <div class="feed-meta"><span class="feed-source">SpaceNews</span> · 5h ago <span class="feed-sector sector-space">Space</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Rocket Lab secures Neutron launch contract with major defense partner, first flight slated for H2 2026</div>
+            <div class="feed-meta">
+              <span class="feed-source">SpaceNews</span> &middot; 5h ago
+              <span class="feed-sector sector-space">Space</span>
+              <span class="ticker-pill">RKLB</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Rocket Lab has secured a significant launch contract for its Neutron medium-lift vehicle with a major defense partner. The deal validates Neutron's competitive positioning in the national security launch market.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Defense launch market analysis shows Neutron positioned to capture mid-tier contracts currently dominated by ULA Vulcan. Revenue implications for Rocket Lab's backlog are significant...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Shin-Etsu Chemical (NEW materials) -->
+        <div class="feed-card" data-type="news" data-sector="materials" data-hours="6" data-tickers="4063_JP,TSM">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">Humanoid robotics funding crosses $5B mark in trailing twelve months, led by Figure and 1X Technologies</div>
-            <div class="feed-meta"><span class="feed-source">TechCrunch</span> · 8h ago <span class="feed-sector sector-robo">Robo</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Shin-Etsu Chemical reports silicon wafer shipments up 12% as advanced node demand accelerates</div>
+            <div class="feed-meta">
+              <span class="feed-source">Reuters</span> &middot; 6h ago
+              <span class="feed-sector sector-materials">Materials</span>
+              <span class="ticker-pill">4063 JP</span><span class="ticker-pill">TSM</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Shin-Etsu Chemical has reported a 12% increase in silicon wafer shipments year-over-year, driven by accelerating demand for advanced process nodes at leading foundries. The company is expanding 300mm capacity to meet projected growth.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Wafer shipment growth correlates with leading-edge capacity expansion across TSMC and Samsung. Substrate material demand is a key leading indicator for semiconductor capital expenditure cycles...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Humanoid funding -->
+        <div class="feed-card" data-type="news" data-sector="robo" data-hours="8" data-tickers="">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">NVIDIA Jetson Thor enters mass production for autonomous systems across robotics and industrial applications</div>
-            <div class="feed-meta"><span class="feed-source">IEEE Spectrum</span> · 12h ago <span class="feed-sector sector-semi">Semi</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Humanoid robotics funding crosses $5B mark in trailing twelve months, led by Figure and 1X Technologies</div>
+            <div class="feed-meta">
+              <span class="feed-source">TechCrunch</span> &middot; 8h ago
+              <span class="feed-sector sector-robo">Robo</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Venture funding into humanoid robotics has crossed $5B over the trailing twelve months, with Figure AI and 1X Technologies accounting for a significant share. The surge reflects growing conviction in general-purpose humanoid platforms.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Funding concentration analysis reveals top 5 companies capturing 78% of humanoid robotics capital. Supply chain implications span actuators, sensors, and compute modules across multiple Robotnik universe entities...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- NVIDIA Jetson -->
+        <div class="feed-card" data-type="news" data-sector="semi" data-hours="12" data-tickers="NVDA">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">AST SpaceMobile begins commercial direct-to-cell service with initial coverage across five markets</div>
-            <div class="feed-meta"><span class="feed-source">Payload</span> · 1d ago <span class="feed-sector sector-space">Space</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">NVIDIA Jetson Thor enters mass production for autonomous systems across robotics and industrial applications</div>
+            <div class="feed-meta">
+              <span class="feed-source">IEEE Spectrum</span> &middot; 12h ago
+              <span class="feed-sector sector-semi">Semi</span>
+              <span class="ticker-pill">NVDA</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">NVIDIA has begun mass production of its Jetson Thor compute module, designed to power next-generation autonomous robots and industrial automation systems. The module integrates transformer-class AI processing in an embedded form factor.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Jetson Thor positions NVIDIA as the dominant edge compute platform for robotics. Downstream impact on robotics OEMs and system integrators across the Robotnik universe is substantial...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- AST SpaceMobile -->
+        <div class="feed-card" data-type="news" data-sector="space" data-hours="24" data-tickers="ASTS">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">AST SpaceMobile begins commercial direct-to-cell service with initial coverage across five markets</div>
+            <div class="feed-meta">
+              <span class="feed-source">Payload</span> &middot; 1d ago
+              <span class="feed-sector sector-space">Space</span>
+              <span class="ticker-pill">ASTS</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">AST SpaceMobile has launched commercial direct-to-cell satellite service, providing cellular connectivity in five initial markets. The service enables standard smartphones to connect via satellite without hardware modifications.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Direct-to-cell satellite service creates new addressable market for connectivity infrastructure. Cross-referencing with space economy universe entities reveals competitive dynamics with Starlink and T-Mobile partnership...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
+        </div>
+
+        <!-- Rare earth (NEW materials) -->
+        <div class="feed-card" data-type="news" data-sector="materials" data-hours="24" data-tickers="MP,LYC_AU">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Rare earth prices surge as China signals new export controls on gallium and germanium</div>
+            <div class="feed-meta">
+              <span class="feed-source">Mining.com</span> &middot; 1d ago
+              <span class="feed-sector sector-materials">Materials</span>
+              <span class="ticker-pill">MP</span><span class="ticker-pill">LYC AU</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Rare earth and critical mineral prices have surged after China signaled new export controls on gallium and germanium, two elements essential for semiconductor manufacturing, defense systems, and advanced electronics.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Export control escalation impacts gallium arsenide and germanium substrate supply chains. Cross-stack implications for compound semiconductor manufacturers, defense primes, and alternative sourcing strategies...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
+        </div>
+
+        <!-- Sim-to-real -->
+        <div class="feed-card" data-type="research" data-sector="robo" data-hours="24" data-tickers="">
           <div class="feed-icon type-research">R</div>
           <div class="feed-body">
-            <div class="feed-headline">Sim-to-real transfer learning achieves 94% success rate in dexterous manipulation tasks using reinforcement learning</div>
-            <div class="feed-meta"><span class="feed-source">arXiv cs.RO</span> · 1d ago <span class="feed-sector sector-robo">Robo</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Sim-to-real transfer learning achieves 94% success rate in dexterous manipulation tasks using reinforcement learning</div>
+            <div class="feed-meta">
+              <span class="feed-source">arXiv cs.RO</span> &middot; 1d ago
+              <span class="feed-sector sector-robo">Robo</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Researchers demonstrate a sim-to-real transfer pipeline achieving 94% success rate on dexterous manipulation tasks, using domain randomization and reinforcement learning in high-fidelity physics simulation environments.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Sim-to-real transfer breakthroughs accelerate deployment timelines for warehouse and manufacturing robotics. Implications for simulation platform providers and robotics OEMs in the Robotnik universe...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Intel 10-K -->
+        <div class="feed-card" data-type="filings" data-sector="semi" data-hours="24" data-tickers="INTC">
           <div class="feed-icon type-filing">F</div>
           <div class="feed-body">
-            <div class="feed-headline">Intel 10-K filing reveals $4.2B restructuring charge and updated foundry services roadmap through 2028</div>
-            <div class="feed-meta"><span class="feed-source">SEC EDGAR</span> · 1d ago <span class="feed-sector sector-semi">Semi</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Intel 10-K filing reveals $4.2B restructuring charge and updated foundry services roadmap through 2028</div>
+            <div class="feed-meta">
+              <span class="feed-source">SEC EDGAR</span> &middot; 1d ago
+              <span class="feed-sector sector-semi">Semi</span>
+              <span class="ticker-pill">INTC</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Intel's annual 10-K filing discloses a $4.2B restructuring charge tied to its foundry services transformation and updated roadmap extending through 2028, with key milestones for Intel 18A and external customer acquisition.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Intel's restructuring trajectory impacts the competitive landscape for advanced foundry services. Cross-referencing with TSMC, Samsung, and GlobalFoundries positions reveals shifting market share dynamics...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
-          <div class="feed-icon type-report">★</div>
+        <!-- IFR World Robotics -->
+        <div class="feed-card" data-type="reports" data-sector="robo" data-hours="48" data-tickers="">
+          <div class="feed-icon type-report">&#9733;</div>
           <div class="feed-body">
-            <div class="feed-headline">IFR World Robotics 2026: Industrial robot installations reach 590,000 units globally, China accounts for 52%</div>
-            <div class="feed-meta"><span class="feed-source">IFR</span> · 2d ago <span class="feed-sector sector-robo">Robo</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">IFR World Robotics 2026: Industrial robot installations reach 590,000 units globally, China accounts for 52%</div>
+            <div class="feed-meta">
+              <span class="feed-source">IFR</span> &middot; 2d ago
+              <span class="feed-sector sector-robo">Robo</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">The International Federation of Robotics reports that global industrial robot installations reached 590,000 units in 2025, with China accounting for 52% of all deployments. Growth was led by automotive and electronics sectors.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Installation data cross-referenced with Robotnik universe shows concentrated growth in collaborative and mobile robot categories. Regional analysis reveals supply chain dependencies on Chinese manufacturing ecosystem...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Samsung 2nm -->
+        <div class="feed-card" data-type="news" data-sector="semi" data-hours="48" data-tickers="">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">Samsung announces 2nm GAA process enters risk production, targets HPC and mobile SoCs for early 2027</div>
-            <div class="feed-meta"><span class="feed-source">SemiEngineering</span> · 2d ago <span class="feed-sector sector-semi">Semi</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Samsung announces 2nm GAA process enters risk production, targets HPC and mobile SoCs for early 2027</div>
+            <div class="feed-meta">
+              <span class="feed-source">SemiEngineering</span> &middot; 2d ago
+              <span class="feed-sector sector-semi">Semi</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Samsung Foundry has announced that its 2nm gate-all-around (GAA) process has entered risk production, targeting high-performance computing and mobile system-on-chip applications for early 2027 volume production.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Samsung's 2nm timeline positions against TSMC N2 and Intel 18A. Competitive analysis across foundry ecosystem reveals customer acquisition challenges and yield improvement trajectories...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Ibiden (NEW materials) -->
+        <div class="feed-card" data-type="news" data-sector="materials" data-hours="48" data-tickers="4062_JP,TSM,NVDA">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">Boston Dynamics Atlas performs autonomous warehouse logistics in multi-robot coordination demo</div>
-            <div class="feed-meta"><span class="feed-source">The Robot Report</span> · 2d ago <span class="feed-sector sector-robo">Robo</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Ibiden IC substrate capacity expansion targets CoWoS and chiplet packaging demand</div>
+            <div class="feed-meta">
+              <span class="feed-source">Nikkei Asia</span> &middot; 2d ago
+              <span class="feed-sector sector-materials">Materials</span>
+              <span class="ticker-pill">4062 JP</span><span class="ticker-pill">TSM</span><span class="ticker-pill">NVDA</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Ibiden is expanding IC substrate production capacity to meet surging demand from CoWoS advanced packaging and chiplet-based architectures, investing heavily in next-generation substrate technologies for AI accelerator packaging.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">IC substrate capacity is emerging as a critical bottleneck in advanced packaging supply chains. Cross-referencing Ibiden, Shinko Electric, and AT&amp;S positions reveals concentration risk in AI chip packaging materials...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Boston Dynamics -->
+        <div class="feed-card" data-type="news" data-sector="robo" data-hours="48" data-tickers="">
+          <div class="feed-icon type-news">N</div>
+          <div class="feed-body">
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Boston Dynamics Atlas performs autonomous warehouse logistics in multi-robot coordination demo</div>
+            <div class="feed-meta">
+              <span class="feed-source">The Robot Report</span> &middot; 2d ago
+              <span class="feed-sector sector-robo">Robo</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Boston Dynamics demonstrated its electric Atlas robot performing autonomous warehouse logistics tasks in coordination with multiple units, showcasing advances in multi-robot planning and manipulation capabilities.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Multi-robot coordination capabilities accelerate warehouse automation deployment timelines. Component supply chain analysis reveals sensor and actuator demand implications for Robotnik universe entities...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
+        </div>
+
+        <!-- Chiplet interconnect -->
+        <div class="feed-card" data-type="research" data-sector="semi" data-hours="72" data-tickers="">
           <div class="feed-icon type-research">R</div>
           <div class="feed-body">
-            <div class="feed-headline">Novel chiplet interconnect architecture achieves 10TB/s bandwidth with sub-pJ/bit energy efficiency</div>
-            <div class="feed-meta"><span class="feed-source">IEEE</span> · 3d ago <span class="feed-sector sector-semi">Semi</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Novel chiplet interconnect architecture achieves 10TB/s bandwidth with sub-pJ/bit energy efficiency</div>
+            <div class="feed-meta">
+              <span class="feed-source">IEEE</span> &middot; 3d ago
+              <span class="feed-sector sector-semi">Semi</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">A novel chiplet interconnect architecture demonstrated at IEEE achieves 10TB/s aggregate bandwidth with sub-picojoule-per-bit energy efficiency, representing a significant advance in heterogeneous integration technology.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Chiplet interconnect advances impact the entire heterogeneous integration ecosystem. Cross-referencing with UCIe consortium members and EDA tooling providers in the Robotnik universe...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Relativity Space -->
+        <div class="feed-card" data-type="news" data-sector="space" data-hours="72" data-tickers="">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">Relativity Space pivots Terran R to fully reusable architecture, delays first orbital attempt to Q3 2026</div>
-            <div class="feed-meta"><span class="feed-source">Ars Technica</span> · 3d ago <span class="feed-sector sector-space">Space</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Relativity Space pivots Terran R to fully reusable architecture, delays first orbital attempt to Q3 2026</div>
+            <div class="feed-meta">
+              <span class="feed-source">Ars Technica</span> &middot; 3d ago
+              <span class="feed-sector sector-space">Space</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Relativity Space has pivoted its Terran R medium-lift launch vehicle to a fully reusable architecture, delaying the first orbital attempt to Q3 2026 while pursuing a more competitive long-term vehicle design.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Reusability pivot positions Terran R against SpaceX Falcon 9 and Rocket Lab Neutron in the medium-lift market. Manufacturing technology implications for 3D-printed aerospace components...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- ARM Holdings -->
+        <div class="feed-card" data-type="filings" data-sector="semi" data-hours="72" data-tickers="ARM">
           <div class="feed-icon type-filing">F</div>
           <div class="feed-body">
-            <div class="feed-headline">ARM Holdings 8-K discloses expanded licensing agreement with major Chinese semiconductor manufacturer</div>
-            <div class="feed-meta"><span class="feed-source">SEC EDGAR</span> · 3d ago <span class="feed-sector sector-semi">Semi</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">ARM Holdings 8-K discloses expanded licensing agreement with major Chinese semiconductor manufacturer</div>
+            <div class="feed-meta">
+              <span class="feed-source">SEC EDGAR</span> &middot; 3d ago
+              <span class="feed-sector sector-semi">Semi</span>
+              <span class="ticker-pill">ARM</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">ARM Holdings has filed an 8-K disclosing an expanded licensing agreement with a major Chinese semiconductor manufacturer, broadening access to ARMv9 architecture for mobile and automotive applications.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">ARM licensing expansion in China has geopolitical and competitive implications. Cross-referencing with RISC-V adoption trends and semiconductor export control landscape reveals strategic positioning dynamics...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Covariant -->
+        <div class="feed-card" data-type="news" data-sector="robo" data-hours="96" data-tickers="">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">Covariant's AI brain for warehouse robots achieves 99.8% pick accuracy across 10,000+ SKU environments</div>
-            <div class="feed-meta"><span class="feed-source">VentureBeat</span> · 4d ago <span class="feed-sector sector-robo">Robo</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Covariant's AI brain for warehouse robots achieves 99.8% pick accuracy across 10,000+ SKU environments</div>
+            <div class="feed-meta">
+              <span class="feed-source">VentureBeat</span> &middot; 4d ago
+              <span class="feed-sector sector-robo">Robo</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">Covariant has demonstrated 99.8% pick accuracy for its AI-powered robotic manipulation system across environments with over 10,000 unique SKUs, marking a significant milestone for warehouse automation reliability.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Pick accuracy at scale validates AI-driven warehouse automation economics. Implications for incumbent warehouse automation providers and new entrants across the Robotnik robotics universe...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
-          <div class="feed-icon type-report">★</div>
+        <!-- SIA -->
+        <div class="feed-card" data-type="reports" data-sector="semi" data-hours="96" data-tickers="">
+          <div class="feed-icon type-report">&#9733;</div>
           <div class="feed-body">
-            <div class="feed-headline">SIA global semiconductor sales reach $62.8B in February, marking 23% year-over-year growth</div>
-            <div class="feed-meta"><span class="feed-source">SIA</span> · 4d ago <span class="feed-sector sector-semi">Semi</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">SIA global semiconductor sales reach $62.8B in February, marking 23% year-over-year growth</div>
+            <div class="feed-meta">
+              <span class="feed-source">SIA</span> &middot; 4d ago
+              <span class="feed-sector sector-semi">Semi</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">The Semiconductor Industry Association reports global semiconductor sales reached $62.8B in February 2026, representing 23% year-over-year growth driven by AI accelerator demand and memory recovery.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">SIA data confirms semiconductor supercycle thesis driven by AI demand. Segment-level analysis reveals memory and logic growth divergence with implications for Robotnik universe semiconductor entities...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- Foundation models -->
+        <div class="feed-card" data-type="research" data-sector="robo" data-hours="120" data-tickers="">
           <div class="feed-icon type-research">R</div>
           <div class="feed-body">
-            <div class="feed-headline">Foundation models for robot learning: a survey of multi-task generalization across embodied systems</div>
-            <div class="feed-meta"><span class="feed-source">arXiv cs.AI</span> · 5d ago <span class="feed-sector sector-robo">Robo</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Foundation models for robot learning: a survey of multi-task generalization across embodied systems</div>
+            <div class="feed-meta">
+              <span class="feed-source">arXiv cs.AI</span> &middot; 5d ago
+              <span class="feed-sector sector-robo">Robo</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">A comprehensive survey of foundation models applied to robot learning, covering multi-task generalization, cross-embodiment transfer, and the emerging paradigm of large-scale pretrained models for physical manipulation.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Foundation model adoption in robotics accelerates compute requirements at the edge. Cross-referencing with NVIDIA Jetson ecosystem and robotics OEM roadmaps reveals convergence timeline...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- SpaceX -->
+        <div class="feed-card" data-type="news" data-sector="space" data-hours="120" data-tickers="">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">SpaceX Starship completes sixth test flight with successful booster catch and extended orbital coast</div>
-            <div class="feed-meta"><span class="feed-source">SpaceNews</span> · 5d ago <span class="feed-sector sector-space">Space</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">SpaceX Starship completes sixth test flight with successful booster catch and extended orbital coast</div>
+            <div class="feed-meta">
+              <span class="feed-source">SpaceNews</span> &middot; 5d ago
+              <span class="feed-sector sector-space">Space</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">SpaceX has completed the sixth integrated test flight of Starship, successfully catching the Super Heavy booster and demonstrating an extended orbital coast phase for the upper stage vehicle.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Starship reusability milestones reshape launch economics and satellite deployment capacity. Cross-stack implications for space infrastructure, defense, and semiconductor supply chain logistics...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
 
-        <div class="feed-card">
+        <!-- ON Semi -->
+        <div class="feed-card" data-type="news" data-sector="cross" data-hours="144" data-tickers="ON">
           <div class="feed-icon type-news">N</div>
           <div class="feed-body">
-            <div class="feed-headline">ON Semiconductor reports record silicon carbide revenue as EV power electronics demand accelerates</div>
-            <div class="feed-meta"><span class="feed-source">EE Times</span> · 6d ago <span class="feed-sector sector-cross">Cross</span></div>
+            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">ON Semiconductor reports record silicon carbide revenue as EV power electronics demand accelerates</div>
+            <div class="feed-meta">
+              <span class="feed-source">EE Times</span> &middot; 6d ago
+              <span class="feed-sector sector-cross">Cross</span>
+              <span class="ticker-pill">ON</span>
+            </div>
+            <div class="feed-expand" style="display:none;">
+              <p class="feed-excerpt">ON Semiconductor has reported record silicon carbide revenue driven by accelerating demand for power electronics in electric vehicles. The company is expanding SiC wafer production capacity to meet projected EV adoption growth.</p>
+              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
+              <div class="feed-analysis-gate">
+                <div class="feed-analysis-locked">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
+                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
+                  </div>
+                  <div class="analysis-blur">Silicon carbide revenue trajectory validates cross-stack thesis connecting semiconductor materials to automotive electrification. Competitive dynamics with Wolfspeed and Infineon in the power semiconductor market...</div>
+                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
+                </div>
+              </div>
+            </div>
           </div>
+          <button class="bookmark-btn" onclick="toggleBookmark(this)" title="Save this item">&#9734;</button>
         </div>
+
+        <!-- Gating divider after 7-day mark -->
+        <div class="gating-divider">&mdash;&mdash; Older intelligence requires clearance &mdash;&mdash;</div>
 
       </div>
-      <button class="load-more-btn">Extend scan range →</button>
+
+      <!-- 6. Load More -->
+      <button class="load-more-btn">Extend scan range &rarr;</button>
     </div>
 
   </div>
@@ -214,39 +704,34 @@
     <!-- Trending Topics -->
     <div class="dash-widget">
       <div class="dash-widget-title">Trending Topics</div>
+      <!-- TODO: Make dynamic — count keyword frequency from RSS data -->
       <div class="topic-tag"><span class="topic-name">CoWoS Packaging</span><span class="topic-count">47 mentions</span></div>
       <div class="topic-tag"><span class="topic-name">Humanoid Robotics</span><span class="topic-count">38 mentions</span></div>
       <div class="topic-tag"><span class="topic-name">2nm Process</span><span class="topic-count">31 mentions</span></div>
       <div class="topic-tag"><span class="topic-name">Edge Inference</span><span class="topic-count">24 mentions</span></div>
       <div class="topic-tag"><span class="topic-name">Chiplet Interconnect</span><span class="topic-count">19 mentions</span></div>
+      <div class="topic-tag"><span class="topic-name">Critical Materials</span><span class="topic-count">15 mentions</span></div>
+      <div class="topic-tag"><span class="topic-name">Rare Earth Controls</span><span class="topic-count">12 mentions</span></div>
     </div>
 
     <!-- Field Transmissions -->
     <div class="dash-widget">
       <div class="dash-widget-title">Field Transmissions</div>
-      <div class="substack-item">
-        <div class="substack-title">Weekly Briefing #12: The packaging wars heat up</div>
-        <div class="substack-date">Mar 20, 2026</div>
+      <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
+        Robotnik's weekly intelligence briefing. Coming soon.
+        <!-- TODO: Replace with actual Substack feed once newsletter launches -->
       </div>
-      <div class="substack-item">
-        <div class="substack-title">Deep Dive: Who supplies the humanoid stack?</div>
-        <div class="substack-date">Mar 13, 2026</div>
-      </div>
-      <div class="substack-item">
-        <div class="substack-title">Weekly Briefing #11: Samsung's foundry gambit</div>
-        <div class="substack-date">Mar 6, 2026</div>
-      </div>
-      <a href="#" class="view-all-link">Subscribe on Substack →</a>
+      <a href="thesis.html#signup" class="view-all-link">Sign up to receive transmissions &rarr;</a>
     </div>
 
     <!-- Contributors -->
     <div class="dash-widget">
       <div class="dash-widget-title">Contributors</div>
-      <div class="contributor-row"><span class="contributor-dot"></span> Prof. J. Kober — TU Delft</div>
-      <div class="contributor-row"><span class="contributor-dot"></span> Dr. S. Levine — UC Berkeley</div>
-      <div class="contributor-row"><span class="contributor-dot"></span> Prof. M. Riedl — Georgia Tech</div>
-      <div class="contributor-row"><span class="contributor-dot"></span> Dr. A. Saxena — Stanford</div>
-      <div class="contributor-row"><span class="contributor-dot"></span> Prof. K. Lynch — Northwestern</div>
+      <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
+        Robotnik is seeking research contributors. Academics and analysts covering semiconductors, robotics, space technology, or critical materials &mdash; transmit your interest.
+        <!-- TODO: Replace with actual contributor profiles once recruited -->
+      </div>
+      <a href="thesis.html#signup" class="view-all-link">Apply to contribute &rarr;</a>
     </div>
 
   </div>
@@ -255,6 +740,94 @@
 </div><!-- .main-content -->
 
 <script src="js/nav.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=3"></script>
+<script>
+// ===== INTEL FILTERS =====
+var intelFilters = { type: 'all', sector: 'all', time: '30d' };
+
+function setIntelFilter(group, btn) {
+  intelFilters[group] = btn.dataset.val;
+  btn.parentElement.querySelectorAll('.intel-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  applyIntelFilters();
+}
+
+function applyIntelFilters() {
+  var cards = document.querySelectorAll('.feed-card');
+  cards.forEach(function(card) {
+    var show = true;
+    // Type filter
+    if (intelFilters.type === 'saved') {
+      show = card.querySelector('.bookmark-btn.saved') !== null;
+    } else if (intelFilters.type !== 'all') {
+      show = card.dataset.type === intelFilters.type;
+    }
+    // Sector filter
+    if (show && intelFilters.sector !== 'all') {
+      show = card.dataset.sector === intelFilters.sector;
+    }
+    // Time filter
+    if (show && intelFilters.time !== 'all') {
+      var hrs = parseInt(card.dataset.hours) || 0;
+      var maxHrs = intelFilters.time === '24h' ? 24 : intelFilters.time === '7d' ? 168 : 720;
+      show = hrs <= maxHrs;
+    }
+    card.style.display = show ? '' : 'none';
+  });
+}
+
+// ===== FEED EXPAND (accordion) =====
+function toggleFeedExpand(feedBody) {
+  var expand = feedBody.querySelector('.feed-expand');
+  if (!expand) return;
+  expand.style.display = expand.style.display === 'none' ? 'block' : 'none';
+}
+
+// ===== BOOKMARK =====
+var savedItems = JSON.parse(localStorage.getItem('robotnik_saved') || '[]');
+
+function toggleBookmark(btn) {
+  var card = btn.closest('.feed-card');
+  var headline = card.querySelector('.feed-headline').textContent.substring(0, 50);
+  var idx = savedItems.indexOf(headline);
+  if (idx === -1) {
+    savedItems.push(headline);
+    btn.textContent = '\u2605';
+    btn.classList.add('saved');
+  } else {
+    savedItems.splice(idx, 1);
+    btn.textContent = '\u2606';
+    btn.classList.remove('saved');
+  }
+  localStorage.setItem('robotnik_saved', JSON.stringify(savedItems));
+  updateSavedCount();
+}
+
+function updateSavedCount() {
+  var el = document.getElementById('saved-count');
+  if (el) el.textContent = savedItems.length > 0 ? '(' + savedItems.length + ')' : '';
+}
+
+// Restore saved state on load
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('briefing-date').textContent = new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+  document.querySelectorAll('.feed-card').forEach(function(card) {
+    var headline = card.querySelector('.feed-headline').textContent.substring(0, 50);
+    var btn = card.querySelector('.bookmark-btn');
+    if (savedItems.includes(headline) && btn) {
+      btn.textContent = '\u2605';
+      btn.classList.add('saved');
+    }
+  });
+  updateSavedCount();
+});
+
+// TODO: Implement actual date-based gating when RSS data is live
+// Free: last 7 days visible. Enterprise: full archive access.
+
+// TODO: Generate daily briefing via Claude API using RSS data
+// Cross-reference news against Robotnik universe companies
+// Write in Robotnik voice
+</script>
 </body>
 </html>

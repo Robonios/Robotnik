@@ -782,11 +782,15 @@ async function loadIntelligenceData() {
   if (filings) filingsData = filings.filings || [];
   if (reports) reportsData = reports.reports || [];
 
-  document.getElementById('stat-news-count').textContent = newsData.length || '\u2014';
-  document.getElementById('stat-paper-count').textContent = researchData.length || '\u2014';
-  document.getElementById('stat-filing-count').textContent = filingsData.length || '\u2014';
+  var el1 = document.getElementById('stat-news-count');
+  if (el1) el1.textContent = newsData.length || '\u2014';
+  var el2 = document.getElementById('stat-paper-count');
+  if (el2) el2.textContent = researchData.length || '\u2014';
+  var el3 = document.getElementById('stat-filing-count');
+  if (el3) el3.textContent = filingsData.length || '\u2014';
   const updated = (news && news.updated) || (research && research.updated) || '\u2014';
-  document.getElementById('stat-updated').textContent = updated;
+  var el4 = document.getElementById('stat-updated');
+  if (el4) el4.textContent = updated;
   renderIntelligence();
 }
 
@@ -861,7 +865,9 @@ function renderReportCard(r) {
 
 function renderIntelligence() {
   const container = document.getElementById('intelligence-content');
-  const search = (document.getElementById('intelligence-search').value || '').toLowerCase();
+  if (!container) return; // Element not present in current page layout
+  const searchEl = document.getElementById('intelligence-search');
+  const search = (searchEl ? searchEl.value : '').toLowerCase();
 
   let items = [];
   if (iTypeFilter === 'all' || iTypeFilter === 'news')
