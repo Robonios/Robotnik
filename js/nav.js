@@ -21,13 +21,14 @@
     const dot = item.online
       ? '<span class="status-dot online"></span>'
       : '<span class="status-dot offline"></span>';
-    const tooltip = isDisabled ? ' title="Module calibrating..."' : '';
-    const tag = isDisabled ? 'span' : 'a';
-    const hrefAttr = isDisabled ? '' : ` href="${item.href}"`;
-    return `<${tag}${hrefAttr} class="${cls}"${tooltip}>
-      <span class="nav-label">${item.label}</span>
+    const soonBadge = isDisabled
+      ? '<span style="font-size:8px;color:#5A6178;border:1px solid #2A2F3A;padding:1px 4px;border-radius:2px;margin-left:6px">SOON</span>'
+      : '';
+    // All items are clickable links (greyed items navigate to placeholder pages)
+    return `<a href="${item.href}" class="${cls}">
+      <span class="nav-label">${item.label}${soonBadge}</span>
       ${dot}
-    </${tag}>`;
+    </a>`;
   }).join('');
 
   const sidebar = `
@@ -47,6 +48,7 @@
           <span style="color:var(--text)">IN PROGRESS</span><span class="animated-dots" style="color:var(--text)"></span>
           <div style="margin-top:0.4rem;color:var(--text-muted);line-height:1.5;">The intelligence layer<br>for the frontier<br>technology stack</div>
         </div>
+        <div style="margin-top:0.5rem;font-size:9px;color:#5A6178;line-height:1.5;">347 frontier assets tracked<br>across 15+ countries</div>
         <div class="sidebar-version">v0.1 // Pre-launch</div>
         <div class="sidebar-attrib">Data by <a href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a></div>
       </div>

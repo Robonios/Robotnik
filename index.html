@@ -197,12 +197,7 @@
         <button class="news-toggle-btn disabled" title="Priority clearance required">All</button>
       </div>
       <div id="news-feed-container">
-        <div class="news-item"><a href="news.html" class="news-headline-link"><div class="news-headline">TSMC CoWoS expansion signals capacity shift for AI chip packaging</div></a><div class="news-meta">2h ago &middot; Reuters</div></div>
-        <div class="news-item"><a href="news.html" class="news-headline-link"><div class="news-headline">Rocket Lab secures Neutron launch contract with major defense partner</div></a><div class="news-meta">5h ago &middot; SpaceNews</div></div>
-        <div class="news-item"><a href="news.html" class="news-headline-link"><div class="news-headline">Humanoid robotics funding crosses $5B mark in trailing twelve months</div></a><div class="news-meta">8h ago &middot; TechCrunch</div></div>
-        <div class="news-item"><a href="news.html" class="news-headline-link"><div class="news-headline">NVIDIA Jetson Thor enters mass production for autonomous systems</div></a><div class="news-meta">12h ago &middot; IEEE Spectrum</div></div>
-        <div class="news-item"><a href="news.html" class="news-headline-link"><div class="news-headline">AST SpaceMobile begins commercial direct-to-cell service</div></a><div class="news-meta">1d ago &middot; Payload</div></div>
-        <div class="news-sample-note" style="font-size:9px;color:#5A6178;margin-top:0.5rem;">(Sample data &mdash; live feed calibrating)</div>
+        <div style="font-size:10px;color:#5A6178;">Loading<span class="animated-dots"></span></div>
       </div>
       <a href="news.html" class="view-all-link">View all news &rarr;</a>
     </div>
@@ -235,5 +230,31 @@
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Load live news feed for sidebar widget
+(async function() {
+  try {
+    var resp = await fetch('data/news.json?v=' + Date.now());
+    var data = await resp.json();
+    var items = (data.items || []).slice(0, 5);
+    var container = document.getElementById('news-feed-container');
+    if (items.length === 0) {
+      container.innerHTML = '<div style="font-size:10px;color:#5A6178;">No recent news</div>';
+      return;
+    }
+    container.innerHTML = items.map(function(item) {
+      var d = new Date(item.date + 'T12:00:00Z');
+      var hrs = Math.floor((Date.now() - d) / 3600000);
+      var ago = hrs < 24 ? hrs + 'h ago' : Math.floor(hrs/24) + 'd ago';
+      return '<div class="news-item"><a href="news.html" class="news-headline-link"><div class="news-headline">' +
+        item.title.replace(/</g,'&lt;') + '</div></a><div class="news-meta">' + ago + ' &middot; ' +
+        (item.source || '').replace(/</g,'&lt;') + '</div></div>';
+    }).join('');
+  } catch(e) {
+    document.getElementById('news-feed-container').innerHTML =
+      '<div style="font-size:10px;color:#5A6178;">Newsfeed connecting<span class="animated-dots"></span></div>';
+  }
+})();
+</script>
 </body>
 </html>

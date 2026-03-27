@@ -50,13 +50,20 @@ jobs:
       - name: Calculate Robotnik Index
         run: python scripts/calculate_index.py
 
-      - name: Commit price & index data
+      - name: Install dependencies for news
+        run: pip install feedparser
+
+      - name: Fetch news (RSS feeds — daily)
+        run: python scripts/fetch_news.py
+        continue-on-error: true
+
+      - name: Commit price, index & news data
         run: |
           git config user.name "Robotnik Pipeline"
           git config user.email "data@robotniks.com"
-          git add data/prices/ data/index/
+          git add data/prices/ data/index/ data/news.json
           if git diff --cached --quiet; then
-            echo "No price/index changes — skipping commit"
+            echo "No price/index/news changes — skipping commit"
           else
             git commit -m "data: daily price & index update $(date -u +%Y-%m-%d)"
             git push

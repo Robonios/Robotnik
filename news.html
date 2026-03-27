@@ -14,14 +14,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <style>
-.briefing-card { background:#161B22; border-left:3px solid #F5D921; border-radius:0 6px 6px 0; padding:1rem 1.25rem; margin-bottom:1rem; }
+.briefing-card { background:#161B22; border-left:3px solid #F5D921; border-radius:0 6px 6px 0; padding:1rem 1.25rem; margin-bottom:0.5rem; }
 .briefing-header { font-size:11px; font-weight:700; color:#F5D921; letter-spacing:0.08em; margin-bottom:0.75rem; }
 .briefing-body { font-size:11px; color:#e6e8ed; line-height:1.7; }
-.briefing-body ul { margin:0.5rem 0 0 1rem; list-style:disc; }
-.briefing-body li { margin-bottom:0.3rem; }
-.briefing-gated { margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid #1E2330; }
-.briefing-blur { font-size:10px; color:#5A6178; filter:blur(2px); user-select:none; line-height:1.6; }
-.sample-note { font-size:10px; color:#5A6178; font-style:italic; margin-bottom:0.75rem; padding:0 0.25rem; }
+.briefing-body ul { margin:0.5rem 0 0 0; list-style:none; padding:0; }
+.briefing-body li { margin-bottom:0.75rem; padding-left:0.5rem; border-left:2px solid #252A36; }
+.briefing-gated { margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid #1E2330; position:relative; }
+.briefing-gated-content { position:relative; }
+.briefing-blur { font-size:10px; color:#8B92A5; filter:blur(4px); user-select:none; line-height:1.6; }
+.briefing-gate-overlay { position:relative; text-align:center; margin-top:0.5rem; }
 .ticker-pill { display:inline-block; font-size:9px; background:#252A36; color:#e6e8ed; padding:0.1rem 0.35rem; border-radius:3px; margin-left:0.3rem; font-weight:500; }
 .feed-card { position:relative; }
 .feed-expand { padding:0.75rem 0 0; font-size:11px; color:#8B92A5; line-height:1.6; }
@@ -29,21 +30,30 @@
 .feed-read-more { color:#F5D921; font-size:10px; text-decoration:none; }
 .feed-read-more:hover { text-decoration:underline; }
 .feed-analysis-gate { margin-top:0.75rem; }
-.feed-analysis-locked { background:#161B22; border:1px solid #252A36; border-radius:4px; padding:0.75rem; }
-.analysis-blur { font-size:10px; color:#5A6178; filter:blur(3px); user-select:none; line-height:1.5; }
-/* TODO: Re-add bookmark styles when auth exists */
-.gating-divider { text-align:center; color:#5A6178; font-size:10px; padding:0.75rem 0; letter-spacing:0.05em; }
-.gated-item .feed-excerpt { filter:blur(4px); user-select:none; }
+.feed-analysis-locked { background:rgba(22,27,34,0.85); border:1px solid #252A36; border-radius:4px; padding:0.75rem; position:relative; }
+.analysis-blur { font-size:10px; color:#8B92A5; filter:blur(4px); user-select:none; line-height:1.5; }
 .sector-materials { color:#111318; background:#FB923C; }
 .feed-headline { cursor:pointer; }
 .feed-headline:hover { color:#F5D921; }
-.premium-gate-overlay { background:#161B22; border:1px solid #252A36; border-radius:6px; padding:1.5rem; text-align:center; margin:1rem 0; }
-.premium-gate-overlay .gate-title { color:#F5D921; font-weight:700; font-size:12px; letter-spacing:0.08em; margin-bottom:0.75rem; }
-.premium-gate-overlay .gate-text { color:#8B92A5; font-size:11px; line-height:1.6; margin-bottom:1rem; }
+/* Premium gate: translucent with blur */
+.premium-gate-overlay { position:relative; border-radius:6px; padding:0; margin:1rem 0; overflow:hidden; }
+.premium-gate-blur { filter:blur(4px); user-select:none; pointer-events:none; opacity:0.5; }
+.premium-gate-front { background:rgba(17,19,24,0.75); border:1px solid #252A36; border-radius:6px; padding:1.5rem; text-align:center; }
+.premium-gate-front .gate-title { color:#F5D921; font-weight:700; font-size:12px; letter-spacing:0.08em; margin-bottom:0.75rem; }
+.premium-gate-front .gate-text { color:#8B92A5; font-size:11px; line-height:1.6; margin-bottom:1rem; }
 .premium-filter { opacity:0.7; }
-.past-briefings-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:500; align-items:center; justify-content:center; }
-.past-briefings-modal.active { display:flex; }
-.past-briefings-content { background:#161B22; border:1px solid #252A36; border-radius:8px; padding:2rem; max-width:500px; width:90%; text-align:center; }
+/* Past briefings */
+.past-briefings-section { margin-top:0.75rem; }
+.past-briefings-toggle { background:none; border:none; color:#5A6178; font-family:var(--font); font-size:10px; cursor:pointer; padding:0; }
+.past-briefings-toggle:hover { color:#8B92A5; }
+.past-briefings-list { display:none; margin-top:0.75rem; }
+.past-briefings-list.open { display:block; }
+.past-briefing-item { background:#161B22; border:1px solid #1E2330; border-radius:4px; padding:0.75rem 1rem; margin-bottom:0.5rem; position:relative; overflow:hidden; }
+.past-briefing-date { font-size:10px; font-weight:700; color:#F5D921; letter-spacing:0.06em; margin-bottom:0.35rem; }
+.past-briefing-preview { font-size:10px; color:#8B92A5; line-height:1.5; }
+.past-briefing-blur { filter:blur(4px); user-select:none; }
+.past-briefing-gate { text-align:center; margin-top:0.5rem; }
+/* TODO: Re-add bookmark styles when auth exists */
 </style>
 </head>
 <body data-page="news">
@@ -63,29 +73,50 @@
       <div class="intel-subtitle">Aggregated news, filings, research, and reports from across the frontier technology stack</div>
     </div>
 
-    <!-- 2. Daily Mission Briefing -->
+    <!-- 2. Daily Briefing -->
     <div class="briefing-card">
-      <div class="briefing-header">DAILY MISSION BRIEFING // <span id="briefing-date"></span></div>
+      <div class="briefing-header">DAILY BRIEFING // <span id="briefing-date"></span></div>
       <div class="briefing-body">
         <p>Tovarishch, three signals detected today:</p>
         <ul>
-          <li>TSMC expanded CoWoS capacity by 40%, targeting 2x output by Q4 <span class="feed-sector sector-semi">Semi</span></li>
-          <li>Humanoid robotics funding crosses $5B in trailing twelve months <span class="feed-sector sector-robo">Robo</span></li>
-          <li>Rocket Lab secures Neutron launch contract with major defense partner <span class="feed-sector sector-space">Space</span></li>
+          <li>TSMC expanded CoWoS capacity by 40%, targeting 2x output by Q4. This directly relieves the advanced packaging bottleneck affecting NVIDIA, AMD, and Broadcom. Watch substrate suppliers Ibiden (4062 JP) and Unimicron (3037 TT) who must scale in parallel. <span class="feed-sector sector-semi">Semi</span> <span class="feed-sector sector-materials">Materials</span></li>
+          <li>Humanoid robotics funding crosses $5B in trailing twelve months, led by Figure and 1X Technologies. The capital concentration signals a shift from prototype to deployment &mdash; increasing demand for edge compute (NVIDIA Jetson), servo motors (Fanuc, Yaskawa), and rare earth magnets (MP Materials). <span class="feed-sector sector-robo">Robo</span> <span class="feed-sector sector-semi">Semi</span> <span class="feed-sector sector-materials">Materials</span></li>
+          <li>Rocket Lab secures Neutron launch contract with major defense partner, first flight H2 2026. Neutron's reusable medium-lift architecture positions RKLB as the primary alternative to SpaceX for institutional payloads. Component suppliers to watch: Moog (MOG.A) for propulsion, Hexcel (HXL) for carbon fibre structures. <span class="feed-sector sector-space">Space</span> <span class="feed-sector sector-materials">Materials</span></li>
         </ul>
-        <p style="margin-top:0.5rem;font-size:10px;color:#5A6178;">Full intelligence below.</p>
       </div>
       <div class="briefing-gated">
-        <div class="briefing-blur">Full daily briefing with cross-references, supply chain impact analysis, and Robotnik context is available to mission operatives with enterprise clearance.</div>
-        <a href="thesis.html#signup" class="btn-y" style="font-size:11px;margin-top:0.5rem;">Request clearance &rarr;</a>
+        <div class="briefing-blur">Full cross-referenced analysis: supply chain mapping across 347 universe entities, second-order impact assessment, and real-time price correlation data for all mentioned tickers. Includes Robotnik Composite Index sector impact scores and materials dependency matrix.</div>
+        <div class="briefing-gate-overlay">
+          <a href="thesis.html#signup" class="btn-y" style="font-size:11px;margin-top:0.5rem;">Request clearance &rarr;</a>
+        </div>
       </div>
-      <div style="margin-top:0.75rem;">
-        <a href="#past-briefings" class="view-all-link" onclick="showPastBriefingsGate(event)" style="font-size:10px;">Past briefings &rarr;</a>
+    </div>
+
+    <!-- Past briefings (expandable) -->
+    <div class="past-briefings-section">
+      <button class="past-briefings-toggle" onclick="togglePastBriefings()">Past briefings <span id="past-arrow">&#9660;</span></button>
+      <div id="past-briefings-list" class="past-briefings-list">
+        <div class="past-briefing-item">
+          <div class="past-briefing-date">DAILY BRIEFING // Mar 26, 2026</div>
+          <div class="past-briefing-preview">Tovarishch, four signals detected:</div>
+          <div class="past-briefing-blur">Shin-Etsu silicon wafer shipments up 12% as advanced node demand accelerates. Samsung 2nm GAA enters risk production. Ibiden IC substrate expansion targets CoWoS demand. AST SpaceMobile begins commercial service across five markets.</div>
+          <div class="past-briefing-gate">
+            <span style="font-size:9px;color:#5A6178;">&#x1F512; Older briefings require enterprise clearance</span>
+          </div>
+        </div>
+        <div class="past-briefing-item">
+          <div class="past-briefing-date">DAILY BRIEFING // Mar 25, 2026</div>
+          <div class="past-briefing-preview">Tovarishch, two signals detected:</div>
+          <div class="past-briefing-blur">Samsung foundry yield improvements at 3nm GAA narrow gap with TSMC. Boston Dynamics Atlas demonstrates autonomous warehouse logistics in multi-robot coordination demo. Novel chiplet interconnect achieves 10TB/s bandwidth.</div>
+          <div class="past-briefing-gate">
+            <span style="font-size:9px;color:#5A6178;">&#x1F512; Older briefings require enterprise clearance</span>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- 3. Filter Bar -->
-    <div class="intel-filters">
+    <div class="intel-filters" style="margin-top:1rem;">
       <div class="intel-filter-group" data-filter="type">
         <button class="intel-filter-btn active" data-val="all" onclick="setIntelFilter('type',this)">All</button>
         <button class="intel-filter-btn" data-val="news" onclick="setIntelFilter('type',this)">News</button>
@@ -110,598 +141,15 @@
       </div>
     </div>
 
-    <!-- 4. Sample Data Note -->
-    <div class="sample-note">(Sample data &mdash; live intelligence feed calibrating. Content shown is illustrative.)</div>
-
-    <!-- 5. Feed Cards -->
+    <!-- 4. Feed (rendered dynamically from data/news.json) -->
     <div class="dash-widget" style="padding:0;">
-      <div class="intel-feed">
-
-        <!-- TSMC CoWoS -->
-        <div class="feed-card" data-type="news" data-sector="semi" data-hours="2" data-tickers="TSM,NVDA,AMD,ASML">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">TSMC CoWoS expansion signals capacity shift for AI chip packaging &mdash; foundry now targeting 2x output by Q4</div>
-            <div class="feed-meta">
-              <span class="feed-source">Reuters</span> &middot; 2h ago
-              <span class="feed-sector sector-semi">Semi</span>
-              <span class="ticker-pill">TSM</span><span class="ticker-pill">NVDA</span><span class="ticker-pill">AMD</span><span class="ticker-pill">ASML</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">TSMC is expanding its Chip-on-Wafer-on-Substrate packaging capacity by 40%, signaling a major shift in how advanced AI chips are manufactured. The move comes as demand from NVIDIA, AMD, and other hyperscalers continues to outstrip available capacity.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <!-- TODO: When enterprise auth exists, call Claude API to generate contextual analysis -->
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Cross-referencing against 347 universe entities shows supply chain impact concentrated in advanced packaging ecosystem. Key beneficiaries include substrate manufacturers and EDA tooling providers...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Rocket Lab -->
-        <div class="feed-card" data-type="news" data-sector="space" data-hours="5" data-tickers="RKLB">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Rocket Lab secures Neutron launch contract with major defense partner, first flight slated for H2 2026</div>
-            <div class="feed-meta">
-              <span class="feed-source">SpaceNews</span> &middot; 5h ago
-              <span class="feed-sector sector-space">Space</span>
-              <span class="ticker-pill">RKLB</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Rocket Lab has secured a significant launch contract for its Neutron medium-lift vehicle with a major defense partner. The deal validates Neutron's competitive positioning in the national security launch market.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Defense launch market analysis shows Neutron positioned to capture mid-tier contracts currently dominated by ULA Vulcan. Revenue implications for Rocket Lab's backlog are significant...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Shin-Etsu Chemical (NEW materials) -->
-        <div class="feed-card" data-type="news" data-sector="materials" data-hours="6" data-tickers="4063_JP,TSM">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Shin-Etsu Chemical reports silicon wafer shipments up 12% as advanced node demand accelerates</div>
-            <div class="feed-meta">
-              <span class="feed-source">Reuters</span> &middot; 6h ago
-              <span class="feed-sector sector-materials">Materials</span>
-              <span class="ticker-pill">4063 JP</span><span class="ticker-pill">TSM</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Shin-Etsu Chemical has reported a 12% increase in silicon wafer shipments year-over-year, driven by accelerating demand for advanced process nodes at leading foundries. The company is expanding 300mm capacity to meet projected growth.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Wafer shipment growth correlates with leading-edge capacity expansion across TSMC and Samsung. Substrate material demand is a key leading indicator for semiconductor capital expenditure cycles...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Humanoid funding -->
-        <div class="feed-card" data-type="news" data-sector="robo" data-hours="8" data-tickers="">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Humanoid robotics funding crosses $5B mark in trailing twelve months, led by Figure and 1X Technologies</div>
-            <div class="feed-meta">
-              <span class="feed-source">TechCrunch</span> &middot; 8h ago
-              <span class="feed-sector sector-robo">Robo</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Venture funding into humanoid robotics has crossed $5B over the trailing twelve months, with Figure AI and 1X Technologies accounting for a significant share. The surge reflects growing conviction in general-purpose humanoid platforms.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Funding concentration analysis reveals top 5 companies capturing 78% of humanoid robotics capital. Supply chain implications span actuators, sensors, and compute modules across multiple Robotnik universe entities...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- NVIDIA Jetson -->
-        <div class="feed-card" data-type="news" data-sector="semi" data-hours="12" data-tickers="NVDA">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">NVIDIA Jetson Thor enters mass production for autonomous systems across robotics and industrial applications</div>
-            <div class="feed-meta">
-              <span class="feed-source">IEEE Spectrum</span> &middot; 12h ago
-              <span class="feed-sector sector-semi">Semi</span>
-              <span class="ticker-pill">NVDA</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">NVIDIA has begun mass production of its Jetson Thor compute module, designed to power next-generation autonomous robots and industrial automation systems. The module integrates transformer-class AI processing in an embedded form factor.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Jetson Thor positions NVIDIA as the dominant edge compute platform for robotics. Downstream impact on robotics OEMs and system integrators across the Robotnik universe is substantial...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- AST SpaceMobile -->
-        <div class="feed-card" data-type="news" data-sector="space" data-hours="24" data-tickers="ASTS">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">AST SpaceMobile begins commercial direct-to-cell service with initial coverage across five markets</div>
-            <div class="feed-meta">
-              <span class="feed-source">Payload</span> &middot; 1d ago
-              <span class="feed-sector sector-space">Space</span>
-              <span class="ticker-pill">ASTS</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">AST SpaceMobile has launched commercial direct-to-cell satellite service, providing cellular connectivity in five initial markets. The service enables standard smartphones to connect via satellite without hardware modifications.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Direct-to-cell satellite service creates new addressable market for connectivity infrastructure. Cross-referencing with space economy universe entities reveals competitive dynamics with Starlink and T-Mobile partnership...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Rare earth (NEW materials) -->
-        <div class="feed-card" data-type="news" data-sector="materials" data-hours="24" data-tickers="MP,LYC_AU">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Rare earth prices surge as China signals new export controls on gallium and germanium</div>
-            <div class="feed-meta">
-              <span class="feed-source">Mining.com</span> &middot; 1d ago
-              <span class="feed-sector sector-materials">Materials</span>
-              <span class="ticker-pill">MP</span><span class="ticker-pill">LYC AU</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Rare earth and critical mineral prices have surged after China signaled new export controls on gallium and germanium, two elements essential for semiconductor manufacturing, defense systems, and advanced electronics.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Export control escalation impacts gallium arsenide and germanium substrate supply chains. Cross-stack implications for compound semiconductor manufacturers, defense primes, and alternative sourcing strategies...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Sim-to-real -->
-        <div class="feed-card" data-type="research" data-sector="robo" data-hours="24" data-tickers="">
-          <div class="feed-icon type-research">R</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Sim-to-real transfer learning achieves 94% success rate in dexterous manipulation tasks using reinforcement learning</div>
-            <div class="feed-meta">
-              <span class="feed-source">arXiv cs.RO</span> &middot; 1d ago
-              <span class="feed-sector sector-robo">Robo</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Researchers demonstrate a sim-to-real transfer pipeline achieving 94% success rate on dexterous manipulation tasks, using domain randomization and reinforcement learning in high-fidelity physics simulation environments.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Sim-to-real transfer breakthroughs accelerate deployment timelines for warehouse and manufacturing robotics. Implications for simulation platform providers and robotics OEMs in the Robotnik universe...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Intel 10-K -->
-        <div class="feed-card" data-type="filings" data-sector="semi" data-hours="24" data-tickers="INTC">
-          <div class="feed-icon type-filing">F</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Intel 10-K filing reveals $4.2B restructuring charge and updated foundry services roadmap through 2028</div>
-            <div class="feed-meta">
-              <span class="feed-source">SEC EDGAR</span> &middot; 1d ago
-              <span class="feed-sector sector-semi">Semi</span>
-              <span class="ticker-pill">INTC</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Intel's annual 10-K filing discloses a $4.2B restructuring charge tied to its foundry services transformation and updated roadmap extending through 2028, with key milestones for Intel 18A and external customer acquisition.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Intel's restructuring trajectory impacts the competitive landscape for advanced foundry services. Cross-referencing with TSMC, Samsung, and GlobalFoundries positions reveals shifting market share dynamics...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- IFR World Robotics -->
-        <div class="feed-card" data-type="reports" data-sector="robo" data-hours="48" data-tickers="">
-          <div class="feed-icon type-report">&#9733;</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">IFR World Robotics 2026: Industrial robot installations reach 590,000 units globally, China accounts for 52%</div>
-            <div class="feed-meta">
-              <span class="feed-source">IFR</span> &middot; 2d ago
-              <span class="feed-sector sector-robo">Robo</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">The International Federation of Robotics reports that global industrial robot installations reached 590,000 units in 2025, with China accounting for 52% of all deployments. Growth was led by automotive and electronics sectors.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Installation data cross-referenced with Robotnik universe shows concentrated growth in collaborative and mobile robot categories. Regional analysis reveals supply chain dependencies on Chinese manufacturing ecosystem...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Samsung 2nm -->
-        <div class="feed-card" data-type="news" data-sector="semi" data-hours="48" data-tickers="">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Samsung announces 2nm GAA process enters risk production, targets HPC and mobile SoCs for early 2027</div>
-            <div class="feed-meta">
-              <span class="feed-source">SemiEngineering</span> &middot; 2d ago
-              <span class="feed-sector sector-semi">Semi</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Samsung Foundry has announced that its 2nm gate-all-around (GAA) process has entered risk production, targeting high-performance computing and mobile system-on-chip applications for early 2027 volume production.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Samsung's 2nm timeline positions against TSMC N2 and Intel 18A. Competitive analysis across foundry ecosystem reveals customer acquisition challenges and yield improvement trajectories...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Ibiden (NEW materials) -->
-        <div class="feed-card" data-type="news" data-sector="materials" data-hours="48" data-tickers="4062_JP,TSM,NVDA">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Ibiden IC substrate capacity expansion targets CoWoS and chiplet packaging demand</div>
-            <div class="feed-meta">
-              <span class="feed-source">Nikkei Asia</span> &middot; 2d ago
-              <span class="feed-sector sector-materials">Materials</span>
-              <span class="ticker-pill">4062 JP</span><span class="ticker-pill">TSM</span><span class="ticker-pill">NVDA</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Ibiden is expanding IC substrate production capacity to meet surging demand from CoWoS advanced packaging and chiplet-based architectures, investing heavily in next-generation substrate technologies for AI accelerator packaging.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">IC substrate capacity is emerging as a critical bottleneck in advanced packaging supply chains. Cross-referencing Ibiden, Shinko Electric, and AT&amp;S positions reveals concentration risk in AI chip packaging materials...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Boston Dynamics -->
-        <div class="feed-card" data-type="news" data-sector="robo" data-hours="48" data-tickers="">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Boston Dynamics Atlas performs autonomous warehouse logistics in multi-robot coordination demo</div>
-            <div class="feed-meta">
-              <span class="feed-source">The Robot Report</span> &middot; 2d ago
-              <span class="feed-sector sector-robo">Robo</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Boston Dynamics demonstrated its electric Atlas robot performing autonomous warehouse logistics tasks in coordination with multiple units, showcasing advances in multi-robot planning and manipulation capabilities.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Multi-robot coordination capabilities accelerate warehouse automation deployment timelines. Component supply chain analysis reveals sensor and actuator demand implications for Robotnik universe entities...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Chiplet interconnect -->
-        <div class="feed-card" data-type="research" data-sector="semi" data-hours="72" data-tickers="">
-          <div class="feed-icon type-research">R</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Novel chiplet interconnect architecture achieves 10TB/s bandwidth with sub-pJ/bit energy efficiency</div>
-            <div class="feed-meta">
-              <span class="feed-source">IEEE</span> &middot; 3d ago
-              <span class="feed-sector sector-semi">Semi</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">A novel chiplet interconnect architecture demonstrated at IEEE achieves 10TB/s aggregate bandwidth with sub-picojoule-per-bit energy efficiency, representing a significant advance in heterogeneous integration technology.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Chiplet interconnect advances impact the entire heterogeneous integration ecosystem. Cross-referencing with UCIe consortium members and EDA tooling providers in the Robotnik universe...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Relativity Space -->
-        <div class="feed-card" data-type="news" data-sector="space" data-hours="72" data-tickers="">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Relativity Space pivots Terran R to fully reusable architecture, delays first orbital attempt to Q3 2026</div>
-            <div class="feed-meta">
-              <span class="feed-source">Ars Technica</span> &middot; 3d ago
-              <span class="feed-sector sector-space">Space</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Relativity Space has pivoted its Terran R medium-lift launch vehicle to a fully reusable architecture, delaying the first orbital attempt to Q3 2026 while pursuing a more competitive long-term vehicle design.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Reusability pivot positions Terran R against SpaceX Falcon 9 and Rocket Lab Neutron in the medium-lift market. Manufacturing technology implications for 3D-printed aerospace components...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- ARM Holdings -->
-        <div class="feed-card" data-type="filings" data-sector="semi" data-hours="72" data-tickers="ARM">
-          <div class="feed-icon type-filing">F</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">ARM Holdings 8-K discloses expanded licensing agreement with major Chinese semiconductor manufacturer</div>
-            <div class="feed-meta">
-              <span class="feed-source">SEC EDGAR</span> &middot; 3d ago
-              <span class="feed-sector sector-semi">Semi</span>
-              <span class="ticker-pill">ARM</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">ARM Holdings has filed an 8-K disclosing an expanded licensing agreement with a major Chinese semiconductor manufacturer, broadening access to ARMv9 architecture for mobile and automotive applications.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">ARM licensing expansion in China has geopolitical and competitive implications. Cross-referencing with RISC-V adoption trends and semiconductor export control landscape reveals strategic positioning dynamics...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Covariant -->
-        <div class="feed-card" data-type="news" data-sector="robo" data-hours="96" data-tickers="">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Covariant's AI brain for warehouse robots achieves 99.8% pick accuracy across 10,000+ SKU environments</div>
-            <div class="feed-meta">
-              <span class="feed-source">VentureBeat</span> &middot; 4d ago
-              <span class="feed-sector sector-robo">Robo</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">Covariant has demonstrated 99.8% pick accuracy for its AI-powered robotic manipulation system across environments with over 10,000 unique SKUs, marking a significant milestone for warehouse automation reliability.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Pick accuracy at scale validates AI-driven warehouse automation economics. Implications for incumbent warehouse automation providers and new entrants across the Robotnik robotics universe...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- SIA -->
-        <div class="feed-card" data-type="reports" data-sector="semi" data-hours="96" data-tickers="">
-          <div class="feed-icon type-report">&#9733;</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">SIA global semiconductor sales reach $62.8B in February, marking 23% year-over-year growth</div>
-            <div class="feed-meta">
-              <span class="feed-source">SIA</span> &middot; 4d ago
-              <span class="feed-sector sector-semi">Semi</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">The Semiconductor Industry Association reports global semiconductor sales reached $62.8B in February 2026, representing 23% year-over-year growth driven by AI accelerator demand and memory recovery.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">SIA data confirms semiconductor supercycle thesis driven by AI demand. Segment-level analysis reveals memory and logic growth divergence with implications for Robotnik universe semiconductor entities...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Foundation models -->
-        <div class="feed-card" data-type="research" data-sector="robo" data-hours="120" data-tickers="">
-          <div class="feed-icon type-research">R</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">Foundation models for robot learning: a survey of multi-task generalization across embodied systems</div>
-            <div class="feed-meta">
-              <span class="feed-source">arXiv cs.AI</span> &middot; 5d ago
-              <span class="feed-sector sector-robo">Robo</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">A comprehensive survey of foundation models applied to robot learning, covering multi-task generalization, cross-embodiment transfer, and the emerging paradigm of large-scale pretrained models for physical manipulation.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Foundation model adoption in robotics accelerates compute requirements at the edge. Cross-referencing with NVIDIA Jetson ecosystem and robotics OEM roadmaps reveals convergence timeline...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- SpaceX -->
-        <div class="feed-card" data-type="news" data-sector="space" data-hours="120" data-tickers="">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">SpaceX Starship completes sixth test flight with successful booster catch and extended orbital coast</div>
-            <div class="feed-meta">
-              <span class="feed-source">SpaceNews</span> &middot; 5d ago
-              <span class="feed-sector sector-space">Space</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">SpaceX has completed the sixth integrated test flight of Starship, successfully catching the Super Heavy booster and demonstrating an extended orbital coast phase for the upper stage vehicle.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Starship reusability milestones reshape launch economics and satellite deployment capacity. Cross-stack implications for space infrastructure, defense, and semiconductor supply chain logistics...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- ON Semi -->
-        <div class="feed-card" data-type="news" data-sector="cross" data-hours="144" data-tickers="ON">
-          <div class="feed-icon type-news">N</div>
-          <div class="feed-body">
-            <div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">ON Semiconductor reports record silicon carbide revenue as EV power electronics demand accelerates</div>
-            <div class="feed-meta">
-              <span class="feed-source">EE Times</span> &middot; 6d ago
-              <span class="feed-sector sector-cross">Cross</span>
-              <span class="ticker-pill">ON</span>
-            </div>
-            <div class="feed-expand" style="display:none;">
-              <p class="feed-excerpt">ON Semiconductor has reported record silicon carbide revenue driven by accelerating demand for power electronics in electric vehicles. The company is expanding SiC wafer production capacity to meet projected EV adoption growth.</p>
-              <a href="#" class="feed-read-more" target="_blank">Read original &rarr;</a>
-              <div class="feed-analysis-gate">
-                <div class="feed-analysis-locked">
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
-                    <span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>
-                    <span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>
-                  </div>
-                  <div class="analysis-blur">Silicon carbide revenue trajectory validates cross-stack thesis connecting semiconductor materials to automotive electrification. Competitive dynamics with Wolfspeed and Infineon in the power semiconductor market...</div>
-                  <a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- TODO: Re-add saved feature when auth exists -->
-        </div>
-
-        <!-- Gating divider — premium time filters now handle access control -->
-
+      <div class="intel-feed" id="live-feed">
+        <div style="text-align:center;padding:2rem;color:#5A6178;font-size:11px;">Loading newsfeed<span class="animated-dots"></span></div>
       </div>
-
-      <!-- 6. Load More -->
-      <button class="load-more-btn">Extend scan range &rarr;</button>
     </div>
+
+    <!-- 5. Load More -->
+    <button class="load-more-btn" id="load-more-btn" style="display:none;" onclick="loadMoreItems()">Extend scan range &rarr;</button>
 
   </div>
 
@@ -711,14 +159,9 @@
     <!-- Trending Topics -->
     <div class="dash-widget">
       <div class="dash-widget-title">Trending Topics</div>
-      <!-- TODO: Make dynamic — count keyword frequency from RSS data -->
-      <div class="topic-tag"><span class="topic-name">CoWoS Packaging</span><span class="topic-count">47 mentions</span></div>
-      <div class="topic-tag"><span class="topic-name">Humanoid Robotics</span><span class="topic-count">38 mentions</span></div>
-      <div class="topic-tag"><span class="topic-name">2nm Process</span><span class="topic-count">31 mentions</span></div>
-      <div class="topic-tag"><span class="topic-name">Edge Inference</span><span class="topic-count">24 mentions</span></div>
-      <div class="topic-tag"><span class="topic-name">Chiplet Interconnect</span><span class="topic-count">19 mentions</span></div>
-      <div class="topic-tag"><span class="topic-name">Critical Materials</span><span class="topic-count">15 mentions</span></div>
-      <div class="topic-tag"><span class="topic-name">Rare Earth Controls</span><span class="topic-count">12 mentions</span></div>
+      <div id="trending-topics">
+        <!-- Populated dynamically from RSS data -->
+      </div>
       <a href="signals.html" class="view-all-link" style="margin-top:0.5rem;">View Frontier Signals &rarr;</a>
     </div>
 
@@ -727,9 +170,8 @@
       <div class="dash-widget-title">Field Transmissions</div>
       <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
         Robotnik's weekly intelligence briefing. Coming soon.
-        <!-- TODO: Replace with actual Substack feed once newsletter launches -->
       </div>
-      <a href="thesis.html#signup" class="view-all-link">Sign up to receive transmissions &rarr;</a>
+      <a href="intelligence.html" class="view-all-link">Sign up to receive transmissions &rarr;</a>
     </div>
 
     <!-- Contributors -->
@@ -737,7 +179,6 @@
       <div class="dash-widget-title">Contributors</div>
       <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
         Robotnik is seeking research contributors. Academics and analysts covering semiconductors, robotics, space technology, or critical materials &mdash; transmit your interest.
-        <!-- TODO: Replace with actual contributor profiles once recruited -->
       </div>
       <a href="thesis.html#signup" class="view-all-link">Apply to contribute &rarr;</a>
     </div>
@@ -747,18 +188,189 @@
 </div>
 </div><!-- .main-content -->
 
-<!-- Past Briefings Modal -->
-<div id="past-briefings-modal" class="past-briefings-modal" onclick="if(event.target===this)this.classList.remove('active')">
-  <div class="past-briefings-content">
-    <div style="color:#F5D921;font-weight:700;font-size:13px;margin-bottom:0.75rem;letter-spacing:0.06em;">CLEARANCE REQUIRED</div>
-    <div style="color:#8B92A5;font-size:11px;line-height:1.6;margin-bottom:1rem;">Past daily briefings are available to mission operatives with enterprise clearance. Today's briefing is always available above.</div>
-    <a href="thesis.html#signup" class="btn-y" style="font-size:11px;">Request clearance &rarr;</a>
-  </div>
-</div>
-
 <script src="js/nav.js"></script>
 <script src="js/main.js?v=3"></script>
 <script>
+// ===== LIVE RSS FEED =====
+var allNewsItems = [];
+var displayedCount = 0;
+var ITEMS_PER_PAGE = 25;
+
+// Category mapping from RSS data
+var sectorMap = {
+  'semi': 'semi', 'robo': 'robo', 'space': 'space',
+  'materials': 'materials', 'supply': 'cross',
+  'ai': 'cross', 'cross': 'cross'
+};
+
+// Sector display labels
+var sectorLabels = {
+  'semi': { cls: 'sector-semi', text: 'Semi' },
+  'robo': { cls: 'sector-robo', text: 'Robo' },
+  'space': { cls: 'sector-space', text: 'Space' },
+  'materials': { cls: 'sector-materials', text: 'Materials' },
+  'cross': { cls: 'sector-cross', text: 'Cross' }
+};
+
+// Time ago helper
+function timeAgo(dateStr) {
+  var d = new Date(dateStr + 'T12:00:00Z');
+  var now = new Date();
+  var diffMs = now - d;
+  var hrs = Math.floor(diffMs / 3600000);
+  if (hrs < 1) return 'just now';
+  if (hrs < 24) return hrs + 'h ago';
+  var days = Math.floor(hrs / 24);
+  if (days === 1) return '1d ago';
+  if (days < 7) return days + 'd ago';
+  var weeks = Math.floor(days / 7);
+  return weeks + 'w ago';
+}
+
+// Hours since publication
+function hoursSince(dateStr) {
+  var d = new Date(dateStr + 'T12:00:00Z');
+  return Math.floor((new Date() - d) / 3600000);
+}
+
+// Render a single feed card
+function renderCard(item) {
+  var sector = sectorMap[item.category] || 'semi';
+  var sl = sectorLabels[sector] || sectorLabels['semi'];
+  var hours = hoursSince(item.date);
+  var summary = item.summary || '';
+  var card = document.createElement('div');
+  card.className = 'feed-card';
+  card.dataset.type = 'news';
+  card.dataset.sector = sector;
+  card.dataset.hours = hours;
+  card.innerHTML =
+    '<div class="feed-icon type-news">N</div>' +
+    '<div class="feed-body">' +
+      '<div class="feed-headline" onclick="toggleFeedExpand(this.parentElement)">' + escapeHtml(item.title) + '</div>' +
+      '<div class="feed-meta">' +
+        '<span class="feed-source">' + escapeHtml(item.source) + '</span> &middot; ' + timeAgo(item.date) +
+        ' <span class="feed-sector ' + sl.cls + '">' + sl.text + '</span>' +
+      '</div>' +
+      '<div class="feed-expand" style="display:none;">' +
+        (summary ? '<p class="feed-excerpt">' + escapeHtml(summary) + '</p>' : '') +
+        '<a href="' + escapeHtml(item.url) + '" class="feed-read-more" target="_blank" rel="noopener">Read original &rarr;</a>' +
+        '<div class="feed-analysis-gate">' +
+          '<div class="feed-analysis-locked">' +
+            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">' +
+              '<span style="font-weight:700;color:#F5D921;font-size:10px;letter-spacing:0.08em;">ROBOTNIK ANALYSIS</span>' +
+              '<span style="font-size:10px;color:#5A6178;">&#x1F512; LOCKED</span>' +
+            '</div>' +
+            '<div class="analysis-blur">Cross-referencing against Robotnik universe: mapping supply chain dependencies, second-order impact on related entities, and sector correlation analysis across 347 tracked assets. Price sensitivity and historical pattern matching available with clearance.</div>' +
+            '<a href="thesis.html#signup" class="btn-y" style="font-size:10px;margin-top:0.5rem;">Request clearance to unlock</a>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  return card;
+}
+
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str || '';
+  return div.innerHTML;
+}
+
+// Load and render feed
+async function loadNewsFeed() {
+  try {
+    var cb = '?v=' + Date.now();
+    var resp = await fetch('data/news.json' + cb);
+    var data = await resp.json();
+    allNewsItems = data.items || [];
+    displayedCount = 0;
+    renderFeedItems();
+    buildTrendingTopics();
+  } catch (e) {
+    document.getElementById('live-feed').innerHTML =
+      '<div style="text-align:center;padding:2rem;color:#5A6178;font-size:11px;">Newsfeed offline &mdash; data pipeline connecting</div>';
+  }
+}
+
+function renderFeedItems() {
+  var feed = document.getElementById('live-feed');
+  feed.innerHTML = '';
+  var filtered = getFilteredItems();
+
+  if (filtered.length === 0) {
+    feed.innerHTML = '<div style="text-align:center;padding:2rem;color:#5A6178;font-size:11px;">No items match current filters</div>';
+    document.getElementById('load-more-btn').style.display = 'none';
+    return;
+  }
+
+  var end = Math.min(displayedCount + ITEMS_PER_PAGE, filtered.length);
+  for (var i = 0; i < end; i++) {
+    feed.appendChild(renderCard(filtered[i]));
+  }
+  displayedCount = end;
+  document.getElementById('load-more-btn').style.display = end < filtered.length ? '' : 'none';
+}
+
+function getFilteredItems() {
+  return allNewsItems.filter(function(item) {
+    var sector = sectorMap[item.category] || 'semi';
+    var hours = hoursSince(item.date);
+    if (intelFilters.type !== 'all' && item.category !== intelFilters.type && intelFilters.type !== 'news') return false;
+    if (intelFilters.sector !== 'all' && sector !== intelFilters.sector) return false;
+    if (intelFilters.time === '24h' && hours > 48) return false;
+    return true;
+  });
+}
+
+function loadMoreItems() {
+  var feed = document.getElementById('live-feed');
+  var filtered = getFilteredItems();
+  var end = Math.min(displayedCount + ITEMS_PER_PAGE, filtered.length);
+  for (var i = displayedCount; i < end; i++) {
+    feed.appendChild(renderCard(filtered[i]));
+  }
+  displayedCount = end;
+  document.getElementById('load-more-btn').style.display = end < filtered.length ? '' : 'none';
+}
+
+// Build trending topics from RSS data
+function buildTrendingTopics() {
+  var keywords = {};
+  var topicTerms = [
+    { term: 'CoWoS', label: 'CoWoS Packaging' },
+    { term: 'humanoid', label: 'Humanoid Robotics' },
+    { term: '2nm', label: '2nm Process' },
+    { term: 'chiplet', label: 'Chiplet Interconnect' },
+    { term: 'rare earth', label: 'Rare Earth Controls' },
+    { term: 'EUV', label: 'EUV Lithography' },
+    { term: 'autonomous', label: 'Autonomous Systems' },
+    { term: 'AI chip', label: 'AI Chip Demand' },
+    { term: 'satellite', label: 'Satellite Infrastructure' },
+    { term: 'silicon carbide', label: 'Silicon Carbide' },
+    { term: 'wafer', label: 'Wafer Supply' },
+    { term: 'foundry', label: 'Foundry Competition' }
+  ];
+
+  allNewsItems.forEach(function(item) {
+    var text = (item.title + ' ' + (item.summary || '')).toLowerCase();
+    topicTerms.forEach(function(t) {
+      if (text.indexOf(t.term.toLowerCase()) !== -1) {
+        keywords[t.label] = (keywords[t.label] || 0) + 1;
+      }
+    });
+  });
+
+  var sorted = Object.entries(keywords).sort(function(a, b) { return b[1] - a[1]; }).slice(0, 7);
+  var container = document.getElementById('trending-topics');
+  if (sorted.length === 0) {
+    container.innerHTML = '<div style="font-size:10px;color:#5A6178;">Analyzing feed data...</div>';
+    return;
+  }
+  container.innerHTML = sorted.map(function(kv) {
+    return '<div class="topic-tag"><span class="topic-name">' + kv[0] + '</span><span class="topic-count">' + kv[1] + ' mentions</span></div>';
+  }).join('');
+}
+
 // ===== INTEL FILTERS =====
 var intelFilters = { type: 'all', sector: 'all', time: '24h' };
 var premiumTimeFilters = ['7d', '30d', 'archive'];
@@ -767,54 +379,55 @@ function setIntelFilter(group, btn) {
   intelFilters[group] = btn.dataset.val;
   btn.parentElement.querySelectorAll('.intel-filter-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
-  applyIntelFilters();
-}
-
-function applyIntelFilters() {
-  var cards = document.querySelectorAll('.feed-card');
-  var feedContainer = document.querySelector('.intel-feed');
-  var existingGate = document.getElementById('premium-time-gate');
-
-  // Remove existing gate if present
-  if (existingGate) existingGate.remove();
+  displayedCount = 0;
 
   // Show premium gate for locked time filters
+  var feed = document.getElementById('live-feed');
+  var existingGate = document.getElementById('premium-time-gate');
+  if (existingGate) existingGate.remove();
+  var loadBtn = document.getElementById('load-more-btn');
+
   if (premiumTimeFilters.indexOf(intelFilters.time) !== -1) {
+    // Show translucent gate with blurred preview
     var gate = document.createElement('div');
     gate.id = 'premium-time-gate';
     gate.className = 'premium-gate-overlay';
-    gate.innerHTML = '<div class="gate-title">CLEARANCE REQUIRED</div>' +
-      '<div class="gate-text">Intelligence archive requires enterprise clearance.<br>24-hour newsfeed is available to all operatives.</div>' +
-      '<a href="thesis.html#signup" class="btn-y" style="font-size:11px;">Request clearance &rarr;</a>';
-    feedContainer.parentElement.insertBefore(gate, feedContainer);
-    // Blur all cards
-    cards.forEach(function(card) { card.style.display = 'none'; });
+    // Render a few blurred items as preview
+    var previewHtml = '<div class="premium-gate-blur">';
+    var previewItems = allNewsItems.slice(0, 5);
+    previewItems.forEach(function(item) {
+      previewHtml += '<div style="padding:0.5rem 0.75rem;border-bottom:1px solid #1E2330;">' +
+        '<div style="font-size:11px;color:#8B92A5;">' + escapeHtml(item.title) + '</div>' +
+        '<div style="font-size:9px;color:#5A6178;margin-top:0.2rem;">' + escapeHtml(item.source) + ' &middot; ' + timeAgo(item.date) + '</div>' +
+      '</div>';
+    });
+    previewHtml += '</div>';
+    gate.innerHTML = previewHtml +
+      '<div class="premium-gate-front">' +
+        '<div class="gate-title">CLEARANCE REQUIRED</div>' +
+        '<div class="gate-text">Intelligence archive requires enterprise clearance.<br>24-hour newsfeed is available to all operatives.</div>' +
+        '<a href="thesis.html#signup" class="btn-y" style="font-size:11px;">Request clearance &rarr;</a>' +
+      '</div>';
+    feed.innerHTML = '';
+    feed.parentElement.insertBefore(gate, feed);
+    loadBtn.style.display = 'none';
     return;
   }
 
-  cards.forEach(function(card) {
-    var show = true;
-    // Type filter
-    if (intelFilters.type !== 'all') {
-      show = card.dataset.type === intelFilters.type;
-    }
-    // Sector filter
-    if (show && intelFilters.sector !== 'all') {
-      show = card.dataset.sector === intelFilters.sector;
-    }
-    // Time filter (24h is the only free filter)
-    if (show && intelFilters.time === '24h') {
-      var hrs = parseInt(card.dataset.hours) || 0;
-      show = hrs <= 24;
-    }
-    card.style.display = show ? '' : 'none';
-  });
+  renderFeedItems();
 }
 
-function showPastBriefingsGate(e) {
-  e.preventDefault();
-  var modal = document.getElementById('past-briefings-modal');
-  if (modal) modal.classList.add('active');
+// ===== PAST BRIEFINGS =====
+function togglePastBriefings() {
+  var list = document.getElementById('past-briefings-list');
+  var arrow = document.getElementById('past-arrow');
+  if (list.classList.contains('open')) {
+    list.classList.remove('open');
+    arrow.innerHTML = '&#9660;';
+  } else {
+    list.classList.add('open');
+    arrow.innerHTML = '&#9650;';
+  }
 }
 
 // ===== FEED EXPAND (accordion) =====
@@ -824,22 +437,11 @@ function toggleFeedExpand(feedBody) {
   expand.style.display = expand.style.display === 'none' ? 'block' : 'none';
 }
 
-// TODO: Re-add bookmark/saved feature when auth exists
-// Saved items are an enterprise-only feature (requires login)
-var savedItems = [];
-// Initialize on load
+// ===== INIT =====
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('briefing-date').textContent = new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
-  // Apply default filter (24h free)
-  applyIntelFilters();
+  loadNewsFeed();
 });
-
-// TODO: Implement actual date-based gating when RSS data is live
-// Free: 24h visible. Enterprise: full archive access.
-
-// TODO: Generate daily briefing via Claude API using RSS data
-// Cross-reference news against Robotnik universe companies
-// Write in Robotnik voice
 </script>
 </body>
 </html>

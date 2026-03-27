@@ -158,9 +158,9 @@
 
   .nav-item.disabled {
     color: #5A6178;
-    cursor: not-allowed;
+    cursor: pointer;
   }
-  .nav-item.disabled:hover { background: none; color: #5A6178; }
+  .nav-item.disabled:hover { background: rgba(255,255,255,0.02); color: #8B92A5; }
 
   .nav-icon {
     display: flex;
@@ -821,6 +821,11 @@
     gap: 1rem;
     padding: 1rem;
     max-width: 1400px;
+    align-items: start;
+  }
+  .intel-layout > .dash-sidebar-widgets {
+    position: sticky;
+    top: 60px;
   }
 
   .intel-header {
