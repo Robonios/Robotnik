@@ -1,0 +1,82 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-03-29",
+  "datasets": {
+    "public_markets": {
+      "file": "data/prices/all_prices.json",
+      "entities": 347,
+      "description": "Daily prices for 347 frontier tech assets",
+      "sectors": [
+        "Semiconductor",
+        "Cross-stack",
+        "Robotics",
+        "Space",
+        "Materials",
+        "Token"
+      ]
+    },
+    "robotnik_index": {
+      "file": "data/index/robotnik_index.json",
+      "description": "Robotnik Composite Index time series",
+      "sub_indices": [
+        "semiconductor",
+        "robotics",
+        "space",
+        "crossstack",
+        "materials",
+        "token"
+      ]
+    },
+    "funding_rounds": {
+      "file": "data/funding/rounds.json",
+      "entries": 138,
+      "description": "Private market fundraising rounds with Robotnik Notes",
+      "fields_available": [
+        "company",
+        "sector",
+        "subsector",
+        "round",
+        "amount_m",
+        "valuation_m",
+        "lead_investors",
+        "other_investors",
+        "date",
+        "location",
+        "robotnik_notes",
+        "total_raised_m",
+        "public_market_link",
+        "related_tickers",
+        "entity_id"
+      ]
+    },
+    "news_feed": {
+      "file": "data/news.json",
+      "description": "Aggregated news from 20+ RSS sources",
+      "fields_available": [
+        "title",
+        "source",
+        "published",
+        "url",
+        "sector",
+        "mentioned_entities",
+        "mentioned_tickers"
+      ]
+    },
+    "entity_registry": {
+      "file": "data/entities/registry.json",
+      "entities": 482,
+      "description": "Master entity registry (public + private companies)"
+    },
+    "investor_registry": {
+      "file": "data/entities/investors.json",
+      "investors": 480,
+      "description": "Investor profiles derived from funding data"
+    }
+  },
+  "cross_references": {
+    "entity_id": "Links all datasets via unique entity identifier",
+    "public_market_link": "Links funded companies to public market data when applicable",
+    "related_tickers": "Links funding rounds to relevant public companies",
+    "mentioned_entities": "Links news items to entity registry"
+  }
+}
