@@ -8,7 +8,7 @@
     { href: 'signals.html', page: 'signals', label: 'Frontier Signals', online: false },
     { href: 'commodities.html', page: 'commodities', label: 'Commodities', online: false },
     { href: 'funding.html', page: 'funding', label: 'Funding Ops', online: true },
-    { href: 'thesis.html', page: 'thesis', label: 'Thesis', online: true },
+    { href: 'thesis.html', page: 'thesis', label: 'Mission', online: true },
     { href: 'recreation.html', page: 'recreation', label: 'Recreation Bay', online: true },
   ];
 
@@ -61,7 +61,7 @@
         <input type="text" class="top-search" placeholder="Search assets, news, research..." />
       </div>
       <div class="top-bar-right">
-        <a href="thesis.html#signup" class="btn-y">Request clearance</a>
+        <a href="thesis.html#signup" class="btn-y">Request Enterprise Clearance</a>
       </div>
     </header>
   `;

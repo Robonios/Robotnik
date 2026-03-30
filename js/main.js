@@ -173,6 +173,16 @@ function updateMarketOverview() {
   if (loserEl && loser) {
     loserEl.innerHTML = loser.ticker + ' <span class="v-red">' + loser.change.toFixed(2) + '%</span>';
   }
+
+  // Last updated timestamp
+  var updatedEl = document.getElementById('ov-updated');
+  if (updatedEl) {
+    // Try to get the updated field from price data
+    try {
+      var ts = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+      updatedEl.textContent = ts;
+    } catch(e) {}
+  }
 }
 
 // ===== FUNDRAISING DATA (sample — you'll replace with real data) =====

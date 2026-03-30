@@ -73,44 +73,56 @@
       <div class="intel-subtitle">Aggregated news, filings, research, and reports from across the frontier technology stack</div>
     </div>
 
-    <!-- 2. Daily Briefing -->
+    <!-- 2. Daily Briefing (fully public) -->
     <div class="briefing-card">
       <div class="briefing-header">DAILY BRIEFING // <span id="briefing-date"></span></div>
       <div class="briefing-body">
-        <p>Tovarishch, three signals detected today:</p>
+        <p>Tovarishch, seven signals detected today:</p>
         <ul>
           <li>TSMC expanded CoWoS capacity by 40%, targeting 2x output by Q4. This directly relieves the advanced packaging bottleneck affecting NVIDIA, AMD, and Broadcom. Watch substrate suppliers Ibiden (4062 JP) and Unimicron (3037 TT) who must scale in parallel. <span class="feed-sector sector-semi">Semi</span> <span class="feed-sector sector-materials">Materials</span></li>
           <li>Humanoid robotics funding crosses $5B in trailing twelve months, led by Figure and 1X Technologies. The capital concentration signals a shift from prototype to deployment &mdash; increasing demand for edge compute (NVIDIA Jetson), servo motors (Fanuc, Yaskawa), and rare earth magnets (MP Materials). <span class="feed-sector sector-robo">Robo</span> <span class="feed-sector sector-semi">Semi</span> <span class="feed-sector sector-materials">Materials</span></li>
           <li>Rocket Lab secures Neutron launch contract with major defense partner, first flight H2 2026. Neutron's reusable medium-lift architecture positions RKLB as the primary alternative to SpaceX for institutional payloads. Component suppliers to watch: Moog (MOG.A) for propulsion, Hexcel (HXL) for carbon fibre structures. <span class="feed-sector sector-space">Space</span> <span class="feed-sector sector-materials">Materials</span></li>
+          <li>Rebellions secures $166M Korean government investment for AI accelerator chips. South Korea doubling down on domestic semiconductor sovereignty. Competes with NVIDIA (NVDA) and domestic rival FuriosaAI for inference market share. <span class="feed-sector sector-semi">Semi</span></li>
+          <li>Shield AI closes $2B Series G at $12.7B valuation for Hivemind autonomous combat AI. Advent International and JPMorgan lead. Largest defense AI raise to date signals institutional capital pivoting toward autonomous warfare systems. <span class="feed-sector sector-cross">Cross</span></li>
+          <li>China's rare earth export controls expand to gallium and germanium derivatives. Downstream impact concentrated in compound semiconductor manufacturers (Wolfspeed, II-VI) and defense primes. MP Materials (MP) and Lynas (LYC AU) positioned as alternative western suppliers. <span class="feed-sector sector-materials">Materials</span> <span class="feed-sector sector-semi">Semi</span></li>
+          <li>Unitree Robotics files for Hong Kong IPO seeking up to $610M. First major humanoid robotics IPO signals sector maturation. Low-cost Go2 quadruped and G1 humanoid have driven rapid revenue growth. Watch for pricing and secondary market dynamics. <span class="feed-sector sector-robo">Robo</span></li>
         </ul>
-      </div>
-      <div class="briefing-gated">
-        <div class="briefing-blur">Full cross-referenced analysis: supply chain mapping across 347 universe entities, second-order impact assessment, and real-time price correlation data for all mentioned tickers. Includes Robotnik Composite Index sector impact scores and materials dependency matrix.</div>
-        <div class="briefing-gate-overlay">
-          <a href="thesis.html#signup" class="btn-y" style="font-size:11px;margin-top:0.5rem;">Request clearance &rarr;</a>
-        </div>
       </div>
     </div>
 
-    <!-- Past briefings (expandable) -->
-    <div class="past-briefings-section">
-      <button class="past-briefings-toggle" onclick="togglePastBriefings()">Past briefings <span id="past-arrow">&#9660;</span></button>
-      <div id="past-briefings-list" class="past-briefings-list">
-        <div class="past-briefing-item">
-          <div class="past-briefing-date">DAILY BRIEFING // Mar 26, 2026</div>
-          <div class="past-briefing-preview">Tovarishch, four signals detected:</div>
-          <div class="past-briefing-blur">Shin-Etsu silicon wafer shipments up 12% as advanced node demand accelerates. Samsung 2nm GAA enters risk production. Ibiden IC substrate expansion targets CoWoS demand. AST SpaceMobile begins commercial service across five markets.</div>
-          <div class="past-briefing-gate">
-            <span style="font-size:9px;color:#5A6178;">&#x1F512; Older briefings require enterprise clearance</span>
-          </div>
+    <!-- Past Briefings (always visible section) -->
+    <div style="border-top:1px solid #252A36;margin-top:1rem;padding-top:1rem;">
+      <div style="font-size:11px;font-weight:700;color:#8B92A5;letter-spacing:0.08em;margin-bottom:0.75rem;">PAST BRIEFINGS</div>
+
+      <div class="past-briefing-item" style="margin-bottom:0.5rem;">
+        <div class="past-briefing-date">DAILY BRIEFING // Mar 28, 2026</div>
+        <div class="past-briefing-preview" style="font-size:10px;color:#8B92A5;line-height:1.6;">Tovarishch, five signals detected: Shin-Etsu silicon wafer shipments up 12% as advanced node demand accelerates. Samsung 2nm GAA enters risk production. Ibiden IC substrate expansion targets CoWoS demand. AST SpaceMobile begins commercial service across five markets. Ayar Labs closes $500M Series E for optical I/O.</div>
+      </div>
+
+      <div class="past-briefing-item" style="margin-bottom:0.5rem;">
+        <div class="past-briefing-date">DAILY BRIEFING // Mar 27, 2026</div>
+        <div class="past-briefing-preview" style="font-size:10px;color:#8B92A5;line-height:1.6;">Tovarishch, four signals detected: Physical Intelligence in talks for $1B at $11B valuation. Xona Space Systems closes $170M Series C for GPS-alternative constellation. Vulcan Elements raises $65M for domestic rare earth magnets. Kandou AI secures $225M for chip-to-chip connectivity.</div>
+      </div>
+
+      <div class="past-briefing-item" style="margin-bottom:0.5rem;">
+        <div class="past-briefing-date">DAILY BRIEFING // Mar 26, 2026</div>
+        <div class="past-briefing-preview" style="font-size:10px;color:#8B92A5;line-height:1.6;">Tovarishch, six signals detected: Shield AI $2B raise. Rebellions $166M Korean government backing. Arkadia Space lands EIC boost for green propulsion. Torngat Metals secures $120M for Strange Lake rare earth project. Performance Drone Works raises $110M for combat drones.</div>
+      </div>
+
+      <!-- Older briefings gated -->
+      <div class="past-briefing-item" style="margin-bottom:0.5rem;position:relative;overflow:hidden;">
+        <div class="past-briefing-date">DAILY BRIEFING // Mar 25, 2026</div>
+        <div class="past-briefing-blur">Samsung foundry yield improvements at 3nm GAA narrow gap with TSMC. Boston Dynamics Atlas demonstrates autonomous warehouse logistics. Novel chiplet interconnect achieves 10TB/s bandwidth. Normal Computing raises $50M for thermodynamic AI chips.</div>
+        <div class="past-briefing-gate">
+          <span style="font-size:9px;color:#5A6178;">&#x1F512; Older briefings require enterprise clearance</span>
         </div>
-        <div class="past-briefing-item">
-          <div class="past-briefing-date">DAILY BRIEFING // Mar 25, 2026</div>
-          <div class="past-briefing-preview">Tovarishch, two signals detected:</div>
-          <div class="past-briefing-blur">Samsung foundry yield improvements at 3nm GAA narrow gap with TSMC. Boston Dynamics Atlas demonstrates autonomous warehouse logistics in multi-robot coordination demo. Novel chiplet interconnect achieves 10TB/s bandwidth.</div>
-          <div class="past-briefing-gate">
-            <span style="font-size:9px;color:#5A6178;">&#x1F512; Older briefings require enterprise clearance</span>
-          </div>
+      </div>
+
+      <div class="past-briefing-item" style="margin-bottom:0.5rem;position:relative;overflow:hidden;">
+        <div class="past-briefing-date">END OF WEEK BRIEFING // Mar 23, 2026</div>
+        <div class="past-briefing-blur">Weekend wrap: Nscale closes $2B Series C for sovereign GPU cloud. Neura Robotics secures $1.2B for European humanoid program. PLD Space raises $209M Series C for MIURA launch vehicles. Lucid Bots $20M Series B for autonomous cleaning drones.</div>
+        <div class="past-briefing-gate">
+          <span style="font-size:9px;color:#5A6178;">&#x1F512; Older briefings require enterprise clearance</span>
         </div>
       </div>
     </div>
@@ -417,18 +429,7 @@ function setIntelFilter(group, btn) {
   renderFeedItems();
 }
 
-// ===== PAST BRIEFINGS =====
-function togglePastBriefings() {
-  var list = document.getElementById('past-briefings-list');
-  var arrow = document.getElementById('past-arrow');
-  if (list.classList.contains('open')) {
-    list.classList.remove('open');
-    arrow.innerHTML = '&#9660;';
-  } else {
-    list.classList.add('open');
-    arrow.innerHTML = '&#9650;';
-  }
-}
+// Past briefings are now always visible (no toggle needed)
 
 // ===== FEED EXPAND (accordion) =====
 function toggleFeedExpand(feedBody) {

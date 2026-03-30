@@ -74,71 +74,36 @@
       <div class="featured-meta">Coming soon &middot; Q2 2026</div>
     </div>
 
-    <!-- C. Content tabs -->
-    <div class="research-tabs">
-      <button class="research-tab active" data-tab="all" onclick="setResearchTab(this)">All</button>
-      <button class="research-tab" data-tab="field" onclick="setResearchTab(this)">Field Transmissions</button>
-      <button class="research-tab" data-tab="sector" onclick="setResearchTab(this)">Sector Briefings</button>
-      <button class="research-tab" data-tab="deep" onclick="setResearchTab(this)">Deep Dives</button>
-    </div>
+    <!-- Content tabs (will be activated when content is published) -->
 
-    <!-- D. Placeholder content -->
+    <!-- Content sections (coming soon) -->
     <div id="research-feed">
 
-      <div class="research-card" data-rtype="field">
-        <div class="research-type-tag tag-field">FIELD TRANSMISSION #001</div>
-        <div class="research-card-title">The packaging wars heat up: CoWoS, chiplets, and who controls the substrate bottleneck</div>
-        <div class="research-card-desc">Advanced packaging is emerging as the critical bottleneck in AI chip production. We map the substrate supply chain from wafer to system, identifying the chokepoints and the companies positioned to benefit.</div>
-        <div class="research-card-meta">
-          <span>Coming soon &middot; Weekly briefing</span>
-          <span class="research-sector-pill sector-semi-pill">SEMI</span>
-          <span class="research-sector-pill sector-materials-pill">MATERIALS</span>
+      <div class="research-card" style="border-left:3px solid #F5D921;">
+        <div class="research-type-tag tag-field">FIELD TRANSMISSIONS</div>
+        <div class="research-card-desc" style="margin-top:0.5rem;">Weekly intelligence briefings from Robotnik. Each transmission covers the most significant developments across semiconductors, robotics, space technology, and critical materials &mdash; with cross-sector analysis that surfaces the dependencies others miss.</div>
+        <div class="research-card-meta" style="margin-top:0.75rem;">
+          <span style="color:#F5D921;font-size:9px;font-weight:700;">COMING SOON</span>
         </div>
+        <a href="thesis.html#signup" style="color:#F5D921;font-size:10px;text-decoration:none;display:inline-block;margin-top:0.5rem;">Sign up to receive transmissions &rarr;</a>
       </div>
 
-      <div class="research-card" data-rtype="sector">
-        <div class="research-type-tag tag-sector">SECTOR BRIEFING</div>
-        <div class="research-card-title">Who supplies the humanoid stack? A map of the dependency chain from actuator to foundry</div>
-        <div class="research-card-desc">Humanoid robots require a convergence of semiconductors, sensors, actuators, and AI compute. We trace the full supply chain from silicon to assembled robot, mapping every tier of the dependency chain.</div>
-        <div class="research-card-meta">
-          <span>Coming soon &middot; Quarterly contributor research</span>
-          <span class="research-sector-pill sector-robo-pill">ROBO</span>
-          <span class="research-sector-pill sector-semi-pill">SEMI</span>
-          <span class="research-sector-pill sector-cross-pill">CROSS</span>
+      <div class="research-card" style="border-left:3px solid #3b82f6;">
+        <div class="research-type-tag tag-sector">SECTOR BRIEFINGS</div>
+        <div class="research-card-desc" style="margin-top:0.5rem;">Quarterly deep-sector reports produced by Robotnik's network of academic and industry contributors. Each briefing maps a specific sector's supply chain, competitive dynamics, and strategic outlook.</div>
+        <div class="research-card-meta" style="margin-top:0.75rem;">
+          <span style="color:#3b82f6;font-size:9px;font-weight:700;">COMING SOON</span>
         </div>
+        <a href="thesis.html#signup" style="color:#F5D921;font-size:10px;text-decoration:none;display:inline-block;margin-top:0.5rem;">Sign up to receive transmissions &rarr;</a>
       </div>
 
-      <div class="research-card" data-rtype="deep">
-        <div class="research-type-tag tag-deep">DEEP DIVE</div>
-        <div class="research-card-title">Rare earth supply chains: how China's export controls reshape the frontier technology stack</div>
-        <div class="research-card-desc">China controls over 60% of rare earth processing. New export controls on gallium and germanium are forcing a wholesale restructuring of critical materials supply chains across semiconductors, defense, and space.</div>
-        <div class="research-card-meta">
-          <span>Coming soon &middot; Long-form analysis</span>
-          <span class="research-sector-pill sector-materials-pill">MATERIALS</span>
-          <span class="research-sector-pill sector-robo-pill">ROBO</span>
-          <span class="research-sector-pill sector-space-pill">SPACE</span>
+      <div class="research-card" style="border-left:3px solid #a78bfa;">
+        <div class="research-type-tag tag-deep">DEEP DIVES</div>
+        <div class="research-card-desc" style="margin-top:0.5rem;">Long-form analysis triggered by major events &mdash; policy shifts, supply chain disruptions, breakthrough technologies, or strategic acquisitions that reshape the frontier stack. Published as events warrant.</div>
+        <div class="research-card-meta" style="margin-top:0.75rem;">
+          <span style="color:#a78bfa;font-size:9px;font-weight:700;">COMING SOON</span>
         </div>
-      </div>
-
-      <div class="research-card" data-rtype="field">
-        <div class="research-type-tag tag-field">FIELD TRANSMISSION #002</div>
-        <div class="research-card-title">Samsung's foundry gambit: can it close the gap on TSMC?</div>
-        <div class="research-card-desc">Samsung Foundry is betting on gate-all-around transistors at 2nm to leapfrog TSMC. We assess the technical roadmap, yield trajectory, and customer acquisition challenges facing the second-largest foundry.</div>
-        <div class="research-card-meta">
-          <span>Coming soon &middot; Weekly briefing</span>
-          <span class="research-sector-pill sector-semi-pill">SEMI</span>
-        </div>
-      </div>
-
-      <div class="research-card" data-rtype="sector">
-        <div class="research-type-tag tag-sector">SECTOR BRIEFING</div>
-        <div class="research-card-title">The space launch supply chain: from propulsion to payload integration</div>
-        <div class="research-card-desc">The commercial launch market is entering a new era of competition and vertical integration. We map the supply chain from engine manufacturing through payload integration, identifying concentration risks and emerging players.</div>
-        <div class="research-card-meta">
-          <span>Coming soon &middot; Quarterly contributor research</span>
-          <span class="research-sector-pill sector-space-pill">SPACE</span>
-          <span class="research-sector-pill sector-materials-pill">MATERIALS</span>
-        </div>
+        <a href="thesis.html#signup" style="color:#F5D921;font-size:10px;text-decoration:none;display:inline-block;margin-top:0.5rem;">Sign up to receive transmissions &rarr;</a>
       </div>
 
     </div>
