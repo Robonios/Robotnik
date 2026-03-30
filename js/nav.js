@@ -6,9 +6,9 @@
     { href: 'news.html', page: 'news', label: 'News', online: true },
     { href: 'intelligence.html', page: 'intelligence', label: 'Intelligence', online: true },
     { href: 'signals.html', page: 'signals', label: 'Frontier Signals', online: false },
+    { href: 'assets.html', page: 'assets', label: 'Frontier Assets', online: true },
     { href: 'commodities.html', page: 'commodities', label: 'Commodities', online: false },
     { href: 'funding.html', page: 'funding', label: 'Funding Ops', online: true },
-    { href: 'thesis.html', page: 'thesis', label: 'Mission', online: true },
     { href: 'recreation.html', page: 'recreation', label: 'Recreation Bay', online: true },
   ];
 
@@ -24,7 +24,6 @@
     const soonBadge = isDisabled
       ? '<span style="font-size:8px;color:#5A6178;border:1px solid #2A2F3A;padding:1px 4px;border-radius:2px;margin-left:6px">SOON</span>'
       : '';
-    // All items are clickable links (greyed items navigate to placeholder pages)
     return `<a href="${item.href}" class="${cls}">
       <span class="nav-label">${item.label}${soonBadge}</span>
       ${dot}
@@ -58,7 +57,7 @@
         <input type="text" class="top-search" placeholder="Search assets, news, research..." />
       </div>
       <div class="top-bar-right">
-        <a href="thesis.html#signup" class="btn-y">Request Enterprise Clearance</a>
+        <a href="index.html#signup" class="btn-y">Request Enterprise Clearance</a>
       </div>
     </header>
   `;
