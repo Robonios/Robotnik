@@ -48,9 +48,6 @@
           <span style="color:var(--text)">IN PROGRESS</span><span class="animated-dots" style="color:var(--text)"></span>
           <div style="margin-top:0.4rem;color:var(--text-muted);line-height:1.5;">The intelligence layer<br>for the frontier<br>technology stack</div>
         </div>
-        <div style="margin-top:0.5rem;font-size:9px;color:#5A6178;line-height:1.5;">347 frontier assets tracked<br>across 15+ countries</div>
-        <div class="sidebar-version">v0.1 // Pre-launch</div>
-        <div class="sidebar-attrib">Data by <a href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a></div>
       </div>
     </aside>
   `;
