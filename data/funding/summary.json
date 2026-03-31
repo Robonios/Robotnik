@@ -1,86 +1,166 @@
 {
   "periods": {
-    "Q1_2026": {
-      "total_capital_m": 45142.5,
-      "num_rounds": 82,
-      "avg_deal_size_m": 578.8,
-      "most_active_sector": "Robotics",
+    "2Q25": {
+      "total_capital_m": 8644.0,
+      "num_rounds": 31,
+      "avg_deal_size_m": 278.8,
+      "most_active_sector": "Space",
       "largest_round": {
-        "company": "Waymo",
-        "amount_m": 16000.0,
+        "company": "Anduril Industries",
+        "amount_m": 2500,
         "sector": "Cross-Stack"
       },
       "sector_breakdown": {
-        "Cross-Stack": {
-          "rounds": 13,
-          "capital_m": 24358.0
-        },
-        "Materials": {
-          "rounds": 8,
-          "capital_m": 1898.5
-        },
         "Robotics": {
-          "rounds": 27,
-          "capital_m": 8637.8
-        },
-        "Semiconductors": {
-          "rounds": 20,
-          "capital_m": 7018.0
+          "rounds": 6,
+          "capital_m": 901
         },
         "Space": {
-          "rounds": 14,
-          "capital_m": 3230.2
+          "rounds": 10,
+          "capital_m": 2461.5
+        },
+        "Cross-Stack": {
+          "rounds": 8,
+          "capital_m": 4948
+        },
+        "Materials": {
+          "rounds": 3,
+          "capital_m": 143
+        },
+        "Semiconductors": {
+          "rounds": 4,
+          "capital_m": 190.5
         }
       },
       "stage_breakdown": {
         "Series C": {
-          "rounds": 11,
-          "capital_m": 7049.0
-        },
-        "Series B": {
-          "rounds": 15,
-          "capital_m": 3362.0
+          "rounds": 6,
+          "capital_m": 1436
         },
         "Other": {
-          "rounds": 21,
-          "capital_m": 8738.0
-        },
-        "Series A": {
-          "rounds": 16,
-          "capital_m": 2849.0
-        },
-        "Series D+": {
-          "rounds": 12,
-          "capital_m": 22595.0
+          "rounds": 3,
+          "capital_m": 1775
         },
         "Seed": {
+          "rounds": 5,
+          "capital_m": 133.5
+        },
+        "Series A": {
           "rounds": 7,
-          "capital_m": 549.5
+          "capital_m": 277.5
+        },
+        "Series D+": {
+          "rounds": 5,
+          "capital_m": 4592
+        },
+        "Series B": {
+          "rounds": 5,
+          "capital_m": 430
         }
       },
       "monthly_by_sector": {
-        "Jan-26": {
-          "Cross-Stack": 1898.0,
-          "Materials": 100.0,
-          "Robotics": 3222.0,
-          "Semiconductors": 500.0
+        "Apr-25": {
+          "Robotics": 614.0,
+          "Space": 507.5,
+          "Cross-Stack": 150.0
         },
-        "Feb-26": {
-          "Cross-Stack": 18350.0,
-          "Semiconductors": 4630.0,
-          "Robotics": 1369.0,
-          "Space": 1744.0
+        "May-25": {
+          "Materials": 76.0,
+          "Cross-Stack": 206.0,
+          "Robotics": 27.0,
+          "Space": 87.0,
+          "Semiconductors": 33.0
         },
-        "Mar-26": {
-          "Space": 1486.2,
-          "Semiconductors": 1888.0,
-          "Robotics": 4046.8,
-          "Materials": 1798.5,
-          "Cross-Stack": 4110.0
+        "Jun-25": {
+          "Semiconductors": 157.5,
+          "Cross-Stack": 4592.0,
+          "Space": 1867.0,
+          "Materials": 67.0,
+          "Robotics": 260.0
         }
       }
     },
-    "Q4_2025": {
+    "3Q25": {
+      "total_capital_m": 9528.1,
+      "num_rounds": 44,
+      "avg_deal_size_m": 216.5,
+      "most_active_sector": "Robotics",
+      "largest_round": {
+        "company": "Cerebras Systems",
+        "amount_m": 1100,
+        "sector": "Semiconductors"
+      },
+      "sector_breakdown": {
+        "Robotics": {
+          "rounds": 19,
+          "capital_m": 2388.45
+        },
+        "Cross-Stack": {
+          "rounds": 4,
+          "capital_m": 1173
+        },
+        "Space": {
+          "rounds": 7,
+          "capital_m": 2012
+        },
+        "Semiconductors": {
+          "rounds": 12,
+          "capital_m": 3304.7
+        },
+        "Materials": {
+          "rounds": 2,
+          "capital_m": 650
+        }
+      },
+      "stage_breakdown": {
+        "Seed": {
+          "rounds": 7,
+          "capital_m": 230.95
+        },
+        "Series A": {
+          "rounds": 13,
+          "capital_m": 643.2
+        },
+        "Other": {
+          "rounds": 4,
+          "capital_m": 1980
+        },
+        "Series C": {
+          "rounds": 7,
+          "capital_m": 1676
+        },
+        "Series B": {
+          "rounds": 7,
+          "capital_m": 1561
+        },
+        "Series D+": {
+          "rounds": 6,
+          "capital_m": 3437
+        }
+      },
+      "monthly_by_sector": {
+        "Jul-25": {
+          "Robotics": 791.25,
+          "Cross-Stack": 310.0,
+          "Space": 187.0,
+          "Semiconductors": 194.5,
+          "Materials": 550.0
+        },
+        "Aug-25": {
+          "Semiconductors": 140.0,
+          "Space": 1008.0,
+          "Robotics": 455.0,
+          "Cross-Stack": 863.0
+        },
+        "Sep-25": {
+          "Semiconductors": 2970.2,
+          "Robotics": 1142.2,
+          "Materials": 100.0,
+          "Space": 817.0
+        }
+      }
+    },
+    "4Q25": {
       "total_capital_m": 5875.4,
       "num_rounds": 56,
       "avg_deal_size_m": 106.8,
@@ -160,83 +240,83 @@
         }
       }
     },
-    "Q3_2025": {
-      "total_capital_m": 9528.1,
-      "num_rounds": 44,
-      "avg_deal_size_m": 216.5,
+    "1Q26": {
+      "total_capital_m": 45142.5,
+      "num_rounds": 82,
+      "avg_deal_size_m": 578.8,
       "most_active_sector": "Robotics",
       "largest_round": {
-        "company": "Cerebras Systems",
-        "amount_m": 1100,
-        "sector": "Semiconductors"
+        "company": "Waymo",
+        "amount_m": 16000.0,
+        "sector": "Cross-Stack"
       },
       "sector_breakdown": {
-        "Robotics": {
-          "rounds": 19,
-          "capital_m": 2388.45
-        },
         "Cross-Stack": {
-          "rounds": 4,
-          "capital_m": 1173
-        },
-        "Space": {
-          "rounds": 7,
-          "capital_m": 2012
-        },
-        "Semiconductors": {
-          "rounds": 12,
-          "capital_m": 3304.7
+          "rounds": 13,
+          "capital_m": 24358.0
         },
         "Materials": {
-          "rounds": 2,
-          "capital_m": 650
+          "rounds": 8,
+          "capital_m": 1898.5
+        },
+        "Robotics": {
+          "rounds": 27,
+          "capital_m": 8637.8
+        },
+        "Semiconductors": {
+          "rounds": 20,
+          "capital_m": 7018.0
+        },
+        "Space": {
+          "rounds": 14,
+          "capital_m": 3230.2
         }
       },
       "stage_breakdown": {
-        "Seed": {
-          "rounds": 7,
-          "capital_m": 230.95
-        },
-        "Series A": {
-          "rounds": 13,
-          "capital_m": 643.2
-        },
-        "Other": {
-          "rounds": 4,
-          "capital_m": 1980
-        },
         "Series C": {
-          "rounds": 7,
-          "capital_m": 1676
+          "rounds": 11,
+          "capital_m": 7049.0
         },
         "Series B": {
-          "rounds": 7,
-          "capital_m": 1561
+          "rounds": 15,
+          "capital_m": 3362.0
+        },
+        "Other": {
+          "rounds": 21,
+          "capital_m": 8738.0
+        },
+        "Series A": {
+          "rounds": 16,
+          "capital_m": 2849.0
         },
         "Series D+": {
-          "rounds": 6,
-          "capital_m": 3437
+          "rounds": 12,
+          "capital_m": 22595.0
+        },
+        "Seed": {
+          "rounds": 7,
+          "capital_m": 549.5
         }
       },
       "monthly_by_sector": {
-        "Jul-25": {
-          "Robotics": 791.25,
-          "Cross-Stack": 310.0,
-          "Space": 187.0,
-          "Semiconductors": 194.5,
-          "Materials": 550.0
-        },
-        "Aug-25": {
-          "Semiconductors": 140.0,
-          "Space": 1008.0,
-          "Robotics": 455.0,
-          "Cross-Stack": 863.0
-        },
-        "Sep-25": {
-          "Semiconductors": 2970.2,
-          "Robotics": 1142.2,
+        "Jan-26": {
+          "Cross-Stack": 1898.0,
           "Materials": 100.0,
-          "Space": 817.0
+          "Robotics": 3222.0,
+          "Semiconductors": 500.0
+        },
+        "Feb-26": {
+          "Cross-Stack": 18350.0,
+          "Semiconductors": 4630.0,
+          "Robotics": 1369.0,
+          "Space": 1744.0
+        },
+        "Mar-26": {
+          "Space": 1486.2,
+          "Semiconductors": 1888.0,
+          "Robotics": 4046.8,
+          "Materials": 1798.5,
+          "Cross-Stack": 4110.0
         }
       }
     },
@@ -339,10 +419,10 @@
         }
       }
     },
-    "9M": {
-      "total_capital_m": 60546.0,
-      "num_rounds": 182,
-      "avg_deal_size_m": 342.1,
+    "12M": {
+      "total_capital_m": 69190.0,
+      "num_rounds": 213,
+      "avg_deal_size_m": 332.6,
       "most_active_sector": "Robotics",
       "largest_round": {
         "company": "Waymo",
@@ -351,53 +431,72 @@
       },
       "sector_breakdown": {
         "Robotics": {
-          "rounds": 70,
-          "capital_m": 12364.55
-        },
-        "Cross-Stack": {
-          "rounds": 23,
-          "capital_m": 26824.0
+          "rounds": 76,
+          "capital_m": 13265.55
         },
         "Space": {
-          "rounds": 33,
-          "capital_m": 6536.599999999999
+          "rounds": 43,
+          "capital_m": 8998.1
         },
-        "Semiconductors": {
-          "rounds": 45,
-          "capital_m": 12234.35
+        "Cross-Stack": {
+          "rounds": 31,
+          "capital_m": 31772.0
         },
         "Materials": {
-          "rounds": 11,
-          "capital_m": 2586.5
+          "rounds": 14,
+          "capital_m": 2729.5
+        },
+        "Semiconductors": {
+          "rounds": 49,
+          "capital_m": 12424.85
         }
       },
       "stage_breakdown": {
-        "Seed": {
-          "rounds": 27,
-          "capital_m": 915.65
-        },
-        "Series A": {
-          "rounds": 41,
-          "capital_m": 4030.85
+        "Series C": {
+          "rounds": 31,
+          "capital_m": 11175.0
         },
         "Other": {
-          "rounds": 34,
-          "capital_m": 12644.5
+          "rounds": 37,
+          "capital_m": 14419.5
         },
-        "Series C": {
-          "rounds": 25,
-          "capital_m": 9739.0
+        "Seed": {
+          "rounds": 32,
+          "capital_m": 1049.1499999999999
         },
-        "Series B": {
-          "rounds": 31,
-          "capital_m": 5489.0
+        "Series A": {
+          "rounds": 48,
+          "capital_m": 4308.35
         },
         "Series D+": {
-          "rounds": 24,
-          "capital_m": 27727.0
+          "rounds": 29,
+          "capital_m": 32319.0
+        },
+        "Series B": {
+          "rounds": 36,
+          "capital_m": 5919.0
         }
       },
       "monthly_by_sector": {
+        "Apr-25": {
+          "Robotics": 614.0,
+          "Space": 507.5,
+          "Cross-Stack": 150.0
+        },
+        "May-25": {
+          "Materials": 76.0,
+          "Cross-Stack": 206.0,
+          "Robotics": 27.0,
+          "Space": 87.0,
+          "Semiconductors": 33.0
+        },
+        "Jun-25": {
+          "Semiconductors": 157.5,
+          "Cross-Stack": 4592.0,
+          "Space": 1867.0,
+          "Materials": 67.0,
+          "Robotics": 260.0
+        },
         "Jul-25": {
           "Robotics": 791.25,
           "Cross-Stack": 310.0,
@@ -470,12 +569,71 @@
       ]
     },
     {
+      "name": "Eclipse",
+      "deals": 8,
+      "sectors": [
+        "Cross-Stack",
+        "Robotics",
+        "Semiconductors",
+        "Space"
+      ]
+    },
+    {
+      "name": "Andreessen Horowitz",
+      "deals": 8,
+      "sectors": [
+        "Cross-Stack",
+        "Materials",
+        "Robotics",
+        "Semiconductors",
+        "Space"
+      ]
+    },
+    {
+      "name": "Founders Fund",
+      "deals": 7,
+      "sectors": [
+        "Cross-Stack",
+        "Robotics",
+        "Semiconductors",
+        "Space"
+      ]
+    },
+    {
       "name": "Valor Equity Partners",
       "deals": 7,
       "sectors": [
         "Cross-Stack",
         "Robotics",
         "Semiconductors"
+      ]
+    },
+    {
+      "name": "NVIDIA",
+      "deals": 6,
+      "sectors": [
+        "Cross-Stack",
+        "Materials",
+        "Robotics"
+      ]
+    },
+    {
+      "name": "Lux Capital",
+      "deals": 6,
+      "sectors": [
+        "Cross-Stack",
+        "Robotics",
+        "Semiconductors",
+        "Space"
+      ]
+    },
+    {
+      "name": "Sequoia Capital",
+      "deals": 6,
+      "sectors": [
+        "Cross-Stack",
+        "Robotics",
+        "Space"
       ]
     },
     {
@@ -498,29 +656,36 @@
       ]
     },
     {
-      "name": "Eclipse",
-      "deals": 6,
+      "name": "8VC",
+      "deals": 5,
       "sectors": [
         "Cross-Stack",
         "Robotics",
-        "Semiconductors",
         "Space"
+      ]
+    },
+    {
+      "name": "Lightspeed",
+      "deals": 5,
+      "sectors": [
+        "Cross-Stack",
+        "Robotics",
+        "Space"
+      ]
+    },
+    {
+      "name": "BlackRock",
+      "deals": 5,
+      "sectors": [
+        "Cross-Stack",
+        "Robotics",
+        "Semiconductors"
       ]
     },
     {
       "name": "Khosla Ventures",
       "deals": 5,
       "sectors": [
-        "Robotics",
-        "Semiconductors",
-        "Space"
-      ]
-    },
-    {
-      "name": "Founders Fund",
-      "deals": 5,
-      "sectors": [
-        "Cross-Stack",
         "Robotics",
         "Semiconductors",
         "Space"
@@ -535,25 +700,6 @@
       ]
     },
     {
-      "name": "Andreessen Horowitz",
-      "deals": 5,
-      "sectors": [
-        "Cross-Stack",
-        "Robotics",
-        "Semiconductors",
-        "Space"
-      ]
-    },
-    {
-      "name": "NVIDIA",
-      "deals": 5,
-      "sectors": [
-        "Cross-Stack",
-        "Materials",
-        "Robotics"
-      ]
-    },
-    {
       "name": "Atreides Management",
       "deals": 5,
       "sectors": [
@@ -561,69 +707,7 @@
       ]
     },
     {
-      "name": "Lux Capital",
-      "deals": 4,
-      "sectors": [
-        "Cross-Stack",
-        "Robotics",
-        "Space"
-      ]
-    },
-    {
-      "name": "NEA",
-      "deals": 4,
-      "sectors": [
-        "Cross-Stack",
-        "Materials",
-        "Semiconductors"
-      ]
-    },
-    {
-      "name": "Temasek",
-      "deals": 4,
-      "sectors": [
-        "Cross-Stack",
-        "Materials",
-        "Robotics",
-        "Semiconductors"
-      ]
-    },
-    {
-      "name": "Intel Capital",
-      "deals": 4,
-      "sectors": [
-        "Robotics",
-        "Semiconductors"
-      ]
-    },
-    {
-      "name": "BlackRock",
-      "deals": 4,
-      "sectors": [
-        "Robotics",
-        "Semiconductors"
-      ]
-    },
-    {
-      "name": "T. Rowe Price",
-      "deals": 4,
-      "sectors": [
-        "Cross-Stack",
-        "Semiconductors",
-        "Space"
-      ]
-    },
-    {
-      "name": "8VC",
-      "deals": 4,
-      "sectors": [
-        "Cross-Stack",
-        "Robotics",
-        "Space"
-      ]
-    },
-    {
-      "name": "Tiger Global",
+      "name": "DCVC",
       "deals": 4,
       "sectors": [
         "Cross-Stack",
@@ -632,11 +716,27 @@
       ]
     },
     {
-      "name": "Sequoia Capital",
+      "name": "Balderton Capital",
+      "deals": 4,
+      "sectors": [
+        "Cross-Stack"
+      ]
+    },
+    {
+      "name": "In-Q-Tel",
       "deals": 4,
       "sectors": [
         "Cross-Stack",
-        "Robotics"
+        "Semiconductors"
+      ]
+    },
+    {
+      "name": "Plural",
+      "deals": 4,
+      "sectors": [
+        "Cross-Stack",
+        "Robotics",
+        "Semiconductors"
       ]
     }
   ],
@@ -647,6 +747,13 @@
       "sector": "Cross-Stack",
       "round": "Series D",
       "date": "2026-02-02"
+    },
+    {
+      "company": "Anduril Industries",
+      "amount_m": 2500,
+      "sector": "Cross-Stack",
+      "round": "Series G",
+      "date": "2025-06-02"
     },
     {
       "company": "Nscale",
@@ -668,6 +775,13 @@
       "sector": "Semiconductors",
       "round": "Government investment",
       "date": "2026-02-27"
+    },
+    {
+      "company": "Eutelsat",
+      "amount_m": 1550,
+      "sector": "Space",
+      "round": "Undisclosed",
+      "date": "2025-06-19"
     },
     {
       "company": "Skild AI",
@@ -731,20 +845,6 @@
       "sector": "Semiconductors",
       "round": "Series H",
       "date": "2026-02-04"
-    },
-    {
-      "company": "World Labs",
-      "amount_m": 1000.0,
-      "sector": "Cross-Stack",
-      "round": "Undisclosed",
-      "date": "2026-02-18"
-    },
-    {
-      "company": "Physical Intelligence",
-      "amount_m": 1000.0,
-      "sector": "Robotics",
-      "round": "Series C",
-      "date": "2026-03-27"
     }
   ],
   "last_updated": "2026-03-31"
