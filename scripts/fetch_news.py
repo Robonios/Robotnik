@@ -216,6 +216,57 @@ def fetch_all():
     return items
 
 
+def tag_entities(items):
+    """Tag each news item with matched entity IDs from the registry."""
+    try:
+        from match_entities import EntityMatcher
+        matcher = EntityMatcher()
+    except Exception as e:
+        print(f"  Entity tagging skipped (matcher unavailable): {e}")
+        return items
+
+    tagged_count = 0
+    for item in items:
+        # Skip items already tagged (preserve existing tags on re-fetch)
+        if item.get("mentioned_entities") and item.get("entity_tagged"):
+            continue
+        text = (item.get("title", "") + " " + item.get("summary", "")).strip()
+        entities = matcher.match(text)
+        tickers = matcher.match_tickers_only(text)
+        item["mentioned_entities"] = entities
+        item["mentioned_tickers"] = tickers
+        item["entity_tagged"] = datetime.now().strftime("%Y-%m-%d")
+        if entities:
+            tagged_count += 1
+
+    total_tagged = sum(1 for i in items if i.get("mentioned_entities"))
+    print(f"  Entity tagging: {tagged_count} newly tagged, {total_tagged}/{len(items)} total")
+    return items
+
+
+def merge_existing_tags(items):
+    """Preserve entity tags from previously saved items."""
+    try:
+        with open(NEWS_JSON) as f:
+            existing = json.load(f)
+        existing_by_id = {i["id"]: i for i in existing.get("items", [])}
+    except (FileNotFoundError, json.JSONDecodeError):
+        return items
+
+    preserved = 0
+    for item in items:
+        prev = existing_by_id.get(item["id"])
+        if prev and prev.get("entity_tagged"):
+            item["mentioned_entities"] = prev.get("mentioned_entities", [])
+            item["mentioned_tickers"] = prev.get("mentioned_tickers", [])
+            item["entity_tagged"] = prev["entity_tagged"]
+            preserved += 1
+
+    if preserved:
+        print(f"  Preserved entity tags from {preserved} existing items")
+    return items
+
+
 def main():
     print("Fetching RSS feeds...")
     items = fetch_all()
@@ -230,6 +281,10 @@ def main():
         data_key="items",
     )
     current_items = current_items[:MAX_ITEMS]
+
+    # Preserve existing entity tags, then tag untagged items
+    current_items = merge_existing_tags(current_items)
+    current_items = tag_entities(current_items)
 
     output = {
         "updated": datetime.now().strftime("%Y-%m-%d %H:%M"),

@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "last_updated": "2026-03-29",
+  "version": "2.0",
+  "last_updated": "2026-04-01",
   "datasets": {
     "public_markets": {
       "file": "data/prices/all_prices.json",
@@ -17,7 +17,7 @@
     },
     "robotnik_index": {
       "file": "data/index/robotnik_index.json",
-      "description": "Robotnik Composite Index time series",
+      "description": "Robotnik Composite Index time series, normalised to 1000.00 on 2025-03-31",
       "sub_indices": [
         "semiconductor",
         "robotics",
@@ -29,7 +29,10 @@
     },
     "funding_rounds": {
       "file": "data/funding/rounds.json",
-      "entries": 138,
+      "entries": 236,
+      "date_range": "2025-01-07 to 2026-03-27",
+      "entity_id_coverage": "236/236",
+      "related_tickers_coverage": "132/236",
       "description": "Private market fundraising rounds with Robotnik Notes",
       "fields_available": [
         "company",
@@ -51,32 +54,48 @@
     },
     "news_feed": {
       "file": "data/news.json",
-      "description": "Aggregated news from 20+ RSS sources",
+      "entries": 150,
+      "entity_tagged": "41/150",
+      "last_fetch": "2026-04-01 07:20",
+      "description": "Aggregated news from 38 RSS sources with entity tagging",
       "fields_available": [
         "title",
         "source",
-        "published",
+        "date",
         "url",
-        "sector",
+        "category",
+        "summary",
         "mentioned_entities",
-        "mentioned_tickers"
+        "mentioned_tickers",
+        "entity_tagged"
       ]
     },
     "entity_registry": {
       "file": "data/entities/registry.json",
-      "entities": 482,
-      "description": "Master entity registry (public + private companies)"
+      "entities": 561,
+      "public": 347,
+      "private": 214,
+      "description": "Master entity registry (public + private companies) with aliases"
     },
     "investor_registry": {
       "file": "data/entities/investors.json",
-      "investors": 480,
-      "description": "Investor profiles derived from funding data"
+      "investors": 817,
+      "investment_events": 1124,
+      "built_from": "236 funding rounds",
+      "rebuild_date": "2026-04-01",
+      "description": "Investor profiles with deal history, sector preferences, and co-investor networks"
     }
   },
   "cross_references": {
     "entity_id": "Links all datasets via unique entity identifier",
     "public_market_link": "Links funded companies to public market data when applicable",
     "related_tickers": "Links funding rounds to relevant public companies",
-    "mentioned_entities": "Links news items to entity registry"
+    "mentioned_entities": "Links news items to entity registry",
+    "mentioned_tickers": "Links news items to public market tickers"
+  },
+  "pipeline_status": {
+    "news_entity_tagging": "Integrated into fetch_news.py \u2014 runs on every fetch",
+    "funding_entity_matching": "236/236 rounds matched",
+    "investor_registry": "817 investors from 236 rounds"
   }
 }
