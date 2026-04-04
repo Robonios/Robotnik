@@ -776,17 +776,34 @@ def main():
         json.dump(tk_output, f, indent=2)
     print("\nTokens: {}/{} succeeded -> {}".format(len(tk_results), len(TOKENS), TOKENS_JSON))
 
+    # Load entity registry to filter out excluded entities
+    excluded_tickers = set()
+    registry_path = ROOT / "data" / "registries" / "entity_registry.json"
+    if registry_path.exists():
+        with open(registry_path) as f:
+            registry = json.load(f)
+        for ticker, entity in registry.items():
+            if isinstance(entity, dict) and entity.get("status") == "excluded":
+                excluded_tickers.add(ticker)
+        print("\nLoaded entity registry: {} excluded tickers".format(len(excluded_tickers)))
+    else:
+        print("\nWARNING: Entity registry not found at {} — no exclusion filter applied".format(registry_path))
+
     all_prices = eq_results + tk_results
+    active_prices = [p for p in all_prices if p["ticker"] not in excluded_tickers]
     all_output = {
         "fetched_at": ts,
-        "count": len(all_prices),
+        "count": len(active_prices),
+        "total_fetched": len(all_prices),
+        "excluded": len(all_prices) - len(active_prices),
         "sources": ["EODHD (eodhd.com)", "CoinGecko (coingecko.com)"],
         "attribution": "Data provided by CoinGecko",
-        "prices": sorted(all_prices, key=lambda x: x["ticker"]),
+        "prices": sorted(active_prices, key=lambda x: x["ticker"]),
     }
     with open(ALL_JSON, "w") as f:
         json.dump(all_output, f, indent=2)
-    print("\nCombined: {} prices -> {}".format(len(all_prices), ALL_JSON))
+    print("Combined: {} active prices ({} excluded) -> {}".format(
+        len(active_prices), len(all_prices) - len(active_prices), ALL_JSON))
 
     all_errors = eq_errors + tk_errors
     with open(ERROR_LOG, "w") as f:

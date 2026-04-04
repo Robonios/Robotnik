@@ -46,10 +46,11 @@ function tickerColor(ticker) {
 async function loadPriceData() {
   try {
     const cb = '?v=' + Date.now();
-    const [priceResp, mcapResp, summaryResp] = await Promise.allSettled([
+    const [priceResp, mcapResp, summaryResp, registryResp] = await Promise.allSettled([
       fetch('data/prices/all_prices.json' + cb),
       fetch('data/index/market_caps.json' + cb),
       fetch('data/index/summary.json' + cb),
+      fetch('data/registries/entity_registry.json' + cb),
     ]);
 
     let priceData = null;
@@ -67,6 +68,16 @@ async function loadPriceData() {
       window.robotnikSummary = await summaryResp.value.json();
     }
 
+    // Build excluded-ticker set from entity registry
+    const excludedTickers = new Set();
+    let registryData = null;
+    if (registryResp.status === 'fulfilled' && registryResp.value.ok) {
+      registryData = await registryResp.value.json();
+      for (const [ticker, entity] of Object.entries(registryData)) {
+        if (entity && entity.status === 'excluded') excludedTickers.add(ticker);
+      }
+    }
+
     // Build mcap lookup
     const mcapMap = {};
     if (mcapData && mcapData.market_caps) {
@@ -76,7 +87,9 @@ async function loadPriceData() {
     }
 
     if (priceData && priceData.prices) {
-      allCompanies = priceData.prices.map(e => ({
+      // Filter out excluded entities
+      const activePrices = priceData.prices.filter(e => !excludedTickers.has(e.ticker));
+      allCompanies = activePrices.map(e => ({
         name: e.name || e.ticker,
         sub: e.sector || '',
         ticker: e.ticker,
