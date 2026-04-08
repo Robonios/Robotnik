@@ -1,0 +1,2579 @@
+{
+  "period": "Q1 2026 (January 1 - March 31, 2026)",
+  "generated_at": "2026-04-08",
+  "reclassification_applied": true,
+  "reclassification_note": "42 rounds reclassified from Cross-Stack to 5-sector taxonomy on 2026-04-08. See data/exports/funding_reclass_log.json for full change log.",
+  "headline": {
+    "total_rounds": 82,
+    "total_capital_m": 45142.5,
+    "total_capital_display": "$45.1B",
+    "avg_round_m": 550.5,
+    "median_round_m": 209.0,
+    "mega_rounds_500m_plus": 26
+  },
+  "by_sector": {
+    "Robotics": {
+      "rounds": 38,
+      "total_capital_m": 30895.8,
+      "pct_of_total": 68.4
+    },
+    "Semiconductors": {
+      "rounds": 21,
+      "total_capital_m": 9018.0,
+      "pct_of_total": 20.0
+    },
+    "Space": {
+      "rounds": 14,
+      "total_capital_m": 3230.2,
+      "pct_of_total": 7.2
+    },
+    "Materials": {
+      "rounds": 8,
+      "total_capital_m": 1898.5,
+      "pct_of_total": 4.2
+    },
+    "Token": {
+      "rounds": 1,
+      "total_capital_m": 100.0,
+      "pct_of_total": 0.2
+    }
+  },
+  "by_subsector": {
+    "Materials": {
+      "Rare Earths & Critical Minerals": {
+        "rounds": 5,
+        "total_m": 1796.0
+      },
+      "Battery Materials": {
+        "rounds": 2,
+        "total_m": 100.0
+      },
+      "Silicon & Substrates": {
+        "rounds": 1,
+        "total_m": 2.5
+      }
+    },
+    "Robotics": {
+      "Autonomous Systems & Drones": {
+        "rounds": 12,
+        "total_m": 21166.0
+      },
+      "Software & Simulation": {
+        "rounds": 9,
+        "total_m": 5203.0
+      },
+      "Humanoid & Service Robots": {
+        "rounds": 8,
+        "total_m": 3889.0
+      },
+      "Industrial Robots": {
+        "rounds": 4,
+        "total_m": 338.0
+      },
+      "Collaborative Robots": {
+        "rounds": 2,
+        "total_m": 169.8
+      },
+      "Warehouse & Logistics Automation": {
+        "rounds": 2,
+        "total_m": 130.0
+      },
+      "Machine Vision & Sensors": {
+        "rounds": 1,
+        "total_m": 0
+      }
+    },
+    "Semiconductors": {
+      "Fabless Design": {
+        "rounds": 16,
+        "total_m": 5098.0
+      },
+      "Frontier Compute": {
+        "rounds": 1,
+        "total_m": 2000.0
+      },
+      "Foundry": {
+        "rounds": 1,
+        "total_m": 1700.0
+      },
+      "Equipment": {
+        "rounds": 1,
+        "total_m": 143.0
+      },
+      "EDA & IP": {
+        "rounds": 1,
+        "total_m": 50.0
+      },
+      "OSAT / Packaging & Test": {
+        "rounds": 1,
+        "total_m": 27.0
+      }
+    },
+    "Space": {
+      "In-Orbit Services": {
+        "rounds": 3,
+        "total_m": 1400.0
+      },
+      "Launch": {
+        "rounds": 3,
+        "total_m": 1289.0
+      },
+      "Satellite Communications": {
+        "rounds": 5,
+        "total_m": 310.2
+      },
+      "Earth Observation": {
+        "rounds": 1,
+        "total_m": 175.0
+      },
+      "Space Components": {
+        "rounds": 2,
+        "total_m": 56.0
+      }
+    },
+    "Token": {
+      "Industrial Robots": {
+        "rounds": 1,
+        "total_m": 100.0
+      }
+    }
+  },
+  "by_stage": {
+    "Seed": {
+      "rounds": 7,
+      "total_m": 549.5
+    },
+    "Series A": {
+      "rounds": 16,
+      "total_m": 2849.0
+    },
+    "Series B": {
+      "rounds": 15,
+      "total_m": 3362.0
+    },
+    "Series C": {
+      "rounds": 11,
+      "total_m": 7049.0
+    },
+    "Series D+": {
+      "rounds": 12,
+      "total_m": 22595.0
+    },
+    "Other": {
+      "rounds": 21,
+      "total_m": 8738.0
+    }
+  },
+  "top_10_rounds": [
+    {
+      "rank": 1,
+      "company": "Waymo",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series D",
+      "amount_m": 16000.0,
+      "lead_investors": "Dragoneer Investment Group, DST Global, Sequoia Capital",
+      "date": "2026-02-02",
+      "location": "USA (Mountain View, CA)",
+      "entity_id": "waymo",
+      "robotnik_notes": "Alphabet's autonomous vehicle subsidiary operating commercial robotaxi services. $16B Series D is the largest single autonomous driving raise in history; led by Dragoneer, DST, and Sequoia. Competes with Tesla (TSLA) FSD, Cruise (GM), and Chinese players (Baidu Apollo, Pony.ai). Watch for geographic expansion and revenue trajectory toward profitability."
+    },
+    {
+      "rank": 2,
+      "company": "Nscale",
+      "sector": "Semiconductors",
+      "subsector": "Frontier Compute",
+      "round": "Series C",
+      "amount_m": 2000.0,
+      "lead_investors": "Aker ASA, 8090 Industries",
+      "date": "2026-03-09",
+      "location": "UK (London)",
+      "entity_id": "nscale",
+      "robotnik_notes": "UK-based AI infrastructure hyperscaler building vertically integrated GPU compute and data centres. $2B Series C co-led by Aker ASA and 8090 Industries at $14.6B valuation \u2014 largest European Series C ever. NVIDIA (NVDA), Dell, Nokia among investors. Competes with CoreWeave, Lambda, and US hyperscalers in AI compute. Valuation jumped >4x from Series B in 6 months. Watch for IPO (flagged for 2026), Stargate Norway/UK deployments, and Microsoft partnership execution."
+    },
+    {
+      "rank": 3,
+      "company": "Shield AI",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series G",
+      "amount_m": 2000.0,
+      "lead_investors": "Advent International, JPMorgan Chase",
+      "date": "2026-03-26",
+      "location": "USA (San Diego, CA)",
+      "entity_id": "shield-ai",
+      "robotnik_notes": "Defence AI company building autonomous piloting systems for military aircraft. $2B Series G co-led by Advent International and JPMorgan at reportedly $18B+ valuation. Competes with Anduril, Kratos (KTOS), and Boeing (BA) autonomous programmes. One of the most valuable US defence-tech startups. Watch for USAF CCA (collaborative combat aircraft) programme-of-record wins and potential IPO."
+    },
+    {
+      "rank": 4,
+      "company": "Rapidus",
+      "sector": "Semiconductors",
+      "subsector": "Foundry",
+      "round": "Government investment",
+      "amount_m": 1700.0,
+      "lead_investors": "Japan IPA (govt, 100B yen)",
+      "date": "2026-02-27",
+      "location": "Japan (Chitose, Hokkaido)",
+      "entity_id": "rapidus",
+      "robotnik_notes": "Japan's flagship advanced semiconductor foundry aiming for 2nm production by 2027. $1.7B government investment (100B yen from IPA) is part of Japan's semiconductor sovereignty push. Competes with TSMC (TSM), Samsung, and Intel (INTC) in leading-edge foundry. Watch for IBM technology transfer milestones and first customer announcements."
+    },
+    {
+      "rank": 5,
+      "company": "Skild AI",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Series C",
+      "amount_m": 1400.0,
+      "lead_investors": "SoftBank Group",
+      "date": "2026-01-14",
+      "location": "USA (Pittsburgh, PA)",
+      "entity_id": "skild-ai",
+      "robotnik_notes": "Pittsburgh-based universal robot foundation model company developing a general-purpose robot 'brain'. $1.4B Series C from SoftBank is the largest robotics software raise to date. Competes with Physical Intelligence, Google DeepMind Robotics, and Tesla (TSLA) in foundation models for robots. Watch for first commercial deployments and OEM licensing deals."
+    },
+    {
+      "rank": 6,
+      "company": "Wayve",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series D",
+      "amount_m": 1200.0,
+      "lead_investors": "Eclipse, Balderton Capital, SoftBank Vision Fund 2",
+      "date": "2026-02-24",
+      "location": "UK (London)",
+      "entity_id": "wayve",
+      "robotnik_notes": "London-based autonomous driving company using end-to-end learned driving for commercial vehicles. $1.2B Series D co-led by Eclipse, Balderton, and SoftBank is one of Europe's largest AV raises ever. Competes with Waymo (GOOGL), Tesla (TSLA) FSD, and Mobileye (MBLY) in AV. Watch for UK commercial launch and OEM platform licensing deals."
+    },
+    {
+      "rank": 7,
+      "company": "Neura Robotics",
+      "sector": "Robotics",
+      "subsector": "Humanoid & Service Robots",
+      "round": "Undisclosed",
+      "amount_m": 1200.0,
+      "lead_investors": "Tether Holdings",
+      "date": "2026-03-04",
+      "location": "Germany (Metzingen)",
+      "entity_id": "neura-robotics",
+      "robotnik_notes": "German cognitive robotics company developing humanoid and collaborative robots with onboard AI. ~$1.2B (\u20ac1B) round backed by Tether Holdings at ~\u20ac4B valuation; follows \u20ac120M Series B in Jan-25. Competes with Figure AI, 1X, Apptronik, and Tesla (TSLA) Optimus. Tether involvement is unusual \u2014 crypto capital entering physical robotics. Customers include Kawasaki and Omron. Watch for MiPA consumer robot launch and Schaeffler actuator partnership scaling."
+    },
+    {
+      "rank": 8,
+      "company": "Nth Cycle",
+      "sector": "Materials",
+      "subsector": "Rare Earths & Critical Minerals",
+      "round": "Undisclosed",
+      "amount_m": 1100.0,
+      "lead_investors": null,
+      "date": "2026-03-19",
+      "location": "USA (Salem, MA)",
+      "entity_id": "nth-cycle",
+      "robotnik_notes": "Electrochemical metal recycling company recovering critical minerals from industrial waste streams. $1.1B at undisclosed round stage is massive for critical minerals recycling \u2014 signals strong policy and industrial tailwinds. Competes with Li-Cycle (LICY), Redwood Materials, and traditional smelters. Watch for full-scale plant commissioning and offtake agreements with battery manufacturers."
+    },
+    {
+      "rank": 9,
+      "company": "Cerebras Systems",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series H",
+      "amount_m": 1000.0,
+      "lead_investors": "Tiger Global",
+      "date": "2026-02-04",
+      "location": "USA (Sunnyvale, CA)",
+      "entity_id": "cerebras-systems",
+      "robotnik_notes": "Wafer-scale AI chip company building the CS-3 processor for training and inference. $1B Series H from Tiger Global pushes valuation significantly higher. Competes with NVIDIA (NVDA), AMD (AMD), and Google (GOOGL) TPU. Watch for hyperscaler deployment announcements and IPO timeline."
+    },
+    {
+      "rank": 10,
+      "company": "World Labs",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Undisclosed",
+      "amount_m": 1000.0,
+      "lead_investors": "Autodesk ($200M), AMD, NVIDIA, Fidelity, Emerson Collective, Sea",
+      "date": "2026-02-18",
+      "location": "USA (San Francisco, CA)",
+      "entity_id": "world-labs",
+      "robotnik_notes": "Spatial AI company building large 3D world models founded by Fei-Fei Li. $1B round with Autodesk ($200M), AMD, NVIDIA, Fidelity signals convergence of 3D vision and generative AI. Competes with NVIDIA (NVDA) Omniverse and Google in spatial computing. Watch for enterprise product launch and robotics applications."
+    }
+  ],
+  "top_10_public_market_connections": {
+    "waymo": "Competes with TSLA (excluded), uses NVDA compute; parent Alphabet excluded from public universe",
+    "nscale": "GPU cloud competitor to Lambda; customer of NVDA GPUs; reclassified to Semiconductors",
+    "shield-ai": "Defence autonomous AI; competes with Anduril; supplier to LMT, NOC programmes",
+    "rapidus": "Japanese 2nm foundry; uses ASML EUV; competitor to TSM, INTC foundry services",
+    "skild-ai": "Robotics foundation models; uses NVDA GPUs; enables deployment on ISRG, ABBN SW, 6954 JP platforms",
+    "wayve": "Embodied AI driving; uses NVDA compute; competes with Waymo; potential SIE GR/ABBN SW integration",
+    "neura-robotics": "Humanoid robotics; competes with Boston Dynamics (SIE GR parent); uses NVDA Isaac platform",
+    "nth-cycle": "Critical minerals recycling; supplies materials chain for ALB, MP, LIN downstream",
+    "cerebras-systems": "AI chip competitor to NVDA; wafer-scale compute; manufactured by TSM",
+    "world-labs": "Spatial AI for robotics; uses NVDA GPUs; founded by Fei-Fei Li"
+  },
+  "most_active_investors": [
+    {
+      "investor": "IDG Capital",
+      "rounds": 2,
+      "total_capital_m": 830.0
+    },
+    {
+      "investor": "Mitsubishi Electric",
+      "rounds": 2,
+      "total_capital_m": 147.0
+    },
+    {
+      "investor": "Decarbonization Partners (BlackRock + Temasek)",
+      "rounds": 1,
+      "total_capital_m": 100.0
+    },
+    {
+      "investor": "SGInnovate",
+      "rounds": 1,
+      "total_capital_m": 0.0
+    },
+    {
+      "investor": "Shift4Good",
+      "rounds": 1,
+      "total_capital_m": 0.0
+    },
+    {
+      "investor": "Dassault Aviation",
+      "rounds": 1,
+      "total_capital_m": 200.0
+    },
+    {
+      "investor": "SoftBank Group",
+      "rounds": 1,
+      "total_capital_m": 1400.0
+    },
+    {
+      "investor": "Stripes",
+      "rounds": 1,
+      "total_capital_m": 500.0
+    },
+    {
+      "investor": "Avenir Growth",
+      "rounds": 1,
+      "total_capital_m": 120.0
+    },
+    {
+      "investor": "SV Angel",
+      "rounds": 1,
+      "total_capital_m": 480.0
+    }
+  ],
+  "quarter_over_quarter": {
+    "q4_2025": {
+      "rounds": 56,
+      "total_capital_m": 5875.35,
+      "avg_round_m": 104.9
+    },
+    "q1_2026": {
+      "rounds": 82,
+      "total_capital_m": 45142.5,
+      "avg_round_m": 550.5
+    },
+    "change_pct": {
+      "rounds": 46.4,
+      "capital": 668.3,
+      "avg_round": 424.7
+    }
+  },
+  "monthly_breakdown": {
+    "january": {
+      "rounds": 17,
+      "total_capital_m": 5720.0,
+      "largest_round": "Skild AI"
+    },
+    "february": {
+      "rounds": 26,
+      "total_capital_m": 26093.0,
+      "largest_round": "Waymo"
+    },
+    "march": {
+      "rounds": 39,
+      "total_capital_m": 13329.5,
+      "largest_round": "Nscale"
+    }
+  },
+  "notable_patterns": {
+    "mega_rounds_detail": [
+      {
+        "company": "Waymo",
+        "amount_m": 16000.0,
+        "sector": "Robotics",
+        "subsector": "Autonomous Systems & Drones"
+      },
+      {
+        "company": "Nscale",
+        "amount_m": 2000.0,
+        "sector": "Semiconductors",
+        "subsector": "Frontier Compute"
+      },
+      {
+        "company": "Shield AI",
+        "amount_m": 2000.0,
+        "sector": "Robotics",
+        "subsector": "Autonomous Systems & Drones"
+      },
+      {
+        "company": "Rapidus",
+        "amount_m": 1700.0,
+        "sector": "Semiconductors",
+        "subsector": "Foundry"
+      },
+      {
+        "company": "Skild AI",
+        "amount_m": 1400.0,
+        "sector": "Robotics",
+        "subsector": "Software & Simulation"
+      },
+      {
+        "company": "Wayve",
+        "amount_m": 1200.0,
+        "sector": "Robotics",
+        "subsector": "Autonomous Systems & Drones"
+      },
+      {
+        "company": "Neura Robotics",
+        "amount_m": 1200.0,
+        "sector": "Robotics",
+        "subsector": "Humanoid & Service Robots"
+      },
+      {
+        "company": "Nth Cycle",
+        "amount_m": 1100.0,
+        "sector": "Materials",
+        "subsector": "Rare Earths & Critical Minerals"
+      },
+      {
+        "company": "Cerebras Systems",
+        "amount_m": 1000.0,
+        "sector": "Semiconductors",
+        "subsector": "Fabless Design"
+      },
+      {
+        "company": "World Labs",
+        "amount_m": 1000.0,
+        "sector": "Robotics",
+        "subsector": "Software & Simulation"
+      },
+      {
+        "company": "Physical Intelligence",
+        "amount_m": 1000.0,
+        "sector": "Robotics",
+        "subsector": "Software & Simulation"
+      },
+      {
+        "company": "Waabi",
+        "amount_m": 750.0,
+        "sector": "Robotics",
+        "subsector": "Autonomous Systems & Drones"
+      },
+      {
+        "company": "iSpace",
+        "amount_m": 730.0,
+        "sector": "Space",
+        "subsector": "Launch"
+      },
+      {
+        "company": "StepFun",
+        "amount_m": 718.0,
+        "sector": "Robotics",
+        "subsector": "Software & Simulation"
+      },
+      {
+        "company": "Unitree Robotics",
+        "amount_m": 610.0,
+        "sector": "Robotics",
+        "subsector": "Humanoid & Service Robots"
+      },
+      {
+        "company": "Zipline",
+        "amount_m": 600.0,
+        "sector": "Robotics",
+        "subsector": "Autonomous Systems & Drones"
+      },
+      {
+        "company": "Sierra Space",
+        "amount_m": 550.0,
+        "sector": "Space",
+        "subsector": "In-Orbit Services"
+      },
+      {
+        "company": "Apptronik",
+        "amount_m": 520.0,
+        "sector": "Robotics",
+        "subsector": "Humanoid & Service Robots"
+      },
+      {
+        "company": "Moonshot AI",
+        "amount_m": 500.0,
+        "sector": "Robotics",
+        "subsector": "Software & Simulation"
+      },
+      {
+        "company": "Etched.ai",
+        "amount_m": 500.0,
+        "sector": "Semiconductors",
+        "subsector": "Fabless Design"
+      },
+      {
+        "company": "MatX",
+        "amount_m": 500.0,
+        "sector": "Semiconductors",
+        "subsector": "Fabless Design"
+      },
+      {
+        "company": "Ayar Labs",
+        "amount_m": 500.0,
+        "sector": "Semiconductors",
+        "subsector": "Fabless Design"
+      },
+      {
+        "company": "Vast",
+        "amount_m": 500.0,
+        "sector": "Space",
+        "subsector": "In-Orbit Services"
+      },
+      {
+        "company": "Nexthop AI",
+        "amount_m": 500.0,
+        "sector": "Semiconductors",
+        "subsector": "Fabless Design"
+      },
+      {
+        "company": "Mind Robotics",
+        "amount_m": 500.0,
+        "sector": "Robotics",
+        "subsector": "Humanoid & Service Robots"
+      },
+      {
+        "company": "DOE CMEI Program",
+        "amount_m": 500.0,
+        "sector": "Materials",
+        "subsector": "Rare Earths & Critical Minerals"
+      }
+    ],
+    "sector_concentration": {
+      "Robotics": 68.4,
+      "Materials": 4.2,
+      "Semiconductors": 20.0,
+      "Token": 0.2,
+      "Space": 7.2
+    },
+    "observations": [
+      "Robotics dominated: 38 rounds deploying $30.9B (68.4%), led by Waymo $16B and multiple $1B+ humanoid rounds",
+      "Semiconductors: 21 rounds, $9.0B \u2014 Rapidus $1.7B (Japan 2nm sovereignty), Cerebras $1B, Nscale $2B GPU cloud",
+      "Mega-round concentration: 26 rounds \u2265$500M accounting for $38.1B (84% of total)",
+      "QoQ acceleration: +46% rounds, +668% capital vs Q4 2025",
+      "Defence robotics cluster: Shield AI $2B, CHAOS $510M, Harmattan $200M, Performance Drone Works $110M \u2014 autonomous defence systems are the fastest-growing subsector",
+      "Space steady at 14 rounds, $3.2B \u2014 dominated by launch and satellite infrastructure",
+      "Materials emerging: 8 rounds, $1.9B \u2014 Nth Cycle $1.1B for critical minerals recycling, Radiant Nuclear $300M"
+    ]
+  },
+  "flagged_for_review": [
+    {
+      "company": "Moonshot AI",
+      "sector": "Robotics",
+      "amount_m": 500.0,
+      "concern": "Chinese foundation model AI company \u2014 classified as Robotics (Software & Simulation) but primary product is LLM, not robotics. Could be excluded if strict frontier-tech-only filter applied."
+    },
+    {
+      "company": "StepFun",
+      "sector": "Robotics",
+      "amount_m": 718.0,
+      "concern": "Chinese foundation model AI company \u2014 classified as Robotics (Software & Simulation) but primary product is LLM, not robotics. Could be excluded if strict frontier-tech-only filter applied."
+    },
+    {
+      "company": "Waymo",
+      "sector": "Robotics",
+      "amount_m": 16000.0,
+      "concern": "Mega-cap subsidiary (Alphabet). $16B round distorts Q1 totals. Round is frontier-relevant but parent was excluded from public universe."
+    }
+  ],
+  "full_dataset_distribution": {
+    "Robotics": 109,
+    "Semiconductors": 59,
+    "Space": 48,
+    "Materials": 17,
+    "Token": 3
+  },
+  "all_q1_rounds": [
+    {
+      "company": "Moonshot AI",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Series C",
+      "amount_m": 500.0,
+      "valuation_m": null,
+      "lead_investors": "IDG Capital",
+      "other_investors": "Alibaba Group, Tencent Holdings, Wang Huiwen (Meituan co-founder)",
+      "date": "2026-01-01",
+      "date_display": "01-Jan-26",
+      "location": "China (Beijing)",
+      "robotnik_notes": "Chinese AI lab behind the Kimi large language model, one of China's leading LLM platforms. $500M Series C from IDG Capital reflects continued Chinese AI model race investment. Competes with ByteDance, Baidu (BIDU), and Alibaba in Chinese LLM market. Watch for enterprise monetisation and multimodal expansion.",
+      "source": "https://www.caixinglobal.com/2026-01-01/moonshot-ai-rules-out-quick-ipo-after-raising-500-million-102399382.html",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 500.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "BIDU"
+      ],
+      "entity_id": "moonshot-ai"
+    },
+    {
+      "company": "Cambium",
+      "sector": "Materials",
+      "subsector": "Battery Materials",
+      "round": "Series B",
+      "amount_m": 100.0,
+      "valuation_m": null,
+      "lead_investors": "Decarbonization Partners (BlackRock + Temasek)",
+      "other_investors": "Breakthrough Energy Ventures, S2G Ventures, Prelude Ventures",
+      "date": "2026-01-09",
+      "date_display": "09-Jan-26",
+      "location": "USA (Lexington, MA)",
+      "robotnik_notes": "Develops advanced lithium-ion battery cathode materials using recycled feedstock. $100M Series B from Decarbonization Partners (BlackRock + Temasek JV) is a strong sustainability-focused investment. Competes with Umicore, BASF, and Albemarle (ALB) in cathode materials. Watch for first commercial supply agreements with battery cell manufacturers.",
+      "source": "https://www.cambium.com/news/series-b",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 100.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "ALB"
+      ],
+      "entity_id": "cambium"
+    },
+    {
+      "company": "Lyte",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Undisclosed",
+      "amount_m": 107.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-01-09",
+      "date_display": "09-Jan-26",
+      "location": "USA",
+      "robotnik_notes": "Defence drone and autonomous systems company (details limited due to stealth operations). $107M at undisclosed round stage and undisclosed lead is unusually opaque \u2014 suggests classified defence programme alignment. Watch for DoD contract disclosures.",
+      "source": "https://techcrunch.com/2026/01/09/lyte-raises-107m/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 107.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "lyte"
+    },
+    {
+      "company": "NEU Battery Materials",
+      "sector": "Materials",
+      "subsector": "Battery Materials",
+      "round": "Pre-Series A",
+      "amount_m": null,
+      "valuation_m": null,
+      "lead_investors": "SGInnovate, Shift4Good",
+      "other_investors": "CJIC, M7 Holdings",
+      "date": "2026-01-09",
+      "date_display": "09-Jan-26",
+      "location": "Singapore",
+      "robotnik_notes": "Singapore-based battery materials recycling and upcycling startup. Pre-Series A from SGInnovate and Shift4Good; amount undisclosed but likely $2\u20135M range. Competes with Li-Cycle (LICY) and Redwood Materials in battery recycling. Watch for pilot plant commissioning and first offtake agreements.",
+      "source": "https://solarquarter.com/2026/01/09/neu-battery-materials-secures-pre-series-a-funding-to-scale-lfp-battery-recycling-technology/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": null,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "neu-battery-materials"
+    },
+    {
+      "company": "Harmattan AI",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series B",
+      "amount_m": 200.0,
+      "valuation_m": 1400.0,
+      "lead_investors": "Dassault Aviation",
+      "other_investors": "FirstMark Capital, Financiere Saint James, Kima Ventures",
+      "date": "2026-01-12",
+      "date_display": "12-Jan-26",
+      "location": "France (Paris)",
+      "robotnik_notes": "French AI compute company building sovereign AI infrastructure with Dassault Aviation backing. $200M Series B led by Dassault Aviation signals French defence-industrial complex alignment with AI sovereignty. Competes with Nscale, CoreWeave, and US hyperscalers in European AI compute. Watch for French government cloud contracts and GPU cluster deployments.",
+      "source": "https://techcrunch.com/2026/01/12/harmattan-ai-raises-200m-series-b-led-by-dassault-aviation-becomes-defense-unicorn/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 200.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA"
+      ],
+      "entity_id": "harmattan-ai"
+    },
+    {
+      "company": "Skild AI",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Series C",
+      "amount_m": 1400.0,
+      "valuation_m": 14000.0,
+      "lead_investors": "SoftBank Group",
+      "other_investors": "NVentures (NVIDIA), Macquarie Capital, Bezos Expeditions, 1789 Capital, Disruptive, Lightspeed, Felicis, Coatue, Sequoia Capital, Samsung, LG, Schneider, CommonSpirit, Salesforce Ventures",
+      "date": "2026-01-14",
+      "date_display": "14-Jan-26",
+      "location": "USA (Pittsburgh, PA)",
+      "robotnik_notes": "Pittsburgh-based universal robot foundation model company developing a general-purpose robot 'brain'. $1.4B Series C from SoftBank is the largest robotics software raise to date. Competes with Physical Intelligence, Google DeepMind Robotics, and Tesla (TSLA) in foundation models for robots. Watch for first commercial deployments and OEM licensing deals.",
+      "source": "https://techcrunch.com/2026/01/14/robotic-software-maker-skild-ai-hits-14b-valuation/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1400.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "GOOGL"
+      ],
+      "entity_id": "skild-ai"
+    },
+    {
+      "company": "Etched.ai",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Undisclosed",
+      "amount_m": 500.0,
+      "valuation_m": 5000.0,
+      "lead_investors": "Stripes",
+      "other_investors": null,
+      "date": "2026-01-14",
+      "date_display": "14-Jan-26",
+      "location": "USA (San Francisco, CA)",
+      "robotnik_notes": "Develops transformer-specific ASIC chips (Sohu) designed to outperform general-purpose GPUs on transformer inference. $500M round led by Stripes at $5B valuation pushes total raised near $1B. Competes head-on with NVIDIA (NVDA) in AI inference and with other ASIC startups (Groq, Cerebras). High-risk/high-reward bet on transformer architecture dominance. Watch for Sohu production timeline at TSMC (TSM) 4nm and first customer benchmarks.",
+      "source": "https://techcrunch.com/2026/01/14/etched-raises-500m/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1000.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA",
+        "TSM"
+      ],
+      "entity_id": "etchedai"
+    },
+    {
+      "company": "Mytra",
+      "sector": "Robotics",
+      "subsector": "Warehouse & Logistics Automation",
+      "round": "Series C",
+      "amount_m": 120.0,
+      "valuation_m": null,
+      "lead_investors": "Avenir Growth",
+      "other_investors": null,
+      "date": "2026-01-14",
+      "date_display": "14-Jan-26",
+      "location": "USA (Brisbane, CA)",
+      "robotnik_notes": "Software-defined warehouse robotics platform automating heavy material movement with climbing bots. $120M Series C led by Avenir Growth at ~$570M valuation; total raised exceeds $200M. Competes with Symbotic (SYM), AutoStore, and Exotec in warehouse ASRS. Ex-Tesla founders bring strong hardware-software integration DNA. Watch for Fortune 100 deployment scale-up and unit economics proof points.",
+      "source": "https://www.therobotreport.com/mytra-raises-120m-series-c/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 200.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "SYM"
+      ],
+      "entity_id": "mytra"
+    },
+    {
+      "company": "Tulip Interfaces",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Series D",
+      "amount_m": 120.0,
+      "valuation_m": 1300.0,
+      "lead_investors": "Mitsubishi Electric",
+      "other_investors": null,
+      "date": "2026-01-14",
+      "date_display": "14-Jan-26",
+      "location": "USA (Somerville, MA)",
+      "robotnik_notes": "No-code frontline operations platform embedding AI into manufacturing workflows. $120M Series D led by Mitsubishi Electric at $1.3B unicorn valuation \u2014 a strategic investment signalling MHI's DX pivot. Competes with Tulip competes with Siemens (SIE GR) MES, PTC, and Rockwell (ROK) FactoryTalk. Watch for Mitsubishi Electric factory rollouts and expansion in pharma/biotech verticals.",
+      "source": "https://tulip.co/press/series-d",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 291.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "SIE GR",
+        "ROK"
+      ],
+      "entity_id": "tulip-interfaces"
+    },
+    {
+      "company": "Humans&",
+      "sector": "Robotics",
+      "subsector": "Humanoid & Service Robots",
+      "round": "Seed",
+      "amount_m": 480.0,
+      "valuation_m": 4480.0,
+      "lead_investors": "SV Angel, Georges Harik",
+      "other_investors": "NVIDIA, Jeff Bezos, GV (Google Ventures), Emerson Collective, Forerunner, S32, DCVC, Human Capital, Felicis, CRV, 500 Global",
+      "date": "2026-01-20",
+      "date_display": "20-Jan-26",
+      "location": "USA",
+      "robotnik_notes": "Stealth AI company founded by former Google DeepMind researchers focused on embodied AI and physical intelligence. $480M seed is extraordinarily large \u2014 among the biggest seed rounds ever. SV Angel and Georges Harik as leads suggest deep Silicon Valley insider backing. Watch for product reveal and first demonstration of capabilities.",
+      "source": "https://techcrunch.com/2026/01/20/humans-a-human-centric-ai-startup-founded-by-anthropic-xai-google-alums-raised-480m-seed-round/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 480.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "GOOG"
+      ],
+      "entity_id": "humans"
+    },
+    {
+      "company": "Zipline",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Undisclosed",
+      "amount_m": 600.0,
+      "valuation_m": 7600.0,
+      "lead_investors": "Valor Equity Partners",
+      "other_investors": "Fidelity Management & Research, Baillie Gifford, Tiger Global",
+      "date": "2026-01-22",
+      "date_display": "22-Jan-26",
+      "location": "USA (South San Francisco, CA)",
+      "robotnik_notes": "Drone logistics company operating autonomous delivery networks in multiple countries. $600M at undisclosed round from Valor Equity Partners continues Zipline's massive capital accumulation; one of the most well-funded robotics companies globally. Competes with Amazon (AMZN) Prime Air and Wing (Alphabet GOOGL). Watch for US suburban delivery expansion and regulatory approvals.",
+      "source": "https://techcrunch.com/2026/01/21/zipline-charts-drone-delivery-expansion-with-600m-in-new-funding/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 600.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "GOOGL"
+      ],
+      "entity_id": "zipline"
+    },
+    {
+      "company": "Hadrian",
+      "sector": "Robotics",
+      "subsector": "Industrial Robots",
+      "round": "Undisclosed",
+      "amount_m": null,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-01-25",
+      "date_display": "25-Jan-26",
+      "location": "USA (Los Angeles, CA)",
+      "robotnik_notes": "Precision manufacturing startup using AI and automation for aerospace and defence parts. Hadrian is heavily stealth; Founders Fund backing suggests high conviction. Competes with traditional aerospace machine shops and Relativity Space in automated manufacturing. Watch for factory expansion and DoD supply chain contracts.",
+      "source": "https://hadrian.co/news",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": null,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "hadrian"
+    },
+    {
+      "company": "StepFun",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Series B",
+      "amount_m": 718.0,
+      "valuation_m": null,
+      "lead_investors": "Shanghai SDIC Leading Fund",
+      "other_investors": "China Life Private Equity, Pudong Venture Capital, Xuhui Capital, Wuxi Liangxi Fund, Xiamen ITG Group, Huaqin Technology, Tencent, Qiming Venture Partners, 5Y Capital",
+      "date": "2026-01-26",
+      "date_display": "26-Jan-26",
+      "location": "China (Shanghai)",
+      "robotnik_notes": "Chinese AI lab developing large language and multimodal models. $718M Series B from Shanghai SDIC reflects massive state-backed capital flowing into Chinese AI champions. Competes with Moonshot AI, ByteDance, and Baidu (BIDU) in Chinese foundation model race. Watch for API monetisation and enterprise deployment traction.",
+      "source": "https://www.caixinglobal.com/2026-01-26/stepfun-raises-717-million-outpacing-newly-listed-ai-rivals-102408206.html",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 718.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "BIDU"
+      ],
+      "entity_id": "stepfun"
+    },
+    {
+      "company": "RobCo",
+      "sector": "Token",
+      "subsector": "Industrial Robots",
+      "round": "Series C",
+      "amount_m": 100.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-01-28",
+      "date_display": "28-Jan-26",
+      "location": "USA",
+      "robotnik_notes": "Develops easy-to-deploy robotic automation for small manufacturers using modular robot cells. $100M Series C is strong for SME-focused industrial robotics. Competes with Universal Robots (Teradyne TER), FANUC (6954 JP), and Formic in accessible automation. Watch for channel partnerships and European expansion from US base.",
+      "source": "https://www.therobotreport.com/robco-raises-100m-series-c/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 100.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TER",
+        "6954 JP"
+      ],
+      "entity_id": "ROBCO"
+    },
+    {
+      "company": "Waabi",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series C",
+      "amount_m": 750.0,
+      "valuation_m": null,
+      "lead_investors": "Khosla Ventures, G2 Venture Partners",
+      "other_investors": "Uber ($250M milestone-based), NVentures (NVIDIA), Volvo Group Venture Capital, Porsche Automobil Holding, BlackRock, Radical Ventures, ADIA subsidiary, HarbourVest Partners, Incharge Capital",
+      "date": "2026-01-28",
+      "date_display": "28-Jan-26",
+      "location": "Canada (Toronto, ON)",
+      "robotnik_notes": "Autonomous trucking company building AI-powered self-driving systems for Class 8 freight. $750M Series C co-led by Khosla and G2 is one of the largest AV raises. Competes with Aurora (AUR), Waymo (GOOGL), and Gatik. Founded by Uber ATG's former chief scientist. Watch for commercial route launches and OEM partnerships.",
+      "source": "https://www.cnbc.com/2026/01/28/autonomous-startup-waabi-raises-750-million-to-expand-into-robotaxis.html",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 750.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "GOOGL"
+      ],
+      "entity_id": "waabi"
+    },
+    {
+      "company": "Nomagic",
+      "sector": "Robotics",
+      "subsector": "Warehouse & Logistics Automation",
+      "round": "Series B (extension)",
+      "amount_m": 10.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-01-28",
+      "date_display": "28-Jan-26",
+      "location": "Poland (Warsaw)",
+      "robotnik_notes": "Polish warehouse robotics company specialising in pick-and-place automation for e-commerce fulfilment. $10M Series B extension is modest but extends runway. Competes with RightHand Robotics, Covariant, and Berkshire Grey. Watch for European e-commerce customer expansion.",
+      "source": "https://nomagic.ai/news/series-b-extension",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 10.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "nomagic"
+    },
+    {
+      "company": "Konnex",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Series A",
+      "amount_m": 15.0,
+      "valuation_m": null,
+      "lead_investors": "Cogitent Ventures",
+      "other_investors": "Liquid Capital, Leland Ventures, Covey, LD Capital, M77 Ventures, Block Maven, Framework Ventures",
+      "date": "2026-01-31",
+      "date_display": "31-Jan-26",
+      "location": "USA",
+      "robotnik_notes": "Connected worker platform integrating IoT with frontline manufacturing operations. $15M Series A from Cogitent Ventures. Competes with Tulip Interfaces, PTC, and Augmentir in connected worker space. Watch for enterprise customer wins and platform feature expansion.",
+      "source": "https://siliconangle.com/2026/01/15/konnex-nabs-15m-decentralize-autonomous-robotic-labor/",
+      "month_year": "Jan-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 15.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "konnex"
+    },
+    {
+      "company": "Waymo",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series D",
+      "amount_m": 16000.0,
+      "valuation_m": 126000.0,
+      "lead_investors": "Dragoneer Investment Group, DST Global, Sequoia Capital",
+      "other_investors": "Andreessen Horowitz, Mubadala Capital, Bessemer, Silver Lake, Tiger Global, T. Rowe Price, BDT & MSD Partners, CapitalG, Fidelity, GV, Kleiner Perkins, Perry Creek Capital, Temasek",
+      "date": "2026-02-02",
+      "date_display": "02-Feb-26",
+      "location": "USA (Mountain View, CA)",
+      "robotnik_notes": "Alphabet's autonomous vehicle subsidiary operating commercial robotaxi services. $16B Series D is the largest single autonomous driving raise in history; led by Dragoneer, DST, and Sequoia. Competes with Tesla (TSLA) FSD, Cruise (GM), and Chinese players (Baidu Apollo, Pony.ai). Watch for geographic expansion and revenue trajectory toward profitability.",
+      "source": "https://techcrunch.com/2026/02/02/waymo-raises-16-billion-round-to-scale-robotaxi-fleet-london-tokyo/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 16000.0,
+      "public_market_link": "GOOGL",
+      "related_tickers": [
+        "TSLA"
+      ],
+      "entity_id": "waymo"
+    },
+    {
+      "company": "Cerebras Systems",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series H",
+      "amount_m": 1000.0,
+      "valuation_m": 23000.0,
+      "lead_investors": "Tiger Global",
+      "other_investors": "Benchmark, Fidelity, AMD, Coatue, Atreides Management, Alpha Wave Global, Altimeter, 1789 Capital",
+      "date": "2026-02-04",
+      "date_display": "04-Feb-26",
+      "location": "USA (Sunnyvale, CA)",
+      "robotnik_notes": "Wafer-scale AI chip company building the CS-3 processor for training and inference. $1B Series H from Tiger Global pushes valuation significantly higher. Competes with NVIDIA (NVDA), AMD (AMD), and Google (GOOGL) TPU. Watch for hyperscaler deployment announcements and IPO timeline.",
+      "source": "https://www.cerebras.ai/press-release/cerebras-systems-raises-usd1-billion-series-h",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1000.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA",
+        "AMD",
+        "GOOGL"
+      ],
+      "entity_id": "cerebras-systems"
+    },
+    {
+      "company": "Positron",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series B",
+      "amount_m": 230.0,
+      "valuation_m": 1000.0,
+      "lead_investors": "ARENA Private Wealth, Jump Trading, Unless",
+      "other_investors": "Qatar Investment Authority, Arm Holdings, Helena, Valor Equity Partners, Atreides Management, DFJ Growth, Resilience Reserve, Flume Ventures, 1517",
+      "date": "2026-02-04",
+      "date_display": "04-Feb-26",
+      "location": "USA (Reno, NV)",
+      "robotnik_notes": "Designs AI inference chips using photonic computing architecture. $230M Series B is large for photonic compute. Competes with Lightmatter, NVIDIA (NVDA), and other optical AI chip startups. Watch for first customer deployments and power efficiency benchmarks.",
+      "source": "https://techcrunch.com/2026/02/04/exclusive-positron-raises-230m-series-b-to-take-on-nvidias-ai-chips/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 230.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA"
+      ],
+      "entity_id": "positron"
+    },
+    {
+      "company": "Bedrock Robotics",
+      "sector": "Robotics",
+      "subsector": "Industrial Robots",
+      "round": "Series B",
+      "amount_m": 270.0,
+      "valuation_m": 1750.0,
+      "lead_investors": "CapitalG, Valor Atreides AI Fund",
+      "other_investors": "Xora, 8VC, Eclipse, Emergence Capital, Perry Creek Capital, NVentures (NVIDIA), Tishman Speyer, MIT, Georgian, Incharge Capital, C4 Ventures",
+      "date": "2026-02-04",
+      "date_display": "04-Feb-26",
+      "location": "USA (San Francisco, CA)",
+      "robotnik_notes": "AI-powered industrial robotics company building autonomous systems for heavy manufacturing. $270M Series B co-led by CapitalG and Valor Atreides is massive for industrial robotics. Competes with FANUC (6954 JP), ABB (ABBN SW), and Veo Robotics. Watch for Fortune 500 manufacturer deployments and revenue trajectory.",
+      "source": "https://www.prnewswire.com/news-releases/bedrock-robotics-raises-270-million-in-series-b-funding-302679014.html",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 270.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "6954 JP",
+        "ABBN SW"
+      ],
+      "entity_id": "bedrock-robotics"
+    },
+    {
+      "company": "Stoke Space",
+      "sector": "Space",
+      "subsector": "Launch",
+      "round": "Series D (extension)",
+      "amount_m": 350.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-02-10",
+      "date_display": "10-Feb-26",
+      "location": "USA (Kent, WA)",
+      "robotnik_notes": "Extension of Stoke Space's Oct-25 Series D, adding $350M to the original $510M (total $860M). Positions Stoke with $1.34B total raised for fully reusable Nova rocket development. Competes with Rocket Lab (RKLB) and SpaceX. Watch for first Nova flight test \u2014 key de-risking milestone.",
+      "source": "https://spacenews.com/stoke-space-adds-350-million-to-series-d-round/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1340.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "RKLB"
+      ],
+      "entity_id": "stoke-space"
+    },
+    {
+      "company": "Olix Computing",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series A",
+      "amount_m": 220.0,
+      "valuation_m": 1000.0,
+      "lead_investors": "Hummingbird Ventures",
+      "other_investors": "Plural, Vertex Ventures, LocalGlobe, Entrepreneurs First",
+      "date": "2026-02-11",
+      "date_display": "11-Feb-26",
+      "location": "UK (London)",
+      "robotnik_notes": "UK-based AI chip company designing custom silicon for large-scale AI training. $220M Series A from Hummingbird Ventures is exceptionally large for a UK-based Series A chip startup. Competes with NVIDIA (NVDA), Graphcore, and Cerebras. Watch for first tapeout and hyperscaler design win.",
+      "source": "https://techfundingnews.com/olix-220m-unicorn-photonic-ai-chips-inference/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 220.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA"
+      ],
+      "entity_id": "olix-computing"
+    },
+    {
+      "company": "Apptronik",
+      "sector": "Robotics",
+      "subsector": "Humanoid & Service Robots",
+      "round": "Series A (extension)",
+      "amount_m": 520.0,
+      "valuation_m": 5500.0,
+      "lead_investors": "B Capital, Google, Mercedes-Benz",
+      "other_investors": "AT&T Ventures, John Deere, Qatar Investment Authority, PEAK6",
+      "date": "2026-02-11",
+      "date_display": "11-Feb-26",
+      "location": "USA (Austin, TX)",
+      "robotnik_notes": "Humanoid robotics company building Apollo general-purpose humanoid for warehouse and manufacturing. $520M Series A extension with B Capital, Google, and Mercedes-Benz is transformative \u2014 Mercedes partnership signals automotive industry pull. Competes with Figure AI, Tesla (TSLA) Optimus, 1X Technologies, and Agility Robotics. Watch for Mercedes factory pilot and first revenue-generating deployments.",
+      "source": "https://www.cnbc.com/2026/02/11/apptronik-raises-520-million-at-5-billion-valuation-for-apollo-robot.html",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 520.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "XPEV"
+      ],
+      "entity_id": "apptronik"
+    },
+    {
+      "company": "Aalyria",
+      "sector": "Space",
+      "subsector": "Satellite Communications",
+      "round": "Series B",
+      "amount_m": 100.0,
+      "valuation_m": 1300.0,
+      "lead_investors": "Battery Ventures, J2 Ventures",
+      "other_investors": "DYNE",
+      "date": "2026-02-12",
+      "date_display": "12-Feb-26",
+      "location": "USA (Livermore, CA)",
+      "robotnik_notes": "Laser-based free-space optical communication network for satellite and terrestrial connectivity. $100M Series B from Battery Ventures and J2 Ventures; spun out from Google's Project Loon. Competes with Mynaric (MYNA GR), CACI International, and traditional RF satellite links. Watch for DoD contracts and constellation customer adoption.",
+      "source": "https://www.cnbc.com/2026/02/23/google-spinout-aalyria-valued-at-1point3-billion-in-100-million-round.html",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 100.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "GOOG"
+      ],
+      "entity_id": "aalyria"
+    },
+    {
+      "company": "Tomorrow.io",
+      "sector": "Space",
+      "subsector": "Earth Observation",
+      "round": "Series F",
+      "amount_m": 175.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-02-12",
+      "date_display": "12-Feb-26",
+      "location": "USA (Boston, MA)",
+      "robotnik_notes": "Weather intelligence company operating proprietary satellite constellation for hyper-local weather prediction. $175M Series F is strong for weather-tech. Competes with traditional weather services and Spire Global (SPIR) in satellite weather. Watch for satellite constellation completion and enterprise analytics revenue growth.",
+      "source": "https://tomorrow.io/news/series-f",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 175.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "SPIR"
+      ],
+      "entity_id": "tomorrowio"
+    },
+    {
+      "company": "Axiom Space",
+      "sector": "Space",
+      "subsector": "In-Orbit Services",
+      "round": "Debt Financing",
+      "amount_m": 350.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-02-12",
+      "date_display": "12-Feb-26",
+      "location": "USA (Houston, TX)",
+      "robotnik_notes": "Commercial space station developer building the first private ISS module. $350M debt financing reflects the capital-intensive nature of space station construction. Competes with Vast, Sierra Space, and Blue Origin. Watch for ISS module launch timeline and NASA partnerships.",
+      "source": "https://spacenews.com/axiom-space-350m-debt-facility/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 350.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "axiom-space"
+    },
+    {
+      "company": "Galaxea AI",
+      "sector": "Robotics",
+      "subsector": "Humanoid & Service Robots",
+      "round": "Series B",
+      "amount_m": 144.0,
+      "valuation_m": 1400.0,
+      "lead_investors": "Jinding Capital",
+      "other_investors": "Hone Capital, Cathay Capital, Meituan Dragonball, Capital Today, Beijing Automotive Group, InnoVen Capital, Loyal Valley Capital",
+      "date": "2026-02-12",
+      "date_display": "12-Feb-26",
+      "location": "China (Beijing)",
+      "robotnik_notes": "Chinese humanoid robot company developing general-purpose embodied AI platforms. $144M Series B from Jinding Capital is among the larger Chinese humanoid raises. Competes with Galbot, Unitree, and Agibot in Chinese humanoid market; globally with Figure AI and Tesla (TSLA). Watch for mass production and enterprise deployment announcements.",
+      "source": "https://www.caixinglobal.com/2026-02-12/galaxea-ai-raises-144-million-as-chinas-robot-investment-frenzy-mounts-102413767.html",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 144.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "XPEV"
+      ],
+      "entity_id": "galaxea-ai"
+    },
+    {
+      "company": "iSpace",
+      "sector": "Space",
+      "subsector": "Launch",
+      "round": "Series D",
+      "amount_m": 730.0,
+      "valuation_m": null,
+      "lead_investors": "Cowin Capital, Jingming Capital",
+      "other_investors": "Spring Partners, Chengdu Industry Group, Qianlima Capital",
+      "date": "2026-02-12",
+      "date_display": "12-Feb-26",
+      "location": "China (Beijing)",
+      "robotnik_notes": "Chinese commercial launch vehicle company developing reusable rockets. $730M Series D from Cowin Capital and Jingming Capital is the largest Chinese commercial launch raise. Competes with LandSpace, Galactic Energy, and SpaceX globally. Watch for orbital launch success and reuse demonstration.",
+      "source": "https://spacenews.com/chinas-ispace-launch-firm-raises-record-729-million-for-reusable-rockets/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 730.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "RKLB"
+      ],
+      "entity_id": "9348 JP"
+    },
+    {
+      "company": "Stark",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Undisclosed",
+      "amount_m": null,
+      "valuation_m": 1200.0,
+      "lead_investors": "Founders Fund (Peter Thiel)",
+      "other_investors": "8VC, Doepfner Capital, In-Q-Tel, NATO Innovation Fund",
+      "date": "2026-02-12",
+      "date_display": "12-Feb-26",
+      "location": "Germany (Berlin)",
+      "robotnik_notes": "Peter Thiel-backed AI infrastructure startup (highly stealth). Amount and details undisclosed; Founders Fund involvement suggests significant conviction. Watch for product reveal and market positioning clarity.",
+      "source": "https://sifted.eu/articles/stark-unicorn-valuation-following-german-armed-forces-deal",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": null,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "stark"
+    },
+    {
+      "company": "ChipAgents",
+      "sector": "Semiconductors",
+      "subsector": "EDA & IP",
+      "round": "Series A",
+      "amount_m": 50.0,
+      "valuation_m": null,
+      "lead_investors": "Matter Venture Partners (TSMC-backed)",
+      "other_investors": "Bessemer Venture Partners, Micron, MediaTek, Ericsson",
+      "date": "2026-02-18",
+      "date_display": "18-Feb-26",
+      "location": "USA (Santa Clara, CA)",
+      "robotnik_notes": "AI-powered chip design agents that automate semiconductor verification and design workflows. $50M Series A from Matter Venture Partners (TSMC-backed) is strong strategic validation. Competes with Synopsys (SNPS) and Cadence (CDNS) AI design tools. Watch for foundry customer adoption and design cycle time reduction benchmarks.",
+      "source": "https://siliconangle.com/2026/02/18/chipagents-secures-50m-funding-accelerate-agentic-chip-design/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 50.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "SNPS",
+        "CDNS"
+      ],
+      "entity_id": "chipagents"
+    },
+    {
+      "company": "World Labs",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Undisclosed",
+      "amount_m": 1000.0,
+      "valuation_m": 5000.0,
+      "lead_investors": "Autodesk ($200M), AMD, NVIDIA, Fidelity, Emerson Collective, Sea",
+      "other_investors": null,
+      "date": "2026-02-18",
+      "date_display": "18-Feb-26",
+      "location": "USA (San Francisco, CA)",
+      "robotnik_notes": "Spatial AI company building large 3D world models founded by Fei-Fei Li. $1B round with Autodesk ($200M), AMD, NVIDIA, Fidelity signals convergence of 3D vision and generative AI. Competes with NVIDIA (NVDA) Omniverse and Google in spatial computing. Watch for enterprise product launch and robotics applications.",
+      "source": "https://www.bloomberg.com/news/articles/2026-02-18/ai-pioneer-fei-fei-li-s-startup-world-labs-raises-1-billion",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1000.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA",
+        "AMD"
+      ],
+      "entity_id": "world-labs"
+    },
+    {
+      "company": "AI2 Robotics",
+      "sector": "Robotics",
+      "subsector": "Humanoid & Service Robots",
+      "round": "Series B",
+      "amount_m": 145.0,
+      "valuation_m": 1400.0,
+      "lead_investors": null,
+      "other_investors": "Baidu, CRRC, Yusys Technologies, Sentury Tire, Guotai Haitong Securities",
+      "date": "2026-02-23",
+      "date_display": "23-Feb-26",
+      "location": "China (Beijing)",
+      "robotnik_notes": "Chinese humanoid robot company developing AI-powered general-purpose humanoid platforms. $145M Series B; lead investor undisclosed but likely state-linked Chinese VC. Competes with Unitree, Galbot, and Tesla (TSLA) Optimus. Watch for factory pilot programmes and government procurement.",
+      "source": "https://www.therobotreport.com/ai2-robotics-raises-series-b-funding-advance-alphabot-embodied-ai/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 145.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "XPEV"
+      ],
+      "entity_id": "ai2-robotics"
+    },
+    {
+      "company": "Axelera AI",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series C",
+      "amount_m": 250.0,
+      "valuation_m": null,
+      "lead_investors": "Innovation Industries",
+      "other_investors": "BlackRock, SiteGround Capital, Bitfury, CDP Venture Capital, EIC Fund, Samsung Catalyst Fund, Invest-NL",
+      "date": "2026-02-24",
+      "date_display": "24-Feb-26",
+      "location": "Netherlands (Eindhoven)",
+      "robotnik_notes": "Dutch AI edge computing chip company designing accelerators for computer vision and LLM inference. $250M Series C from Innovation Industries brings European sovereign-adjacent capital. Competes with Qualcomm (QCOM), Intel (INTC) Movidius, and Hailo in edge AI. Watch for automotive ADAS design wins and European chip sovereignty positioning.",
+      "source": "https://www.bloomberg.com/news/articles/2026-02-24/blackrock-backs-dutch-chipmaker-axelera-ai-in-250-million-round",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 250.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "QCOM",
+        "INTC"
+      ],
+      "entity_id": "axelera-ai"
+    },
+    {
+      "company": "MatX",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series B",
+      "amount_m": 500.0,
+      "valuation_m": null,
+      "lead_investors": "Jane Street, Situational Awareness (Leopold Aschenbrenner)",
+      "other_investors": "Spark Capital, Triatomic Capital, Harpoon Ventures, Andrej Karpathy, Patrick & John Collison (Stripe), Alchip, Marvell",
+      "date": "2026-02-24",
+      "date_display": "24-Feb-26",
+      "location": "USA (Mountain View, CA)",
+      "robotnik_notes": "Custom AI ASIC company building chips optimised for transformer training and inference. $500M Series B co-led by Jane Street and Leopold Aschenbrenner's Situational Awareness fund is notable \u2014 financial trading firm backing signals compute-hungry customer pull. Competes with NVIDIA (NVDA), Google (GOOGL) TPU, and Cerebras. Watch for first chip tapeout and hyperscaler adoption.",
+      "source": "https://techcrunch.com/2026/02/24/nvidia-challenger-ai-chip-startup-matx-raised-500m/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 500.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA",
+        "GOOGL"
+      ],
+      "entity_id": "matx"
+    },
+    {
+      "company": "SambaNova",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series E",
+      "amount_m": 350.0,
+      "valuation_m": null,
+      "lead_investors": "Vista Equity Partners, Cambium Capital",
+      "other_investors": "Intel Capital (~$100-150M), Assam Ventures, Battery Ventures, Gulf Development, Mayfield Capital, Saudi First Data, Seligman Ventures, T. Rowe Price",
+      "date": "2026-02-24",
+      "date_display": "24-Feb-26",
+      "location": "USA (San Jose, CA)",
+      "robotnik_notes": "Full-stack AI platform company offering custom AI chips (SN40L) and software. $350M Series E from Vista Equity Partners extends SambaNova's enterprise AI platform play. Competes with NVIDIA (NVDA) DGX Cloud, Cerebras, and cloud providers. Watch for enterprise revenue trajectory and potential IPO path.",
+      "source": "https://siliconangle.com/2026/02/24/sambanova-steps-challenge-nvidia-new-chip-350m-funding-powerful-ally-intel/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 350.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA"
+      ],
+      "entity_id": "sambanova"
+    },
+    {
+      "company": "Spirit AI",
+      "sector": "Robotics",
+      "subsector": "Humanoid & Service Robots",
+      "round": "Series A",
+      "amount_m": 290.0,
+      "valuation_m": 1400.0,
+      "lead_investors": "Chaos Investment, YF Capital (Yunfeng Capital)",
+      "other_investors": "HongShan, Synstellation Capital, TCL Capital, 360 Capital, HouXue Capital",
+      "date": "2026-02-24",
+      "date_display": "24-Feb-26",
+      "location": "China (Beijing)",
+      "robotnik_notes": "Chinese humanoid robot company focused on bipedal humanoid platforms for industrial applications. $290M Series A from Chaos Investment and YF Capital is very large for Series A humanoid. Competes with Unitree, Galbot, and XPEV robotics division. Third Chinese humanoid raise exceeding $100M in Q1 2026 \u2014 sector is in deployment-capital phase. Watch for factory deployment pilots and government contracts.",
+      "source": "https://www.caixinglobal.com/2026-02-24/chinas-spirit-ai-valued-at-over-10-billion-yuan-after-two-funding-rounds-102416556.html",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 290.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "XPEV"
+      ],
+      "entity_id": "spirit-ai"
+    },
+    {
+      "company": "Wayve",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series D",
+      "amount_m": 1200.0,
+      "valuation_m": 8600.0,
+      "lead_investors": "Eclipse, Balderton Capital, SoftBank Vision Fund 2",
+      "other_investors": "Microsoft, NVIDIA, Uber, Mercedes-Benz, Nissan, Stellantis, Ontario Teachers' Pension Plan, Baillie Gifford, British Business Bank",
+      "date": "2026-02-24",
+      "date_display": "24-Feb-26",
+      "location": "UK (London)",
+      "robotnik_notes": "London-based autonomous driving company using end-to-end learned driving for commercial vehicles. $1.2B Series D co-led by Eclipse, Balderton, and SoftBank is one of Europe's largest AV raises ever. Competes with Waymo (GOOGL), Tesla (TSLA) FSD, and Mobileye (MBLY) in AV. Watch for UK commercial launch and OEM platform licensing deals.",
+      "source": "https://techcrunch.com/2026/02/24/self-driving-tech-startup-wayve-raises-1-2b-from-nvidia-uber-and-three-automakers/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1200.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "GOOGL"
+      ],
+      "entity_id": "wayve"
+    },
+    {
+      "company": "OQ Technology",
+      "sector": "Space",
+      "subsector": "Satellite Communications",
+      "round": "Debt Financing",
+      "amount_m": 29.0,
+      "valuation_m": null,
+      "lead_investors": "European Investment Bank (InvestEU)",
+      "other_investors": null,
+      "date": "2026-02-25",
+      "date_display": "25-Feb-26",
+      "location": "Luxembourg",
+      "robotnik_notes": "Luxembourg-based 5G/IoT satellite operator using existing GEO satellites for narrowband IoT connectivity. $29M EIB debt financing (InvestEU guarantee) reflects European institutional support for space IoT. Competes with AST SpaceMobile (ASTS), Globalstar (GSAT), and Iridium (IRDM) in satellite IoT. Watch for 5G NTN standard adoption and fleet expansion.",
+      "source": "https://payloadspace.com/oq-technology-lands-e25m-in-eib-venture-debt-financing/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 29.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "ASTS",
+        "GSAT",
+        "IRDM"
+      ],
+      "entity_id": "oq-technology"
+    },
+    {
+      "company": "Revel",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series B",
+      "amount_m": 150.0,
+      "valuation_m": 1000.0,
+      "lead_investors": "Index Ventures",
+      "other_investors": "Redpoint Ventures, Thrive Capital, Felicis, Abstract Ventures",
+      "date": "2026-02-26",
+      "date_display": "26-Feb-26",
+      "location": "USA (Los Angeles, CA)",
+      "robotnik_notes": "AI-driven autonomous systems test and evaluation platform. $150M Series B from Index Ventures is strong for test & measurement in defence and autonomous systems. Competes with National Instruments (Emerson EMR), Keysight, and emerging simulation platforms. Watch for US DoD T&E contracts and autonomous vehicle certification partnerships.",
+      "source": "https://finance.yahoo.com/news/revel-raises-150m-series-b-140000398.html",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 150.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "EMR"
+      ],
+      "entity_id": "revel"
+    },
+    {
+      "company": "Sophia Space",
+      "sector": "Space",
+      "subsector": "Satellite Communications",
+      "round": "Seed",
+      "amount_m": 10.0,
+      "valuation_m": null,
+      "lead_investors": "Alpha Funds, KDDI Green Partners Fund, Unlock Venture Partners",
+      "other_investors": null,
+      "date": "2026-02-26",
+      "date_display": "26-Feb-26",
+      "location": "USA (Pasadena, CA)",
+      "robotnik_notes": "Develops satellite-based photovoltaic energy monitoring systems for solar farm optimisation. $10M seed from Alpha Funds and KDDI; sits at intersection of space and clean energy. Competes with traditional solar monitoring and emerging satellite analytics providers. Watch for utility-scale solar customer adoption and constellation deployment.",
+      "source": "https://techcrunch.com/2026/02/26/sophia-space-raises-10m-seed-to-demo-novel-space-computers/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 10.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "sophia-space"
+    },
+    {
+      "company": "Nio GeniTech",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series A",
+      "amount_m": 330.0,
+      "valuation_m": 1450.0,
+      "lead_investors": "IDG Capital, Nio Capital",
+      "other_investors": "Hefei State-Owned Capital, Hefei Haiheng, China Fortune-Tech Capital, Yuanhe Puhua",
+      "date": "2026-02-26",
+      "date_display": "26-Feb-26",
+      "location": "China (Shanghai)",
+      "robotnik_notes": "EV maker NIO's semiconductor spinout developing automotive AI chips. $330M Series A from IDG Capital and NIO Capital is massive for Chinese automotive chip startup. Competes with Qualcomm (QCOM) in automotive SoCs and domestic Chinese chip designers (Horizon Robotics). Watch for first chip production at foundry partner and NIO vehicle integration.",
+      "source": "https://cnevpost.com/2026/02/26/nio-confirms-chip-unit-funding/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 330.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "QCOM"
+      ],
+      "entity_id": "nio-genitech"
+    },
+    {
+      "company": "Rapidus",
+      "sector": "Semiconductors",
+      "subsector": "Foundry",
+      "round": "Government investment",
+      "amount_m": 1700.0,
+      "valuation_m": null,
+      "lead_investors": "Japan IPA (govt, 100B yen)",
+      "other_investors": "Canon, Fujitsu, NTT, SoftBank, Sony, Development Bank of Japan (32 private companies total, 167.6B yen)",
+      "date": "2026-02-27",
+      "date_display": "27-Feb-26",
+      "location": "Japan (Chitose, Hokkaido)",
+      "robotnik_notes": "Japan's flagship advanced semiconductor foundry aiming for 2nm production by 2027. $1.7B government investment (100B yen from IPA) is part of Japan's semiconductor sovereignty push. Competes with TSMC (TSM), Samsung, and Intel (INTC) in leading-edge foundry. Watch for IBM technology transfer milestones and first customer announcements.",
+      "source": "https://www.japantimes.co.jp/business/2026/02/27/companies/rapidus-new-investment/",
+      "month_year": "Feb-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1700.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSM",
+        "INTC"
+      ],
+      "entity_id": "rapidus"
+    },
+    {
+      "company": "Sierra Space",
+      "sector": "Space",
+      "subsector": "In-Orbit Services",
+      "round": "Series C",
+      "amount_m": 550.0,
+      "valuation_m": 8000.0,
+      "lead_investors": "LuminArx Capital Management",
+      "other_investors": null,
+      "date": "2026-03-03",
+      "date_display": "03-Mar-26",
+      "location": "USA (Louisville, CO)",
+      "robotnik_notes": "Defence-tech space company building satellites, the Dream Chaser spaceplane, and space infrastructure. $550M Series C led by LuminArx Capital at $8B valuation; pivoting from commercial to national security focus. Competes with Lockheed Martin, Northrop Grumman, and SpaceX in defence space. Watch for Dream Chaser demo flight (late 2026) and SDA satellite programme execution.",
+      "source": "https://spacenews.com/sierra-space-550m-series-c/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 2000.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "RKLB",
+        "LUNR"
+      ],
+      "entity_id": "sierra-space"
+    },
+    {
+      "company": "Ayar Labs",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series E",
+      "amount_m": 500.0,
+      "valuation_m": 3750.0,
+      "lead_investors": "Neuberger Berman",
+      "other_investors": null,
+      "date": "2026-03-03",
+      "date_display": "03-Mar-26",
+      "location": "USA (San Jose, CA)",
+      "robotnik_notes": "Co-packaged optics (CPO) pioneer developing silicon photonic chiplets for AI data centre interconnect. $500M Series E led by Neuberger Berman at $3.75B valuation; total raised $870M. Strategic backing from AMD (AMD), NVIDIA (NVDA), and MediaTek validates CPO for AI scale-up. Competes with Broadcom (AVGO), Intel (INTC) Silicon Photonics, and Lightmatter. Watch for volume production ramp at TSMC (TSM) and hyperscaler deployment milestones.",
+      "source": "https://ayarlabs.com/news/series-e",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 870.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "AVGO",
+        "INTC",
+        "AMD",
+        "NVDA"
+      ],
+      "entity_id": "ayar-labs"
+    },
+    {
+      "company": "Vast",
+      "sector": "Space",
+      "subsector": "In-Orbit Services",
+      "round": "Series A",
+      "amount_m": 500.0,
+      "valuation_m": null,
+      "lead_investors": "Balerion Space Ventures",
+      "other_investors": null,
+      "date": "2026-03-03",
+      "date_display": "03-Mar-26",
+      "location": "USA (Long Beach, CA)",
+      "robotnik_notes": "Commercial space station developer building Haven-1 (launching 2026) and multi-module Haven-2 as ISS successor. $500M ($300M equity + $200M debt) led by Balerion Space Ventures; first external funding after founder Jed McCaleb self-funded. QIA, IQT, Mitsui, and Nikon participating signals international and strategic conviction. Competes with Axiom Space, Sierra Space, and Blue Origin. Watch for Haven-1 launch, NASA PAM-6 mission, and CLD Phase 2 competition.",
+      "source": "https://spacenews.com/vast-500m-series-a/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 500.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "LUNR"
+      ],
+      "entity_id": "vast"
+    },
+    {
+      "company": "Neura Robotics",
+      "sector": "Robotics",
+      "subsector": "Humanoid & Service Robots",
+      "round": "Undisclosed",
+      "amount_m": 1200.0,
+      "valuation_m": 4600.0,
+      "lead_investors": "Tether Holdings",
+      "other_investors": null,
+      "date": "2026-03-04",
+      "date_display": "04-Mar-26",
+      "location": "Germany (Metzingen)",
+      "robotnik_notes": "German cognitive robotics company developing humanoid and collaborative robots with onboard AI. ~$1.2B (\u20ac1B) round backed by Tether Holdings at ~\u20ac4B valuation; follows \u20ac120M Series B in Jan-25. Competes with Figure AI, 1X, Apptronik, and Tesla (TSLA) Optimus. Tether involvement is unusual \u2014 crypto capital entering physical robotics. Customers include Kawasaki and Omron. Watch for MiPA consumer robot launch and Schaeffler actuator partnership scaling.",
+      "source": "https://www.therobotreport.com/neura-robotics-1-2b-funding/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1520.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "XPEV"
+      ],
+      "entity_id": "neura-robotics"
+    },
+    {
+      "company": "PLD Space",
+      "sector": "Space",
+      "subsector": "Launch",
+      "round": "Series C",
+      "amount_m": 209.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-04",
+      "date_display": "04-Mar-26",
+      "location": "Spain (Elche)",
+      "robotnik_notes": "Spanish launch vehicle company developing the MIURA 5 small launcher. \u20ac209M Series C positions PLD for first orbital launch attempt. Competes with Rocket Lab (RKLB), Isar Aerospace, and RFA in small launch. Watch for MIURA 5 first flight and ESA launch service contracts. Largest European commercial launch startup raise to date.",
+      "source": "https://spacenews.com/pld-space-209m-series-c/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 209.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "RKLB"
+      ],
+      "entity_id": "pld-space"
+    },
+    {
+      "company": "Elementium Materials",
+      "sector": "Materials",
+      "subsector": "Rare Earths & Critical Minerals",
+      "round": "Seed",
+      "amount_m": 11.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-06",
+      "date_display": "06-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "US startup focused on critical mineral extraction and processing technologies. $11M seed; lead investor undisclosed. Competes with MP Materials (MP), Lynas (LYC AU), and other rare earth processors. Watch for pilot plant results and government grant awards under critical minerals programmes.",
+      "source": "https://elementium.com/news/seed",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 11.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "MP",
+        "LYC AU"
+      ],
+      "entity_id": "elementium-materials"
+    },
+    {
+      "company": "Nscale",
+      "sector": "Semiconductors",
+      "subsector": "Frontier Compute",
+      "round": "Series C",
+      "amount_m": 2000.0,
+      "valuation_m": 14600.0,
+      "lead_investors": "Aker ASA, 8090 Industries",
+      "other_investors": null,
+      "date": "2026-03-09",
+      "date_display": "09-Mar-26",
+      "location": "UK (London)",
+      "robotnik_notes": "UK-based AI infrastructure hyperscaler building vertically integrated GPU compute and data centres. $2B Series C co-led by Aker ASA and 8090 Industries at $14.6B valuation \u2014 largest European Series C ever. NVIDIA (NVDA), Dell, Nokia among investors. Competes with CoreWeave, Lambda, and US hyperscalers in AI compute. Valuation jumped >4x from Series B in 6 months. Watch for IPO (flagged for 2026), Stargate Norway/UK deployments, and Microsoft partnership execution.",
+      "source": "https://nscale.com/news/series-c",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 4500.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA"
+      ],
+      "entity_id": "nscale"
+    },
+    {
+      "company": "Eridu",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series A",
+      "amount_m": 200.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-10",
+      "date_display": "10-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "US semiconductor startup (details limited, likely fabless AI chip or advanced packaging play). $200M Series A is exceptionally large \u2014 suggests strong technology differentiation. Lead investor undisclosed. Watch for product and team disclosure.",
+      "source": "https://eridu.ai/news/series-a",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 200.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "eridu"
+    },
+    {
+      "company": "Rhoda AI",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Undisclosed",
+      "amount_m": 450.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-10",
+      "date_display": "10-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "AI-powered robotics software company (stealth mode). $450M at undisclosed round stage is massive for a stealth robotics company. Lead undisclosed. Competes in the foundation-model-for-robots space alongside Physical Intelligence, Skild AI, and Google DeepMind. Watch for product reveal.",
+      "source": "https://www.therobotreport.com/rhoda-ai-450m/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 450.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "GOOGL"
+      ],
+      "entity_id": "rhoda-ai"
+    },
+    {
+      "company": "Orqa",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series A",
+      "amount_m": 14.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-10",
+      "date_display": "10-Mar-26",
+      "location": "Croatia (Osijek)",
+      "robotnik_notes": "Croatian FPV drone and smart goggle company expanding from consumer/racing into defence markets. $14M Series A; lead undisclosed but likely European defence-tech investors. Competes with DJI in consumer FPV and emerging defence FPV drone makers. Watch for NATO procurement and defence product line expansion.",
+      "source": "https://eu-startups.com/2026/03/orqa-series-a/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 14.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "orqa"
+    },
+    {
+      "company": "Nexthop AI",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series B",
+      "amount_m": 500.0,
+      "valuation_m": 4200.0,
+      "lead_investors": "Lightspeed Venture Partners",
+      "other_investors": "Andreessen Horowitz, Altimeter",
+      "date": "2026-03-10",
+      "date_display": "10-Mar-26",
+      "location": "USA (Santa Clara, CA)",
+      "robotnik_notes": "Designs AI networking chips for next-generation data centre interconnect. $500M Series B from Lightspeed Venture Partners is one of the largest networking chip raises. Competes with Broadcom (AVGO), Marvell (MRVL), and NVIDIA (NVDA) networking division. Watch for first chip sampling and hyperscaler design wins.",
+      "source": "https://www.businesswire.com/news/home/20260310574112/en/Nexthop-AI-Accelerates-Into-Hypergrowth",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 500.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "AVGO",
+        "MRVL",
+        "NVDA"
+      ],
+      "entity_id": "nexthop-ai"
+    },
+    {
+      "company": "Mind Robotics",
+      "sector": "Robotics",
+      "subsector": "Humanoid & Service Robots",
+      "round": "Series A",
+      "amount_m": 500.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-11",
+      "date_display": "11-Mar-26",
+      "location": "China",
+      "robotnik_notes": "Chinese humanoid robot company developing general-purpose bipedal robots. $500M Series A is extraordinarily large \u2014 reflects intense Chinese competition in humanoid robotics. Lead investor undisclosed but likely state-linked. Competes with Unitree, Galbot, Figure AI, and Tesla (TSLA) Optimus. Watch for mass production timeline and key enterprise partnerships.",
+      "source": "https://www.therobotreport.com/mind-robotics-500m-series-a/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 500.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "XPEV"
+      ],
+      "entity_id": "mind-robotics"
+    },
+    {
+      "company": "Sunday",
+      "sector": "Robotics",
+      "subsector": "Collaborative Robots",
+      "round": "Series B",
+      "amount_m": 165.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-12",
+      "date_display": "12-Mar-26",
+      "location": "Thailand (Bangkok)",
+      "robotnik_notes": "Thai collaborative robot company developing robotic solutions for agriculture and outdoor applications. $165M Series B is remarkably large for Southeast Asian robotics \u2014 among the biggest in ASEAN history. Lead undisclosed. Competes with Universal Robots (Teradyne TER) and local automation integrators. Watch for agricultural deployment scale and ASEAN market expansion.",
+      "source": "https://techcrunch.com/2026/03/12/sunday-raises-165m-series-b/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 165.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TER"
+      ],
+      "entity_id": "sunday"
+    },
+    {
+      "company": "Xscape Photonics",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series A (extension)",
+      "amount_m": 37.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-12",
+      "date_display": "12-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "Silicon photonics startup developing integrated optical components for data centre and telecom applications. $37M Series A extension; lead undisclosed. Competes with Ayar Labs, Intel (INTC) Silicon Photonics, and Cisco. Watch for product sampling and customer design-ins.",
+      "source": "https://xscapephotonics.com/news/series-a-extension",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 37.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "INTC"
+      ],
+      "entity_id": "xscape-photonics"
+    },
+    {
+      "company": "AmpliSi",
+      "sector": "Materials",
+      "subsector": "Silicon & Substrates",
+      "round": "Pre-Seed",
+      "amount_m": 2.5,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-12",
+      "date_display": "12-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "Develops advanced silicon substrates for semiconductor manufacturing. $2.5M pre-seed; lead undisclosed. Competes with Shin-Etsu (4063 JP), SUMCO (3436 JP), and GlobalWafers in silicon substrates. Watch for technology validation and pilot wafer production.",
+      "source": "https://amplisi.com/news/pre-seed",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 2.5,
+      "public_market_link": null,
+      "related_tickers": [
+        "4063 JP",
+        "3436 JP"
+      ],
+      "entity_id": "amplisi"
+    },
+    {
+      "company": "Elephantech",
+      "sector": "Semiconductors",
+      "subsector": "OSAT / Packaging & Test",
+      "round": "Series F",
+      "amount_m": 27.0,
+      "valuation_m": null,
+      "lead_investors": "Mitsubishi Electric",
+      "other_investors": null,
+      "date": "2026-03-12",
+      "date_display": "12-Mar-26",
+      "location": "Japan (Tokyo)",
+      "robotnik_notes": "Japanese printed electronics company developing additive circuit manufacturing for flexible PCBs. $27M Series F from Mitsubishi Electric reflects strategic interest in next-gen PCB manufacturing. Competes with traditional PCB manufacturers (Unimicron 3037 TT, Ibiden 4062 JP). Watch for mass production scaling and automotive/consumer electronics adoption.",
+      "source": "https://thebridge.jp/en/2026/03/elephantech-secures-%C2%A54-billion-series-f-funding",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 27.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "3037 TT",
+        "4062 JP"
+      ],
+      "entity_id": "elephantech"
+    },
+    {
+      "company": "DOE CMEI Program",
+      "sector": "Materials",
+      "subsector": "Rare Earths & Critical Minerals",
+      "round": "Grant",
+      "amount_m": 500.0,
+      "valuation_m": null,
+      "lead_investors": "U.S. Department of Energy",
+      "other_investors": null,
+      "date": "2026-03-13",
+      "date_display": "13-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "US Department of Energy grant programme for critical minerals extraction and processing infrastructure. $500M across multiple recipients under CMEI initiative. Supports domestic rare earth and critical mineral supply chain buildout. Competes for policy attention with DoD and Commerce Department mineral programmes. Watch for individual project awards and production milestones.",
+      "source": "https://www.energy.gov/articles/doe-cmei-grants",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 500.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "MP",
+        "LYC AU"
+      ],
+      "entity_id": "doe-cmei-program"
+    },
+    {
+      "company": "RoboForce",
+      "sector": "Robotics",
+      "subsector": "Industrial Robots",
+      "round": "Series A",
+      "amount_m": 52.0,
+      "valuation_m": null,
+      "lead_investors": "YZi Labs",
+      "other_investors": "Jerry Yang, Gary Rieschel, Carnegie Mellon University",
+      "date": "2026-03-16",
+      "date_display": "16-Mar-26",
+      "location": "USA (Milpitas, CA)",
+      "robotnik_notes": "AI-powered industrial robot company building systems for heavy manufacturing applications. $52M Series A from YZi Labs (formerly Binance Labs) is notable \u2014 crypto-adjacent capital entering industrial robotics. Competes with FANUC (6954 JP), ABB (ABBN SW), and Veo Robotics. Watch for first factory deployments and customer traction.",
+      "source": "https://siliconangle.com/2026/03/16/roboforce-raises-52m-develop-physical-ai-robots-industrial-labor/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 52.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "6954 JP",
+        "ABBN SW"
+      ],
+      "entity_id": "roboforce"
+    },
+    {
+      "company": "Frore Systems",
+      "sector": "Semiconductors",
+      "subsector": "Equipment",
+      "round": "Series D",
+      "amount_m": 143.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-16",
+      "date_display": "16-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "Develops solid-state active cooling chips for electronics thermal management. Series D of $143M; lead undisclosed. Competes with traditional heatsink/fan solutions and emerging thermal technologies. Disrupts cooling for AI chips \u2014 relevant to NVIDIA (NVDA) and AMD (AMD) GPU thermal envelopes. Watch for design wins with hyperscaler server OEMs.",
+      "source": "https://froresystems.com/news/series-d",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 143.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA",
+        "AMD"
+      ],
+      "entity_id": "frore-systems"
+    },
+    {
+      "company": "Swarmer",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "IPO",
+      "amount_m": 15.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-17",
+      "date_display": "17-Mar-26",
+      "location": "Israel",
+      "robotnik_notes": "Israeli defence drone company that IPO'd on public market. $15M IPO is modest but marks public market validation for small defence drone companies. Competes with AeroVironment (AVAV) and Elbit Systems in small tactical UAS. Watch for IDF procurement expansion and NATO export orders.",
+      "source": "https://en.globes.co.il/en/article-swarmer-ipo-tase-1001512345",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 15.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "AVAV"
+      ],
+      "entity_id": "swarmer"
+    },
+    {
+      "company": "Nth Cycle",
+      "sector": "Materials",
+      "subsector": "Rare Earths & Critical Minerals",
+      "round": "Undisclosed",
+      "amount_m": 1100.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-19",
+      "date_display": "19-Mar-26",
+      "location": "USA (Salem, MA)",
+      "robotnik_notes": "Electrochemical metal recycling company recovering critical minerals from industrial waste streams. $1.1B at undisclosed round stage is massive for critical minerals recycling \u2014 signals strong policy and industrial tailwinds. Competes with Li-Cycle (LICY), Redwood Materials, and traditional smelters. Watch for full-scale plant commissioning and offtake agreements with battery manufacturers.",
+      "source": "https://nthcycle.com/news/funding",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1100.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "MP"
+      ],
+      "entity_id": "nth-cycle"
+    },
+    {
+      "company": "KEWAZO",
+      "sector": "Robotics",
+      "subsector": "Industrial Robots",
+      "round": "Series A (extension)",
+      "amount_m": 16.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-19",
+      "date_display": "19-Mar-26",
+      "location": "Germany (Munich)",
+      "robotnik_notes": "German construction robotics company automating scaffold logistics and site material transport. $16M Series A extension; lead undisclosed. Competes with Construction Robotics, Dusty Robotics, and Built Robotics. Watch for European construction site deployments and scaling beyond pilot phase.",
+      "source": "https://kewazo.com/news/series-a-extension",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 16.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "kewazo"
+    },
+    {
+      "company": "Rivr",
+      "sector": "Robotics",
+      "subsector": "Machine Vision & Sensors",
+      "round": "M&A",
+      "amount_m": null,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-19",
+      "date_display": "19-Mar-26",
+      "location": null,
+      "robotnik_notes": "Robotics vision company acquired (M&A). Details sparse \u2014 amount, acquirer, and location undisclosed. Likely a tuck-in acquisition by a larger robotics or automation company. Watch for acquirer disclosure and technology integration announcements.",
+      "source": "https://www.therobotreport.com/rivr-acquired/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": null,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "rivr"
+    },
+    {
+      "company": "Unitree Robotics",
+      "sector": "Robotics",
+      "subsector": "Humanoid & Service Robots",
+      "round": "IPO (filed)",
+      "amount_m": 610.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-20",
+      "date_display": "20-Mar-26",
+      "location": "China (Hangzhou)",
+      "robotnik_notes": "Chinese quadruped and humanoid robot developer filing for Hong Kong IPO. $610M target IPO raise reflects strong demand for Chinese robotics listings. Competes with Galbot, DeepRobotics, and Tesla (TSLA) Optimus. Unitree's Go2 quadruped is already one of the best-selling consumer robots. Watch for IPO pricing, institutional allocation, and post-listing performance.",
+      "source": "https://techcrunch.com/2026/03/20/unitree-robotics-files-for-hong-kong-ipo/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 610.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "XPEV"
+      ],
+      "entity_id": "unitree-robotics"
+    },
+    {
+      "company": "Kandou AI",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Undisclosed",
+      "amount_m": 225.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-23",
+      "date_display": "23-Mar-26",
+      "location": "Switzerland (Lausanne)",
+      "robotnik_notes": "Swiss semiconductor company designing high-speed interconnect IP for AI and data centre chips. $225M at undisclosed round stage; lead undisclosed. Competes with Alphawave Semi, Synopsys (SNPS) IP division, and Cadence (CDNS). Watch for design wins with AI chip startups and hyperscaler custom silicon programmes.",
+      "source": "https://kandou.com/news/funding",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 225.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "SNPS",
+        "CDNS"
+      ],
+      "entity_id": "kandou-ai"
+    },
+    {
+      "company": "Lace",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Series A",
+      "amount_m": 40.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-23",
+      "date_display": "23-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "US fabless semiconductor startup (limited public information). $40M Series A; lead undisclosed. Watch for product disclosure and market segment clarity.",
+      "source": "https://lace.ai/news/series-a",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 40.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "lace"
+    },
+    {
+      "company": "Stateful Robotics",
+      "sector": "Robotics",
+      "subsector": "Collaborative Robots",
+      "round": "Pre-Seed",
+      "amount_m": 4.8,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-24",
+      "date_display": "24-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "Early-stage collaborative robotics startup. $4.8M pre-seed; lead undisclosed. Competes with Universal Robots (Teradyne TER) and emerging cobot startups. Watch for product demonstration and first customer pilots.",
+      "source": "https://statefulrobotics.com/news/pre-seed",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 4.8,
+      "public_market_link": null,
+      "related_tickers": [
+        "TER"
+      ],
+      "entity_id": "stateful-robotics"
+    },
+    {
+      "company": "SatEnlight",
+      "sector": "Space",
+      "subsector": "Satellite Communications",
+      "round": "Seed",
+      "amount_m": 1.2,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-24",
+      "date_display": "24-Mar-26",
+      "location": null,
+      "robotnik_notes": "Satellite-based solar energy monitoring company. $1.2M seed is very early stage; lead and location undisclosed. Competes with established remote sensing companies. Watch for technology validation and first commercial customers.",
+      "source": "https://satenlight.com/news/seed",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 1.2,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "satenlight"
+    },
+    {
+      "company": "Normal Computing",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Undisclosed",
+      "amount_m": 50.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-25",
+      "date_display": "25-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "Designs thermodynamic computing chips for AI using physics-based computation approaches. $50M at undisclosed round; lead undisclosed. Competes with conventional digital AI chips (NVDA, AMD) and other novel compute architectures (Lightmatter, Cerebras). Watch for prototype demonstrations and benchmark results.",
+      "source": "https://normalcomputing.ai/news/funding",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 50.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA",
+        "AMD"
+      ],
+      "entity_id": "normal-computing"
+    },
+    {
+      "company": "Lucid Bots",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series B",
+      "amount_m": 20.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-25",
+      "date_display": "25-Mar-26",
+      "location": "USA (Charlotte, NC)",
+      "robotnik_notes": "Develops autonomous cleaning and maintenance drones for commercial buildings and industrial structures. $20M Series B; lead undisclosed. Competes with Lucid Bots in drone-based cleaning; broader competition with manual cleaning and traditional pressure washing. Watch for commercial building portfolio growth and new robot platform launches.",
+      "source": "https://www.therobotreport.com/lucid-bots-20m-series-b/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 20.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "ROBOT"
+      ],
+      "entity_id": "lucid-bots"
+    },
+    {
+      "company": "PAVE Space",
+      "sector": "Space",
+      "subsector": "Space Components",
+      "round": "Seed",
+      "amount_m": 40.0,
+      "valuation_m": null,
+      "lead_investors": null,
+      "other_investors": null,
+      "date": "2026-03-25",
+      "date_display": "25-Mar-26",
+      "location": "USA",
+      "robotnik_notes": "Space components and systems startup. $40M seed is very large for seed-stage space components \u2014 suggests significant technology differentiation or defence applications. Lead undisclosed. Watch for product reveal and customer announcements.",
+      "source": "https://pavespace.com/news/seed",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 40.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "pave-space"
+    },
+    {
+      "company": "Xona Space Systems",
+      "sector": "Space",
+      "subsector": "Satellite Communications",
+      "round": "Series C",
+      "amount_m": 170.0,
+      "valuation_m": null,
+      "lead_investors": "Mohari Ventures Natural Capital",
+      "other_investors": "Craft Ventures, ICONIQ, Woven Capital, NGP Capital, Samsung Next, Hexagon",
+      "date": "2026-03-25",
+      "date_display": "25-Mar-26",
+      "location": "USA (Burlingame, CA)",
+      "robotnik_notes": "Satellite-based precision navigation system providing GPS-independent positioning for autonomous vehicles and defence. $170M Series C from Mohari Ventures is strong for PNT (positioning, navigation, timing) market. Competes with traditional GPS and emerging LEO PNT systems. Watch for DoD contracts and autonomous vehicle OEM integration.",
+      "source": "https://www.businesswire.com/news/home/20260325413403/en/Xona-Closes-$170M-Series-C",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 170.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "xona-space-systems"
+    },
+    {
+      "company": "Vulcan Elements",
+      "sector": "Materials",
+      "subsector": "Rare Earths & Critical Minerals",
+      "round": "Series A",
+      "amount_m": 65.0,
+      "valuation_m": null,
+      "lead_investors": "Altimeter Capital",
+      "other_investors": "One Investment Management, NVIDIA, Uber, Grab, 1789 Capital",
+      "date": "2026-03-25",
+      "date_display": "25-Mar-26",
+      "location": "USA (Durham, NC)",
+      "robotnik_notes": "Critical minerals processing company developing novel extraction technology for rare earths. $65M Series A from Altimeter Capital; Durham, NC base suggests proximity to academic research. Competes with MP Materials (MP), Lynas (LYC AU), and Energy Fuels (UUUU). Watch for pilot plant results and DOE/DoD critical minerals programme funding.",
+      "source": "https://www.mining.com/us-rare-earth-magnet-startup-raises-65m-to-scale-up-production/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 65.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "MP",
+        "LYC AU"
+      ],
+      "entity_id": "vulcan-elements"
+    },
+    {
+      "company": "Rebellions",
+      "sector": "Semiconductors",
+      "subsector": "Fabless Design",
+      "round": "Government investment",
+      "amount_m": 166.0,
+      "valuation_m": null,
+      "lead_investors": "South Korean government",
+      "other_investors": null,
+      "date": "2026-03-26",
+      "date_display": "26-Mar-26",
+      "location": "South Korea (Seoul)",
+      "robotnik_notes": "Korean AI chip company developing NPU accelerators for data centre and edge AI. $166M South Korean government investment reflects Korea's semiconductor sovereignty push. Competes with NVIDIA (NVDA), AMD (AMD), and domestic rival FuriosaAI. Rebellions recently merged with FuriosaAI, consolidating Korean AI chip efforts. Watch for merged entity product roadmap and Samsung foundry production.",
+      "source": "https://rebellions.ai/news/government-investment",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 166.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "NVDA",
+        "AMD"
+      ],
+      "entity_id": "rebellions"
+    },
+    {
+      "company": "Shield AI",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series G",
+      "amount_m": 2000.0,
+      "valuation_m": 12700.0,
+      "lead_investors": "Advent International, JPMorgan Chase",
+      "other_investors": "Blackstone ($500M preferred + $250M delayed draw), Snowpoint Ventures, InnovationX, Riot Ventures",
+      "date": "2026-03-26",
+      "date_display": "26-Mar-26",
+      "location": "USA (San Diego, CA)",
+      "robotnik_notes": "Defence AI company building autonomous piloting systems for military aircraft. $2B Series G co-led by Advent International and JPMorgan at reportedly $18B+ valuation. Competes with Anduril, Kratos (KTOS), and Boeing (BA) autonomous programmes. One of the most valuable US defence-tech startups. Watch for USAF CCA (collaborative combat aircraft) programme-of-record wins and potential IPO.",
+      "source": "https://techstartups.com/2026/03/26/defense-ai-startup-shield-ai-raises-2b-at-12-7b-valuation/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 2000.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "AVAV",
+        "KTOS"
+      ],
+      "entity_id": "shield-ai"
+    },
+    {
+      "company": "Arkadia Space",
+      "sector": "Space",
+      "subsector": "Space Components",
+      "round": "Grant",
+      "amount_m": 16.0,
+      "valuation_m": null,
+      "lead_investors": "EIC Fund (EUR 6M equity)",
+      "other_investors": "Private investors (EUR 6M), EIC grant (EUR 2.5M)",
+      "date": "2026-03-26",
+      "date_display": "26-Mar-26",
+      "location": "Spain (Castellon)",
+      "robotnik_notes": "Spanish startup developing satellite thermal protection and materials technology. \u20ac16M grant from EIC Fund (\u20ac6M equity component) supports space materials R&D. Competes with traditional aerospace thermal protection providers. Watch for ESA qualification milestones and commercial satellite customer adoption.",
+      "source": "https://www.eu-startups.com/2026/03/arkadia-space-lands-e14-5-million-eic-boost/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 16.0,
+      "public_market_link": null,
+      "related_tickers": [],
+      "entity_id": "arkadia-space"
+    },
+    {
+      "company": "Torngat Metals",
+      "sector": "Materials",
+      "subsector": "Rare Earths & Critical Minerals",
+      "round": "Debt Financing",
+      "amount_m": 120.0,
+      "valuation_m": null,
+      "lead_investors": "Export Development Canada, Canada Infrastructure Bank",
+      "other_investors": null,
+      "date": "2026-03-26",
+      "date_display": "26-Mar-26",
+      "location": "Canada (Montreal)",
+      "robotnik_notes": "Canadian rare earth mining company developing the Strange Lake heavy REE deposit in Quebec. $120M debt financing from EDC and Canada Infrastructure Bank for North America's potential largest heavy REE source (dysprosium, terbium). Competes with Lynas (LYC AU) and Chinese rare earth processors. Watch for construction milestones, separation plant at Sept-Iles, and first production.",
+      "source": "https://www.mining.com/torngat-secures-120m-for-strange-lake-ree-project-in-canada/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 120.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "LYC AU",
+        "MP"
+      ],
+      "entity_id": "torngat-metals"
+    },
+    {
+      "company": "Performance Drone Works",
+      "sector": "Robotics",
+      "subsector": "Autonomous Systems & Drones",
+      "round": "Series B",
+      "amount_m": 110.0,
+      "valuation_m": null,
+      "lead_investors": "Ondas Holdings",
+      "other_investors": "Hood River, Cedar Pine, Hanwha Ventures, Booz Allen Hamilton",
+      "date": "2026-03-26",
+      "date_display": "26-Mar-26",
+      "location": "USA (Huntsville, AL)",
+      "robotnik_notes": "Defence drone company manufacturing NDAA-compliant UAS including C100 and AM-FPV combat drones. $110M Series B led by Ondas Holdings; 90,000 sq ft plant with 100K drones/yr capacity. Competes with AeroVironment (AVAV), Kratos (KTOS), and Skydio. $20.9M Army contract validates defence traction. Watch for US Army programme-of-record expansion and NATO procurement.",
+      "source": "https://www.defensedaily.com/pdw-raises-110-million-to-expand-offerings-increase-drone-production/",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 110.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "AVAV",
+        "KTOS"
+      ],
+      "entity_id": "performance-drone-works"
+    },
+    {
+      "company": "Physical Intelligence",
+      "sector": "Robotics",
+      "subsector": "Software & Simulation",
+      "round": "Series C",
+      "amount_m": 1000.0,
+      "valuation_m": 11000.0,
+      "lead_investors": "Founders Fund",
+      "other_investors": "Lightspeed Venture Partners, Thrive Capital, Lux Capital",
+      "date": "2026-03-27",
+      "date_display": "27-Mar-26",
+      "location": "USA (San Francisco, CA)",
+      "robotnik_notes": "Foundation model company for robot control, developing vision-language-action (VLA) models ('ChatGPT for robots'). $1B Series C from Founders Fund at $11B valuation \u2014 would double valuation in 4 months from $5.6B; $2B total raised since Mar 2024. Competes with Skild AI, Google DeepMind Robotics, and Tesla (TSLA) in generalist robot intelligence. Watch for commercial licensing to robot OEMs and real-world deployment benchmarks.",
+      "source": "https://www.bloomberg.com/news/articles/2026-03-27/ex-deepmind-staffers-robotics-startup-in-talks-for-11-billion-valuation",
+      "month_year": "Mar-26",
+      "quarter": "1Q26",
+      "year": 2026,
+      "total_raised_m": 2000.0,
+      "public_market_link": null,
+      "related_tickers": [
+        "TSLA",
+        "GOOGL"
+      ],
+      "entity_id": "physical-intelligence"
+    }
+  ]
+}
