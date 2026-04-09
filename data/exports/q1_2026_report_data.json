@@ -1,0 +1,740 @@
+{
+  "generated_at": "2026-04-08",
+  "universe_summary": {
+    "total_active_entities": 273,
+    "entities_with_q1_data": 260,
+    "entities_with_market_cap": 274,
+    "total_market_cap": 14786967853186.525,
+    "total_market_cap_display": "$14.79T",
+    "sector_breakdown": {
+      "Semiconductors": {
+        "count": 66,
+        "market_cap": 11824703595529,
+        "market_cap_display": "$11.82T",
+        "pct_of_total": 80.0
+      },
+      "Robotics": {
+        "count": 95,
+        "market_cap": 1661963773418,
+        "market_cap_display": "$1.66T",
+        "pct_of_total": 11.2
+      },
+      "Space": {
+        "count": 33,
+        "market_cap": 345899051717,
+        "market_cap_display": "$0.35T",
+        "pct_of_total": 2.3
+      },
+      "Materials": {
+        "count": 39,
+        "market_cap": 953735375385,
+        "market_cap_display": "$0.95T",
+        "pct_of_total": 6.4
+      },
+      "Token": {
+        "count": 37,
+        "market_cap": 666057137.5244515,
+        "market_cap_display": "$0.00T",
+        "pct_of_total": 0.0
+      }
+    }
+  },
+  "q1_performance": {
+    "period": "2026-01-02 to 2026-03-31 (or latest available)",
+    "entities_calculated": 260,
+    "top5_overall": [
+      {
+        "ticker": "SATL",
+        "name": "Satellogic",
+        "sector": "Space",
+        "q1_return_pct": 227.55,
+        "price_start": 1.96,
+        "price_end": 6.42,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-26"
+      },
+      {
+        "ticker": "3037 TT",
+        "name": "Unimicron",
+        "sector": "Materials",
+        "q1_return_pct": 130.59,
+        "price_start": 219,
+        "price_end": 505,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-27"
+      },
+      {
+        "ticker": "SOI FP",
+        "name": "Soitec",
+        "sector": "Materials",
+        "q1_return_pct": 114.96,
+        "price_start": 24.87,
+        "price_end": 53.46,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-26"
+      },
+      {
+        "ticker": "EXA FP",
+        "name": "Exail Technologies",
+        "sector": "Robotics",
+        "q1_return_pct": 73.68,
+        "price_start": 85.1,
+        "price_end": 147.8,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-20"
+      },
+      {
+        "ticker": "SPIR",
+        "name": "Spire Global",
+        "sector": "Space",
+        "q1_return_pct": 72.73,
+        "price_start": 7.81,
+        "price_end": 13.49,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-26"
+      }
+    ],
+    "bottom5_overall": [
+      {
+        "ticker": "FORMA",
+        "name": "Forma Robotics",
+        "sector": "Token",
+        "q1_return_pct": -80.09,
+        "price_start": 0.0022,
+        "price_end": 0.0004,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-21"
+      },
+      {
+        "ticker": "JOJO",
+        "name": "JojoWorld",
+        "sector": "Token",
+        "q1_return_pct": -83.26,
+        "price_start": 0.0223,
+        "price_end": 0.0037,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-27"
+      },
+      {
+        "ticker": "DPTX",
+        "name": "DEEPTICS",
+        "sector": "Token",
+        "q1_return_pct": -83.28,
+        "price_start": 0.0034,
+        "price_end": 0.0006,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-20"
+      },
+      {
+        "ticker": "XRT",
+        "name": "Robonomics Network",
+        "sector": "Token",
+        "q1_return_pct": -89.41,
+        "price_start": 0.639,
+        "price_end": 0.0677,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-21"
+      },
+      {
+        "ticker": "QACE",
+        "name": "Qace Dynamics",
+        "sector": "Token",
+        "q1_return_pct": -99.36,
+        "price_start": 0.0024,
+        "price_end": 0.0,
+        "start_date": "2026-01-02",
+        "end_date": "2026-03-21"
+      }
+    ],
+    "by_sector": {
+      "Semiconductors": {
+        "entity_count": 67,
+        "top5": [
+          {
+            "ticker": "LASR",
+            "name": "nLIGHT",
+            "sector": "Semiconductors",
+            "q1_return_pct": 71.38,
+            "price_start": 38.37,
+            "price_end": 65.76,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "SLAB",
+            "name": "Silicon Laboratories",
+            "sector": "Semiconductors",
+            "q1_return_pct": 56.33,
+            "price_start": 131.93,
+            "price_end": 206.25,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "FORM",
+            "name": "FormFactor",
+            "sector": "Semiconductors",
+            "q1_return_pct": 55.8,
+            "price_start": 59.19,
+            "price_end": 92.22,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "CAMT",
+            "name": "Camtek Ltd",
+            "sector": "Semiconductors",
+            "q1_return_pct": 43.68,
+            "price_start": 115.5,
+            "price_end": 165.95,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "AEIS",
+            "name": "Advanced Energy Industries",
+            "sector": "Semiconductors",
+            "q1_return_pct": 42.94,
+            "price_start": 221.923,
+            "price_end": 317.21,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          }
+        ],
+        "bottom5": [
+          {
+            "ticker": "CRDO",
+            "name": "Credo Technology Group",
+            "sector": "Semiconductors",
+            "q1_return_pct": -27.8,
+            "price_start": 143.22,
+            "price_end": 103.4,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "AMBA",
+            "name": "Ambarella",
+            "sector": "Semiconductors",
+            "q1_return_pct": -28.13,
+            "price_start": 75.16,
+            "price_end": 54.02,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "INDI",
+            "name": "Indie Semiconductor",
+            "sector": "Semiconductors",
+            "q1_return_pct": -30.81,
+            "price_start": 3.7,
+            "price_end": 2.56,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "ALAB",
+            "name": "Astera Labs",
+            "sector": "Semiconductors",
+            "q1_return_pct": -35.38,
+            "price_start": 179.56,
+            "price_end": 116.04,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "PI",
+            "name": "Impinj",
+            "sector": "Semiconductors",
+            "q1_return_pct": -45.42,
+            "price_start": 179.76,
+            "price_end": 98.11,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          }
+        ]
+      },
+      "Robotics": {
+        "entity_count": 103,
+        "top5": [
+          {
+            "ticker": "EXA FP",
+            "name": "Exail Technologies",
+            "sector": "Robotics",
+            "q1_return_pct": 73.68,
+            "price_start": 85.1,
+            "price_end": 147.8,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "IPGP",
+            "name": "IPG Photonics",
+            "sector": "Robotics",
+            "q1_return_pct": 54.14,
+            "price_start": 74.84,
+            "price_end": 115.36,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "002008 C2",
+            "name": "Han's Laser Technology",
+            "sector": "Robotics",
+            "q1_return_pct": 51.8,
+            "price_start": 42.55,
+            "price_end": 64.59,
+            "start_date": "2026-01-06",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "2308 TT",
+            "name": "Delta Electronics",
+            "sector": "Robotics",
+            "q1_return_pct": 48.24,
+            "price_start": 995,
+            "price_end": 1475,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "300757 C2",
+            "name": "Robotechnik Intelligent",
+            "sector": "Robotics",
+            "q1_return_pct": 44.04,
+            "price_start": 251.66,
+            "price_end": 362.5,
+            "start_date": "2026-01-06",
+            "end_date": "2026-03-20"
+          }
+        ],
+        "bottom5": [
+          {
+            "ticker": "EH",
+            "name": "EHang Holdings ADR",
+            "sector": "Robotics",
+            "q1_return_pct": -31.09,
+            "price_start": 14.44,
+            "price_end": 9.95,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "MBLY",
+            "name": "Mobileye Global",
+            "sector": "Robotics",
+            "q1_return_pct": -32.15,
+            "price_start": 11.23,
+            "price_end": 7.62,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "INRN SW",
+            "name": "Interroll Holding",
+            "sector": "Robotics",
+            "q1_return_pct": -34.22,
+            "price_start": 2265,
+            "price_end": 1490,
+            "start_date": "2026-01-06",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "KGX GR",
+            "name": "Kion Group",
+            "sector": "Robotics",
+            "q1_return_pct": -37.71,
+            "price_start": 69.8,
+            "price_end": 43.48,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "RR",
+            "name": "Richtech Robotics",
+            "sector": "Robotics",
+            "q1_return_pct": -37.93,
+            "price_start": 3.48,
+            "price_end": 2.16,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          }
+        ]
+      },
+      "Space": {
+        "entity_count": 31,
+        "top5": [
+          {
+            "ticker": "SATL",
+            "name": "Satellogic",
+            "sector": "Space",
+            "q1_return_pct": 227.55,
+            "price_start": 1.96,
+            "price_end": 6.42,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          },
+          {
+            "ticker": "SPIR",
+            "name": "Spire Global",
+            "sector": "Space",
+            "q1_return_pct": 72.73,
+            "price_start": 7.81,
+            "price_end": 13.49,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          },
+          {
+            "ticker": "PL",
+            "name": "Planet Labs PBC",
+            "sector": "Space",
+            "q1_return_pct": 58.75,
+            "price_start": 20.41,
+            "price_end": 32.4,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          },
+          {
+            "ticker": "IRDM",
+            "name": "Iridium Communications",
+            "sector": "Space",
+            "q1_return_pct": 43.89,
+            "price_start": 17.6528,
+            "price_end": 25.4,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "OVZON SS",
+            "name": "Ovzon AB",
+            "sector": "Space",
+            "q1_return_pct": 38.1,
+            "price_start": 42,
+            "price_end": 58,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          }
+        ],
+        "bottom5": [
+          {
+            "ticker": "GOMX SS",
+            "name": "GomSpace",
+            "sector": "Space",
+            "q1_return_pct": -16.65,
+            "price_start": 18.5,
+            "price_end": 15.42,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          },
+          {
+            "ticker": "HEI",
+            "name": "HEICO Corp",
+            "sector": "Space",
+            "q1_return_pct": -17.18,
+            "price_start": 329.19,
+            "price_end": 272.64,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          },
+          {
+            "ticker": "SPCE",
+            "name": "Virgin Galactic",
+            "sector": "Space",
+            "q1_return_pct": -27.36,
+            "price_start": 3.29,
+            "price_end": 2.39,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          },
+          {
+            "ticker": "MNTS",
+            "name": "Momentus",
+            "sector": "Space",
+            "q1_return_pct": -29.79,
+            "price_start": 5.74,
+            "price_end": 4.03,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          },
+          {
+            "ticker": "SIDU",
+            "name": "Sidus Space",
+            "sector": "Space",
+            "q1_return_pct": -37.64,
+            "price_start": 4.33,
+            "price_end": 2.7,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          }
+        ]
+      },
+      "Materials": {
+        "entity_count": 23,
+        "top5": [
+          {
+            "ticker": "3037 TT",
+            "name": "Unimicron",
+            "sector": "Materials",
+            "q1_return_pct": 130.59,
+            "price_start": 219,
+            "price_end": 505,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-27"
+          },
+          {
+            "ticker": "SOI FP",
+            "name": "Soitec",
+            "sector": "Materials",
+            "q1_return_pct": 114.96,
+            "price_start": 24.87,
+            "price_end": 53.46,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          },
+          {
+            "ticker": "010060 KS",
+            "name": "OCI Holdings",
+            "sector": "Materials",
+            "q1_return_pct": 69.48,
+            "price_start": 105500,
+            "price_end": 178800,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-27"
+          },
+          {
+            "ticker": "ENTG",
+            "name": "Entegris",
+            "sector": "Materials",
+            "q1_return_pct": 28.13,
+            "price_start": 89.4856,
+            "price_end": 114.66,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "ALB",
+            "name": "Albemarle Corp",
+            "sector": "Materials",
+            "q1_return_pct": 21.54,
+            "price_start": 143.5743,
+            "price_end": 174.5,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          }
+        ],
+        "bottom5": [
+          {
+            "ticker": "HXL",
+            "name": "Hexcel Corp",
+            "sector": "Materials",
+            "q1_return_pct": 4.98,
+            "price_start": 76.7191,
+            "price_end": 80.54,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          },
+          {
+            "ticker": "6680 HK",
+            "name": "China Rare Earth Resources",
+            "sector": "Materials",
+            "q1_return_pct": 0.05,
+            "price_start": 19.28,
+            "price_end": 19.29,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-27"
+          },
+          {
+            "ticker": "600111 C1",
+            "name": "Northern Rare Earth",
+            "sector": "Materials",
+            "q1_return_pct": -1.83,
+            "price_start": 48.15,
+            "price_end": 47.27,
+            "start_date": "2026-01-06",
+            "end_date": "2026-03-27"
+          },
+          {
+            "ticker": "MP",
+            "name": "MP Materials",
+            "sector": "Materials",
+            "q1_return_pct": -7.95,
+            "price_start": 54.97,
+            "price_end": 50.6,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "MRK GR",
+            "name": "Merck KGaA",
+            "sector": "Materials",
+            "q1_return_pct": -11.87,
+            "price_start": 121.3,
+            "price_end": 106.9,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-26"
+          }
+        ]
+      },
+      "Token": {
+        "entity_count": 36,
+        "top5": [
+          {
+            "ticker": "ONO",
+            "name": "Onocoy Token",
+            "sector": "Token",
+            "q1_return_pct": 19.03,
+            "price_start": 0.023,
+            "price_end": 0.0274,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-21"
+          },
+          {
+            "ticker": "AUKI",
+            "name": "Auki",
+            "sector": "Token",
+            "q1_return_pct": 5.27,
+            "price_start": 0.0089,
+            "price_end": 0.0094,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-21"
+          },
+          {
+            "ticker": "EMDR",
+            "name": "Modulr",
+            "sector": "Token",
+            "q1_return_pct": 4.74,
+            "price_start": 2.3142,
+            "price_end": 2.424,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-21"
+          },
+          {
+            "ticker": "GEOD",
+            "name": "Geodnet",
+            "sector": "Token",
+            "q1_return_pct": 0.28,
+            "price_start": 0.1394,
+            "price_end": 0.1398,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-21"
+          },
+          {
+            "ticker": "VIRTUAL",
+            "name": "Virtuals Protocol",
+            "sector": "Token",
+            "q1_return_pct": -0.03,
+            "price_start": 0.6972,
+            "price_end": 0.697,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-21"
+          }
+        ],
+        "bottom5": [
+          {
+            "ticker": "FORMA",
+            "name": "Forma Robotics",
+            "sector": "Token",
+            "q1_return_pct": -80.09,
+            "price_start": 0.0022,
+            "price_end": 0.0004,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-21"
+          },
+          {
+            "ticker": "JOJO",
+            "name": "JojoWorld",
+            "sector": "Token",
+            "q1_return_pct": -83.26,
+            "price_start": 0.0223,
+            "price_end": 0.0037,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-27"
+          },
+          {
+            "ticker": "DPTX",
+            "name": "DEEPTICS",
+            "sector": "Token",
+            "q1_return_pct": -83.28,
+            "price_start": 0.0034,
+            "price_end": 0.0006,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-20"
+          },
+          {
+            "ticker": "XRT",
+            "name": "Robonomics Network",
+            "sector": "Token",
+            "q1_return_pct": -89.41,
+            "price_start": 0.639,
+            "price_end": 0.0677,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-21"
+          },
+          {
+            "ticker": "QACE",
+            "name": "Qace Dynamics",
+            "sector": "Token",
+            "q1_return_pct": -99.36,
+            "price_start": 0.0024,
+            "price_end": 0.0,
+            "start_date": "2026-01-02",
+            "end_date": "2026-03-21"
+          }
+        ]
+      }
+    }
+  },
+  "funding_stage_breakdown": {
+    "Seed": {
+      "rounds": 7,
+      "total_m": 549.5
+    },
+    "Series A": {
+      "rounds": 16,
+      "total_m": 2849.0
+    },
+    "Series B": {
+      "rounds": 15,
+      "total_m": 3362.0
+    },
+    "Series C": {
+      "rounds": 11,
+      "total_m": 7049.0
+    },
+    "Series D+": {
+      "rounds": 12,
+      "total_m": 22595.0
+    },
+    "Other": {
+      "rounds": 21,
+      "total_m": 8738.0
+    }
+  },
+  "funding_top_investors": [
+    {
+      "investor": "IDG Capital",
+      "rounds": 2,
+      "total_capital_m": 830.0
+    },
+    {
+      "investor": "Mitsubishi Electric",
+      "rounds": 2,
+      "total_capital_m": 147.0
+    },
+    {
+      "investor": "Decarbonization Partners (BlackRock + Temasek)",
+      "rounds": 1,
+      "total_capital_m": 100.0
+    },
+    {
+      "investor": "SGInnovate",
+      "rounds": 1,
+      "total_capital_m": 0.0
+    },
+    {
+      "investor": "Shift4Good",
+      "rounds": 1,
+      "total_capital_m": 0.0
+    }
+  ]
+}

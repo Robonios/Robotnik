@@ -973,8 +973,15 @@ let indexChartData = {};
 let indexSubMeta = {};       // {key: {current_value, entity_count, ...}}
 let currentIndexSeries = 'composite';
 let currentIndexRange = 365;  // days, or 'ytd' — default 1Y
-let compareLines = [];       // [{ticker, series, color}]
+let compareLines = [];       // [{ticker, series, color, isBenchmark}]
 const COMPARE_COLORS = ['#3B82F6', '#10B981', '#F59E0B'];
+const BENCHMARK_META = {
+  'SPY':  { name: 'S&P 500',  color: '#7B8794' },
+  'QQQ':  { name: 'NASDAQ',   color: '#5B9BD5' },
+  'SOXX': { name: 'SOX',      color: '#E97451' },
+  'ROBO': { name: 'ROBO ETF', color: '#70AD47' },
+};
+let _benchmarkData = null;   // loaded from data/prices/benchmarks.json
 
 function initIndexChart() {
   const container = document.getElementById('index-chart-container');
@@ -1221,12 +1228,59 @@ function addCompare(ticker) {
     });
 }
 
+function addBenchmark(ticker) {
+  if (compareLines.length >= 3) return;
+  if (compareLines.find(function(c) { return c.ticker === ticker; })) {
+    removeCompare(ticker);
+    return;
+  }
+  var meta = BENCHMARK_META[ticker];
+  if (!meta) return;
+  var color = meta.color;
+
+  function doAdd(series) {
+    if (!series || !series.length) return;
+    if (!indexChart) return;
+    var lineSeries = indexChart.addLineSeries({ color: color, lineWidth: 2, lastValueVisible: true, priceLineVisible: false });
+    compareLines.push({ ticker: ticker, series: series, color: color, lwcSeries: lineSeries, isBenchmark: true, name: meta.name });
+    refreshCompareLines();
+    renderComparePillsChart();
+    // Toggle button active state
+    var btns = document.querySelectorAll('.benchmark-btn');
+    btns.forEach(function(b) {
+      if (b.textContent.includes(meta.name) || b.onclick.toString().includes(ticker)) {
+        b.classList.add('active');
+      }
+    });
+  }
+
+  // Load benchmark data
+  if (_benchmarkData) {
+    var bm = _benchmarkData.benchmarks[ticker];
+    if (bm && bm.series) doAdd(bm.series.map(function(d) { return { date: d.date, close: d.close }; }));
+  } else {
+    fetch('data/prices/benchmarks.json?v=' + Date.now())
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(data) {
+        if (!data) return;
+        _benchmarkData = data;
+        var bm = data.benchmarks[ticker];
+        if (bm && bm.series) doAdd(bm.series.map(function(d) { return { date: d.date, close: d.close }; }));
+      });
+  }
+}
+
 function removeCompare(ticker) {
-  var idx = compareLines.findIndex(c => c.ticker === ticker);
+  var idx = compareLines.findIndex(function(c) { return c.ticker === ticker; });
   if (idx === -1) return;
   if (indexChart && compareLines[idx].lwcSeries) indexChart.removeSeries(compareLines[idx].lwcSeries);
   compareLines.splice(idx, 1);
   renderComparePillsChart();
+  // Deactivate benchmark button if applicable
+  if (BENCHMARK_META[ticker]) {
+    var btns = document.querySelectorAll('.benchmark-btn');
+    btns.forEach(function(b) { if (b.onclick && b.onclick.toString().includes(ticker)) b.classList.remove('active'); });
+  }
 }
 
 function refreshCompareLines() {
@@ -1256,11 +1310,12 @@ function renderComparePillsChart() {
   var box = document.getElementById('compare-pills');
   if (!box) return;
   if (!compareLines.length) { box.innerHTML = ''; return; }
-  box.innerHTML = compareLines.map(c =>
-    '<span class="compare-pill-chip" style="border-color:' + c.color + ';color:' + c.color + '">' +
+  box.innerHTML = compareLines.map(function(c) {
+    var label = c.name || c.ticker;
+    return '<span class="compare-pill-chip" style="border-color:' + c.color + ';color:' + c.color + '">' +
     '<span style="background:' + c.color + ';width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:4px;"></span>' +
-    c.ticker + ' <span onclick="removeCompare(\'' + c.ticker + '\')" style="cursor:pointer;margin-left:4px;opacity:0.6;">&times;</span></span>'
-  ).join(' ');
+    label + ' <span onclick="removeCompare(\'' + c.ticker + '\')" style="cursor:pointer;margin-left:4px;opacity:0.6;">&times;</span></span>';
+  }).join(' ');
 }
 
 // ===== MARKET TABLE (dynamic rendering) =====
