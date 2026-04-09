@@ -277,9 +277,17 @@ def main():
         price_matrix[today_str] = {}
         all_dates.append(today_str)
         all_dates.sort()
+    skipped_currency = 0
     for ticker, price in prices_by_ticker.items():
+        # Sanity: skip prices that look like non-USD (>$5,000 for a single share is suspicious)
+        # Legitimate high-price stocks (ASML ~$1,400, KLAC ~$1,700) are well under this
+        if price > 5000:
+            skipped_currency += 1
+            continue
         price_matrix[today_str][ticker] = price
-    print(f"  Injected {len(prices_by_ticker)} current prices for {today_str}")
+    injected = len(prices_by_ticker) - skipped_currency
+    print(f"  Injected {injected} current prices for {today_str}" +
+          (f" (skipped {skipped_currency} non-USD)" if skipped_currency else ""))
 
     # Determine base date: ~1 year ago (where we have good token coverage)
     # We want the earliest date where at least 50% of eligible entities have data
@@ -465,20 +473,22 @@ def main():
 
         sector_weights = compute_capped_weights(sector_entities)
 
-        # Backfill sub-index — use equities-only base date for full 5Y history
+        # Backfill sub-index using the same equities-only approach as the composite
         if all_dates and price_matrix:
-            # Find earliest date with ≥30% sector coverage
-            sector_tickers = set(sector_weights.keys())
-            sub_base = eq_base_str  # Use the equities-only base (~5Y ago)
-            for d in all_dates:
-                if d >= eq_base_str:
-                    cov = sum(1 for t in sector_tickers if t in price_matrix.get(d, {}))
-                    if cov >= max(3, len(sector_tickers) * 0.3):
-                        sub_base = d
-                        break
-            sub_series, _, _ = backfill_index(
-                sector_entities, sector_weights, price_matrix, all_dates, sub_base
+            # Use equities-only base date to get 5Y of history
+            sub_series_raw, _, _ = backfill_index(
+                sector_entities, sector_weights, price_matrix, all_dates, eq_base_str
             )
+            # Sanity check: cap any single-day value at 20x the median to catch currency errors
+            if sub_series_raw:
+                vals = [pt["value"] for pt in sub_series_raw if pt["value"] > 0]
+                if vals:
+                    median_val = sorted(vals)[len(vals) // 2]
+                    cap = median_val * 20
+                    for pt in sub_series_raw:
+                        if pt["value"] > cap:
+                            pt["value"] = cap
+            sub_series = sub_series_raw
             # Normalise sub-index to BASE_VALUE on NORMALISE_DATE
             sub_series, sub_norm_date, sub_norm_factor = normalise_series(sub_series)
             sector_value = sub_series[-1]["value"] if sub_series else BASE_VALUE
