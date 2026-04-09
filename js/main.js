@@ -191,17 +191,18 @@ function updateMarketOverview() {
   var avgChg = 0, chgCount = 0;
   for (var j = 0; j < uniqueCompanies.length; j++) {
     var c = uniqueCompanies[j];
-    if (c.change !== undefined && c.change !== null) {
+    if (c.change !== undefined && c.change !== null && !isNaN(c.change)) {
       avgChg += c.change;
       chgCount++;
-      if (c.change > gainer.change) gainer = c;
-      if (c.change < loser.change) loser = c;
+      if (c.change > (gainer.change || 0)) gainer = c;
+      if (c.change < (loser.change || 0)) loser = c;
     }
   }
   avgChg = chgCount ? avgChg / chgCount : 0;
 
   var chgEl = document.getElementById('ov-24h');
   if (chgEl) {
+    if (isNaN(avgChg)) avgChg = 0;
     chgEl.textContent = (avgChg >= 0 ? '+' : '') + avgChg.toFixed(2) + '%';
     chgEl.className = 'overview-val ' + (avgChg >= 0 ? 'v-green' : 'v-red');
   }
@@ -1067,21 +1068,48 @@ function initIndexChart() {
                 var s = Array.isArray(sub[jsonKey]) ? sub[jsonKey] : (sub[jsonKey].series || []);
                 indexChartData[chartKey] = s;
                 indexSubMeta[chartKey] = { current_value: sub[jsonKey].current_value, entity_count: sub[jsonKey].entity_count };
-                // Update dashboard card with 24h change
+                // Update dashboard card
                 var card = document.querySelector('[data-sub="' + jsonKey + '"]');
                 if (card && sub[jsonKey].current_value) {
                   var cv = sub[jsonKey].current_value;
+                  var ec = sub[jsonKey].entity_count || 0;
                   var vel = card.querySelector('.sub-index-val');
                   if (vel) vel.textContent = cv.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2});
                   var seriesArr = sub[jsonKey].series || [];
+                  // 24h change
+                  var pc24 = 0;
                   if (seriesArr.length > 1) {
-                    // Use last 2 data points for 24h change
                     var prevV = seriesArr[seriesArr.length - 2].value;
                     var lastV = seriesArr[seriesArr.length - 1].value;
-                    var pc24 = prevV ? ((lastV - prevV) / prevV * 100) : 0;
-                    var ce = card.querySelector('.sub-index-chg');
-                    if (ce) { ce.textContent = (pc24 >= 0 ? '+' : '') + pc24.toFixed(2) + '% (24h)'; ce.className = 'sub-index-chg ' + (pc24 >= 0 ? 'v-green' : 'v-red'); }
+                    pc24 = prevV ? ((lastV - prevV) / prevV * 100) : 0;
                   }
+                  // YTD change (find Jan 1 value)
+                  var pcYtd = 0;
+                  var ytdKey = new Date().getFullYear() + '-01';
+                  for (var si = 0; si < seriesArr.length; si++) {
+                    if (seriesArr[si].date && seriesArr[si].date.startsWith(ytdKey)) {
+                      pcYtd = seriesArr[si].value ? ((cv - seriesArr[si].value) / seriesArr[si].value * 100) : 0;
+                      break;
+                    }
+                  }
+                  // Pick display change: 24h if non-zero, else 1W
+                  var displayChg = pc24;
+                  var displayLabel = '24h';
+                  if (Math.abs(pc24) < 0.01 && seriesArr.length > 5) {
+                    var wkV = seriesArr[Math.max(0, seriesArr.length - 6)].value;
+                    displayChg = wkV ? ((cv - wkV) / wkV * 100) : 0;
+                    displayLabel = '1W';
+                  }
+                  var ce = card.querySelector('.sub-index-chg');
+                  if (ce) {
+                    var cls24 = displayChg >= 0 ? 'v-green' : 'v-red';
+                    var clsYtd = pcYtd >= 0 ? 'v-green' : 'v-red';
+                    ce.innerHTML = '<span class="' + cls24 + '">' + (displayChg >= 0 ? '+' : '') + displayChg.toFixed(2) + '% (' + displayLabel + ')</span>' +
+                      ' <span style="color:var(--text-muted);margin:0 2px;">|</span> ' +
+                      '<span class="' + clsYtd + '">' + (pcYtd >= 0 ? '+' : '') + pcYtd.toFixed(1) + '% YTD</span>';
+                  }
+                  var meta = card.querySelector('.sub-index-meta');
+                  if (meta) meta.textContent = ec + ' entities';
                 }
                 break;
               }
@@ -1297,22 +1325,26 @@ function _filterIntraday(data) {
   var series = currentIndexRange <= 1 ? data.series_5m : data.series_1h;
   if (!series || !series.length) return null;
 
-  // Filter by time window
+  // Filter by time window (use generous window to catch edge cases)
   var now = new Date();
-  var hoursBack = currentIndexRange <= 0.5 ? 12 : currentIndexRange <= 1 ? 24 : 168; // 168h = 7 days
+  var hoursBack = currentIndexRange <= 0.5 ? 14 : currentIndexRange <= 1 ? 30 : 192; // extra margin
   var cutoff = new Date(now.getTime() - hoursBack * 3600000);
 
   var filtered = series.filter(function(pt) {
-    return new Date(pt.datetime + ' GMT') >= cutoff;
+    return new Date(pt.datetime.replace(' ', 'T') + 'Z') >= cutoff;
   });
 
-  if (!filtered.length) filtered = series.slice(-50); // fallback: last 50 points
+  // Fallback: if too few points, use last N from series
+  if (filtered.length < 3) {
+    var n = currentIndexRange <= 0.5 ? 72 : currentIndexRange <= 1 ? 144 : series.length;
+    filtered = series.slice(-n);
+  }
 
-  // Convert to Lightweight Charts format (business day + time)
+  // Convert to Lightweight Charts format (unix timestamp in seconds)
   return filtered.map(function(pt) {
-    var d = new Date(pt.datetime + ' GMT');
+    var d = new Date(pt.datetime.replace(' ', 'T') + 'Z');
     return {
-      time: Math.floor(d.getTime() / 1000), // Unix timestamp (seconds)
+      time: Math.floor(d.getTime() / 1000),
       value: pt.value,
     };
   });

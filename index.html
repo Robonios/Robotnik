@@ -37,21 +37,25 @@
           <div class="sub-index-name">Semi</div>
           <div class="sub-index-val">--</div>
           <div class="sub-index-chg">&mdash;</div>
+          <div class="sub-index-meta"></div>
         </div>
         <div class="sub-index-card" data-sub="robotics">
           <div class="sub-index-name">Robotics</div>
           <div class="sub-index-val">--</div>
           <div class="sub-index-chg">&mdash;</div>
+          <div class="sub-index-meta"></div>
         </div>
         <div class="sub-index-card" data-sub="space">
           <div class="sub-index-name">Space</div>
           <div class="sub-index-val">--</div>
           <div class="sub-index-chg">&mdash;</div>
+          <div class="sub-index-meta"></div>
         </div>
         <div class="sub-index-card" data-sub="materials">
           <div class="sub-index-name">Materials</div>
           <div class="sub-index-val">--</div>
           <div class="sub-index-chg">&mdash;</div>
+          <div class="sub-index-meta"></div>
         </div>
       </div>
     </div>
@@ -62,9 +66,9 @@
         <span class="chart-widget-title" id="chart-title">Robotnik Index</span>
       </div>
       <div class="chart-controls">
-        <div class="chart-mode-tabs">
-          <button class="chart-mode-tab active" data-mode="price" onclick="setChartMode(this)">Price</button>
-          <button class="chart-mode-tab" data-mode="pct" onclick="setChartMode(this)">%</button>
+        <div class="chart-mode-tabs" id="chart-mode-tabs">
+          <button class="chart-mode-tab" data-mode="pct" onclick="setChartMode(this)">% Change</button>
+          <button class="chart-mode-tab active" data-mode="price" onclick="setChartMode(this)">Points</button>
           <button class="chart-mode-tab disabled" data-mode="volume" title="Coming soon">Vol</button>
           <button class="chart-mode-tab disabled" data-mode="mcap" title="Coming soon">MCap</button>
         </div>
@@ -206,10 +210,8 @@
     <div class="dash-widget">
       <div class="dash-widget-title">Robotnik Index</div>
       <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
-        The Robotnik Composite Index tracks 253 frontier technology equities across semiconductors, robotics, space technology, and materials. Market-cap weighted with a 5% single-entity cap.
-        <div style="margin-top:0.5rem;">Sub-indices: Semi &middot; Robotics &middot; Space &middot; Materials</div>
-        <div style="margin-top:0.3rem;">Sourced from EODHD. Fundamentals updated weekly.</div>
-        <div style="margin-top:0.3rem;" id="explainer-base">Base: 1,000.00</div>
+        Tracks 253 frontier technology equities across semiconductors, robotics, space, and materials. Market-cap weighted, 5% single-entity cap.
+        <div style="margin-top:0.4rem;" id="explainer-base">Base: 1,000.00 on 2025-03-31</div>
       </div>
     </div>
 
@@ -262,7 +264,7 @@
 
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="js/nav.js"></script>
-<script src="js/main.js?v=20260409b"></script>
+<script src="js/main.js?v=20260409c"></script>
 <script>
 // Load live news feed for sidebar widget
 (async function() {

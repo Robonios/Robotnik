@@ -157,6 +157,12 @@ def main():
             old_price = _find_price_on_date(history_series, target_date)
             changes[period] = _pct_change(old_price, current_close)
 
+        # Override 24h: use previous trading day (second-to-last date in history)
+        sorted_hist = sorted(history_series.keys())
+        if len(sorted_hist) >= 2:
+            prev_trading_day = sorted_hist[-2]
+            changes["24h"] = _pct_change(history_series[prev_trading_day], current_close)
+
         # ATH
         ath = max((c for _, c in all_closes), default=None) if all_closes else None
         pct_from_ath = _pct_change(ath, current_close) if ath else None

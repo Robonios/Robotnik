@@ -396,8 +396,11 @@
 
   .sub-indices {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
+  }
+  @media (max-width: 768px) {
+    .sub-indices { grid-template-columns: repeat(2, 1fr); }
   }
 
   .sub-index-card {
@@ -405,6 +408,11 @@
     border: 1px solid #1E2330;
     border-radius: 5px;
     padding: 0.5rem 0.6rem;
+  }
+  .sub-index-meta {
+    font-size: 9px;
+    color: var(--text-muted);
+    margin-top: 0.2rem;
   }
 
   .sub-index-name {
