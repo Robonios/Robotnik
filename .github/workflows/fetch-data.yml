@@ -61,6 +61,25 @@ jobs:
           EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
         run: python scripts/fetch_fundamentals.py
 
+      - name: Fetch live prices (top 20 entities, 15-min delayed)
+        env:
+          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+        run: python scripts/fetch_live_prices.py
+        continue-on-error: true
+
+      - name: Fetch commodities prices
+        env:
+          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+        run: python scripts/fetch_commodities.py
+        continue-on-error: true
+
+      - name: Fetch earnings calendar (weekly — Mondays only)
+        if: github.event.schedule == '0 6 * * 1' || github.event_name == 'workflow_dispatch'
+        env:
+          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+        run: python scripts/fetch_earnings_calendar.py
+        continue-on-error: true
+
       - name: Calculate public markets metrics
         run: python scripts/calculate_metrics.py
 

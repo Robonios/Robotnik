@@ -4,15 +4,55 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Robotnik — Frontier Assets</title>
-<meta name="description" content="Robotnik Frontier Assets — 296 entities across the frontier technology stack.">
-<meta property="og:title" content="Robotnik — Frontier Assets">
-<meta property="og:description" content="Every entity in the frontier technology stack — filter, compare, and analyse.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://robonios.github.io/Robotniks/assets.html">
-<meta property="og:image" content="https://robonios.github.io/Robotniks/robotlogo.png">
+<meta name="description" content="Robotnik Frontier Assets — 253 public equities across the frontier technology stack.">
 <link rel="icon" type="image/png" href="robotlogo.png">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  /* Full-width layout override — no sidebar on assets page */
+  .assets-full { max-width: 100%; padding: 0 1rem; }
+  .assets-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; padding:0.75rem 0; }
+  .assets-desc { font-size:10px; color:var(--text-dim); margin-top:2px; }
+
+  /* Column group tabs */
+  .col-group-tabs { display:flex; gap:2px; margin-bottom:0.5rem; }
+  .col-group-tab { background:transparent; border:1px solid var(--border); color:var(--text-dim); font-family:var(--font);
+    font-size:10px; padding:3px 10px; border-radius:3px; cursor:pointer; transition:all 0.15s; }
+  .col-group-tab:hover { border-color:var(--text-dim); color:var(--text); }
+  .col-group-tab.active { border-color:var(--yellow); color:var(--yellow); background:rgba(245,217,33,0.06); }
+
+  /* Frozen-column table container */
+  .assets-table-wrap { position:relative; overflow:hidden; border:1px solid var(--border); border-radius:4px; }
+  .assets-table-scroll { overflow-x:auto; margin-left:0; }
+  .assets-table { width:max-content; min-width:100%; border-collapse:collapse; font-size:11px; }
+  .assets-table th, .assets-table td { padding:6px 8px; white-space:nowrap; border-bottom:1px solid var(--border); font-family:var(--font); }
+  .assets-table th { position:sticky; top:0; background:var(--bg-card); color:var(--text-dim); font-size:10px; font-weight:500;
+    text-transform:uppercase; letter-spacing:0.3px; cursor:pointer; user-select:none; z-index:2; }
+  .assets-table th:hover { color:var(--text); }
+  .assets-table td { color:var(--text); }
+  .assets-table tr:hover td { background:var(--bg-hover); }
+  .assets-table .r { text-align:right; }
+  .assets-table .ticker-cell { font-weight:600; color:var(--yellow); }
+  .assets-table .dim { color:var(--text-dim); font-size:9px; }
+  .assets-table .v-green { color:var(--green); }
+  .assets-table .v-red { color:var(--red); }
+
+  /* Frozen first 3 columns */
+  .assets-table th.frozen, .assets-table td.frozen { position:sticky; background:var(--bg-card); z-index:1; }
+  .assets-table tr:hover td.frozen { background:var(--bg-hover); }
+  .assets-table .f0 { left:0; min-width:30px; }
+  .assets-table .f1 { left:30px; min-width:70px; }
+  .assets-table .f2 { left:100px; min-width:140px; }
+  .assets-table .f3 { left:240px; min-width:55px; }
+  .assets-table .f4 { left:295px; min-width:90px; border-right:2px solid var(--border-light); }
+  /* Shadow on frozen edge */
+  .assets-table .f4::after { content:''; position:absolute; top:0; right:-6px; bottom:0; width:6px;
+    background:linear-gradient(to right, rgba(0,0,0,0.15), transparent); pointer-events:none; }
+
+  /* Sparkline */
+  .spark { display:inline-block; vertical-align:middle; }
+  .spark svg { display:block; }
+</style>
 </head>
 <body data-page="assets">
 
@@ -20,95 +60,67 @@
 <div id="nav-container"></div>
 
 <div class="main-content">
-<div class="dash-layout">
-<div class="dash-main">
+<div class="assets-full">
 
   <!-- Header -->
-  <div class="dash-widget" style="padding:1rem;">
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
-      <div>
-        <div class="section-tag">Frontier Assets</div>
-        <h2 style="font-size:clamp(1rem,2vw,1.3rem);font-weight:700;margin:0.25rem 0 0;">Public Market Universe</h2>
-      </div>
-      <div style="font-size:11px;color:var(--text-dim);" id="assets-summary">Loading...</div>
+  <div class="assets-header">
+    <div>
+      <div class="section-tag">Frontier Assets</div>
+      <h2 style="font-size:clamp(1rem,2vw,1.3rem);font-weight:700;margin:0.25rem 0 0;">Public Market Universe</h2>
+      <div class="assets-desc">253 frontier technology equities across semiconductors, robotics, space, and materials. Data from EODHD. Fundamentals weekly.</div>
     </div>
+    <div style="font-size:11px;color:var(--text-dim);" id="assets-summary"></div>
   </div>
 
-  <!-- Filters -->
-  <div class="dash-widget" style="padding:0.5rem 1rem;">
-    <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
-      <div class="market-tabs" id="asset-tabs">
-        <button class="market-tab active" data-sector="all" onclick="filterAssets(this)">All</button>
-        <button class="market-tab" data-sector="semi" onclick="filterAssets(this)">Semi</button>
-        <button class="market-tab" data-sector="robo" onclick="filterAssets(this)">Robotics</button>
-        <button class="market-tab" data-sector="space" onclick="filterAssets(this)">Space</button>
-        <button class="market-tab" data-sector="materials" onclick="filterAssets(this)">Materials</button>
-      </div>
-      <input type="text" id="asset-search" class="compare-search-input" placeholder="Search ticker or name..." oninput="renderAssetsTable()" style="width:180px;" />
+  <!-- Filters row -->
+  <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+    <div class="market-tabs" id="asset-tabs">
+      <button class="market-tab active" data-sector="all" onclick="filterAssets(this)">All</button>
+      <button class="market-tab" data-sector="semi" onclick="filterAssets(this)">Semi</button>
+      <button class="market-tab" data-sector="robo" onclick="filterAssets(this)">Robotics</button>
+      <button class="market-tab" data-sector="space" onclick="filterAssets(this)">Space</button>
+      <button class="market-tab" data-sector="materials" onclick="filterAssets(this)">Materials</button>
     </div>
+    <input type="text" id="asset-search" class="compare-search-input" placeholder="Search ticker or name..." oninput="renderAssetsTable()" style="width:180px;" />
+  </div>
+
+  <!-- Column group tabs -->
+  <div class="col-group-tabs" id="col-group-tabs">
+    <button class="col-group-tab active" data-group="overview" onclick="setColGroup(this)">Overview</button>
+    <button class="col-group-tab" data-group="performance" onclick="setColGroup(this)">Performance</button>
+    <button class="col-group-tab" data-group="mcap" onclick="setColGroup(this)">Market Cap</button>
+    <button class="col-group-tab" data-group="volume" onclick="setColGroup(this)">Volume</button>
+    <button class="col-group-tab" data-group="valuation" onclick="setColGroup(this)">Valuation</button>
   </div>
 
   <!-- Table -->
-  <div class="dash-widget" style="padding:0;">
-    <div style="overflow-x:auto;">
-      <table class="market-table" style="width:100%;">
-        <thead>
-          <tr>
-            <th class="sortable" onclick="sortAssets('#')" style="width:30px;"># <span id="sa-#"></span></th>
-            <th class="sortable" onclick="sortAssets('ticker')" style="width:65px;">Ticker <span id="sa-ticker"></span></th>
-            <th class="sortable" onclick="sortAssets('company')">Company <span id="sa-company"></span></th>
-            <th style="width:55px;">Sector</th>
-            <th style="width:85px;">Subsector</th>
-            <th class="sortable r" onclick="sortAssets('price')" style="width:75px;">Price <span id="sa-price"></span></th>
-            <th style="width:35px;">Ccy</th>
-            <th class="sortable r" onclick="sortAssets('24h')" style="width:55px;">24H <span id="sa-24h"></span></th>
-            <th class="sortable r" onclick="sortAssets('7d')" style="width:50px;">7D <span id="sa-7d"></span></th>
-            <th class="sortable r" onclick="sortAssets('30d')" style="width:50px;">30D <span id="sa-30d"></span></th>
-            <th class="sortable r" onclick="sortAssets('ytd')" style="width:50px;">YTD <span id="sa-ytd"></span></th>
-            <th class="sortable r" onclick="sortAssets('mcap')" style="width:70px;">MCap <span id="sa-mcap"></span></th>
-            <th class="sortable r" onclick="sortAssets('pe')" style="width:45px;">P/E <span id="sa-pe"></span></th>
-            <th class="sortable r" onclick="sortAssets('vol')" style="width:60px;">Vol <span id="sa-vol"></span></th>
-          </tr>
-        </thead>
+  <div class="assets-table-wrap">
+    <div class="assets-table-scroll">
+      <table class="assets-table">
+        <thead id="assets-thead"></thead>
         <tbody id="assets-tbody"></tbody>
       </table>
     </div>
-    <div style="padding:0.5rem 1rem;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--text-dim);">
-      <span id="assets-showing">Showing 0</span>
-      <div>
-        <button class="chart-range-btn" id="assets-prev" onclick="assetsPage(-1)" style="margin-right:4px;">&lt; Prev</button>
-        <span id="assets-page-info">Page 1</span>
-        <button class="chart-range-btn" id="assets-next" onclick="assetsPage(1)" style="margin-left:4px;">Next &gt;</button>
-      </div>
+  </div>
+
+  <!-- Pagination -->
+  <div style="padding:0.5rem 0;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--text-dim);">
+    <span id="assets-showing">Showing 0</span>
+    <div>
+      <button class="chart-range-btn" id="assets-prev" onclick="assetsPage(-1)" style="margin-right:4px;">&lt; Prev</button>
+      <span id="assets-page-info">Page 1</span>
+      <button class="chart-range-btn" id="assets-next" onclick="assetsPage(1)" style="margin-left:4px;">Next &gt;</button>
     </div>
   </div>
 
-</div><!-- dash-main -->
-
-<!-- Sidebar -->
-<div class="dash-sidebar">
-  <div class="dash-widget">
-    <div class="dash-widget-title">About Frontier Assets</div>
-    <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
-      The complete Robotnik public market universe. 296 frontier technology entities across semiconductors, robotics, space, materials, and tokens.
-      <div style="margin-top:0.5rem;">Sortable by price, performance, market cap, and valuation. Click any entity for detail (coming soon).</div>
-      <div style="margin-top:0.5rem;">Data from EODHD + CoinGecko. Fundamentals updated weekly.</div>
-    </div>
-  </div>
-  <div class="dash-widget">
-    <div class="dash-widget-title">Quick Stats</div>
-    <div style="font-size:11px;color:var(--text-dim);line-height:2;" id="assets-quick-stats">Loading...</div>
-  </div>
-</div>
-
-</div><!-- dash-layout -->
+</div><!-- assets-full -->
 
 <footer>
   <p style="margin-bottom:0.5rem;">Robotnik &mdash; Mapping the frontier technology stack since re-entry.</p>
-  <p style="font-size:0.65rem;"><a href="https://github.com/Robonios/Robotnik" target="_blank" rel="noopener" style="color:#5A6178;text-decoration:none;">GitHub</a> &middot; <a href="#" style="color:#5A6178;text-decoration:none;">Twitter</a> &middot; <a href="#" style="color:#5A6178;text-decoration:none;">Substack</a></p>
+  <p style="font-size:0.65rem;"><a href="https://github.com/Robonios/Robotnik" target="_blank" rel="noopener" style="color:#5A6178;text-decoration:none;">GitHub</a></p>
   <p style="font-size:0.6rem;margin-top:0.3rem;">&copy; 2026 Robotnik</p>
 </footer>
-</div><!-- .main-content -->
+</div>
 
 <script src="js/nav.js"></script>
 <script src="js/assets.js"></script>
