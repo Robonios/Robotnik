@@ -465,10 +465,19 @@ def main():
 
         sector_weights = compute_capped_weights(sector_entities)
 
-        # Backfill sub-index
+        # Backfill sub-index — use equities-only base date for full 5Y history
         if all_dates and price_matrix:
+            # Find earliest date with ≥30% sector coverage
+            sector_tickers = set(sector_weights.keys())
+            sub_base = eq_base_str  # Use the equities-only base (~5Y ago)
+            for d in all_dates:
+                if d >= eq_base_str:
+                    cov = sum(1 for t in sector_tickers if t in price_matrix.get(d, {}))
+                    if cov >= max(3, len(sector_tickers) * 0.3):
+                        sub_base = d
+                        break
             sub_series, _, _ = backfill_index(
-                sector_entities, sector_weights, price_matrix, all_dates, actual_base_date
+                sector_entities, sector_weights, price_matrix, all_dates, sub_base
             )
             # Normalise sub-index to BASE_VALUE on NORMALISE_DATE
             sub_series, sub_norm_date, sub_norm_factor = normalise_series(sub_series)

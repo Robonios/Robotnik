@@ -46,11 +46,12 @@ function tickerColor(ticker) {
 async function loadPriceData() {
   try {
     const cb = '?v=' + Date.now();
-    const [priceResp, mcapResp, summaryResp, registryResp] = await Promise.allSettled([
+    const [priceResp, mcapResp, summaryResp, registryResp, liveResp] = await Promise.allSettled([
       fetch('data/prices/all_prices.json' + cb),
       fetch('data/index/market_caps.json' + cb),
       fetch('data/index/summary.json' + cb),
       fetch('data/registries/entity_registry.json' + cb),
+      fetch('data/prices/live.json' + cb),
     ]);
 
     let priceData = null;
@@ -78,6 +79,26 @@ async function loadPriceData() {
       }
     }
 
+    // Load live data overlay (if available and recent)
+    let liveMap = {};
+    let isLive = false;
+    if (liveResp.status === 'fulfilled' && liveResp.value.ok) {
+      const liveData = await liveResp.value.json();
+      if (liveData && liveData.prices) {
+        // Check if live data is recent (within last 2 hours)
+        const liveTs = new Date(liveData.fetched_at);
+        const ageMs = Date.now() - liveTs.getTime();
+        if (ageMs < 2 * 60 * 60 * 1000) {
+          isLive = true;
+          for (const [key, val] of Object.entries(liveData.prices)) {
+            if (!key.startsWith('BM_') && val.price) {
+              liveMap[val.ticker] = val;
+            }
+          }
+        }
+      }
+    }
+
     // Build mcap lookup
     const mcapMap = {};
     if (mcapData && mcapData.market_caps) {
@@ -89,19 +110,25 @@ async function loadPriceData() {
     if (priceData && priceData.prices) {
       // Filter out excluded entities and tokens
       const activePrices = priceData.prices.filter(e => !excludedTickers.has(e.ticker) && mapSector(e.sector) !== 'token');
-      allCompanies = activePrices.map(e => ({
+      allCompanies = activePrices.map(e => {
+        // Overlay live price if available
+        const live = liveMap[e.ticker];
+        const price = live ? live.price : (e.price || 0);
+        const change = live ? (live.change_pct || 0) : (e.change_pct || 0);
+        return {
         name: e.name || e.ticker,
         sub: e.sector || '',
         ticker: e.ticker,
-        price: e.price || 0,
-        change: e.change_pct || 0,
+        price: price,
+        change: change,
         mcap: mcapMap[e.ticker] || 0,
         mcapFmt: fmtMcap(mcapMap[e.ticker]),
         sector: mapSector(e.sector),
         currency: e.currency || 'USD',
         color: tickerColor(e.ticker),
-        date: e.date || '',
-      }));
+        date: live ? new Date(live.timestamp * 1000).toISOString().slice(0,10) : (e.date || ''),
+        isLive: !!live,
+      };});
 
       // Dedupe
       const seen = new Set();
@@ -114,7 +141,8 @@ async function loadPriceData() {
       const note = document.getElementById('market-note');
       if (note) {
         const ts = priceData.fetched_at ? new Date(priceData.fetched_at).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) : 'unknown';
-        note.textContent = uniqueCompanies.length + ' entities · Prices as of ' + ts + ' · Source: EODHD, CoinGecko · Data provided by CoinGecko · Updates daily';
+        const liveTag = isLive ? ' · Live (15-min delayed)' : '';
+        note.textContent = uniqueCompanies.length + ' entities · Prices as of ' + ts + liveTag + ' · Source: EODHD · Updates daily';
       }
     }
   } catch (err) {
