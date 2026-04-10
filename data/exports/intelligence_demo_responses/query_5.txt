@@ -1,0 +1,18 @@
+QUERY: Compare the bottleneck risk profile of the semiconductor supply chain versus the space launch supply chain.
+
+**ROBOTNIK INTELLIGENCE — Bottleneck Risk Comparison: Semiconductors vs Space Launch**
+
+| Dimension | Semiconductor Supply Chain | Space Launch Supply Chain |
+|-----------|---------------------------|--------------------------|
+| **Single Point of Failure** | **ASML** — sole supplier of EUV lithography. No alternative exists. One company in Veldhoven, Netherlands controls the most critical tool in chip manufacturing. | **SpaceX** — dominates global launch capacity (~65% of mass to orbit in 2025) but alternatives exist: Rocket Lab, ULA, Arianespace, China's CASC. |
+| **Risk Severity** | **CRITICAL** — if ASML cannot deliver, advanced chip production stops globally. No workaround. | **HIGH but not critical** — if SpaceX is disrupted, other providers can absorb some demand, though at higher cost and lower cadence. |
+| **Geographic Concentration** | Extreme: ASML (Netherlands), TSMC (Taiwan), Shin-Etsu/SUMCO (Japan), rare earths (China). Four countries control the entire advanced chip supply chain. | Moderate: SpaceX/Rocket Lab/ULA (USA), Arianespace (France), ISRO (India), CASC (China). More geographic diversity in launch. |
+| **Substitutability** | **Very low** — EUV has no substitute. Leading-edge chips require it. Fallback to DUV multi-patterning adds 3-5x cost and reduces throughput. | **Moderate** — satellites can be redesigned for different launch vehicles. Ride-share options and multiple small-launch providers create flexibility. |
+| **Demand Elasticity** | **Inelastic** — AI compute demand is growing 100%+ annually. No customer is voluntarily reducing chip orders. | **Growing but flexible** — satellite operators can delay launches or consolidate payloads. Government missions are less price-sensitive. |
+| **Recovery Time from Disruption** | **3-5 years** — building a new ASML EUV tool takes 2+ years. Building a new TSMC fab takes 3-4 years. The semiconductor supply chain has the longest recovery timeline of any Robotnik sector. | **6-18 months** — new rockets can be produced on shorter timelines. Rocket Lab demonstrated 15-day turnaround between Electron launches. |
+| **Current Constraint Level** | **Constrained** — ASML has record order backlog (€13.2B Q4 2025). CoWoS advanced packaging is sold out through 2026. HBM production limited by EUV allocation. | **Easing** — launch costs fell ~90% over the past decade. Starship, when operational, adds massive capacity. Launch is becoming a commodity. |
+| **Robotnik Index Impact** | A semiconductor supply disruption would affect **80% of index weight** directly and 100% indirectly (every sector depends on chips). | A launch disruption would affect **~3% of index weight** directly (Space sub-index) with minimal spillover to other sectors. |
+
+**Net Assessment:** The semiconductor supply chain presents asymmetrically higher bottleneck risk than space launch. The critical difference is substitutability: EUV lithography has zero alternatives, while launch has multiple providers with falling costs. This is why Robotnik weights the semiconductor supply chain as the most important dependency in the frontier stack — it is the layer where a single disruption propagates to every other sector.
+
+**Monitoring Recommendation:** Track ASML order backlog and delivery cadence as the leading indicator of semiconductor bottleneck severity. Track SpaceX Starship flight cadence as the leading indicator of launch capacity relief.

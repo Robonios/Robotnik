@@ -1,0 +1,36 @@
+QUERY: If EUV lithography capacity remains constrained through 2026, which sub-indices are most affected?
+
+**ROBOTNIK INTELLIGENCE — EUV Constraint Propagation Analysis**
+
+If EUV lithography capacity remains constrained through 2026, the impact propagates through the entire Robotnik index with varying intensity:
+
+**MOST AFFECTED: Semiconductor Sub-Index (Direct Impact)**
+
+EUV constraints directly limit production of advanced logic chips (3nm, 2nm) and HBM memory. The entities most exposed:
+
+- **TSMC (TSM)** — Cannot expand advanced node capacity without EUV tools. $52-56B capex partially gated by ASML delivery schedule.
+- **NVIDIA (NVDA)** — Blackwell and Vera Rubin architectures require TSMC's most advanced EUV-dependent nodes. Supply constraints limit GPU production volume.
+- **AMD, Marvell, Broadcom** — All fabless companies dependent on TSMC's advanced node allocation, which is directly constrained by EUV capacity.
+- **SK Hynix, Micron (MU)** — HBM4 production requires EUV patterning. SK Hynix's $8B ASML order in Q1 signals concern about future capacity.
+
+**Estimated impact:** Semiconductor sub-index could underperform by 5-8% annually if EUV constraints persist, as revenue growth is capped by physical production limits.
+
+**SECOND-ORDER: Robotics Sub-Index (Indirect via Compute Availability)**
+
+- Robotics companies depend on AI inference chips (NVIDIA Jetson, Qualcomm Snapdragon) manufactured on advanced nodes. EUV constraints → fewer AI chips → slower robot deployment.
+- **ISRG** — da Vinci 5 platform uses custom vision processing chips. Supply constraints could delay system upgrades.
+- **Physical AI startups** (funded $31.5B in Q1) face chip allocation risk if training GPU supply is constrained.
+
+**Estimated impact:** Robotics sub-index exposure is 2-4% annually — damped by the sector's lower semiconductor content per unit compared to data centers.
+
+**THIRD-ORDER: Space Sub-Index (Minimal Direct, Moderate Indirect)**
+
+Space-grade chips are typically on mature nodes (28nm-65nm), not EUV-dependent. However, ground-segment processing (satellite imagery, communications routing) increasingly uses advanced chips.
+
+**Estimated impact:** <1% direct, 1-2% indirect through ground systems.
+
+**LEAST AFFECTED: Materials Sub-Index (Beneficiary)**
+
+Materials entities that supply EUV production (Linde for neon gas, Shin-Etsu for pellicles) would actually benefit from sustained high demand with constrained supply — pricing power increases.
+
+**Key Insight:** The ASML bottleneck is the single most consequential constraint in the entire Robotnik index. It affects 80% of index weight (Semiconductors) and propagates to every other sector. This is why the imec High NA EUV installation in March 2026 was one of the quarter's most significant events — it represents the technology pathway to eventually relieving the constraint.

@@ -1,0 +1,34 @@
+QUERY: What are TSMC's critical upstream dependencies in the Robotnik universe?
+
+**ROBOTNIK INTELLIGENCE — TSMC Upstream Dependency Map**
+
+TSMC (TSM) sits at the center of the frontier stack dependency chain. Its upstream dependencies span all four Robotnik sectors:
+
+**Critical Equipment Dependencies (Semiconductors sector):**
+
+| Supplier | Dependency | Criticality |
+|----------|-----------|-------------|
+| **ASML (ASML)** | EUV lithography systems — TSMC is ASML's largest customer. Each EUV system costs ~$350M. TSMC's $52-56B 2026 capex includes significant EUV orders. | **CRITICAL — single source** |
+| **Applied Materials (AMAT)** | Deposition and etch equipment for gate-all-around (GAA) transistors at 2nm and below. | High |
+| **Lam Research (LRCX)** | Etch and deposition for advanced logic and memory integration. | High |
+| **KLA Corp (KLAC)** | Process control and metrology — defect inspection critical for sub-3nm yield management. | High |
+| **Tokyo Electron (8035 JP)** | Coater/developer systems for photoresist application. | Medium-High |
+
+**Critical Materials Dependencies (Materials sector):**
+
+| Supplier | Dependency | Criticality |
+|----------|-----------|-------------|
+| **Shin-Etsu Chemical (4063 JP)** | 300mm silicon wafers — TSMC consumes ~25% of global 300mm wafer output. | **CRITICAL** |
+| **SUMCO (3436 JP)** | 300mm silicon wafers — second-largest wafer supplier to TSMC. | High |
+| **Linde (LIN)** | Ultra-high-purity nitrogen, argon, and specialty gases for cleanroom and process chambers. | High |
+| **Air Liquide (AI FP)** | Specialty gases including neon for EUV lithography light sources. | High |
+| **Entegris (ENTG)** | Advanced materials purification, filtration, and CMP slurries. | Medium-High |
+
+**EDA & IP Dependencies (Semiconductors sector):**
+
+| Supplier | Dependency |
+|----------|-----------|
+| **Synopsys (SNPS)** | EDA tools for physical design, timing closure, and DFM at 3nm/2nm. |
+| **Cadence (CDNS)** | Complementary EDA tools, particularly for custom/analog IP blocks. |
+
+**Key Insight:** TSMC's $165B US investment doesn't just move fabs — it moves the entire upstream dependency chain. Every Arizona fab requires the same ASML tools, Shin-Etsu wafers, and Linde gases. The Robotnik Materials sub-index's +23.63% Q1 return partly reflects the market pricing in this upstream demand pull.
