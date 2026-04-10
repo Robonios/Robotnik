@@ -6,11 +6,11 @@ var topRoundsSortCol = 'amount', topRoundsSortAsc = false;
 
 var sectorColors = {
   'Semiconductors':'#F5D921','Robotics':'#3B82F6','Space':'#94A3B8',
-  'Cross-Stack':'#22C55E','Materials':'#FB923C'
+  'Materials':'#FB923C'
 };
 var sectorPillCls = {
   'Semiconductors':'sp-semi','Robotics':'sp-robo','Space':'sp-space',
-  'Cross-Stack':'sp-cross','Materials':'sp-mat'
+  'Materials':'sp-mat'
 };
 var stageOrder = {'Seed':0,'Pre-Seed':0,'Series A':1,'Series B':2,'Series C':3,'Series D':4,'Series D+':5,'Series E':5,'Series F':5,'Series G':5,'Series H':5};
 
@@ -36,7 +36,7 @@ function monthKey(iso){if(!iso)return null;var months=['','Jan','Feb','Mar','Apr
 function periodDays(p){return p==='3M'?90:p==='6M'?180:365}
 function filterByPeriod(rounds,p){
   var cutoff=daysAgo(periodDays(p));
-  return rounds.filter(function(r){return r.date&&r.date>=cutoff});
+  return rounds.filter(function(r){return r.date&&r.date>=cutoff&&r.sector!=='Token'&&r.sector!=='Cross-Stack'});
 }
 function filterByPriorPeriod(rounds,p){
   var days=periodDays(p);
@@ -174,7 +174,7 @@ function getTopInvestor(rounds){
       if(!f)return;
       f.split(/,(?![^()]*\))/).forEach(function(inv){
         inv=inv.trim();
-        if(inv.length<3||inv.toLowerCase()==='n/d')return;
+        var il=inv.toLowerCase();if(inv.length<3||il==='n/d'||il==='multiple'||il==='undisclosed'||il==='various'||il==='chinese vcs'||il==='not disclosed')return;
         counts[inv]=(counts[inv]||0)+1;
       });
     });
@@ -234,10 +234,10 @@ function renderTrendsChart(currentRounds){
 
   // Compute monthly data from ALL rounds in the chart window
   var chartCutoff=daysAgo(chartMonths*31);
-  var chartRounds=roundsData.filter(function(r){return r.date&&r.date>=chartCutoff});
+  var chartRounds=roundsData.filter(function(r){return r.date&&r.date>=chartCutoff&&r.sector!=='Token'&&r.sector!=='Cross-Stack'});
   var mbs=monthlyBySector(chartRounds);
 
-  var sectors=['Semiconductors','Robotics','Space','Cross-Stack','Materials'];
+  var sectors=['Semiconductors','Robotics','Space','Materials'];
   var datasets=sectors.map(function(s){
     var data=allMonths.map(function(m){return mbs[m]&&mbs[m][s]?Math.round(mbs[m][s]):0});
     // Build per-bar opacity
@@ -310,7 +310,7 @@ function renderTopInvestors(rounds){
       if(!f)return;
       f.split(/,(?![^()]*\))/).forEach(function(inv){
         inv=inv.trim();
-        if(inv.length<3||inv.toLowerCase()==='n/d')return;
+        var il=inv.toLowerCase();if(inv.length<3||il==='n/d'||il==='multiple'||il==='undisclosed'||il==='various'||il==='chinese vcs'||il==='not disclosed')return;
         counts[inv]=(counts[inv]||0)+1;
       });
     });
@@ -345,13 +345,18 @@ function renderStageDistribution(p){
 function renderNotable(p,periodLabel){
   var mostActive=p.most_active_sector||'Robotics';
   var mostActiveRounds=p.sector_breakdown[mostActive]?p.sector_breakdown[mostActive].rounds:0;
-  var megas=0;
-  roundsData.forEach(function(r){if(r.amount_m&&r.amount_m>=500)megas++});
-  var semiCap=p.sector_breakdown['Semiconductors']?p.sector_breakdown['Semiconductors'].capital_m:0;
-  var semiRounds=p.sector_breakdown['Semiconductors']?p.sector_breakdown['Semiconductors'].rounds:0;
-  var avgSemi=semiRounds>0?Math.round(semiCap/semiRounds):0;
+  // Count mega-rounds from filtered period data
+  var current=filterByPeriod(roundsData,currentPeriod);
+  var megas=current.filter(function(r){return r.amount_m&&r.amount_m>=500}).length;
+  // Find sector with highest avg deal size
+  var bestAvgSector='',bestAvg=0;
+  for(var s in p.sector_breakdown){
+    var sd=p.sector_breakdown[s];
+    var avg=sd.rounds>0?sd.capital_m/sd.rounds:0;
+    if(avg>bestAvg){bestAvg=avg;bestAvgSector=s;}
+  }
   document.getElementById('notable-card').innerHTML=
-    'Tovarishch, <strong>'+p.num_rounds+' frontier stack rounds<\/strong> detected in the last '+periodLabel+', deploying <strong>'+fmtM(p.total_capital_m)+'<\/strong> of capital. '+esc(mostActive)+' dominates deal flow with '+mostActiveRounds+' rounds, but Semiconductors commands the highest average deal size at '+fmtM(avgSemi)+' per round. <strong>'+megas+' mega-rounds<\/strong> exceeding $500M signal deep conviction in frontier compute and physical AI infrastructure.';
+    'Tovarishch, <strong>'+p.num_rounds+' frontier stack rounds<\/strong> detected in the last '+periodLabel+', deploying <strong>'+fmtM(p.total_capital_m)+'<\/strong> of capital. '+esc(mostActive)+' dominates deal flow with '+mostActiveRounds+' rounds, but '+esc(bestAvgSector)+' commands the highest average deal size at '+fmtM(Math.round(bestAvg))+' per round. <strong>'+megas+' mega-rounds<\/strong> exceeding $500M signal deep conviction in frontier compute and physical AI infrastructure.';
 }
 
 // ===== Gated Tables =====
