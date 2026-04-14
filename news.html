@@ -76,67 +76,21 @@
     <!-- 2. Daily Briefing (fully public) -->
     <div class="briefing-card">
       <div class="briefing-header">DAILY BRIEFING // <span id="briefing-date"></span></div>
-      <div class="briefing-body">
-        <p>Tovarishch, seven signals detected today:</p>
-        <ul>
-          <li>TSMC expanded CoWoS capacity by 40%, targeting 2x output by Q4. This directly relieves the advanced packaging bottleneck affecting NVIDIA, AMD, and Broadcom. Watch substrate suppliers Ibiden (4062 JP) and Unimicron (3037 TT) who must scale in parallel. <span class="feed-sector sector-semi">Semi</span> <span class="feed-sector sector-materials">Materials</span></li>
-          <li>Humanoid robotics funding crosses $5B in trailing twelve months, led by Figure and 1X Technologies. The capital concentration signals a shift from prototype to deployment &mdash; increasing demand for edge compute (NVIDIA Jetson), servo motors (Fanuc, Yaskawa), and rare earth magnets (MP Materials). <span class="feed-sector sector-robo">Robo</span> <span class="feed-sector sector-semi">Semi</span> <span class="feed-sector sector-materials">Materials</span></li>
-          <li>Rocket Lab secures Neutron launch contract with major defense partner, first flight H2 2026. Neutron's reusable medium-lift architecture positions RKLB as the primary alternative to SpaceX for institutional payloads. Component suppliers to watch: Moog (MOG.A) for propulsion, Hexcel (HXL) for carbon fibre structures. <span class="feed-sector sector-space">Space</span> <span class="feed-sector sector-materials">Materials</span></li>
-          <li>Rebellions secures $166M Korean government investment for AI accelerator chips. South Korea doubling down on domestic semiconductor sovereignty. Competes with NVIDIA (NVDA) and domestic rival FuriosaAI for inference market share. <span class="feed-sector sector-semi">Semi</span></li>
-          <li>Shield AI closes $2B Series G at $12.7B valuation for Hivemind autonomous combat AI. Advent International and JPMorgan lead. Largest defense AI raise to date signals institutional capital pivoting toward autonomous warfare systems. <span class="feed-sector sector-robo">Robo</span></li>
-          <li>China's rare earth export controls expand to gallium and germanium derivatives. Downstream impact concentrated in compound semiconductor manufacturers (Wolfspeed, II-VI) and defense primes. MP Materials (MP) and Lynas (LYC AU) positioned as alternative western suppliers. <span class="feed-sector sector-materials">Materials</span> <span class="feed-sector sector-semi">Semi</span></li>
-          <li>Unitree Robotics files for Hong Kong IPO seeking up to $610M. First major humanoid robotics IPO signals sector maturation. Low-cost Go2 quadruped and G1 humanoid have driven rapid revenue growth. Watch for pricing and secondary market dynamics. <span class="feed-sector sector-robo">Robo</span></li>
-        </ul>
+      <div class="briefing-body" id="daily-briefing-body">
+        <p style="color:#5A6178;font-size:10px;">Generating briefing from latest signals<span class="animated-dots"></span></p>
       </div>
     </div>
 
-    <!-- Past Briefings (always visible section) -->
+    <!-- Past Briefings -->
     <div style="border-top:1px solid #252A36;margin-top:1rem;padding-top:1rem;">
       <div style="font-size:11px;font-weight:700;color:#8B92A5;letter-spacing:0.08em;margin-bottom:0.75rem;">PAST BRIEFINGS</div>
-
-      <div class="past-briefing-item" style="margin-bottom:0.5rem;">
-        <div class="past-briefing-date">DAILY BRIEFING // Mar 28, 2026</div>
-        <div class="past-briefing-preview" style="font-size:10px;color:#8B92A5;line-height:1.6;">Tovarishch, five signals detected: Shin-Etsu silicon wafer shipments up 12% as advanced node demand accelerates. Samsung 2nm GAA enters risk production. Ibiden IC substrate expansion targets CoWoS demand. AST SpaceMobile begins commercial service across five markets. Ayar Labs closes $500M Series E for optical I/O.</div>
-      </div>
-
-      <div class="past-briefing-item" style="margin-bottom:0.5rem;">
-        <div class="past-briefing-date">DAILY BRIEFING // Mar 27, 2026</div>
-        <div class="past-briefing-preview" style="font-size:10px;color:#8B92A5;line-height:1.6;">Tovarishch, four signals detected: Physical Intelligence in talks for $1B at $11B valuation. Xona Space Systems closes $170M Series C for GPS-alternative constellation. Vulcan Elements raises $65M for domestic rare earth magnets. Kandou AI secures $225M for chip-to-chip connectivity.</div>
-      </div>
-
-      <div class="past-briefing-item" style="margin-bottom:0.5rem;">
-        <div class="past-briefing-date">DAILY BRIEFING // Mar 26, 2026</div>
-        <div class="past-briefing-preview" style="font-size:10px;color:#8B92A5;line-height:1.6;">Tovarishch, six signals detected: Shield AI $2B raise. Rebellions $166M Korean government backing. Arkadia Space lands EIC boost for green propulsion. Torngat Metals secures $120M for Strange Lake rare earth project. Performance Drone Works raises $110M for combat drones.</div>
-      </div>
-
-      <!-- Older briefings gated -->
-      <div class="past-briefing-item" style="margin-bottom:0.5rem;position:relative;overflow:hidden;">
-        <div class="past-briefing-date">DAILY BRIEFING // Mar 25, 2026</div>
-        <div class="past-briefing-blur">Samsung foundry yield improvements at 3nm GAA narrow gap with TSMC. Boston Dynamics Atlas demonstrates autonomous warehouse logistics. Novel chiplet interconnect achieves 10TB/s bandwidth. Normal Computing raises $50M for thermodynamic AI chips.</div>
-        <div class="past-briefing-gate">
-          <span style="font-size:9px;color:#5A6178;">&#x1F512; Older briefings require enterprise clearance</span>
-        </div>
-      </div>
-
-      <div class="past-briefing-item" style="margin-bottom:0.5rem;position:relative;overflow:hidden;">
-        <div class="past-briefing-date">END OF WEEK BRIEFING // Mar 23, 2026</div>
-        <div class="past-briefing-blur">Weekend wrap: Nscale closes $2B Series C for sovereign GPU cloud. Neura Robotics secures $1.2B for European humanoid program. PLD Space raises $209M Series C for MIURA launch vehicles. Lucid Bots $20M Series B for autonomous cleaning drones.</div>
-        <div class="past-briefing-gate">
-          <span style="font-size:9px;color:#5A6178;">&#x1F512; Older briefings require enterprise clearance</span>
-        </div>
+      <div id="past-briefings-container">
+        <!-- Populated dynamically from recent news data -->
       </div>
     </div>
 
     <!-- 3. Filter Bar -->
     <div class="intel-filters" style="margin-top:1rem;">
-      <div class="intel-filter-group" data-filter="type">
-        <button class="intel-filter-btn active" data-val="all" onclick="setIntelFilter('type',this)">All</button>
-        <button class="intel-filter-btn" data-val="news" onclick="setIntelFilter('type',this)">News</button>
-        <button class="intel-filter-btn" data-val="research" onclick="setIntelFilter('type',this)">Research</button>
-        <button class="intel-filter-btn" data-val="reports" onclick="setIntelFilter('type',this)">Reports</button>
-        <button class="intel-filter-btn" data-val="filings" onclick="setIntelFilter('type',this)">Filings</button>
-        <!-- TODO: Re-add saved feature when auth exists -->
-      </div>
       <div class="intel-filter-group" data-filter="sector">
         <button class="intel-filter-btn active" data-val="all" onclick="setIntelFilter('sector',this)">All sectors</button>
         <button class="intel-filter-btn" data-val="semi" onclick="setIntelFilter('sector',this)">Semi</button>
@@ -180,18 +134,18 @@
     <div class="dash-widget">
       <div class="dash-widget-title">Field Transmissions</div>
       <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
-        Robotnik's weekly intelligence briefing. Coming soon.
+        Robotnik's weekly intelligence briefing covering the frontier technology stack.
       </div>
-      <a href="intelligence.html" class="view-all-link">Sign up to receive transmissions &rarr;</a>
+      <a href="mailto:robotnik@proton.me?subject=Field%20Transmission%20Signup" class="view-all-link">Sign up to receive transmissions &rarr;</a>
     </div>
 
     <!-- Contributors -->
     <div class="dash-widget">
       <div class="dash-widget-title">Contributors</div>
       <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
-        Robotnik is seeking research contributors. Academics and analysts covering semiconductors, robotics, space technology, or critical materials &mdash; transmit your interest.
+        Robotnik is seeking research contributors covering semiconductors, robotics, space, or critical materials.
       </div>
-      <a href="index.html#signup" class="view-all-link">Apply to contribute &rarr;</a>
+      <a href="mailto:robotnik@proton.me?subject=Contributor%20Application" class="view-all-link">Apply to contribute &rarr;</a>
     </div>
 
   </div>
@@ -287,6 +241,114 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+// Generate daily briefing dynamically from most recent news
+function generateDailyBriefing() {
+  if (!allNewsItems.length) return;
+
+  var briefingBody = document.getElementById('daily-briefing-body');
+  var briefingDate = document.getElementById('briefing-date');
+  if (!briefingBody) return;
+
+  // Get items from last 48 hours, one per sector for diversity
+  var now = Date.now();
+  var recent = allNewsItems.filter(function(item) {
+    return item.date && (now - new Date(item.date).getTime()) < 48 * 3600000;
+  });
+
+  // If no recent items, use last 7 days
+  if (recent.length < 3) {
+    recent = allNewsItems.filter(function(item) {
+      return item.date && (now - new Date(item.date).getTime()) < 7 * 86400000;
+    });
+  }
+
+  // Pick top items with sector diversity
+  var sectorPicked = {};
+  var selected = [];
+  var maxItems = 7;
+
+  // First pass: one per sector
+  recent.forEach(function(item) {
+    if (selected.length >= maxItems) return;
+    var sector = sectorMap[item.category] || 'semi';
+    if (!sectorPicked[sector]) {
+      sectorPicked[sector] = true;
+      selected.push(item);
+    }
+  });
+
+  // Second pass: fill remaining slots
+  recent.forEach(function(item) {
+    if (selected.length >= maxItems) return;
+    if (selected.indexOf(item) === -1) selected.push(item);
+  });
+
+  if (selected.length === 0) {
+    briefingBody.innerHTML = '<p style="color:#5A6178;">No new signals detected in the last 48 hours. Monitoring continues.</p>';
+    return;
+  }
+
+  // Set date
+  if (briefingDate) {
+    var d = new Date(selected[0].date);
+    briefingDate.textContent = d.toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+  }
+
+  var html = '<p>Tovarishch, ' + selected.length + ' signals detected:</p><ul>';
+  selected.forEach(function(item) {
+    var sector = sectorMap[item.category] || 'semi';
+    var sl = sectorLabels[sector] || sectorLabels['semi'];
+    html += '<li>' + escapeHtml(item.title);
+    if (item.summary) html += ' &mdash; ' + escapeHtml(item.summary.substring(0, 120));
+    html += ' <span class="feed-sector ' + sl.cls + '">' + sl.text + '</span></li>';
+  });
+  html += '</ul>';
+  briefingBody.innerHTML = html;
+}
+
+// Build past briefings from news data grouped by date
+function buildPastBriefings() {
+  var container = document.getElementById('past-briefings-container');
+  if (!container || !allNewsItems.length) return;
+
+  // Group items by date
+  var byDate = {};
+  allNewsItems.forEach(function(item) {
+    if (!item.date) return;
+    var d = item.date.substring(0, 10);
+    if (!byDate[d]) byDate[d] = [];
+    byDate[d].push(item);
+  });
+
+  var dates = Object.keys(byDate).sort().reverse();
+  var todayStr = new Date().toISOString().substring(0, 10);
+
+  // Skip today (shown in main briefing), show next 3 dates, gate the rest
+  var html = '';
+  var shownCount = 0;
+  dates.forEach(function(d) {
+    if (d === todayStr || d === dates[0]) return; // Skip most recent (in main briefing)
+    var items = byDate[d];
+    var dateLabel = new Date(d + 'T12:00:00').toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+    var preview = items.slice(0, 4).map(function(i) { return i.title; }).join('. ');
+
+    if (shownCount < 3) {
+      html += '<div class="past-briefing-item" style="margin-bottom:0.5rem;">' +
+        '<div class="past-briefing-date">DAILY BRIEFING // ' + dateLabel + '</div>' +
+        '<div class="past-briefing-preview" style="font-size:10px;color:#8B92A5;line-height:1.6;">' +
+        'Tovarishch, ' + items.length + ' signals detected: ' + escapeHtml(preview.substring(0, 200)) + '</div></div>';
+    } else if (shownCount < 5) {
+      html += '<div class="past-briefing-item" style="margin-bottom:0.5rem;position:relative;overflow:hidden;">' +
+        '<div class="past-briefing-date">DAILY BRIEFING // ' + dateLabel + '</div>' +
+        '<div class="past-briefing-blur">' + escapeHtml(preview.substring(0, 150)) + '</div>' +
+        '<div class="past-briefing-gate"><span style="font-size:9px;color:#5A6178;">&#x1F512; Older briefings require enterprise clearance</span></div></div>';
+    }
+    shownCount++;
+  });
+
+  container.innerHTML = html || '<div style="font-size:10px;color:#5A6178;">Building briefing archive...</div>';
+}
+
 // Load and render feed
 async function loadNewsFeed() {
   try {
@@ -295,6 +357,8 @@ async function loadNewsFeed() {
     var data = await resp.json();
     allNewsItems = data.items || [];
     displayedCount = 0;
+    generateDailyBriefing();
+    buildPastBriefings();
     renderFeedItems();
     buildTrendingTopics();
   } catch (e) {
@@ -323,14 +387,32 @@ function renderFeedItems() {
 }
 
 function getFilteredItems() {
-  return allNewsItems.filter(function(item) {
+  var filtered = allNewsItems.filter(function(item) {
     var sector = sectorMap[item.category] || 'semi';
     var hours = hoursSince(item.date);
-    if (intelFilters.type !== 'all' && item.category !== intelFilters.type && intelFilters.type !== 'news') return false;
     if (intelFilters.sector !== 'all' && sector !== intelFilters.sector) return false;
     if (intelFilters.time === '24h' && hours > 48) return false;
     return true;
   });
+
+  // Sector-balanced display: interleave sectors for diversity
+  if (intelFilters.sector === 'all' && filtered.length > 10) {
+    var bySector = { semi: [], robo: [], space: [], materials: [] };
+    filtered.forEach(function(item) {
+      var s = sectorMap[item.category] || 'semi';
+      if (bySector[s]) bySector[s].push(item);
+    });
+    var balanced = [];
+    var sectorKeys = ['semi', 'robo', 'space', 'materials'];
+    var maxRounds = Math.ceil(filtered.length / 4);
+    for (var round = 0; round < maxRounds; round++) {
+      sectorKeys.forEach(function(s) {
+        if (bySector[s][round]) balanced.push(bySector[s][round]);
+      });
+    }
+    return balanced;
+  }
+  return filtered;
 }
 
 function loadMoreItems() {
@@ -383,7 +465,7 @@ function buildTrendingTopics() {
 }
 
 // ===== INTEL FILTERS =====
-var intelFilters = { type: 'all', sector: 'all', time: '24h' };
+var intelFilters = { sector: 'all', time: '24h' };
 var premiumTimeFilters = ['7d', '30d', 'archive'];
 
 function setIntelFilter(group, btn) {
