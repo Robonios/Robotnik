@@ -791,6 +791,21 @@ def main():
 
     all_prices = eq_results + tk_results
     active_prices = [p for p in all_prices if p["ticker"] not in excluded_tickers]
+
+    # Convert non-USD prices to USD for index consistency
+    # Korean Won prices are fetched in KRW from KOSPI/KOSDAQ
+    KRW_RATE = 1450  # Approximate; updated by live pipeline
+    for p in active_prices:
+        ccy = (p.get("currency") or "USD").upper()
+        price = p.get("price", 0)
+        if ccy == "KRW" and price and price > 500:
+            p["price_local"] = price
+            p["price"] = round(price / KRW_RATE, 4)
+            p["currency"] = "USD"
+        # Clean EODHD sentinel values ($999,999.9999)
+        if price and 999990 < price < 1000010:
+            p["price"] = 0
+            p["change_pct"] = 0
     all_output = {
         "fetched_at": ts,
         "count": len(active_prices),

@@ -1,0 +1,282 @@
+{
+  "NVDA": {
+    "value_chain_tier": "Fabless Design",
+    "bottleneck_risk": "HIGH",
+    "key_customers": "Data centres, robotics (Jetson), autonomous vehicles",
+    "key_suppliers": "TSM (foundry), Unimicron/Ibiden (substrates)",
+    "robotnik_notes": "The gravitational centre of the frontier stack. NVIDIA's compute silicon enables robotics inference, satellite processing, and autonomous systems. CoWoS packaging capacity is the binding constraint."
+  },
+  "TSM": {
+    "value_chain_tier": "Foundry",
+    "bottleneck_risk": "HIGH",
+    "key_customers": "NVDA, AVGO, AMD, QCOM, MRVL",
+    "key_suppliers": "ASML (EUV), Shin-Etsu/SUMCO (wafers), Linde (gases)",
+    "robotnik_notes": "Single most critical node in the frontier stack. Manufactures >90% of advanced logic chips. $165B US investment reshapes geographic risk but creates new Materials demand."
+  },
+  "AVGO": {
+    "value_chain_tier": "Fabless Design",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "Hyperscalers (custom ASICs), enterprise networking",
+    "key_suppliers": "TSM (foundry)",
+    "robotnik_notes": "Custom ASIC business with 3 major hyperscaler customers diversifies AI compute beyond GPUs. VMware acquisition adds software layer."
+  },
+  "ASML": {
+    "value_chain_tier": "Equipment",
+    "bottleneck_risk": "CRITICAL",
+    "key_customers": "TSM, Samsung, Intel",
+    "key_suppliers": "Carl Zeiss (optics), VDL (assembly)",
+    "robotnik_notes": "Sole supplier of EUV lithography \u2014 the most critical single-source dependency in the entire frontier stack. No alternative exists. Record EUR 13.2B order backlog."
+  },
+  "MU": {
+    "value_chain_tier": "IDM",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "NVDA (HBM), data centres",
+    "key_suppliers": "Equipment vendors (ASML, AMAT, LRCX)",
+    "robotnik_notes": "HBM memory capacity gates AI accelerator production. Revenue tripled to $23.9B on HBM demand. HBM4 in development."
+  },
+  "AMD": {
+    "value_chain_tier": "Fabless Design",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Data centres, gaming, embedded",
+    "key_suppliers": "TSM (foundry)",
+    "robotnik_notes": "MI300X validates multi-vendor AI accelerator demand. Data Center segment exceeded $14B, broadening compute supply for robotics."
+  },
+  "LRCX": {
+    "value_chain_tier": "Equipment",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "TSM, Samsung, Intel, Micron",
+    "key_suppliers": "Specialty component vendors",
+    "robotnik_notes": "Etch and deposition equipment essential for advanced node manufacturing. Benefits from every fab expansion globally."
+  },
+  "AMAT": {
+    "value_chain_tier": "Equipment",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "TSM, Samsung, Intel",
+    "key_suppliers": "Specialty component vendors",
+    "robotnik_notes": "Gate-all-around and advanced packaging equipment driving growth. Essential for next-gen AI chips for robotics applications."
+  },
+  "INTC": {
+    "value_chain_tier": "IDM",
+    "bottleneck_risk": "LOW",
+    "key_customers": "PC OEMs, data centres, government",
+    "key_suppliers": "ASML (EUV), materials vendors",
+    "robotnik_notes": "Foundry pivot critical for US semiconductor sovereignty. 18A customer wins validate CHIPS Act thesis. If IFS succeeds, reduces Taiwan concentration."
+  },
+  "KLAC": {
+    "value_chain_tier": "Equipment",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "TSM, Samsung, Intel, Micron",
+    "key_suppliers": "Optical component vendors",
+    "robotnik_notes": "Process control and metrology \u2014 defect inspection critical for sub-3nm yield management. Benefits from increasing process complexity."
+  },
+  "SIE GR": {
+    "value_chain_tier": "Software & Simulation",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Manufacturing sector globally",
+    "key_suppliers": "Semiconductor vendors, sensor companies",
+    "robotnik_notes": "Factory automation backbone. Siemens EDA + industrial automation spans the full stack from chip design to factory floor."
+  },
+  "ISRG": {
+    "value_chain_tier": "Surgical & Medical",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Hospitals globally",
+    "key_suppliers": "Specialty component vendors, semiconductor (vision)",
+    "robotnik_notes": "$8.9B revenue, 20M procedures. da Vinci 5 platform. Razor-and-blade model template for robotics commercialisation. 57% recurring revenue."
+  },
+  "SU FP": {
+    "value_chain_tier": "Motion Control",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Data centres, factories, buildings",
+    "key_suppliers": "Semiconductor vendors, materials",
+    "robotnik_notes": "Factory and data centre power infrastructure. Enables both semiconductor fab operation and robot deployment environments."
+  },
+  "ABBN SW": {
+    "value_chain_tier": "Industrial Robots",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Automotive, electronics, logistics",
+    "key_suppliers": "Semiconductor vendors, motor/actuator suppliers",
+    "robotnik_notes": "Big Four robot manufacturer. NVIDIA Omniverse integration for digital twin robot programming. Key player in industrial automation."
+  },
+  "2308 TT": {
+    "value_chain_tier": "Motion Control",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Robotics OEMs, industrial automation",
+    "key_suppliers": "Semiconductor vendors, materials",
+    "robotnik_notes": "Servo drives and power electronics supplier. Critical motion control layer between semiconductor chips and robot actuators."
+  },
+  "6861 JP": {
+    "value_chain_tier": "Machine Vision & Sensors",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Factories globally",
+    "key_suppliers": "Semiconductor sensors, optics",
+    "robotnik_notes": "Factory automation bellwether with 50%+ margins. Machine vision sensors are the eyes of every automated production line."
+  },
+  "EMR": {
+    "value_chain_tier": "Software & Simulation",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Process industries, data centres",
+    "key_suppliers": "Semiconductor vendors",
+    "robotnik_notes": "Process automation for materials sector. Emerson systems control the chemical plants that produce semiconductor materials."
+  },
+  "6503 JP": {
+    "value_chain_tier": "Industrial Robots",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Automotive, semiconductor fabs",
+    "key_suppliers": "Motor suppliers, rare earth magnets",
+    "robotnik_notes": "Cross-sector: robots + power semiconductors + satellite components. One of few entities spanning all four Robotnik sectors."
+  },
+  "ROK": {
+    "value_chain_tier": "Software & Simulation",
+    "bottleneck_risk": "LOW",
+    "key_customers": "North American manufacturers",
+    "key_suppliers": "Semiconductor vendors",
+    "robotnik_notes": "North American factory automation standard. Connects semiconductor fab equipment with robotic manufacturing systems."
+  },
+  "6954 JP": {
+    "value_chain_tier": "Industrial Robots",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Automotive, electronics manufacturers",
+    "key_suppliers": "Servo motor components, rare earth magnets",
+    "robotnik_notes": "World's largest robot manufacturer (1M+ deployed). $90M Michigan expansion aligns with CHIPS Act reshoring. Rare earth magnet dependency."
+  },
+  "LMT": {
+    "value_chain_tier": "Satellite Systems",
+    "bottleneck_risk": "LOW",
+    "key_customers": "US DoD, NASA, allied nations",
+    "key_suppliers": "Semiconductor vendors, specialty materials",
+    "robotnik_notes": "Largest absolute space revenue ($13B/yr). Artemis programme prime. Defence primes provide the institutional demand baseline for the space economy."
+  },
+  "NOC": {
+    "value_chain_tier": "Satellite Systems",
+    "bottleneck_risk": "LOW",
+    "key_customers": "US DoD, NASA, NRO",
+    "key_suppliers": "Semiconductor vendors, propulsion",
+    "robotnik_notes": "Space Systems at 24.3% of revenue. Solid rocket motors, MEV in-orbit servicing, B-21 programme."
+  },
+  "LHX": {
+    "value_chain_tier": "Space Components",
+    "bottleneck_risk": "LOW",
+    "key_customers": "US DoD, intelligence community",
+    "key_suppliers": "Semiconductor sensors, specialty optics",
+    "robotnik_notes": "Satellite sensor payloads and space domain awareness. SAS segment at 31.6%. Segment reorganisation may improve visibility."
+  },
+  "012450 KS": {
+    "value_chain_tier": "Launch",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "Korean government, commercial satellite operators",
+    "key_suppliers": "Propulsion, avionics",
+    "robotnik_notes": "Korean space ambition. Bridges robotics (Hanwha Group industrial automation) and space (launch vehicle development)."
+  },
+  "HEI": {
+    "value_chain_tier": "Space Components",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Defence primes, airlines, space programmes",
+    "key_suppliers": "Specialty metals, electronics",
+    "robotnik_notes": "Hidden champion \u2014 niche sole-sourced space and defence parts. Programmatically critical: individual programmes depend on HEICO's specific components."
+  },
+  "RKLB": {
+    "value_chain_tier": "Launch",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "NASA, DoD, commercial satellite operators",
+    "key_suppliers": "Rutherford engine (in-house), composite structures",
+    "robotnik_notes": "Purest New Space play. Vertically integrated: Electron launch + Space Systems + Neutron in development. Revenue $436M (+55% YoY). Dual revenue model."
+  },
+  "SATS": {
+    "value_chain_tier": "Satellite Comms",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Enterprise broadband, government",
+    "key_suppliers": "Satellite manufacturers, launch providers",
+    "robotnik_notes": "Legacy GEO operator navigating LEO era. Hughes broadband business transitioning."
+  },
+  "ASTS": {
+    "value_chain_tier": "Satellite Comms",
+    "bottleneck_risk": "HIGH",
+    "key_customers": "Mobile operators (AT&T, Vodafone)",
+    "key_suppliers": "Semiconductor vendors (most chip-intensive satellite design)",
+    "robotnik_notes": "Direct-to-cell satellite connectivity. $1.5B+ in MOU commitments. Pre-revenue but creating a new space infrastructure category. Most semiconductor-intensive satellite design."
+  },
+  "PL": {
+    "value_chain_tier": "Earth Observation",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Government, agriculture, insurance",
+    "key_suppliers": "Launch providers, semiconductor sensors",
+    "robotnik_notes": "Largest EO constellation (~200 satellites). Daily global imaging. Semiconductor content per satellite rising with onboard AI processing."
+  },
+  "KRMN": {
+    "value_chain_tier": "Space Components",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Defence primes, space programmes",
+    "key_suppliers": "Specialty materials, precision machining",
+    "robotnik_notes": "Precision space component consolidator. Roll-up strategy acquiring niche sole-sourced parts suppliers."
+  },
+  "LIN": {
+    "value_chain_tier": "Industrial & Specialty Gases",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Semiconductor fabs (TSM, Intel, Samsung)",
+    "key_suppliers": "Air separation plants, chemical feedstocks",
+    "robotnik_notes": "World's largest gas company. Ultra-pure neon for EUV lithography is a critical dependency. Electronics segment growing on fab expansion."
+  },
+  "AI FP": {
+    "value_chain_tier": "Industrial & Specialty Gases",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Semiconductor fabs, chemical plants",
+    "key_suppliers": "Air separation, European launch propellants",
+    "robotnik_notes": "#2 gas company. European launch propellant supply + fab gases. Dual frontier stack exposure."
+  },
+  "APD": {
+    "value_chain_tier": "Industrial & Specialty Gases",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Semiconductor fabs, hydrogen customers",
+    "key_suppliers": "Air separation plants",
+    "robotnik_notes": "#3 gas company. Electronics gases for fabs + clean hydrogen for space launch propulsion."
+  },
+  "MRK GR": {
+    "value_chain_tier": "Process Chemicals",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "Semiconductor fabs (photoresist)",
+    "key_suppliers": "Specialty chemical feedstocks",
+    "robotnik_notes": "EUV photoresist chokepoint. Big 3 photoresist supplier. Japanese suppliers dominate but Merck is the European anchor."
+  },
+  "BAS GR": {
+    "value_chain_tier": "Process Chemicals",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Semiconductor, automotive, battery",
+    "key_suppliers": "Chemical feedstocks globally",
+    "robotnik_notes": "Broadest chemical company. Battery materials division + semiconductor chemicals. Entry point to the materials layer."
+  },
+  "3037 TT": {
+    "value_chain_tier": "Packaging & Substrates",
+    "bottleneck_risk": "HIGH",
+    "key_customers": "TSM (CoWoS substrates), NVDA",
+    "key_suppliers": "Copper foil, resin, glass fibre",
+    "robotnik_notes": "CoWoS substrate bottleneck \u2014 Q1 star (+130.6%). Advanced packaging substrates are the binding constraint on AI chip production. Sole supplier risk."
+  },
+  "600111 C1": {
+    "value_chain_tier": "Rare Earths",
+    "bottleneck_risk": "CRITICAL",
+    "key_customers": "Magnet manufacturers, motor companies",
+    "key_suppliers": "Mining operations (Inner Mongolia)",
+    "robotnik_notes": "Geopolitical chokepoint. China's largest rare earth producer. Controls NdFeB magnet precursors essential for every servo motor in every robot."
+  },
+  "SQM": {
+    "value_chain_tier": "Battery Materials",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "Battery manufacturers, EV companies",
+    "key_suppliers": "Atacama brine operations",
+    "robotnik_notes": "#2 lithium producer. Atacama brine = lowest-cost lithium source. Battery supply chain for robotics, drones, satellite power."
+  },
+  "6971 JP": {
+    "value_chain_tier": "Packaging & Substrates",
+    "bottleneck_risk": "LOW",
+    "key_customers": "Semiconductor packaging, electronics",
+    "key_suppliers": "Ceramic raw materials",
+    "robotnik_notes": "Advanced ceramics for IC packages, robot joints, and precision components. Dual semiconductor + robotics exposure."
+  },
+  "ALB": {
+    "value_chain_tier": "Battery Materials",
+    "bottleneck_risk": "MEDIUM",
+    "key_customers": "Battery manufacturers, EV companies",
+    "key_suppliers": "Lithium brine/spodumene operations",
+    "robotnik_notes": "#1 lithium producer. Geographic diversification (Australia, Chile, US). Battery supply chain for frontier stack mobile systems."
+  }
+}

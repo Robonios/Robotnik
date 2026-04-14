@@ -24,7 +24,7 @@ var COL_GROUPS = {
     {key:'24h',label:'24H',sort:'24h',r:1},
     {key:'7d',label:'7D',sort:'7d',r:1},
     {key:'30d',label:'30D',sort:'30d',r:1},
-    {key:'spark30',label:'30D',sort:null,r:1},
+    {key:'spark30',label:'Trend',sort:null,r:1},
     {key:'ytd',label:'YTD',sort:'ytd',r:1},
     {key:'mcap',label:'MCap',sort:'mcap',r:1},
     {key:'pe',label:'P/E',sort:'pe',r:1},
@@ -34,7 +34,7 @@ var COL_GROUPS = {
     {key:'24h',label:'24H',sort:'24h',r:1},
     {key:'7d',label:'7D',sort:'7d',r:1},
     {key:'30d',label:'30D',sort:'30d',r:1},
-    {key:'spark30',label:'30D',sort:null,r:1},
+    {key:'spark30',label:'Trend',sort:null,r:1},
     {key:'ytd',label:'YTD',sort:'ytd',r:1},
     {key:'3m',label:'3M',sort:'3m',r:1},
     {key:'6m',label:'6M',sort:'6m',r:1},
@@ -71,7 +71,17 @@ var COL_GROUPS = {
     {key:'margin',label:'Op Margin',sort:'margin',r:1},
     {key:'divyld',label:'Div Yield',sort:'divyld',r:1},
   ],
+  intelligence: [
+    {key:'vctier',label:'Value Chain',sort:null,r:0},
+    {key:'bnrisk',label:'Bottleneck',sort:null,r:0},
+    {key:'keycust',label:'Key Customers',sort:null,r:0},
+    {key:'keysupp',label:'Key Suppliers',sort:null,r:0},
+    {key:'rnotes',label:"Robotnik's Notes",sort:null,r:0},
+  ],
 };
+
+// Enrichment data (loaded async)
+var _enrichmentData = null;
 
 // ── Formatters ──
 function fp(price,ccy){if(!price)return'\u2014';var c=(ccy||'USD').toUpperCase();var s=c==='GBP'?'\u00a3':c==='EUR'?'\u20ac':c==='JPY'?'\u00a5':c==='KRW'?'\u20a9':c==='HKD'?'HK$':c==='CHF'?'CHF ':c==='TWD'?'NT$':c==='CNY'?'\u00a5':c==='SEK'?'SEK ':c==='NOK'?'NOK':'$';return s+price.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
@@ -83,12 +93,12 @@ function fmg(v){if(!v)return'\u2014';return(v*100).toFixed(1)+'%';}
 
 // ── Sparkline SVG ──
 function sparkSvg(arr,w,h){
-  if(!arr||arr.length<2)return'';
+  if(!arr||arr.length<2)return'\u2014';
   var mn=Math.min.apply(null,arr),mx=Math.max.apply(null,arr);
   if(mx===mn){mx+=1;}
-  var pts=arr.map(function(v,i){return(i/(arr.length-1)*w).toFixed(1)+','+(h-(v-mn)/(mx-mn)*h).toFixed(1);}).join(' ');
-  var col=arr[arr.length-1]>=arr[0]?'%2322c55e':'%23ef4444';
-  return'<span class="spark"><svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"><polyline points="'+pts+'" fill="none" stroke="'+col+'" stroke-width="1.2"/></svg></span>';
+  var pts=arr.map(function(v,i){return(i/(arr.length-1)*w).toFixed(1)+','+(h-2-(v-mn)/(mx-mn)*(h-4)).toFixed(1);}).join(' ');
+  var col=arr[arr.length-1]>=arr[0]?'%23F5D921':'%23F87171';
+  return'<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" style="display:inline-block;vertical-align:middle"><polyline points="'+pts+'" fill="none" stroke="'+col+'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 }
 
 // ── Cell renderer ──
@@ -105,7 +115,7 @@ function cellHtml(e,key){
     case'1y':return fpc(e.change_1y_pct);
     case'3y':return fpc(e.change_3y_pct);
     case'5y':return fpc(e.change_5y_pct);
-    case'spark30':return sparkSvg(e.sparkline_30d,60,20);
+    case'spark30':return sparkSvg(e.sparkline_30d,80,24);
     case'mcap':return fm(e.market_cap);
     case'mcap7d':return fm(e.market_cap);// placeholder — same as current for now
     case'mcap30d':return fm(e.market_cap);
@@ -123,6 +133,17 @@ function cellHtml(e,key){
     case'vol30d':return fv(e.volume_avg_30d);
     case'ath':return fp(e.ath,e.currency);
     case'fromAth':return fpc(e.pct_from_ath);
+    // Intelligence columns
+    case'vctier':case'bnrisk':case'keycust':case'keysupp':case'rnotes':
+      if(!_enrichmentData)return'<span class="dim" style="opacity:0.4">\u2014</span>';
+      var enr=_enrichmentData[e.ticker];
+      if(!enr)return'<span class="dim" style="opacity:0.4">\u2014</span>';
+      if(key==='vctier')return'<span class="dim">'+enr.value_chain_tier+'</span>';
+      if(key==='bnrisk'){var rc=enr.bottleneck_risk;var cls=rc==='CRITICAL'||rc==='HIGH'?'v-red':rc==='MEDIUM'?'v-green':'dim';return'<span class="'+cls+'">'+rc+'</span>';}
+      if(key==='keycust')return'<span class="dim" style="font-size:8px">'+enr.key_customers.substring(0,60)+(enr.key_customers.length>60?'...':'')+'</span>';
+      if(key==='keysupp')return'<span class="dim" style="font-size:8px">'+enr.key_suppliers.substring(0,60)+(enr.key_suppliers.length>60?'...':'')+'</span>';
+      if(key==='rnotes')return'<span class="dim" style="font-size:8px" title="'+enr.robotnik_notes.replace(/"/g,'&quot;')+'">'+enr.robotnik_notes.substring(0,80)+(enr.robotnik_notes.length>80?'...':'')+'</span>';
+      return'\u2014';
     default:return'\u2014';
   }
 }
@@ -173,6 +194,10 @@ function sortVal(e,key){
       var sc={};assetsData.forEach(function(e){var s=SMAP[e.sector]||'?';sc[s]=(sc[s]||0)+1;});
       document.querySelectorAll('#asset-tabs .market-tab').forEach(function(t){var s=t.dataset.sector;t.textContent=s==='all'?'All ('+total+')':(SLBL[s]||s)+' ('+(sc[s]||0)+')';});
       renderAssetsTable();
+      // Load enrichment data for Intelligence tab
+      fetch('data/markets/enrichment_data.json?v='+Date.now())
+        .then(function(r){return r.ok?r.json():null;})
+        .then(function(enr){if(enr){_enrichmentData=enr;}});
     });
 })();
 
