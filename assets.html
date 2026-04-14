@@ -50,6 +50,42 @@
   /* Sparkline */
   .spark { display:inline-block; vertical-align:middle; }
   .spark svg { display:block; }
+  /* Glossary */
+  .glossary-section { margin-top:2rem; border-top:1px solid var(--border); padding-top:1rem; }
+  .glossary-toggle {
+    background:none; border:none; color:var(--yellow); font-family:var(--font); font-size:12px;
+    font-weight:700; letter-spacing:0.08em; cursor:pointer; padding:0; display:flex; align-items:center; gap:0.5rem;
+  }
+  .glossary-toggle:hover { opacity:0.8; }
+  .glossary-arrow { font-size:10px; transition:transform 0.3s; }
+  .glossary-section.expanded .glossary-arrow { transform:rotate(180deg); }
+  .glossary-content {
+    max-height:0; overflow:hidden; transition:max-height 0.4s ease;
+    padding:0 0.5rem;
+  }
+  .glossary-section.expanded .glossary-content { max-height:8000px; }
+  .glossary-content h3 {
+    color:var(--yellow); font-family:var(--font); font-size:11px; font-weight:700;
+    letter-spacing:0.08em; margin:1.5rem 0 0.75rem; padding-bottom:0.3rem; border-bottom:1px solid var(--border);
+  }
+  .glossary-content h3:first-child { margin-top:1rem; }
+  .glossary-content h4 {
+    color:var(--text); font-family:var(--font); font-size:10px; font-weight:600;
+    margin:1rem 0 0.5rem;
+  }
+  .glossary-content dl { margin:0 0 0.5rem 0; padding:0; }
+  .glossary-content dt {
+    color:var(--text); font-family:var(--font); font-size:10px; font-weight:600;
+    margin-top:0.6rem;
+  }
+  .glossary-content dd {
+    color:var(--text-dim); font-family:var(--font); font-size:10px; line-height:1.6;
+    margin:0.15rem 0 0 1rem;
+  }
+  .glossary-content code {
+    font-family:var(--font); font-size:9px; color:var(--yellow); background:rgba(245,217,33,0.06);
+    padding:0.1rem 0.3rem; border-radius:2px;
+  }
 </style>
 </head>
 <body data-page="assets">
@@ -65,7 +101,7 @@
     <div>
       <div class="section-tag">Frontier Assets</div>
       <h2 style="font-size:clamp(1rem,2vw,1.3rem);font-weight:700;margin:0.25rem 0 0;">Public Market Universe</h2>
-      <div class="assets-desc">253 frontier technology equities across semiconductors, robotics, space, and materials. Data from EODHD. Fundamentals weekly.</div>
+      <div class="assets-desc" id="assets-desc">Frontier technology equities across semiconductors, robotics, space, and materials. Data from EODHD. Fundamentals weekly.</div>
     </div>
     <div style="font-size:11px;color:var(--text-dim);" id="assets-summary"></div>
   </div>
@@ -110,6 +146,117 @@
       <button class="chart-range-btn" id="assets-prev" onclick="assetsPage(-1)" style="margin-right:4px;">&lt; Prev</button>
       <span id="assets-page-info">Page 1</span>
       <button class="chart-range-btn" id="assets-next" onclick="assetsPage(1)" style="margin-left:4px;">Next &gt;</button>
+    </div>
+  </div>
+
+  <!-- Glossary -->
+  <div class="glossary-section" id="glossary">
+    <button class="glossary-toggle" onclick="this.parentElement.classList.toggle('expanded')">
+      GLOSSARY <span class="glossary-arrow">&#9660;</span>
+    </button>
+    <div class="glossary-content">
+
+      <h3>SECTORS &amp; SUBSECTORS</h3>
+
+      <h4>Semiconductors</h4>
+      <dl>
+        <dt>Fabless Design</dt>
+        <dd>Companies that design chips but outsource manufacturing to foundries. Examples: <code>NVDA</code>, <code>AMD</code>, <code>AVGO</code>, <code>QCOM</code>.</dd>
+        <dt>Foundry</dt>
+        <dd>Companies that manufacture chips designed by others. <code>TSM</code> (TSMC) manufactures over 90% of the world's leading-edge chips.</dd>
+        <dt>IDM (Integrated Device Manufacturer)</dt>
+        <dd>Companies that both design and manufacture their own chips. Examples: <code>INTC</code> (Intel), <code>MU</code> (Micron).</dd>
+        <dt>Equipment</dt>
+        <dd>Companies that build the machines used to manufacture chips. <code>ASML</code> (lithography), <code>AMAT</code> (deposition), <code>LRCX</code> (etch), <code>KLAC</code> (inspection).</dd>
+        <dt>OSAT &amp; Packaging</dt>
+        <dd>Companies that package, assemble, and test manufactured chips. Includes advanced packaging technologies like CoWoS.</dd>
+        <dt>EDA &amp; IP</dt>
+        <dd>Companies that make the software tools used to design chips. Examples: <code>CDNS</code> (Cadence), <code>SNPS</code> (Synopsys).</dd>
+        <dt>Power &amp; Analog</dt>
+        <dd>Companies specialising in power management and analog semiconductor devices. Examples: <code>TXN</code>, <code>ADI</code>, <code>IFX GR</code> (Infineon).</dd>
+      </dl>
+
+      <h4>Robotics</h4>
+      <dl>
+        <dt>Industrial Robots</dt>
+        <dd>Manufacturers of robotic arms and systems for factory automation. The "Big Four": <code>6954 JP</code> (Fanuc), <code>ABBN SW</code> (ABB), Yaskawa, KUKA.</dd>
+        <dt>Humanoid &amp; Service</dt>
+        <dd>Companies developing humanoid robots or service robots for non-industrial applications. Predominantly private companies (Figure, 1X Technologies, Boston Dynamics).</dd>
+        <dt>Surgical &amp; Medical</dt>
+        <dd>Robotic systems for surgical procedures. <code>ISRG</code> (Intuitive Surgical) holds approximately 80% market share with da Vinci.</dd>
+        <dt>Warehouse &amp; Logistics</dt>
+        <dd>Automated systems for warehousing, sorting, and fulfilment operations.</dd>
+        <dt>Autonomous Systems &amp; Drones</dt>
+        <dd>Self-navigating vehicles, unmanned aerial vehicles, and autonomous flight systems.</dd>
+        <dt>Machine Vision &amp; Sensors</dt>
+        <dd>Cameras, LiDAR, and sensor systems enabling robot perception. Example: <code>6861 JP</code> (Keyence).</dd>
+        <dt>Motion Control &amp; Actuators</dt>
+        <dd>Servo drives, motors, and actuators enabling robotic movement. Examples: <code>2308 TT</code> (Delta Electronics), <code>SU FP</code> (Schneider Electric).</dd>
+        <dt>Software &amp; Simulation</dt>
+        <dd>Platforms for robot programming, digital twins, and factory simulation. Examples: <code>SIE GR</code> (Siemens), <code>ROK</code> (Rockwell), <code>EMR</code> (Emerson).</dd>
+      </dl>
+
+      <h4>Space</h4>
+      <dl>
+        <dt>Launch</dt>
+        <dd>Companies providing orbital launch services. Examples: <code>RKLB</code> (Rocket Lab &mdash; Electron, Neutron).</dd>
+        <dt>Satellite Comms</dt>
+        <dd>Companies operating satellite communication networks. Examples: <code>SATS</code> (EchoStar), <code>ASTS</code> (AST SpaceMobile).</dd>
+        <dt>Earth Observation</dt>
+        <dd>Companies operating satellite constellations for imaging Earth's surface. Examples: <code>PL</code> (Planet Labs), <code>SATL</code> (Satellogic).</dd>
+        <dt>Space Components</dt>
+        <dd>Manufacturers of precision components for satellites and launch vehicles. Examples: <code>HEI</code> (HEICO), <code>KRMN</code> (Karman).</dd>
+        <dt>Ground Systems &amp; Antennas</dt>
+        <dd>Infrastructure for communicating with and controlling satellites from the ground.</dd>
+      </dl>
+
+      <h4>Materials &amp; Inputs</h4>
+      <dl>
+        <dt>Industrial &amp; Specialty Gases</dt>
+        <dd>Gases used in semiconductor fabrication (nitrogen, argon, neon for EUV) and rocket propulsion. Oligopoly: <code>LIN</code> (Linde), <code>AI FP</code> (Air Liquide), <code>APD</code> (Air Products).</dd>
+        <dt>Process Chemicals</dt>
+        <dd>Photoresists, CMP slurries, and deposition precursors for chip manufacturing. Example: <code>MRK GR</code> (Merck KGaA).</dd>
+        <dt>Packaging &amp; Substrates</dt>
+        <dd>IC substrates and ceramic packages for chip packaging. Examples: <code>3037 TT</code> (Unimicron), <code>6971 JP</code> (Kyocera).</dd>
+        <dt>Rare Earths &amp; Critical Minerals</dt>
+        <dd>Mining and processing of rare earth elements for permanent magnets (NdFeB) in motors and actuators. China controls ~60% of mining and ~90% of processing. Example: <code>600111 C1</code> (Northern Rare Earth).</dd>
+        <dt>Battery Materials</dt>
+        <dd>Suppliers of lithium, cobalt, and other materials for batteries in robots, satellites, and EVs. Examples: <code>SQM</code>, <code>ALB</code> (Albemarle).</dd>
+      </dl>
+
+      <h3>ROBOTNIK METRICS</h3>
+      <dl>
+        <dt>Bottleneck Risk</dt>
+        <dd><strong style="color:#F87171;">CRITICAL</strong> &mdash; Sole source, no alternative. Disruption halts supply chains. Example: ASML (only EUV supplier).<br>
+        <strong style="color:#FB923C;">HIGH</strong> &mdash; Very limited alternatives. Switching takes years. Example: TSMC (90%+ leading-edge chips).<br>
+        <strong style="color:#F5D921;">MEDIUM</strong> &mdash; Alternatives exist but switching is costly (12-24 months).<br>
+        <strong style="color:#4ADE80;">LOW</strong> &mdash; Competitive market with multiple capable suppliers.</dd>
+        <dt>Value-Chain Tier</dt>
+        <dd>The entity's position in the supply chain, from upstream materials to downstream system deployers.</dd>
+        <dt>Robotnik Composite Index</dt>
+        <dd>Market-cap-weighted index tracking frontier technology equities. Base: 1,000 on 31 March 2025. Entity weights capped at 5%.</dd>
+        <dt>Sub-Indices</dt>
+        <dd>Four sector-specific indices (Semi, Robotics, Space, Materials), each normalised to 1,000 on the base date.</dd>
+      </dl>
+
+      <h3>KEY TECHNICAL TERMS</h3>
+      <dl>
+        <dt>CoWoS</dt>
+        <dd>Chip-on-Wafer-on-Substrate. TSMC's advanced packaging integrating multiple dies on one substrate. Primary platform for NVIDIA AI GPUs. Substrate supply has been a binding constraint.</dd>
+        <dt>EUV</dt>
+        <dd>Extreme Ultraviolet lithography. The most advanced chip patterning technology using 13.5nm wavelength light. ASML is the sole global supplier.</dd>
+        <dt>High NA EUV</dt>
+        <dd>Next-generation EUV with higher numerical aperture enabling sub-2nm patterning. ASML's EXE:5200 system.</dd>
+        <dt>HBM</dt>
+        <dd>High Bandwidth Memory. Vertically stacked DRAM connected to processors via a wide interface. Essential for AI GPU performance. Supplied by Micron, Samsung, SK Hynix.</dd>
+        <dt>NdFeB</dt>
+        <dd>Neodymium-Iron-Boron. The most powerful commercially available permanent magnets, used in servo motors, actuators, and satellite reaction wheels.</dd>
+        <dt>HREE</dt>
+        <dd>Heavy Rare Earth Elements (dysprosium, terbium). Essential for high-temperature magnets. No commercial processing exists outside China.</dd>
+        <dt>GAA</dt>
+        <dd>Gate-All-Around. Next-generation transistor architecture replacing FinFET at 2nm and below. Enables higher performance and lower power.</dd>
+      </dl>
+
     </div>
   </div>
 

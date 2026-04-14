@@ -191,6 +191,8 @@ function sortVal(e,key){
       var total=assetsData.length;
       var withMcap=assetsData.filter(function(e){return e.market_cap>0;}).length;
       document.getElementById('assets-summary').textContent=total+' entities \u00b7 '+withMcap+' with market cap \u00b7 Updated '+new Date(data.last_updated).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+      var descEl=document.getElementById('assets-desc');
+      if(descEl)descEl.textContent=total+' frontier technology equities across semiconductors, robotics, space, and materials. Data from EODHD. Fundamentals weekly.';
       var sc={};assetsData.forEach(function(e){var s=SMAP[e.sector]||'?';sc[s]=(sc[s]||0)+1;});
       document.querySelectorAll('#asset-tabs .market-tab').forEach(function(t){var s=t.dataset.sector;t.textContent=s==='all'?'All ('+total+')':(SLBL[s]||s)+' ('+(sc[s]||0)+')';});
       renderAssetsTable();
