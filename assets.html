@@ -37,16 +37,14 @@
   .assets-table .v-green { color:var(--green); }
   .assets-table .v-red { color:var(--red); }
 
-  /* Frozen first 3 columns */
+  /* Frozen first 3 columns (#, Ticker, Company) */
   .assets-table th.frozen, .assets-table td.frozen { position:sticky; background:var(--bg-card); z-index:1; }
   .assets-table tr:hover td.frozen { background:var(--bg-hover); }
-  .assets-table .f0 { left:0; min-width:30px; }
-  .assets-table .f1 { left:30px; min-width:70px; }
-  .assets-table .f2 { left:100px; min-width:140px; }
-  .assets-table .f3 { left:240px; min-width:55px; }
-  .assets-table .f4 { left:295px; min-width:90px; border-right:2px solid var(--border-light); }
+  .assets-table .f0 { left:0; min-width:28px; max-width:28px; }
+  .assets-table .f1 { left:28px; min-width:65px; max-width:65px; }
+  .assets-table .f2 { left:93px; min-width:120px; max-width:120px; border-right:2px solid var(--border-light); }
   /* Shadow on frozen edge */
-  .assets-table .f4::after { content:''; position:absolute; top:0; right:-6px; bottom:0; width:6px;
+  .assets-table .f2::after { content:''; position:absolute; top:0; right:-6px; bottom:0; width:6px;
     background:linear-gradient(to right, rgba(0,0,0,0.15), transparent); pointer-events:none; }
 
   /* Sparkline */
@@ -125,6 +123,6 @@
 </div>
 
 <script src="js/nav.js"></script>
-<script src="js/assets.js"></script>
+<script src="js/assets.js?v=20260414"></script>
 </body>
 </html>

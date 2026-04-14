@@ -97,7 +97,7 @@ function sparkSvg(arr,w,h){
   var mn=Math.min.apply(null,arr),mx=Math.max.apply(null,arr);
   if(mx===mn){mx+=1;}
   var pts=arr.map(function(v,i){return(i/(arr.length-1)*w).toFixed(1)+','+(h-2-(v-mn)/(mx-mn)*(h-4)).toFixed(1);}).join(' ');
-  var col=arr[arr.length-1]>=arr[0]?'%23F5D921':'%23F87171';
+  var col=arr[arr.length-1]>=arr[0]?'#F5D921':'#F87171';
   return'<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" style="display:inline-block;vertical-align:middle"><polyline points="'+pts+'" fill="none" stroke="'+col+'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 }
 
@@ -287,8 +287,8 @@ function renderAssetsTable(){
   hh+='<th class="frozen f0">#</th>';
   hh+='<th class="frozen f1" onclick="sortAssets(\'ticker\')">Ticker '+(assetsSort==='ticker'?(assetsSortDir===-1?'\u25bc':'\u25b2'):'')+'</th>';
   hh+='<th class="frozen f2" onclick="sortAssets(\'company\')">Company '+(assetsSort==='company'?(assetsSortDir===-1?'\u25bc':'\u25b2'):'')+'</th>';
-  hh+='<th class="frozen f3">Sector</th>';
-  hh+='<th class="frozen f4">Subsector</th>';
+  hh+='<th>Sector</th>';
+  hh+='<th>Sub</th>';
   for(var ci=0;ci<cols.length;ci++){
     var c=cols[ci];
     var arrow=assetsSort===c.sort?(assetsSortDir===-1?'\u25bc':'\u25b2'):'';
@@ -311,9 +311,9 @@ function renderAssetsTable(){
     rows+='<tr>';
     rows+='<td class="frozen f0 dim">'+(start+ri+1)+'</td>';
     rows+='<td class="frozen f1 ticker-cell">'+e.ticker+'</td>';
-    rows+='<td class="frozen f2" style="max-width:140px;overflow:hidden;text-overflow:ellipsis;">'+e.name+'</td>';
-    rows+='<td class="frozen f3"><span class="sector-tag '+sc+'">'+sl+'</span></td>';
-    rows+='<td class="frozen f4 dim" style="font-size:9px;">'+sub+'</td>';
+    rows+='<td class="frozen f2" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;">'+e.name+'</td>';
+    rows+='<td><span class="sector-tag '+sc+'">'+sl+'</span></td>';
+    rows+='<td class="dim" style="font-size:9px;">'+sub+'</td>';
     for(var ci2=0;ci2<cols.length;ci2++){
       rows+='<td class="'+(cols[ci2].r?'r':'')+'">'+cellHtml(e,cols[ci2].key)+'</td>';
     }
