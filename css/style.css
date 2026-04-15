@@ -493,7 +493,24 @@
   .chart-mode-tab:last-child { border-right: none; }
   .chart-mode-tab:hover { color: var(--text); }
   .chart-mode-tab.active { background: rgba(245,217,33,0.06); color: var(--yellow); }
-  .chart-mode-tab.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+  .chart-mode-tab.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: auto; position: relative; }
+  .chart-mode-tab.disabled:hover::after {
+    content: 'Coming soon';
+    position: absolute;
+    bottom: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1A1A2E;
+    color: #F5D921;
+    font-family: var(--font);
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid #333;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+  }
 
   .chart-range-group, .chart-index-group {
     display: flex;

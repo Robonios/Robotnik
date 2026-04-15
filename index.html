@@ -264,7 +264,7 @@
 
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
 <script src="js/nav.js"></script>
-<script src="js/main.js?v=20260409c"></script>
+<script src="js/main.js?v=20260415"></script>
 <script>
 // Load live news feed for sidebar widget
 (async function() {
@@ -303,10 +303,11 @@
     document.getElementById('funding-widget').innerHTML =
       '<div style="color:#F5D921;font-size:9px;font-weight:700;letter-spacing:0.06em;margin-bottom:0.5rem;">Q1 2026</div>' +
       '<div style="color:#8B92A5;line-height:1.8;">' +
-        'Capital deployed: <span style="color:#e6e8ed;font-weight:600;">$' + capB + 'B</span> across <span style="color:#e6e8ed;">' + q1.num_rounds + ' rounds</span><br>' +
-        'Most active: <span style="color:#e6e8ed;">' + q1.most_active_sector + '</span> (' + q1.sector_breakdown[q1.most_active_sector].rounds + ' rounds)<br>' +
-        (largest ? 'Largest: <span style="color:#e6e8ed;font-weight:600;">' + largest.company + '</span> $' + (largest.amount_m >= 1000 ? (largest.amount_m/1000).toFixed(0) + 'B' : largest.amount_m + 'M') + pill : '') +
-      '</div>';
+        '<span style="color:#e6e8ed;font-weight:600;">$' + capB + 'B</span> across <span style="color:#e6e8ed;">' + q1.num_rounds + ' rounds</span><br>' +
+        'Top sector: <span style="color:#e6e8ed;">' + q1.most_active_sector + '</span> (' + q1.sector_breakdown[q1.most_active_sector].rounds + ' rounds)<br>' +
+        'Top investor: <span style="color:#e6e8ed;">NVIDIA (NVentures)</span>' +
+      '</div>' +
+      '<a href="funding.html" style="display:inline-block;margin-top:0.5rem;font-size:9px;color:#F5D921;text-decoration:none;">View Funding Ops &rarr;</a>';
   } catch(e) {
     document.getElementById('funding-widget').innerHTML = '<div style="font-size:10px;color:#5A6178;">Funding data connecting<span class="animated-dots"></span></div>';
   }

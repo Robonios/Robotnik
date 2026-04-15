@@ -1,8 +1,18 @@
-// ===== MARKET DATA (real prices, close Mar 4 2026) =====
+// ===== MARKET DATA =====
 // ===== DYNAMIC PRICE DATA =====
 let allCompanies = [];
 let uniqueCompanies = [];
 let marketShowLimit = 50;
+
+// Shared date formatter: DD-MMM-YYYY HH:MM UTC
+function fmtDateRobotnik(d) {
+  if (!d) return '—';
+  var dt = (d instanceof Date) ? d : new Date(d);
+  if (isNaN(dt.getTime())) return String(d);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return dt.getUTCDate() + '-' + months[dt.getUTCMonth()] + '-' + dt.getUTCFullYear() + ' ' +
+    String(dt.getUTCHours()).padStart(2,'0') + ':' + String(dt.getUTCMinutes()).padStart(2,'0') + ' UTC';
+}
 
 // Sector mapping from JSON to internal keys
 function mapSector(s) {
@@ -148,7 +158,7 @@ async function loadPriceData() {
       // Update timestamp note
       const note = document.getElementById('market-note');
       if (note) {
-        const ts = priceData.fetched_at ? new Date(priceData.fetched_at).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) : 'unknown';
+        const ts = priceData.fetched_at ? fmtDateRobotnik(priceData.fetched_at).split(' ')[0] : 'unknown';
         const liveTag = isLive ? ' · Live (15-min delayed)' : '';
         note.textContent = uniqueCompanies.length + ' entities · Prices as of ' + ts + liveTag + ' · Source: EODHD · Updates daily';
       }
@@ -211,17 +221,17 @@ function updateMarketOverview() {
   if (largestEl && largest) {
     var lCls = largest.change >= 0 ? 'v-green' : 'v-red';
     var lSign = largest.change >= 0 ? '+' : '';
-    largestEl.innerHTML = largest.ticker + ' <span class="' + lCls + '">' + lSign + largest.change.toFixed(2) + '%</span>';
+    largestEl.innerHTML = '<a href="assets.html" style="color:inherit;text-decoration:none;">' + largest.ticker + '</a> <span class="' + lCls + '">' + lSign + largest.change.toFixed(2) + '%</span>';
   }
 
   var gainerEl = document.getElementById('ov-gainer');
   if (gainerEl && gainer) {
-    gainerEl.innerHTML = gainer.ticker + ' <span class="v-green">+' + gainer.change.toFixed(2) + '%</span>';
+    gainerEl.innerHTML = '<a href="assets.html" style="color:inherit;text-decoration:none;" title="' + gainer.name + '">' + gainer.ticker + '</a> <span class="v-green">+' + gainer.change.toFixed(2) + '%</span>';
   }
 
   var loserEl = document.getElementById('ov-loser');
   if (loserEl && loser) {
-    loserEl.innerHTML = loser.ticker + ' <span class="v-red">' + loser.change.toFixed(2) + '%</span>';
+    loserEl.innerHTML = '<a href="assets.html" style="color:inherit;text-decoration:none;" title="' + loser.name + '">' + loser.ticker + '</a> <span class="v-red">' + loser.change.toFixed(2) + '%</span>';
   }
 
   // Last updated timestamp
@@ -229,8 +239,7 @@ function updateMarketOverview() {
   if (updatedEl) {
     // Try to get the updated field from price data
     try {
-      var ts = new Date().toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
-      updatedEl.textContent = ts;
+      updatedEl.textContent = fmtDateRobotnik(new Date());
     } catch(e) {}
   }
 }
@@ -1128,6 +1137,8 @@ function createIndexChart(container, data) {
     crosshair: { vertLine: { color: '#F5D921', width: 1, style: 2 }, horzLine: { color: '#F5D921', width: 1, style: 2 } },
     timeScale: { borderColor: '#1E2330', timeVisible: false },
     rightPriceScale: { borderColor: '#1E2330' },
+    handleScroll: { mouseWheel: false, pressedMouseMove: false, horzTouchDrag: false, vertTouchDrag: false },
+    handleScale: { mouseWheel: false, pinch: false, axisPressedMouseMove: false, axisDoubleClickReset: false },
   });
   indexAreaSeries = indexChart.addAreaSeries({
     lineColor: '#F5D921', topColor: 'rgba(245,217,33,0.10)', bottomColor: 'rgba(245,217,33,0.02)', lineWidth: 2,

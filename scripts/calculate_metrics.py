@@ -163,6 +163,11 @@ def main():
             prev_trading_day = sorted_hist[-2]
             changes["24h"] = _pct_change(history_series[prev_trading_day], current_close)
 
+        # Sanity check: cap any change >500% as likely data error
+        for k in changes:
+            if changes[k] is not None and abs(changes[k]) > 500:
+                changes[k] = None  # Null out suspicious values
+
         # ATH
         ath = max((c for _, c in all_closes), default=None) if all_closes else None
         pct_from_ath = _pct_change(ath, current_close) if ath else None
