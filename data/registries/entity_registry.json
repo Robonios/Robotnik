@@ -4208,7 +4208,7 @@
     "subsector": "Launch",
     "country": "South Korea",
     "city": null,
-    "eodhd_ticker": "012450 KS.012450.KO",
+    "eodhd_ticker": null,
     "coingecko_id": null,
     "description": null,
     "aliases": [
@@ -4217,9 +4217,9 @@
       "Hanwha Aerospace",
       "hanwha aerospace"
     ],
-    "status": "data_quarantine",
-    "quarantine_reason": "EODHD sentinel KRW 999,999.9999 corruption \u2014 awaiting upstream data correction",
-    "quarantine_date": "2026-04-16"
+    "reinstatement_date": "2026-04-16",
+    "reinstatement_notes": "Backfilled from Yahoo Finance due to EODHD KRW ceiling (₩999,999.9999 cap); ongoing prices from Yahoo override via data/registries/data_source_overrides.json",
+    "data_source": "yahoo_finance"
   },
   "HXL": {
     "id": "HXL",
