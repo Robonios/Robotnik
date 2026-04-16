@@ -1584,22 +1584,39 @@ function refreshCompareLines() {
     var cl = compareLines[i];
     var compAll = cl.series.map(function(d) { return { time: d.date, value: d.close || d.price || d.value }; });
     var compFiltered = getFilteredData(compAll);
+    var finalData;
 
-    if (cl.isBenchmark) {
-      // Benchmarks are already rebased to 1,000 on 2025-03-31
-      // Plot directly — values are on the same scale as the Robotnik index
-      cl.lwcSeries.setData(compFiltered);
+    if (currentChartMode === 'pct') {
+      // In % mode, every line (index + benchmarks + asset compares) is rebased
+      // to 0% at the left edge of the visible timeframe so the Y-axis is a
+      // common percentage scale. Pre-rebasing of benchmarks to 1,000 on
+      // 2025-03-31 is irrelevant here — percentage change is scale-invariant.
+      if (compFiltered.length > 0) {
+        var pctBase = compFiltered[0].value || 1;
+        finalData = compFiltered.map(function(d) {
+          return { time: d.time, value: parseFloat(((d.value - pctBase) / pctBase * 100).toFixed(2)) };
+        });
+      } else {
+        finalData = [];
+      }
+    } else if (cl.isBenchmark) {
+      // Price mode: benchmarks are already rebased to 1,000 on 2025-03-31
+      // (same scale as Robotnik Composite), plot raw values directly.
+      finalData = compFiltered;
     } else {
-      // Regular asset comparisons: normalise to index start value
+      // Price mode, regular asset comparison: scale to index start value
+      // so both lines begin at the same visible point.
       if (compFiltered.length > 0 && filtered.length > 0) {
         var idxBase = filtered[0].value || filtered[0].close || 1;
         var compBase = compFiltered[0].value || 1;
-        var normalised = compFiltered.map(function(d) {
+        finalData = compFiltered.map(function(d) {
           return { time: d.time, value: idxBase * (d.value / compBase) };
         });
-        cl.lwcSeries.setData(normalised);
+      } else {
+        finalData = [];
       }
     }
+    cl.lwcSeries.setData(finalData);
   }
 }
 
