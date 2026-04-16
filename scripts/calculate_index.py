@@ -248,11 +248,11 @@ def main():
     for e in entities:
         e["sector"] = SECTOR_MAP.get(e.get("sector", ""), e.get("sector", "Other"))
 
-    # filter to entities that have mcap >= minimum threshold, a current price, not excluded, and not Token
+    # filter to entities that have mcap >= minimum threshold, a current price, not excluded/quarantined, and not Token
     eligible = [e for e in entities
                 if e["market_cap_usd"] >= MIN_MARKET_CAP
                 and e["ticker"] in prices_by_ticker
-                and e.get("status") != "excluded"
+                and e.get("status") not in ("excluded", "data_quarantine")
                 and e.get("sector") != "Token"]
 
     excluded_micro = [e for e in entities
