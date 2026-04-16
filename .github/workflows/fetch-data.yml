@@ -4,6 +4,7 @@ on:
   schedule:
     - cron: '0 22 * * 1-5'   # Weekdays at 22:00 UTC — EOD pipeline (after US close)
     - cron: '0 5 * * 0'      # Sunday at 05:00 UTC — market caps refresh
+    - cron: '0 23 * * 0'    # Sunday at 23:00 UTC — weekly health check
     - cron: '*/30 14-20 * * 1-5'  # US market hours: live prices every 30 min (14:00-20:30 UTC)
   workflow_dispatch:
     inputs:
@@ -192,5 +193,30 @@ jobs:
             echo "No intel changes — skipping commit"
           else
             git commit -m "data: weekly intel update $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+  # ── Weekly health check (Sunday 23:00 UTC) ──
+  health-check:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 23 * * 0'
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run quarantine health check
+        run: python scripts/quarantine_health_check.py
+      - name: Commit health report
+        run: |
+          git config user.name "Robotnik Pipeline"
+          git config user.email "data@robotniks.com"
+          git add data/quarantine/weekly_report.md
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "report: weekly quarantine health check $(date -u +%Y-%m-%d)"
             git push
           fi

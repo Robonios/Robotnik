@@ -792,20 +792,52 @@ def main():
     all_prices = eq_results + tk_results
     active_prices = [p for p in all_prices if p["ticker"] not in excluded_tickers]
 
-    # Convert non-USD prices to USD for index consistency
-    # Korean Won prices are fetched in KRW from KOSPI/KOSDAQ
+    # ── Data quality: sentinel rejection + KRW conversion ──
+    from quarantine_utils import is_sentinel, log_rejection, check_consecutive_rejections, update_reinstatement_watch
+
+    # Load registry to identify quarantined tickers
+    _reg = {}
+    if registry_path.exists():
+        with open(registry_path) as f:
+            _reg = json.load(f)
+
     KRW_RATE = 1450  # Approximate; updated by live pipeline
-    for p in active_prices:
+    rejected = []
+    for p in active_prices[:]:
         ccy = (p.get("currency") or "USD").upper()
         price = p.get("price", 0)
+        ticker = p.get("ticker", "")
+
+        # Sentinel check on native-currency price BEFORE conversion
+        is_bad, reason = is_sentinel(price, ccy)
+        if is_bad:
+            log_rejection(ticker, price, ccy, "fetch_prices.py", reason)
+            check_consecutive_rejections(ticker)
+            # For quarantined tickers, update reinstatement watch
+            entity = _reg.get(ticker, {})
+            if isinstance(entity, dict) and entity.get("status") == "data_quarantine":
+                update_reinstatement_watch(ticker, entity.get("name", ""), price, None, ccy,
+                                           anchor_value=370.0 if "KS" in ticker else None, is_clean=False)
+            rejected.append(p)
+            continue
+
+        # KRW conversion
         if ccy == "KRW" and price and price > 500:
             p["price_local"] = price
             p["price"] = round(price / KRW_RATE, 4)
             p["currency"] = "USD"
-        # Clean EODHD sentinel values ($999,999.9999)
-        if price and 999990 < price < 1000010:
-            p["price"] = 0
-            p["change_pct"] = 0
+            # For quarantined KRW tickers, update reinstatement watch
+            entity = _reg.get(ticker, {})
+            if isinstance(entity, dict) and entity.get("status") == "data_quarantine":
+                update_reinstatement_watch(ticker, entity.get("name", ""), price,
+                                           round(price / KRW_RATE, 4), ccy,
+                                           anchor_value=370.0, is_clean=True)
+
+    # Remove rejected prices — preserve prior good values
+    for p in rejected:
+        active_prices.remove(p)
+    if rejected:
+        print("  Rejected {} prices (sentinel/implausible)".format(len(rejected)))
     all_output = {
         "fetched_at": ts,
         "count": len(active_prices),

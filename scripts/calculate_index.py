@@ -277,17 +277,57 @@ def main():
         price_matrix[today_str] = {}
         all_dates.append(today_str)
         all_dates.sort()
-    skipped_currency = 0
-    for ticker, price in prices_by_ticker.items():
-        # Sanity: skip prices that look like non-USD (>$5,000 for a single share is suspicious)
-        # Legitimate high-price stocks (ASML ~$1,400, KLAC ~$1,700) are well under this
-        if price > 5000:
-            skipped_currency += 1
+    # ── Layer 2: Index-side price validation ──
+    index_quarantine = set()
+    skipped = 0
+    for ticker, price in list(prices_by_ticker.items()):
+        # Reject null/zero/negative
+        if price is None or price <= 0:
+            index_quarantine.add(ticker)
+            skipped += 1
             continue
-        price_matrix[today_str][ticker] = price
-    injected = len(prices_by_ticker) - skipped_currency
+        # Reject implausible USD prices
+        if price > 5000:
+            index_quarantine.add(ticker)
+            skipped += 1
+            continue
+        # Reject >50% swing vs most recent prior valid price
+        # Only check against the immediately prior trading day to avoid false positives
+        # from legitimate multi-day rallies during history gaps
+        if len(all_dates) >= 2:
+            prev_day = all_dates[-2]  # Day before today in the series
+            prior_prices = price_matrix.get(prev_day, {})
+            if ticker in prior_prices:
+                prior = prior_prices[ticker]
+                if prior and prior > 0 and abs(price / prior - 1) > 0.5:
+                    index_quarantine.add(ticker)
+                    skipped += 1
+        if ticker not in index_quarantine:
+            price_matrix[today_str][ticker] = price
+
+    injected = len(prices_by_ticker) - skipped
     print(f"  Injected {injected} current prices for {today_str}" +
-          (f" (skipped {skipped_currency} non-USD)" if skipped_currency else ""))
+          (f" (quarantined {skipped} at index level)" if skipped else ""))
+
+    # Persist index-side quarantine log
+    quarantine_log_path = os.path.join(INDEX_DIR, "quarantine.json")
+    quarantine_today = [{"ticker": t, "reason": "index-side validation"} for t in index_quarantine]
+    quarantine_history = []
+    if os.path.exists(quarantine_log_path):
+        try:
+            old = json.loads(open(quarantine_log_path).read())
+            quarantine_history = old.get("history", [])
+        except:
+            pass
+    for q in quarantine_today:
+        quarantine_history.append({"date": today_str, **q})
+    # Keep last 90 days
+    quarantine_history = quarantine_history[-500:]
+    save_json(quarantine_log_path, {
+        "last_run": datetime.now(timezone.utc).isoformat() + "Z",
+        "quarantined_today": quarantine_today,
+        "history": quarantine_history,
+    })
 
     # Determine base date: ~1 year ago (where we have good token coverage)
     # We want the earliest date where at least 50% of eligible entities have data
@@ -561,7 +601,24 @@ def main():
     for w in weights_output["weights"][:5]:
         print(f"    {w['ticker']:8s} {w['weight_pct']:6.2f}%  ({w['name']})")
     print()
-    print("Done.")
+    # ── Run summary (self-auditing) ──
+    reg_data = {}
+    reg_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "registries", "entity_registry.json")
+    if os.path.exists(reg_path):
+        with open(reg_path) as f:
+            reg_data = json.load(f)
+    registry_quarantined = [(k, v.get("name", "")) for k, v in reg_data.items()
+                            if isinstance(v, dict) and v.get("status") == "data_quarantine"]
+
+    print(f"\n  INDEX RUN COMPLETE: {len(eligible)} constituents included" +
+          (f", {len(index_quarantine)} quarantined at runtime" if index_quarantine else "") +
+          (f", {len(registry_quarantined)} quarantined in registry" if registry_quarantined else ""))
+    for t in index_quarantine:
+        print(f"    QUARANTINED (runtime): {t}")
+    for t, name in registry_quarantined:
+        print(f"    QUARANTINED (registry): {t} ({name})")
+
+    print("\nDone.")
 
 
 if __name__ == "__main__":
