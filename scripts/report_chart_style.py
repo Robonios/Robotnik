@@ -93,12 +93,16 @@ PALETTE = SimpleNamespace(
         "ROBO": "#6EE7B7",   # ROBO ETF — muted green
     },
 
-    # Sub-indices (Figure 3 reference treatment)
+    # Sub-indices (Figure 3 reference treatment).
+    # Materials was amber (#FBBF24) but read too close to the hero Robotnik
+    # yellow at chart scale. Swapped to muted violet so the four sub-index
+    # colours all sit well away from yellow on the colour wheel, and away
+    # from each other in luminance + hue — readable in grayscale too.
     subindices={
         "semiconductor": "#60A5FA",   # muted blue
         "robotics":      "#6EE7B7",   # muted green
         "space":         "#F87171",   # salmon
-        "materials":     "#FBBF24",   # muted amber — note: NOT the Robotnik hero yellow
+        "materials":     "#A78BFA",   # muted violet
     },
 
     # Annotation fill + border
