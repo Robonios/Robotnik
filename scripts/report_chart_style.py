@@ -15,11 +15,49 @@ Import this module BEFORE any matplotlib figure is created; the
 apply_style() call mutates rcParams globally.
 """
 
+from pathlib import Path
 from types import SimpleNamespace
 
 import matplotlib
 matplotlib.use("Agg")
+import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
+
+
+# ─────────────────────────────────────────────────────────────────────
+# Fonts — Space Grotesk (titles/subtitles) + Mulish (everything else)
+# ─────────────────────────────────────────────────────────────────────
+# Bundled as TTFs in assets/fonts/ so every machine (laptop, CI, render
+# server) renders identically. No dependency on system-installed fonts.
+
+_FONT_DIR = (Path(__file__).resolve().parent.parent / "assets" / "fonts")
+
+FONT_TITLE = "Space Grotesk"     # used for titles and subtitles
+FONT_TEXT  = "Mulish"            # used for axis labels, ticks, legend, annotations
+
+_fonts_registered = False
+
+def _register_fonts() -> None:
+    """Register bundled TTFs with matplotlib's FontManager. Idempotent."""
+    global _fonts_registered
+    if _fonts_registered:
+        return
+    if not _FONT_DIR.exists():
+        return
+    for ttf in _FONT_DIR.glob("*.ttf"):
+        fm.fontManager.addfont(str(ttf))
+    _fonts_registered = True
+
+
+# FontProperties instances for per-element application (titles, subtitles)
+def title_font(size=13, weight="bold"):
+    _register_fonts()
+    return fm.FontProperties(family=FONT_TITLE, size=size, weight=weight)
+
+
+def subtitle_font(size=9.5, weight="regular"):
+    _register_fonts()
+    return fm.FontProperties(family=FONT_TITLE, size=size, weight=weight)
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -94,10 +132,15 @@ def apply_style() -> None:
     Safe to call multiple times (idempotent). Must be called before the
     first figure is created in each process.
     """
+    _register_fonts()
     plt.rcParams.update({
-        # Typography — sans-serif proportional, matching Figure 1
+        # Typography — Mulish is the default (body text, axis labels, ticks,
+        # legend, annotations). Titles + subtitles are applied explicitly
+        # via title_font() / subtitle_font() — use set_title(fontproperties=
+        # title_font()) and fig.text(..., fontproperties=subtitle_font()).
         "font.family": "sans-serif",
         "font.sans-serif": [
+            FONT_TEXT,           # Mulish — primary
             "Helvetica", "Arial", "Liberation Sans",
             "DejaVu Sans", "sans-serif",
         ],
