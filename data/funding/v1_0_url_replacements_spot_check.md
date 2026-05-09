@@ -1,49 +1,123 @@
-# v1.0 URL Replacements — Medium + Low Confidence Spot-Check
+# v1.0.1 URL Spot-Checks — Pending Approval
+
 **Date:** 2026-05-06
-**Scope:** 20 medium/low-confidence URL replacement candidates (84 high-confidence already applied per approval)
+**Scope:** 6 rows currently `source_status: pending` (all in-scope per freshness rule). 84 high-confidence URL mutations already applied; 11 phantom rows already dropped; 10 fixes already applied. These 6 are the residual cases that need a human call.
 
-## Status snapshot
+The actual count is **6** (was reported as "7 = 6 medium + 1 low" in the v1.0.1 tag annotation; one of the medium rows ended up applied during cleanup). Approve `[A]`, reject `[R]`, drop `[D]`, mark verified `[V]`, or flag `[F]` per row.
 
-| State | Count | Notes |
-|---|---:|---|
-| Still pending — needs spot-check | 9 | URLs not yet applied; review below before mutating |
-| Already dropped (per DQ approval) | 11 | Row removed from dataset; no URL action |
-| **Total** | **20** | |
+## Decisions to make
 
-## STILL PENDING — spot-check these URLs before mutation (9)
+| Row | Action choice |
+|-----|---------------|
+| 1. Etched.ai $500M | `[A]` apply Bloomberg URL · `[R]` keep TechCrunch placeholder · `[D]` drop row |
+| 2. ICEYE $163M | `[A]` apply Breaking Defense URL · `[R]` keep SpaceNews placeholder · `[D]` drop row · `[F]` flag for ICEYE direct PR search |
+| 3. PsiBot $280M | `[V]` mark verified (Gasgoo URL already canonical — agent erred) · `[D]` drop row |
+| 4. Fourier Intelligence $42M | `[D]` drop row · `[R]` accept current placeholder · `[F]` flag for re-search after amount fix |
+| 5. ENCOS $27.5M | `[A]` apply Pandaily URL · `[R]` keep Gasgoo aggregate · `[D]` drop row |
+| 6. Anvil Robotics $5M (Sep 2025) | `[D]` drop as phantom (per agent: only event is Apr 2026 $5.5M) · `[A]` apply Crunchbase News URL |
 
-Approve `[Y]` or reject `[N]` per row. Approved URLs will be applied to the row's `source` field with `source_status: verified`.
+## Detailed rows
 
-| Approve | idx | Company | Date | $M | Conf | Current | Proposed | Source |
-|:-------:|----:|---------|------|---:|:----:|---------|----------|--------|
-| [ ] | 218 | **Etched.ai** | 2026-01-14 | $500 | medium | `https://techcrunch.com/2026/01/14/etched-raises...` | `https://www.bloomberg.com/news/articles/2026-01-13/ai-chi...` | Bloomberg (paywall) |
-| [ ] | 222 | **PsiBot** | 2026-03-10 | $280 | low | `https://autonews.gasgoo.com/articles/news/2-bil...` | `(NONE FOUND)` | no canonical source found in Western trade pres... |
-| [ ] | 129 | **D-Robotics** | 2025-09-10 | $270 | medium | `https://techcrunch.com` | `https://www.yicaiglobal.com/news/chinas-d-robotics-raises...` | Yicai Global |
-| [ ] | 197 | **ICEYE** | 2025-12-05 | $163 | medium | `https://spacenews.com` | `https://breakingdefense.com/2025/12/germany-awards-iceye-...` | Breaking Defense |
-| [ ] | 115 | **Fourier Intelligence** | 2025-08-20 | $120 | low | `https://techcrunch.com` | `(NONE FOUND)` | no canonical Western press article found for Au... |
-| [ ] | 60 | **ClearSpace** | 2025-06-01 | $95 | medium | `https://esa.int` | `https://www.esa.int/Space_Safety/ESA_purchases_world-firs...` | ESA |
-| [ ] | 203 | **ENCOS** | 2025-12-15 | $28 | medium | `https://autonews.gasgoo.com/articles/news/china...` | `https://pandaily.com/encos-raises-nearly-28-m-to-lead-the...` | Pandaily |
-| [ ] | 75 | **Turion Space** | 2025-06-18 | $20 | medium | `https://spacenews.com` | `https://www.veteranventures.us/news1/announcing-a-strateg...` | Veteran Ventures Capital |
-| [ ] | 137 | **Anvil Robotics** | 2025-09-20 | $5 | low | `https://techcrunch.com` | `https://news.crunchbase.com/robotics/physical-ai-custom-r...` | Crunchbase News |
+### 1. Etched.ai $500M (2026-01-14, 1Q26, Semis / Fabless Design)
 
-## DROPPED — for context only (11)
+**Current URL:** `https://techcrunch.com/2026/01/14/etched-raises-500m/` (returns 404 — agent-fabricated)
 
-These rows have already been removed from the dataset per approved DQ drops. Listed here so you can see the full medium+low scope of the URL replacement audit.
+**Proposed replacement:** `https://www.bloomberg.com/news/articles/2026-01-13/ai-chip-startup-etched-raises-500-million-to-take-on-nvidia`
 
-| idx | Company | Date | $M | Conf | Reason for drop |
-|----:|---------|------|---:|:----:|-----------------|
-| 132 | Kargo | 2025-09-15 | $100 | low | no canonical source found for $100M Kargo Series A in September 2025. Most recent confirmed funding is $42M Series B in  |
-| 133 | General Fusion | 2025-09-15 | $73 | low | no canonical source found for $73M bridge funding in September 2025. Search shows General Fusion raised $30M CAD in Aug  |
-| 52 | RobCo | 2025-05-10 | $52 | low | Best matches are RobCo's $42.5M Series B (2024). No $52M round in May 2025 found. Recommend manual triage — amount or da |
-| 93 | Bonsai Robotics | 2025-07-10 | $50 | low | DATA QUALITY: Bonsai Series A was $15M in January 2025, not $50M in July 2025. The July 2025 event was the farm-ng acqui |
-| 101 | EndoQuest Robotics | 2025-07-20 | $36 | low | No $36M Series A in July 2025 found. EndoQuest closed a $59M round in July 2025 (lifting valuation to $319M). Recommend  |
-| 112 | Generative Bionics | 2025-08-15 | $35 | low | DATA QUALITY: Generative Bionics is Italian humanoid robotics (IIT spinoff), not prosthetics. The 70M EUR (~81M USD) see |
-| 166 | TRIC Robotics | 2025-11-05 | $30 | low | DATA QUALITY: TRIC Robotics' most recent funding is $5.5M seed in July 2025 — no $30M Series A in November 2025 found. R |
-| 59 | Contoro Robotics | 2025-05-20 | $20 | low | DATA QUALITY: Contoro $12M Series A was announced March 2025, not May 2025. No $20M round in May 2025 found. Recommend m |
-| 79 | SwarmFarm | 2025-06-25 | $18 | low | No $18M round in June 2025 found. SwarmFarm's Series B was $19.85M in October 2025. Recommend manual triage on date/amou |
-| 122 | Surgerii Robotics | 2025-09-05 | $15 | low | DATA QUALITY: Surgerii Robotics' $100M Series D was December 2025; no $15M seed in September 2025 found. September 2025  |
-| 200 | Dyna Robotics | 2025-12-10 | $6 | low | DATA QUALITY: No $6M round in December 2025 for Dyna Robotics found. Their Series A was $120M in September 2025, seed wa |
+**Confidence:** medium (Bloomberg paywall but cite-worthy)
 
-## How to apply approved mutations
+**Notes:** Bloomberg has the scoop dated 2026-01-13. Etched did not issue an official press release at the time (per Bloomberg "the company has not yet announced the funding officially"). Alternative non-paywall: `datacenterdynamics.com/en/news/etchedai-raises-500m-for-a-5bn-valuation-report/`.
 
-After spot-check, list approved row idxs (e.g., "approve idx 226, 350, 412") or just "approve all" / "reject all". I'll apply mutations and re-run the URL audit to confirm dataset health.
+**Recommendation:** Apply Bloomberg URL `[A]`. It's the most authoritative source and the paywall is acceptable — same convention we used for FT/WSJ-cited deals.
+
+---
+
+### 2. ICEYE $163M (2025-12-05, 4Q25, Space / Earth Observation)
+
+**Current URL:** `https://spacenews.com` (placeholder — bare domain, no article)
+
+**Proposed replacement:** `https://breakingdefense.com/2025/12/germany-awards-iceye-rheinmetall-almost-2b-for-new-sar-satellite-network/`
+
+**Confidence:** medium
+
+**Notes:** The proposed URL is about a Germany–Rheinmetall contract, not a clean ICEYE Series E announcement. Agent couldn't find a direct ICEYE-corporate press release for the Dec 2025 round. The $163M may be a journalist-aggregated figure across multiple Dec 2025 events.
+
+**Concern:** Replacement URL doesn't cite a "$163M Series E" event directly — it's a different (larger) contract.
+
+**Recommendation:** Hold on applying. Either (a) `[F]` flag for direct ICEYE corporate press search, or (b) `[D]` drop the row since the source is genuinely unclear, or (c) `[R]` keep placeholder until next monthly cleanup pass.
+
+---
+
+### 3. PsiBot $280M (2026-03-10, 1Q26, Robotics / Humanoid & Service Robots)
+
+**Current URL:** `https://autonews.gasgoo.com/articles/news/2-billion-yuan-why-did-state-backed-capital-collectively-bet-on-this-robotics-startup-2031717172080922625`
+
+**Proposed replacement:** None (agent reported "no canonical source found in Western trade press")
+
+**Confidence:** low
+
+**Notes:** This is the canonical-source row I personally fixed during the 1Q26 integrity pass on 2026-05-03 — the Gasgoo article IS the primary English-language source, which is why the second-pass agent's "no Western trade press" comment is stale. The row was given the Gasgoo URL already at that time. Agent simply didn't recognize Gasgoo as a valid Western trade pub.
+
+**Recommendation:** Mark `[V]` (`source_status: verified`), no URL change. The current Gasgoo URL is already the canonical source. Agent's "low confidence" verdict is incorrect — this is a v1.0 false negative.
+
+---
+
+### 4. Fourier Intelligence $42M (2025-08-20, 3Q25, Robotics / Humanoid & Service Robots)
+
+**Current URL:** `https://techcrunch.com` (placeholder)
+
+**Proposed replacement:** None (agent reported "no canonical Western press article found")
+
+**Confidence:** low
+
+**Notes:** Amount was already fixed during major-fix pass ($120M → $42M / CNY 300M). FX captured. But no English-language source URL found. Agent's recommendation: manual triage. The deal IS real (Caixin and 36Kr have it in Chinese), just no English primary press.
+
+**Recommendation:** This is the kind of row the `dataset_notes.md` sub-$25M caveat is intended to cover, but at $42M it's above that threshold. Either (a) `[D]` drop (no Western source) or (b) `[F]` flag for a second-pass with Mandarin-source acceptance (Caixin Pro / 36Kr). My lean: keep but mark `source_status: archived` (treat as out-of-scope per the dataset_notes acceptance) — but only if you accept Caixin/36Kr as legitimate primaries. Otherwise drop.
+
+---
+
+### 5. ENCOS $27.5M (2025-12-15, 4Q25, Robotics / Motion Control & Actuators)
+
+**Current URL:** `https://autonews.gasgoo.com/articles/news/china-robotics-industry-financing-recap-for-december-2025` (Gasgoo monthly recap, not deal-specific)
+
+**Proposed replacement:** `https://pandaily.com/encos-raises-nearly-28-m-to-lead-the-embodied-intelligence-core-components-race`
+
+**Confidence:** medium
+
+**Notes:** Pandaily article is deal-specific; Gasgoo recap is generic. Pandaily is a respected English-language China-tech outlet. ENCOS is a Chinese embodied-AI components company.
+
+**Recommendation:** Apply Pandaily URL `[A]`. Better than the recap aggregate currently cited.
+
+---
+
+### 6. Anvil Robotics $5M (2025-09-20, 3Q25, Robotics / Industrial Robots)
+
+**Current URL:** `https://techcrunch.com` (placeholder)
+
+**Proposed replacement (low confidence):** `https://news.crunchbase.com/robotics/physical-ai-custom-robot-builder-seed-funding-anvil/`
+
+**Confidence:** low — flagged for DROP
+
+**Notes:** Per second-pass agent: "Anvil Robotics' $5.5M seed was announced April 2026, not September 2025." We already have a SEPARATE Anvil Robotics row at 2026-04-03 ($5.5M Seed extension). The Sept 2025 row appears to be the same fabrication pattern — there's no real Anvil Sept 2025 event.
+
+**Recommendation:** **Drop** `[D]`. This row is a phantom; the only real Anvil event is captured in the April 2026 row.
+
+---
+
+## Summary recommendation
+
+If you want speed:
+- **Apply [A]** rows 1 (Etched.ai) and 5 (ENCOS) — solid replacements
+- **Drop [D]** row 6 (Anvil Sep 2025) — confirmed phantom
+- **Mark verified [V]** row 3 (PsiBot) — agent's "low" verdict was wrong; current Gasgoo URL is canonical
+- **Hold / triage [F]** rows 2 (ICEYE) and 4 (Fourier Intelligence) — need additional research
+
+Net effect: +2 URLs applied, +1 verified-correction, −1 phantom drop, 2 still pending → dataset 1,134 → 1,133, with 5 newly verified and 2 stay pending.
+
+Or batch-approve everything and I'll execute.
+
+## Files
+
+- `data/funding/rounds.json` — current dataset (mutations frozen pending your call)
+- `data/funding/v1_0_url_replacements_pending.md` — earlier comprehensive view (now stale, kept for history)
+- `data/funding/v1_0_1_remediation_log.md` — full log of v1.0 → v1.0.1 mutations

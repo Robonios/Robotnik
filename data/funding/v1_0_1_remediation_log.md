@@ -113,15 +113,30 @@ See [v1_0_remediation_log.md](v1_0_remediation_log.md) for full detail.
 - `other_investors`: appended Brevan Howard, Counterpoint Global, Druckenmiller, NVentures (NVIDIA)
 - `source`: → `cfs.energy/news-and-media/commonwealth-fusion-systems-raises-863-million-series-b2-round-...`
 
+## Spot-check decisions applied (post-second-pass)
+
+After v1.0.1 tag was created, 6 spot-check decisions were applied to clear the pending queue:
+
+| Row | Decision |
+|-----|----------|
+| Etched.ai $500M | URL → Bloomberg (paywall, cite-worthy) |
+| ICEYE $163M | URL → tesi.fi (Finnish state investor news, user-provided); lead → General Catalyst; FX captured (EUR 150M) |
+| PsiBot $280M | Verified (Gasgoo URL is canonical English-language source — agent false negative) |
+| Fourier Intelligence $42M | URL → stcn.com (Securities Times Network, Mandarin primary; user accepted Mandarin acceptance) |
+| ENCOS $27.5M | URL → Pandaily (deal-specific, replaces generic monthly recap) |
+| Anvil Robotics $5M (Sep 2025) | DROP — phantom (only real event is April 2026 row already in dataset) |
+
+Net: 4 URL replacements + 1 verify + 1 phantom drop. Dataset 1,134 → 1,133.
+
 ## Final dataset state
 
 | Metric | Value |
 |--------|------:|
-| Rows | **1,134** |
-| `verified` | 1,053 (92.9%) |
+| Rows | **1,133** |
+| `verified` | 1,058 (93.4%) |
 | `archived` (out-of-scope per freshness rule) | 75 (6.6%) |
-| `pending` | 6 (0.5%) |
-| **In-scope verified** | **1,053 / 1,059 = 99.4%** ✅ |
+| `pending` | 0 (0.0%) |
+| **In-scope verified** | **1,058 / 1,058 = 100.0%** ✅ |
 
 ## Robotics 1Q26 vs 4Q25 ratio (final)
 

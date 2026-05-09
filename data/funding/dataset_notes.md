@@ -12,7 +12,7 @@ Canonical 21 fields + 4 optional FX fields + 1 status field. See [`prompts/month
 
 - **Earliest dated row:** 2023-01-02
 - **Latest dated row:** 2026-04-30
-- **Total rows:** 1,135 (post-v1.0.1 remediation)
+- **Total rows:** 1,133 (post-v1.0.1 remediation including spot-check resolutions)
 
 ## Known limitation: sub-$25M long-tail rounds in 3Q25–4Q25
 
@@ -33,12 +33,12 @@ The list is preserved at `/tmp/sub_25M_unverifiable_rows.json` (24 rows, mostly 
 
 | Status | Count | % |
 |--------|------:|---:|
-| `verified` — URL confirmed live or paywall-citable | 1,049 | 92.4% |
+| `verified` — URL confirmed live or paywall-citable | 1,058 | 93.4% |
 | `archived` — out-of-scope per freshness rule (date >365d AND amount <$500M) | 75 | 6.6% |
-| `pending` — awaiting spot-check approval | 7 | 0.6% |
-| **Total** | **1,135** | **100%** |
+| `pending` — awaiting spot-check approval | 0 | 0.0% |
+| **Total** | **1,133** | **100%** |
 
-**In-scope verified rate: 99.3%** (1,049 / 1,056) — exceeds the ≥95% target.
+**In-scope verified rate: 100%** (1,058 / 1,058) — exceeds the ≥95% target.
 
 ## URL freshness rule (in scope vs out of scope)
 
