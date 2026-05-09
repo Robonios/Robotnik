@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Frontier Technology Funding — Robotnik</title>
-<meta name="description" content="Tracking 313 funding rounds across frontier technology since January 2025. Investor activity, deal sizes, and capital flows by sector.">
+<meta name="description" content="Tracking 1,154 funding rounds across frontier technology since January 2023. Investor activity, deal sizes, and capital flows by sector.">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://robotnik.world/funding.html">
 <meta property="og:title" content="Frontier Technology Funding — Robotnik">
-<meta property="og:description" content="Tracking 313 funding rounds across frontier technology since January 2025. Investor activity, deal sizes, and capital flows by sector.">
+<meta property="og:description" content="Tracking 1,154 funding rounds across frontier technology since January 2023. Investor activity, deal sizes, and capital flows by sector.">
 <meta property="og:image" content="https://robotnik.world/og/default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -17,7 +17,7 @@
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Frontier Technology Funding — Robotnik">
-<meta name="twitter:description" content="Tracking 313 funding rounds across frontier technology since January 2025. Investor activity, deal sizes, and capital flows by sector.">
+<meta name="twitter:description" content="Tracking 1,154 funding rounds across frontier technology since January 2023. Investor activity, deal sizes, and capital flows by sector.">
 <meta name="twitter:image" content="https://robotnik.world/og/default.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -115,6 +115,7 @@
     <button class="time-btn active" data-period="3M" onclick="setPeriod(this)">3M</button>
     <button class="time-btn" data-period="6M" onclick="setPeriod(this)">6M</button>
     <button class="time-btn" data-period="1Y" onclick="setPeriod(this)">1Y</button>
+    <button class="time-btn" data-period="ALL" onclick="setPeriod(this)">ALL</button>
   </div>
 </div>
 
@@ -157,7 +158,7 @@
       </tr></thead>
       <tbody id="top-rounds-body"></tbody>
     </table>
-    <a href="#" class="view-all-link" onclick="setTab('rounds',document.querySelector('.fund-tab:nth-child(2)'));return false" style="margin-top:0.5rem;display:block;">View all 138 rounds &rarr;</a>
+    <a href="#" id="view-all-rounds-link" class="view-all-link" onclick="setTab('rounds',document.querySelector('.fund-tab:nth-child(2)'));return false" style="margin-top:0.5rem;display:block;">View all rounds &rarr;</a>
   </div>
 
 </div>
@@ -238,6 +239,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="js/nav.js?v=20260422c"></script>
-<script src="js/funding.js"></script>
+<script src="js/funding.js?v=20260506"></script>
 </body>
 </html>
