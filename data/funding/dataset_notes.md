@@ -1,23 +1,24 @@
 # Funding Dataset — Documentation Notes
 
-**v1.1 (2026-05-11)**
+**v1.1.1 (2026-05-12)**
 
 This document captures the schema, methodology, known limitations, and acceptance criteria for downstream consumers (VCs, analysts).
 
-## Schema (v1.1 — 24 columns in CSV export)
+## Schema (v1.1.1 — 23 columns in CSV export)
 
 CSV export column order:
 
 ```
 entity_id, company, company_description, sector, subsector,
 value_chain_tier, bottleneck_risk, policy_exposure, round,
-deal_type, amount_m, valuation_m, total_raised_m,
-total_number_of_raises, date, date_display, month_year,
-quarter, year, location, lead_investors, co_investors,
-related_tickers, robotnik_take, source
+deal_type, amount_m, valuation_m, date, date_display,
+month_year, quarter, year, location, lead_investors,
+co_investors, related_tickers, robotnik_take, source
 ```
 
-24 columns. The internal JSON (`rounds.json`) additionally retains `source_status` (verified | archived | pending) for audit purposes — not exported.
+23 columns. The internal JSON (`rounds.json`) retains additional fields not exported to CSV:
+- `source_status` (verified | archived | pending) — audit field
+- `total_raised_m` and `total_number_of_raises` — computed values; dropped from CSV at v1.1.1 because they compute only from 2023+ coverage and understate companies with pre-2023 funding history (e.g., ForSight Robotics shows $125M vs actual ~$195M; Lambda shows $480M vs actual ~$863M). Selective cumulative-funding context now moves into `robotnik_take` where load-bearing for the analytical point.
 
 ### New fields in v1.1
 
@@ -27,7 +28,7 @@ related_tickers, robotnik_take, source
 | `value_chain_tier` | str \| null | One of 8 tiers; describes where the company creates value in the frontier-tech stack. Backfilled for Jan 2025 → Apr 2026 only; older rows leave empty. |
 | `bottleneck_risk` | str \| null | Five-value risk score on the company's supply-chain position. Backfilled for Jan 2025 → Apr 2026 only. |
 | `policy_exposure` | str \| null | Semicolon-separated tags from a controlled vocabulary identifying the policy regimes the deal is exposed to. Backfilled across full dataset. |
-| `total_number_of_raises` | int | Count of rounds in the dataset matching the same `entity_id`. Computed; recomputed each monthly regeneration. |
+| `total_number_of_raises` | int | (Internal-only at v1.1.1) Count of rounds matching the same `entity_id`. Dropped from CSV export at v1.1.1 due to coverage bias. |
 
 ### Renamed fields in v1.1
 
@@ -42,6 +43,13 @@ related_tickers, robotnik_take, source
 |-------|--------|
 | `public_market_link` | Dormant — only 2/1,133 populated at v1.0.1. No analytical use. |
 | `source_status` (from CSV) | Internal audit field; retained in JSON, dropped from export |
+
+### Removed fields in v1.1.1 (CSV export only — retained internally)
+
+| Field | Reason |
+|-------|--------|
+| `total_raised_m` | Computes only from 2023+ coverage; under-counts companies with pre-2023 history. Selective cumulative context moves into `robotnik_take` where load-bearing. |
+| `total_number_of_raises` | Same coverage-bias issue (e.g., Cerebras shows 6 raises vs actual ~10). |
 
 ### `company_description` vs `robotnik_take` distinction
 
@@ -121,8 +129,8 @@ When in doubt for a private company, default to `Pre-commercial` rather than gue
 | `value_chain_tier` | Jan 2025 → Apr 2026 only |
 | `bottleneck_risk` | Jan 2025 → Apr 2026 only |
 | `company_description` | Full dataset; 6 entities null (see below) |
-| `robotnik_take` | Full dataset; refreshed for Jan-Apr 2026 only (older rows carry the v1.0.1 `robotnik_notes` content as-is) |
-| `total_raised_m` / `total_number_of_raises` | Computed across full dataset every monthly regeneration |
+| `robotnik_take` | Full dataset; v1.1 refreshed Jan-Apr 2026; v1.1.1 refreshed all of calendar 2025 (172 rows in 4 batches); pre-2025 rows carry pre-v1.1 content except 2 transposition fixes (Impulse Space 2024-10, Hanyang Tech 2023-05) |
+| `total_raised_m` / `total_number_of_raises` | Computed internally; dropped from CSV at v1.1.1 |
 
 ## Filename convention (v1.1+)
 
@@ -140,7 +148,7 @@ Prior monthly exports are archived in `data/exports/archive/` for diffing. The u
 
 - **Earliest dated row:** 2023-01-02
 - **Latest dated row:** 2026-04-30
-- **Total rows:** 1,132 (post-v1.1: Humans& dropped as out-of-universe consumer software)
+- **Total rows:** 1,131 (v1.1.1: −1 Infravision duplicate dropped; v1.1: −1 Humans& as out-of-universe consumer software)
 
 ## Known limitation 1: sub-$25M long-tail rounds in 3Q25–4Q25
 
@@ -173,16 +181,43 @@ In addition to the v1.0 exclusion categories (see below), v1.1 drops:
 
 - **Humans&** ($480M seed Jan 2026) — "AI version of IM," pure consumer/social software, not embodied AI or robotics infrastructure. Inclusion at v1.0.1 reflected investor overlap with the embodied-AI capital pool but didn't fit the hardware-anchored thesis. Same logic as the v1.0.1 crypto-software exclusions (RISC Zero, Flashbots, BitGo, EigenLayer, Friend.tech, ZetaChain).
 
+## Duplicate-row drop at v1.1.1
+
+- **Infravision** Series B 2025-11-03 $91M (GIC-led) — two rows ingested at v1.0 from different sources (company press release + BusinessWire), never deduped. Kept the richer record (BusinessWire source with co-investors named: Activate Capital, Hitachi Ventures, Energy Impact Partners), dropped the bare press-release row.
+
+## Transposition findings + remediation (v1.1.1)
+
+Two pattern types caught during v1.1.1 work — both are paste-style errors during prior ingestion passes:
+
+**TAKE-WRONG (transposition into `robotnik_take`, 5 rows fixed):**
+- `neros` 2025-11-07 — take described AI compute infrastructure / Groq + Cerebras + NVDA; company actually makes NDAA-compliant FPV combat drones (caught by Batch 3 agent, fixed in v1.1.1)
+- `mach` 2025-12-15 — take described aerial defence drone; company actually does autonomous off-road systems for military (caught by Batch 4 agent)
+- `impulse-space` 2024-10-01 — take described RISC-V / SiFive IPO; company is in-space transportation (caught by pre-2025 audit)
+- `hanyang-technology` 2023-05-12 — take described generic service-robot R&D vs Pudu/Keenon; company is Yarbo yard-robot OEM (caught by pre-2025 audit; sibling row 2023-03-15 had correct content)
+
+**DESC-WRONG (transposition into `company_description`, 2 entities fixed across rows):**
+- `xlight` (×2 rows) — description said "photonic IC manufacturing competing with GlobalFoundries / AIM Photonics"; actually builds FEL EUV light sources for semiconductor lithography (ASML alternative); fixed
+- `ncodin` (×2 rows) — description said "neuromorphic AI processors vs Intel Loihi"; actually builds optical interposer + nanolasers for chiplet interconnect; fixed (the Batch 4 take for the 2025-11-19 row had also propagated the wrong content and was redrafted)
+
+**Audits:** [`v111_transposition_audit.md`](v111_transposition_audit.md) (2025 backlog scope, 172 rows; 2 take-wrong + 1 desc-wrong found) and [`v111_pre2025_transposition_audit.md`](v111_pre2025_transposition_audit.md) (pre-2025 scope, ~942 rows; 2 take-wrong + 1 desc-wrong found). Total rate: 7 / 1,131 = 0.62%. No clustering by sector, source, or date. Mitigation in monthly ingestion template: add take↔description cross-check as final QA step.
+
+## Investor canonicalization (v1.1.1)
+
+- **Applied:** 179 mappings, 219 field-level edits across `lead_investors` and `co_investors`. See [`investor_name_map.csv`](investor_name_map.csv).
+- **Policy:** corporate vs venture-arm kept distinct globally (AMD ≠ AMD Ventures, Bosch ≠ Bosch Ventures, etc.).
+- **Deferred:** 151 USER-VERIFY candidates split HIGH (71) / MEDIUM (23) / LOW (13) / REJECT (44) — see [`investor_canonical_followup.md`](investor_canonical_followup.md). Will be reviewed in a separate pass.
+- **Placeholder rule (added to monthly ingestion template):** unknown lead → `Undisclosed`; unknown co → empty string. Never use "Multiple", "Various", "Existing investors", "Other existing and new investors", etc.
+
 ## Source URL audit summary
 
 | Status | Count | % |
 |--------|------:|---:|
-| `verified` — URL confirmed live or paywall-citable | 1,048 | 92.6% |
+| `verified` — URL confirmed live or paywall-citable | 1,056 | 93.4% |
 | `archived` — out-of-scope per freshness rule (date >365d AND amount <$500M) | 75 | 6.6% |
-| `pending` — awaiting spot-check approval | 9 | 0.8% |
-| **Total** | **1,132** | **100%** |
+| `pending` — awaiting spot-check approval | 0 | 0.0% |
+| **Total** | **1,131** | **100%** |
 
-(Counts will refresh in v1.1 final CSV regeneration; figures shown reflect post-Humans&-drop state.)
+In-scope verified rate: 1,056 / 1,056 = **100%**.
 
 ## URL freshness rule (in scope vs out of scope)
 
@@ -247,3 +282,4 @@ Null amounts treated as 0. For entities with only excluded rounds (e.g., an IPO-
 - **v1.0** (2026-05-06 AM): Pre-remediation snapshot. 1,154 rows. ~12% of source URLs were agent-fabricated.
 - **v1.0.1** (2026-05-06 PM): Post-remediation. 1,133 rows. 99.4% in-scope verified. Anti-fabrication rules locked. URL audit + bulk data audit complete.
 - **v1.1** (2026-05-11): Schema expansion. 5 new fields, 2 rename, 1 removal. 1,132 rows (Humans& dropped). Filename convention adopted. New CSV exports use the `Robotnik Frontier Private Rounds <Month-YYYY>.csv` pattern.
+- **v1.1.1** (2026-05-12): CSV review fixes. Schema simplification (dropped `total_raised_m` and `total_number_of_raises` from CSV → 23 cols). 26 investor placeholder fixes. 179 investor name canonicalizations applied (151 USER-VERIFY deferred). 41 cumulative-funding strips + 16 rewrites + 3 weak-take rewrites. 2 bottleneck reclassifications to Critical (MP Materials, SpaceX). Full 2025 take backlog refresh to v1.1 spec (172 rows in 4 batches). 7 transposition findings caught + fixed. 1 duplicate row dropped (Infravision). 1,131 rows. 100% in-scope verified. See [`v1_1_1_remediation_log.md`](v1_1_1_remediation_log.md).

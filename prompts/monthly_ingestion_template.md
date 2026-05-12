@@ -174,6 +174,33 @@ The `round` field uses the **exact round name as stated by the company** in the 
 
 If the round name doesn't match a canonical enum value, use the closest extension/variant (e.g., "Series C-2" → "Series C (extension)"). Never use bare "Other" — pick the closest canonical match.
 
+### Rule 8 — Investor fields contain names only (added v1.1.1)
+
+`lead_investors` and `co_investors` carry **named entities only**. Never use vague placeholders like "Multiple", "Various", "Existing investors", "Other existing and new investors", "Multiple state-backed investors", "PIPE syndicate (undisclosed)", etc. These break downstream groupby aggregation when VCs query the export.
+
+- **Unknown `lead_investors`** → write `Undisclosed`
+- **Unknown `co_investors`** → leave empty (empty string)
+- If the source describes a structural detail (e.g., "via non-brokered private placement of 80M shares at C$0.27") rather than naming investors, that content belongs in `robotnik_take`, not in the investor field
+
+🚫 **BANNED:** "Multiple", "Various ...", "Existing investors (...)" as values. Move named participants buried inside such strings into `co_investors`, then either resolve a real lead from source or fall back to `Undisclosed`. Same anti-fabrication discipline as URL rule 1.
+
+### Rule 9 — Investor name canonicalization (added v1.1.1)
+
+Before writing any investor name, check it against [`data/funding/investor_name_map.csv`](../data/funding/investor_name_map.csv) for canonical form. Same firm should not appear under multiple spellings (case, spacing, abbreviation, division, suffix variants).
+
+- Common canonicalizations: `Fidelity Investments` / `Fidelity Management & Research Co.` → `Fidelity Management & Research`. `Sequoia` → `Sequoia Capital`. `J.P. Morgan` / `JP Morgan` → `JPMorgan`. `Tiger Global` → `Tiger Global Management`. `10X Founders` → `10x Founders`. `BV.VC` → `BVVC`. Many more in the map.
+- **Corporate vs venture arm: KEEP DISTINCT** globally. AMD ≠ AMD Ventures, Bosch Group ≠ Bosch Ventures, Qualcomm ≠ Qualcomm Ventures, Cisco ≠ Cisco Investments, Salesforce ≠ Salesforce Ventures, Stellantis ≠ Stellantis Ventures, Yamaha Motor ≠ Yamaha Motor Ventures, Honeywell ≠ Honeywell Ventures, Equinor ≠ Equinor Ventures, Ericsson ≠ Ericsson Ventures, Hanwha ≠ Hanwha Ventures. Different decision-makers, different mandates.
+- For regional fund arms with distinct legal entities (e.g., Sequoia Capital China, Sequoia Capital India), keep distinct from the US parent unless the user merges them via the map.
+- If a new investor not in the map appears, add it with its canonical form. When unsure, flag as `USER-VERIFY` in a `notes` column for the next canonical-map review pass.
+
+### Rule 10 — `robotnik_take` ↔ `company_description` cross-check (added v1.1.1)
+
+Before submitting a row, re-read its `robotnik_take` against its `company_description`. They MUST describe the same business / segment / product. If they don't, one of them is transposed from a different company — a paste-style error pattern caught 7 times in the v1.1.1 audit (Neros, MACH, Impulse Space 2024, Hanyang Tech 2023, xLight ×2, NcodiN ×2).
+
+- ✓ The take's comp set and strategic frame must align with what `company_description` says the company does
+- 🚫 If `current_take` describes "AI compute infrastructure" but `company_description` says "FPV combat drones", treat `company_description` as ground truth (it's freshly drafted from primary sources during the same pass) and rewrite the take from scratch
+- Bonus: cross-check `related_tickers` and `source` URL against both. If the source URL is about a different company than the row claims, the row itself is likely transposed.
+
 ---
 
 ## Quality bar
@@ -240,3 +267,4 @@ After all sectors complete, the orchestrator will produce a monthly summary with
 
 - **2026-05-06 (v1.0):** Template locked. Added `source_status` field, anti-fabrication rules (Rule 1-4), `Pre-IPO` round enum, binding-only government rule, public secondaries exclusion, pure-software crypto exclusion, parent capex exclusion. Codified after URL audit found ~12% of v1.0 source URLs were agent-fabricated.
 - **2026-05-06 (v1.0.1):** Added Rules 5, 6, 7 covering systematic error classes surfaced in the 1Q25-4Q25 bulk data audit: date verification (use canonical announcement date, not synthesized), currency capture mandatory for non-USD raises (native + FX), and round naming verbatim (no normalization that changes meaning). Audit found 14 confirmed errors in 200 rows (~7% rate) plus 69 unverifiable; pattern errors concentrated in date-misattribution and currency-conversion-drift. Added `Series B2` to round enum (first use: Commonwealth Fusion Systems $863M, 2025-08-28) per Rule 7 verbatim-naming.
+- **2026-05-12 (v1.1.1):** Added Rules 8, 9, 10 covering data-quality patterns surfaced in v1.1.1 CSV review: (8) investor placeholder ban — no "Multiple"/"Various"/"Existing investors" filler in lead/co fields; unknown → `Undisclosed` / empty. (9) canonical-name check against `investor_name_map.csv` before writing investor names; corporate-vs-venture-arm distinct globally. (10) `robotnik_take` ↔ `company_description` cross-check before submitting (transposition pattern caught 7× across the dataset). Note: `total_raised_m` and `total_number_of_raises` are retained internally but no longer in CSV export — they computed only from 2023+ coverage and under-counted companies with pre-2023 history.
