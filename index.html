@@ -55,7 +55,7 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20260421e"><link rel="stylesheet" href="css/typography.css?v=20260421e">
+<link rel="stylesheet" href="css/style.css?v=20260514m1"><link rel="stylesheet" href="css/typography.css?v=20260421e">
 <!-- GoatCounter analytics (privacy-friendly, no cookies) -->
 <script data-goatcounter="https://robotnik.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -89,6 +89,17 @@
     }
   })();
 </script>
+
+<!-- Hero positioning sentence — first content element on the home page.
+     Headline + descriptor in brand voice; no CTA. Lives above the
+     dashboard grid so it sits at the top of the main column on desktop
+     AND becomes the first element after the banner on mobile (single
+     column stack). Stays inside .main-content so it inherits the
+     left-rail offset on desktop. -->
+<div class="hero-block">
+  <div class="hero-headline">Frontier-tech intelligence for investors.</div>
+  <div class="hero-descriptor">Private market data, supply-chain mapping, and analytical takes across semiconductors, robotics, space, and critical materials.</div>
+</div>
 
 <div class="dash-layout">
 
@@ -197,6 +208,7 @@
           <button class="export-btn" onclick="openEarlyAccess();return false;">Export ↓</button>
         </div>
       </div>
+      <div class="markets-table-wrap">
       <table class="market-table" id="market-table">
         <thead>
           <tr>
@@ -212,6 +224,7 @@
         </thead>
         <tbody id="mkt-tbody"></tbody>
       </table>
+      </div>
       <a href="assets.html" class="view-all-link" id="mkt-view-all">View all assets &rarr;</a>
     </div>
 
@@ -295,7 +308,7 @@
      than swapping in an intermediate gate surface. -->
 
 <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
-<script src="js/nav.js?v=20260425a"></script>
+<script src="js/nav.js?v=20260514m1"></script>
 <script src="js/main.js?v=20260514a"></script>
 <script>
 // Load funding summary for widget

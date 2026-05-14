@@ -2693,3 +2693,532 @@
     color: var(--text-muted);
     margin: 8px 0 0 0;
   }
+
+  /* =========================================================
+     HERO POSITIONING BLOCK (home page)
+     ---------------------------------------------------------
+     Headline + descriptor that explains what Robotnik is.
+     Sits above the dashboard grid. On mobile it becomes the
+     first content element after the 1Q26 banner.
+     ========================================================= */
+  .hero-block {
+    padding: 28px 1rem 28px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .hero-headline {
+    font-family: var(--font);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--yellow);
+    letter-spacing: 0.01em;
+    margin: 0 0 0.5rem;
+  }
+  .hero-descriptor {
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-dim);
+    margin: 0;
+    max-width: 880px;
+  }
+  @media (max-width: 768px) {
+    .hero-block {
+      padding: 20px 1rem 20px;
+    }
+    .hero-headline {
+      font-size: 17px;
+    }
+    .hero-descriptor {
+      font-size: 13px;
+    }
+  }
+
+  /* =========================================================
+     TOP BAR: hamburger button + mobile wordmark
+     ---------------------------------------------------------
+     Hidden on desktop. Below 769px, the hamburger sits top-left
+     and the mobile-only wordmark anchors next to it.
+     ========================================================= */
+  .nav-hamburger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    margin-right: 0.25rem;
+    padding: 0;
+    flex-shrink: 0;
+  }
+  .nav-hamburger:hover { color: var(--yellow); }
+  .nav-hamburger:focus { outline: 1px solid var(--yellow); outline-offset: -1px; }
+
+  .top-bar-wordmark {
+    display: none;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--yellow);
+    text-decoration: none;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* =========================================================
+     MOBILE NAV OVERLAY (hamburger menu)
+     ---------------------------------------------------------
+     Hidden on desktop. When .is-open is set the panel slides in.
+     ========================================================= */
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+  }
+  .mobile-nav-overlay.is-open { display: block; }
+  .mobile-nav-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 86%;
+    max-width: 320px;
+    background: #0D1117;
+    border-right: 1px solid #1E2330;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    animation: mobileNavSlideIn 0.18s ease-out;
+  }
+  @keyframes mobileNavSlideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+  .mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem 1rem;
+    border-bottom: 1px solid #1E2330;
+    margin-bottom: 0.75rem;
+  }
+  .mobile-nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+  .mobile-nav-logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+  .mobile-nav-logo-text {
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--yellow);
+    letter-spacing: 0.12em;
+  }
+  .mobile-nav-close {
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mobile-nav-close:hover { color: var(--yellow); }
+  .mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 0.5rem;
+    flex: 1;
+  }
+  .mobile-nav-list .nav-item {
+    min-height: 44px;
+    font-size: 14px;
+    padding: 0.75rem 0.85rem;
+    /* Override the desktop sidebar's --text-dim baseline — mobile overlay
+       sits on a darker backdrop and inactive items need full contrast to
+       be legible against the dim. Specificity is raised with the overlay
+       parent selector so we beat the typography.css :not(.active) rule
+       which would otherwise win on cascade order. */
+    color: #e6e8ed;
+  }
+  .mobile-nav-overlay .mobile-nav-list .nav-item:not(.active) .nav-label { color: #e6e8ed; }
+  .mobile-nav-overlay .mobile-nav-list .nav-item.disabled,
+  .mobile-nav-overlay .mobile-nav-list .nav-item.disabled .nav-label { color: #8B92A5; }
+  .mobile-nav-overlay .mobile-nav-list .nav-item.active .nav-label { color: var(--yellow); }
+  .mobile-nav-tagline {
+    padding: 1rem;
+    border-top: 1px solid #1E2330;
+    margin-top: 1rem;
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  body.mobile-nav-locked { overflow: hidden; }
+
+  /* =========================================================
+     PERSISTENT SITE FOOTER (LinkedIn) — injected by js/nav.js
+     ---------------------------------------------------------
+     Sits below main content on every live page. Two-row layout:
+     row 1 = wordmark + LinkedIn link; row 2 = copyright.
+     ========================================================= */
+  .site-footer-global {
+    margin-left: 220px;
+    padding: 22px 1.5rem 26px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    position: relative;
+    z-index: 1;
+    font-family: var(--font);
+    color: var(--text-muted);
+  }
+  .site-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .site-footer-wordmark {
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--yellow);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    padding: 8px 0;
+  }
+  .site-footer-wordmark:hover { color: var(--yellow-dim); }
+  .site-footer-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+    min-height: 44px;
+  }
+  .site-footer-linkedin svg {
+    transition: color 0.15s;
+  }
+  .site-footer-linkedin:hover,
+  .site-footer-linkedin:focus {
+    color: var(--yellow);
+  }
+  .site-footer-linkedin-label {
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .site-footer-copyright {
+    font-family: var(--font);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* =========================================================
+     SHARED MOBILE TABLE WRAP (horizontal scroll + sticky 1st col)
+     ---------------------------------------------------------
+     Pattern A — wrapper provides horizontal overflow; the first
+     <td>/<th> in each row is sticky-pinned to the left edge.
+     Applied on home / funding / assets / report tables.
+     ========================================================= */
+  .top-table-wrap,
+  .markets-table-wrap,
+  .report-table-wrap {
+    width: 100%;
+  }
+  .top-table-wrap table,
+  .markets-table-wrap table,
+  .report-table-wrap table {
+    width: 100%;
+  }
+
+  /* =========================================================
+     MOBILE BREAKPOINT (≤768px)
+     ---------------------------------------------------------
+     Site is desktop-first; everything below collapses or scrolls
+     for usability on phones. Desktop layout above 769px stays
+     untouched except for the hero + footer additions.
+     ========================================================= */
+  @media (max-width: 768px) {
+    /* Show hamburger + mobile wordmark. The desktop sidebar is
+       already collapsed to 60px by the existing .sidebar rule
+       in the @media (max-width: 900px) block, so we explicitly
+       hide it here to free up the full viewport width. */
+    .nav-hamburger { display: inline-flex; }
+    .top-bar-wordmark { display: inline-block; }
+    .sidebar { display: none; }
+    .top-bar {
+      left: 0;
+      padding: 0 0.75rem;
+    }
+    .main-content {
+      margin-left: 0;
+      padding-top: 48px;
+    }
+    .top-bar-left { max-width: none; flex: 1; min-width: 0; }
+    /* Prevent iOS auto-zoom on focus by ensuring 16px input size. */
+    .top-search {
+      font-size: 16px;
+      padding: 0.45rem 0.6rem;
+      min-height: 36px;
+    }
+    .search-dropdown {
+      max-width: calc(100vw - 1.5rem);
+    }
+
+    /* Dashboard layout — single column on mobile. The existing
+       1024px rule already does this; restated here for safety. */
+    .dash-layout {
+      grid-template-columns: 1fr;
+      padding: 0.5rem 0.75rem;
+      gap: 0.75rem;
+    }
+    .dash-sidebar-widgets {
+      gap: 0.75rem;
+    }
+
+    /* Tap targets — 44px min for primary interactive elements. */
+    .market-tab,
+    .intel-filter-btn,
+    .fbtn,
+    .btn-y,
+    .btn-ghost,
+    .chart-range-btn,
+    .chart-mode-tab,
+    .chart-index-btn,
+    .fund-tab,
+    .col-group-tab,
+    .time-btn {
+      min-height: 44px;
+      padding-top: 0.55rem;
+      padding-bottom: 0.55rem;
+    }
+    .nav-item { min-height: 44px; }
+    .top-search { min-height: 44px; }
+
+    /* Sub-indices stack to 2x2 already; cards readable. */
+    .sub-indices { grid-template-columns: repeat(2, 1fr); }
+
+    /* HOME: markets table — horizontal scroll, sticky first column. */
+    .markets-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -0.5rem;
+      padding: 0 0.5rem;
+    }
+    .markets-table-wrap .market-table { min-width: 720px; }
+    .market-table td:first-child,
+    .market-table th:first-child {
+      position: sticky;
+      left: 0;
+      background: #161B22;
+      z-index: 1;
+    }
+    .market-table tr:hover td:first-child { background: var(--bg-hover); }
+
+    /* The legacy .dash-widget overflow rule from the older mobile
+       block creates a competing horizontal scroll around the
+       widget AND the inner table wrap. Disable per-widget overflow
+       so only the wrapper scrolls. */
+    .dash-widget { overflow-x: visible; }
+
+    /* FUNDING: top rounds table — same Pattern A treatment. */
+    .top-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .top-table-wrap .top-table { min-width: 560px; }
+    .top-table td:first-child,
+    .top-table th:first-child {
+      position: sticky;
+      left: 0;
+      background: #161B22;
+      z-index: 1;
+    }
+    .top-table tr:hover td:first-child { background: rgba(245,217,33,0.06); }
+
+    /* Funding trends chart container — let the chart use available width;
+       no explicit overflow needed since Chart.js handles canvas resize. */
+    .chart-box { padding: 0.75rem; }
+
+    /* Funding toolbar (time-window buttons) — make 4 buttons share a row
+       cleanly; if the toolbar wraps, each button still meets 44px. */
+    .fund-toolbar { justify-content: flex-start; }
+    .time-toggle { width: 100%; }
+    .time-btn { flex: 1; padding: 0.55rem 0.5rem; font-size: 11px; }
+
+    /* Stage distribution / investor bars — full width. */
+    .inv-name { width: 100px; }
+    .stage-label { width: 60px; }
+
+    /* ASSETS: full-bleed wrapper; the existing assets-table-wrap +
+       inner .assets-table-scroll already provides x-overflow. Just
+       ensure controls collapse cleanly and filters wrap. */
+    .assets-full {
+      padding: 0 0.75rem;
+    }
+    .assets-table-wrap {
+      margin: 0 -0.75rem;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+    /* Frozen columns (f0/f1/f2) already use position: sticky in
+       the per-page CSS; nothing extra needed. */
+
+    /* Filter controls collapse into an expandable block on mobile.
+       This rule only takes effect if a <details> wraps the controls;
+       since the existing markup uses flex containers, add a fallback
+       that just allows them to wrap naturally with proper gaps. */
+    .market-tabs {
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    /* REPORT: ensure all tables in the report page horizontal-scroll. */
+    .report-page table {
+      min-width: 540px;
+    }
+    .report-page .report-table-wrap,
+    .report-page :where(div:has(> table)) {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .report-page img,
+    .report-page canvas,
+    .report-page svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .report-page {
+      padding: 0 0.75rem;
+    }
+
+    /* Persistent footer — drop the desktop sidebar offset. */
+    .site-footer-global {
+      margin-left: 0;
+      padding: 18px 1rem 22px;
+    }
+    .site-footer-row {
+      gap: 0.5rem;
+    }
+    .site-footer-linkedin-label { font-size: 12px; }
+
+    /* Hide page-injected hero block at smaller text sizes but keep readable. */
+    .hero-block { padding-left: 0.75rem; padding-right: 0.75rem; }
+
+    /* Page header tightens up. */
+    .page-header { margin: 20px 0 16px 0; }
+
+    /* Funding metrics grid: existing rules already cover. Stage and
+       investors sub-widgets fall through naturally. */
+  }
+
+  /* Mobile portrait — extra-tight tweaks below 480px. */
+  @media (max-width: 480px) {
+    .hero-headline { font-size: 16px; }
+    .hero-descriptor { font-size: 12px; }
+    .market-tabs { gap: 4px; }
+    .time-btn { font-size: 11px; padding: 0.6rem 0.4rem; }
+    .top-bar { height: 52px; }
+    .main-content { padding-top: 52px; }
+    .top-bar-wordmark { font-size: 12px; }
+    .site-footer-wordmark { font-size: 12px; }
+    .site-footer-copyright { font-size: 11px; }
+    .site-footer-row { flex-direction: row; align-items: center; }
+
+    /* Sector cards collapse to single column at portrait widths to
+       prevent the 340px-wide card from clipping on narrow viewports. */
+    .sub-indices { grid-template-columns: 1fr; }
+    .sub-index-card { min-width: 0; }
+
+    /* Funding metrics grid: single column already configured upstream;
+       reinforce the no-min-width so tiles can shrink with viewport. */
+    .metric-card { min-width: 0; }
+
+    /* Top-bar wordmark gets tight at 375px; hide it and let the
+       hamburger + search carry the bar. The full ROBOTNIK identity
+       is already in the mobile nav overlay. */
+    .top-bar-wordmark { display: none; }
+  }
+
+  /* =========================================================
+     RECREATION BAY — mobile placeholder
+     ---------------------------------------------------------
+     The Tetris game is unplayable on touch. js/nav.js adds the
+     placeholder card and sets body.recreation-mobile; we hide
+     the rest of the desktop layout below the breakpoint.
+     ========================================================= */
+  .recreation-mobile-placeholder {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    body.recreation-mobile .recreation-layout,
+    body.recreation-mobile .leaderboard-section,
+    body.recreation-mobile .boot-header,
+    body.recreation-mobile .mission-briefing {
+      display: none !important;
+    }
+    .recreation-mobile-placeholder {
+      display: block;
+      max-width: 480px;
+      margin: 2rem auto;
+      padding: 1.25rem 1rem;
+    }
+    .rmp-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+    }
+    .rmp-eyebrow {
+      font-family: var(--font);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--yellow);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .rmp-title {
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    .rmp-body {
+      font-family: var(--font);
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+  }

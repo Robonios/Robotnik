@@ -51,15 +51,147 @@
     </aside>
   `;
 
+  // Top bar: hamburger + mobile wordmark visible below 769px (controlled by
+  // CSS — display:none above the breakpoint). Search input stays in flow.
   const topBar = `
     <header class="top-bar">
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-overlay">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+      <a href="index.html" class="top-bar-wordmark" aria-label="Robotnik home">ROBOTNIK</a>
       <div class="top-bar-left">
         <input type="text" class="top-search" placeholder="Search assets, funding..." />
       </div>
     </header>
   `;
 
-  document.getElementById('nav-container').innerHTML = sidebar + topBar;
+  // Mobile overlay menu — mirrors sidebar nav contents. Hidden by default
+  // via CSS (display:none); toggled on hamburger tap. Same tagline footer.
+  const mobileOverlay = `
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <div class="mobile-nav-panel">
+        <div class="mobile-nav-header">
+          <a href="index.html" class="mobile-nav-logo">
+            <img src="robotlogo.png" alt="Robotnik" class="mobile-nav-logo-img">
+            <span class="mobile-nav-logo-text">ROBOTNIK</span>
+          </a>
+          <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+              <line x1="6" y1="18" x2="18" y2="6"></line>
+            </svg>
+          </button>
+        </div>
+        <nav class="mobile-nav-list">
+          ${links}
+        </nav>
+        <div class="mobile-nav-tagline">
+          <span style="color:var(--yellow)">ROBOTNIK</span><br>
+          <span style="color:var(--text)">Live: private market data.</span><br>
+          <span style="color:var(--text)">Coming: more.</span>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('nav-container').innerHTML = sidebar + topBar + mobileOverlay;
+
+  // ─────────────────────────────────────────────────────────────────
+  // Hamburger menu wiring
+  // ─────────────────────────────────────────────────────────────────
+  var overlayEl = document.getElementById('mobile-nav-overlay');
+  var hamburgerBtn = document.getElementById('nav-hamburger');
+  var closeBtn = document.getElementById('mobile-nav-close');
+
+  function openMobileNav() {
+    overlayEl.classList.add('is-open');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('mobile-nav-locked');
+  }
+  function closeMobileNav() {
+    overlayEl.classList.remove('is-open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('mobile-nav-locked');
+  }
+  if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMobileNav);
+  if (closeBtn) closeBtn.addEventListener('click', closeMobileNav);
+  // Tap outside the panel (on the dim backdrop) closes.
+  if (overlayEl) overlayEl.addEventListener('click', function(e) {
+    if (e.target === overlayEl) closeMobileNav();
+  });
+  // Escape key closes the overlay when open.
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlayEl && overlayEl.classList.contains('is-open')) {
+      closeMobileNav();
+    }
+  });
+
+  // ─────────────────────────────────────────────────────────────────
+  // Persistent footer (LinkedIn). Single source of truth for all live
+  // pages. Inline footers in assets/commodities/portfolio/signals/
+  // recreation were removed in this pass.
+  // ─────────────────────────────────────────────────────────────────
+  var footerEl = document.createElement('footer');
+  footerEl.className = 'site-footer-global';
+  // TODO: replace with Robert's real LinkedIn URL
+  var LINKEDIN_URL = 'https://www.linkedin.com/in/robert-robotnik/';
+  footerEl.innerHTML = '' +
+    '<div class="site-footer-row">' +
+      '<a href="index.html" class="site-footer-wordmark" aria-label="Robotnik home">ROBOTNIK</a>' +
+      // TODO: replace with Robert's real LinkedIn URL
+      '<a class="site-footer-linkedin" href="' + LINKEDIN_URL + '" target="_blank" rel="noopener" aria-label="Robert on LinkedIn">' +
+        '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
+          '<path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.15 1.45-2.15 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>' +
+        '</svg>' +
+        '<span class="site-footer-linkedin-label">Robert on LinkedIn &rarr;</span>' +
+      '</a>' +
+    '</div>' +
+    '<div class="site-footer-copyright">&copy; Robotnik 2026</div>';
+  document.body.appendChild(footerEl);
+
+  // ─────────────────────────────────────────────────────────────────
+  // Recreation Bay: on mobile, the Tetris game is unplayable. Render a
+  // placeholder over the game-section and hide the rest of the layout.
+  // Keeps the nav item itself navigable.
+  // ─────────────────────────────────────────────────────────────────
+  if (currentPage === 'recreation') {
+    function applyRecreationMobileState() {
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      var existing = document.getElementById('recreation-mobile-placeholder');
+      if (isMobile) {
+        if (!existing) {
+          var ph = document.createElement('div');
+          ph.id = 'recreation-mobile-placeholder';
+          ph.className = 'recreation-mobile-placeholder';
+          ph.innerHTML =
+            '<div class="rmp-card">' +
+              '<div class="rmp-eyebrow">RECREATION BAY</div>' +
+              '<div class="rmp-title">Desktop-only for now.</div>' +
+              '<div class="rmp-body">Recreation Bay is desktop-only for now.<br>Best played on a laptop or larger screen.</div>' +
+            '</div>';
+          // Insert at top of main-content, before the bg layer / recreation-layout
+          var mc = document.querySelector('.main-content');
+          if (mc) {
+            mc.insertBefore(ph, mc.firstChild);
+          } else {
+            document.body.insertBefore(ph, document.body.firstChild);
+          }
+          // Hide the desktop game UI so layout doesn't peek through
+          document.body.classList.add('recreation-mobile');
+        }
+      } else if (existing) {
+        existing.remove();
+        document.body.classList.remove('recreation-mobile');
+      }
+    }
+    applyRecreationMobileState();
+    // Re-evaluate on resize for orientation changes / desktop resize testing.
+    window.addEventListener('resize', applyRecreationMobileState);
+  }
 
   // Early Access modal (shared across all pages)
   // Submissions POST to a Google Apps Script web app bound to a
