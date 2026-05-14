@@ -1,10 +1,10 @@
 # Funding Dataset — Documentation Notes
 
-**v1.1.1 (2026-05-12)**
+**v1.1.2 (2026-05-13)**
 
 This document captures the schema, methodology, known limitations, and acceptance criteria for downstream consumers (VCs, analysts).
 
-## Schema (v1.1.1 — 23 columns in CSV export)
+## Schema (v1.1.2 — 23 columns in CSV export, unchanged from v1.1.1)
 
 CSV export column order:
 
@@ -148,7 +148,16 @@ Prior monthly exports are archived in `data/exports/archive/` for diffing. The u
 
 - **Earliest dated row:** 2023-01-02
 - **Latest dated row:** 2026-04-30
-- **Total rows:** 1,131 (v1.1.1: −1 Infravision duplicate dropped; v1.1: −1 Humans& as out-of-universe consumer software)
+- **Total rows:** 1,243 (v1.1.2: +112 pre-seed/seed sweep additions; v1.1.1: −1 Infravision duplicate; v1.1: −1 Humans& as out-of-universe consumer software)
+
+### Pre-seed / seed coverage (added v1.1.2)
+
+| Round type | Jan 2025 – Apr 2026 | Notes |
+|---|---:|---|
+| Pre-Seed (+ extensions) | 37 | Added via dedicated sweep at v1.1.2 |
+| Seed (+ Seed II, Seed+, extensions) | 131 | Same sweep |
+
+Sweep methodology: 4 parallel sector agents (Robotics, Semis, Space, Materials+Token) with broadened source mix (accelerators, university tech-transfer, VC firm portfolio pages). Sweep-specific threshold override: $500K pre-seed / $1M seed (vs standard monthly $5M robotics / $3M space). See [`preseed_seed_sweep_summary.md`](preseed_seed_sweep_summary.md) and [`v1_1_2_remediation_log.md`](v1_1_2_remediation_log.md).
 
 ## Known limitation 1: sub-$25M long-tail rounds in 3Q25–4Q25
 
@@ -212,12 +221,12 @@ Two pattern types caught during v1.1.1 work — both are paste-style errors duri
 
 | Status | Count | % |
 |--------|------:|---:|
-| `verified` — URL confirmed live or paywall-citable | 1,056 | 93.4% |
-| `archived` — out-of-scope per freshness rule (date >365d AND amount <$500M) | 75 | 6.6% |
-| `pending` — awaiting spot-check approval | 0 | 0.0% |
-| **Total** | **1,131** | **100%** |
+| `verified` — URL confirmed live or paywall-citable | 1,153 | 92.8% |
+| `archived` — out-of-scope per freshness rule (date >365d AND amount <$500M) | 75 | 6.0% |
+| `pending` — awaiting spot-check approval | 15 | 1.2% |
+| **Total** | **1,243** | **100%** |
 
-In-scope verified rate: 1,056 / 1,056 = **100%**.
+The 15 `pending` rows are from the v1.1.2 pre-seed/seed sweep — primarily eu-startups.com and uktechnews.info 403s during WebFetch verification. Content was cross-verified via secondary sources but the cited primary URL remained un-fetchable. To be re-checked next monthly cycle.
 
 ## URL freshness rule (in scope vs out of scope)
 
@@ -283,3 +292,4 @@ Null amounts treated as 0. For entities with only excluded rounds (e.g., an IPO-
 - **v1.0.1** (2026-05-06 PM): Post-remediation. 1,133 rows. 99.4% in-scope verified. Anti-fabrication rules locked. URL audit + bulk data audit complete.
 - **v1.1** (2026-05-11): Schema expansion. 5 new fields, 2 rename, 1 removal. 1,132 rows (Humans& dropped). Filename convention adopted. New CSV exports use the `Robotnik Frontier Private Rounds <Month-YYYY>.csv` pattern.
 - **v1.1.1** (2026-05-12): CSV review fixes. Schema simplification (dropped `total_raised_m` and `total_number_of_raises` from CSV → 23 cols). 26 investor placeholder fixes. 179 investor name canonicalizations applied (151 USER-VERIFY deferred). 41 cumulative-funding strips + 16 rewrites + 3 weak-take rewrites. 2 bottleneck reclassifications to Critical (MP Materials, SpaceX). Full 2025 take backlog refresh to v1.1 spec (172 rows in 4 batches). 7 transposition findings caught + fixed. 1 duplicate row dropped (Infravision). 1,131 rows. 100% in-scope verified. See [`v1_1_1_remediation_log.md`](v1_1_1_remediation_log.md).
+- **v1.1.2** (2026-05-13): Pre-seed / seed sweep across Jan 2025 – Apr 2026. +112 new rows (29 Robotics + 26 Semis + 40 Space + 11 Materials + 6 Token). Sweep-specific threshold override ($500K pre-seed / $1M seed) — monthly template unchanged. 1 in-place lead-investor correction (Alta Resource). 1,243 rows. 92.8% verified / 1.2% pending (sweep aggregator 403s, re-check next cycle). 1 row held pending spot-check (Mind Robotics Seed $115M). Future-review queue logged for ~30 Token candidates excluded under current pure-software-crypto rule (potential DePIN scope re-evaluation). See [`v1_1_2_remediation_log.md`](v1_1_2_remediation_log.md) and [`preseed_seed_sweep_summary.md`](preseed_seed_sweep_summary.md).
