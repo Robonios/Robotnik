@@ -1,10 +1,10 @@
 # Funding Dataset — Documentation Notes
 
-**v1.1.2 (2026-05-13)**
+**v1.1.3 (2026-05-13)** — LOCKED for first VC outreach wave.
 
 This document captures the schema, methodology, known limitations, and acceptance criteria for downstream consumers (VCs, analysts).
 
-## Schema (v1.1.2 — 23 columns in CSV export, unchanged from v1.1.1)
+## Schema (v1.1.3 — 23 columns in CSV export, unchanged from v1.1.1)
 
 CSV export column order:
 
@@ -148,7 +148,7 @@ Prior monthly exports are archived in `data/exports/archive/` for diffing. The u
 
 - **Earliest dated row:** 2023-01-02
 - **Latest dated row:** 2026-04-30
-- **Total rows:** 1,243 (v1.1.2: +112 pre-seed/seed sweep additions; v1.1.1: −1 Infravision duplicate; v1.1: −1 Humans& as out-of-universe consumer software)
+- **Total rows:** 1,244 (v1.1.3: +1 Mind Robotics Seed approved out of v1.1.2 spot-check hold; v1.1.2: +112 pre-seed/seed sweep additions; v1.1.1: −1 Infravision duplicate; v1.1: −1 Humans& as out-of-universe consumer software)
 
 ### Pre-seed / seed coverage (added v1.1.2)
 
@@ -221,10 +221,10 @@ Two pattern types caught during v1.1.1 work — both are paste-style errors duri
 
 | Status | Count | % |
 |--------|------:|---:|
-| `verified` — URL confirmed live or paywall-citable | 1,153 | 92.8% |
+| `verified` — URL confirmed live or paywall-citable | 1,154 | 92.8% |
 | `archived` — out-of-scope per freshness rule (date >365d AND amount <$500M) | 75 | 6.0% |
 | `pending` — awaiting spot-check approval | 15 | 1.2% |
-| **Total** | **1,243** | **100%** |
+| **Total** | **1,244** | **100%** |
 
 The 15 `pending` rows are from the v1.1.2 pre-seed/seed sweep — primarily eu-startups.com and uktechnews.info 403s during WebFetch verification. Content was cross-verified via secondary sources but the cited primary URL remained un-fetchable. To be re-checked next monthly cycle.
 
@@ -293,3 +293,4 @@ Null amounts treated as 0. For entities with only excluded rounds (e.g., an IPO-
 - **v1.1** (2026-05-11): Schema expansion. 5 new fields, 2 rename, 1 removal. 1,132 rows (Humans& dropped). Filename convention adopted. New CSV exports use the `Robotnik Frontier Private Rounds <Month-YYYY>.csv` pattern.
 - **v1.1.1** (2026-05-12): CSV review fixes. Schema simplification (dropped `total_raised_m` and `total_number_of_raises` from CSV → 23 cols). 26 investor placeholder fixes. 179 investor name canonicalizations applied (151 USER-VERIFY deferred). 41 cumulative-funding strips + 16 rewrites + 3 weak-take rewrites. 2 bottleneck reclassifications to Critical (MP Materials, SpaceX). Full 2025 take backlog refresh to v1.1 spec (172 rows in 4 batches). 7 transposition findings caught + fixed. 1 duplicate row dropped (Infravision). 1,131 rows. 100% in-scope verified. See [`v1_1_1_remediation_log.md`](v1_1_1_remediation_log.md).
 - **v1.1.2** (2026-05-13): Pre-seed / seed sweep across Jan 2025 – Apr 2026. +112 new rows (29 Robotics + 26 Semis + 40 Space + 11 Materials + 6 Token). Sweep-specific threshold override ($500K pre-seed / $1M seed) — monthly template unchanged. 1 in-place lead-investor correction (Alta Resource). 1,243 rows. 92.8% verified / 1.2% pending (sweep aggregator 403s, re-check next cycle). 1 row held pending spot-check (Mind Robotics Seed $115M). Future-review queue logged for ~30 Token candidates excluded under current pure-software-crypto rule (potential DePIN scope re-evaluation). See [`v1_1_2_remediation_log.md`](v1_1_2_remediation_log.md) and [`preseed_seed_sweep_summary.md`](preseed_seed_sweep_summary.md).
+- **v1.1.3** (2026-05-13): Mind Robotics Seed $115M Nov 2025 approved out of v1.1.2 hold and applied with Eclipse → Eclipse Ventures canonicalization on write. 1,244 rows. **Dataset locked for first VC outreach wave — no further schema or content changes until initial sends generate feedback.** See [`v1_1_3_remediation_log.md`](v1_1_3_remediation_log.md).
