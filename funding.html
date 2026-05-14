@@ -109,12 +109,12 @@
   <div class="page-subtitle">Tracking private capital flows across the frontier technology stack</div>
 </div>
 
-<!-- Time window toggle -->
+<!-- Time window toggle (default 1Y) -->
 <div class="fund-toolbar">
   <div class="time-toggle">
-    <button class="time-btn active" data-period="3M" onclick="setPeriod(this)">3M</button>
+    <button class="time-btn" data-period="3M" onclick="setPeriod(this)">3M</button>
     <button class="time-btn" data-period="6M" onclick="setPeriod(this)">6M</button>
-    <button class="time-btn" data-period="1Y" onclick="setPeriod(this)">1Y</button>
+    <button class="time-btn active" data-period="1Y" onclick="setPeriod(this)">1Y</button>
     <button class="time-btn" data-period="ALL" onclick="setPeriod(this)">ALL</button>
   </div>
 </div>
@@ -239,6 +239,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="js/nav.js?v=20260422c"></script>
-<script src="js/funding.js?v=20260514"></script>
+<script src="js/funding.js?v=20260514b"></script>
 </body>
 </html>

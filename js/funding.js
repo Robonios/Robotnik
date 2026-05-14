@@ -1,6 +1,6 @@
 // ===== FUNDING OPERATIONS PAGE =====
 var summaryData = null, roundsData = null;
-var currentPeriod = '3M';
+var currentPeriod = '1Y';
 var trendsChart = null, sectorChart = null;
 var topRoundsSortCol = 'amount', topRoundsSortAsc = false;
 
@@ -49,9 +49,16 @@ function filterByPriorPeriod(rounds,p){
   return rounds.filter(function(r){return r.date&&r.date>=start&&r.date<end&&r.sector!=='Token'&&r.sector!=='Cross-Stack'});
 }
 
+function median(nums){
+  if(!nums||!nums.length)return 0;
+  var s=nums.slice().sort(function(a,b){return a-b});
+  var m=Math.floor(s.length/2);
+  return s.length%2===0?(s[m-1]+s[m])/2:s[m];
+}
 function calcMetrics(items){
   var disclosed=items.filter(function(r){return r.amount_m!=null});
   var total=0;disclosed.forEach(function(r){total+=r.amount_m});
+  var medianDeal=median(disclosed.map(function(r){return r.amount_m}));
   var sectorBk={};
   items.forEach(function(r){
     if(!sectorBk[r.sector])sectorBk[r.sector]={rounds:0,capital_m:0};
@@ -73,7 +80,8 @@ function calcMetrics(items){
     else if(rd==='Government investment'||rd==='Government'||rd==='Grant')stage='Government';
     else if(rd==='Debt Financing')stage='Debt';
     else if(rd==='Undisclosed'||rd==='')stage='Undisclosed';
-    else if(rd.indexOf('Seed')>=0||rd.indexOf('Pre-Seed')>=0)stage='Seed';
+    else if(rd.indexOf('Pre-Seed')>=0)stage='Pre-seed';
+    else if(rd.indexOf('Seed')>=0)stage='Seed';
     else if(rd.indexOf('Series A')>=0)stage='Series A';
     else if(rd.indexOf('Series B')>=0)stage='Series B';
     else if(rd.indexOf('Series C')>=0)stage='Series C';
@@ -83,7 +91,7 @@ function calcMetrics(items){
     stageBk[stage].rounds++;
     if(r.amount_m)stageBk[stage].capital_m+=r.amount_m;
   });
-  return{total_capital_m:total,num_rounds:items.length,avg_deal_size_m:disclosed.length?total/disclosed.length:0,most_active_sector:mostActive,largest_round:largest?{company:largest.company,amount_m:largest.amount_m,sector:largest.sector}:null,sector_breakdown:sectorBk,stage_breakdown:stageBk};
+  return{total_capital_m:total,num_rounds:items.length,avg_deal_size_m:disclosed.length?total/disclosed.length:0,median_deal_size_m:medianDeal,most_active_sector:mostActive,largest_round:largest?{company:largest.company,amount_m:largest.amount_m,sector:largest.sector}:null,sector_breakdown:sectorBk,stage_breakdown:stageBk};
 }
 
 // Get monthly breakdown by sector for a set of rounds
@@ -166,18 +174,46 @@ function renderAll(){
       exMegaSub='ex-mega-deals: '+(exPct>=0?'+':'')+exPct+'% YoY';
     }
   }
+  // Avg Deal Size \u2014 mean + median (two-line treatment; median is the more
+  // honest representation given mega-deal skew from SpaceX/Waymo/Globalstar)
+  var meanChg=chg(p.avg_deal_size_m,pp?pp.avg_deal_size_m:0,hasPrior);
+  var medChg=chg(p.median_deal_size_m,pp?pp.median_deal_size_m:0,hasPrior);
+  var avgHtml='<div class="metric-value" style="font-size:0.95rem">'+fmtM(p.avg_deal_size_m)+
+    ' <span style="font-size:8px;color:#5A6178;font-weight:400">mean</span>'+meanChg+'<\/div>'+
+    '<div class="metric-sub" style="color:#e6e8ed;font-size:10px;margin-top:0.25rem">'+fmtM(p.median_deal_size_m)+
+    ' <span style="color:#5A6178">median</span>'+medChg+'<\/div>';
+
+  // Most Active Sector \u2014 five-line breakdown by sector (sorted desc by deal count;
+  // omit zero-count buckets). Replaces single-stat tile per v1.1.3 polish pass.
+  var sectorRows=Object.keys(p.sector_breakdown)
+    .map(function(s){return{name:s,rounds:p.sector_breakdown[s].rounds}})
+    .filter(function(x){return x.rounds>0})
+    .sort(function(a,b){return b.rounds-a.rounds});
+  var sectorHtml='<div style="font-family:var(--font);margin-top:0.15rem">';
+  sectorRows.forEach(function(x,i){
+    sectorHtml+='<div style="display:flex;justify-content:space-between;align-items:baseline;font-size:10px;padding:1.5px 0;'+
+      (i>0?'border-top:1px solid rgba(37,42,54,0.5);':'')+
+      '"><span style="color:#e6e8ed">'+esc(x.name)+'<\/span>'+
+      '<span style="color:#8B92A5;font-variant-numeric:tabular-nums">'+x.rounds+'<\/span><\/div>';
+  });
+  sectorHtml+='<\/div>';
+
   var cards=[
     {label:'Capital Raised',value:fmtM(p.total_capital_m),change:chg(p.total_capital_m,pp?pp.total_capital_m:0,hasPrior),sub:exMegaSub},
     {label:'Number of Rounds',value:p.num_rounds,change:chg(p.num_rounds,pp?pp.num_rounds:0,hasPrior)},
-    {label:'Avg Deal Size',value:fmtM(p.avg_deal_size_m),change:chg(p.avg_deal_size_m,pp?pp.avg_deal_size_m:0,hasPrior)},
-    {label:'Most Active Sector',value:p.most_active_sector||'\u2014',sub:p.sector_breakdown[p.most_active_sector]?p.sector_breakdown[p.most_active_sector].rounds+' rounds':''},
+    {label:'Avg Deal Size',htmlOverride:avgHtml},
+    {label:'Most Active Sector',htmlOverride:sectorHtml},
     {label:'Largest Round',value:p.largest_round?esc(p.largest_round.company):'\u2014',sub:p.largest_round?fmtM(p.largest_round.amount_m):''},
     {label:'Top Investor',value:getTopInvestor(current),sub:''}
   ];
   var mg=document.getElementById('metrics-grid');mg.innerHTML='';
   cards.forEach(function(c){
     var d=document.createElement('div');d.className='metric-card';
-    d.innerHTML='<div class="metric-label">'+c.label+'<\/div><div class="metric-value">'+c.value+(c.change||'')+'<\/div>'+(c.sub?'<div class="metric-sub">'+c.sub+'<\/div>':'');
+    if(c.htmlOverride){
+      d.innerHTML='<div class="metric-label">'+c.label+'<\/div>'+c.htmlOverride;
+    }else{
+      d.innerHTML='<div class="metric-label">'+c.label+'<\/div><div class="metric-value">'+c.value+(c.change||'')+'<\/div>'+(c.sub?'<div class="metric-sub">'+c.sub+'<\/div>':'');
+    }
     mg.appendChild(d);
   });
 
@@ -188,9 +224,17 @@ function renderAll(){
   renderStageDistribution(p);
   renderNotable(p,periodLabel);
 
-  // Dynamic "View all N rounds" link
+  // "View all N rounds in dataset" — always shows the FULL frontier-stack
+  // dataset size (Token / Cross-Stack excluded for consistency with filterByPeriod),
+  // regardless of the active time window. Updates dynamically as new rounds
+  // are added in subsequent monthly regenerations.
   var viewAllLink=document.getElementById('view-all-rounds-link');
-  if(viewAllLink)viewAllLink.innerHTML='View all '+p.num_rounds+' rounds &rarr;';
+  if(viewAllLink){
+    var datasetCount=roundsData.filter(function(r){
+      return r.sector!=='Token'&&r.sector!=='Cross-Stack';
+    }).length;
+    viewAllLink.innerHTML='View all '+datasetCount.toLocaleString()+' rounds in dataset &rarr;';
+  }
 }
 
 function getTopInvestor(rounds){
@@ -367,8 +411,11 @@ function renderTopInvestors(rounds){
 // Hide buckets with zero rounds in the active period to keep the chart compact.
 function renderStageDistribution(p){
   if(!p.stage_breakdown)return;
-  var stages=['Seed','Series A','Series B','Series C','Series D+','Strategic','Government','Debt','IPO/M&A','Undisclosed','Other'];
-  var stgColors=['#F5D921','#3B82F6','#22C55E','#a78bfa','#ef4444','#FB923C','#94A3B8','#8B92A5','#22D3EE','#A1A1AA','#5A6178'];
+  // Pre-seed earns its own bucket post-v1.1.2 sweep (~37 pre-seed rounds in scope).
+  // Color is a slightly lighter yellow than Seed's #F5D921 to signal "earlier-in-funnel"
+  // while staying visually adjacent.
+  var stages=['Pre-seed','Seed','Series A','Series B','Series C','Series D+','Strategic','Government','Debt','IPO/M&A','Undisclosed','Other'];
+  var stgColors=['#FCD34D','#F5D921','#3B82F6','#22C55E','#a78bfa','#ef4444','#FB923C','#94A3B8','#8B92A5','#22D3EE','#A1A1AA','#5A6178'];
   var maxRounds=Math.max.apply(null,stages.map(function(s){return(p.stage_breakdown[s]?p.stage_breakdown[s].rounds:0)}));
   if(maxRounds===0)maxRounds=1;
   var container=document.getElementById('stage-dist');container.innerHTML='';
