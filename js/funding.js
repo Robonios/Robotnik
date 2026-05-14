@@ -123,7 +123,6 @@ async function init(){
   summaryData=await sResp.json();
   roundsData=(await rResp.json()).rounds;
   renderAll();
-  buildGatedTables();
 }
 
 function setPeriod(btn){
@@ -133,13 +132,14 @@ function setPeriod(btn){
   renderAll();
 }
 
+// Overview is the only navigable tab; Rounds / Investors / Funds buttons
+// route directly to the early-access form via openEarlyAccess() (no
+// intermediate gated-content surface). Guard against missing tab divs.
 function setTab(tab,btn){
   document.querySelectorAll('.fund-tab').forEach(function(b){b.classList.remove('active')});
   if(btn)btn.classList.add('active');
-  else document.querySelector('.fund-tab[onclick*="'+tab+'"]')?.classList.add('active');
-  ['overview','rounds','investors','funds'].forEach(function(t){
-    document.getElementById('tab-'+t).style.display=t===tab?'':'none';
-  });
+  var el=document.getElementById('tab-'+tab);
+  if(el)el.style.display='';
 }
 
 // ===== Main Render =====
@@ -221,16 +221,13 @@ function renderAll(){
   renderStageDistribution(p);
   renderNotable(p,periodLabel);
 
-  // "View all N rounds in dataset" — always shows the FULL frontier-stack
-  // dataset size (Token / Cross-Stack excluded for consistency with filterByPeriod),
-  // regardless of the active time window. Updates dynamically as new rounds
-  // are added in subsequent monthly regenerations.
+  // "View all N rounds in dataset" — always shows the FULL dataset row count,
+  // unfiltered. A VC sees the same headline number here as on the CSV they
+  // receive (no in-scope filter delta to explain). Updates dynamically as
+  // new rounds are added in subsequent monthly regenerations.
   var viewAllLink=document.getElementById('view-all-rounds-link');
   if(viewAllLink){
-    var datasetCount=roundsData.filter(function(r){
-      return r.sector!=='Token'&&r.sector!=='Cross-Stack';
-    }).length;
-    viewAllLink.innerHTML='View all '+datasetCount.toLocaleString()+' rounds in dataset &rarr;';
+    viewAllLink.innerHTML='View all '+roundsData.length.toLocaleString()+' rounds in dataset &rarr;';
   }
 }
 
@@ -446,29 +443,10 @@ function renderNotable(p,periodLabel){
     'Tovarishch, <strong>'+p.num_rounds+' frontier stack rounds<\/strong> detected '+phrase+', deploying <strong>'+fmtM(p.total_capital_m)+'<\/strong> of capital. '+esc(mostActive)+' dominates deal flow with '+mostActiveRounds+' rounds, but '+esc(bestAvgSector)+' commands the highest average deal size at '+fmtM(Math.round(bestAvg))+' per round. <strong>'+megas+' mega-rounds<\/strong> exceeding $500M signal deep conviction in frontier compute and physical AI infrastructure.';
 }
 
-// ===== Gated Tables =====
-function buildGatedTables(){
-  var rt=document.getElementById('rounds-blur-table');
-  var tbl=document.createElement('table');tbl.className='top-table';tbl.style.margin='1rem';
-  tbl.innerHTML='<thead><tr><th>Company<\/th><th>Sector<\/th><th>Round<\/th><th class="r">Amount<\/th><th>Lead<\/th><th>Date<\/th><th>Location<\/th><\/tr><\/thead>';
-  var tb=document.createElement('tbody');
-  roundsData.slice(0,15).forEach(function(r){
-    var tr=document.createElement('tr');
-    tr.innerHTML='<td>'+esc(r.company)+'<\/td><td>'+esc(r.sector)+'<\/td><td>'+esc(r.round||'')+'<\/td><td class="r">'+(r.amount_m?fmtM(r.amount_m):'n/d')+'<\/td><td>'+esc(r.lead_investors||'\u2014')+'<\/td><td>'+fmtDate(r.date)+'<\/td><td>'+esc(r.location||'\u2014')+'<\/td>';
-    tb.appendChild(tr);
-  });
-  tbl.appendChild(tb);rt.appendChild(tbl);
-
-  var it=document.getElementById('investors-blur-table');
-  var tbl2=document.createElement('table');tbl2.className='top-table';tbl2.style.margin='1rem';
-  tbl2.innerHTML='<thead><tr><th>Investor<\/th><th class="r"># Deals<\/th><th>Sectors<\/th><\/tr><\/thead>';
-  var tb2=document.createElement('tbody');
-  summaryData.top_investors.slice(0,10).forEach(function(inv){
-    var tr=document.createElement('tr');
-    tr.innerHTML='<td>'+esc(inv.name)+'<\/td><td class="r">'+inv.deals+'<\/td><td>'+esc(inv.sectors.join(', '))+'<\/td>';
-    tb2.appendChild(tr);
-  });
-  tbl2.appendChild(tb2);it.appendChild(tbl2);
-}
+// ===== Gated tab content removed (v1.1.3 polish): the Rounds / Investors /
+// Frontier Funds tabs now route their button clicks directly to
+// openEarlyAccess() \u2014 no intermediate "Early Access Required" surface to
+// populate. The previous buildGatedTables() function was removed alongside
+// the gated tab divs in funding.html. =====
 
 init();

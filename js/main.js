@@ -2073,9 +2073,17 @@ function renderMarketTable() {
 }
 
 // ===== EXPORT MODAL =====
-function showExportModal() { document.getElementById('export-modal').style.display = 'flex'; }
-function closeExportModal() { document.getElementById('export-modal').style.display = 'none'; }
-document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeExportModal(); });
+// Intermediate export-gate modal was removed in v1.1.3 polish; the Export
+// button on the home page now routes directly to openEarlyAccess(). These
+// stubs are retained for any legacy onclick handlers and become no-ops if
+// the modal div is absent.
+function showExportModal() {
+  if(typeof openEarlyAccess==='function')openEarlyAccess();
+}
+function closeExportModal() {
+  var m=document.getElementById('export-modal');
+  if(m)m.style.display='none';
+}
 
 // ===== NEWS FEED (try live data) =====
 function loadNewsFeed() {

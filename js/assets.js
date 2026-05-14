@@ -268,26 +268,11 @@ function sortAssets(col){
 }
 
 function exportAssetsCSV(){
-  // Show enterprise gate modal
-  var existing = document.getElementById('export-gate-modal');
-  if (existing) { existing.remove(); return; }
-  var modal = document.createElement('div');
-  modal.id = 'export-gate-modal';
-  modal.style.cssText = 'position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;';
-  modal.innerHTML =
-    '<div style="background:#161B22;border:1px solid #F5D921;border-radius:6px;padding:2rem;max-width:420px;font-family:var(--font);text-align:center;">' +
-      '<h3 style="color:#F5D921;font-size:12px;letter-spacing:0.1em;margin:0 0 1rem;">DATA EXPORT — EARLY ACCESS REQUIRED</h3>' +
-      '<p style="color:#8B92A5;font-size:10px;line-height:1.6;margin-bottom:1rem;">Enterprise clearance includes full data export:</p>' +
-      '<ul style="text-align:left;color:#E6E8ED;font-size:10px;line-height:1.8;list-style:none;padding:0;margin:0 0 1.5rem;">' +
-        '<li style="padding:0.2rem 0;border-bottom:1px solid #1E2330;">All 253 entities with price, performance, fundamentals, and valuation</li>' +
-        '<li style="padding:0.2rem 0;border-bottom:1px solid #1E2330;">Robotnik Intelligence enrichment (value-chain, bottleneck risk, supply chain)</li>' +
-        '<li style="padding:0.2rem 0;">CSV and Excel formats, updated daily</li>' +
-      '</ul>' +
-      '<a href="#" onclick="openEarlyAccess();return false;" class="cta-enterprise" style="display:inline-block;background:#F5D921;color:#0A0A0F;font-weight:700;font-size:10px;padding:0.5rem 1.5rem;border-radius:3px;text-decoration:none;letter-spacing:0.06em;">Request Early Access &rarr;</a>' +
-      '<div style="margin-top:1rem;"><button onclick="document.getElementById(\'export-gate-modal\').remove()" style="background:none;border:1px solid #333;color:#5A6178;font-family:var(--font);font-size:10px;padding:0.3rem 1rem;border-radius:3px;cursor:pointer;">Close</button></div>' +
-    '</div>';
-  modal.addEventListener('click', function(e) { if (e.target === modal) modal.remove(); });
-  document.body.appendChild(modal);
+  // Gated — route directly to the early-access capture form. The v1.1.3 polish
+  // pass collapsed the previous two-step flow (custom "DATA EXPORT — EARLY
+  // ACCESS REQUIRED" modal → Request Access button → capture form) into a
+  // single click that opens the form directly.
+  if(typeof openEarlyAccess==='function'){openEarlyAccess();return;}
   return;
   // Original export code below (for future enterprise users)
   if(!assetsFiltered.length)return;

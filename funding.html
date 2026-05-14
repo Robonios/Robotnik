@@ -122,12 +122,13 @@
 <!-- Metrics -->
 <div class="metrics-grid" id="metrics-grid"></div>
 
-<!-- Tabs -->
+<!-- Tabs — Overview is the only navigable tab; the other three are gated and
+     route directly to the early-access capture form (no intermediate modal) -->
 <div class="fund-tabs">
   <button class="fund-tab active" onclick="setTab('overview',this)">Overview</button>
-  <button class="fund-tab" onclick="setTab('rounds',this)">Rounds</button>
-  <button class="fund-tab" onclick="setTab('investors',this)">Investors</button>
-  <button class="fund-tab" onclick="setTab('funds',this)">Frontier Funds</button>
+  <button class="fund-tab" onclick="openEarlyAccess();return false;">Rounds</button>
+  <button class="fund-tab" onclick="openEarlyAccess();return false;">Investors</button>
+  <button class="fund-tab" onclick="openEarlyAccess();return false;">Frontier Funds</button>
 </div>
 
 <!-- TAB: Overview -->
@@ -158,7 +159,7 @@
       </tr></thead>
       <tbody id="top-rounds-body"></tbody>
     </table>
-    <a href="#" id="view-all-rounds-link" class="view-all-link" onclick="setTab('rounds',document.querySelector('.fund-tab:nth-child(2)'));return false" style="margin-top:0.5rem;display:block;">View all rounds &rarr;</a>
+    <a href="#" id="view-all-rounds-link" class="view-all-link" onclick="openEarlyAccess();return false;" style="margin-top:0.5rem;display:block;">View all rounds &rarr;</a>
   </div>
 
 </div>
@@ -187,58 +188,15 @@
 </div>
 </div>
 
-<!-- TAB: Rounds (gated) -->
-<div id="tab-rounds" style="display:none">
-<div class="gate-overlay">
-  <div class="gate-blur" id="rounds-blur-table"></div>
-  <div class="enterprise-preview">
-    <h3>EARLY ACCESS REQUIRED</h3>
-    <p>Enterprise operatives receive:</p>
-    <div class="feature-grid">
-      <div class="feature-card"><div class="feature-label">[CAPITAL]</div><h4>1,244 Funding Rounds</h4><p>Searchable database of every frontier stack round from January 2023 to present</p></div>
-      <div class="feature-card"><div class="feature-label">[EXPORT]</div><h4>Full Data Export</h4><p>Download rounds data as CSV with company, sector, round type, amount, and investors</p></div>
-      <div class="feature-card"><div class="feature-label">[XREF]</div><h4>Cross-Reference</h4><p>Link private rounds to public entity competitors and supply chain partners</p></div>
-    </div>
-    <a href="#" onclick="openEarlyAccess();return false;" class="cta-enterprise">Request Early Access &rarr;</a>
-  </div>
-</div>
-</div>
-
-<!-- TAB: Investors (gated) -->
-<div id="tab-investors" style="display:none">
-<div class="gate-overlay">
-  <div class="gate-blur" id="investors-blur-table"></div>
-  <div class="enterprise-preview">
-    <h3>EARLY ACCESS REQUIRED</h3>
-    <p>Enterprise operatives receive:</p>
-    <div class="feature-grid">
-      <div class="feature-card"><div class="feature-label">[INVESTOR]</div><h4>Investor Profiles</h4><p>Most active frontier stack investors ranked by round count and capital deployed</p></div>
-      <div class="feature-card"><div class="feature-label">[MAP]</div><h4>Sector Mapping</h4><p>Which investors concentrate in semiconductors vs robotics vs space vs materials</p></div>
-      <div class="feature-card"><div class="feature-label">[NETWORK]</div><h4>Co-Investment Patterns</h4><p>Identify which investors frequently co-invest &mdash; and in which sectors</p></div>
-    </div>
-    <a href="#" onclick="openEarlyAccess();return false;" class="cta-enterprise">Request Early Access &rarr;</a>
-  </div>
-</div>
-</div>
-
-<!-- TAB: Frontier Funds (gated) -->
-<div id="tab-funds" style="display:none">
-  <div class="enterprise-preview">
-    <h3>EARLY ACCESS REQUIRED</h3>
-    <p>Enterprise operatives receive:</p>
-    <div class="feature-grid">
-      <div class="feature-card"><div class="feature-label">[FUND]</div><h4>Frontier Fund Universe</h4><p>Curated database of investment funds with dedicated frontier technology mandates</p></div>
-      <div class="feature-card"><div class="feature-label">[PORTFOLIO]</div><h4>Portfolio Composition</h4><p>Sector allocation and investment thesis for each frontier-focused fund</p></div>
-      <div class="feature-card"><div class="feature-label">[COMPARE]</div><h4>Fund Comparison</h4><p>Compare frontier funds by sector focus, deal stage, and geographic preference</p></div>
-    </div>
-    <a href="#" onclick="openEarlyAccess();return false;" class="cta-enterprise">Request Early Access &rarr;</a>
-  </div>
-</div>
+<!-- Rounds / Investors / Frontier Funds tabs are gated; their buttons now
+     route directly to the early-access form (openEarlyAccess()) rather than
+     swapping in an intermediate "Early Access Required" surface. The
+     previous gated tab divs were removed in the v1.1.3 polish pass. -->
 
 </div><!-- .main-content -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="js/nav.js?v=20260422c"></script>
-<script src="js/funding.js?v=20260514c"></script>
+<script src="js/funding.js?v=20260514d"></script>
 </body>
 </html>
