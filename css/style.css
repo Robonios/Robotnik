@@ -2381,7 +2381,19 @@
   @media (max-width: 900px) {
     .products-grid { grid-template-columns: 1fr; }
     .sidebar { width: 60px; }
-    .sidebar-logo-text, .nav-label, .sidebar-version, .sidebar-attrib, .sidebar-tagline { display: none; }
+    /* Hide labels ONLY inside the desktop sidebar collapsed state.
+       Previously this rule was unscoped — `.nav-label` at any width
+       under 900px got display:none, which silently killed the
+       mobile hamburger overlay nav text too (the .nav-label
+       elements inside .mobile-nav-list inherited this rule and
+       rendered as empty space). Scope to .sidebar to keep the
+       intended compact-sidebar behaviour and stop bleeding into
+       the mobile overlay. */
+    .sidebar .sidebar-logo-text,
+    .sidebar .nav-label,
+    .sidebar-version,
+    .sidebar-attrib,
+    .sidebar-tagline { display: none; }
     .sidebar-logo { padding: 0 0.5rem 1rem; }
     .sidebar-nav { padding: 0 0.25rem; }
     .nav-item { justify-content: center; padding: 0.6rem; }
@@ -2856,15 +2868,23 @@
     padding: 0.75rem 0.85rem;
     /* Override the desktop sidebar's --text-dim baseline — mobile overlay
        sits on a darker backdrop and inactive items need full contrast to
-       be legible against the dim. Specificity is raised with the overlay
-       parent selector so we beat the typography.css :not(.active) rule
-       which would otherwise win on cascade order. */
+       be legible. Specificity is raised with the overlay parent selector
+       so we beat the typography.css :not(.active) rule which would
+       otherwise win on cascade order. */
     color: #e6e8ed;
   }
-  .mobile-nav-overlay .mobile-nav-list .nav-item:not(.active) .nav-label { color: #e6e8ed; }
+  /* Belt-and-suspenders: force the label to display + render at full
+     contrast inside the mobile overlay. The previous regression had
+     .nav-label getting display:none from an unscoped 900px rule, which
+     made labels invisible while the parent nav-item box kept its 44px
+     height — empty rectangles where text should be. !important is used
+     deliberately here per spec: cascade is fighting itself and the
+     correct rendering must ship. */
+  .mobile-nav-overlay .mobile-nav-list .nav-label { display: inline !important; }
+  .mobile-nav-overlay .mobile-nav-list .nav-item:not(.active) .nav-label { color: #e6e8ed !important; }
   .mobile-nav-overlay .mobile-nav-list .nav-item.disabled,
-  .mobile-nav-overlay .mobile-nav-list .nav-item.disabled .nav-label { color: #8B92A5; }
-  .mobile-nav-overlay .mobile-nav-list .nav-item.active .nav-label { color: var(--yellow); }
+  .mobile-nav-overlay .mobile-nav-list .nav-item.disabled .nav-label { color: #8B92A5 !important; }
+  .mobile-nav-overlay .mobile-nav-list .nav-item.active .nav-label { color: var(--yellow) !important; }
   .mobile-nav-tagline {
     padding: 1rem;
     border-top: 1px solid #1E2330;
