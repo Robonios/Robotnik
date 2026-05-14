@@ -1,6 +1,6 @@
 # Robotnik Patterns — April 2026
 
-## Three signals visible only in aggregate
+**Three signals visible only in aggregate.**
 
 April 2026 cleared $100.5B across 86 frontier-tech rounds. SpaceX's $75B IPO filing dominates the headline; strip it and the month still ran $25.5B in private capital, well above the $11–14B monthly base of late 2025. Sector mix tells more than the total: Space took $88.4B, Semiconductors $9.2B, Robotics $2.9B, Materials a thin $22M across two rounds. Three patterns are visible only in aggregate.
 
@@ -30,4 +30,6 @@ Credo (CRDO) is a connectivity vendor whose active electrical cables compete wit
 
 Whether SpaceX or Cerebras prices in above or below pre-filing private marks. That's the migration-vs-exit binary, and the answer arrives within 60 days.
 
-*Robotnik / April 2026*
+---
+
+*Robotnik — April 2026 edition. The full April 2026 CSV (1,244 rows × 23 cols, schema v1.1.3) is available at the download link in the cover note. Reply with feedback — voice, pattern selection, and signal density are all in calibration mode for the first three monthly editions.*
