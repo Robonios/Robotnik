@@ -137,17 +137,15 @@
   // ─────────────────────────────────────────────────────────────────
   var footerEl = document.createElement('footer');
   footerEl.className = 'site-footer-global';
-  // TODO: replace with Robert's real LinkedIn URL
-  var LINKEDIN_URL = 'https://www.linkedin.com/in/robert-robotnik/';
+  var LINKEDIN_URL = 'https://www.linkedin.com/in/robertlosborne/';
   footerEl.innerHTML = '' +
     '<div class="site-footer-row">' +
       '<a href="index.html" class="site-footer-wordmark" aria-label="Robotnik home">ROBOTNIK</a>' +
-      // TODO: replace with Robert's real LinkedIn URL
-      '<a class="site-footer-linkedin" href="' + LINKEDIN_URL + '" target="_blank" rel="noopener" aria-label="Robert on LinkedIn">' +
+      '<a class="site-footer-linkedin" href="' + LINKEDIN_URL + '" target="_blank" rel="noopener" aria-label="Robert Osborne on LinkedIn">' +
         '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
           '<path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.15 1.45-2.15 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>' +
         '</svg>' +
-        '<span class="site-footer-linkedin-label">Robert on LinkedIn &rarr;</span>' +
+        '<span class="site-footer-linkedin-label">Robert Osborne on LinkedIn &rarr;</span>' +
       '</a>' +
     '</div>' +
     '<div class="site-footer-copyright">&copy; Robotnik 2026</div>';
