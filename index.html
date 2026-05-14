@@ -215,16 +215,6 @@
       <a href="assets.html" class="view-all-link" id="mkt-view-all">View all assets &rarr;</a>
     </div>
 
-    <!-- Mission Directive -->
-    <div style="border-top:1px solid #252A36;margin-top:2.5rem;padding-top:2rem;margin-bottom:3rem;">
-      <div style="font-size:13px;font-weight:700;color:#F5D921;letter-spacing:0.1em;margin-bottom:1rem;">MISSION DIRECTIVE</div>
-      <div style="font-size:11px;color:#999;line-height:1.8;max-width:800px;">
-        <p style="margin-bottom:1rem;">Semiconductors, robotics, and space technology form a single frontier technology stack. The same chips that power autonomous robots power satellite constellations. The same automation that assembles cars assembles rockets. Tracking these sectors separately misses the dependency chain that determines which systems scale, which bottleneck, and where value concentrates.</p>
-        <p style="margin-bottom:1rem;">Robotnik maps the full stack &mdash; from the robot on the factory floor, to the satellite in orbit, down through their shared sensors, compute modules, chip designers, packaging houses, and foundries &mdash; because the people making the most expensive decisions in this space need to see the whole chain, not fragments of it.</p>
-        <p style="color:#c0c0c0;font-weight:500;">This is the intelligence layer for the frontier technology stack. One index. One universe. One dependency chain.</p>
-      </div>
-    </div>
-
   </div>
 
   <!-- ===== RIGHT COLUMN ===== -->
@@ -283,28 +273,14 @@
       <a href="funding.html" class="view-all-link">View funding overview &rarr;</a>
     </div>
 
-    <!-- E. News Feed -->
+    <!-- E. Mission Directive -->
     <div class="dash-widget">
-      <div class="dash-widget-title">Latest News</div>
-      <div class="news-toggle">
-        <button class="news-toggle-btn active">Limited</button>
-        <button class="news-toggle-btn disabled" title="Priority clearance required">All</button>
+      <div class="dash-widget-title">Mission Directive</div>
+      <div style="font-size:11px;color:#8B92A5;line-height:1.7;">
+        <p style="margin:0 0 0.65rem 0;">Semiconductors, robotics, and space technology form a single frontier technology stack. The same chips that power autonomous robots power satellite constellations. The same automation that assembles cars assembles rockets. Tracking these sectors separately misses the dependency chain that determines which systems scale, which bottleneck, and where value concentrates.</p>
+        <p style="margin:0 0 0.65rem 0;">Robotnik maps the full stack &mdash; from the robot on the factory floor, to the satellite in orbit, down through their shared sensors, compute modules, chip designers, packaging houses, and foundries &mdash; because the people making the most expensive decisions in this space need to see the whole chain, not fragments of it.</p>
+        <p style="margin:0;color:#e6e8ed;font-weight:500;">This is the intelligence layer for the frontier technology stack. One index. One universe. One dependency chain.</p>
       </div>
-      <div id="news-feed-container">
-        <div style="font-size:10px;color:#5A6178;">Loading<span class="animated-dots"></span></div>
-      </div>
-      <a href="news.html" class="view-all-link">View all news &rarr;</a>
-    </div>
-
-    <!-- E2. Intelligence Feed -->
-    <div class="dash-widget">
-      <div class="dash-widget-title">Latest Intelligence</div>
-      <div id="intel-feed-container">
-        <div class="news-item"><a href="research.html" class="news-headline-link"><div class="news-headline">The packaging wars heat up: CoWoS, chiplets, and the substrate bottleneck</div></a><div class="news-meta">Coming soon &middot; Field Transmission</div></div>
-        <div class="news-item"><a href="research.html" class="news-headline-link"><div class="news-headline">Who supplies the humanoid stack? Actuator to foundry</div></a><div class="news-meta">Coming soon &middot; Sector Briefing</div></div>
-        <div class="news-item"><a href="research.html" class="news-headline-link"><div class="news-headline">Rare earth supply chains: China's export controls reshape the stack</div></a><div class="news-meta">Coming soon &middot; Deep Dive</div></div>
-      </div>
-      <a href="research.html" class="view-all-link">View all intelligence &rarr;</a>
     </div>
 
   </div>
@@ -327,30 +303,6 @@
 <script src="js/nav.js?v=20260425a"></script>
 <script src="js/main.js?v=20260425a"></script>
 <script>
-// Load live news feed for sidebar widget
-(async function() {
-  try {
-    var resp = await fetch('data/news.json?v=' + Date.now());
-    var data = await resp.json();
-    var items = (data.items || []).slice(0, 5);
-    var container = document.getElementById('news-feed-container');
-    if (items.length === 0) {
-      container.innerHTML = '<div style="font-size:10px;color:#5A6178;">No recent news</div>';
-      return;
-    }
-    container.innerHTML = items.map(function(item) {
-      var d = new Date(item.date + 'T12:00:00Z');
-      var hrs = Math.floor((Date.now() - d) / 3600000);
-      var ago = hrs < 24 ? hrs + 'h ago' : Math.floor(hrs/24) + 'd ago';
-      return '<div class="news-item"><a href="news.html" class="news-headline-link"><div class="news-headline">' +
-        item.title.replace(/</g,'&lt;') + '</div></a><div class="news-meta">' + ago + ' &middot; ' +
-        (item.source || '').replace(/</g,'&lt;') + '</div></div>';
-    }).join('');
-  } catch(e) {
-    document.getElementById('news-feed-container').innerHTML =
-      '<div style="font-size:10px;color:#5A6178;">Newsfeed connecting<span class="animated-dots"></span></div>';
-  }
-})();
 // Load funding summary for widget
 (async function() {
   try {

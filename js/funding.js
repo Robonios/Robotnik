@@ -72,6 +72,7 @@ function calcMetrics(items){
     else if(rd==='Strategic'||rd==='Pre-IPO')stage='Strategic';
     else if(rd==='Government investment'||rd==='Government'||rd==='Grant')stage='Government';
     else if(rd==='Debt Financing')stage='Debt';
+    else if(rd==='Undisclosed'||rd==='')stage='Undisclosed';
     else if(rd.indexOf('Seed')>=0||rd.indexOf('Pre-Seed')>=0)stage='Seed';
     else if(rd.indexOf('Series A')>=0)stage='Series A';
     else if(rd.indexOf('Series B')>=0)stage='Series B';
@@ -153,8 +154,20 @@ function renderAll(){
     return' <span class="metric-change '+cls+'">'+(pct>=0?'+':'')+pct+'%<\/span><span style="font-size:8px;color:#5A6178"> vs prior<\/span>';
   };
   var hasPrior=pp&&pp.num_rounds>0;
+  // ex-mega-deals YoY (rounds where amount_m < 10000 -- i.e., excluding $10B+ deals)
+  var exMegaSub='';
+  if(hasPrior){
+    var currExMega=current.filter(function(r){return!r.amount_m||r.amount_m<10000});
+    var priorExMega=prior.filter(function(r){return!r.amount_m||r.amount_m<10000});
+    var currExMegaCap=0;currExMega.forEach(function(r){if(r.amount_m)currExMegaCap+=r.amount_m});
+    var priorExMegaCap=0;priorExMega.forEach(function(r){if(r.amount_m)priorExMegaCap+=r.amount_m});
+    if(priorExMegaCap>0){
+      var exPct=((currExMegaCap-priorExMegaCap)/priorExMegaCap*100).toFixed(0);
+      exMegaSub='ex-mega-deals: '+(exPct>=0?'+':'')+exPct+'% YoY';
+    }
+  }
   var cards=[
-    {label:'Capital Raised',value:fmtM(p.total_capital_m),change:chg(p.total_capital_m,pp?pp.total_capital_m:0,hasPrior)},
+    {label:'Capital Raised',value:fmtM(p.total_capital_m),change:chg(p.total_capital_m,pp?pp.total_capital_m:0,hasPrior),sub:exMegaSub},
     {label:'Number of Rounds',value:p.num_rounds,change:chg(p.num_rounds,pp?pp.num_rounds:0,hasPrior)},
     {label:'Avg Deal Size',value:fmtM(p.avg_deal_size_m),change:chg(p.avg_deal_size_m,pp?pp.avg_deal_size_m:0,hasPrior)},
     {label:'Most Active Sector',value:p.most_active_sector||'\u2014',sub:p.sector_breakdown[p.most_active_sector]?p.sector_breakdown[p.most_active_sector].rounds+' rounds':''},
@@ -183,11 +196,13 @@ function renderAll(){
 function getTopInvestor(rounds){
   var counts={};
   rounds.forEach(function(r){
-    [r.lead_investors,r.other_investors].forEach(function(f){
+    var seen={};
+    [r.lead_investors,r.co_investors].forEach(function(f){
       if(!f)return;
       f.split(/,(?![^()]*\))/).forEach(function(inv){
         inv=inv.trim();
         var il=inv.toLowerCase();if(inv.length<3||il==='n/d'||il==='multiple'||il==='undisclosed'||il==='various'||il==='chinese vcs'||il==='not disclosed')return;
+        if(seen[il])return;seen[il]=1;
         counts[inv]=(counts[inv]||0)+1;
       });
     });
@@ -326,11 +341,13 @@ function renderSectorChart(p){
 function renderTopInvestors(rounds){
   var counts={};
   rounds.forEach(function(r){
-    [r.lead_investors,r.other_investors].forEach(function(f){
+    var seen={};
+    [r.lead_investors,r.co_investors].forEach(function(f){
       if(!f)return;
       f.split(/,(?![^()]*\))/).forEach(function(inv){
         inv=inv.trim();
         var il=inv.toLowerCase();if(inv.length<3||il==='n/d'||il==='multiple'||il==='undisclosed'||il==='various'||il==='chinese vcs'||il==='not disclosed')return;
+        if(seen[il])return;seen[il]=1;
         counts[inv]=(counts[inv]||0)+1;
       });
     });
@@ -350,8 +367,8 @@ function renderTopInvestors(rounds){
 // Hide buckets with zero rounds in the active period to keep the chart compact.
 function renderStageDistribution(p){
   if(!p.stage_breakdown)return;
-  var stages=['Seed','Series A','Series B','Series C','Series D+','Strategic','Government','Debt','IPO/M&A','Other'];
-  var stgColors=['#F5D921','#3B82F6','#22C55E','#a78bfa','#ef4444','#FB923C','#94A3B8','#8B92A5','#22D3EE','#5A6178'];
+  var stages=['Seed','Series A','Series B','Series C','Series D+','Strategic','Government','Debt','IPO/M&A','Undisclosed','Other'];
+  var stgColors=['#F5D921','#3B82F6','#22C55E','#a78bfa','#ef4444','#FB923C','#94A3B8','#8B92A5','#22D3EE','#A1A1AA','#5A6178'];
   var maxRounds=Math.max.apply(null,stages.map(function(s){return(p.stage_breakdown[s]?p.stage_breakdown[s].rounds:0)}));
   if(maxRounds===0)maxRounds=1;
   var container=document.getElementById('stage-dist');container.innerHTML='';
@@ -378,8 +395,8 @@ function renderNotable(p,periodLabel){
     var avg=sd.rounds>0?sd.capital_m/sd.rounds:0;
     if(avg>bestAvg){bestAvg=avg;bestAvgSector=s;}
   }
-  // Period phrasing: "in the last 3 months" vs "across the full v1.0 dataset (since Jan 2023)"
-  var phrase=currentPeriod==='ALL'?'across the full v1.0 dataset (since Jan 2023)':'in the last '+periodLabel;
+  // Period phrasing: "in the last 3 months" vs "across the full dataset (since Jan 2023)"
+  var phrase=currentPeriod==='ALL'?'across the full dataset (since Jan 2023)':'in the last '+periodLabel;
   document.getElementById('notable-card').innerHTML=
     'Tovarishch, <strong>'+p.num_rounds+' frontier stack rounds<\/strong> detected '+phrase+', deploying <strong>'+fmtM(p.total_capital_m)+'<\/strong> of capital. '+esc(mostActive)+' dominates deal flow with '+mostActiveRounds+' rounds, but '+esc(bestAvgSector)+' commands the highest average deal size at '+fmtM(Math.round(bestAvg))+' per round. <strong>'+megas+' mega-rounds<\/strong> exceeding $500M signal deep conviction in frontier compute and physical AI infrastructure.';
 }

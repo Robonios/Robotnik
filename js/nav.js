@@ -3,8 +3,6 @@
 
   const navItems = [
     { href: 'index.html', page: 'home', label: 'Home', online: true },
-    { href: 'news.html', page: 'news', label: 'News', online: true },
-    { href: 'research.html', page: 'research', label: 'Research', online: true },
     { href: 'assets.html', page: 'assets', label: 'Frontier Assets', online: true },
     { href: 'funding.html', page: 'funding', label: 'Funding Ops', online: true },
     { href: 'portfolio.html', page: 'portfolio', label: 'Portfolio', online: false },
@@ -44,8 +42,9 @@
       </div>
       <div class="sidebar-bottom">
         <div class="sidebar-tagline">
-          <span style="color:var(--yellow)">ROBOTNIK</span> <span style="color:var(--text)">RE-ENTRY</span><br>
-          <span style="color:var(--text)">IN PROGRESS</span><span class="animated-dots" style="color:var(--text)"></span>
+          <span style="color:var(--yellow)">ROBOTNIK</span><br>
+          <span style="color:var(--text)">Live: private market data.</span><br>
+          <span style="color:var(--text)">Coming: more.</span><span class="animated-dots" style="color:var(--text)"></span>
           <div style="margin-top:0.4rem;color:var(--text-muted);line-height:1.5;">The intelligence layer<br>for the frontier<br>technology stack</div>
         </div>
       </div>
@@ -55,10 +54,7 @@
   const topBar = `
     <header class="top-bar">
       <div class="top-bar-left">
-        <input type="text" class="top-search" placeholder="Search assets, news, research..." />
-      </div>
-      <div class="top-bar-right">
-        <a href="#" onclick="openEarlyAccess();return false;" class="btn-y">Request Early Access</a>
+        <input type="text" class="top-search" placeholder="Search assets, funding..." />
       </div>
     </header>
   `;
@@ -198,17 +194,17 @@
   // ─────────────────────────────────────────────────────────────────
   // Top-bar search
   // ─────────────────────────────────────────────────────────────────
-  // Client-side substring match across four existing datasets. The
+  // Client-side substring match across existing datasets. The
   // Messari-style command palette (cmd+K, LLM query routing, etc.)
   // is the separate Q2 "Intelligence Queries" project — intentionally
   // out of scope here. Keep this stub: load JSON on first keystroke,
   // cache in memory, rank results per category (Research → Assets →
-  // News → Funding), cap at 10 total.
+  // Funding), cap at 10 total.
   var searchInput = document.querySelector('.top-search');
   var searchHost = document.querySelector('.top-bar-left');
   if (searchInput && searchHost) {
     searchInput.setAttribute('autocomplete', 'off');
-    searchInput.setAttribute('placeholder', 'Search assets, news, research, funding...');
+    searchInput.setAttribute('placeholder', 'Search assets, funding...');
     searchHost.style.position = 'relative';
 
     var dropdown = document.createElement('div');
@@ -229,10 +225,9 @@
       if (_datasets) return Promise.resolve(_datasets);
       return Promise.all([
         fetch('data/markets/robotnik_public_markets.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
-        fetch('data/news.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
         fetch('data/funding/rounds.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
       ]).then(function(out){
-        _datasets = { pm: out[0], news: out[1], rounds: out[2] };
+        _datasets = { pm: out[0], rounds: out[1] };
         return _datasets;
       });
     }
@@ -289,27 +284,7 @@
         out.push.apply(out, assetMatches);
       }
 
-      // 3. News
-      if (ds.news && Array.isArray(ds.news.items)) {
-        for (var j = 0; j < ds.news.items.length; j++) {
-          var item = ds.news.items[j];
-          var tl2 = String(item.title || '').toLowerCase();
-          var me = String(item.mentioned_entities || '').toLowerCase();
-          var mt = String(item.mentioned_tickers || '').toLowerCase();
-          if (tl2.indexOf(ql) !== -1 || me.indexOf(ql) !== -1 || mt.indexOf(ql) !== -1) {
-            var sec = [item.source, item.date].filter(Boolean).join(' · ');
-            out.push({
-              category: 'News',
-              primary: item.title,
-              secondary: sec,
-              url: item.url || 'news.html',
-              external: !!item.url,
-            });
-          }
-        }
-      }
-
-      // 4. Funding
+      // 3. Funding
       if (ds.rounds && Array.isArray(ds.rounds.rounds)) {
         for (var k = 0; k < ds.rounds.rounds.length; k++) {
           var rnd = ds.rounds.rounds[k];

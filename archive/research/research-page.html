@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quarterly Reports and Research — Robotnik</title>
+<meta name="description" content="In-depth analysis of the frontier technology stack. Quarterly State of the Frontier Stack reports, sector deep-dives, and dependency-chain intelligence.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://robotnik.world/research.html">
+<meta property="og:title" content="Quarterly Reports and Research — Robotnik">
+<meta property="og:description" content="In-depth analysis of the frontier technology stack. Quarterly State of the Frontier Stack reports, sector deep-dives, and dependency-chain intelligence.">
+<meta property="og:image" content="https://robotnik.world/og/research.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quarterly Reports and Research — Robotnik">
+<meta name="twitter:description" content="In-depth analysis of the frontier technology stack. Quarterly State of the Frontier Stack reports, sector deep-dives, and dependency-chain intelligence.">
+<meta name="twitter:image" content="https://robotnik.world/og/research.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="canonical" href="https://robotnik.world/research.html">
+<!-- Structured data: CollectionPage for Robotnik quarterly reports -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Quarterly Reports and Research",
+  "description": "In-depth analysis of the frontier technology stack. Quarterly State of the Frontier Stack reports, sector deep-dives, and dependency-chain intelligence.",
+  "url": "https://robotnik.world/research.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Robotnik",
+    "url": "https://robotnik.world"
+  },
+  "hasPart": [{
+    "@type": "Report",
+    "name": "1Q26 State of the Frontier Stack",
+    "url": "https://robotnik.world/report-1Q26.html",
+    "datePublished": "2026-04-19",
+    "publisher": {"@type": "Organization", "name": "Robotnik"}
+  }]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=20260420b"><link rel="stylesheet" href="css/typography.css?v=20260420b">
+<style>
+.intel-research-layout { display:grid; grid-template-columns:1fr 300px; gap:1.5rem; padding:0 1rem; }
+/* Heading on Research sits a touch tighter than the global 32/40 default */
+.page-header { margin:26px 0 34px 0; }
+.featured-card { background:#161B22; border-left:4px solid #F5D921; border-radius:0 8px 8px 0; padding:2rem 2.5rem; margin-bottom:1.5rem; }
+.featured-label { font-size:10px; font-weight:700; color:#F5D921; letter-spacing:0.12em; margin-bottom:1rem; }
+.featured-title { font-size:1.5rem; font-weight:700; color:#e6e8ed; line-height:1.3; margin-bottom:0.75rem; }
+.featured-desc { font-size:12px; color:#8B92A5; line-height:1.7; margin-bottom:1rem; }
+.featured-meta { font-size:10px; color:#5A6178; }
+
+/* 1Q26 report featured layout — cover thumbnail left, content right */
+.report-featured {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.75rem;
+  align-items: flex-start;
+}
+.report-featured-cover {
+  background: #0E1117;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #252A36;
+}
+.report-featured-cover img { display: block; width: 100%; height: auto; }
+.report-featured-body { display: flex; flex-direction: column; }
+.report-featured-tagline {
+  font-family: 'Space Grotesk', var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F5D921;
+  margin-bottom: 0.5rem;
+}
+.report-featured-title {
+  font-family: 'Space Grotesk', var(--font);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #e6e8ed;
+  margin: 0 0 0.75rem;
+}
+.report-featured-desc {
+  font-family: 'Mulish', var(--font);
+  font-size: 13px;
+  line-height: 1.65;
+  color: #8B92A5;
+  margin: 0 0 1rem;
+}
+.report-featured-meta {
+  font-family: 'Mulish', var(--font);
+  font-size: 11px;
+  color: #5A6178;
+  margin-bottom: 1.25rem;
+}
+.report-featured-ctas { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.report-featured-ctas .btn-y,
+.report-featured-ctas .btn-ghost { font-size: 12px; padding: 0.55rem 1.15rem; }
+
+@media (max-width: 640px) {
+  .report-featured { grid-template-columns: 1fr; }
+  .report-featured-cover { max-width: 240px; }
+}
+.research-tabs { display:flex; gap:0; margin-bottom:1.25rem; border-bottom:1px solid #252A36; }
+.research-tab { background:none; border:none; color:#8B92A5; font-family:var(--font); font-size:11px; padding:0.6rem 1rem; cursor:pointer; border-bottom:2px solid transparent; transition:all 0.2s; }
+.research-tab:hover { color:#e6e8ed; }
+.research-tab.active { color:#F5D921; border-bottom-color:#F5D921; }
+.research-card { background:#161B22; border:1px solid #252A36; border-radius:6px; padding:1.25rem 1.5rem; margin-bottom:1rem; transition:border-color 0.2s; }
+.research-card:hover { border-color:#F5D921; }
+.research-type-tag { display:inline-block; font-size:9px; font-weight:700; letter-spacing:0.08em; padding:0.15rem 0.5rem; border-radius:3px; margin-bottom:0.5rem; }
+.tag-field { background:rgba(245,217,33,0.15); color:#F5D921; }
+.tag-sector { background:rgba(59,130,246,0.15); color:#3b82f6; }
+.tag-deep { background:rgba(167,139,250,0.15); color:#a78bfa; }
+.research-card-title { font-size:13px; font-weight:600; color:#e6e8ed; line-height:1.4; margin-bottom:0.5rem; }
+.research-card-desc { font-size:11px; color:#8B92A5; line-height:1.6; margin-bottom:0.75rem; }
+.research-card-meta { font-size:10px; color:#5A6178; display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap; }
+.research-sector-pill { display:inline-block; font-size:9px; padding:0.1rem 0.35rem; border-radius:3px; font-weight:500; }
+.sector-semi-pill { background:#252A36; color:#3b82f6; }
+.sector-robo-pill { background:#252A36; color:#22c55e; }
+.sector-space-pill { background:#252A36; color:#a78bfa; }
+.sector-materials-pill { background:#252A36; color:#FB923C; }
+.sector-cross-pill { background:#252A36; color:#F5D921; }
+.sidebar-widget { background:#161B22; border:1px solid #252A36; border-radius:6px; padding:1.25rem; margin-bottom:1rem; }
+.sidebar-widget-title { font-size:11px; font-weight:700; color:#F5D921; letter-spacing:0.08em; margin-bottom:0.75rem; }
+.sidebar-widget-text { font-size:11px; color:#8B92A5; line-height:1.7; }
+.sidebar-widget-text a { color:#F5D921; text-decoration:none; }
+.sidebar-widget-text a:hover { text-decoration:underline; }
+@media (max-width: 900px) {
+  .intel-research-layout { grid-template-columns:1fr; }
+}
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<div class="intel-research-layout">
+
+  <!-- ===== LEFT: CONTENT ===== -->
+  <div>
+
+    <!-- A. Header -->
+    <div class="page-header">
+      <div class="page-title">Research</div>
+      <div class="page-subtitle">Original research, analysis, and field transmissions from Robotnik</div>
+    </div>
+
+    <!-- B. Featured report — 1Q26 State of the Frontier Stack -->
+    <div class="featured-card">
+      <div class="featured-label">LATEST REPORT</div>
+      <div class="report-featured">
+        <a href="report-1Q26.html" class="report-featured-cover" aria-label="1Q26 report cover">
+          <img src="og/1Q26-report-thumb.png" alt="1Q26 State of the Frontier Stack cover" width="800" height="1131">
+        </a>
+        <div class="report-featured-body">
+          <div class="report-featured-tagline">The inaugural quarterly intelligence report</div>
+          <h2 class="report-featured-title">1Q26 State of the Frontier Stack</h2>
+          <p class="report-featured-desc">Covering the first full quarter of Robotnik Composite data. Cross-sector dependency analysis across semiconductors, robotics, space, and critical materials.</p>
+          <div class="report-featured-meta">Published April 2026 &middot; 51 pages &middot; PDF</div>
+          <div class="report-featured-ctas">
+            <a href="report-1Q26.html" class="btn-y">Read report</a>
+            <a href="reports/1Q26-State-of-the-Frontier-Stack.pdf?v=20260425" class="btn-ghost" download
+               onclick="if(window.goatcounter)window.goatcounter.count({path:'pdf-download-1Q26',title:'1Q26 Report Download',event:true})">Download PDF &darr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other research streams (still on the roadmap) -->
+    <div id="research-feed">
+
+      <div class="research-card" style="border-left:3px solid #F5D921;">
+        <div class="research-type-tag tag-field">FIELD TRANSMISSIONS</div>
+        <div class="research-card-desc" style="margin-top:0.5rem;">Weekly intelligence briefings from Robotnik. Each transmission covers the most significant developments across semiconductors, robotics, space technology, and critical materials &mdash; with cross-sector analysis that surfaces the dependencies others miss.</div>
+        <div class="research-card-meta" style="margin-top:0.75rem;">
+          <span style="color:#F5D921;font-size:9px;font-weight:700;">COMING SOON</span>
+        </div>
+        <a href="#" onclick="openEarlyAccess();return false;" style="color:#F5D921;font-size:10px;text-decoration:none;display:inline-block;margin-top:0.5rem;">Sign up to receive transmissions &rarr;</a>
+      </div>
+
+      <div class="research-card" style="border-left:3px solid #3b82f6;">
+        <div class="research-type-tag tag-sector">SECTOR BRIEFINGS</div>
+        <div class="research-card-desc" style="margin-top:0.5rem;">Quarterly deep-sector reports produced by Robotnik's network of academic and industry contributors. Each briefing maps a specific sector's supply chain, competitive dynamics, and strategic outlook.</div>
+        <div class="research-card-meta" style="margin-top:0.75rem;">
+          <span style="color:#3b82f6;font-size:9px;font-weight:700;">COMING SOON</span>
+        </div>
+        <a href="#" onclick="openEarlyAccess();return false;" style="color:#F5D921;font-size:10px;text-decoration:none;display:inline-block;margin-top:0.5rem;">Sign up to receive transmissions &rarr;</a>
+      </div>
+
+      <div class="research-card" style="border-left:3px solid #a78bfa;">
+        <div class="research-type-tag tag-deep">DEEP DIVES</div>
+        <div class="research-card-desc" style="margin-top:0.5rem;">Long-form analysis triggered by major events &mdash; policy shifts, supply chain disruptions, breakthrough technologies, or strategic acquisitions that reshape the frontier stack. Published as events warrant.</div>
+        <div class="research-card-meta" style="margin-top:0.75rem;">
+          <span style="color:#a78bfa;font-size:9px;font-weight:700;">COMING SOON</span>
+        </div>
+        <a href="#" onclick="openEarlyAccess();return false;" style="color:#F5D921;font-size:10px;text-decoration:none;display:inline-block;margin-top:0.5rem;">Sign up to receive transmissions &rarr;</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ===== RIGHT: SIDEBAR ===== -->
+  <div>
+
+    <!-- About Research -->
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-title">ABOUT RESEARCH</div>
+      <div class="sidebar-widget-text">
+        Robotnik Research publishes original analysis covering the frontier technology stack. Field Transmissions publish weekly. The State of the Frontier Stack report publishes quarterly. Deep Dives are published as events warrant.
+        <div style="margin-top:0.75rem;">All research is currently free. Enterprise subscribers will receive early access to future reports.</div>
+      </div>
+    </div>
+
+    <!-- Contribute -->
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-title">CONTRIBUTE</div>
+      <div class="sidebar-widget-text">
+        Robotnik is seeking research contributors. Academics and analysts covering semiconductors, robotics, space technology, or critical materials.
+        <div style="margin-top:0.75rem;">Contributors receive: free platform access, publication outlet, and thought leadership visibility.</div>
+        <div style="margin-top:0.75rem;"><a href="#" onclick="openEarlyAccess();return false;">Transmit your interest &rarr;</a></div>
+      </div>
+    </div>
+
+    <!-- Researcher profile -->
+    <div class="sidebar-widget">
+      <div class="sidebar-widget-title">RESEARCHER</div>
+      <div class="sidebar-widget-text">
+        <div style="color:#e6e8ed;font-weight:600;font-size:12px;margin-bottom:0.5rem;">Robert Osborne</div>
+        <div>LinkedIn: <a href="https://linkedin.com/in/robertlosborne" target="_blank" rel="noopener">linkedin.com/in/robertlosborne</a></div>
+        <div>Email: <a href="mailto:robert@robotnik.world">robert@robotnik.world</a></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div><!-- .main-content -->
+
+<script src="js/nav.js?v=20260422c"></script>
+<script src="js/main.js?v=3"></script>
+<script>
+// ===== RESEARCH TABS =====
+function setResearchTab(btn) {
+  document.querySelectorAll('.research-tab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+  var tab = btn.dataset.tab;
+  document.querySelectorAll('.research-card').forEach(function(card) {
+    if (tab === 'all') {
+      card.style.display = '';
+    } else {
+      card.style.display = card.dataset.rtype === tab ? '' : 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
