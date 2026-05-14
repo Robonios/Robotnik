@@ -69,18 +69,15 @@ function calcMetrics(items){
   for(var s in sectorBk){if(sectorBk[s].rounds>maxRounds){maxRounds=sectorBk[s].rounds;mostActive=s}}
   var largest=null;
   disclosed.forEach(function(r){if(!largest||r.amount_m>largest.amount_m)largest=r});
-  // stage — 10-bucket split (Series ladder + Strategic / Government / Debt / IPO+M&A / Other)
-  // Order matters: IPO/M&A and Strategic/Pre-IPO classified BEFORE Series ladder fallthrough.
+  // stage — 7-bucket split: Pre-seed, Seed, Series A, Series B, Series C, Series D+, Other
+  // Pre-Seed must be checked BEFORE Seed (substring match). Non-venture round
+  // values (IPO, M&A, Strategic, Government, Debt, Undisclosed, Pre-IPO, Grant)
+  // all consolidate into Other per v1.1.3 polish spec — visual clarity > granularity.
   var stageBk={};
   items.forEach(function(r){
     var rd=r.round||'';
     var stage;
-    if(rd.indexOf('IPO')>=0||rd==='M&A')stage='IPO/M&A';
-    else if(rd==='Strategic'||rd==='Pre-IPO')stage='Strategic';
-    else if(rd==='Government investment'||rd==='Government'||rd==='Grant')stage='Government';
-    else if(rd==='Debt Financing')stage='Debt';
-    else if(rd==='Undisclosed'||rd==='')stage='Undisclosed';
-    else if(rd.indexOf('Pre-Seed')>=0)stage='Pre-seed';
+    if(rd.indexOf('Pre-Seed')>=0)stage='Pre-seed';
     else if(rd.indexOf('Seed')>=0)stage='Seed';
     else if(rd.indexOf('Series A')>=0)stage='Series A';
     else if(rd.indexOf('Series B')>=0)stage='Series B';
@@ -411,11 +408,12 @@ function renderTopInvestors(rounds){
 // Hide buckets with zero rounds in the active period to keep the chart compact.
 function renderStageDistribution(p){
   if(!p.stage_breakdown)return;
-  // Pre-seed earns its own bucket post-v1.1.2 sweep (~37 pre-seed rounds in scope).
-  // Color is a slightly lighter yellow than Seed's #F5D921 to signal "earlier-in-funnel"
-  // while staying visually adjacent.
-  var stages=['Pre-seed','Seed','Series A','Series B','Series C','Series D+','Strategic','Government','Debt','IPO/M&A','Undisclosed','Other'];
-  var stgColors=['#FCD34D','#F5D921','#3B82F6','#22C55E','#a78bfa','#ef4444','#FB923C','#94A3B8','#8B92A5','#22D3EE','#A1A1AA','#5A6178'];
+  // 7-bucket split per v1.1.3 polish spec: Pre-seed + Series ladder + Other.
+  // Other consolidates non-venture round values (IPO/M&A/Strategic/Govt/Debt/etc).
+  // Pre-seed color (#FCD34D) is a slightly lighter yellow than Seed's (#F5D921)
+  // to signal "earlier-in-funnel" while staying visually adjacent.
+  var stages=['Pre-seed','Seed','Series A','Series B','Series C','Series D+','Other'];
+  var stgColors=['#FCD34D','#F5D921','#3B82F6','#22C55E','#a78bfa','#ef4444','#5A6178'];
   var maxRounds=Math.max.apply(null,stages.map(function(s){return(p.stage_breakdown[s]?p.stage_breakdown[s].rounds:0)}));
   if(maxRounds===0)maxRounds=1;
   var container=document.getElementById('stage-dist');container.innerHTML='';
