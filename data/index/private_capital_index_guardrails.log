@@ -1,22 +1,38 @@
 Robotnik Private Capital Index — guardrail log
-Generated: 2026-05-21T19:22:23.663208+00:00
+Generated: 2026-05-21T19:56:16.718290+00:00
 Source: data/funding/rounds.json
 
 
 [GUARDRAIL 3] Stage-label classification:
-  Total rounds: 1244
-  Mapped to RPCI stages: 1018
-  Excluded (out-of-scope round types): 226
+  Total rows scanned: 1244
+  In RPCI (mapped + included M&A): 1014
+  Excluded:                       230
     - Strategic: 73
     - Other: 32
     - Government investment: 32
     - Debt Financing: 21
     - Undisclosed: 19
-    - M&A: 16
     - IPO: 13
+    - M&A (excluded by conditional rule): 13
     - Grant: 9
     - Bridge: 9
+    - IPO (filed): 7
     - Government: 2
+
+[FILTER: IPO] 20 IPO + IPO (filed) row(s) excluded across the dataset
+  Per-month breakdown (in-RPCI scope only, i.e. months 2024-01 onward):
+    2024-03: 1 IPO row(s) filtered out
+    2024-06: 1 IPO row(s) filtered out
+    2024-07: 1 IPO row(s) filtered out
+    2024-08: 2 IPO row(s) filtered out
+    2024-09: 1 IPO row(s) filtered out
+    2025-07: 1 IPO row(s) filtered out
+    2025-08: 1 IPO row(s) filtered out
+    2025-12: 1 IPO row(s) filtered out
+    2026-03: 2 IPO row(s) filtered out
+    2026-04: 4 IPO row(s) filtered out
+
+[FILTER: M&A] 16 M&A row(s) classified: 3 included, 13 excluded (full decision table in private_capital_index_ma_audit.log)
 
 [GUARDRAIL 1] 1 round(s) flagged in 2024-05:
   [GUARDRAIL 1] month=2024-05 The Bot Company 2024-05-13 stage=Pre-seed / Seed amount=$150M trailing-99th=$26M (5.8x); CAPPED at $22M

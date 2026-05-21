@@ -518,6 +518,8 @@ function renderRPCIChart() {
   });
   var monthlyData = series.map(function(r) { return r.value; });
   var trailingData = series.map(function(r) { return r.value_3m_trailing; });
+  // value_6m_trailing is also available in the JSON for research but
+  // intentionally not plotted — 6M is too lagging for monthly cadence.
 
   // Index of the base month (March 2025) for the vertical marker
   var baseIdx = series.findIndex(function(r) { return r.month === '2025-03'; });

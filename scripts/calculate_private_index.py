@@ -63,6 +63,7 @@ ROUNDS_PATH = os.path.join(ROOT_DIR, 'data', 'funding', 'rounds.json')
 INDEX_DIR = os.path.join(ROOT_DIR, 'data', 'index')
 OUT_PATH = os.path.join(INDEX_DIR, 'private_capital_index.json')
 GUARDRAIL_LOG = os.path.join(INDEX_DIR, 'private_capital_index_guardrails.log')
+MA_AUDIT_LOG  = os.path.join(INDEX_DIR, 'private_capital_index_ma_audit.log')
 
 # ── methodology constants ────────────────────────────────────────────────
 BASE_VALUE = 1000.0
@@ -118,14 +119,13 @@ STAGE_MAP = {
     'Series H':                'Series C+',
     'Series H (extension)':    'Series C+',
     'Pre-IPO':                 'Growth / pre-IPO',
-    'IPO (filed)':             'Growth / pre-IPO',  # company still private at filing
 }
 
 # Rounds explicitly excluded from RPCI (not private equity venture rounds).
 # These are flagged-but-expected per guardrail 3 — logged but don't error.
 EXCLUDED_ROUNDS = {
     'IPO',                  # listing event (public market)
-    'M&A',                  # exit
+    'IPO (filed)',          # S-1 filing is a transition event, not private capital deployment
     'Strategic',            # stage-ambiguous; revisit later
     'Government investment',
     'Government',
@@ -135,6 +135,35 @@ EXCLUDED_ROUNDS = {
     'Undisclosed',
     'Other',
     '',                     # blank
+}
+
+# M&A is conditional — handled by classify_mna() rather than excluded outright.
+# An M&A row is INCLUDED in RPCI iff the acquirer is a private company in the
+# Robotnik universe (capital flowing privately to acquire frontier-stack assets,
+# combined entity remaining private). Public-universe acquirers and out-of-
+# universe acquirers are both excluded.
+MNA_INCLUDED_STAGE = 'Growth / pre-IPO'  # included-M&A rows map to late-stage
+
+# In-universe private-acquirer ALLOWLIST.
+#
+# Operational definition of "private in Robotnik universe" defaults to "the
+# entity appears as a target of a non-M&A round in rounds.json." That works
+# for most cases but misses real frontier-tech private companies that
+# happen to be acquisitive during our coverage window without raising
+# privately themselves.
+#
+# This allowlist captures those known-in-universe-but-not-fundraising
+# acquirers. Keys are lowercased company names (matched against the
+# normalised acquirer string from lead_investors). Comments cite the deal
+# that surfaced the company.
+#
+# Review periodically: any row in the M&A audit log marked
+# "EXCLUDE: acquirer not in Robotnik universe" is a candidate for review.
+# If it's a real frontier-tech private acquirer, add to this set.
+PRIVATE_ACQUIRER_ALLOWLIST = {
+    'york space systems',   # space / defense; acquired ALL.SPACE 2026-04 for $355M.
+                            # No fundraising rounds in our Jan 2023 - Apr 2026
+                            # window but a tracked active private acquirer.
 }
 
 # Guardrail 1 threshold: any single round >5x the trailing 12M 99th percentile
@@ -239,24 +268,179 @@ def in_range(d, start, end):
     return start <= d <= end
 
 
+# ── M&A acquirer registry + classification ───────────────────────────────
+
+MARKET_CAPS_PATH = os.path.join(ROOT_DIR, 'data', 'index', 'market_caps.json')
+
+_PUBLIC_NAMES_CACHE = None
+_PUBLIC_TICKERS_CACHE = None
+_PRIVATE_UNIVERSE_CACHE = None
+
+
+def load_public_universe():
+    """Returns (public_names_lc, public_tickers) from market_caps.json.
+    public_names_lc maps lowercase company name to ticker; public_tickers
+    is the set of upper-case tickers. Used to detect when an M&A acquirer
+    is a public-market entity."""
+    global _PUBLIC_NAMES_CACHE, _PUBLIC_TICKERS_CACHE
+    if _PUBLIC_NAMES_CACHE is not None:
+        return _PUBLIC_NAMES_CACHE, _PUBLIC_TICKERS_CACHE
+    with open(MARKET_CAPS_PATH) as f:
+        mc = json.load(f)
+    names = {}
+    tickers = set()
+    for entry in mc.get('market_caps', []):
+        n = (entry.get('name') or '').strip()
+        t = (entry.get('ticker') or '').strip()
+        if n:
+            names[n.lower()] = t
+        if t:
+            tickers.add(t.upper())
+    # Known additional public-acquirer mappings not always in market_caps
+    # (e.g., generalist mega-caps that have done frontier-tech M&A).
+    EXTRA_PUBLIC = {
+        'amazon': 'AMZN',
+        'microsoft': 'MSFT',
+        'alphabet': 'GOOG',
+        'google': 'GOOG',
+        'meta': 'META',
+        'apple': 'AAPL',
+        'intel': 'INTC',
+        'nvidia': 'NVDA',
+        'infineon': 'IFNNY',
+        'infineon technologies': 'IFNNY',
+        'infineon technologies ag': 'IFNNY',
+        'softbank': 'SFTBY',
+        'softbank group': 'SFTBY',
+        'macom': 'MTSI',
+        'macom technology solutions': 'MTSI',
+        'macom technology solutions holdings': 'MTSI',
+        'moschip': 'MOSCHIP',
+        'moschip technologies': 'MOSCHIP',
+        'marvell': 'MRVL',
+        'marvell technology': 'MRVL',
+        'credo': 'CRDO',
+        'credo technology': 'CRDO',
+        'rocket lab': 'RKLB',
+    }
+    for n, t in EXTRA_PUBLIC.items():
+        names.setdefault(n, t)
+        tickers.add(t.upper())
+    _PUBLIC_NAMES_CACHE = names
+    _PUBLIC_TICKERS_CACHE = tickers
+    return names, tickers
+
+
+def build_private_in_universe(rounds_raw):
+    """Set of company names that appear as round targets in rounds.json with
+    at least one non-M&A round (i.e., they're venture-funded entities in our
+    universe, not just M&A acquirers). Names are lowercased for matching."""
+    global _PRIVATE_UNIVERSE_CACHE
+    if _PRIVATE_UNIVERSE_CACHE is not None:
+        return _PRIVATE_UNIVERSE_CACHE
+    names = set()
+    for r in rounds_raw:
+        if (r.get('round') or '').strip() != 'M&A':
+            n = (r.get('company') or '').strip().lower()
+            if n:
+                names.add(n)
+    _PRIVATE_UNIVERSE_CACHE = names
+    return names
+
+
+def normalise_acquirer(s):
+    """Strip ticker parentheticals and '(acquirer)' annotations from the
+    lead_investors string to leave a clean company name for matching."""
+    if not s:
+        return ''
+    # Drop any "(...)" annotations and trim
+    cleaned = re.sub(r'\s*\([^)]*\)\s*', ' ', s).strip()
+    # If multiple comma-separated names, take the first
+    cleaned = cleaned.split(',')[0].strip()
+    return cleaned
+
+
+def detect_public_acquirer(acquirer_str, public_names, public_tickers):
+    """True if acquirer_str references a public-universe company."""
+    if not acquirer_str:
+        return False, None
+    # Detect ticker patterns: "(NASDAQ: CRDO)", "(NYSE: RKLB)", "(MRVL)", etc.
+    m = re.search(r'\(([A-Z]+\s*:\s*)?([A-Z][A-Z0-9.-]{1,9})\b\s*\)', acquirer_str)
+    if m:
+        t = m.group(2).upper()
+        if t in public_tickers:
+            return True, t
+    # Whole-name match against public-universe names (post-normalisation)
+    cleaned = normalise_acquirer(acquirer_str).lower()
+    if cleaned in public_names:
+        return True, public_names[cleaned]
+    return False, None
+
+
+def detect_private_in_universe(acquirer_str, private_set):
+    """True if acquirer_str matches a private in-universe entity name.
+    Checks both the round-target derived set and the explicit
+    PRIVATE_ACQUIRER_ALLOWLIST."""
+    if not acquirer_str:
+        return False, None, None
+    cleaned = normalise_acquirer(acquirer_str).lower()
+    if cleaned in private_set:
+        return True, cleaned, 'fundraised-in-universe'
+    if cleaned in PRIVATE_ACQUIRER_ALLOWLIST:
+        return True, cleaned, 'allowlist'
+    return False, None, None
+
+
+def classify_mna(row, public_names, public_tickers, private_set):
+    """Returns (include: bool, reason: str, normalised_acquirer: str).
+    Decision logic per spec:
+      - acquirer is public-universe        -> exclude
+      - acquirer is private + in-universe  -> include (round-target OR allowlist)
+      - acquirer is anything else (out)    -> exclude
+    """
+    lead = row.get('lead_investors') or ''
+    acq = normalise_acquirer(lead)
+    if not acq:
+        return False, 'EXCLUDE: no acquirer disclosed', acq
+
+    is_public, public_ticker = detect_public_acquirer(lead, public_names, public_tickers)
+    if is_public:
+        return False, f'EXCLUDE: public acquirer ({public_ticker})', acq
+
+    is_private_universe, _, src = detect_private_in_universe(lead, private_set)
+    if is_private_universe:
+        src_note = 'fundraised-in-universe' if src == 'fundraised-in-universe' else 'allowlisted'
+        return True, f'INCLUDE: private in-universe acquirer ({src_note})', acq
+
+    return False, 'EXCLUDE: acquirer not in Robotnik universe', acq
+
+
 # ── data loading + classification ────────────────────────────────────────
 
 def load_and_classify(rounds_path):
     """Load rounds.json and classify each row.
 
-    Returns (rounds, guardrail_messages) where rounds is a list of dicts
+    Returns (rounds, guardrail_messages, ok) where rounds is a list of dicts
     with: date (datetime.date), amount_m (float|None), stage (str|None),
     investors (list[str]), entity_id (str), company (str), excluded (bool).
+    Applies IPO exclusion (filter at ingestion layer, both 'IPO' and
+    'IPO (filed)') and the M&A conditional inclusion rule.
     """
     with open(rounds_path) as f:
         data = json.load(f)
+
+    raw_rounds = data['rounds']
+    public_names, public_tickers = load_public_universe()
+    private_set = build_private_in_universe(raw_rounds)
 
     rounds_out = []
     msgs = []
     excluded_count = Counter()
     unmappable_rows = []
+    ipo_excluded_by_month = Counter()
+    mna_decisions = []  # list of dicts for the audit log
 
-    for r in data['rounds']:
+    for r in raw_rounds:
         raw_date = r.get('date', '')
         if not raw_date:
             msgs.append(f"  SKIP no-date row: {r.get('entity_id')} / {r.get('company')}")
@@ -279,7 +463,43 @@ def load_and_classify(rounds_path):
                 msgs.append(f"  SKIP non-numeric amount: {r.get('company')} {raw_date} amount={r.get('amount_m')}")
                 continue
 
-        # Stage classification
+        # ── IPO exclusion (Fix 1)
+        if raw_round in ('IPO', 'IPO (filed)'):
+            ipo_excluded_by_month[f"{d.year}-{d.month:02d}"] += 1
+            excluded_count[raw_round] += 1
+            rounds_out.append({
+                'date': d, 'amount_m': amount_m, 'raw_round': raw_round,
+                'stage': None, 'excluded': True, 'investors': [],
+                'entity_id': r.get('entity_id'), 'company': r.get('company'),
+            })
+            continue
+
+        # ── M&A conditional inclusion (Fix 2)
+        if raw_round == 'M&A':
+            include, reason, acq = classify_mna(r, public_names, public_tickers, private_set)
+            mna_decisions.append({
+                'date': raw_date, 'company': r.get('company'),
+                'acquirer_raw': r.get('lead_investors') or '',
+                'acquirer_normalised': acq, 'include': include, 'reason': reason,
+                'amount_m': amount_m,
+            })
+            if include:
+                stage = MNA_INCLUDED_STAGE
+                excluded = False
+            else:
+                stage = None
+                excluded = True
+                excluded_count['M&A (excluded by conditional rule)'] += 1
+            investors = parse_investors(r.get('lead_investors') or '') + parse_investors(r.get('co_investors') or '')
+            investors = list(dict.fromkeys(investors))
+            rounds_out.append({
+                'date': d, 'amount_m': amount_m, 'raw_round': raw_round,
+                'stage': stage, 'excluded': excluded, 'investors': investors,
+                'entity_id': r.get('entity_id'), 'company': r.get('company'),
+            })
+            continue
+
+        # ── Stage classification (default path)
         if raw_round in STAGE_MAP:
             stage = STAGE_MAP[raw_round]
             excluded = False
@@ -288,41 +508,49 @@ def load_and_classify(rounds_path):
             excluded = True
             excluded_count[raw_round] += 1
         else:
-            # Guardrail 3 violation: unmappable stage
             stage = None
             excluded = True
             unmappable_rows.append((r.get('company'), raw_date, raw_round))
 
         investors = parse_investors(r.get('lead_investors') or '') + parse_investors(r.get('co_investors') or '')
-        # Deduplicate per round (an investor appearing in both lead and co
-        # for the same round still counts once, per the funding.js convention)
         investors = list(dict.fromkeys(investors))
 
         rounds_out.append({
-            'date': d,
-            'amount_m': amount_m,
-            'raw_round': raw_round,
-            'stage': stage,
-            'excluded': excluded,
-            'investors': investors,
-            'entity_id': r.get('entity_id'),
-            'company': r.get('company'),
+            'date': d, 'amount_m': amount_m, 'raw_round': raw_round,
+            'stage': stage, 'excluded': excluded, 'investors': investors,
+            'entity_id': r.get('entity_id'), 'company': r.get('company'),
         })
 
-    # Guardrail 3 summary
+    # ── Guardrail 3 summary
     msgs.append(f"\n[GUARDRAIL 3] Stage-label classification:")
-    msgs.append(f"  Total rounds: {len(rounds_out)}")
-    msgs.append(f"  Mapped to RPCI stages: {sum(1 for r in rounds_out if not r['excluded'])}")
-    msgs.append(f"  Excluded (out-of-scope round types): {sum(excluded_count.values())}")
+    msgs.append(f"  Total rows scanned: {len(rounds_out)}")
+    msgs.append(f"  In RPCI (mapped + included M&A): {sum(1 for r in rounds_out if not r['excluded'])}")
+    msgs.append(f"  Excluded:                       {sum(excluded_count.values())}")
     for round_name, ct in excluded_count.most_common():
         msgs.append(f"    - {round_name}: {ct}")
+
+    # ── IPO exclusion audit (Fix 1)
+    total_ipo = sum(ipo_excluded_by_month.values())
+    msgs.append(f"\n[FILTER: IPO] {total_ipo} IPO + IPO (filed) row(s) excluded across the dataset")
+    msgs.append(f"  Per-month breakdown (in-RPCI scope only, i.e. months 2024-01 onward):")
+    for m in sorted(ipo_excluded_by_month.keys()):
+        if m >= '2024-01':
+            msgs.append(f"    {m}: {ipo_excluded_by_month[m]} IPO row(s) filtered out")
+
+    # ── M&A conditional rule audit (Fix 2) — summary only in guardrails log;
+    # full decision table goes to a separate file for cleaner audit trails
+    mna_inc = [d for d in mna_decisions if d['include']]
+    mna_exc = [d for d in mna_decisions if not d['include']]
+    msgs.append(f"\n[FILTER: M&A] {len(mna_decisions)} M&A row(s) classified: "
+                f"{len(mna_inc)} included, {len(mna_exc)} excluded "
+                f"(full decision table in {os.path.basename(MA_AUDIT_LOG)})")
 
     if unmappable_rows:
         msgs.append(f"\n[GUARDRAIL 3 FAILURE] {len(unmappable_rows)} rounds with unmappable stage labels:")
         for c, dt, rnd in unmappable_rows:
             msgs.append(f"    - {c} {dt} round='{rnd}'")
-        return rounds_out, msgs, False  # signal failure
-    return rounds_out, msgs, True
+        return rounds_out, msgs, mna_decisions, False
+    return rounds_out, msgs, mna_decisions, True
 
 
 # ── component calculation ────────────────────────────────────────────────
@@ -436,7 +664,7 @@ def main():
             f"Source: {os.path.relpath(ROUNDS_PATH, ROOT_DIR)}",
             ""]
 
-    rounds, classification_msgs, ok = load_and_classify(ROUNDS_PATH)
+    rounds, classification_msgs, mna_decisions, ok = load_and_classify(ROUNDS_PATH)
     msgs.extend(classification_msgs)
     if not ok:
         msgs.append("\n*** EXIT NON-ZERO: guardrail 3 (unmappable stages) failed. ***")
@@ -496,10 +724,14 @@ def main():
             'capital_deployed_raw_usd': round(raw['_raw_capital_usd'], 2),
         })
 
-    # 3-month trailing smoothed line
+    # 3-month and 6-month trailing smoothed lines. Per spec, the monthly
+    # point stays at 3M either way; only the smoothed series is under
+    # consideration for the longer window. Publish both for comparison.
     for i, row in enumerate(series_out):
-        recent = composite_values[max(0, i - 2):i + 1]
-        row['value_3m_trailing'] = round(sum(recent) / len(recent), 4)
+        recent_3 = composite_values[max(0, i - 2):i + 1]
+        recent_6 = composite_values[max(0, i - 5):i + 1]
+        row['value_3m_trailing'] = round(sum(recent_3) / len(recent_3), 4)
+        row['value_6m_trailing'] = round(sum(recent_6) / len(recent_6), 4)
 
     # Verify March 2025 == 1000.00 exact (acceptance criterion)
     march_2025 = next(r for r in series_out if r['month'] == '2025-03')
@@ -555,9 +787,10 @@ def main():
                 'description': f'Unique investor count in 3M window; new-in-{NEW_INVESTOR_LOOKBACK_MONTHS}M investors weighted {NEW_INVESTOR_MULTIPLIER}x'
             },
         },
-        'current_month': latest['month_key'],
+        'current_month': latest['month'],
         'current_value': latest['value'],
         'current_value_3m_trailing': latest['value_3m_trailing'],
+        'current_value_6m_trailing': latest['value_6m_trailing'],
         'series': series_out,
     }
 
@@ -571,6 +804,37 @@ def main():
     with open(GUARDRAIL_LOG, 'w') as f:
         f.write('\n'.join(msgs))
     print(f"-> {os.path.relpath(GUARDRAIL_LOG, ROOT_DIR)}")
+
+    # M&A audit log — separate file for cleaner downstream audit
+    ma_lines = [
+        f"Robotnik Private Capital Index — M&A conditional-inclusion audit",
+        f"Generated: {datetime.now(timezone.utc).isoformat()}",
+        f"Rule: include the M&A row in RPCI iff the acquirer is a private company in",
+        f"      the Robotnik universe. Public-universe acquirers and out-of-universe",
+        f"      acquirers are both excluded. Private in-universe = (acquirer appears",
+        f"      as a non-M&A round target in rounds.json) OR (acquirer is in the",
+        f"      PRIVATE_ACQUIRER_ALLOWLIST in scripts/calculate_private_index.py).",
+        f"",
+        f"Total M&A rows: {len(mna_decisions)} ({sum(1 for d in mna_decisions if d['include'])} included, "
+            f"{sum(1 for d in mna_decisions if not d['include'])} excluded)",
+        f"",
+        f"{'DATE':<11}  {'TARGET':<35}  {'ACQUIRER':<28}  {'AMOUNT':<13}  DECISION",
+        f"{'-'*11}  {'-'*35}  {'-'*28}  {'-'*13}  {'-'*48}",
+    ]
+    for d in mna_decisions:
+        amt = f"${d['amount_m']:.0f}M" if d['amount_m'] is not None else "$undisclosed"
+        ma_lines.append(
+            f"{d['date']}  {(d['company'] or '')[:35]:<35}  "
+            f"{(d['acquirer_normalised'] or '')[:28]:<28}  {amt:<13}  {d['reason']}"
+        )
+    ma_lines.append('')
+    ma_lines.append('Review note: any row marked "EXCLUDE: acquirer not in Robotnik universe"')
+    ma_lines.append('is a candidate for the PRIVATE_ACQUIRER_ALLOWLIST. Periodic review keeps')
+    ma_lines.append('the allowlist current as the active private universe expands.')
+
+    with open(MA_AUDIT_LOG, 'w') as f:
+        f.write('\n'.join(ma_lines))
+    print(f"-> {os.path.relpath(MA_AUDIT_LOG, ROOT_DIR)}")
 
 
 if __name__ == '__main__':

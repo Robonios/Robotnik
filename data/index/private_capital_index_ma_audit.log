@@ -1,0 +1,32 @@
+Robotnik Private Capital Index — M&A conditional-inclusion audit
+Generated: 2026-05-21T19:56:16.778159+00:00
+Rule: include the M&A row in RPCI iff the acquirer is a private company in
+      the Robotnik universe. Public-universe acquirers and out-of-universe
+      acquirers are both excluded. Private in-universe = (acquirer appears
+      as a non-M&A round target in rounds.json) OR (acquirer is in the
+      PRIVATE_ACQUIRER_ALLOWLIST in scripts/calculate_private_index.py).
+
+Total M&A rows: 16 (3 included, 13 excluded)
+
+DATE         TARGET                               ACQUIRER                      AMOUNT         DECISION
+-----------  -----------------------------------  ----------------------------  -------------  ------------------------------------------------
+2026-03-19  Rivr                                 Amazon                        $undisclosed   EXCLUDE: public acquirer (AMZN)
+2023-10-24  GaN Systems                          Infineon Technologies AG      $830M          EXCLUDE: public acquirer (IFNNY)
+2023-07-21  Berkshire Grey                       SoftBank Group                $375M          EXCLUDE: public acquirer (SFTBY)
+2023-08-16  Tower Semiconductor                  Intel                         $353M          EXCLUDE: public acquirer (INTC)
+2023-08-22  MACOM / Wolfspeed RF                 MACOM Technology Solutions H  $125M          EXCLUDE: public acquirer (MTSI)
+2023-09-28  Eutelsat OneWeb (combination)                                      $3400M         EXCLUDE: no acquirer disclosed
+2023-06-07  Softnautics (acquired by MosChip)    MosChip Technologies          $17M           EXCLUDE: public acquirer (MOSCHIP)
+2023-06-25  Adranos (acquired by Anduril)        Anduril Industries            $undisclosed   INCLUDE: private in-universe acquirer (fundraised-in-universe)
+2023-01-09  Fungible                             Microsoft                     $190M          EXCLUDE: public acquirer (MSFT)
+2026-04-21  Premium Robotics                     Schwarz Group                 $undisclosed   EXCLUDE: acquirer not in Robotnik universe
+2026-04-23  Polariton Technologies               Marvell Technology            $undisclosed   EXCLUDE: public acquirer (MRVL)
+2026-04-13  DustPhotonics                        Credo Technology              $1300M         EXCLUDE: public acquirer (CRDO)
+2026-04-29  York Space Systems / ALL.SPACE       York Space Systems            $355M          INCLUDE: private in-universe acquirer (allowlisted)
+2026-04-02  Phantom Space / Thermal Management   Phantom Space                 $undisclosed   INCLUDE: private in-universe acquirer (fundraised-in-universe)
+2026-04-14  Rocket Lab / Mynaric                 Rocket Lab                    $155M          EXCLUDE: public acquirer (RKLB)
+2026-04-14  Amazon / Globalstar                  Amazon                        $11570M        EXCLUDE: public acquirer (AMZN)
+
+Review note: any row marked "EXCLUDE: acquirer not in Robotnik universe"
+is a candidate for the PRIVATE_ACQUIRER_ALLOWLIST. Periodic review keeps
+the allowlist current as the active private universe expands.

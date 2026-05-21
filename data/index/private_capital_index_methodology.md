@@ -58,12 +58,81 @@ The dataset's round enum (37 canonical values) maps to the five RPCI stages:
 Not private equity venture rounds; these are tracked in `rounds.json` but
 do not contribute to RPCI components:
 
-`IPO` (listing event), `M&A` (exit), `Strategic` (stage-ambiguous),
-`Government investment`, `Government`, `Grant`, `Debt Financing`,
-`Bridge` (stage-ambiguous), `Undisclosed`, `Other`.
+`IPO`, `IPO (filed)`, `Strategic` (stage-ambiguous), `Government investment`,
+`Government`, `Grant`, `Debt Financing`, `Bridge` (stage-ambiguous),
+`Undisclosed`, `Other`.
+
+The `M&A` value is handled **conditionally** rather than as a blanket
+exclusion — see the next section.
 
 These exclusions are logged at each run in
 `data/index/private_capital_index_guardrails.log`.
+
+### IPO exclusion (both filed and listed)
+
+Both `IPO` and `IPO (filed)` are out of scope for RPCI. An IPO — whether
+the actual listing or just the S-1 filing — is a transition event from
+private to public, not a private capital deployment. Including either
+would mix two structurally different signals.
+
+`Pre-IPO` rounds stay in scope (private growth-stage capital still
+deployed before the IPO process begins).
+
+Per-month IPO exclusion counts are logged in the guardrails file so the
+filter can be verified to be biting correctly.
+
+### M&A conditional inclusion rule
+
+`M&A` rows are evaluated case-by-case rather than blanket-excluded.
+An M&A row is included in RPCI **iff the acquirer is a private company
+in the Robotnik universe**:
+
+- **Public acquirer** (in or out of universe) → excluded. Public-market
+  capital deployment, not private. The target is also exiting the
+  private market.
+- **Private acquirer, in the Robotnik universe** → **included**. This
+  represents private capital flowing to acquire frontier-stack assets,
+  with the combined entity remaining private.
+- **Private acquirer, out of the Robotnik universe** → excluded.
+  Out-of-scope (e.g., a retail conglomerate acquiring a niche
+  frontier-tech asset).
+- **Undisclosed acquirer** → excluded.
+
+Public-universe detection works from two sources:
+1. Ticker patterns in the acquirer string (e.g., `(NASDAQ: CRDO)`).
+2. Name-match against `data/index/market_caps.json` (the active public
+   universe), supplemented by an in-script list of common public
+   acquirers (Amazon, Microsoft, Intel, etc.) not always present in
+   market_caps.
+
+Included M&A rows map to the **Growth / pre-IPO** stage for component 3
+(stage-weighted activity) — these are late-stage capital events by
+construction.
+
+**Private-in-universe definition.** Operationally a company is "private
+in the Robotnik universe" if either:
+
+1. It appears as a target of a non-M&A round in `rounds.json` during
+   the dataset coverage window. *(default: derived automatically)*
+2. It is in the explicit `PRIVATE_ACQUIRER_ALLOWLIST` in
+   `scripts/calculate_private_index.py`. *(manual allowlist)*
+
+The allowlist exists to capture real frontier-tech private companies
+that happen to be acquisitive without raising private capital
+themselves during our coverage window. As of v1.1 the allowlist
+contains:
+
+| Entry | Why |
+|---|---|
+| York Space Systems | Active space/defense private; acquired ALL.SPACE 2026-04 for $355M; no fundraising rounds in our coverage window |
+
+The allowlist is reviewed periodically against new "EXCLUDE: acquirer
+not in Robotnik universe" entries in the M&A audit log — a small
+research artefact tracking which private frontier-tech companies are
+acquisitive but not actively fundraising.
+
+Every M&A decision (include or exclude, with reason) is logged in
+`data/index/private_capital_index_ma_audit.log`.
 
 ## Composite calculation
 
@@ -215,7 +284,8 @@ python3 scripts/calculate_private_index.py
 
 Produces:
 - `data/index/private_capital_index.json` — the index series + components
-- `data/index/private_capital_index_guardrails.log` — flagged-row audit
+- `data/index/private_capital_index_guardrails.log` — guardrails (cap flags + stage classification + IPO filter summary)
+- `data/index/private_capital_index_ma_audit.log` — M&A include/exclude decision table
 
 ## Versioning
 
@@ -225,4 +295,18 @@ requires a new methodology version and a `RPCI vN.N` re-publication of
 the series. The output JSON's `method` field tracks the current version
 string.
 
-**Current version: RPCI v1.0** (2026-05-14)
+**Current version: RPCI v1.1** (2026-05-21)
+
+### Version history
+
+- **v1.0 (2026-05-14):** initial methodology. IPO (filed) mapped to
+  Growth/pre-IPO. M&A blanket-excluded.
+- **v1.1 (2026-05-21):** IPO and IPO (filed) both excluded (transition
+  events, not private capital). M&A conditional inclusion rule
+  introduced — included only when the acquirer is private and in the
+  Robotnik universe. `PRIVATE_ACQUIRER_ALLOWLIST` mechanism added for
+  in-universe acquirers without fundraising activity (York Space added).
+  6M trailing smoothed series added to the output JSON for research
+  use; chart continues to publish the monthly point + 3M trailing line
+  only. Audit logs split into guardrails + M&A audit for cleaner
+  downstream review.
