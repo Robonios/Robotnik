@@ -449,4 +449,189 @@ function renderNotable(p,periodLabel){
 // populate. The previous buildGatedTables() function was removed alongside
 // the gated tab divs in funding.html. =====
 
+// ===== Robotnik Private Capital Index (RPCI) =====
+// Loads data/index/private_capital_index.json and renders the chart panel
+// at the top of the page. Independent of the Funding Ops metrics (which
+// use the trailing 3M/6M/1Y window selector); the RPCI is monthly with a
+// fixed 3M trailing window per spec.
+var rpciChart = null;
+var rpciData = null;
+
+async function initRPCI() {
+  try {
+    var resp = await fetch('data/index/private_capital_index.json?v=' + Date.now());
+    if (!resp.ok) throw new Error('RPCI JSON fetch failed: ' + resp.status);
+    rpciData = await resp.json();
+  } catch (e) {
+    console.warn('RPCI load failed', e);
+    var panel = document.getElementById('rpci-panel');
+    if (panel) panel.style.display = 'none';
+    return;
+  }
+  if (!rpciData || !rpciData.series || !rpciData.series.length) return;
+  renderRPCIHeader();
+  renderRPCIChart();
+}
+
+function fmtIdx(v) {
+  if (v == null) return '—';
+  return Number(v).toLocaleString(undefined, {minimumFractionDigits: 1, maximumFractionDigits: 1});
+}
+
+function renderRPCIHeader() {
+  var series = rpciData.series;
+  var latest = series[series.length - 1];
+  var prior = series.length >= 2 ? series[series.length - 2] : null;
+  var cur = document.getElementById('rpci-current-value');
+  var mon = document.getElementById('rpci-current-month');
+  var tr = document.getElementById('rpci-trailing-value');
+  var mom = document.getElementById('rpci-mom-change');
+  if (cur) cur.textContent = fmtIdx(latest.value);
+  if (mon) {
+    // Format month_key (YYYY-MM) into "Mon YYYY" display
+    var parts = latest.month.split('-');
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    mon.textContent = months[parseInt(parts[1])-1] + ' ' + parts[0];
+  }
+  if (tr) tr.textContent = fmtIdx(latest.value_3m_trailing);
+  if (mom) {
+    if (!prior) {
+      mom.textContent = '—';
+    } else {
+      var delta = latest.value - prior.value;
+      var pct = prior.value !== 0 ? (delta / prior.value * 100) : 0;
+      var sign = pct >= 0 ? '+' : '';
+      mom.textContent = sign + pct.toFixed(1) + '%';
+      mom.style.color = pct >= 0 ? '#22c55e' : '#ef4444';
+    }
+  }
+}
+
+function renderRPCIChart() {
+  var canvas = document.getElementById('rpci-chart');
+  if (!canvas || typeof Chart === 'undefined') return;
+  var series = rpciData.series;
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var labels = series.map(function(r) {
+    var p = r.month.split('-');
+    return months[parseInt(p[1])-1] + '-' + p[0].slice(2);
+  });
+  var monthlyData = series.map(function(r) { return r.value; });
+  var trailingData = series.map(function(r) { return r.value_3m_trailing; });
+
+  // Index of the base month (March 2025) for the vertical marker
+  var baseIdx = series.findIndex(function(r) { return r.month === '2025-03'; });
+
+  if (rpciChart) rpciChart.destroy();
+  rpciChart = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Monthly',
+          data: monthlyData,
+          borderColor: 'rgba(245,217,33,0.55)',
+          backgroundColor: 'rgba(245,217,33,0.10)',
+          borderWidth: 1.5,
+          pointRadius: 2.5,
+          pointBackgroundColor: '#F5D921',
+          pointHoverRadius: 5,
+          tension: 0,
+          fill: false,
+        },
+        {
+          label: '3M trailing',
+          data: trailingData,
+          borderColor: '#F5D921',
+          backgroundColor: 'rgba(245,217,33,0.06)',
+          borderWidth: 2.5,
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          pointBackgroundColor: '#F5D921',
+          tension: 0.25,
+          fill: true,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: { color: '#E6E8ED', font: { family: 'Roboto Mono', size: 10 }, boxWidth: 12, padding: 10 }
+        },
+        tooltip: {
+          backgroundColor: '#161B22',
+          titleColor: '#F5D921',
+          bodyColor: '#E6E8ED',
+          borderColor: '#1E2330',
+          borderWidth: 1,
+          padding: 10,
+          cornerRadius: 4,
+          titleFont: { family: 'Roboto Mono', size: 11, weight: 'bold' },
+          bodyFont: { family: 'Roboto Mono', size: 10 },
+          callbacks: {
+            label: function(ctx) {
+              var v = ctx.parsed.y;
+              return ctx.dataset.label + ': ' + (v == null ? '—' : Number(v).toFixed(1));
+            },
+            afterBody: function(items) {
+              if (!items || !items.length) return '';
+              var idx = items[0].dataIndex;
+              var row = rpciData.series[idx];
+              if (!row || !row.components) return '';
+              var lines = ['', 'Components (normalised, 1000 @ base):'];
+              var labels = {
+                capital_deployed:        'Capital deployed   (30%)',
+                deal_count:              'Deal count         (20%)',
+                stage_weighted_activity: 'Stage-weighted     (25%)',
+                round_size_vs_trailing:  'Size vs trailing   (15%)',
+                investor_breadth:        'Investor breadth   (10%)',
+              };
+              Object.keys(labels).forEach(function(k) {
+                var v = row.components[k];
+                if (v != null) {
+                  lines.push('  ' + labels[k] + '  ' + Number(v).toFixed(1));
+                }
+              });
+              lines.push('');
+              lines.push('Raw: ' + row.deal_count_raw + ' deals · $' +
+                         (row.capital_deployed_raw_usd / 1e9).toFixed(1) + 'B (capped)');
+              return lines;
+            },
+          },
+        },
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: '#5A6178',
+            font: { family: 'Roboto Mono', size: 9 },
+            autoSkip: true,
+            maxRotation: 0,
+            maxTicksLimit: 12,
+          },
+          grid: { color: '#1E2330' },
+        },
+        y: {
+          ticks: {
+            color: '#5A6178',
+            font: { family: 'Roboto Mono', size: 9 },
+            callback: function(v) { return Number(v).toLocaleString(); },
+          },
+          grid: { color: '#1E2330' },
+          beginAtZero: false,
+        },
+      },
+    },
+  });
+}
+
+// Fire the RPCI panel alongside the rest of the page init
+initRPCI();
+
 init();

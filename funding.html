@@ -109,6 +109,41 @@
   <div class="page-subtitle">Tracking private capital flows across the frontier technology stack</div>
 </div>
 
+<!-- Robotnik Private Capital Index (RPCI) — second flagship index. Sits at
+     the top of the analytical surface; structurally different signal vs the
+     public Robotnik Composite Index (capital deployment flow + conviction,
+     not mark-to-market valuation). Lives in its own dedicated panel; not
+     mixed with the public-index chart on home. -->
+<div class="chart-box" id="rpci-panel" style="margin-bottom:1rem;">
+  <div class="rpci-header" style="display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem;">
+    <div>
+      <div class="chart-box-title" style="margin-bottom:0.25rem;">ROBOTNIK PRIVATE CAPITAL INDEX</div>
+      <div style="font-size:9px;color:#5A6178;letter-spacing:0.06em;text-transform:uppercase;">Monthly · 3M trailing window · Base 1,000.00 @ Mar 2025</div>
+    </div>
+    <div style="display:flex;gap:1.25rem;align-items:flex-end;font-variant-numeric:tabular-nums;">
+      <div>
+        <div style="font-size:9px;color:#5A6178;letter-spacing:0.06em;text-transform:uppercase;">Current</div>
+        <div style="font-size:1.25rem;font-weight:700;color:#e6e8ed;" id="rpci-current-value">—</div>
+        <div style="font-size:9px;color:#5A6178;" id="rpci-current-month">—</div>
+      </div>
+      <div>
+        <div style="font-size:9px;color:#5A6178;letter-spacing:0.06em;text-transform:uppercase;">3M Trailing</div>
+        <div style="font-size:1rem;font-weight:600;color:#8B92A5;" id="rpci-trailing-value">—</div>
+      </div>
+      <div>
+        <div style="font-size:9px;color:#5A6178;letter-spacing:0.06em;text-transform:uppercase;">MoM</div>
+        <div style="font-size:1rem;font-weight:600;" id="rpci-mom-change">—</div>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative;height:280px;">
+    <canvas id="rpci-chart"></canvas>
+  </div>
+  <div style="font-size:9px;color:#5A6178;margin-top:0.5rem;line-height:1.5;">
+    Five-component composite: capital deployed (30%) + deal count (20%) + stage-weighted activity (25%) + round size vs trailing-12M median (15%) + investor breadth (10%). Hover for monthly component decomposition. Per-round 95th-percentile cap prevents single-deal skew.
+  </div>
+</div>
+
 <!-- Time window toggle (default 1Y) -->
 <div class="fund-toolbar">
   <div class="time-toggle">
@@ -199,6 +234,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="js/nav.js?v=20260514m3"></script>
-<script src="js/funding.js?v=20260514d"></script>
+<script src="js/funding.js?v=20260520a"></script>
 </body>
 </html>

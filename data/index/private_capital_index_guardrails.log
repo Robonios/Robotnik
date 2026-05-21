@@ -1,0 +1,48 @@
+Robotnik Private Capital Index — guardrail log
+Generated: 2026-05-21T19:22:23.663208+00:00
+Source: data/funding/rounds.json
+
+
+[GUARDRAIL 3] Stage-label classification:
+  Total rounds: 1244
+  Mapped to RPCI stages: 1018
+  Excluded (out-of-scope round types): 226
+    - Strategic: 73
+    - Other: 32
+    - Government investment: 32
+    - Debt Financing: 21
+    - Undisclosed: 19
+    - M&A: 16
+    - IPO: 13
+    - Grant: 9
+    - Bridge: 9
+    - Government: 2
+
+[GUARDRAIL 1] 1 round(s) flagged in 2024-05:
+  [GUARDRAIL 1] month=2024-05 The Bot Company 2024-05-13 stage=Pre-seed / Seed amount=$150M trailing-99th=$26M (5.8x); CAPPED at $22M
+
+[GUARDRAIL 1] 1 round(s) flagged in 2025-09:
+  [GUARDRAIL 1] month=2025-09 Commonwealth Fusion Systems 2025-08-28 stage=Series B amount=$863M trailing-99th=$169M (5.1x); CAPPED at $151M
+
+[GUARDRAIL 1] 1 round(s) flagged in 2025-10:
+  [GUARDRAIL 1] month=2025-10 Commonwealth Fusion Systems 2025-08-28 stage=Series B amount=$863M trailing-99th=$156M (5.5x); CAPPED at $137M
+
+[GUARDRAIL 1] 1 round(s) flagged in 2026-02:
+  [GUARDRAIL 1] month=2026-02 Waymo 2026-02-02 stage=Series C+ amount=$16000M trailing-99th=$1716M (9.3x); CAPPED at $1000M
+
+[GUARDRAIL 1] 1 round(s) flagged in 2026-03:
+  [GUARDRAIL 1] month=2026-03 Waymo 2026-02-02 stage=Series C+ amount=$16000M trailing-99th=$1702M (9.4x); CAPPED at $1000M
+
+[GUARDRAIL 1] 1 round(s) flagged in 2026-04:
+  [GUARDRAIL 1] month=2026-04 Waymo 2026-02-02 stage=Series C+ amount=$16000M trailing-99th=$1829M (8.7x); CAPPED at $1000M
+
+[BASE] March 2025 raw components used as normalisation reference:
+  capital_deployed: 5140.3800
+  deal_count: 49.0000
+  stage_weighted_activity: 53.5000
+  round_size_vs_trailing: 2.5534
+  investor_breadth: 248.0000
+
+[ACCEPTANCE] March 2025 composite = 1000.0
+[ACCEPTANCE] OK — March 2025 = 1000.00 exact.
+[ACCEPTANCE] OK — components sum correctly at every month.
