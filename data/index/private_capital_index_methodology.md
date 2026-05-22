@@ -177,25 +177,86 @@ Two distinct trailing windows are used:
 
 January 2023 – December 2023 serves as the calibration window. Its
 trailing-12M reference distribution is incomplete (zero months of prior
-data at January 2023, building to eleven by December 2023), so its
-readings are computed on an **expanding window**: each component uses
-whatever prior data is available at that point in the dataset.
+data at January 2023, building to eleven by December 2023). The
+calibration period is published and displayed on the chart but with
+two methodology adjustments (introduced in v1.3) plus a visual
+treatment to flag the difference.
 
-As of v1.2 the calibration period **is** displayed on the chart, but
-visually distinct: dimmed line, dashed segment styling, and a vertical
-divider at the calibration → full-confidence boundary so the reader
-cannot accidentally read the two segments as same-confidence data.
+### Methodology adjustments during calibration
 
-The 3M trailing smoothed line starts in March 2023 (needs three months
-of data to populate); January and February 2023 read `null` for
+**Component 4 (round size vs trailing-12M median, weight 15%) is
+dropped from the composite.** Its raw value is still computed and
+included in the per-row `components` dict for transparency, but it
+does not contribute to the weighted sum during calibration. Treating
+"no trailing data" as a zero ratio would equate a missing signal with
+the worst possible value and would artefactually drag the composite
+to an unrepresentative floor — that was the v1.2 bug that v1.3 fixes.
+
+When component 4 is dropped, the remaining four weights renormalise to
+sum to 1.0 by dividing each by (1 – 0.15):
+
+| Component | Standard weight | Calibration weight |
+|---|---:|---:|
+| Capital deployed | 30.00% | **35.29%** |
+| Deal count | 20.00% | **23.53%** |
+| Stage-weighted activity | 25.00% | **29.41%** |
+| Round size vs trailing-12M median | 15.00% | — (dropped) |
+| Investor breadth | 10.00% | **11.76%** |
+
+**Component 5's 1.25× new-investor multiplier is suspended during
+calibration.** The 24-month investor-history lookback is largely
+outside the dataset for early-2023 months, which would cause every
+investor to be classified as "new" and inflate the component
+artefactually. Instead, raw unique-investor count is used in place of
+the with-multiplier value. The component itself stays in the sum at
+its renormalised 11.76% weight.
+
+Each series row's JSON includes a `weighting` field
+(`"4-component (component 4 renormalised)"` or `"5-component (full)"`)
+and a `component_5_multiplier_applied` boolean for full transparency.
+
+### Phase-in
+
+Both adjustments tie to the calibration flag. Component 4 reactivates
+and the multiplier resumes at the first full-confidence month
+(January 2024). This is conservative — component 4 could in principle
+phase in earlier as some stages accumulate trailing data, but tying
+both adjustments to the same boundary makes the methodology cleaner
+and matches the chart's visual calibration → full-confidence divider.
+
+### Smoothing windows
+
+The 3M trailing smoothed line populates from March 2023 (needs three
+months of data); January and February 2023 read `null` for
 `value_3m_trailing`. The 6M trailing line starts in June 2023.
 
-The full-confidence series — months with a complete trailing-12M
-reference — begins January 2024.
+### Visual treatment
 
-Early back-test months use whatever portion of the 24-month investor
-lookback is available within the dataset history. The first complete
-24-month investor history is available at the January 2025 reading.
+The chart starts at **January 2024** — the first full-confidence
+month. The 2023 calibration rows remain in `private_capital_index.json`
+for API consumers (with the `calibration: true` flag, the renormalised
+`weighting` field, and the `component_5_multiplier_applied: false`
+flag intact) but are not rendered on the chart.
+
+This was the v1.4 decision: rather than visually segregate the
+calibration segment on the chart (dimmed/dashed line, divider,
+annotation), drop the segment from the chart entirely. The chart's
+displayed series is therefore uniformly full-confidence, with a single
+consistent line and 5-component weighting throughout. API consumers
+who want the longer history (with calibration adjustments documented
+above) can still pull it from the JSON.
+
+### Partial 3M reading-window edge case
+
+Independent of the trailing-12M issue: the 3-month reading window
+itself is partial for January 2023 (1 month of data: just Jan) and
+February 2023 (2 months: Jan + Feb). These two readings sit lower
+than the steady-state level for the partial-window reason. From March
+2023 onward the reading window is fully populated. This is an
+artefact of starting the series at the dataset's earliest dated
+month; readers should treat the first two values as transitional. The
+3M trailing smoothed line elides this naturally by starting in March
+2023.
 
 ## Handling missing data
 
@@ -308,7 +369,28 @@ requires a new methodology version and a `RPCI vN.N` re-publication of
 the series. The output JSON's `method` field tracks the current version
 string.
 
-**Current version: RPCI v1.2** (2026-05-21)
+**Current version: RPCI v1.4** (2026-05-21)
+
+## Future-review log
+
+Items deferred for later attention; not blocking current production.
+
+- **Component-5 base normalisation for calibration rows.** When the
+  1.25× new-investor multiplier is suspended during the calibration
+  period (Jan–Dec 2023), the raw unique-investor count is normalised
+  against the March 2025 base value, which is the with-multiplier
+  number. This systematically lowers calibration-period component 5
+  readings compared to a like-for-like raw-vs-raw normalisation. The
+  alternative — normalising calibration component 5 against an
+  unmultiplied March 2025 reference — would mean the composite no
+  longer equals exactly 1,000.00 at March 2025 (the base preservation
+  rule). The current calibration-affected readings now only appear in
+  the JSON (not on the chart from v1.4), so this is no longer
+  blocking, but it remains a methodological inconsistency worth
+  resolving for API-consumer correctness. Likely path: publish two
+  variants of component-5 normalisation per row (with-multiplier and
+  raw-equivalent), and document which to use for calibration vs live
+  comparisons.
 
 ### Version history
 
@@ -335,3 +417,28 @@ string.
   with label, vertical marker at the March 2025 base date with label,
   Y-axis auto-scales (no forced floor), MoM delta added to hover
   tooltip, footer caption simplified.
+- **v1.3 (2026-05-21):** Fix calibration-period component handling.
+  Previously, component 4 (round size vs trailing-12M median) was
+  silently zeroing during calibration months and feeding into the
+  composite at its full 15% weight — equating a missing signal with
+  the worst possible value, which artefactually depressed the 2023
+  composite. v1.3 drops component 4 from the composite during
+  calibration months and renormalises the remaining four weights
+  (35.29 / 23.53 / 29.41 / 11.76). Component 5's 1.25× new-investor
+  multiplier is also suspended during calibration (the 24M lookback
+  is largely outside the dataset for early-2023, which would
+  classify every investor as "new" and inflate the component); raw
+  unique-investor count is used instead. Each series row now carries
+  a `weighting` field and a `component_5_multiplier_applied` boolean
+  for transparency. Tooltip note updated from "partial trailing" to
+  "component 4 renormalised."
+- **v1.4 (2026-05-21):** Chart display starts at January 2024 (the
+  first full-confidence month, full 5-component weighting). The 2023
+  calibration rows remain in the underlying JSON for API consumers
+  but are filtered out before the chart renders. Removed chart
+  furniture that's no longer needed: dimmed/dashed calibration
+  segment styling, calibration → full-confidence vertical divider,
+  the "calibration" annotation. Tooltip's calibration note also
+  removed (chart no longer surfaces calibration rows). The base 1,000
+  horizontal reference line and March 2025 vertical marker remain.
+  No change to the calculator or the JSON output structure.

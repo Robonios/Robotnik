@@ -510,7 +510,13 @@ function renderRPCIHeader() {
 function renderRPCIChart() {
   var canvas = document.getElementById('rpci-chart');
   if (!canvas || typeof Chart === 'undefined') return;
-  var series = rpciData.series;
+
+  // v1.4: chart displays Jan 2024 onward (full-confidence segment only).
+  // The 2023 calibration rows remain in rpciData.series for API consumers
+  // but are filtered out here so the displayed line is uniformly weighted
+  // (5-component full) with no segment-styling needed.
+  var series = rpciData.series.filter(function(r) { return !r.calibration; });
+
   var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   var labels = series.map(function(r) {
     var p = r.month.split('-');
@@ -521,41 +527,15 @@ function renderRPCIChart() {
   // value_6m_trailing is also available in the JSON for research but
   // intentionally not plotted — 6M is too lagging for monthly cadence.
 
-  // Index of the base month (March 2025) for the vertical marker
+  // Index of the base month (March 2025) within the displayed series for
+  // the vertical marker. With the chart starting Jan 2024, March 2025 sits
+  // 14 entries in.
   var baseIdx = series.findIndex(function(r) { return r.month === '2025-03'; });
-  // Index of the first full-confidence (post-calibration) month. Segments
-  // of the line at indexes < liveStartIdx are rendered dimmed/dashed to
-  // signal partial trailing-12M data during the 2023 calibration period.
-  var liveStartIdx = series.findIndex(function(r) { return !r.calibration; });
-  if (liveStartIdx === -1) liveStartIdx = series.length;
-
-  // Segment-styling callbacks. Chart.js segment context receives p0 and p1
-  // (the two endpoints of the segment). We dim+dash any segment whose
-  // upper endpoint is still inside the calibration period.
-  function inCalibration(ctx) { return ctx.p1DataIndex < liveStartIdx; }
-  function monthlyBorder(ctx) {
-    return inCalibration(ctx) ? 'rgba(245,217,33,0.28)' : 'rgba(245,217,33,0.55)';
-  }
-  function monthlyDash(ctx) { return inCalibration(ctx) ? [4,4] : undefined; }
-  function trailingBorder(ctx) {
-    return inCalibration(ctx) ? 'rgba(245,217,33,0.40)' : '#F5D921';
-  }
-  function trailingDash(ctx) { return inCalibration(ctx) ? [5,4] : undefined; }
-  function trailingFill(ctx) {
-    return inCalibration(ctx) ? 'rgba(245,217,33,0.02)' : 'rgba(245,217,33,0.10)';
-  }
-  // Per-point styling: calibration-period points get a dimmer dot.
-  var monthlyPointColors = series.map(function(r) {
-    return r.calibration ? 'rgba(245,217,33,0.45)' : '#F5D921';
-  });
-  var monthlyPointRadii = series.map(function(r) {
-    return r.calibration ? 1.8 : 2.5;
-  });
 
   // Plugin to draw the base-value horizontal line at y=1000 and a vertical
-  // marker at the base month (March 2025). Mirrors the public-index chart's
-  // visual pattern. Also draws a faint vertical divider at the calibration→
-  // live boundary so the segment break is structural, not just stylistic.
+  // marker at the base month (March 2025). Mirrors the public-index
+  // chart's visual pattern. (The calibration → live divider was retired in
+  // v1.4 alongside the 2023 segment.)
   var rpciBaselinePlugin = {
     id: 'rpciBaselines',
     afterDatasetsDraw: function(chart) {
@@ -604,26 +584,6 @@ function renderRPCIChart() {
         ctx.fillText('Mar 25 base', xBase + 4, area.top + 2);
         ctx.restore();
       }
-
-      // Vertical divider at the calibration→live boundary
-      if (liveStartIdx > 0 && liveStartIdx < series.length) {
-        var xCal = xs.getPixelForValue(liveStartIdx - 0.5);
-        ctx.save();
-        ctx.strokeStyle = 'rgba(230,232,237,0.10)';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(xCal, area.top);
-        ctx.lineTo(xCal, area.bottom);
-        ctx.stroke();
-        ctx.font = '9px "Roboto Mono", monospace';
-        ctx.fillStyle = 'rgba(230,232,237,0.45)';
-        ctx.textAlign = 'right';
-        ctx.textBaseline = 'top';
-        ctx.fillText('calibration', xCal - 4, area.top + 2);
-        ctx.textAlign = 'left';
-        ctx.fillText('full-confidence →', xCal + 4, area.top + 16);
-        ctx.restore();
-      }
     },
   };
 
@@ -639,15 +599,11 @@ function renderRPCIChart() {
           borderColor: 'rgba(245,217,33,0.55)',
           backgroundColor: 'rgba(245,217,33,0.10)',
           borderWidth: 1.5,
-          pointRadius: monthlyPointRadii,
-          pointBackgroundColor: monthlyPointColors,
+          pointRadius: 2.5,
+          pointBackgroundColor: '#F5D921',
           pointHoverRadius: 5,
           tension: 0,
           fill: false,
-          segment: {
-            borderColor: monthlyBorder,
-            borderDash: monthlyDash,
-          },
         },
         {
           label: '3M trailing',
@@ -660,12 +616,6 @@ function renderRPCIChart() {
           pointBackgroundColor: '#F5D921',
           tension: 0.25,
           fill: true,
-          spanGaps: false,                   // null entries (Jan/Feb 2023) break the line
-          segment: {
-            borderColor: trailingBorder,
-            borderDash: trailingDash,
-            backgroundColor: trailingFill,
-          },
         },
       ],
     },
@@ -697,21 +647,21 @@ function renderRPCIChart() {
             afterBody: function(items) {
               if (!items || !items.length) return '';
               var idx = items[0].dataIndex;
-              var row = rpciData.series[idx];
+              // The chart displays the filtered (Jan 2024 onward) series,
+              // so the tooltip index refers to that filtered array — keep
+              // it consistent for MoM + component lookups.
+              var row = series[idx];
               if (!row || !row.components) return '';
               var lines = [];
-              // MoM line (per spec) — month-on-month delta from the prior
-              // monthly point. Null for the first row in series.
+              // MoM line — month-on-month delta from the prior monthly point.
+              // Null for the first row in the displayed series (Jan 2024).
               if (idx > 0) {
-                var prior = rpciData.series[idx - 1];
+                var prior = series[idx - 1];
                 if (prior && prior.value) {
                   var d = (row.value - prior.value) / prior.value * 100;
                   var s = (d >= 0 ? '+' : '') + d.toFixed(1) + '%';
                   lines.push('MoM: ' + s);
                 }
-              }
-              if (row.calibration) {
-                lines.push('(calibration period · partial trailing)');
               }
               lines.push('');
               lines.push('Components (normalised, 1000 @ base):');

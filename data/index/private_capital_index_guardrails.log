@@ -1,5 +1,5 @@
 Robotnik Private Capital Index — guardrail log
-Generated: 2026-05-22T15:45:56.459037+00:00
+Generated: 2026-05-22T16:14:06.911993+00:00
 Source: data/funding/rounds.json
 
 
@@ -73,6 +73,30 @@ Source: data/funding/rounds.json
   round_size_vs_trailing: 2.5534
   investor_breadth: 248.0000
 
+[CALIBRATION] During Jan-Dec 2023 readings:
+  Component 4 (round size vs trailing-12M median) is DROPPED
+  (no trailing data; treating zero as 'worst value' was the v1.2 bug).
+  Remaining weights renormalised to sum to 1.0:
+    capital_deployed: 35.29%
+    deal_count: 23.53%
+    stage_weighted_activity: 29.41%
+    investor_breadth: 11.76%
+  Component 5 multiplier (1.25x new-investor) is SUSPENDED;
+  raw unique-investor count is used in place of the with-multiplier value.
+
 [ACCEPTANCE] March 2025 composite = 1000.0
 [ACCEPTANCE] OK — March 2025 = 1000.00 exact.
-[ACCEPTANCE] OK — components sum correctly at every month.
+
+*** WARN: composite ≠ weighted sum at:
+  2023-01: composite=429.1332 weighted_sum=364.7632
+  2023-02: composite=735.6605 weighted_sum=625.3114
+  2023-03: composite=1043.0607 weighted_sum=886.6016
+  2023-04: composite=1101.0304 weighted_sum=1068.7656
+  2023-05: composite=1314.3608 weighted_sum=1209.4662
+  2023-06: composite=1388.0025 weighted_sum=1301.7911
+  2023-07: composite=1291.1253 weighted_sum=1212.1247
+  2023-08: composite=1229.4224 weighted_sum=1175.4735
+  2023-09: composite=1460.6803 weighted_sum=1430.8913
+  2023-10: composite=1520.0864 weighted_sum=1473.0657
+  2023-11: composite=1457.0293 weighted_sum=1411.415
+  2023-12: composite=1359.3072 weighted_sum=1236.7935

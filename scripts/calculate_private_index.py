@@ -563,7 +563,21 @@ def load_and_classify(rounds_path):
 
 def compute_components(year, month, all_rounds, msgs):
     """Compute the five raw component values for the monthly reading at
-    (year, month) using a 3-month trailing window."""
+    (year, month) using a 3-month trailing window.
+
+    During calibration months ((year, month) < FULL_CONFIDENCE_START) two
+    methodology adjustments apply:
+      - Component 5 (investor breadth) is computed as raw unique-investor
+        count, without the 1.25x new-investor multiplier. The 24-month
+        lookback isn't reliably populated during calibration, so treating
+        every investor as 'new' would systematically inflate the reading.
+      - Component 4 (round size vs trailing-12M median) is still computed
+        here (returns 0 when no trailing data exists), but downstream the
+        weighting step will drop it from the composite and renormalise.
+
+    See RPCI v1.3 methodology section ('Calibration handling') for the
+    full rationale."""
+    is_calibration = (year, month) < FULL_CONFIDENCE_START
     w_start, w_end = window_3m(year, month)
     t_start, t_end = trailing_12m(year, month)
     p_start, p_end = prior_24m(year, month)
@@ -629,17 +643,32 @@ def compute_components(year, month, all_rounds, msgs):
         ratios.append(r['amount_m'] / median_at_stage)
     avg_ratio = sum(ratios) / len(ratios) if ratios else 0
 
-    # ─── 5. Investor breadth (with new-investor multiplier)
+    # ─── 5. Investor breadth (multiplier suspended during calibration)
     investors_in_window = set()
     for r in window_rounds:
         investors_in_window.update(r['investors'])
-    investors_in_prior_24m = set()
-    for r in prior_rounds:
-        investors_in_prior_24m.update(r['investors'])
+    if is_calibration:
+        # Suspend the 1.25x multiplier — insufficient 24M lookback to
+        # reliably classify "new" investors. Use raw unique count.
+        investor_breadth = float(len(investors_in_window))
+        multiplier_applied = False
+    else:
+        investors_in_prior_24m = set()
+        for r in prior_rounds:
+            investors_in_prior_24m.update(r['investors'])
+        returning = sum(1 for inv in investors_in_window if inv in investors_in_prior_24m)
+        new = sum(1 for inv in investors_in_window if inv not in investors_in_prior_24m)
+        investor_breadth = returning + NEW_INVESTOR_MULTIPLIER * new
+        multiplier_applied = True
 
-    returning = sum(1 for inv in investors_in_window if inv in investors_in_prior_24m)
-    new = sum(1 for inv in investors_in_window if inv not in investors_in_prior_24m)
-    investor_breadth = returning + NEW_INVESTOR_MULTIPLIER * new
+    # Component 4 availability: requires trailing-12M reference data. During
+    # calibration months this is partial-to-empty (the dataset starts Jan
+    # 2023, so trailing windows for early-2023 months are largely outside
+    # the dataset). We tie component-4 availability to the calibration flag
+    # for clean methodology — drop component 4 during calibration and
+    # renormalise the other four weights. From Jan 2024 (FULL_CONFIDENCE_START)
+    # the trailing-12M window is complete and component 4 is reinstated.
+    component_4_available = not is_calibration
 
     return {
         'capital_deployed': capital_deployed,
@@ -650,6 +679,9 @@ def compute_components(year, month, all_rounds, msgs):
         '_raw_dealcount': deal_count,
         '_raw_capital_usd': capital_deployed * 1_000_000,
         '_window': (w_start.isoformat(), w_end.isoformat()),
+        '_is_calibration': is_calibration,
+        '_component_4_available': component_4_available,
+        '_component_5_multiplier_applied': multiplier_applied,
     }
 
 
@@ -706,21 +738,47 @@ def main():
     for k, v in base_for_norm.items():
         msgs.append(f"  {k}: {v:.4f}")
 
+    # Active-weight schemes. Calibration months drop component 4 (no
+    # trailing-12M reference data) and redistribute its 15% across the
+    # remaining four components, preserving their relative ratios.
+    CALIBRATION_WEIGHTS = {
+        # Each calibration weight = full weight / (1 - 0.15) so the four
+        # active components sum to 1.0. Capital 30/85, deal count 20/85,
+        # stage-weighted 25/85, investor breadth 10/85.
+        'capital_deployed':        WEIGHTS['capital_deployed']        / (1 - WEIGHTS['round_size_vs_trailing']),
+        'deal_count':              WEIGHTS['deal_count']              / (1 - WEIGHTS['round_size_vs_trailing']),
+        'stage_weighted_activity': WEIGHTS['stage_weighted_activity'] / (1 - WEIGHTS['round_size_vs_trailing']),
+        'investor_breadth':        WEIGHTS['investor_breadth']        / (1 - WEIGHTS['round_size_vs_trailing']),
+        # 'round_size_vs_trailing' deliberately absent — dropped from sum.
+    }
+    msgs.append(f"\n[CALIBRATION] During Jan-Dec 2023 readings:")
+    msgs.append(f"  Component 4 (round size vs trailing-12M median) is DROPPED")
+    msgs.append(f"  (no trailing data; treating zero as 'worst value' was the v1.2 bug).")
+    msgs.append(f"  Remaining weights renormalised to sum to 1.0:")
+    for k, v in CALIBRATION_WEIGHTS.items():
+        msgs.append(f"    {k}: {v*100:.2f}%")
+    msgs.append(f"  Component 5 multiplier (1.25x new-investor) is SUSPENDED;")
+    msgs.append(f"  raw unique-investor count is used in place of the with-multiplier value.")
+
     # Normalise each component to 1000 at base, weight, sum
     series_out = []
     composite_values = []
     for (y, m) in sorted(raw_series.keys()):
         raw = raw_series[(y, m)]
+        is_calib = raw['_is_calibration']
+        active_weights = CALIBRATION_WEIGHTS if is_calib else WEIGHTS
+
         normalised = {}
         composite = 0.0
-        for comp, w in WEIGHTS.items():
+        for comp in WEIGHTS:
             base_val = base_for_norm[comp]
             if base_val == 0:
                 norm = 0.0
             else:
                 norm = (raw[comp] / base_val) * BASE_VALUE
             normalised[comp] = round(norm, 4)
-            composite += w * norm
+            if comp in active_weights:
+                composite += active_weights[comp] * norm
         composite_values.append(composite)
         series_out.append({
             'month': f"{y}-{m:02d}",           # spec schema field
@@ -735,7 +793,12 @@ def main():
             'capital_deployed_raw_usd': round(raw['_raw_capital_usd'], 2),
             # Calibration flag: 2023 months have an incomplete trailing-12M
             # reference window. Full-confidence series begins Jan 2024.
-            'calibration': (y, m) < FULL_CONFIDENCE_START,
+            'calibration': is_calib,
+            # v1.3: per-row weighting note. During calibration component 4
+            # is dropped and other weights renormalised; component 5
+            # multiplier suspended.
+            'weighting': '4-component (component 4 renormalised)' if is_calib else '5-component (full)',
+            'component_5_multiplier_applied': raw['_component_5_multiplier_applied'],
         })
 
     # 3-month and 6-month trailing smoothed lines. Per spec, the monthly
