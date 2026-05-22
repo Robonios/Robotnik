@@ -68,7 +68,13 @@ MA_AUDIT_LOG  = os.path.join(INDEX_DIR, 'private_capital_index_ma_audit.log')
 # ── methodology constants ────────────────────────────────────────────────
 BASE_VALUE = 1000.0
 BASE_MONTH = (2025, 3)  # March 2025; reading at this month == BASE_VALUE
-BACK_TEST_START = (2024, 1)  # First published month
+SERIES_START = (2023, 1)  # Earliest month included in series output
+CALIBRATION_END = (2023, 12)  # Last month flagged calibration=True
+# Months before FULL_CONFIDENCE_START have an incomplete trailing-12M
+# reference window. Their readings are computed on an expanding window
+# and flagged calibration=True so the frontend can render them visually
+# distinct (dimmed/dashed).
+FULL_CONFIDENCE_START = (2024, 1)
 
 WEIGHTS = {
     'capital_deployed': 0.30,
@@ -678,9 +684,14 @@ def main():
     max_date = max(r['date'] for r in rounds)
     end_y, end_m = max_date.year, max_date.month
 
-    # Compute raw components for every month in the published range
-    raw_series = {}  # (year, month) -> components dict
-    for y, m in iter_months(BACK_TEST_START[0], BACK_TEST_START[1], end_y, end_m):
+    # Compute raw components for every month in the published range.
+    # The series now starts Jan 2023 (was Jan 2024). The 2023 segment is
+    # the calibration period — its trailing-12M reference is an expanding
+    # window (zero months of prior data at Jan 2023, building to 11 by
+    # Dec 2023). compute_components() already handles partial-trailing
+    # gracefully (median/cap return None and per-round skip applies).
+    raw_series = {}
+    for y, m in iter_months(SERIES_START[0], SERIES_START[1], end_y, end_m):
         raw_series[(y, m)] = compute_components(y, m, rounds, msgs)
 
     # The normalisation reference is March 2025
@@ -722,16 +733,28 @@ def main():
             'components': normalised,
             'deal_count_raw': raw['_raw_dealcount'],
             'capital_deployed_raw_usd': round(raw['_raw_capital_usd'], 2),
+            # Calibration flag: 2023 months have an incomplete trailing-12M
+            # reference window. Full-confidence series begins Jan 2024.
+            'calibration': (y, m) < FULL_CONFIDENCE_START,
         })
 
     # 3-month and 6-month trailing smoothed lines. Per spec, the monthly
     # point stays at 3M either way; only the smoothed series is under
     # consideration for the longer window. Publish both for comparison.
+    # The 3M trailing requires 3 months of data, so the first 2 series
+    # entries (Jan/Feb 2023) get null — the line starts populating in
+    # March 2023. Same logic for 6M (needs 6 months → first populated June 2023).
     for i, row in enumerate(series_out):
-        recent_3 = composite_values[max(0, i - 2):i + 1]
-        recent_6 = composite_values[max(0, i - 5):i + 1]
-        row['value_3m_trailing'] = round(sum(recent_3) / len(recent_3), 4)
-        row['value_6m_trailing'] = round(sum(recent_6) / len(recent_6), 4)
+        if i < 2:
+            row['value_3m_trailing'] = None
+        else:
+            recent_3 = composite_values[i - 2:i + 1]
+            row['value_3m_trailing'] = round(sum(recent_3) / 3, 4)
+        if i < 5:
+            row['value_6m_trailing'] = None
+        else:
+            recent_6 = composite_values[i - 5:i + 1]
+            row['value_6m_trailing'] = round(sum(recent_6) / 6, 4)
 
     # Verify March 2025 == 1000.00 exact (acceptance criterion)
     march_2025 = next(r for r in series_out if r['month'] == '2025-03')

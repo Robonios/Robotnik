@@ -175,10 +175,23 @@ Two distinct trailing windows are used:
 
 ## Calibration window
 
-January 2023 – December 2023 serves as the calibration window. It
-establishes the trailing-12M reference distributions needed for the
-earliest published readings (Jan 2024 onward). Calibration-window
-readings are not themselves published, only used as backstop history.
+January 2023 – December 2023 serves as the calibration window. Its
+trailing-12M reference distribution is incomplete (zero months of prior
+data at January 2023, building to eleven by December 2023), so its
+readings are computed on an **expanding window**: each component uses
+whatever prior data is available at that point in the dataset.
+
+As of v1.2 the calibration period **is** displayed on the chart, but
+visually distinct: dimmed line, dashed segment styling, and a vertical
+divider at the calibration → full-confidence boundary so the reader
+cannot accidentally read the two segments as same-confidence data.
+
+The 3M trailing smoothed line starts in March 2023 (needs three months
+of data to populate); January and February 2023 read `null` for
+`value_3m_trailing`. The 6M trailing line starts in June 2023.
+
+The full-confidence series — months with a complete trailing-12M
+reference — begins January 2024.
 
 Early back-test months use whatever portion of the 24-month investor
 lookback is available within the dataset history. The first complete
@@ -295,7 +308,7 @@ requires a new methodology version and a `RPCI vN.N` re-publication of
 the series. The output JSON's `method` field tracks the current version
 string.
 
-**Current version: RPCI v1.1** (2026-05-21)
+**Current version: RPCI v1.2** (2026-05-21)
 
 ### Version history
 
@@ -310,3 +323,15 @@ string.
   use; chart continues to publish the monthly point + 3M trailing line
   only. Audit logs split into guardrails + M&A audit for cleaner
   downstream review.
+- **v1.2 (2026-05-21):** Series extended back to January 2023.
+  Calibration period (Jan–Dec 2023) now published and displayed on
+  the chart but rendered visually distinct (dimmed, dashed line, with
+  a labelled vertical divider at the calibration → full-confidence
+  boundary). Components are computed on an expanding window during the
+  calibration period — partial trailing-12M data is used where
+  available; component values converge to stable form at January 2024.
+  3M trailing line populates from March 2023; 6M trailing from June
+  2023. Chart additions: horizontal reference line at base value 1,000
+  with label, vertical marker at the March 2025 base date with label,
+  Y-axis auto-scales (no forced floor), MoM delta added to hover
+  tooltip, footer caption simplified.

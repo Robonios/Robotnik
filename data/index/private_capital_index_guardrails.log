@@ -1,5 +1,5 @@
 Robotnik Private Capital Index — guardrail log
-Generated: 2026-05-21T19:56:16.718290+00:00
+Generated: 2026-05-22T15:45:56.459037+00:00
 Source: data/funding/rounds.json
 
 
@@ -33,6 +33,20 @@ Source: data/funding/rounds.json
     2026-04: 4 IPO row(s) filtered out
 
 [FILTER: M&A] 16 M&A row(s) classified: 3 included, 13 excluded (full decision table in private_capital_index_ma_audit.log)
+
+[GUARDRAIL 1] 3 round(s) flagged in 2023-04:
+  [GUARDRAIL 1] month=2023-04 Yarbo 2023-04-15 stage=Pre-seed / Seed amount=$14M trailing-99th=$2M (5.8x); CAPPED at $2M
+  [GUARDRAIL 1] month=2023-04 Dronamics 2023-02-17 stage=Pre-seed / Seed amount=$40M trailing-99th=$2M (16.0x); CAPPED at $2M
+  [GUARDRAIL 1] month=2023-04 Hanyang Technology 2023-03-15 stage=Pre-seed / Seed amount=$14M trailing-99th=$2M (5.8x); CAPPED at $2M
+
+[GUARDRAIL 1] 1 round(s) flagged in 2023-06:
+  [GUARDRAIL 1] month=2023-06 Anhui YOFC Advanced Semiconductor (YASC) 2023-06-28 stage=Series A amount=$562M trailing-99th=$76M (7.4x); CAPPED at $60M
+
+[GUARDRAIL 1] 1 round(s) flagged in 2023-07:
+  [GUARDRAIL 1] month=2023-07 Anhui YOFC Advanced Semiconductor (YASC) 2023-06-28 stage=Series A amount=$562M trailing-99th=$92M (6.1x); CAPPED at $75M
+
+[GUARDRAIL 1] 1 round(s) flagged in 2023-08:
+  [GUARDRAIL 1] month=2023-08 Anhui YOFC Advanced Semiconductor (YASC) 2023-06-28 stage=Series A amount=$562M trailing-99th=$90M (6.2x); CAPPED at $78M
 
 [GUARDRAIL 1] 1 round(s) flagged in 2024-05:
   [GUARDRAIL 1] month=2024-05 The Bot Company 2024-05-13 stage=Pre-seed / Seed amount=$150M trailing-99th=$26M (5.8x); CAPPED at $22M

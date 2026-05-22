@@ -120,19 +120,21 @@
       <div class="chart-box-title" style="margin-bottom:0.25rem;">ROBOTNIK PRIVATE CAPITAL INDEX</div>
       <div style="font-size:9px;color:#5A6178;letter-spacing:0.06em;text-transform:uppercase;">Monthly · 3M trailing window · Base 1,000.00 @ Mar 2025</div>
     </div>
+    <!-- Three-column stat block: all columns share the same vertical
+         structure (small label on top, large value below). The Current
+         column folds the date into its label so all three baselines align. -->
     <div style="display:flex;gap:1.25rem;align-items:flex-end;font-variant-numeric:tabular-nums;">
       <div>
-        <div style="font-size:9px;color:#5A6178;letter-spacing:0.06em;text-transform:uppercase;">Current</div>
+        <div style="font-size:9px;color:#5A6178;letter-spacing:0.06em;text-transform:uppercase;">Current: <span id="rpci-current-month">—</span></div>
         <div style="font-size:1.25rem;font-weight:700;color:#e6e8ed;" id="rpci-current-value">—</div>
-        <div style="font-size:9px;color:#5A6178;" id="rpci-current-month">—</div>
       </div>
       <div>
         <div style="font-size:9px;color:#5A6178;letter-spacing:0.06em;text-transform:uppercase;">3M Trailing</div>
-        <div style="font-size:1rem;font-weight:600;color:#F5D921;" id="rpci-trailing-value">—</div>
+        <div style="font-size:1.25rem;font-weight:700;color:#F5D921;" id="rpci-trailing-value">—</div>
       </div>
       <div>
         <div style="font-size:9px;color:#5A6178;letter-spacing:0.06em;text-transform:uppercase;">MoM</div>
-        <div style="font-size:1rem;font-weight:600;" id="rpci-mom-change">—</div>
+        <div style="font-size:1.25rem;font-weight:700;" id="rpci-mom-change">—</div>
       </div>
     </div>
   </div>
@@ -140,7 +142,7 @@
     <canvas id="rpci-chart"></canvas>
   </div>
   <div style="font-size:9px;color:#5A6178;margin-top:0.5rem;line-height:1.5;">
-    Five-component composite: capital deployed (30%) + deal count (20%) + stage-weighted activity (25%) + round size vs trailing-12M median (15%) + investor breadth (10%). Hover for monthly component decomposition. Per-round 95th-percentile cap prevents single-deal skew.
+    Five-component composite index · base 1,000.00 @ Mar 2025 · hover any month for decomposition · methodology published separately
   </div>
 </div>
 
@@ -234,6 +236,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="js/nav.js?v=20260514m3"></script>
-<script src="js/funding.js?v=20260520c"></script>
+<script src="js/funding.js?v=20260520d"></script>
 </body>
 </html>

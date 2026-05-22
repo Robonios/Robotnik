@@ -523,6 +523,109 @@ function renderRPCIChart() {
 
   // Index of the base month (March 2025) for the vertical marker
   var baseIdx = series.findIndex(function(r) { return r.month === '2025-03'; });
+  // Index of the first full-confidence (post-calibration) month. Segments
+  // of the line at indexes < liveStartIdx are rendered dimmed/dashed to
+  // signal partial trailing-12M data during the 2023 calibration period.
+  var liveStartIdx = series.findIndex(function(r) { return !r.calibration; });
+  if (liveStartIdx === -1) liveStartIdx = series.length;
+
+  // Segment-styling callbacks. Chart.js segment context receives p0 and p1
+  // (the two endpoints of the segment). We dim+dash any segment whose
+  // upper endpoint is still inside the calibration period.
+  function inCalibration(ctx) { return ctx.p1DataIndex < liveStartIdx; }
+  function monthlyBorder(ctx) {
+    return inCalibration(ctx) ? 'rgba(245,217,33,0.28)' : 'rgba(245,217,33,0.55)';
+  }
+  function monthlyDash(ctx) { return inCalibration(ctx) ? [4,4] : undefined; }
+  function trailingBorder(ctx) {
+    return inCalibration(ctx) ? 'rgba(245,217,33,0.40)' : '#F5D921';
+  }
+  function trailingDash(ctx) { return inCalibration(ctx) ? [5,4] : undefined; }
+  function trailingFill(ctx) {
+    return inCalibration(ctx) ? 'rgba(245,217,33,0.02)' : 'rgba(245,217,33,0.10)';
+  }
+  // Per-point styling: calibration-period points get a dimmer dot.
+  var monthlyPointColors = series.map(function(r) {
+    return r.calibration ? 'rgba(245,217,33,0.45)' : '#F5D921';
+  });
+  var monthlyPointRadii = series.map(function(r) {
+    return r.calibration ? 1.8 : 2.5;
+  });
+
+  // Plugin to draw the base-value horizontal line at y=1000 and a vertical
+  // marker at the base month (March 2025). Mirrors the public-index chart's
+  // visual pattern. Also draws a faint vertical divider at the calibration→
+  // live boundary so the segment break is structural, not just stylistic.
+  var rpciBaselinePlugin = {
+    id: 'rpciBaselines',
+    afterDatasetsDraw: function(chart) {
+      var ctx = chart.ctx;
+      var area = chart.chartArea;
+      var xs = chart.scales.x;
+      var ys = chart.scales.y;
+      if (!area || !xs || !ys) return;
+
+      // Horizontal reference line at the base value (1,000)
+      var yBase = ys.getPixelForValue(rpciData.base_value);
+      if (yBase >= area.top && yBase <= area.bottom) {
+        ctx.save();
+        ctx.strokeStyle = 'rgba(230,232,237,0.18)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.moveTo(area.left, yBase);
+        ctx.lineTo(area.right, yBase);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.font = '10px "Roboto Mono", monospace';
+        ctx.fillStyle = 'rgba(230,232,237,0.55)';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText('Base 1,000', area.right - 4, yBase - 3);
+        ctx.restore();
+      }
+
+      // Vertical marker at the base month (March 2025)
+      if (baseIdx >= 0) {
+        var xBase = xs.getPixelForValue(baseIdx);
+        ctx.save();
+        ctx.strokeStyle = 'rgba(245,217,33,0.30)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 3]);
+        ctx.beginPath();
+        ctx.moveTo(xBase, area.top);
+        ctx.lineTo(xBase, area.bottom);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.font = '10px "Roboto Mono", monospace';
+        ctx.fillStyle = 'rgba(245,217,33,0.75)';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        ctx.fillText('Mar 25 base', xBase + 4, area.top + 2);
+        ctx.restore();
+      }
+
+      // Vertical divider at the calibration→live boundary
+      if (liveStartIdx > 0 && liveStartIdx < series.length) {
+        var xCal = xs.getPixelForValue(liveStartIdx - 0.5);
+        ctx.save();
+        ctx.strokeStyle = 'rgba(230,232,237,0.10)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(xCal, area.top);
+        ctx.lineTo(xCal, area.bottom);
+        ctx.stroke();
+        ctx.font = '9px "Roboto Mono", monospace';
+        ctx.fillStyle = 'rgba(230,232,237,0.45)';
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'top';
+        ctx.fillText('calibration', xCal - 4, area.top + 2);
+        ctx.textAlign = 'left';
+        ctx.fillText('full-confidence →', xCal + 4, area.top + 16);
+        ctx.restore();
+      }
+    },
+  };
 
   if (rpciChart) rpciChart.destroy();
   rpciChart = new Chart(canvas, {
@@ -536,23 +639,33 @@ function renderRPCIChart() {
           borderColor: 'rgba(245,217,33,0.55)',
           backgroundColor: 'rgba(245,217,33,0.10)',
           borderWidth: 1.5,
-          pointRadius: 2.5,
-          pointBackgroundColor: '#F5D921',
+          pointRadius: monthlyPointRadii,
+          pointBackgroundColor: monthlyPointColors,
           pointHoverRadius: 5,
           tension: 0,
           fill: false,
+          segment: {
+            borderColor: monthlyBorder,
+            borderDash: monthlyDash,
+          },
         },
         {
           label: '3M trailing',
           data: trailingData,
           borderColor: '#F5D921',
-          backgroundColor: 'rgba(245,217,33,0.06)',
+          backgroundColor: 'rgba(245,217,33,0.10)',
           borderWidth: 2.5,
           pointRadius: 0,
           pointHoverRadius: 4,
           pointBackgroundColor: '#F5D921',
           tension: 0.25,
           fill: true,
+          spanGaps: false,                   // null entries (Jan/Feb 2023) break the line
+          segment: {
+            borderColor: trailingBorder,
+            borderDash: trailingDash,
+            backgroundColor: trailingFill,
+          },
         },
       ],
     },
@@ -586,18 +699,33 @@ function renderRPCIChart() {
               var idx = items[0].dataIndex;
               var row = rpciData.series[idx];
               if (!row || !row.components) return '';
-              var lines = ['', 'Components (normalised, 1000 @ base):'];
-              var labels = {
+              var lines = [];
+              // MoM line (per spec) — month-on-month delta from the prior
+              // monthly point. Null for the first row in series.
+              if (idx > 0) {
+                var prior = rpciData.series[idx - 1];
+                if (prior && prior.value) {
+                  var d = (row.value - prior.value) / prior.value * 100;
+                  var s = (d >= 0 ? '+' : '') + d.toFixed(1) + '%';
+                  lines.push('MoM: ' + s);
+                }
+              }
+              if (row.calibration) {
+                lines.push('(calibration period · partial trailing)');
+              }
+              lines.push('');
+              lines.push('Components (normalised, 1000 @ base):');
+              var labelsM = {
                 capital_deployed:        'Capital deployed   (30%)',
                 deal_count:              'Deal count         (20%)',
                 stage_weighted_activity: 'Stage-weighted     (25%)',
                 round_size_vs_trailing:  'Size vs trailing   (15%)',
                 investor_breadth:        'Investor breadth   (10%)',
               };
-              Object.keys(labels).forEach(function(k) {
+              Object.keys(labelsM).forEach(function(k) {
                 var v = row.components[k];
                 if (v != null) {
-                  lines.push('  ' + labels[k] + '  ' + Number(v).toFixed(1));
+                  lines.push('  ' + labelsM[k] + '  ' + Number(v).toFixed(1));
                 }
               });
               lines.push('');
@@ -615,11 +743,14 @@ function renderRPCIChart() {
             font: { family: 'Roboto Mono', size: 9 },
             autoSkip: true,
             maxRotation: 0,
-            maxTicksLimit: 12,
+            maxTicksLimit: 14,
           },
           grid: { color: '#1E2330' },
         },
         y: {
+          // Auto-scale; do not force a floor. The Base 1,000 reference
+          // line (drawn by rpciBaselinePlugin) anchors the reader
+          // regardless of where the axis floor lands.
           ticks: {
             color: '#5A6178',
             font: { family: 'Roboto Mono', size: 9 },
@@ -630,6 +761,7 @@ function renderRPCIChart() {
         },
       },
     },
+    plugins: [rpciBaselinePlugin],
   });
 }
 
