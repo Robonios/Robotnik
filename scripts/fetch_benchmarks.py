@@ -3,9 +3,15 @@
 Robotnik Benchmark Price Fetcher
 =================================
 Fetches daily price history for benchmark indices/ETFs from EODHD:
-  SPY  (S&P 500 proxy)
-  QQQ  (NASDAQ Composite proxy)
-  SOXX (PHLX Semiconductor Index proxy)
+
+Broad-market beta references (used for constituent beta calculations):
+  SPY  (S&P 500 ETF)
+  IXIC (NASDAQ Composite — index proper, not QQQ proxy)
+  URTH (iShares MSCI World ETF — global beta proxy)
+
+Sector references (reported alongside, not used as broad-beta benchmark):
+  QQQ  (NASDAQ-100 ETF — top 100 non-financials, NOT the full Composite)
+  SOXX (PHLX Semiconductor Index ETF)
   ROBO (ROBO Global Robotics & Automation ETF)
 
 Outputs:
@@ -54,21 +60,37 @@ BENCHMARKS = {
         "name": "S&P 500 (SPY ETF)",
         "eodhd_symbol": "SPY.US",
         "color": "#7B8794",
+        "role": "broad",
+    },
+    "IXIC": {
+        "name": "NASDAQ Composite Index",
+        "eodhd_symbol": "IXIC.INDX",
+        "color": "#5B9BD5",
+        "role": "broad",
+    },
+    "URTH": {
+        "name": "iShares MSCI World ETF",
+        "eodhd_symbol": "URTH.US",
+        "color": "#9C7BD5",
+        "role": "broad",
     },
     "QQQ": {
-        "name": "NASDAQ Composite (QQQ ETF)",
+        "name": "NASDAQ-100 (QQQ ETF, top 100 non-financials)",
         "eodhd_symbol": "QQQ.US",
-        "color": "#5B9BD5",
+        "color": "#7BB3D5",
+        "role": "sector",
     },
     "SOXX": {
         "name": "PHLX Semiconductor Index (SOXX ETF)",
         "eodhd_symbol": "SOXX.US",
         "color": "#E97451",
+        "role": "sector",
     },
     "ROBO": {
         "name": "ROBO Global Robotics & Automation ETF",
         "eodhd_symbol": "ROBO.US",
         "color": "#70AD47",
+        "role": "sector",
     },
 }
 
@@ -132,6 +154,7 @@ def main():
                     "ticker": ticker,
                     "name": info["name"],
                     "color": info["color"],
+                    "role": info.get("role"),
                     "days": len(series),
                     "from": series[0]["date"],
                     "to": series[-1]["date"],
@@ -143,6 +166,7 @@ def main():
                     "ticker": ticker,
                     "name": info["name"],
                     "color": info["color"],
+                    "role": info.get("role"),
                     "days": 0,
                     "from": None,
                     "to": None,
@@ -154,6 +178,7 @@ def main():
                 "ticker": ticker,
                 "name": info["name"],
                 "color": info["color"],
+                "role": info.get("role"),
                 "days": 0,
                 "from": None,
                 "to": None,
