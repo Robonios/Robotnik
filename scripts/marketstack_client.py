@@ -50,6 +50,11 @@ DEFAULT_TIMEOUT = 30
 PAGE_LIMIT_MAX = 1000     # Professional tier max per page
 INTER_CALL_SLEEP = 0.05   # 50ms ≈ 20 req/sec, comfortably under any tier's burst cap
 
+# Rate-limit retry — MarketStack returns rate_limit_reached when burst-rate
+# is hit even within monthly quota. Exponential backoff per attempt.
+RATE_LIMIT_RETRY_MAX = 3
+RATE_LIMIT_BACKOFF_SECONDS = [1.0, 3.0, 10.0]  # try after 1s, 3s, 10s
+
 # Vendor-driven per-country routing — these are constraints surfaced by live
 # probing, NOT design preferences:
 #   - Tokyo: V1 returns "data not available, try V2" for ALL Tokyo tickers
@@ -178,10 +183,30 @@ def _api_get(path: str, params: dict, timeout: int = DEFAULT_TIMEOUT,
     routing happens at the caller layer (fetch_eod_latest etc.) — see
     `country_api_version()`.
 
+    Includes automatic exponential-backoff retry on RateLimitError — burst-
+    rate limits are common during full-universe sweeps and shouldn't cause
+    per-ticker failure when a short wait would clear them.
+
     Also normalises response symbols to their canonical "SYMBOL.MIC" form
     where MarketStack strips the MIC suffix on output — that quirk would
     otherwise leak into every call site as defensive lookup logic.
     """
+    last_rate_limit = None
+    for attempt in range(RATE_LIMIT_RETRY_MAX + 1):
+        try:
+            return _api_get_once(path, params, timeout, version)
+        except RateLimitError as e:
+            last_rate_limit = e
+            if attempt >= RATE_LIMIT_RETRY_MAX:
+                break
+            delay = RATE_LIMIT_BACKOFF_SECONDS[min(attempt, len(RATE_LIMIT_BACKOFF_SECONDS) - 1)]
+            time.sleep(delay)
+    # Exhausted retries
+    raise last_rate_limit
+
+
+def _api_get_once(path: str, params: dict, timeout: int, version) -> dict:
+    """Single-attempt API call. Wrapped by _api_get for retry-on-rate-limit."""
     params = {**params, "access_key": get_api_key()}
     qs = urllib.parse.urlencode(params, safe=",")
     base = BASE_URL_FMT.format(version or API_VERSION)
@@ -330,7 +355,7 @@ TICKER_OVERRIDES = {
 
     # Per-ticker V1 symbol overrides (no version change vs default)
     "MRSN FP":  ("MRN.XPAR",   "v1"),  # Mersen — Bloomberg legacy ticker; current XPAR is MRN
-    "STMPA":    ("STM.PA",     "v2"),  # STMicroelectronics N.V. parent — Euronext Paris, V2+.PA
+    "STMPA":    ("STMPA.PA",   "v2"),  # STMicroelectronics N.V. parent — Euronext Paris uses STMPA ticker (5 letters), not STM
 }
 
 US_ADR_OVERRIDES = {
