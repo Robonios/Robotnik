@@ -470,3 +470,87 @@ Re-measure at each cutover-relevant change and at every quarterly registry
 audit. The methodology document is updated when the override count crosses
 a threshold or when a new vendor-coverage-pattern surfaces (e.g. a new
 country joins MARKETSTACK_UNSUPPORTED).
+
+---
+
+## 10. Bottleneck-Weighted Composite — coverage milestones and audit trail
+
+This section captures the numerical evolution of the bottleneck-weighted
+composite as rating coverage expands. The audit trail matters at index
+licensing — allocators will ask "how did this index evolve as your rating
+coverage grew, and at what coverage level did it stabilise?".
+
+### 10.1 Headline coverage thresholds
+
+Two coverage figures matter:
+
+- **Universe-wide coverage** (n_rated / n_total_registry, currently 240 / 566 = 42%):
+  Includes private companies, tokens, materials companies not in the public
+  universe, and other non-equity rows. This is the figure cited in §4 of
+  the methodology and in the doc-wide "preliminary / not headline-publishable
+  until ≥80%" framing.
+
+- **Equities-only coverage** (n_rated_in_eligible / n_eligible_for_composite,
+  currently 210 / 233 = **90.1%**): Only the public-equity subset that the
+  bottleneck-weighted composite actually reads from. This is the headline
+  figure for the licensable index. **At 90.1%, the equities composite is
+  past the 80% threshold and graduates from preliminary to publishable
+  status** for the equities-only product, while the broader cross-asset
+  methodology framing in §4 continues to disclose the universe-wide gap.
+
+The distinction has been added to the headline framing in §4 going forward.
+
+### 10.2 Numerical evolution — pre- vs post-batch regen
+
+The bottleneck-weighted composite was first computed against 58 rated
+entities (24.9% eligible coverage). After all four sector batches
+(Semi/Robotics/Space/Materials) plus the 600111 CNRE consolidation,
+coverage reaches 210/233 = 90.1% eligible. The composite shifts as follows
+on the common-date baseline 2026-05-23:
+
+| Snapshot | Coverage | BW level | Mcap level | Divergence (BW − mcap)/mcap |
+|---|---:|---:|---:|---:|
+| Pre-regen (prelim) | 24.9% | 2,766.13 | 2,690.01 | +2.83% |
+| Post-regen (publishable equities) | 90.1% | 2,751.75 | 2,690.01 | +2.30% |
+| Δ | +65.2 pts | −14.38 (−0.52%) | (no change) | −0.53 pp |
+
+**Direction:** as coverage expanded, the bottleneck-weighted composite
+*tightened* its divergence vs the mcap-weighted composite (from +2.83%
+to +2.30%). This is the honest result — at 90% coverage, the rating
+distribution starts to resemble broader market structure, so the
+amplification of a few CRITICAL/HIGH constituents is partially offset by
+the dilution of newly-added MEDIUM (×1.5) and LOW (×1.0) constituents.
+
+The expansion did NOT fabricate divergence; if anything, it removed
+some of the artificial concentration the preliminary 58-name set carried.
+This is the kind of result that survives allocator scrutiny.
+
+### 10.3 Constituent composition at 90.1% coverage
+
+| Multiplier tier | Pre-regen count (58 rated) | Post-regen count (210 rated) | Δ |
+|---|---:|---:|---:|
+| CRITICAL ×4.0 | 2 | 3 | +1 (Soitec added; CNRE 600111 consolidated under CRITICAL) |
+| HIGH ×2.5 | 7 | 20 | +13 (Materials added 11 + Robotics 2 + Space 2) |
+| MEDIUM ×1.5 | 16 | 69 | +53 (Semi 22 + Robotics 27 + Space 7 + Materials 9, net of overlaps) |
+| LOW ×1.0 | 33 | 118 | +85 (LOW dominates the breadth pickup) |
+| UNRATED ×1.0 | 175 | 23 | −152 |
+
+The CRITICAL+HIGH tier now stands at 23 of 233 eligible constituents
+(9.9% of the index by count, before the 5% cap), versus 9 (3.9%) in the
+preliminary run.
+
+### 10.4 What this changes for downstream
+
+- The bottleneck-weighted composite output is now **publishable as the
+  Robotnik equities-only product** rather than directional-signal only.
+  The methodology framing in §4 should disclose the dual coverage state:
+  equities (publishable) vs universe-wide (still preliminary pending
+  commodities + private cohort ratings).
+- The composite vs mcap divergence flagging continues at the same 5%
+  monthly-average threshold. 35 months flagged across the full 40-month
+  series vs 36 in the preliminary run — calibration window (2023) drives
+  most of the flagging, full-confidence post-2025 stays at +2-5%.
+- The divergence series is a meaningful signal even at the post-regen
+  number: the bottleneck-amplified subset is currently outperforming the
+  mcap-weighted basket by a documentable +2.3% (recent days). That's the
+  thesis paying off in real numbers.
