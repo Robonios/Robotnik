@@ -215,12 +215,6 @@
     "key_suppliers": "Copper foil, resin, glass fibre",
     "robotnik_notes": "CoWoS substrate bottleneck — Q1 star (+130.6%). Advanced packaging substrates are the binding constraint on AI chip production. Sole supplier risk."
   },
-  "600111 C1": {
-    "bottleneck_risk": "CRITICAL",
-    "key_customers": "Magnet manufacturers, motor companies",
-    "key_suppliers": "Mining operations (Inner Mongolia)",
-    "robotnik_notes": "Geopolitical chokepoint. China's largest rare earth producer. Controls NdFeB magnet precursors essential for every servo motor in every robot."
-  },
   "SQM": {
     "bottleneck_risk": "MEDIUM",
     "key_customers": "Battery manufacturers, EV companies",
@@ -785,11 +779,11 @@
     "confidence": "HIGH"
   },
   "600111": {
-    "bottleneck_risk": "HIGH",
-    "bottleneck_description": "World's largest producer of NdPr oxide from the Bayan Obo deposit, supplying the rare earth feedstock for sintered NdFeB permanent magnets used in every servo motor and robot joint.",
-    "key_customers": "NdFeB magnet makers (JL Mag, Ningbo Yunsheng, Zhongke Sanhuan, Proterial/Hitachi Metals), downstream EV motor, robotics, and wind turbine supply chains",
-    "key_suppliers": "Baogang Group (parent, Bayan Obo mining), separation chemical suppliers",
-    "robotnik_notes": "CNRE controls the Bayan Obo complex - the world's largest light rare earth resource - and is the dominant single producer of separated NdPr oxide globally. China collectively produces ~90% of refined rare earth magnet inputs and CNRE is the largest single operator, with its production quotas materially moving global NdPr prices within weeks. Combined with China's October 2024/2025 export controls on rare earths, the supply position is geopolitically gated. HIGH (not CRITICAL) because Mountain Pass (MP Materials), Lynas, and emerging Western processing capacity provide eventual alternative paths, but near-term substitution is highly constrained.",
+    "bottleneck_risk": "CRITICAL",
+    "bottleneck_description": "Sole dominant global producer of separated NdPr oxide from the Bayan Obo deposit; controls ~90% of refined rare-earth magnet feedstock at the production-quota level, with no viable Western alternative at scale.",
+    "key_customers": "NdFeB magnet makers (JL Mag, Ningbo Yunsheng, Zhongke Sanhuan, Proterial/Hitachi Metals); downstream EV motor, robotics, wind turbine, and defense supply chains",
+    "key_suppliers": "Baogang Group (parent — Bayan Obo mining), separation chemical suppliers, Chinese state coordination on export quotas",
+    "robotnik_notes": "CNRE controls the Bayan Obo complex (world's largest light rare earth resource) and is the dominant single producer of separated NdPr oxide globally. China collectively refines ~90% of global rare earth magnet inputs and CNRE is the largest single operator — its production quotas materially move global NdPr prices within weeks. The 2024 and 2025 Chinese rare-earth export controls (October 2024 Annex IV additions; April/October 2025 expansions covering medium and heavy REEs) have escalated geopolitical bite from 'concentration risk' to 'active supply-chain weaponisation' — clearing the CRITICAL bar of 'no alternative exists today'. MP Materials (Mountain Pass), Lynas, and emerging Western processing capacity (Arafura, etc.) collectively run at <15% of CNRE's separation throughput and lack heavy-rare-earth processing capability outside Lynas's Kalgoorlie ramp. Consolidated key (was split as '600111' HIGH from Robotics batch + '600111 C1' CRITICAL from existing rated set; the existing CRITICAL was the right call given full context).",
     "confidence": "HIGH"
   },
   "6902 JP": {
@@ -1555,5 +1549,216 @@
     "robotnik_notes": "GEODNET operates the world's largest RTK base-station network (10,000+ stations) using a DePIN model that delivers genuine cost and coverage advantages over Trimble and Hexagon. However, RTK correction services are a competitive market — customers can switch among multiple substitutable centralized and decentralized providers without prohibitive qualification cost. The scale advantage is meaningful for customer economics but does not create a structural choke-point: switching costs are low, no proprietary spectrum or IP moat exists, and Trimble/Hexagon retain large enterprise relationships. Fits the LOW frontier-stack baseline rather than a bottleneck.",
     "confidence": "MEDIUM",
     "parent_basis_note": "GEOD is the GEODNET utility token (DePIN), not a traditional satellite operator equity. Rated as the network/protocol operator; ticker classification in Satellite Comms reflects GNSS correction adjacency rather than satellite comms in the conventional sense."
+  },
+  "MTRN": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Only vertically integrated Western producer of primary beryllium from US mine-to-mill, plus advanced thin-film deposition materials and EUV/optical coatings for defense and semis.",
+    "key_customers": "US DoD, defense primes (received $65M defense investment for capacity), semiconductor IDMs/foundries, aerospace/optics customers (space-based sensing, ICBM interceptors)",
+    "key_suppliers": "Self-supplied beryllium ore from Utah mine (Materion Natural Resources), tantalum (acquired Korean Konasol assets 2025), various refined metals",
+    "robotnik_notes": "Materion is the sole US/Western producer of beryllium metal from mine through refining, the only source for Cat-1 strategic-grade Be used in nuclear, defense optics, and ICBM interceptors. The $65M defense customer investment for capacity expansion confirms strategic-criticality at DoD level. Also supplies advanced thin-film deposition targets and precision optics tied to semiconductor and defense programs. China dominates global Be, but US strategic-stockpile dependence on Materion is structural.",
+    "confidence": "HIGH"
+  },
+  "ENTG": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Dominant supplier of high-purity contamination-control consumables (filters, FOUPs, liquid delivery, CMP slurries, advanced deposition materials) with single-sourced positions on multiple advanced-node process steps.",
+    "key_customers": "TSMC, Samsung, Intel, SK Hynix, Micron, GlobalFoundries (all major foundries/IDMs)",
+    "key_suppliers": "Specialty resins, fluoropolymers, high-purity chemicals, internal fabrication; CMC Materials acquisition broadened internal sourcing",
+    "robotnik_notes": "Entegris holds 35-40% share in microcontamination control and is single-sourced on several advanced-node process consumables (fluoropolymer filters, FOUPs, certain CMP slurries). Content-per-wafer rises with node scaling, deepening lock-in. CHIPS Act funding ($75M memorandum) for Colorado Springs facility underlines US-strategic positioning. While competition exists from Pall, Merck KGaA, and CMC peers in some segments, qualification cycles and node-specific lock-ins justify HIGH.",
+    "confidence": "HIGH"
+  },
+  "WCH GR": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "One of two Western producers of semiconductor-grade hyperpure polysilicon (with Hemlock); supplies high-purity poly used at leading-edge logic and memory fabs.",
+    "key_customers": "Shin-Etsu, SUMCO, GlobalWafers, Siltronic (wafer manufacturers); Intel, GlobalFoundries downstream",
+    "key_suppliers": "Internal silicon metal sourcing, trichlorosilane production captive, energy (German power)",
+    "robotnik_notes": "Wacker is the dominant Western supplier of electronic-grade polysilicon and together with Hemlock controls roughly three-quarters of the semiconductor-grade poly market. With Chinese poly (GCL, Tongwei) primarily solar-grade and the US Section 232 investigation reinforcing Western sourcing preference, Wacker is structurally embedded in the semiconductor wafer supply chain. Capacity expansion plus shift away from solar-grade reinforces semi-criticality. HIGH rather than CRITICAL because Hemlock provides genuine alternative.",
+    "confidence": "HIGH"
+  },
+  "4091 JP": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Number-four global industrial gas major and largest Japanese supplier with leadership in specific electronic specialty gases and MOCVD precursors for compound semiconductor manufacturing.",
+    "key_customers": "TSMC, Samsung, Sony Semiconductor, Kioxia, Micron, Japanese and Asian fabs; on-site supply contracts at leading-edge fabs",
+    "key_suppliers": "Air separation (captive), specialty gas synthesis (captive), MOCVD precursor producers",
+    "robotnik_notes": "Global Big-4 industrial gases (with Linde, Air Liquide, Air Products) collectively control 80%+ of the market, so on bulk gases this is substitutable LOW-territory. However, Nippon Sanso has a differentiated position in specific electronic specialty gases and MOCVD precursors, plus 40% Japan share and embedded on-site supply at Asian leading-edge fabs. Switching on-site gas supply contracts is multi-year and capex-heavy. MEDIUM reflects on-site embedment plus specialty gas niches even with Big-4 substitutability on bulk gases.",
+    "confidence": "MEDIUM"
+  },
+  "4043 JP": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Top global producer of high-purity TMAH photoresist developer for EUV/advanced-node lithography plus semiconductor-grade polysilicon (~12,500 MT capacity, 7nm-and-below grade).",
+    "key_customers": "TSMC, Samsung, leading-edge foundries via wafer/resist channels; Japanese and Korean fabs primarily",
+    "key_suppliers": "Trichlorosilane/silicon metal captive production, specialty chemicals",
+    "robotnik_notes": "Tokuyama is a major TMAH developer supplier (top-5 controls ~56% share) and a credible semiconductor-grade polysilicon producer alongside Wacker and Hemlock. Asia-Pacific dependence on Tokuyama for TMAH at advanced nodes is real. However, alternatives exist (Greenda, Hantok, Tama, SACHEM in TMAH; Wacker, Hemlock in poly), making MEDIUM the disciplined call. Switching is multi-quarter qualification but feasible.",
+    "confidence": "MEDIUM"
+  },
+  "SOI FP": {
+    "bottleneck_risk": "CRITICAL",
+    "bottleneck_description": "Sole-source supplier of RF-SOI wafers for 5G smartphone front-ends and the only volume-qualified supplier of photonics-grade SOI wafers used in AI photonics chips, protected by ~4,300 Smart Cut patents.",
+    "key_customers": "Qualcomm, Skyworks, Qorvo, Broadcom (RF-SOI); STMicroelectronics, GlobalFoundries (FD-SOI); TSMC, Intel, Tower (photonics-SOI for AI optical transceivers)",
+    "key_suppliers": "Shin-Etsu/SUMCO (bulk silicon wafers as substrate), captive Smart Cut process",
+    "robotnik_notes": "Soitec holds ~80% of total SOI wafers and BofA estimates >95% in photonics-grade SOI; >70% RF-SOI share for 5G smartphones. Smart Cut process is patent-protected (4,300 patents) with no equivalent process at volume. Photonics-SOI for AI optical transceivers is a sole-source dependency for the AI scale-up roadmap with no qualified second source today. RF-SOI and photonics-SOI together meet the calibration bar for CRITICAL (sole-source, no viable substitute today).",
+    "confidence": "HIGH"
+  },
+  "SGL GR": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Top-tier ultra-high-purity isostatic graphite supplier for SiC crystal growth, semiconductor furnaces, and TRISO nuclear fuel; one of five global majors with Toyo Tanso, Mersen, Superior, GrafTech.",
+    "key_customers": "Wolfspeed, onsemi, STMicroelectronics, Infineon (SiC wafer/device makers); X-energy (10-year TRISO graphite supply); industrial semis customers",
+    "key_suppliers": "Petroleum coke, pitch coke, internal carbon processing",
+    "robotnik_notes": "SGL is a credible top-5 isostatic graphite producer with leverage in SiC-crystal-growth components and a 10-year X-energy TRISO nuclear contract (graphite production 2H 2026, $100M+ initial award). However, the market is shared with Toyo Tanso, Mersen, Superior, and GrafTech, and SGL's footprint outside graphite (carbon fibers) is competitively contested. MEDIUM reflects credible bottleneck position in specialty graphite niches without sole-source status. No going-concern flag (2024 revenue €1.026B, 16.3% adj EBITDA margin 9M).",
+    "confidence": "MEDIUM"
+  },
+  "HXL": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Qualified sole/dual-source prepreg and carbon fiber composite supplier on Airbus A350 (all composite primary structures) and Boeing 787 nacelle systems; aerospace qualification is multi-year and program-locked.",
+    "key_customers": "Airbus (A350 XWB primary structures), Boeing (787 nacelles via Collins/RTX), Safran, GE Aviation, defense primes",
+    "key_suppliers": "PAN precursor (Mitsubishi/Toray-competing), captive carbon fiber production, resin systems",
+    "robotnik_notes": "Hexcel holds an entrenched qualified position on Airbus A350 (largest contract in company history, all composite primary structures) and Boeing 787 (via UTAS/RTX nacelles), with aerospace qualification creating a multi-year lockout for new entrants for the life of the airframe. Competition with Toray and Solvay is real but each holds qualified roles on different platforms; substitution within a qualified program is practically impossible. HIGH (anchor-comparable to Nabtesco RV reducers in qualification logic).",
+    "confidence": "HIGH"
+  },
+  "MRSN FP": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Number-one global supplier of isostatic graphite and carbon brushes; key supplier of SiC-coated graphite hot-zone components for SiC crystal growth and power-electronics manufacturing.",
+    "key_customers": "Wolfspeed, onsemi, II-VI/Coherent, STMicroelectronics, Infineon (SiC); Soitec partnership for poly-SiC substrates; industrial and rail customers",
+    "key_suppliers": "Petroleum/pitch coke, captive graphitization/purification, SiC coating internal",
+    "robotnik_notes": "Mersen is the number-one isostatic graphite producer globally and a key SiC supply chain partner (Soitec partnership for poly-SiC). Targeted semi sales of E140-170M in 2025 rising to E230-280M by 2030 confirm growth but also modest absolute scale. However, market is shared with SGL, Toyo Tanso, GrafTech, Superior, with no sole-source positions identified. SiC EV downcycle weighs near-term. MEDIUM is disciplined.",
+    "confidence": "MEDIUM"
+  },
+  "NN": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Number-one global solar tracker manufacturer (~26% global share, 10 consecutive years) but competing in a commoditising racking market with viable alternatives.",
+    "key_customers": "Utility-scale solar developers (NextEra, AES, EDF Renewables, Brookfield, etc.); EPC contractors globally",
+    "key_suppliers": "Steel, motors, controllers, generic mechanical components",
+    "robotnik_notes": "NEXTracker leads global solar tracker share at ~26% (28.5GW shipped 2024), but the top-5 (NEXTracker, Trinasolar, Array, Soltec, Arctech) all offer functionally substitutable single-axis tracker systems. In the US the top-3 (NEXTracker, GameChange, Array) hold >90% but switching between qualified tracker vendors on a new project is straightforward. Steel-based mechanical assemblies do not constitute a process-chemicals bottleneck; calibration peers (LIN, APD) anchor LOW for competitive markets. The brief assigns it to Specialty Materials cohort but the business model is racking/mechanical.",
+    "confidence": "HIGH"
+  },
+  "MP": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Only scaled US mine-to-magnet NdPr producer; sole operator of Mountain Pass (the only US rare earth mine) with DoD-backed integrated separation and Fort Worth/Independence magnet build-out.",
+    "key_customers": "US DoD (price-floor offtake), GM, Independence magnet customers; Chinese sales (Shenghe) ceased July 2025",
+    "key_suppliers": "Internal Mountain Pass concentrate; reagents from US chemical suppliers",
+    "robotnik_notes": "MP operates the only commercially producing US rare earth mine and is the West's only vertically integrated mine-to-magnet NdPr entity outside China. The July 2025 DoD partnership (10-year $110/kg NdPr floor, $400M preferred equity, $150M heavy rare earth separation loan, 10X magnet facility commissioning 2028) cements its strategic-bottleneck status for US defense and EV magnet sovereignty. Lynas is the only credible substitute outside China; otherwise the West has no scaled alternative, hence HIGH rather than CRITICAL (a viable alternative exists in Lynas).",
+    "confidence": "HIGH"
+  },
+  "LYC AU": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Only scaled rare-earth separator outside China and the first commercial producer of separated heavy rare earths (dysprosium, terbium) ex-China.",
+    "key_customers": "JARE (JOGMEC/Sojitz), Japanese magnet makers, US DoD-funded Texas separation, European auto/wind OEMs",
+    "key_suppliers": "Internal Mt Weld ore; reagents, fuel, regional power",
+    "robotnik_notes": "Lynas operates the only fully integrated mine-to-separated-oxide rare earth supply chain outside China (Mt Weld mine, Kalgoorlie cracking-and-leaching, Malaysia separation, Kalgoorlie heavy REE expansion). First Dy shipments achieved 1H FY26, Tb following, with the JARE/Japan offtake extended to 2038 at a $110/kg NdPr floor. With China dominating ~90% of separation and Beijing imposing heavy-REE export controls, Western OEMs (Japan, US DoD, EU) have effectively no other near-term option — multi-year qualification and capital-intensity make substitution prohibitive. HIGH is appropriate (CRITICAL reserved for sole-source feedstock like 600111 C1).",
+    "confidence": "HIGH"
+  },
+  "ARU AU": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Future NdPr producer at Nolans (NT) with multi-sovereign ECA financing and binding offtakes to Hyundai/Kia/Siemens Gamesa/Traxys; first production mid-2029.",
+    "key_customers": "Hyundai, Kia, Siemens Gamesa, Traxys (500tpa NdPr + 7.5tpa DyTb)",
+    "key_suppliers": "Internal Nolans deposit (pre-production); Australian engineering contractors",
+    "robotnik_notes": "Nolans achieved FID with A$1.6B fully funded (Hancock at 17.5%, multi-sovereign ECA syndicate, NAIF, Strategic Reserve eligibility) and ~93% offtake target contracted. Strategically important as one of very few Western NdPr projects, but it is pre-production until 2029, so it does not yet exert a bottleneck. MEDIUM reflects the strategic position once online combined with execution and dilution risk. Not flagging going-concern: capital is now in place per recent A$350M placement and Hancock underwrite, though equity holders face material dilution.",
+    "confidence": "MEDIUM"
+  },
+  "ILU AU": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "World's largest zircon producer (~20% global share) and developer of Australia's first integrated rare earths refinery at Eneabba (2027 start) under a A$1.65B Australian Government Critical Minerals Facility loan.",
+    "key_customers": "Pigment producers (Chemours, Kronos, Tronox), ceramic tile makers, foundry; future REE customers TBD",
+    "key_suppliers": "Internal mineral sands stockpiles; Northern Minerals third-party REE feed; Fluor EPCM",
+    "robotnik_notes": "Iluka has dual bottleneck dimensions: zircon/mineral sands (Jacinth-Ambrosia, Balranald) where it is the largest single producer but with global substitutes (Rio/Tronox/Kenmare/Base Resources); plus a near-term, government-funded integrated REE refinery at Eneabba that will be one of the few non-Chinese light+heavy REE separation facilities. Today, neither line individually qualifies as HIGH (zircon is competitive; REE refinery is pre-commissioning, slipped to 2027 with capex now A$1.7-1.8B). MEDIUM is appropriate — strategic Western critical-minerals infrastructure but with viable substitution and execution risk.",
+    "confidence": "MEDIUM"
+  },
+  "CCJ": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "World's second-largest uranium miner (~14-20% global share) and Western-aligned alternative to Kazatomprom; 49% Westinghouse owner gives the only US-aligned fuel-cycle and reactor-services integration.",
+    "key_customers": "US/EU/Japan/Korea nuclear utilities (long-term contracts), Westinghouse fuel cycle customers",
+    "key_suppliers": "Internal Athabasca Basin mines; Inkai JV with Kazatomprom; conversion via Port Hope",
+    "robotnik_notes": "Uranium production is a tight duopoly-plus structure (Kazatomprom ~40%+, Cameco ~15%+, with smaller producers like Orano, CGN/CNNC, BHP-Olympic Dam). Cameco operates Tier-1 Cigar Lake and McArthur River/Key Lake in the Athabasca Basin, holds long-term contracts with Western utilities, and through its 49% Westinghouse stake (with Brookfield) is the only Western-aligned vertically integrated uranium-to-reactor name. With geopolitical pressure on Russian conversion/enrichment and rising scrutiny of Kazakh supply chains, Western utility substitution away from Cameco is functionally constrained — multi-year long-term contracts plus limited alternatives justify HIGH rather than MEDIUM.",
+    "confidence": "HIGH"
+  },
+  "CRS": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Premium-melt (VIM/VAR/ESR) nickel/cobalt/titanium superalloys for rotating aircraft engine parts — capacity is the binding constraint of the Western aero-engine alloy chain.",
+    "key_customers": "GE Aerospace, Pratt & Whitney, Rolls-Royce, RTX, Lockheed Martin, Boeing, medical device OEMs",
+    "key_suppliers": "Nickel/cobalt/titanium sponge feedstock (Vale, Nornickel-restricted, Sumitomo, TIMET)",
+    "robotnik_notes": "Carpenter sits in a 4-way oligopoly (with PCC, ATI, Haynes) supplying premium-melt aerospace-grade superalloys and titanium with chemistries that engine OEMs (GE, Pratt, Rolls) qualify over multi-year programs. FY26 Specialty Alloys Operations margins hit 35.6% on tight supply and pricing power, with brownfield only adding ~7% of 2019-level volumes. Substitutes exist on paper but qualification, AMS specs, and VIM melt-time gate switching. Not sole-source so not CRITICAL, but switching cost is prohibitive near-term and capacity is structurally tight.",
+    "confidence": "HIGH"
+  },
+  "ATI": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Aerospace-grade titanium ingot/billet/plate and nickel superalloys with long-term Boeing supply agreement; ITAR-compliant qualified source for engines and airframes.",
+    "key_customers": "Boeing, GE Aerospace, RTX, Pratt & Whitney, Rolls-Royce, Lockheed Martin (F-35), Airbus",
+    "key_suppliers": "Titanium sponge (TIMET, Toho, Japanese suppliers), nickel and cobalt feedstock, zirconium / hafnium ore",
+    "robotnik_notes": "ATI is one of the small handful of qualified Western titanium and superalloy producers (with PCC, Carpenter, VSMPO-AVISMA, Haynes), with aerospace & defense at ~66% of sales and over half of revenue tied to commercial jet engines. The newly extended Boeing LTA covers narrowbody and widebody programs, and ITAR/AS9100 qualification gates entry. Russian VSMPO supply de-risking after sanctions has tightened Western titanium qualified capacity. Multiple substitutes exist (PCC, Carpenter, IperionX emerging) but qualification windows are multi-year.",
+    "confidence": "HIGH"
+  },
+  "KAI": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Specialty industrial process consumables (doctor blades, fluid handling, stock prep, fiber granules) for pulp/paper/tissue and adjacent process industries.",
+    "key_customers": "Pulp/paper mills (IP, WestRock, Suzano, UPM), corrugated packaging, fiber processors, food processing, lithium battery process customers",
+    "key_suppliers": "Steel/alloy raw stock for blades, polymer suppliers, fabricated components",
+    "robotnik_notes": "Kadant competes head-to-head with much larger Andritz, Valmet, Voith, and Metso in pulp/paper process equipment and consumables. Its products are engineered and sticky but commodity-substitutable across the doctor-blade and fluid-handling categories. No single choke-point input; broad geographic and end-market diversification (pulp/paper, packaging, food, metals, textiles, batteries). Not a bottleneck node for the robotics/semis stack — peer-competitive industrial supplier.",
+    "confidence": "HIGH"
+  },
+  "5706 JP": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "~95%+ global share of MicroThin ultra-thin copper foil with carrier — the enabling input for HDI substrates, ABF/IC substrates, and advanced packaging (CoWoS/SLP/MSAP) used in AI accelerators.",
+    "key_customers": "Substrate makers (Ibiden, Shinko, Unimicron, Nan Ya PCB, AT&S), HDI PCB makers, automotive electronics, EV battery materials customers, exhaust catalyst auto OEMs",
+    "key_suppliers": "Copper cathode feedstock, zinc/lead concentrate from Mitsui group mines, indium/tantalum/tin for functional materials",
+    "robotnik_notes": "Mitsui Kinzoku is effectively a near-monopoly supplier of carrier-attached ultra-thin copper foil (<=5um) used in the highest-density semiconductor packaging substrates and HDI smartphone boards — the very materials that gate CoWoS, FC-BGA, and advanced AI-server substrates. Lower-tier peelable copper foil has alternatives at JX Nippon Mining & Furukawa, but Mitsui dominates the leading-edge MicroThin tier the AI substrate roadmap depends on. Not rated CRITICAL because substitutes exist at lower-tier nodes and Mitsui has been adding capacity, but the AI-packaging dependency is real and switching cost (re-qualification at substrate makers Ibiden/Unimicron/Shinko) is multi-year.",
+    "confidence": "HIGH"
+  },
+  "AMG NA": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Largest US ferrovanadium producer + global #1 spent-catalyst recycler (V-CYCLE) + titanium aluminide / aluminum master alloys to aerospace engines + AMG Technologies vacuum furnace equipment to engine forgers.",
+    "key_customers": "Aerospace engine OEMs and forgers (via AMG Technologies furnaces and TAC master alloys), oil refiners (catalyst recycling feedstock), steel mills (ferrovanadium), tier-1 battery makers (lithium concentrate)",
+    "key_suppliers": "Oil-refinery spent catalyst (long-term recycling contracts), Brazilian tantalum ore (AMG Brasil), Brazil lithium spodumene (Mibra mine), chrome ore",
+    "robotnik_notes": "AMG owns multiple niche-leadership positions: world's largest spent-catalyst vanadium recycler, largest US ferrovanadium producer (60kt/yr in Zanesville, OH), and a meaningful share of qualified titanium master alloys (AMG TAC Nuremberg) and chrome metal for nickel superalloys serving aero engine programs. Switching costs are real in aero-qualified master alloys and chrome metal for Ni-superalloys, but global ferrovanadium has Chinese and South African competitors and lithium/tantalum segments are not market-leading. Not HIGH because the portfolio is genuinely competitive at the alloy commodity level; not LOW because the spent-catalyst recycling and US ferrovanadium positions plus aero master alloy qualification provide real choke-point bite.",
+    "confidence": "MEDIUM",
+    "parent_basis_note": "Dutch-domiciled parent (AMG Critical Materials N.V.) listed on Euronext Amsterdam (AMG NA); rating reflects parent consolidated position."
+  },
+  "NATIX": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Solana-based DePIN token for crowdsourced mapping/navigation data; no semiconductor-supply chokepoint despite the 'Wafer Manufacturer' label in the universe file.",
+    "key_customers": "Drive& app users, downstream autonomous-driving / mapping data buyers (unspecified)",
+    "key_suppliers": "Solana blockchain infrastructure; smartphone/dashcam hardware integrations",
+    "robotnik_notes": "Public record identifies NATIX exclusively as a German-origin DePIN cryptocurrency project on Solana (Drive& app, VX360 hardware for crowdsourced geospatial data), not a wafer or substrate manufacturer. The token has roughly $4M circulating mcap and competes with other geospatial/mapping DePIN projects (Hivemapper, etc.). The cohort tag appears mislabeled; on either interpretation the entity is non-bottleneck — as a token it is one of many DePIN mapping networks, and there is no evidence of a wafer-fab business.",
+    "confidence": "MEDIUM",
+    "parent_basis_note": "Universe-file taxonomy mismatch: tagged as 'Wafer Manufacturer' but public record is a DePIN mapping crypto token — flag for hygiene."
+  },
+  "WAF GR": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "#4 global 300mm silicon wafer supplier (~12% revenue share) inside a 5-player oligopoly (Shin-Etsu/SUMCO/GlobalWafers/Siltronic/SK Siltron) controlling ~85% of 300mm capacity.",
+    "key_customers": "TSMC, Samsung, SK Hynix, Micron, Intel, Infineon, STMicro (memory + logic + power)",
+    "key_suppliers": "Polysilicon producers (Wacker, OCI, GCL), quartz crucibles, slurry/CMP consumables, specialty gases",
+    "robotnik_notes": "Siltronic sits in the same consolidated wafer oligopoly anchored at MEDIUM for Shin-Etsu — qualification cycles for prime 300mm wafers run multi-year and capital intensity is severe, but customers can dual-source across Shin-Etsu/SUMCO/GlobalWafers/SK Siltron. 2026 guidance flagged mid-single-digit revenue decline and net debt rose to EUR 837M on heavy capex; management noted peers being 'extremely vocal' about 200mm headwinds. Not a sole-source choke; calibration vs the Shin-Etsu MEDIUM anchor implies a smaller-share oligopoly participant should also rate MEDIUM rather than higher.",
+    "confidence": "HIGH"
+  },
+  "OLED": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Near-monopoly licensor and supplier of phosphorescent red/green OLED emitter materials and IP, with a patent estate of 7,000+ issued/pending worldwide that gates panel-maker bills of materials.",
+    "key_customers": "Samsung Display, LG Display, BOE Technology, CSOT, Visionox, Tianma, JOLED legacy IP licensees",
+    "key_suppliers": "PPG Industries (exclusive emitter material manufacturing partner), specialty organic-chemistry CDMOs",
+    "robotnik_notes": "UDC is the de facto sole commercial supplier of phosphorescent (PHOLED) red and green emitters used across virtually all modern AMOLED displays for smartphones, TVs, and IT panels; competing emitters from Japan/Korea remain hemmed in by cross-licensing. Long-term supply/license agreements with LG Display (extended through 2030), Samsung Display, BOE, and CSOT cement the position, supporting ~42% operating margins. The reason this sits at HIGH (not CRITICAL) is that core patents begin to sunset late-decade and blue PHOLED commercialization is still in qualification — but through the 2026 horizon the chokepoint is real and structural.",
+    "confidence": "HIGH"
+  },
+  "TEL": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Broad-line connector and sensor manufacturer in a competitive landscape with credible substitutes from Amphenol, Molex, Aptiv, and Yazaki; no single sole-source chokepoint.",
+    "key_customers": "Automotive OEMs (VW, Toyota, Ford, GM, Stellantis, Tesla), industrial OEMs, hyperscaler datacenter builders, A&D primes, appliance manufacturers",
+    "key_suppliers": "Copper, brass, gold-plating chemistries, PPS/LCP engineering resins, contract metal stampers",
+    "robotnik_notes": "TE is the connector market leader by scale (15,000+ patents, >$700M R&D, 100+ plants) but operates in an inherently fragmented connector/sensor market with multiple peer-level competitors (Amphenol, Molex/Koch, Aptiv, Yazaki) capable of substitution on standard interconnect platforms. Even in higher-value automotive/industrial sockets, multi-source qualification is the OEM norm rather than the exception. The business benefits from scale economics and local-for-local manufacturing rather than from any monopoly substrate or sole-source position.",
+    "confidence": "HIGH"
+  },
+  "6488 TT": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "#3 global 300mm silicon wafer supplier (~17% revenue share) inside the 5-player Shin-Etsu/SUMCO/GlobalWafers/Siltronic/SK Siltron oligopoly that controls ~85% of capacity.",
+    "key_customers": "TSMC, Samsung, Intel, Micron, SK Hynix, Texas Instruments, GlobalFoundries, Infineon, onsemi",
+    "key_suppliers": "Polysilicon (Wacker, OCI, Hemlock, Tokuyama), quartz crucibles, CMP slurry, specialty gases",
+    "robotnik_notes": "GlobalWafers is a meaningful member of the consolidated silicon-wafer oligopoly anchored at MEDIUM (Shin-Etsu). Multi-year qualification cycles, severe capital intensity (its Sherman, TX phase-2 expansion is part of a $7.5B program), and tight 300mm capacity create real switching frictions, but customers can dual-source across at least four other prime wafer suppliers. The Sherman fab and the US CHIPS Act anchoring give it slight strategic premium as the leading non-Japanese/non-Korean US-domiciled 300mm supplier, but not enough to lift above MEDIUM under the conservative framework.",
+    "confidence": "HIGH"
+  },
+  "6502 JP": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Diversified manufacturing conglomerate (energy solutions, digital infrastructure, devices/power semiconductors) facing peer competition across all segments with no sole-source choke-point in robotics/semi value chain.",
+    "key_customers": "Automotive OEMs (power semis), utilities/grid operators, industrial system integrators, electronics OEMs",
+    "key_suppliers": "Silicon wafer suppliers (Shin-Etsu/SUMCO), specialty chemicals, lithography/etch equipment (ASML/Applied Materials/TEL)",
+    "robotnik_notes": "Toshiba's post-restructuring portfolio spans power semiconductors, energy/grid infrastructure, and digital systems - each segment has multiple credible peers (Infineon, Onsemi, STMicro, Rohm in power semis; Siemens/ABB/Hitachi in infrastructure; Sony/Western Digital in memory after Kioxia spinoff). The new 300mm power semi fab expands capacity but does not create a sole-source position. No evidence of CRITICAL/HIGH bottleneck exposure in the robotics/semi stack.",
+    "confidence": "HIGH",
+    "parent_basis_note": "Cohort tagged 'Industrial & Specialty Gases' but Toshiba is a diversified manufacturer/power-semi player; rating reflects actual business mix."
   }
 }
