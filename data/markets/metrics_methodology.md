@@ -347,3 +347,126 @@ inflate coverage figures:
 A null is more informative than a fabricated value. The coverage report
 discloses non-null counts by metric so downstream consumers can decide
 which metrics meet their threshold.
+
+---
+
+## 8. Robotnik Index Family — five-index scope (placeholder section)
+
+This section formalises the planned index family. Three of the five indexes
+exist today (sections 4 and 5 above plus the production Composite); two are
+placeholders for build-out as their underlying rating cohorts complete.
+
+### 8.1 The five indexes
+
+| # | Index | Built from | Status |
+|---|---|---|---|
+| 1 | **Robotnik Composite Index** | Public equities, mcap-weighted, 5% cap | LIVE (calculate_index.py) |
+| 2 | **Robotnik Bottleneck-Weighted Composite** | Public equities, mcap × bottleneck-multiplier, 5% cap | LIVE PRELIMINARY (calculate_bottleneck_composite.py, gated on ≥80% rating coverage for headline status) |
+| 3 | **Robotnik Commodities Concentration Index** | Strategic commodities + critical minerals, weighted by supply-chain concentration | PLACEHOLDER — depends on Commodities scoping workstream + commodities bottleneck ratings |
+| 4 | **Robotnik Private Shadow Index** | Private rounds dataset, sector-weighted capital deployment | PLACEHOLDER — depends on RPCI methodology extension + private-company bottleneck ratings |
+| 5 | **Robotnik Total Frontier Composite** | Weighted combination of indexes 1–4 above | PLACEHOLDER — depends on all four feeders existing |
+
+### 8.2 Why five, not one
+
+Each index measures a different layer of the frontier stack and produces a
+different signal for the consumer:
+
+- **Composite** → broad public-market exposure to the frontier stack.
+  Answers "where is the public-market money on robotics + semiconductors +
+  space + materials right now?".
+- **Bottleneck-Weighted** → bottleneck-tilted public exposure. Diverges from
+  Composite when amplification-rated names (Critical/High) move
+  independently of broad mcap-weighted breadth. The divergence flag IS the
+  signal.
+- **Commodities Concentration** → upstream feedstock risk. Measures how
+  exposed the frontier stack is to commodity-supply concentration (e.g.
+  rare-earth processing, lithium refining, gallium, neon). Different
+  duration / risk profile than equities.
+- **Private Shadow** → forward-looking VC funding signal. Captures sector
+  capital deployment ahead of public-market repricing (RPCI v1.x is the
+  working iteration). Different lead-lag relationship than the composite.
+- **Total Frontier Composite** → cross-asset summary. The integrated
+  number for a single allocator dashboard, combining the four feeders with
+  documented weights. Resists collapse into any single sub-signal.
+
+### 8.3 Sequencing
+
+Build order (gating dependencies):
+
+1. **Composite + Bottleneck-Weighted** — live; coverage closes as rating
+   batches complete (Semi done, Robotics done, Space next, Materials after).
+2. **Commodities Concentration** — depends on the Commodities scoping
+   workstream (separate prompt) producing a defined commodity universe + a
+   bottleneck-rating extension for commodities.
+3. **Private Shadow** — RPCI v1.x already covers the funding signal;
+   extension to incorporate per-round bottleneck ratings is gated on
+   private-company bottleneck rating coverage.
+4. **Total Frontier Composite** — built only after 1–3 are stable. Weights
+   between feeders TBD; provisional plan is equal-weight 25%/25%/25%/25%
+   with annual rebalance, subject to revision based on observed inter-
+   index correlation.
+
+### 8.4 Universe gating across the family
+
+The rule that headline-publishable status requires ≥80% rating coverage
+within the relevant cohort applies to all five indexes:
+
+- Index 1 (Composite) — no rating requirement (uses raw mcap weights).
+- Index 2 (Bottleneck-Weighted) — gated on equity-bottleneck coverage (currently 34%).
+- Index 3 (Commodities) — gated on commodity-bottleneck coverage (currently 0%).
+- Index 4 (Private Shadow) — gated on private-round bottleneck coverage (currently 0%).
+- Index 5 (Total) — gated on all four feeders being headline-publishable.
+
+Until each gate clears, the index is reported with the same "preliminary —
+directional signal only" framing as the current Bottleneck-Weighted Composite.
+
+### 8.5 What changes in this doc as the family fills out
+
+This section is a placeholder. As each placeholder index becomes real:
+
+- **Commodities**: a §9 will document the commodity universe definition,
+  concentration weighting formula, and source data.
+- **Private Shadow**: §10 (or extend the existing private_capital_index_methodology.md
+  by reference) covers the RPCI-with-bottleneck variant.
+- **Total Frontier**: §11 documents inter-feeder weights, rebalance rules, and
+  the combined divergence flagging.
+
+The placeholder framing here exists so the methodology doc can be cited as
+the source-of-truth on the index family structure even before all five
+indexes are operational.
+
+---
+
+## 9. Vendor coverage ceiling (post-Round-3 measurement)
+
+The Robotnik universe's realistic resolution ceiling with **MarketStack as
+primary vendor** sits at **~95–97% served** (MarketStack direct + Yahoo
+override via `data/registries/data_source_overrides.json`). The remaining
+3–5% gap is structural:
+
+- Hong Kong feed frozen at 2023-10-09 (10 entries) — routed to Yahoo as
+  permanent override
+- Korean KOSDAQ + small-cap names absent from MarketStack catalogue (5
+  entries) — Yahoo override
+- Taiwan TPEx (1 entry — XTAI MIC covers TWSE main board only) — Yahoo
+- Post-2024 letter-suffix Japan IPOs (464A Tokyo Metro, 290A Kioxia) — Yahoo
+- Andritz / Wiener Börse (1 entry — MarketStack does not carry XWBO) — Yahoo
+- TBD-country registry entries (13 entries) — registry hygiene issue, not
+  vendor coverage
+- KRW field-cap on Hanwha (1 entry, same bug present in both EODHD and
+  MarketStack) — Yahoo
+
+**Override count is monitored as a vendor-health signal** per the
+`_meta.vendor_health_signal` block of the overrides registry. Triggers:
+
+| Override count | Action |
+|---|---|
+| ≤ 15 entries (≈5%) | Normal — no action |
+| 15–25 entries (≈5–8%) | Flag and review; cause must be documented per-entry. Current state. |
+| 25–35 entries (≈8–11%) | Investigate primary-vendor alternatives in parallel; do not block new feature work |
+| > 35 entries (>11%) | Block new feature work until primary-vendor re-evaluation |
+
+Re-measure at each cutover-relevant change and at every quarterly registry
+audit. The methodology document is updated when the override count crosses
+a threshold or when a new vendor-coverage-pattern surfaces (e.g. a new
+country joins MARKETSTACK_UNSUPPORTED).
