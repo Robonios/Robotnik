@@ -200,6 +200,15 @@ def _api_get(path: str, params: dict, timeout: int = DEFAULT_TIMEOUT,
             if attempt >= RATE_LIMIT_RETRY_MAX:
                 break
             delay = RATE_LIMIT_BACKOFF_SECONDS[min(attempt, len(RATE_LIMIT_BACKOFF_SECONDS) - 1)]
+            # Forensic visibility — a single stderr line so retry events are
+            # directly observable in run logs instead of inferred from totals.
+            symbols = params.get("symbols", "?")
+            sys.stderr.write(
+                "[marketstack_client] retry {}/{} after {:.0f}s on symbols={} (path={})\n".format(
+                    attempt + 1, RATE_LIMIT_RETRY_MAX, delay, symbols, path
+                )
+            )
+            sys.stderr.flush()
             time.sleep(delay)
     # Exhausted retries
     raise last_rate_limit
