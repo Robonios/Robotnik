@@ -288,7 +288,7 @@ EQUITIES = [
     ("RR", "Richtech Robotics", "Robotics", "United States"),
     ("RRX", "Regal Rexnord", "Robotics", "United States"),
     ("ROK", "Rockwell Automation", "Robotics", "United States"),
-    ("SHA", "Schaeffler AG", "Robotics", "United States"),
+    ("SHA", "Schaeffler AG", "Robotics", "Germany"),
     ("SERV", "Serve Robotics", "Robotics", "United States"),
     ("SRTA", "Strata Critical Medical", "Robotics", "United States"),
     ("STMPA", "STMicroelectronics NV", "Robotics", "France"),
