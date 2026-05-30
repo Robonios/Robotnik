@@ -225,5 +225,14 @@
     ],
     "reason": "Konecranes (Helsinki) \u2014 MarketStack data stale at 2023-10-18. Surfaced by coverage guard. Yahoo returns current EUR, converted to USD via daily FX.",
     "added_date": "2026-05-30"
+  },
+  "RTX": {
+    "provider": "yahoo",
+    "yahoo_symbol": "RTX",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "MarketStack RTX data corrupted (alternates ~150 vs ~177 on consecutive days); Yahoo+EODHD agree ~179.66. Caught by independent MS-vs-Yahoo-vs-EODHD validation.",
+    "added_date": "2026-05-30"
   }
 }

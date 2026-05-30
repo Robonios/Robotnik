@@ -1446,3 +1446,25 @@ Self-computed split adjustment is still **back-adjusted** (older values re-scale
 when a new split occurs), though PR removes the larger dividend drift. **Once the
 index is published, historical values must be frozen point-in-time** so a value
 an allocator saw on date T stays that value. Not a v1 blocker; go-live hardening.
+
+### 13.6 Stale-constituent policy — carry-forward-and-flag (documented, not silent)
+
+MarketStack's EOD history genuinely lags by up to ~1 week for some exchanges
+(China A-shares, Taiwan, Korea). The policy is **carry-forward-and-flag**:
+
+- **Carry-forward:** when a constituent has no price on a date, the index uses
+  its most recent prior close (`calculate_index.py`). A stale constituent thus
+  contributes ~0 return until it catches up — a small, bounded distortion for a
+  ~1-week lag on the (small-weight) names affected.
+- **Flag, never silent:** the per-fetch coverage guard warns when a series ends
+  >7 days short, and the **per-constituent reconciliation manifest**
+  (`data/markets/cutover_constituent_manifest.json`) records every name's
+  source, currency, FX rate, freshness-in-days, adjustment basis, and status —
+  so the carry-forward is visible and auditable per name.
+- **Escalation:** constituents stale beyond tolerance (the 3 names >2yr stale on
+  MarketStack — 9868, AUTO NO, KCR FH) are routed to Yahoo (current). Material
+  weight + bad data is fixed at source (e.g. RTX → Yahoo), not carried.
+
+Independent (non-circular) validation: top-weighted constituents are checked
+MarketStack vs Yahoo vs exchange — not against EODHD alone (which has its own
+bugs). This is what caught the ASML routing and RTX corruption faults.

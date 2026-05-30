@@ -374,6 +374,8 @@ US_ADR_OVERRIDES = {
     "NVMI", "GILT", "BIDU", "EH", "HSAI", "XPEV",
     "NXPI",   # NXP Semiconductors — Dutch domicile, Nasdaq-listed
     "STM",    # STMicroelectronics — Swiss/Geneva domicile but NYSE ADR primary
+    "ASML",   # ASML Holding ADR — MS serves the USD ADR value under .XAMS too,
+              # so routing to Amsterdam double-converts (€→USD). Use the US ADR.
     # Round 3 additions:
     "SATL",   # Satellogic — Cayman/Argentine issuer, NASDAQ-only ADR
     "SQM",    # SQM — Chile parent; NYSE ADR primary (USD-denominated)
@@ -409,6 +411,9 @@ MARKETSTACK_UNSUPPORTED = {
     "9868",     # XPeng HK line — MS HK feed frozen 2023-10-09
     "AUTO NO",  # Autostore (Oslo) — MS data stale at 2023-10-18
     "KCR FH",   # Konecranes (Helsinki) — MS data stale at 2023-10-18
+    # MS data corrupted (alternating price series) — caught by independent
+    # MS-vs-Yahoo-vs-EODHD validation; Yahoo+EODHD agree → route to Yahoo
+    "RTX",      # RTX Corp — MS bounces 150↔177 on consecutive days; bad instrument
 }
 
 
