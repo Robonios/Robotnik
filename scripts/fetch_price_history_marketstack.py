@@ -31,9 +31,11 @@ from marketstack_client import (
     AuthError, MarketStackError, MissingKeyError, RateLimitError,
     TransportError, UnknownSymbolError,
     INTER_CALL_SLEEP, MARKETSTACK_UNSUPPORTED, call_count, route_for_ticker,
-    fetch_eod_historical,
+    fetch_eod_historical, US_ADR_OVERRIDES,
 )
 from fetch_prices import EQUITIES
+import currency_convert as cc
+from fetch_yahoo import fetch_yahoo_daily
 
 HISTORY_DIR = ROOT / "data" / "prices" / "history"
 HISTORY_DIR.mkdir(parents=True, exist_ok=True)
@@ -84,6 +86,9 @@ def main():
     print("  Mode: {}".format("backfill 5Y" if args.backfill else "refresh 45D"))
     print("  Window: {} → {}".format(date_from, date_to))
     print("=" * 60)
+
+    print("  Refreshing daily FX rates (native → USD)...")
+    cc.refresh_all(backfill=args.backfill, fetcher=fetch_yahoo_daily)
 
     refreshed = 0
     skipped_yahoo = 0
@@ -138,7 +143,30 @@ def main():
             except Exception:
                 pass
 
-        merged_series = merge_series(existing, rows)
+        # Convert each bar to USD at its OWN date's FX rate → true USD returns.
+        is_adr = (ticker in US_ADR_OVERRIDES) or (ticker.split(" ", 1)[0] in US_ADR_OVERRIDES)
+        try:
+            native_ccy = cc.currency_for_marketstack(sym, ticker, country, is_adr)
+        except cc.CurrencyError as ce:
+            print("  WARN: {} currency: {}".format(ticker, str(ce)[:80]))
+            failed += 1
+            time.sleep(INTER_CALL_SLEEP)
+            continue
+        conv_rows = []
+        for r in rows:
+            d = str(r.get("date", "")).split("T", 1)[0]
+            if not d:
+                continue
+            conv_rows.append({
+                "date": d,
+                "open":  cc.to_usd(r.get("open"), native_ccy, d),
+                "high":  cc.to_usd(r.get("high"), native_ccy, d),
+                "low":   cc.to_usd(r.get("low"), native_ccy, d),
+                "close": cc.to_usd(r.get("close"), native_ccy, d),
+                "volume": r.get("volume"),
+            })
+
+        merged_series = merge_series(existing, conv_rows)
         out = {
             "ticker": ticker,
             "marketstack_symbol": sym,
@@ -146,9 +174,10 @@ def main():
             "name": name,
             "sector": sector,
             "country": country,
+            "native_currency": native_ccy,
             "series": merged_series,
             "last_fetched": datetime.utcnow().isoformat() + "Z",
-            "source": "MarketStack",
+            "source": "MarketStack (USD via daily FX)",
         }
         hpath.write_text(json.dumps(out, indent=2))
 

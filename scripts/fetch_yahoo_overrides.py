@@ -31,6 +31,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from fetch_yahoo import fetch_yahoo_daily, fetch_latest_from_yahoo, YahooFetchError
+import currency_convert as cc
 
 OVERRIDES_PATH = ROOT / "data" / "registries" / "data_source_overrides.json"
 EQUITIES_PATH  = ROOT / "data" / "prices" / "equities.json"
@@ -78,6 +79,7 @@ def cmd_overrides():
     print("YAHOO OVERRIDE FETCHER — latest EOD")
     print("  {} override tickers to fetch".format(len(targets)))
     print("=" * 60)
+    cc.refresh_all(fetcher=fetch_yahoo_daily)
 
     # Load existing equities.json to merge into
     eq = {"equities": []}
@@ -90,20 +92,26 @@ def cmd_overrides():
     for ticker, yahoo_sym, entry in targets:
         try:
             row = fetch_latest_from_yahoo(yahoo_sym)
+            # Yahoo reports the true native currency (incl. GBp); convert to USD
+            # via daily FX so overrides match the MarketStack USD convention.
+            native_ccy = row["currency"]
+            usd_price = cc.to_usd(row["price"], native_ccy, row["date"])
             by_ticker[ticker] = {
                 "ticker": ticker,
                 "yahoo_symbol": yahoo_sym,
                 "name": (entry.get("reason") or "").split(" — ")[0][:60] or ticker,
-                "price": row["price"],
-                "currency": row["currency"],
+                "price": usd_price,          # USD (daily-FX converted)
+                "currency": "USD",
+                "native_price": row["price"],
+                "native_currency": native_ccy,
                 "change_pct": row["change_pct"],
                 "volume": row["volume"],
                 "date": row["date"],
                 "source": "Yahoo (override)",
             }
             ok += 1
-            print("  OK  {:14s} ({:14s}) {} @ {}".format(
-                ticker, yahoo_sym, row["price"], row["date"]))
+            print("  OK  {:14s} ({:14s}) {} {} → ${} @ {}".format(
+                ticker, yahoo_sym, row["price"], native_ccy, usd_price, row["date"]))
         except YahooFetchError as e:
             failed += 1
             print("  FAIL {:14s} ({:14s}) {}".format(ticker, yahoo_sym, str(e)[:80]))
@@ -130,6 +138,7 @@ def cmd_history_overrides(backfill=False):
         "5Y backfill" if backfill else "compact refresh"))
     print("  {} override tickers to fetch".format(len(targets)))
     print("=" * 60)
+    cc.refresh_all(backfill=backfill, fetcher=fetch_yahoo_daily)
 
     size = "5y" if backfill else "compact"
     ok = failed = 0
@@ -138,16 +147,18 @@ def cmd_history_overrides(backfill=False):
         hpath = HISTORY_DIR / "{}.json".format(fname)
         try:
             data = fetch_yahoo_daily(yahoo_sym, output_size=size)
-            # data["series"] is a dict of date → {open, high, low, close, volume}
+            native_ccy = data.get("currency")
+            # data["series"] is a dict of date → {open, high, low, close, volume}.
+            # Convert each bar to USD at its own date's FX rate.
             series_rows = []
             for d in sorted(data["series"]):
                 pt = data["series"][d]
                 series_rows.append({
                     "date": d,
-                    "open":   pt.get("open"),
-                    "high":   pt.get("high"),
-                    "low":    pt.get("low"),
-                    "close":  pt.get("close"),
+                    "open":   cc.to_usd(pt.get("open"), native_ccy, d),
+                    "high":   cc.to_usd(pt.get("high"), native_ccy, d),
+                    "low":    cc.to_usd(pt.get("low"), native_ccy, d),
+                    "close":  cc.to_usd(pt.get("close"), native_ccy, d),
                     "volume": pt.get("volume"),
                 })
             # Merge with existing if compact refresh
@@ -163,10 +174,11 @@ def cmd_history_overrides(backfill=False):
             out = {
                 "ticker": ticker,
                 "yahoo_symbol": yahoo_sym,
-                "currency": data.get("currency"),
+                "currency": "USD",
+                "native_currency": native_ccy,
                 "series": series_rows,
                 "last_fetched": datetime.utcnow().isoformat() + "Z",
-                "source": "Yahoo (override)",
+                "source": "Yahoo (override, USD via daily FX)",
             }
             hpath.write_text(json.dumps(out, indent=2))
             ok += 1

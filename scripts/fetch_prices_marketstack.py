@@ -31,9 +31,11 @@ from marketstack_client import (
     AuthError, MarketStackError, MissingKeyError, RateLimitError,
     TransportError, UnknownSymbolError,
     INTER_CALL_SLEEP, call_count, route_for_ticker,
-    fetch_eod_latest,
+    fetch_eod_latest, US_ADR_OVERRIDES,
 )
 from fetch_prices import EQUITIES, guess_currency  # canonical universe
+import currency_convert as cc
+from fetch_yahoo import fetch_yahoo_daily
 
 OUTPUT_PATH = ROOT / "data" / "prices" / "equities.json"
 
@@ -50,6 +52,9 @@ def main():
     print("ROBOTNIK PRICE FETCHER — MarketStack")
     print("  Universe: {} equities".format(len(EQUITIES)))
     print("=" * 60)
+
+    print("  Refreshing daily FX rates (native → USD)...")
+    cc.refresh_all(fetcher=fetch_yahoo_daily)
 
     results = []
     skipped_yahoo = []     # tickers in MARKETSTACK_UNSUPPORTED → caller routes to Yahoo
@@ -108,7 +113,21 @@ def main():
         prev = r.get("open")  # not always populated; use open as proxy
         change_pct = None
         if close is not None and prev and prev > 0:
+            # % change is currency-invariant (same-day, same currency)
             change_pct = round((float(close) - float(prev)) / float(prev) * 100, 2)
+
+        # Native currency from the routed exchange (NOT the broken guess on the
+        # MS symbol), then convert to USD via daily FX. ADR-routed names are USD.
+        is_adr = (ticker in US_ADR_OVERRIDES) or (ticker.split(" ", 1)[0] in US_ADR_OVERRIDES)
+        date_iso = normalise_iso_date(r.get("date"))
+        try:
+            native_ccy = cc.currency_for_marketstack(sym, ticker, country, is_adr)
+            usd_price = cc.to_usd(close, native_ccy, date_iso)
+        except cc.CurrencyError as ce:
+            failed.append({"ticker": ticker, "name": name, "country": country,
+                           "ms_symbol": sym, "reason": "currency:{}".format(str(ce)[:80])})
+            time.sleep(INTER_CALL_SLEEP)
+            continue
 
         results.append({
             "ticker": ticker,
@@ -117,11 +136,13 @@ def main():
             "name": name,
             "sector": sector,
             "country": country,
-            "price": close,
-            "currency": guess_currency(sym),
+            "price": usd_price,          # USD (daily-FX converted)
+            "currency": "USD",
+            "native_price": close,       # raw exchange close, for audit
+            "native_currency": native_ccy,
             "change_pct": change_pct,
             "volume": r.get("volume"),
-            "date": normalise_iso_date(r.get("date")),
+            "date": date_iso,
             "source": "MarketStack",
         })
 

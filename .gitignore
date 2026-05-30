@@ -21,6 +21,9 @@ archive/*
 # Price error logs
 data/prices/errors.log
 
+# Daily FX-rate cache (regenerated on each fetch; native→USD conversion)
+data/prices/fx/
+
 # Claude
 .claude/
 data/exports/entity_registry_for_review.csv
