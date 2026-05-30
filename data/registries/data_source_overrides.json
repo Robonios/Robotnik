@@ -7,6 +7,15 @@
     ],
     "last_audit_date": "2026-05-29"
   },
+  "4062 JP": {
+    "provider": "yahoo",
+    "yahoo_symbol": "4062.T",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "MarketStack V1 /eod historical returns HTTP 406 ('use V2'); separately a raw-JPY tail (~9,915 vs ~$144 true USD) leaked into the merged history under the 10,000 MAX_LOAD_USD guard. Caught by the independent index reconstruction's constituent reality-check (MS-vs-Yahoo). Yahoo 4062.T returns a clean split-adjusted JPY series; converted to USD via daily FX. MS /eod/latest still serves Ibiden correctly, but routing both live+history to Yahoo keeps the series single-source and consistent.",
+    "added_date": "2026-05-30"
+  },
   "012450 KS": {
     "provider": "yahoo",
     "yahoo_symbol": "012450.KS",

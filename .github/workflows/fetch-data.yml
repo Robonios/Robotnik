@@ -101,6 +101,13 @@ jobs:
       - name: Calculate Robotnik Index
         run: python scripts/calculate_index.py
 
+      # Permanent parallel check: a from-scratch second implementation of the
+      # index methodology must agree with calculate_index.py to <0.01 on every
+      # point. Two implementations that must always agree — a publish gate, not
+      # a vendor change. Catches code drift the benchmark check cannot.
+      - name: Verify index (independent reconstruction must match)
+        run: python scripts/verify_index_reconstruction.py
+
       - name: Fetch fundamentals (weekly — Mondays only)
         if: github.event.schedule == '0 6 * * 1' || github.event_name == 'workflow_dispatch'
         env:

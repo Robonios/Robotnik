@@ -414,6 +414,11 @@ MARKETSTACK_UNSUPPORTED = {
     # MS data corrupted (alternating price series) — caught by independent
     # MS-vs-Yahoo-vs-EODHD validation; Yahoo+EODHD agree → route to Yahoo
     "RTX",      # RTX Corp — MS bounces 150↔177 on consecutive days; bad instrument
+    # MS V1 /eod historical 406s ("use V2") AND a raw-JPY tail leaked into
+    # history (~9,915 vs ~$144 true) under the 10k load guard — caught by the
+    # independent reconstruction's constituent reality-check. Yahoo (4062.T)
+    # serves a clean split-adjusted JPY series → USD via daily FX.
+    "4062 JP",  # Ibiden — MS historical unusable; route to Yahoo
 }
 
 

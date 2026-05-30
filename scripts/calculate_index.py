@@ -316,6 +316,28 @@ def run_guardrails(composite_series, sub_indices, sector_mcap_share):
                 f"(> {COMPOSITE_DIVERGENCE_TOL:.2%})"
             )
 
+    # 3. Degenerate / frozen sub-index guard. A real sub-index never holds a
+    #    single value across a long series. A frozen sub-index means every
+    #    constituent silently dropped out of the weighted return — the exact
+    #    signature of the 2026-05 frozen-Semi regression, where the historical
+    #    base date landed on a US market holiday (Memorial Day 2021-05-31) and
+    #    every US-listed semiconductor name had no base price, pinning the whole
+    #    sub-index at its 1000 base and dragging the composite ~30% low. This is
+    #    NOT caught by the day-over-day or composite-divergence checks (a frozen
+    #    series is perfectly smooth and moves in lockstep), so it gets its own
+    #    publish-blocking guard. distinct<=1 over a long series == collapsed.
+    for name, v in (sub_indices or {}).items():
+        s = v.get("series", [])
+        if len(s) >= 20:
+            distinct = len({round(p["value"], 4) for p in s})
+            if distinct <= 1:
+                failures.append(
+                    f"  {name}: FROZEN sub-index — {len(s)} points but only "
+                    f"{distinct} distinct value(s). Every constituent lost its "
+                    f"base price (base-date on a non-trading day? exact-base "
+                    f"exclusion?). Composite would silently mis-scale."
+                )
+
     if failures:
         msg = "Index guardrail failures — publish blocked:\n" + "\n".join(failures)
         raise IndexGuardrailError(msg)
@@ -330,20 +352,23 @@ def normalise_series(series, target_date=NORMALISE_DATE, target_value=BASE_VALUE
     if not series:
         return series, target_date, 1.0
 
-    # Find the value on or nearest to target_date
-    raw_value = None
-    actual_date = None
-    for pt in series:
-        if pt["date"] == target_date:
-            raw_value = pt["value"]
-            actual_date = target_date
-            break
-        if pt["date"] > target_date and raw_value is None:
-            raw_value = pt["value"]
-            actual_date = pt["date"]
-            break
-        raw_value = pt["value"]
-        actual_date = pt["date"]
+    # Find the value on target_date, else the nearest trading day strictly
+    # AFTER it, else (target beyond the series) the last point.
+    #
+    # R3 fix: the previous loop fell through to the LAST value whenever
+    # target_date was missing-but-in-range (the `raw_value is None` guard only
+    # held on the first iteration, so the >target branch never fired), which
+    # would silently rescale the ENTIRE series by the wrong factor — a
+    # whole-period multiplicative error. It was harmless only because
+    # 2025-03-31 is actually present at 98% coverage; this makes the fallback
+    # correct rather than relying on that.
+    exact = next((pt for pt in series if pt["date"] == target_date), None)
+    if exact is not None:
+        raw_value, actual_date = exact["value"], target_date
+    else:
+        after = next((pt for pt in series if pt["date"] > target_date), None)
+        chosen = after if after is not None else series[-1]
+        raw_value, actual_date = chosen["value"], chosen["date"]
 
     if raw_value is None or raw_value == 0:
         return series, target_date, 1.0
@@ -412,44 +437,102 @@ def main():
     # ── load price history ───────────────────────────────────────────
     price_matrix, ticker_meta, all_dates = load_all_history()
 
-    # Inject current prices from all_prices.json into today's price_matrix
-    # This ensures the latest prices are used even if history files haven't
-    # been updated yet today (e.g., EODHD end-of-day not yet available)
-    if today_str not in price_matrix:
-        price_matrix[today_str] = {}
-        all_dates.append(today_str)
-        all_dates.sort()
-    # ── Layer 2: Index-side price validation ──
+    # ── Restrict the date axis to genuine TRADING days ────────────────
+    # Token history is 7-day (crypto) and deep international history trades
+    # on US market holidays — both inject dates on which the US-anchored
+    # equity universe does NOT broadly trade. Left unfiltered these (a)
+    # create flat phantom points every weekend and (b) pull the auto-
+    # selected base date onto a US holiday (e.g. Memorial Day 2021-05-31,
+    # 34% coverage) where every US-listed constituent has no bar — which
+    # silently pinned the entire Semiconductor sub-index to its 1000 base.
+    # A date is retained only when a quorum of eligible constituents
+    # actually traded. The 50% line sits in the wide empty gap between
+    # holiday sessions (≤35%, international-only) and real sessions (≥79%).
+    _elig_set = {e["ticker"] for e in eligible}
+    TRADING_COVERAGE = 0.50
+    _need = max(1, int(len(eligible) * TRADING_COVERAGE))
+    _trading = [d for d in all_dates
+                if sum(1 for t in _elig_set if t in price_matrix.get(d, {})) >= _need]
+    _dropped = len(all_dates) - len(_trading)
+    if _trading:
+        print(f"  Trading-day filter: kept {len(_trading)}/{len(all_dates)} dates "
+              f"(dropped {_dropped} non-trading days <{TRADING_COVERAGE:.0%} eligible coverage)")
+        all_dates = _trading
+
+    # ── Determine the latest genuine TRADING date from the snapshot ───
+    # The index must never move on a non-trading day (weekend or global
+    # holiday). The wall-clock "today" is irrelevant — what governs is the
+    # most recent date on which a QUORUM of index constituents actually
+    # have a fresh price. On a Saturday the snapshot still carries Friday's
+    # bars, so the latest trading date resolves to Friday and no synthetic
+    # point is created. A thin lone session (e.g. a couple of Sunday-only
+    # TASE listings) fails the quorum and is likewise ignored — the
+    # composite only steps forward when the broad market actually traded.
+    from collections import Counter as _Counter
+    _eligible_tickers = {e["ticker"] for e in eligible}
+    _date_counts = _Counter(
+        str(p.get("date"))[:10] for p in prices_data["prices"]
+        if p.get("price") is not None and p.get("date")
+        and str(p.get("date"))[:10] <= today_str
+        and p.get("ticker") in _eligible_tickers
+    )
+    TRADING_DAY_QUORUM = max(10, int(len(eligible) * 0.05))
+    _trading_dates = sorted(d for d, c in _date_counts.items()
+                            if c >= TRADING_DAY_QUORUM)
+    data_date = _trading_dates[-1] if _trading_dates else None
+    last_hist_date = all_dates[-1] if all_dates else None
+
+    # Inject a fresh point ONLY when the snapshot is genuinely ahead of the
+    # on-disk history (e.g. EOD history not yet refreshed for the latest
+    # session). When history already covers the latest trading date — which
+    # includes every weekend, where data_date stays pinned to Friday — we
+    # trust the split/FX-adjusted EOD history and add nothing. This is the
+    # "drop non-trading days" standard applied at the injection boundary.
+    inject_date = None
+    if data_date and (last_hist_date is None or data_date > last_hist_date):
+        inject_date = data_date
+        if inject_date not in price_matrix:
+            price_matrix[inject_date] = {}
+            all_dates.append(inject_date)
+            all_dates.sort()
+
+    # ── Layer 2: Index-side price validation (only when injecting) ────
     index_quarantine = set()
     skipped = 0
-    for ticker, price in list(prices_by_ticker.items()):
-        # Reject null/zero/negative
-        if price is None or price <= 0:
-            index_quarantine.add(ticker)
-            skipped += 1
-            continue
-        # Reject implausible USD prices
-        if price > 5000:
-            index_quarantine.add(ticker)
-            skipped += 1
-            continue
-        # Reject >50% swing vs most recent prior valid price
-        # Only check against the immediately prior trading day to avoid false positives
-        # from legitimate multi-day rallies during history gaps
-        if len(all_dates) >= 2:
-            prev_day = all_dates[-2]  # Day before today in the series
-            prior_prices = price_matrix.get(prev_day, {})
-            if ticker in prior_prices:
-                prior = prior_prices[ticker]
-                if prior and prior > 0 and abs(price / prior - 1) > 0.5:
-                    index_quarantine.add(ticker)
-                    skipped += 1
-        if ticker not in index_quarantine:
-            price_matrix[today_str][ticker] = price
+    if inject_date:
+        for ticker, price in list(prices_by_ticker.items()):
+            # Reject null/zero/negative
+            if price is None or price <= 0:
+                index_quarantine.add(ticker)
+                skipped += 1
+                continue
+            # Reject implausible USD prices
+            if price > 5000:
+                index_quarantine.add(ticker)
+                skipped += 1
+                continue
+            # Reject >50% swing vs most recent prior valid price. Only check
+            # against the immediately prior trading day to avoid false
+            # positives from legitimate multi-day rallies during history gaps.
+            if len(all_dates) >= 2:
+                prev_day = all_dates[-2]  # Day before inject_date in the series
+                prior_prices = price_matrix.get(prev_day, {})
+                if ticker in prior_prices:
+                    prior = prior_prices[ticker]
+                    if prior and prior > 0 and abs(price / prior - 1) > 0.5:
+                        index_quarantine.add(ticker)
+                        skipped += 1
+            if ticker not in index_quarantine:
+                price_matrix[inject_date][ticker] = price
 
-    injected = len(prices_by_ticker) - skipped
-    print(f"  Injected {injected} current prices for {today_str}" +
-          (f" (quarantined {skipped} at index level)" if skipped else ""))
+    injected = (len(prices_by_ticker) - skipped) if inject_date else 0
+    if inject_date:
+        print(f"  Injected {injected} current prices for {inject_date}" +
+              (f" (quarantined {skipped} at index level)" if skipped else ""))
+    else:
+        print(f"  No injection: history current through {last_hist_date}; "
+              f"latest snapshot trading day {data_date} already covered — "
+              f"non-trading day '{today_str}' NOT added (drop-non-trading-days)")
 
     # Persist index-side quarantine log
     quarantine_log_path = os.path.join(INDEX_DIR, "quarantine.json")
@@ -700,12 +783,17 @@ def main():
     save_json(BASE_DATE_PATH, base_data)
 
     # ── robotnik_index.json ──────────────────────────────────────────
+    # current_date is the date of the LATEST actual point in the series — a
+    # real trading day — never the wall-clock "today". On a weekend this is
+    # the prior Friday's close; the headline must not advance to a date the
+    # market never traded.
+    current_date = unified_series[-1]["date"] if unified_series else today_str
     index_output = {
         "name": "Robotnik Composite Index",
         "base_date": NORMALISE_DATE,
         "base_value": BASE_VALUE,
         "current_value": composite_value,
-        "current_date": today_str,
+        "current_date": current_date,
         "entity_count": len(eligible),
         "method": "weighted_average_of_sub_indices",
         "series": unified_series,
