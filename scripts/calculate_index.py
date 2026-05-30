@@ -364,6 +364,19 @@ def main():
     entities = mcap_data["market_caps"]
     today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+    # Token isolation: load the registry token set (type=="token" primary,
+    # sector=="Token" fallback) so tokens can never enter the equity composite,
+    # even if mis-sectored upstream in market_caps.json.
+    _reg_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                             "data", "registries", "entity_registry.json")
+    try:
+        _reg = load_json(_reg_path)
+        token_tickers = {k for k, v in _reg.items()
+                         if isinstance(v, dict)
+                         and (v.get("type") == "token" or v.get("sector") in ("Token", "Tokens"))}
+    except Exception:
+        token_tickers = set()
+
     # build price lookup: ticker -> price (USD)
     prices_by_ticker = {}
     for p in prices_data["prices"]:
@@ -375,11 +388,13 @@ def main():
     for e in entities:
         e["sector"] = SECTOR_MAP.get(e.get("sector", ""), e.get("sector", "Other"))
 
-    # filter to entities that have mcap >= minimum threshold, a current price, not excluded/quarantined, and not Token
+    # filter to entities that have mcap >= minimum threshold, a current price,
+    # not excluded/quarantined, and not a token (type-based isolation + sector fallback)
     eligible = [e for e in entities
                 if e["market_cap_usd"] >= MIN_MARKET_CAP
                 and e["ticker"] in prices_by_ticker
                 and e.get("status") not in ("excluded", "data_quarantine")
+                and e["ticker"] not in token_tickers
                 and e.get("sector") != "Token"]
 
     excluded_micro = [e for e in entities

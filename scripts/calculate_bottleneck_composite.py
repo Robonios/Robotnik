@@ -280,13 +280,21 @@ def main():
     excluded = {k for k, v in registry.items()
                 if isinstance(v, dict) and v.get("status") in ("excluded", "data_quarantine")}
 
+    # Token isolation: tokens are a legacy content/research watchlist and must
+    # NEVER enter any equity aggregation. Primary isolation is type=="token"
+    # (robust to sector mis-tagging); sector=="Token" kept as belt-and-suspenders.
+    token_tickers = {k for k, v in registry.items()
+                     if isinstance(v, dict)
+                     and (v.get("type") == "token" or v.get("sector") in ("Token", "Tokens"))}
+
     # Eligible universe: same gate as mcap composite (mcap ≥ $10M, has price,
-    # not excluded, not Token sector). That parity is essential — divergence
+    # not excluded, not a token). That parity is essential — divergence
     # must reflect only the tilt, not differing universes.
     eligible = [e for e in entities
                 if e["market_cap_usd"] >= MIN_MARKET_CAP
                 and e["ticker"] in prices_by_ticker
                 and e["ticker"] not in excluded
+                and e["ticker"] not in token_tickers
                 and e.get("sector") != "Token"]
 
     print("  Eligible universe: {}".format(len(eligible)))

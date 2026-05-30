@@ -21,7 +21,7 @@
     "bottleneck_risk": "CRITICAL",
     "key_customers": "TSM, Samsung, Intel",
     "key_suppliers": "Carl Zeiss (optics), VDL (assembly)",
-    "robotnik_notes": "Sole supplier of EUV lithography — the most critical single-source dependency in the entire frontier stack. No alternative exists. Record EUR 13.2B order backlog."
+    "robotnik_notes": "Sole supplier of EUV lithography \u2014 the most critical single-source dependency in the entire frontier stack. No alternative exists. Record EUR 13.2B order backlog."
   },
   "MU": {
     "bottleneck_risk": "MEDIUM",
@@ -57,7 +57,7 @@
     "bottleneck_risk": "MEDIUM",
     "key_customers": "TSM, Samsung, Intel, Micron",
     "key_suppliers": "Optical component vendors",
-    "robotnik_notes": "Process control and metrology — defect inspection critical for sub-3nm yield management. Benefits from increasing process complexity."
+    "robotnik_notes": "Process control and metrology \u2014 defect inspection critical for sub-3nm yield management. Benefits from increasing process complexity."
   },
   "SIE GR": {
     "bottleneck_risk": "LOW",
@@ -147,7 +147,7 @@
     "bottleneck_risk": "LOW",
     "key_customers": "Defence primes, airlines, space programmes",
     "key_suppliers": "Specialty metals, electronics",
-    "robotnik_notes": "Hidden champion — niche sole-sourced space and defence parts. Programmatically critical: individual programmes depend on HEICO's specific components."
+    "robotnik_notes": "Hidden champion \u2014 niche sole-sourced space and defence parts. Programmatically critical: individual programmes depend on HEICO's specific components."
   },
   "RKLB": {
     "bottleneck_risk": "MEDIUM",
@@ -213,7 +213,7 @@
     "bottleneck_risk": "HIGH",
     "key_customers": "TSM (CoWoS substrates), NVDA",
     "key_suppliers": "Copper foil, resin, glass fibre",
-    "robotnik_notes": "CoWoS substrate bottleneck — Q1 star (+130.6%). Advanced packaging substrates are the binding constraint on AI chip production. Sole supplier risk."
+    "robotnik_notes": "CoWoS substrate bottleneck \u2014 Q1 star (+130.6%). Advanced packaging substrates are the binding constraint on AI chip production. Sole supplier risk."
   },
   "SQM": {
     "bottleneck_risk": "MEDIUM",
@@ -297,7 +297,7 @@
   },
   "AEIS": {
     "bottleneck_risk": "HIGH",
-    "bottleneck_description": "RF + DC plasma power generators for etch and deposition — structural 3-player market with mid-program switching virtually unheard of.",
+    "bottleneck_description": "RF + DC plasma power generators for etch and deposition \u2014 structural 3-player market with mid-program switching virtually unheard of.",
     "key_customers": "Lam Research, Applied Materials, Tokyo Electron",
     "key_suppliers": "Specialty RF component vendors",
     "robotnik_notes": "Plasma power is structurally a 3-player oligopoly (AEIS, MKS-ENI, Comet). Customers (etch/deposition OEMs) qualify multiple suppliers but switching mid-program is rare due to qualification complexity. Revised from MEDIUM after consideration of mid-program switching friction in advanced-node fab build-outs.",
@@ -305,39 +305,31 @@
   },
   "FORM": {
     "bottleneck_risk": "HIGH",
-    "bottleneck_description": "Wafer probe cards — dominant in HBM probe-card segment; the AI-memory ramp leverages this position as the highest-value subsegment of test infrastructure.",
+    "bottleneck_description": "Wafer probe cards \u2014 dominant in HBM probe-card segment; the AI-memory ramp leverages this position as the highest-value subsegment of test infrastructure.",
     "key_customers": "Micron, SK Hynix, Samsung (HBM test); leading-edge logic test customers",
     "key_suppliers": "Substrate suppliers, MEMS suppliers",
-    "robotnik_notes": "Probe cards are a 3-supplier market (FormFactor, MJC, Technoprobe). FormFactor's HBM probe-card position is leveraged by the AI-memory ramp — HBM cards have multi-quarter qualification timelines, making mid-program switching impractical. Revised from MEDIUM given the HBM-specific dominance in the highest-value test segment.",
+    "robotnik_notes": "Probe cards are a 3-supplier market (FormFactor, MJC, Technoprobe). FormFactor's HBM probe-card position is leveraged by the AI-memory ramp \u2014 HBM cards have multi-quarter qualification timelines, making mid-program switching impractical. Revised from MEDIUM given the HBM-specific dominance in the highest-value test segment.",
     "confidence": "HIGH"
   },
   "KLIC": {
     "bottleneck_risk": "HIGH",
-    "bottleneck_description": "Wire bonders + ball bonders for IC packaging — effectively a duopoly with ASMPT for advanced wire-bonding, the mainstream IC packaging interconnect.",
+    "bottleneck_description": "Wire bonders + ball bonders for IC packaging \u2014 effectively a duopoly with ASMPT for advanced wire-bonding, the mainstream IC packaging interconnect.",
     "key_customers": "OSATs (Amkor, ASE, JCET), IDM packaging operations",
     "key_suppliers": "Tooling and capillary suppliers",
-    "robotnik_notes": "Advanced wire-bonding is a 2-player market (KLIC + ASMPT). Wire-bond capacity remains structurally relevant even as advanced packaging grows — high pin-count BGAs and power devices continue to require wire bonders. Switching cost is multi-quarter (qualification of bond profiles for each device family). Revised from MEDIUM on the structural duopoly basis.",
+    "robotnik_notes": "Advanced wire-bonding is a 2-player market (KLIC + ASMPT). Wire-bond capacity remains structurally relevant even as advanced packaging grows \u2014 high pin-count BGAs and power devices continue to require wire bonders. Switching cost is multi-quarter (qualification of bond profiles for each device family). Revised from MEDIUM on the structural duopoly basis.",
     "confidence": "HIGH"
   },
   "TSEM": {
     "bottleneck_risk": "HIGH",
-    "bottleneck_description": "Specialty foundry — RF SOI, high-voltage analog, BCD, SiGe. RF SOI capacity in particular is mission-critical for smartphone PA chips with multi-year qualification cycles.",
+    "bottleneck_description": "Specialty foundry \u2014 RF SOI, high-voltage analog, BCD, SiGe. RF SOI capacity in particular is mission-critical for smartphone PA chips with multi-year qualification cycles.",
     "key_customers": "RF chip designers (Qorvo, Skyworks, Broadcom), power management ICs",
     "key_suppliers": "Wafer + materials suppliers",
-    "robotnik_notes": "RF SOI capacity is structurally tight — Tower + GlobalFoundries are the merchant suppliers for smartphone PA chips. Failed Intel acquisition (2022-23) demonstrated the strategic value of this capacity. Multi-year process qualification creates real switching friction for fabless customers. Revised from MEDIUM on merchant-supplier oligopoly grounds.",
+    "robotnik_notes": "RF SOI capacity is structurally tight \u2014 Tower + GlobalFoundries are the merchant suppliers for smartphone PA chips. Failed Intel acquisition (2022-23) demonstrated the strategic value of this capacity. Multi-year process qualification creates real switching friction for fabless customers. Revised from MEDIUM on merchant-supplier oligopoly grounds.",
     "confidence": "HIGH"
-  },
-  "6723 JP": {
-    "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Japanese auto + industrial MCU supplier — part of the auto-MCU oligopoly with multi-year qualification cycles and tight Tier-1 relationships.",
-    "key_customers": "Toyota, global Tier-1 auto suppliers, industrial OEMs",
-    "key_suppliers": "Foundry partners (TSMC, GlobalFoundries), wafer suppliers",
-    "robotnik_notes": "Auto MCU is structurally a 4-player oligopoly (Renesas, NXP, Infineon, ST). Mid-platform switching is multi-year due to functional-safety qualification (ISO 26262) and software-stack porting. Revised from LOW given the auto-qualification switching cost dynamic that LOW under-weighted.",
-    "confidence": "MEDIUM"
   },
   "ALAB": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Leading PCIe Gen5/6 retimers + CXL interconnect for AI server fabric — niche leader with TSMC fab dependence.",
+    "bottleneck_description": "Leading PCIe Gen5/6 retimers + CXL interconnect for AI server fabric \u2014 niche leader with TSMC fab dependence.",
     "key_customers": "Hyperscalers (Meta, MS, AWS), AI server OEMs",
     "key_suppliers": "TSMC (foundry)",
     "robotnik_notes": "Hyperscalers are dual-sourcing across Astera/Marvell/Credo. TSMC dependence on the fab side adds an upstream constraint. Switching cost is real (board-level qualification) but substitutes exist.",
@@ -345,7 +337,7 @@
   },
   "ALGM": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Magnetic sensors + power for automotive — auto qualification creates real switching friction, especially in safety-rated Hall-effect positions.",
+    "bottleneck_description": "Magnetic sensors + power for automotive \u2014 auto qualification creates real switching friction, especially in safety-rated Hall-effect positions.",
     "key_customers": "Tier-1 auto suppliers, industrial OEMs",
     "key_suppliers": "Foundry partners",
     "robotnik_notes": "Hall-effect sensors compete with Melexis, Infineon, NXP, TI; the auto-qualification process (AEC-Q100, ISO 26262) makes mid-platform switching multi-year. Revised from LOW given the auto-qualification dynamic.",
@@ -353,7 +345,7 @@
   },
   "AMKR": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Largest US-based OSAT (outsourced assembly + test) — strategic position in CHIPS Act packaging-incentive build-out.",
+    "bottleneck_description": "Largest US-based OSAT (outsourced assembly + test) \u2014 strategic position in CHIPS Act packaging-incentive build-out.",
     "key_customers": "Semiconductor IDMs, fabless customers, US government contracts",
     "key_suppliers": "Substrate suppliers, equipment vendors",
     "robotnik_notes": "Global OSAT is a 3-4 player market (ASE ~30%, Amkor ~15%, JCET, Powertech). CHIPS Act packaging incentives add US-specific bargaining position.",
@@ -361,7 +353,7 @@
   },
   "CAMT": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Israeli advanced-packaging inspection — bumps, RDL, copper pillars. Position strengthens with CoWoS / hybrid-bonding build-out.",
+    "bottleneck_description": "Israeli advanced-packaging inspection \u2014 bumps, RDL, copper pillars. Position strengthens with CoWoS / hybrid-bonding build-out.",
     "key_customers": "OSATs and IDMs running advanced packaging lines",
     "key_suppliers": "Optical component suppliers",
     "robotnik_notes": "Direct competition with Onto Innovation; KLA upstream. Advanced-packaging ramp (CoWoS, hybrid bonding) strengthens position.",
@@ -369,7 +361,7 @@
   },
   "CRDO": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Active Electrical Cables (AECs) + serdes for AI cluster interconnect — niche leader competing for hyperscaler sockets.",
+    "bottleneck_description": "Active Electrical Cables (AECs) + serdes for AI cluster interconnect \u2014 niche leader competing for hyperscaler sockets.",
     "key_customers": "Hyperscalers (AI training clusters), networking OEMs",
     "key_suppliers": "TSMC (foundry)",
     "robotnik_notes": "Direct competition with Marvell, Astera Labs, MACOM. Niche leader but customers have substitution paths.",
@@ -385,7 +377,7 @@
   },
   "LSCC": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Low-power FPGA leader at sub-65nm process nodes — owns the low-density low-power FPGA niche.",
+    "bottleneck_description": "Low-power FPGA leader at sub-65nm process nodes \u2014 owns the low-density low-power FPGA niche.",
     "key_customers": "Industrial, comms, AI inference at edge",
     "key_suppliers": "Foundry partners (Samsung, TSMC)",
     "robotnik_notes": "AMD (Xilinx) competes upmarket; Microchip in adjacencies. Toolchain lock-in slows but doesn't block substitution.",
@@ -393,7 +385,7 @@
   },
   "MKSI": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Vacuum gauges, gas delivery, motion control, photonics subsystems for fab tools — largest pure-play fab subsystem supplier.",
+    "bottleneck_description": "Vacuum gauges, gas delivery, motion control, photonics subsystems for fab tools \u2014 largest pure-play fab subsystem supplier.",
     "key_customers": "Wafer-fab equipment OEMs (Lam, AMAT, Tokyo Electron, ASML)",
     "key_suppliers": "Specialty component vendors",
     "robotnik_notes": "Many products are mission-critical (vacuum interfaces specifically), but per-segment competitors exist (Brooks, Edwards, Watlow). Atotech acquisition adds chemistry/plating exposure.",
@@ -409,7 +401,7 @@
   },
   "NVMI": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Optical metrology — film-thickness + critical-dimension (OCD).",
+    "bottleneck_description": "Optical metrology \u2014 film-thickness + critical-dimension (OCD).",
     "key_customers": "Leading-edge fabs (TSMC, Samsung, Intel, Micron)",
     "key_suppliers": "Optical and computational components",
     "robotnik_notes": "KLA is structurally larger; Onto Innovation is the closest peer. Nova owns OCD metrology niche for several process-control loops; substitutes exist but require recalibration.",
@@ -433,7 +425,7 @@
   },
   "PI": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "RAIN RFID readers + IC tags — structural duopoly with NXP. Reader infrastructure ties to IC encoding at scale.",
+    "bottleneck_description": "RAIN RFID readers + IC tags \u2014 structural duopoly with NXP. Reader infrastructure ties to IC encoding at scale.",
     "key_customers": "Retail (Walmart-tier rollouts), logistics, supply-chain operations",
     "key_suppliers": "Foundry partners, antenna/substrate vendors",
     "robotnik_notes": "RAIN UHF passive RFID IC market is a long-running duopoly with NXP. Reader infrastructure (encoding, antennas) is tied to ICs, so single-supplier defection at scale is multi-year. Structural duopoly persists even with one named substitute.",
@@ -481,7 +473,7 @@
   },
   "STM": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Power semis + MCU + sensors — part of the auto-MCU and auto-power oligopoly with multi-year qualification cycles.",
+    "bottleneck_description": "Power semis + MCU + sensors \u2014 part of the auto-MCU and auto-power oligopoly with multi-year qualification cycles.",
     "key_customers": "Tier-1 auto suppliers, industrial OEMs, smartphone OEMs",
     "key_suppliers": "Internal fabs + foundry partners",
     "robotnik_notes": "STMicroelectronics competes with NXP, Infineon, Renesas, TI; auto qualification (AEC-Q100, ISO 26262) makes mid-platform switching multi-year. Revised from LOW given the auto-qualification dynamic. NOTE: rating applies to parent STMicroelectronics N.V. (~$25B mcap); STM ADR row in our universe has trivially low float and inherits the parent-level rating.",
@@ -493,7 +485,7 @@
     "bottleneck_description": "Largest US-based 200mm SiC substrate + SiC MOSFET capacity (Mohawk Valley fab).",
     "key_customers": "EV power electronics OEMs, industrial inverter makers, defence",
     "key_suppliers": "Wafer-handling equipment, materials",
-    "robotnik_notes": "US national-security-relevant SiC substrate position (CHIPS Act funded), but global SiC market has credible substitutes (Coherent's 200mm rollout, ROHM, Sumitomo, Infineon vertical). Going-concern risk is real (Ch.11 watch as of late 2025) — flagged separately rather than weighted into the structural bottleneck rating.",
+    "robotnik_notes": "US national-security-relevant SiC substrate position (CHIPS Act funded), but global SiC market has credible substitutes (Coherent's 200mm rollout, ROHM, Sumitomo, Infineon vertical). Going-concern risk is real (Ch.11 watch as of late 2025) \u2014 flagged separately rather than weighted into the structural bottleneck rating.",
     "confidence": "MEDIUM",
     "going_concern_flag": true,
     "going_concern_note": "Chapter 11 watch as of late 2025; structural bottleneck rating reflects the asset position not the corporate solvency."
@@ -564,10 +556,10 @@
   },
   "NVEC": {
     "bottleneck_risk": "LOW",
-    "bottleneck_description": "Spintronic (MR) sensors — niche product family.",
+    "bottleneck_description": "Spintronic (MR) sensors \u2014 niche product family.",
     "key_customers": "Industrial sensor OEMs",
     "key_suppliers": "Foundry partners",
-    "robotnik_notes": "TDK, Allegro, Honeywell substitute. Public bottleneck data is thin given the small mcap and narrow product family — confidence flagged.",
+    "robotnik_notes": "TDK, Allegro, Honeywell substitute. Public bottleneck data is thin given the small mcap and narrow product family \u2014 confidence flagged.",
     "confidence": "MEDIUM"
   },
   "ON": {
@@ -588,7 +580,7 @@
   },
   "QRVO": {
     "bottleneck_risk": "LOW",
-    "bottleneck_description": "RFFE peer of Skyworks — same customer concentration, same substitution paths.",
+    "bottleneck_description": "RFFE peer of Skyworks \u2014 same customer concentration, same substitution paths.",
     "key_customers": "Apple (primary), Android OEMs",
     "key_suppliers": "Foundry partners",
     "robotnik_notes": "Apple dual-sources RFFE with Skyworks, Broadcom, Murata. Highly competitive.",
@@ -623,7 +615,7 @@
     "bottleneck_description": "Taiwanese mature-node pure-play foundry (28nm+).",
     "key_customers": "Fabless customers in legacy and mature nodes",
     "key_suppliers": "Wafer + materials suppliers",
-    "robotnik_notes": "Mature-node pure-play foundry is competitive — GlobalFoundries, SMIC, Vanguard, Tower substitute.",
+    "robotnik_notes": "Mature-node pure-play foundry is competitive \u2014 GlobalFoundries, SMIC, Vanguard, Tower substitute.",
     "confidence": "HIGH"
   },
   "002050": {
@@ -672,14 +664,6 @@
     "key_customers": "HVAC OEMs (Carrier, Trane), data center operators, conveyor manufacturers, industrial distributors",
     "key_suppliers": "Steel/copper mills, semiconductor power module suppliers, rare earth magnet suppliers",
     "robotnik_notes": "Regal Rexnord competes in commoditized industrial motor and mechanical power-transmission segments against ABB, Siemens, Nidec, Emerson, and many regional players. Recent data-center order book (~$735M) reflects HVAC fan motor demand, but multiple alternatives exist. Significant debt load and ongoing deleveraging after Altra acquisition; not in distress but financial flexibility is constrained.",
-    "confidence": "HIGH"
-  },
-  "MOG/A": {
-    "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Leading flight-control actuation supplier for civil and military aircraft; high-performance servovalves and electromechanical actuators with deep platform incumbency.",
-    "key_customers": "Boeing, Airbus, Lockheed Martin, Northrop Grumman, Raytheon, BAE Systems, NASA, SpaceX",
-    "key_suppliers": "Specialty steel forgings, sapphire/ceramics, MIL-STD electronic components, precision machining",
-    "robotnik_notes": "Moog is positioned on virtually every major aircraft program (F-35, 787, A350, NGAD, missile programs) for primary flight-control actuation, electrohydrostatic actuators, and weapon stores management. Aerospace qualification creates multi-year switching cost and FAA/DoD certification moats. Below HIGH because Parker-Hannifin, Eaton, Liebherr, Honeywell, and Collins Aerospace contest the actuation market; Moog has program-level incumbency rather than industry-wide monopoly.",
     "confidence": "HIGH"
   },
   "688017": {
@@ -782,8 +766,8 @@
     "bottleneck_risk": "CRITICAL",
     "bottleneck_description": "Sole dominant global producer of separated NdPr oxide from the Bayan Obo deposit; controls ~90% of refined rare-earth magnet feedstock at the production-quota level, with no viable Western alternative at scale.",
     "key_customers": "NdFeB magnet makers (JL Mag, Ningbo Yunsheng, Zhongke Sanhuan, Proterial/Hitachi Metals); downstream EV motor, robotics, wind turbine, and defense supply chains",
-    "key_suppliers": "Baogang Group (parent — Bayan Obo mining), separation chemical suppliers, Chinese state coordination on export quotas",
-    "robotnik_notes": "CNRE controls the Bayan Obo complex (world's largest light rare earth resource) and is the dominant single producer of separated NdPr oxide globally. China collectively refines ~90% of global rare earth magnet inputs and CNRE is the largest single operator — its production quotas materially move global NdPr prices within weeks. The 2024 and 2025 Chinese rare-earth export controls (October 2024 Annex IV additions; April/October 2025 expansions covering medium and heavy REEs) have escalated geopolitical bite from 'concentration risk' to 'active supply-chain weaponisation' — clearing the CRITICAL bar of 'no alternative exists today'. MP Materials (Mountain Pass), Lynas, and emerging Western processing capacity (Arafura, etc.) collectively run at <15% of CNRE's separation throughput and lack heavy-rare-earth processing capability outside Lynas's Kalgoorlie ramp. Consolidated key (was split as '600111' HIGH from Robotics batch + '600111 C1' CRITICAL from existing rated set; the existing CRITICAL was the right call given full context).",
+    "key_suppliers": "Baogang Group (parent \u2014 Bayan Obo mining), separation chemical suppliers, Chinese state coordination on export quotas",
+    "robotnik_notes": "CNRE controls the Bayan Obo complex (world's largest light rare earth resource) and is the dominant single producer of separated NdPr oxide globally. China collectively refines ~90% of global rare earth magnet inputs and CNRE is the largest single operator \u2014 its production quotas materially move global NdPr prices within weeks. The 2024 and 2025 Chinese rare-earth export controls (October 2024 Annex IV additions; April/October 2025 expansions covering medium and heavy REEs) have escalated geopolitical bite from 'concentration risk' to 'active supply-chain weaponisation' \u2014 clearing the CRITICAL bar of 'no alternative exists today'. MP Materials (Mountain Pass), Lynas, and emerging Western processing capacity (Arafura, etc.) collectively run at <15% of CNRE's separation throughput and lack heavy-rare-earth processing capability outside Lynas's Kalgoorlie ramp. Consolidated key (was split as '600111' HIGH from Robotics batch + '600111 C1' CRITICAL from existing rated set; the existing CRITICAL was the right call given full context).",
     "confidence": "HIGH"
   },
   "6902 JP": {
@@ -863,7 +847,7 @@
     "bottleneck_description": "Combined leader in poultry/fish processing equipment post-Marel merger; competes with GEA, BAADER, Buhler, Middleby.",
     "key_customers": "Poultry/fish/meat processors, food service equipment buyers",
     "key_suppliers": "Stainless, drives, vision systems, conveyance vendors",
-    "robotnik_notes": "JBT Marel is the strongest single player in poultry and fish processing post-merger and has leadership in primary processing systems, but BAADER, GEA, Middleby, Bühler all offer fully substitutable lines. Customers commonly mix vendors per line. No sole-source position.",
+    "robotnik_notes": "JBT Marel is the strongest single player in poultry and fish processing post-merger and has leadership in primary processing systems, but BAADER, GEA, Middleby, B\u00fchler all offer fully substitutable lines. Customers commonly mix vendors per line. No sole-source position.",
     "confidence": "HIGH"
   },
   "6645 JP": {
@@ -959,7 +943,7 @@
     "bottleneck_description": "Top-2 global automotive paint-shop / paint-application equipment vendor (~23% share) -- structural oligopoly with high qualification stickiness.",
     "key_customers": "Global automotive OEMs (VW, Stellantis, GM, Toyota, BMW), Tier-1 paint integrators",
     "key_suppliers": "Robotic arms (ABB, Kawasaki partner), atomizer technology, application electronics",
-    "robotnik_notes": "Dürr is the clear #1 in automotive paint-shop application equipment (~23% paint robot share; widely recognized top-2 in turnkey paint shops). Paint shops carry multi-year qualification cycles (corrosion, color match, throughput) that make mid-project switching prohibitive, supporting MEDIUM. Substitutes do exist (ABB, FANUC, Taikisha, EISENMANN successor lines) so it is not HIGH.",
+    "robotnik_notes": "D\u00fcrr is the clear #1 in automotive paint-shop application equipment (~23% paint robot share; widely recognized top-2 in turnkey paint shops). Paint shops carry multi-year qualification cycles (corrosion, color match, throughput) that make mid-project switching prohibitive, supporting MEDIUM. Substitutes do exist (ABB, FANUC, Taikisha, EISENMANN successor lines) so it is not HIGH.",
     "confidence": "MEDIUM"
   },
   "688165 C1": {
@@ -1047,7 +1031,7 @@
     "bottleneck_description": "Strain-gauge load cells and weighing force sensors with #1 China market share for 15 consecutive years, but commodity-tier sensor category with many global alternatives.",
     "key_customers": "Industrial scale OEMs, logistics/weighing equipment vendors, factory automation integrators",
     "key_suppliers": "Steel forgings, foil strain-gauge resistors, electronics components",
-    "robotnik_notes": "Keli is China's #1 strain-gauge load cell supplier and one of the largest globally by volume in steel load cells. However, strain-gauge load cells are a mature, commodity-leaning sensor category with abundant competition from HBM (Hottinger), Vishay, Mettler-Toledo, Flintec, Zemic and many Chinese peers. Switching is straightforward for most weighing applications. Not a structural bottleneck — competitive market with realistic substitution, rating aligns with the LOW frontier-stack baseline.",
+    "robotnik_notes": "Keli is China's #1 strain-gauge load cell supplier and one of the largest globally by volume in steel load cells. However, strain-gauge load cells are a mature, commodity-leaning sensor category with abundant competition from HBM (Hottinger), Vishay, Mettler-Toledo, Flintec, Zemic and many Chinese peers. Switching is straightforward for most weighing applications. Not a structural bottleneck \u2014 competitive market with realistic substitution, rating aligns with the LOW frontier-stack baseline.",
     "confidence": "MEDIUM"
   },
   "OUST": {
@@ -1063,7 +1047,7 @@
     "bottleneck_description": "World #1 passenger-car lidar by 2024 volume and growing robotics lidar leader (1,458% YoY Q1 2026 robotics growth) in a Chinese-dominated duopoly with Hesai.",
     "key_customers": "BYD, Geely, FAW, NIO, XPeng, Tier-1 robotics OEMs and humanoid integrators, 3,400+ robotics customers",
     "key_suppliers": "Lumentum/Sony laser components, optical assemblies, MEMS mirror vendors, Chinese photonic IC fabs",
-    "robotnik_notes": "RoboSense is the #1 global passenger-car lidar by 2024 volume share and has rapidly expanded into robotics lidar (185,500 robotics units in Q1 2026, surpassing automotive). Combined with Hesai it forms an effective duopoly in Chinese-supplied automotive/robotics lidar, with 310+ automotive brand/Tier-1 design wins (BYD, Geely, FAW). Real but bounded switching friction — Hesai, Huawei and Seyond are credible alternatives; Western customers face geopolitical export constraints similar to TSEM. MEDIUM rather than HIGH given the duopoly structure and active competition.",
+    "robotnik_notes": "RoboSense is the #1 global passenger-car lidar by 2024 volume share and has rapidly expanded into robotics lidar (185,500 robotics units in Q1 2026, surpassing automotive). Combined with Hesai it forms an effective duopoly in Chinese-supplied automotive/robotics lidar, with 310+ automotive brand/Tier-1 design wins (BYD, Geely, FAW). Real but bounded switching friction \u2014 Hesai, Huawei and Seyond are credible alternatives; Western customers face geopolitical export constraints similar to TSEM. MEDIUM rather than HIGH given the duopoly structure and active competition.",
     "confidence": "HIGH"
   },
   "6914 JP": {
@@ -1079,7 +1063,7 @@
     "bottleneck_description": "World's largest unit-volume producer of digital industrial cameras (area-scan, line-scan, 3D, embedded vision), but heavily dependent on Sony CMOS sensors and competing with Teledyne, IDS, JAI, Allied Vision, Hikvision.",
     "key_customers": "Cognex (board-level), machine vision integrators, factory automation OEMs, life-science/medical imaging, retail/traffic",
     "key_suppliers": "Sony (Pregius/IMX CMOS image sensors), onsemi, FPGAs, optical lenses",
-    "robotnik_notes": "Basler is the largest unit-volume maker of industrial machine-vision cameras in Europe, but the camera segment is highly contested by Teledyne DALSA, Sony, IDS, JAI, Allied Vision/FLIR, Hikvision/Hikrobot and Toshiba Teli. Basler is actually downstream of Sony's Pregius/IMX CMOS sensor monopoly-ish position; cameras are a mid-stack commodity-leaning subsystem with many substitution paths. No structural bottleneck — clear LOW.",
+    "robotnik_notes": "Basler is the largest unit-volume maker of industrial machine-vision cameras in Europe, but the camera segment is highly contested by Teledyne DALSA, Sony, IDS, JAI, Allied Vision/FLIR, Hikvision/Hikrobot and Toshiba Teli. Basler is actually downstream of Sony's Pregius/IMX CMOS sensor monopoly-ish position; cameras are a mid-stack commodity-leaning subsystem with many substitution paths. No structural bottleneck \u2014 clear LOW.",
     "confidence": "HIGH"
   },
   "098460 KS": {
@@ -1103,7 +1087,7 @@
     "bottleneck_description": "Leading vendor of enterprise barcode scanners, rugged mobile computers and thermal label printers, but in product categories where Honeywell, Datalogic, SATO and Cognex offer functionally equivalent substitutes.",
     "key_customers": "Walmart, Amazon, FedEx, UPS, DHL, hospitals, retail chains, 3PLs, manufacturing plants worldwide",
     "key_suppliers": "Foxconn / Jabil contract manufacturers, image-sensor vendors (Sony, OmniVision), Qualcomm/MediaTek SoCs, battery cells, thermal print-head suppliers",
-    "robotnik_notes": "Zebra has dominant share (~50% mobile computing, low-40s% printing, low-30s% scanning) but the next-largest competitor in each segment is a credible substitute within 12-15 share points, and switching is largely a software/firmware exercise rather than a capital-equipment requalification. Honeywell's scanning and mobile-computing portfolio (post-Intermec/Vocollect) is a direct alternative, and Datalogic, SATO and Cognex cover the long tail. This is a strong franchise but not a structural bottleneck — substitution paths are realistic. Maps to the broad-analog/peer-competitive LOW tier (TXN, EMR).",
+    "robotnik_notes": "Zebra has dominant share (~50% mobile computing, low-40s% printing, low-30s% scanning) but the next-largest competitor in each segment is a credible substitute within 12-15 share points, and switching is largely a software/firmware exercise rather than a capital-equipment requalification. Honeywell's scanning and mobile-computing portfolio (post-Intermec/Vocollect) is a direct alternative, and Datalogic, SATO and Cognex cover the long tail. This is a strong franchise but not a structural bottleneck \u2014 substitution paths are realistic. Maps to the broad-analog/peer-competitive LOW tier (TXN, EMR).",
     "confidence": "HIGH"
   },
   "KGX GR": {
@@ -1111,7 +1095,7 @@
     "bottleneck_description": "#2 global forklift OEM (after Toyota Industries) and operator of Dematic, one of several top-tier warehouse automation integrators competing with Honeywell Intelligrated, Daifuku, Murata, SSI Schaefer, TGW, KNAPP and AutoStore.",
     "key_customers": "Amazon, Walmart, DHL, Kroger, Maersk, Carrefour, Tesco, automotive OEM plants, 3PLs",
     "key_suppliers": "Battery suppliers (CATL, Hoppecke), Cummins / Kubota engines, hydraulics (Bosch Rexroth, Parker), Linde drivetrain components, semis (Infineon, NXP for motor control)",
-    "robotnik_notes": "The forklift market is concentrated but peer-competitive: Toyota Industries (20-25% share), KION, Jungheinrich, Mitsubishi Logisnext, Crown and Hyster-Yale split ~55-60% of global units, with Chinese OEMs (Anhui Heli, Hangcha) taking the rest. Warehouse automation under Dematic is the largest by revenue but only ~9% global share — Honeywell Intelligrated, Daifuku, SSI Schaefer, TGW, AutoStore and KNAPP all win comparable greenfield projects. No segment qualifies as a structural choke-point; this maps cleanly to the SYM/ABBN/Fanuc 'contested warehouse and robot' LOW anchors.",
+    "robotnik_notes": "The forklift market is concentrated but peer-competitive: Toyota Industries (20-25% share), KION, Jungheinrich, Mitsubishi Logisnext, Crown and Hyster-Yale split ~55-60% of global units, with Chinese OEMs (Anhui Heli, Hangcha) taking the rest. Warehouse automation under Dematic is the largest by revenue but only ~9% global share \u2014 Honeywell Intelligrated, Daifuku, SSI Schaefer, TGW, AutoStore and KNAPP all win comparable greenfield projects. No segment qualifies as a structural choke-point; this maps cleanly to the SYM/ABBN/Fanuc 'contested warehouse and robot' LOW anchors.",
     "confidence": "HIGH"
   },
   "AUTO NO": {
@@ -1119,7 +1103,7 @@
     "bottleneck_description": "Category-creator and leader in cube/grid ASRS with ~1,900 installations and a global integrator channel, but the same retrieval workload can be served by competing ASRS architectures (shuttles, mini-loads, robot AMR-to-rack) from many vendors.",
     "key_customers": "Puma, Best Buy, Asda, Lidl, Gucci, H Mart, Siemens, plus white-label deployments through Dematic, Swisslog, Bastian, KNAPP and Element Logic",
     "key_suppliers": "Aluminium grid extruders, lithium battery suppliers, wheel/motor vendors, IPC/PLC controllers, integrators provide site engineering",
-    "robotnik_notes": "AutoStore is the clear leader inside the narrow cube-storage sub-segment and the Ocado settlement gives both parties cross-licensed access to pre-2020 patents, so the legal moat has weakened. Outside the cube niche, customers can substitute Exotec Skypod, Geek+, Hai Robotics, AutoStore-style clones (Element Logic uses AutoStore but BMG and others build alternatives), shuttle ASRS from Dematic/SSI Schaefer/TGW, or traditional mini-loads — all competitive on $/throughput. The technology advantage is real but not a sole-source position. Aligns with the SYM LOW anchor (warehouse automation, contested).",
+    "robotnik_notes": "AutoStore is the clear leader inside the narrow cube-storage sub-segment and the Ocado settlement gives both parties cross-licensed access to pre-2020 patents, so the legal moat has weakened. Outside the cube niche, customers can substitute Exotec Skypod, Geek+, Hai Robotics, AutoStore-style clones (Element Logic uses AutoStore but BMG and others build alternatives), shuttle ASRS from Dematic/SSI Schaefer/TGW, or traditional mini-loads \u2014 all competitive on $/throughput. The technology advantage is real but not a sole-source position. Aligns with the SYM LOW anchor (warehouse automation, contested).",
     "confidence": "MEDIUM"
   },
   "HIAB FH": {
@@ -1127,15 +1111,15 @@
     "bottleneck_description": "Leading on-road load-handling OEM (loader cranes, truck-mounted forklifts, hooklifts, tail lifts), in a fragmented market where Palfinger, Fassi, Tadano, Manitou and Chinese OEMs (XCMG, SANY) compete head-to-head.",
     "key_customers": "Construction firms, lumber/building material distributors, waste haulers, fleet operators, last-mile delivery, military/aid agencies (MOFFETT)",
     "key_suppliers": "Steel mills (boom structures), Bosch Rexroth and Parker hydraulics, Volvo Penta / Cummins / Kubota engines, Continental tires, electronic control units",
-    "robotnik_notes": "Vehicle-mounted crane market is fragmented and commoditised at the component level. Palfinger holds the largest share (~18-30%), Hiab is comparable, and Fassi, Tadano, Liebherr, Manitowoc and Kato cover the remainder. The Palfinger-SANY JV announced in 2025 highlights how aggressively Chinese OEMs are entering at lower price points. Hiab's brand strength (MOFFETT in truck-mounted forklifts) is real but not a structural moat — switching is largely a fleet-procurement decision, not a multi-year qualification. Clean LOW.",
+    "robotnik_notes": "Vehicle-mounted crane market is fragmented and commoditised at the component level. Palfinger holds the largest share (~18-30%), Hiab is comparable, and Fassi, Tadano, Liebherr, Manitowoc and Kato cover the remainder. The Palfinger-SANY JV announced in 2025 highlights how aggressively Chinese OEMs are entering at lower price points. Hiab's brand strength (MOFFETT in truck-mounted forklifts) is real but not a structural moat \u2014 switching is largely a fleet-procurement decision, not a multi-year qualification. Clean LOW.",
     "confidence": "HIGH"
   },
   "KARN SW": {
     "bottleneck_risk": "LOW",
-    "bottleneck_description": "One of the largest vertical lift module (VLM) / vertical carousel vendors with global reach via Kardex Remstar, competing with Modula, SSI Schaefer Logimat, Hänel and System Logistics in a product category with low switching cost.",
+    "bottleneck_description": "One of the largest vertical lift module (VLM) / vertical carousel vendors with global reach via Kardex Remstar, competing with Modula, SSI Schaefer Logimat, H\u00e4nel and System Logistics in a product category with low switching cost.",
     "key_customers": "Manufacturing plants (Bosch, Siemens, automotive Tier-1s), MRO operations, healthcare distribution, e-commerce SKU pickers, Amazon US fulfillment (recently)",
     "key_suppliers": "Steel structures and tray suppliers, servo motors (Siemens, ABB), PLCs (Siemens, Rockwell), Mitsubishi/Fanuc controllers, lift hardware",
-    "robotnik_notes": "VLMs are a discrete product class served by a roughly six-vendor field — Kardex Remstar, Modula, SSI Schaefer, Hänel, Ferretto, ICAM — with near-identical specs and pricing. Buyers cross-shop on price, service network and software integration; substitution is straightforward at the unit-purchase level. The recent AutoStore acquisition (Kardex bought Vertical Industries / Mlog and the AutoStore integrator footprint) expanded scope but not into a bottleneck position. Maps to LOW (peer-competitive intralogistics).",
+    "robotnik_notes": "VLMs are a discrete product class served by a roughly six-vendor field \u2014 Kardex Remstar, Modula, SSI Schaefer, H\u00e4nel, Ferretto, ICAM \u2014 with near-identical specs and pricing. Buyers cross-shop on price, service network and software integration; substitution is straightforward at the unit-purchase level. The recent AutoStore acquisition (Kardex bought Vertical Industries / Mlog and the AutoStore integrator footprint) expanded scope but not into a bottleneck position. Maps to LOW (peer-competitive intralogistics).",
     "confidence": "HIGH"
   },
   "INRN SW": {
@@ -1175,7 +1159,7 @@
     "bottleneck_description": "AquaBeam/HYDROS Aquablation is the only robotic heat-free waterjet BPH therapy, but the broader BPH treatment market has many established alternatives (TURP, HoLEP, Rezum, UroLift, TULSA-PRO).",
     "key_customers": "Hospitals, ambulatory surgery centers, urology practices treating BPH patients",
     "key_suppliers": "Contract manufacturers for AquaBeam/HYDROS console and single-use disposable handpieces; imaging (ultrasound) component suppliers",
-    "robotnik_notes": "While PROCEPT is the sole vendor of its specific Aquablation modality, BPH is a treatment continuum with abundant clinical substitutes: Boston Scientific's Rezum (water vapor), Teleflex's UroLift (implants), HoLEP laser enucleation, traditional TURP, and Profound Medical's TULSA-PRO. From a supply-chain bottleneck perspective, displacement of PROCEPT would have no downstream supply-chain consequence — urologists would route patients to alternative therapies. The 'first/only' framing is therapeutic differentiation, not a structural bottleneck like ASML or 6920 JP. Therapy-area sole-source is not the same as supply-chain sole-source.",
+    "robotnik_notes": "While PROCEPT is the sole vendor of its specific Aquablation modality, BPH is a treatment continuum with abundant clinical substitutes: Boston Scientific's Rezum (water vapor), Teleflex's UroLift (implants), HoLEP laser enucleation, traditional TURP, and Profound Medical's TULSA-PRO. From a supply-chain bottleneck perspective, displacement of PROCEPT would have no downstream supply-chain consequence \u2014 urologists would route patients to alternative therapies. The 'first/only' framing is therapeutic differentiation, not a structural bottleneck like ASML or 6920 JP. Therapy-area sole-source is not the same as supply-chain sole-source.",
     "confidence": "HIGH"
   },
   "9660 HK": {
@@ -1239,7 +1223,7 @@
     "bottleneck_description": "Dominant US-domestic supplier of Switchblade loitering munitions and tactical small UAS to US Army/DoD, with battle-tested program-of-record status that creates real qualification switching friction.",
     "key_customers": "US Army, US Marine Corps, US Special Operations Command, Ukrainian Armed Forces (via FMS), allied NATO militaries",
     "key_suppliers": "Various US-domestic electronics/composites suppliers; BlueHalo (post-acquisition) for space/cyber/directed energy; production capacity recently doubled to 2,000 units/month",
-    "robotnik_notes": "Switchblade has a real program-of-record moat in US loitering munitions (UVision and IAI exist but lack US production/DoD qualification at equivalent scale), and BlueHalo acquisition extends franchise into space/cyber/DE. However, the broader tactical UAS and loitering munition market is increasingly contested by Anduril, Shield AI, Kratos, Teal/Red Cat and low-cost FPV alternatives — the bottleneck is qualification and DoD relationship, not technological uniqueness. MEDIUM reflects real but contestable switching friction in a growing competitive field.",
+    "robotnik_notes": "Switchblade has a real program-of-record moat in US loitering munitions (UVision and IAI exist but lack US production/DoD qualification at equivalent scale), and BlueHalo acquisition extends franchise into space/cyber/DE. However, the broader tactical UAS and loitering munition market is increasingly contested by Anduril, Shield AI, Kratos, Teal/Red Cat and low-cost FPV alternatives \u2014 the bottleneck is qualification and DoD relationship, not technological uniqueness. MEDIUM reflects real but contestable switching friction in a growing competitive field.",
     "confidence": "HIGH"
   },
   "MBLY": {
@@ -1247,7 +1231,7 @@
     "bottleneck_description": "Dominant ADAS vision SoC supplier with EyeQ family deployed in ~230M vehicles across ~1,200 vehicle models and >95% win rate at top OEM customers, creating multi-year automotive qualification switching cost.",
     "key_customers": "VW Group, Stellantis, GM, Ford, BMW, Audi, Nissan, Honda, Hyundai, Geely and most other global OEMs ex-Tesla",
     "key_suppliers": "STMicroelectronics (sole historical EyeQ SoC fabricator), TSMC (added for EyeQ6/imaging radar redundancy), Quanta Computer (ECU assembly)",
-    "robotnik_notes": "Mobileye is the closest analog to a structural ADAS oligopoly leader with auto-grade qualification creating prohibitive near-term switching cost (consistent with the ALGM/auto-MCU MEDIUM anchor). However, the broader ADAS-to-AD compute market is genuinely contested by Nvidia Drive (Mercedes, JLR, BYD wins), Qualcomm Snapdragon Ride (BMW, GM partial), Tesla in-house, Huawei MDC and Horizon Robotics in China — and Mobileye has been losing some China share. MEDIUM (not HIGH) reflects real switching cost on awarded programs but genuine multi-vendor competition for new design wins.",
+    "robotnik_notes": "Mobileye is the closest analog to a structural ADAS oligopoly leader with auto-grade qualification creating prohibitive near-term switching cost (consistent with the ALGM/auto-MCU MEDIUM anchor). However, the broader ADAS-to-AD compute market is genuinely contested by Nvidia Drive (Mercedes, JLR, BYD wins), Qualcomm Snapdragon Ride (BMW, GM partial), Tesla in-house, Huawei MDC and Horizon Robotics in China \u2014 and Mobileye has been losing some China share. MEDIUM (not HIGH) reflects real switching cost on awarded programs but genuine multi-vendor competition for new design wins.",
     "confidence": "HIGH"
   },
   "688297 C1": {
@@ -1264,7 +1248,7 @@
     "bottleneck_description": "Top-tier global supplier of fiber-optic gyroscope inertial navigation systems, with vertically integrated FOG manufacturing and trusted-by-70-navies status creating multi-year qualification switching cost in maritime/defense INS.",
     "key_customers": "70+ navies and armies globally including French Navy, Spanish Forces, US Navy (subsea), European tactical drone programs (Airbus), satellite primes (Astrix series for spacecraft attitude control)",
     "key_suppliers": "Vertically integrated; designs and manufactures FOG coils, accelerometers, electronics and algorithms in-house; minimal external dependency for core IP",
-    "robotnik_notes": "Exail sits in a structural global top-3 FOG oligopoly with Honeywell and Safran (top 5 collectively ~70% of nav-grade revenue), and defense/space qualification creates prohibitive switching cost on awarded programs. However, this is a peer-competitive oligopoly — Honeywell, Safran, Northrop Grumman LITEF, and KVH all compete for new sockets, and ring-laser-gyro and MEMS IMU alternatives exist in lower-grade tiers. MEDIUM reflects real qualification moat consistent with structural-duopoly anchors but not a sole-source position.",
+    "robotnik_notes": "Exail sits in a structural global top-3 FOG oligopoly with Honeywell and Safran (top 5 collectively ~70% of nav-grade revenue), and defense/space qualification creates prohibitive switching cost on awarded programs. However, this is a peer-competitive oligopoly \u2014 Honeywell, Safran, Northrop Grumman LITEF, and KVH all compete for new sockets, and ring-laser-gyro and MEMS IMU alternatives exist in lower-grade tiers. MEDIUM reflects real qualification moat consistent with structural-duopoly anchors but not a sole-source position.",
     "confidence": "HIGH"
   },
   "EH": {
@@ -1280,7 +1264,7 @@
     "bottleneck_description": "Largest US sidewalk delivery robot fleet (~2,000 units) with anchor Uber Eats partnership, operating in a contested last-mile autonomous delivery market with multiple peer alternatives.",
     "key_customers": "Uber Eats (anchor platform partner), DoorDash, Shake Shack, White Castle, regional restaurant brands across LA, Miami, Chicago, Dallas-Fort Worth, Atlanta",
     "key_suppliers": "Nvidia (compute), Magna International (manufacturing partner for Gen 3 robots), various sensor/lidar/camera suppliers (not single-sourced)",
-    "robotnik_notes": "Sidewalk delivery is a competitive market with multiple credible operators (Starship Technologies with the largest global fleet, Coco Robotics, Kiwibot, Cartken/Mitsubishi, Avride/Yandex) and substitutes from drone delivery (Zipline, Wing) and human-courier gig platforms. Serve has scale-leader position in the US sidewalk niche but no proprietary bottleneck input, and the Uber Eats relationship is commercial rather than exclusive. LOW is consistent with the SYM warehouse-automation calibration anchor — contested operational-automation market with no structural choke-point.",
+    "robotnik_notes": "Sidewalk delivery is a competitive market with multiple credible operators (Starship Technologies with the largest global fleet, Coco Robotics, Kiwibot, Cartken/Mitsubishi, Avride/Yandex) and substitutes from drone delivery (Zipline, Wing) and human-courier gig platforms. Serve has scale-leader position in the US sidewalk niche but no proprietary bottleneck input, and the Uber Eats relationship is commercial rather than exclusive. LOW is consistent with the SYM warehouse-automation calibration anchor \u2014 contested operational-automation market with no structural choke-point.",
     "confidence": "HIGH"
   },
   "9880 HK": {
@@ -1296,12 +1280,12 @@
     "bottleneck_description": "Global #1 in robot vacuum unit share (~19-23%) but operating in a structurally contested consumer-appliance category with at least five well-funded peers; not a critical-input bottleneck for any downstream stack.",
     "key_customers": "Direct-to-consumer (Amazon, Tmall, JD.com, retail), Xiaomi (legacy OEM relationship)",
     "key_suppliers": "Chinese consumer-electronics supply chain (lidar modules, brushless motors, lithium cells, Qualcomm/MTK/Allwinner SoCs)",
-    "robotnik_notes": "Roborock has won meaningful share gains against iRobot, but the robot vacuum market is fragmented with Ecovacs, Dreame, Xiaomi, Narwal, and Dyson all shipping competitive product with rapid SKU refresh cycles. The company is a branded consumer-goods finisher sourcing batteries, motors, lidar modules, and SoCs from commodity suppliers — none of its output is a sole-source input for another industry. Consumer end-markets see ~12 month design cycles and aggressive price competition, the antithesis of switching-cost moats. Clearly LOW.",
+    "robotnik_notes": "Roborock has won meaningful share gains against iRobot, but the robot vacuum market is fragmented with Ecovacs, Dreame, Xiaomi, Narwal, and Dyson all shipping competitive product with rapid SKU refresh cycles. The company is a branded consumer-goods finisher sourcing batteries, motors, lidar modules, and SoCs from commodity suppliers \u2014 none of its output is a sole-source input for another industry. Consumer end-markets see ~12 month design cycles and aggressive price competition, the antithesis of switching-cost moats. Clearly LOW.",
     "confidence": "HIGH"
   },
   "6600 HK": {
     "bottleneck_risk": "LOW",
-    "bottleneck_description": "Smart-home / consumer SwitchBot brand with a nascent humanoid (Onero H1) launched Q1 2026; competes with Roborock, Ecovacs, Dreame in consumer robotics — no critical-input role.",
+    "bottleneck_description": "Smart-home / consumer SwitchBot brand with a nascent humanoid (Onero H1) launched Q1 2026; competes with Roborock, Ecovacs, Dreame in consumer robotics \u2014 no critical-input role.",
     "key_customers": "Direct-to-consumer (Amazon, retail across 90+ countries); Apple/Google/Amazon smart-home ecosystem integrations",
     "key_suppliers": "Chinese consumer electronics supply chain (BLE/Wi-Fi SoCs, brushless motors, lithium cells, plastic injection)",
     "robotnik_notes": "Newly IPO'd (Dec 2025) consumer smart-home company best known for SwitchBot accessories, now extending into humanoid housekeepers. Operates in a hyper-competitive consumer electronics market with low switching costs and many peer brands. Despite 90-country distribution and 3.6M households served, products are discretionary consumer goods, not industrial inputs. Onero H1 is unproven at scale and ships into the same crowded humanoid consumer field. Clearly LOW.",
@@ -1336,7 +1320,7 @@
     "bottleneck_description": "Maker of Dynamixel all-in-one smart servo actuators widely used in research and education robots; competes with Maxon, Faulhaber, U2D2/Cubemars/Dephy in smart-servo categories.",
     "key_customers": "Academic and research robotics labs globally, ROS/OpenManipulator ecosystem, Korean delivery pilots",
     "key_suppliers": "Korean precision component supply chain (motors, encoders), in-house cycloidal Dynamixel Drive gearing",
-    "robotnik_notes": "Dynamixel is well-known in the academic/educational robot ecosystem (TurtleBot, OpenManipulator), but smart servos are a contested category with multiple alternatives at varying price/performance points. Robotis is not a sole-source for any industrial humanoid OEM — production humanoids use proprietary actuators or harmonic-reducer + motor pairs from Harmonic Drive Systems, Nidec, or Chinese suppliers. The Dynamixel ecosystem stickiness in research labs is genuine but not a critical-stack bottleneck. Delivery robot business adds further contested SKUs. LOW.",
+    "robotnik_notes": "Dynamixel is well-known in the academic/educational robot ecosystem (TurtleBot, OpenManipulator), but smart servos are a contested category with multiple alternatives at varying price/performance points. Robotis is not a sole-source for any industrial humanoid OEM \u2014 production humanoids use proprietary actuators or harmonic-reducer + motor pairs from Harmonic Drive Systems, Nidec, or Chinese suppliers. The Dynamixel ecosystem stickiness in research labs is genuine but not a critical-stack bottleneck. Delivery robot business adds further contested SKUs. LOW.",
     "confidence": "HIGH"
   },
   "6841 JP": {
@@ -1344,7 +1328,7 @@
     "bottleneck_description": "Process automation, DCS, field instruments, and test/measurement equipment supplier competing in well-populated oligopolistic markets with multiple credible global alternatives.",
     "key_customers": "Hydrocarbon/chemical/oil & gas processors, power utilities, pharma manufacturers, semiconductor fabs (T&M), electronics manufacturers (power analyzers, oscilloscopes)",
     "key_suppliers": "Semiconductor component suppliers, silicon resonant sensor fabricators (internal), electronics ODM/EMS partners",
-    "robotnik_notes": "Yokogawa is a top-tier global player but sits in structurally competitive markets across all of its segments. In DCS it is one of six major players (ABB, Emerson, Honeywell, Siemens, Schneider, Yokogawa) where the top five share ~60% of the market — competitive, not bottleneck. In oscilloscopes/T&M it ranks around #9 with low single-digit mindshare versus Keysight, Tektronix, R&S, Teledyne LeCroy. In field instruments (pressure transmitters, flow meters) it holds #2 share with Emerson, E+H, ABB, Siemens, Honeywell, Krohne all credible substitutes. Strong installed-base lock-in creates switching friction within process plants, but there is no segment where Yokogawa is a sole-source choke point — substitution is realistic at the next greenfield project. Lower bottleneck position than Advantest (6857 JP MEDIUM) which has tighter ATE duopoly dynamics.",
+    "robotnik_notes": "Yokogawa is a top-tier global player but sits in structurally competitive markets across all of its segments. In DCS it is one of six major players (ABB, Emerson, Honeywell, Siemens, Schneider, Yokogawa) where the top five share ~60% of the market \u2014 competitive, not bottleneck. In oscilloscopes/T&M it ranks around #9 with low single-digit mindshare versus Keysight, Tektronix, R&S, Teledyne LeCroy. In field instruments (pressure transmitters, flow meters) it holds #2 share with Emerson, E+H, ABB, Siemens, Honeywell, Krohne all credible substitutes. Strong installed-base lock-in creates switching friction within process plants, but there is no segment where Yokogawa is a sole-source choke point \u2014 substitution is realistic at the next greenfield project. Lower bottleneck position than Advantest (6857 JP MEDIUM) which has tighter ATE duopoly dynamics.",
     "confidence": "HIGH"
   },
   "454910 KS": {
@@ -1368,7 +1352,7 @@
     "bottleneck_description": "Container/cargo handling equipment maker (terminal tractors, reach stackers, straddle carriers, empty container handlers) in a moderately concentrated but peer-competitive port equipment market.",
     "key_customers": "Container terminal operators (APM Terminals, DP World, PSA, Hutchison Ports), intermodal rail operators, distribution centers, port authorities globally.",
     "key_suppliers": "Diesel/electric drivetrain suppliers (Cummins, Volvo Penta), battery suppliers for electrification push, steel and hydraulic component suppliers, automation/sensor partners (Forterra for autonomous TT).",
-    "robotnik_notes": "Kalmar is a top-3 global cargo handling player alongside Konecranes and ZPMC, and Kalmar Ottawa is the leading terminal tractor producer (>85,000 units shipped). However, the segment has multiple credible substitutes — Konecranes, Hyster-Yale, Terberg, Mafi, Capacity Trucks, TICO, CVS Ferrari, Sany and Liebherr all compete with overlapping product lines and bundled automation/service offers. Customers can realistically multi-source across reach stackers, straddle carriers and terminal tractors without prohibitive switching cost, and ZPMC's STS-crane dominance does not extend to Kalmar's product mix. This is a peer-competitive industrial OEM consistent with the LOW tier anchors (SYM, 6954 JP, ABBN SW, ROK).",
+    "robotnik_notes": "Kalmar is a top-3 global cargo handling player alongside Konecranes and ZPMC, and Kalmar Ottawa is the leading terminal tractor producer (>85,000 units shipped). However, the segment has multiple credible substitutes \u2014 Konecranes, Hyster-Yale, Terberg, Mafi, Capacity Trucks, TICO, CVS Ferrari, Sany and Liebherr all compete with overlapping product lines and bundled automation/service offers. Customers can realistically multi-source across reach stackers, straddle carriers and terminal tractors without prohibitive switching cost, and ZPMC's STS-crane dominance does not extend to Kalmar's product mix. This is a peer-competitive industrial OEM consistent with the LOW tier anchors (SYM, 6954 JP, ABBN SW, ROK).",
     "confidence": "HIGH"
   },
   "GSAT": {
@@ -1392,7 +1376,7 @@
     "bottleneck_description": "Sole US holder of NRC Category-1 licensed HEU/HALEU facilities (Erwin Tennessee) and the only US entity with flight-qualified space nuclear reactor experience; prime for SR-1 Freedom (Mars 2028) and NSTM-3 lunar reactor mandates.",
     "key_customers": "US Navy (Naval Nuclear Propulsion Program), DARPA (DRACO), NASA, DOE, US DoD, Rolls-Royce/UK Space Agency partnership",
     "key_suppliers": "Specialty zirconium alloy mills, HALEU enrichment (Centrus/Urenco/DOE), heavy-forging vendors",
-    "robotnik_notes": "BWXT is the sole US manufacturer of naval nuclear reactors and HALEU/HEU fuel ($7.4B → $8.65B Naval backlog, $1.4B Q1 2026 contract). On the space side, BWXT is the only US entity with combined NRC Cat-1 HEU/HALEU processing licenses + classified DoE/Navy clearances + decades of flight-qualified reactor hardware. Following the May 2025 cancellation of DARPA DRACO and the FY26 NASA NTP zeroing, demand has migrated to the White House NSTM-3 mandate (Apr 2026), SR-1 Freedom (Mars 2028 launch window), and continuing FSP Phase 1 contracts — BWXT is best-positioned to capture given the 3–7 year barrier of NRC Cat-1 facility build + classified clearances. Competitors (Westinghouse, IX/X-energy, USNC, General Atomics, SpaceNukes) exist but lack the combined fuel-plus-reactor-plus-clearance stack. HIGH (not CRITICAL) because individual contracts could go to competitors over 12–24 months; not a true monopoly.",
+    "robotnik_notes": "BWXT is the sole US manufacturer of naval nuclear reactors and HALEU/HEU fuel ($7.4B \u2192 $8.65B Naval backlog, $1.4B Q1 2026 contract). On the space side, BWXT is the only US entity with combined NRC Cat-1 HEU/HALEU processing licenses + classified DoE/Navy clearances + decades of flight-qualified reactor hardware. Following the May 2025 cancellation of DARPA DRACO and the FY26 NASA NTP zeroing, demand has migrated to the White House NSTM-3 mandate (Apr 2026), SR-1 Freedom (Mars 2028 launch window), and continuing FSP Phase 1 contracts \u2014 BWXT is best-positioned to capture given the 3\u20137 year barrier of NRC Cat-1 facility build + classified clearances. Competitors (Westinghouse, IX/X-energy, USNC, General Atomics, SpaceNukes) exist but lack the combined fuel-plus-reactor-plus-clearance stack. HIGH (not CRITICAL) because individual contracts could go to competitors over 12\u201324 months; not a true monopoly.",
     "confidence": "HIGH"
   },
   "BKSY": {
@@ -1449,7 +1433,7 @@
     "bottleneck_description": "Post-Satcom Direct merger, sole provider of end-to-end multi-orbit (ATG + GEO + LEO Galileo) connectivity for business aviation with ~90% combined share; switching constrained by aircraft certification cycles, but Starlink Aviation is rapidly substituting.",
     "key_customers": "Fractional ownership operators (NetJets, Flexjet), charter operators, corporate flight departments, business aircraft OEMs, military/government mobility customers; SD legacy book includes ~1,300 premium global broadband customers.",
     "key_suppliers": "Gilat Satellite Networks (exclusive Galileo ESA antennas), Hughes/Eutelsat OneWeb (LEO capacity), Iridium/Inmarsat (GEO), tower infrastructure for ATG network.",
-    "robotnik_notes": "Gogo+Satcom Direct now controls roughly 90% of installed business-jet connectivity with a multi-orbit stack and the only US 5G ATG network — meaningful regulatory/STC certification moat in business aviation. However, Starlink Aviation is aggressively penetrating bizjet with lower-cost LEO, and operators can re-equip over a 2-3 year cycle, so this is not a sole-source position. MEDIUM reflects the combination of installed-base advantage and certification friction without a true monopoly.",
+    "robotnik_notes": "Gogo+Satcom Direct now controls roughly 90% of installed business-jet connectivity with a multi-orbit stack and the only US 5G ATG network \u2014 meaningful regulatory/STC certification moat in business aviation. However, Starlink Aviation is aggressively penetrating bizjet with lower-cost LEO, and operators can re-equip over a 2-3 year cycle, so this is not a sole-source position. MEDIUM reflects the combination of installed-base advantage and certification friction without a true monopoly.",
     "confidence": "HIGH"
   },
   "GILT": {
@@ -1457,15 +1441,15 @@
     "bottleneck_description": "Tier-1 supplier of VSAT ground-segment platforms (SkyEdge IV/II-c) and electronically steered antennas for LEO/multi-orbit networks; Gogo exclusive ESA antenna provider for Galileo business aviation and a key OneWeb/Eutelsat LEO ground partner.",
     "key_customers": "Gogo (exclusive ESA antenna distribution for bizav/defense), Eutelsat OneWeb, US DoD (Satellite Transportable Terminals, CCT-series portable terminals via Gilat DataPath/Defense), satellite operators (Intelsat, SES, Telesat), telecom operators using VSAT backhaul.",
     "key_suppliers": "RF/MMIC component vendors, antenna phase-shifter ICs, contract manufacturers for hubs/modems, Israeli aerospace supply base.",
-    "robotnik_notes": "Gilat occupies a defensible niche in ground-segment hubs, modems, and increasingly LEO-capable ESAs, where it competes with Hughes, Viasat, ST Engineering iDirect, and Comtech — a clear oligopoly, not a monopoly. The exclusive Gogo Galileo ESA arrangement and growing DoD portable-terminal business create switching friction (qualification, certifications), justifying MEDIUM rather than LOW. Not CRITICAL or HIGH because multiple credible substitutes exist for VSAT hubs and ESAs.",
+    "robotnik_notes": "Gilat occupies a defensible niche in ground-segment hubs, modems, and increasingly LEO-capable ESAs, where it competes with Hughes, Viasat, ST Engineering iDirect, and Comtech \u2014 a clear oligopoly, not a monopoly. The exclusive Gogo Galileo ESA arrangement and growing DoD portable-terminal business create switching friction (qualification, certifications), justifying MEDIUM rather than LOW. Not CRITICAL or HIGH because multiple credible substitutes exist for VSAT hubs and ESAs.",
     "confidence": "HIGH"
   },
   "SPCE": {
     "bottleneck_risk": "LOW",
-    "bottleneck_description": "Suborbital space-tourism operator (SpaceShipTwo / Delta-class), not a satellite communications provider; no supply-chain bottleneck role — service is a discretionary consumer experience with multiple emerging alternatives (Blue Origin New Shepard, future SpaceX/Polaris).",
+    "bottleneck_description": "Suborbital space-tourism operator (SpaceShipTwo / Delta-class), not a satellite communications provider; no supply-chain bottleneck role \u2014 service is a discretionary consumer experience with multiple emerging alternatives (Blue Origin New Shepard, future SpaceX/Polaris).",
     "key_customers": "Private individuals (ticketed astronauts ~$450K/seat), research payload clients (NASA, universities) for microgravity experiments.",
     "key_suppliers": "The Spaceship Company (in-house manufacturing arm), Aurora Flight Sciences/Bell Textron and Qarbon Aerospace for Delta-class production partners, hybrid rocket motor suppliers.",
-    "robotnik_notes": "SPCE is mis-cohorted as satellite communications — it operates a suborbital tourism vehicle with no satcom function. Bottleneck rating is LOW: no supply-chain criticality, tourism is fully substitutable by Blue Origin and other future entrants, and the company has disclosed substantial doubt about ability to continue as a going concern with commercial flights pushed to late 2026. Financial distress flagged separately; structural bottleneck position is weak regardless.",
+    "robotnik_notes": "SPCE is mis-cohorted as satellite communications \u2014 it operates a suborbital tourism vehicle with no satcom function. Bottleneck rating is LOW: no supply-chain criticality, tourism is fully substitutable by Blue Origin and other future entrants, and the company has disclosed substantial doubt about ability to continue as a going concern with commercial flights pushed to late 2026. Financial distress flagged separately; structural bottleneck position is weak regardless.",
     "confidence": "HIGH",
     "going_concern_flag": true
   },
@@ -1530,7 +1514,7 @@
     "bottleneck_description": "Leading but not sole-source supplier of high-precision GNSS receivers, RTK base stations, and geospatial software in a multi-vendor market.",
     "key_customers": "Construction firms, surveyors, precision agriculture operators (OEM partner AGCO), civil engineering, transportation/fleet, government mapping agencies.",
     "key_suppliers": "Semiconductor foundries (RF/baseband chips), contract manufacturers, GNSS constellation operators (free signals from GPS/Galileo/BeiDou/GLONASS).",
-    "robotnik_notes": "Trimble is one of the 'big three' GNSS/geospatial vendors alongside Hexagon-Leica and Topcon, with 22+ named competitors including Teledyne FLIR, CHC Navigation, Stonex, and Caterpillar. While its CenterPoint RTX correction service and PTx Trimble ag platform create some workflow stickiness, RTK is a standards-based technology (NTRIP/RTCM 3.2) and customers can swap correction layers cheaply. Encroachment from AI-native and cloud-native competitors plus established Big Three rivals means switching is feasible at moderate cost — fits LOW per framework (peer-competitive, multiple suppliers).",
+    "robotnik_notes": "Trimble is one of the 'big three' GNSS/geospatial vendors alongside Hexagon-Leica and Topcon, with 22+ named competitors including Teledyne FLIR, CHC Navigation, Stonex, and Caterpillar. While its CenterPoint RTX correction service and PTx Trimble ag platform create some workflow stickiness, RTK is a standards-based technology (NTRIP/RTCM 3.2) and customers can swap correction layers cheaply. Encroachment from AI-native and cloud-native competitors plus established Big Three rivals means switching is feasible at moderate cost \u2014 fits LOW per framework (peer-competitive, multiple suppliers).",
     "confidence": "HIGH"
   },
   "OVZON SS": {
@@ -1538,7 +1522,7 @@
     "bottleneck_description": "Small Ku-band GEO SATCOM-as-a-service operator (one owned satellite Ovzon 3, plus leased Intelsat capacity) with proprietary mobile terminals serving defense/NATO customers in a crowded competitive field.",
     "key_customers": "U.S. Department of Defense (historic anchor), Swedish FMV (1.04B SEK 2025 order), European NATO customer (240 MSEK Q4 2025), public-safety, NGO, and maritime.",
     "key_suppliers": "Intelsat (leased transponder capacity), Maxar/SSL (Ovzon 3 satellite bus), launch providers (SpaceX launched Ovzon 3), terminal contract manufacturers.",
-    "robotnik_notes": "Ovzon competes head-on with Viasat-Inmarsat, SES, Iridium, and increasingly SpaceX/Starshield PLEO services in the DoD/NATO SATCOM-as-a-Service market — DoD's PLEO program alone expanded from $900M to $13B ceiling, signaling abundant alternatives. Their differentiation is the small high-throughput on-the-move terminal portfolio (T6/T7/P20/P30) which gives some product moat, but Ku-band GEO capacity is a commodity and customers have many viable substitutes. Not a structural choke-point; financial position has improved sharply in 2025 (revenue 735 MSEK, EBITDA +291 MSEK, 1B+ SEK backlog), so no going-concern flag warranted.",
+    "robotnik_notes": "Ovzon competes head-on with Viasat-Inmarsat, SES, Iridium, and increasingly SpaceX/Starshield PLEO services in the DoD/NATO SATCOM-as-a-Service market \u2014 DoD's PLEO program alone expanded from $900M to $13B ceiling, signaling abundant alternatives. Their differentiation is the small high-throughput on-the-move terminal portfolio (T6/T7/P20/P30) which gives some product moat, but Ku-band GEO capacity is a commodity and customers have many viable substitutes. Not a structural choke-point; financial position has improved sharply in 2025 (revenue 735 MSEK, EBITDA +291 MSEK, 1B+ SEK backlog), so no going-concern flag warranted.",
     "confidence": "HIGH"
   },
   "GEOD": {
@@ -1546,7 +1530,7 @@
     "bottleneck_description": "Decentralized RTK/GNSS correction network competing with incumbent centralized providers (Trimble, Hexagon, Swift Navigation, u-blox PointPerfect) that offer fully substitutable precision-positioning services.",
     "key_customers": "Precision agriculture operators, autonomous vehicles/drones, surveying firms, robotics platforms requiring centimeter-accurate GNSS positioning.",
     "key_suppliers": "Independent miner-operators hosting RTK base stations (multi-frequency GNSS receivers from u-blox, Septentrio, etc.); cloud/blockchain infrastructure (Solana-based token economics).",
-    "robotnik_notes": "GEODNET operates the world's largest RTK base-station network (10,000+ stations) using a DePIN model that delivers genuine cost and coverage advantages over Trimble and Hexagon. However, RTK correction services are a competitive market — customers can switch among multiple substitutable centralized and decentralized providers without prohibitive qualification cost. The scale advantage is meaningful for customer economics but does not create a structural choke-point: switching costs are low, no proprietary spectrum or IP moat exists, and Trimble/Hexagon retain large enterprise relationships. Fits the LOW frontier-stack baseline rather than a bottleneck.",
+    "robotnik_notes": "GEODNET operates the world's largest RTK base-station network (10,000+ stations) using a DePIN model that delivers genuine cost and coverage advantages over Trimble and Hexagon. However, RTK correction services are a competitive market \u2014 customers can switch among multiple substitutable centralized and decentralized providers without prohibitive qualification cost. The scale advantage is meaningful for customer economics but does not create a structural choke-point: switching costs are low, no proprietary spectrum or IP moat exists, and Trimble/Hexagon retain large enterprise relationships. Fits the LOW frontier-stack baseline rather than a bottleneck.",
     "confidence": "MEDIUM",
     "parent_basis_note": "GEOD is the GEODNET utility token (DePIN), not a traditional satellite operator equity. Rated as the network/protocol operator; ticker classification in Satellite Comms reflects GNSS correction adjacency rather than satellite comms in the conventional sense."
   },
@@ -1603,7 +1587,7 @@
     "bottleneck_description": "Top-tier ultra-high-purity isostatic graphite supplier for SiC crystal growth, semiconductor furnaces, and TRISO nuclear fuel; one of five global majors with Toyo Tanso, Mersen, Superior, GrafTech.",
     "key_customers": "Wolfspeed, onsemi, STMicroelectronics, Infineon (SiC wafer/device makers); X-energy (10-year TRISO graphite supply); industrial semis customers",
     "key_suppliers": "Petroleum coke, pitch coke, internal carbon processing",
-    "robotnik_notes": "SGL is a credible top-5 isostatic graphite producer with leverage in SiC-crystal-growth components and a 10-year X-energy TRISO nuclear contract (graphite production 2H 2026, $100M+ initial award). However, the market is shared with Toyo Tanso, Mersen, Superior, and GrafTech, and SGL's footprint outside graphite (carbon fibers) is competitively contested. MEDIUM reflects credible bottleneck position in specialty graphite niches without sole-source status. No going-concern flag (2024 revenue €1.026B, 16.3% adj EBITDA margin 9M).",
+    "robotnik_notes": "SGL is a credible top-5 isostatic graphite producer with leverage in SiC-crystal-growth components and a 10-year X-energy TRISO nuclear contract (graphite production 2H 2026, $100M+ initial award). However, the market is shared with Toyo Tanso, Mersen, Superior, and GrafTech, and SGL's footprint outside graphite (carbon fibers) is competitively contested. MEDIUM reflects credible bottleneck position in specialty graphite niches without sole-source status. No going-concern flag (2024 revenue \u20ac1.026B, 16.3% adj EBITDA margin 9M).",
     "confidence": "MEDIUM"
   },
   "HXL": {
@@ -1643,7 +1627,7 @@
     "bottleneck_description": "Only scaled rare-earth separator outside China and the first commercial producer of separated heavy rare earths (dysprosium, terbium) ex-China.",
     "key_customers": "JARE (JOGMEC/Sojitz), Japanese magnet makers, US DoD-funded Texas separation, European auto/wind OEMs",
     "key_suppliers": "Internal Mt Weld ore; reagents, fuel, regional power",
-    "robotnik_notes": "Lynas operates the only fully integrated mine-to-separated-oxide rare earth supply chain outside China (Mt Weld mine, Kalgoorlie cracking-and-leaching, Malaysia separation, Kalgoorlie heavy REE expansion). First Dy shipments achieved 1H FY26, Tb following, with the JARE/Japan offtake extended to 2038 at a $110/kg NdPr floor. With China dominating ~90% of separation and Beijing imposing heavy-REE export controls, Western OEMs (Japan, US DoD, EU) have effectively no other near-term option — multi-year qualification and capital-intensity make substitution prohibitive. HIGH is appropriate (CRITICAL reserved for sole-source feedstock like 600111 C1).",
+    "robotnik_notes": "Lynas operates the only fully integrated mine-to-separated-oxide rare earth supply chain outside China (Mt Weld mine, Kalgoorlie cracking-and-leaching, Malaysia separation, Kalgoorlie heavy REE expansion). First Dy shipments achieved 1H FY26, Tb following, with the JARE/Japan offtake extended to 2038 at a $110/kg NdPr floor. With China dominating ~90% of separation and Beijing imposing heavy-REE export controls, Western OEMs (Japan, US DoD, EU) have effectively no other near-term option \u2014 multi-year qualification and capital-intensity make substitution prohibitive. HIGH is appropriate (CRITICAL reserved for sole-source feedstock like 600111 C1).",
     "confidence": "HIGH"
   },
   "ARU AU": {
@@ -1659,7 +1643,7 @@
     "bottleneck_description": "World's largest zircon producer (~20% global share) and developer of Australia's first integrated rare earths refinery at Eneabba (2027 start) under a A$1.65B Australian Government Critical Minerals Facility loan.",
     "key_customers": "Pigment producers (Chemours, Kronos, Tronox), ceramic tile makers, foundry; future REE customers TBD",
     "key_suppliers": "Internal mineral sands stockpiles; Northern Minerals third-party REE feed; Fluor EPCM",
-    "robotnik_notes": "Iluka has dual bottleneck dimensions: zircon/mineral sands (Jacinth-Ambrosia, Balranald) where it is the largest single producer but with global substitutes (Rio/Tronox/Kenmare/Base Resources); plus a near-term, government-funded integrated REE refinery at Eneabba that will be one of the few non-Chinese light+heavy REE separation facilities. Today, neither line individually qualifies as HIGH (zircon is competitive; REE refinery is pre-commissioning, slipped to 2027 with capex now A$1.7-1.8B). MEDIUM is appropriate — strategic Western critical-minerals infrastructure but with viable substitution and execution risk.",
+    "robotnik_notes": "Iluka has dual bottleneck dimensions: zircon/mineral sands (Jacinth-Ambrosia, Balranald) where it is the largest single producer but with global substitutes (Rio/Tronox/Kenmare/Base Resources); plus a near-term, government-funded integrated REE refinery at Eneabba that will be one of the few non-Chinese light+heavy REE separation facilities. Today, neither line individually qualifies as HIGH (zircon is competitive; REE refinery is pre-commissioning, slipped to 2027 with capex now A$1.7-1.8B). MEDIUM is appropriate \u2014 strategic Western critical-minerals infrastructure but with viable substitution and execution risk.",
     "confidence": "MEDIUM"
   },
   "CCJ": {
@@ -1667,12 +1651,12 @@
     "bottleneck_description": "World's second-largest uranium miner (~14-20% global share) and Western-aligned alternative to Kazatomprom; 49% Westinghouse owner gives the only US-aligned fuel-cycle and reactor-services integration.",
     "key_customers": "US/EU/Japan/Korea nuclear utilities (long-term contracts), Westinghouse fuel cycle customers",
     "key_suppliers": "Internal Athabasca Basin mines; Inkai JV with Kazatomprom; conversion via Port Hope",
-    "robotnik_notes": "Uranium production is a tight duopoly-plus structure (Kazatomprom ~40%+, Cameco ~15%+, with smaller producers like Orano, CGN/CNNC, BHP-Olympic Dam). Cameco operates Tier-1 Cigar Lake and McArthur River/Key Lake in the Athabasca Basin, holds long-term contracts with Western utilities, and through its 49% Westinghouse stake (with Brookfield) is the only Western-aligned vertically integrated uranium-to-reactor name. With geopolitical pressure on Russian conversion/enrichment and rising scrutiny of Kazakh supply chains, Western utility substitution away from Cameco is functionally constrained — multi-year long-term contracts plus limited alternatives justify HIGH rather than MEDIUM.",
+    "robotnik_notes": "Uranium production is a tight duopoly-plus structure (Kazatomprom ~40%+, Cameco ~15%+, with smaller producers like Orano, CGN/CNNC, BHP-Olympic Dam). Cameco operates Tier-1 Cigar Lake and McArthur River/Key Lake in the Athabasca Basin, holds long-term contracts with Western utilities, and through its 49% Westinghouse stake (with Brookfield) is the only Western-aligned vertically integrated uranium-to-reactor name. With geopolitical pressure on Russian conversion/enrichment and rising scrutiny of Kazakh supply chains, Western utility substitution away from Cameco is functionally constrained \u2014 multi-year long-term contracts plus limited alternatives justify HIGH rather than MEDIUM.",
     "confidence": "HIGH"
   },
   "CRS": {
     "bottleneck_risk": "HIGH",
-    "bottleneck_description": "Premium-melt (VIM/VAR/ESR) nickel/cobalt/titanium superalloys for rotating aircraft engine parts — capacity is the binding constraint of the Western aero-engine alloy chain.",
+    "bottleneck_description": "Premium-melt (VIM/VAR/ESR) nickel/cobalt/titanium superalloys for rotating aircraft engine parts \u2014 capacity is the binding constraint of the Western aero-engine alloy chain.",
     "key_customers": "GE Aerospace, Pratt & Whitney, Rolls-Royce, RTX, Lockheed Martin, Boeing, medical device OEMs",
     "key_suppliers": "Nickel/cobalt/titanium sponge feedstock (Vale, Nornickel-restricted, Sumitomo, TIMET)",
     "robotnik_notes": "Carpenter sits in a 4-way oligopoly (with PCC, ATI, Haynes) supplying premium-melt aerospace-grade superalloys and titanium with chemistries that engine OEMs (GE, Pratt, Rolls) qualify over multi-year programs. FY26 Specialty Alloys Operations margins hit 35.6% on tight supply and pricing power, with brownfield only adding ~7% of 2019-level volumes. Substitutes exist on paper but qualification, AMS specs, and VIM melt-time gate switching. Not sole-source so not CRITICAL, but switching cost is prohibitive near-term and capacity is structurally tight.",
@@ -1691,15 +1675,15 @@
     "bottleneck_description": "Specialty industrial process consumables (doctor blades, fluid handling, stock prep, fiber granules) for pulp/paper/tissue and adjacent process industries.",
     "key_customers": "Pulp/paper mills (IP, WestRock, Suzano, UPM), corrugated packaging, fiber processors, food processing, lithium battery process customers",
     "key_suppliers": "Steel/alloy raw stock for blades, polymer suppliers, fabricated components",
-    "robotnik_notes": "Kadant competes head-to-head with much larger Andritz, Valmet, Voith, and Metso in pulp/paper process equipment and consumables. Its products are engineered and sticky but commodity-substitutable across the doctor-blade and fluid-handling categories. No single choke-point input; broad geographic and end-market diversification (pulp/paper, packaging, food, metals, textiles, batteries). Not a bottleneck node for the robotics/semis stack — peer-competitive industrial supplier.",
+    "robotnik_notes": "Kadant competes head-to-head with much larger Andritz, Valmet, Voith, and Metso in pulp/paper process equipment and consumables. Its products are engineered and sticky but commodity-substitutable across the doctor-blade and fluid-handling categories. No single choke-point input; broad geographic and end-market diversification (pulp/paper, packaging, food, metals, textiles, batteries). Not a bottleneck node for the robotics/semis stack \u2014 peer-competitive industrial supplier.",
     "confidence": "HIGH"
   },
   "5706 JP": {
     "bottleneck_risk": "HIGH",
-    "bottleneck_description": "~95%+ global share of MicroThin ultra-thin copper foil with carrier — the enabling input for HDI substrates, ABF/IC substrates, and advanced packaging (CoWoS/SLP/MSAP) used in AI accelerators.",
+    "bottleneck_description": "~95%+ global share of MicroThin ultra-thin copper foil with carrier \u2014 the enabling input for HDI substrates, ABF/IC substrates, and advanced packaging (CoWoS/SLP/MSAP) used in AI accelerators.",
     "key_customers": "Substrate makers (Ibiden, Shinko, Unimicron, Nan Ya PCB, AT&S), HDI PCB makers, automotive electronics, EV battery materials customers, exhaust catalyst auto OEMs",
     "key_suppliers": "Copper cathode feedstock, zinc/lead concentrate from Mitsui group mines, indium/tantalum/tin for functional materials",
-    "robotnik_notes": "Mitsui Kinzoku is effectively a near-monopoly supplier of carrier-attached ultra-thin copper foil (<=5um) used in the highest-density semiconductor packaging substrates and HDI smartphone boards — the very materials that gate CoWoS, FC-BGA, and advanced AI-server substrates. Lower-tier peelable copper foil has alternatives at JX Nippon Mining & Furukawa, but Mitsui dominates the leading-edge MicroThin tier the AI substrate roadmap depends on. Not rated CRITICAL because substitutes exist at lower-tier nodes and Mitsui has been adding capacity, but the AI-packaging dependency is real and switching cost (re-qualification at substrate makers Ibiden/Unimicron/Shinko) is multi-year.",
+    "robotnik_notes": "Mitsui Kinzoku is effectively a near-monopoly supplier of carrier-attached ultra-thin copper foil (<=5um) used in the highest-density semiconductor packaging substrates and HDI smartphone boards \u2014 the very materials that gate CoWoS, FC-BGA, and advanced AI-server substrates. Lower-tier peelable copper foil has alternatives at JX Nippon Mining & Furukawa, but Mitsui dominates the leading-edge MicroThin tier the AI substrate roadmap depends on. Not rated CRITICAL because substitutes exist at lower-tier nodes and Mitsui has been adding capacity, but the AI-packaging dependency is real and switching cost (re-qualification at substrate makers Ibiden/Unimicron/Shinko) is multi-year.",
     "confidence": "HIGH"
   },
   "AMG NA": {
@@ -1716,16 +1700,16 @@
     "bottleneck_description": "Solana-based DePIN token for crowdsourced mapping/navigation data; no semiconductor-supply chokepoint despite the 'Wafer Manufacturer' label in the universe file.",
     "key_customers": "Drive& app users, downstream autonomous-driving / mapping data buyers (unspecified)",
     "key_suppliers": "Solana blockchain infrastructure; smartphone/dashcam hardware integrations",
-    "robotnik_notes": "Public record identifies NATIX exclusively as a German-origin DePIN cryptocurrency project on Solana (Drive& app, VX360 hardware for crowdsourced geospatial data), not a wafer or substrate manufacturer. The token has roughly $4M circulating mcap and competes with other geospatial/mapping DePIN projects (Hivemapper, etc.). The cohort tag appears mislabeled; on either interpretation the entity is non-bottleneck — as a token it is one of many DePIN mapping networks, and there is no evidence of a wafer-fab business.",
+    "robotnik_notes": "Public record identifies NATIX exclusively as a German-origin DePIN cryptocurrency project on Solana (Drive& app, VX360 hardware for crowdsourced geospatial data), not a wafer or substrate manufacturer. The token has roughly $4M circulating mcap and competes with other geospatial/mapping DePIN projects (Hivemapper, etc.). The cohort tag appears mislabeled; on either interpretation the entity is non-bottleneck \u2014 as a token it is one of many DePIN mapping networks, and there is no evidence of a wafer-fab business.",
     "confidence": "MEDIUM",
-    "parent_basis_note": "Universe-file taxonomy mismatch: tagged as 'Wafer Manufacturer' but public record is a DePIN mapping crypto token — flag for hygiene."
+    "parent_basis_note": "Universe-file taxonomy mismatch: tagged as 'Wafer Manufacturer' but public record is a DePIN mapping crypto token \u2014 flag for hygiene."
   },
   "WAF GR": {
     "bottleneck_risk": "MEDIUM",
     "bottleneck_description": "#4 global 300mm silicon wafer supplier (~12% revenue share) inside a 5-player oligopoly (Shin-Etsu/SUMCO/GlobalWafers/Siltronic/SK Siltron) controlling ~85% of 300mm capacity.",
     "key_customers": "TSMC, Samsung, SK Hynix, Micron, Intel, Infineon, STMicro (memory + logic + power)",
     "key_suppliers": "Polysilicon producers (Wacker, OCI, GCL), quartz crucibles, slurry/CMP consumables, specialty gases",
-    "robotnik_notes": "Siltronic sits in the same consolidated wafer oligopoly anchored at MEDIUM for Shin-Etsu — qualification cycles for prime 300mm wafers run multi-year and capital intensity is severe, but customers can dual-source across Shin-Etsu/SUMCO/GlobalWafers/SK Siltron. 2026 guidance flagged mid-single-digit revenue decline and net debt rose to EUR 837M on heavy capex; management noted peers being 'extremely vocal' about 200mm headwinds. Not a sole-source choke; calibration vs the Shin-Etsu MEDIUM anchor implies a smaller-share oligopoly participant should also rate MEDIUM rather than higher.",
+    "robotnik_notes": "Siltronic sits in the same consolidated wafer oligopoly anchored at MEDIUM for Shin-Etsu \u2014 qualification cycles for prime 300mm wafers run multi-year and capital intensity is severe, but customers can dual-source across Shin-Etsu/SUMCO/GlobalWafers/SK Siltron. 2026 guidance flagged mid-single-digit revenue decline and net debt rose to EUR 837M on heavy capex; management noted peers being 'extremely vocal' about 200mm headwinds. Not a sole-source choke; calibration vs the Shin-Etsu MEDIUM anchor implies a smaller-share oligopoly participant should also rate MEDIUM rather than higher.",
     "confidence": "HIGH"
   },
   "OLED": {
@@ -1733,7 +1717,7 @@
     "bottleneck_description": "Near-monopoly licensor and supplier of phosphorescent red/green OLED emitter materials and IP, with a patent estate of 7,000+ issued/pending worldwide that gates panel-maker bills of materials.",
     "key_customers": "Samsung Display, LG Display, BOE Technology, CSOT, Visionox, Tianma, JOLED legacy IP licensees",
     "key_suppliers": "PPG Industries (exclusive emitter material manufacturing partner), specialty organic-chemistry CDMOs",
-    "robotnik_notes": "UDC is the de facto sole commercial supplier of phosphorescent (PHOLED) red and green emitters used across virtually all modern AMOLED displays for smartphones, TVs, and IT panels; competing emitters from Japan/Korea remain hemmed in by cross-licensing. Long-term supply/license agreements with LG Display (extended through 2030), Samsung Display, BOE, and CSOT cement the position, supporting ~42% operating margins. The reason this sits at HIGH (not CRITICAL) is that core patents begin to sunset late-decade and blue PHOLED commercialization is still in qualification — but through the 2026 horizon the chokepoint is real and structural.",
+    "robotnik_notes": "UDC is the de facto sole commercial supplier of phosphorescent (PHOLED) red and green emitters used across virtually all modern AMOLED displays for smartphones, TVs, and IT panels; competing emitters from Japan/Korea remain hemmed in by cross-licensing. Long-term supply/license agreements with LG Display (extended through 2030), Samsung Display, BOE, and CSOT cement the position, supporting ~42% operating margins. The reason this sits at HIGH (not CRITICAL) is that core patents begin to sunset late-decade and blue PHOLED commercialization is still in qualification \u2014 but through the 2026 horizon the chokepoint is real and structural.",
     "confidence": "HIGH"
   },
   "TEL": {
@@ -1760,5 +1744,13 @@
     "robotnik_notes": "Toshiba's post-restructuring portfolio spans power semiconductors, energy/grid infrastructure, and digital systems - each segment has multiple credible peers (Infineon, Onsemi, STMicro, Rohm in power semis; Siemens/ABB/Hitachi in infrastructure; Sony/Western Digital in memory after Kioxia spinoff). The new 300mm power semi fab expands capacity but does not create a sole-source position. No evidence of CRITICAL/HIGH bottleneck exposure in the robotics/semi stack.",
     "confidence": "HIGH",
     "parent_basis_note": "Cohort tagged 'Industrial & Specialty Gases' but Toshiba is a diversified manufacturer/power-semi player; rating reflects actual business mix."
+  },
+  "6723": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Japanese auto + industrial MCU supplier \u2014 part of the auto-MCU oligopoly with multi-year qualification cycles and tight Tier-1 relationships.",
+    "key_customers": "Toyota, global Tier-1 auto suppliers, industrial OEMs",
+    "key_suppliers": "Foundry partners (TSMC, GlobalFoundries), wafer suppliers",
+    "robotnik_notes": "Auto MCU is structurally a 4-player oligopoly (Renesas, NXP, Infineon, ST). Mid-platform switching is multi-year due to functional-safety qualification (ISO 26262) and software-stack porting. Revised from LOW given the auto-qualification switching cost dynamic that LOW under-weighted.",
+    "confidence": "MEDIUM"
   }
 }
