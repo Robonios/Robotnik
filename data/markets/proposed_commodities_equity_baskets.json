@@ -1,0 +1,740 @@
+{
+  "step": 5,
+  "produced": "2026-05-29",
+  "basket_count": 16,
+  "confidence_distribution": {
+    "MEDIUM": 6,
+    "LOW": 9,
+    "HIGH": 1
+  },
+  "baskets": [
+    {
+      "commodity": "Helium (high-purity)",
+      "rating": "MEDIUM",
+      "basket_confidence": "MEDIUM",
+      "weighting_caveat": "FIRST-PASS, REVISABLE IN v2. Weights are wholesale/distribution-share estimates, not precise revenue shares - no per-company helium-revenue disclosure exists (helium is not a reported segment for any constituent). Sized so Air Liquide, Air Products and Linde are roughly co-equal wholesale leaders with Nippon Sanso a clear fourth, consistent with Grand View / Mordor / Credence 'top-5 wholesalers ~80% of market' and a single Air Liquide ~11.5% specialty-grade datapoint. The basket covers only the REFINER/WHOLESALE layer; the crude-helium PRODUCTION layer upstream is dominated by non-pure-play / private / state hands (Exxon ~20%, QatarEnergy, Gazprom ~12.8%, Algeria) and is NOT in the public basket. Treat the four weights as a soft co-leader ranking, not hard shares.",
+      "confidence_rationale": "MEDIUM not HIGH because (a) every constituent is LOW exposure-purity - helium is a small slice of each diversified industrial-gas major, so the equities are dominated by unrelated O2/N2/Ar/engineering/electronics businesses and will track helium only weakly; and (b) a very large crude-production layer (ExxonMobil LaBarge ~20% of world supply, QatarEnergy/Qatargas, Gazprom ~12.8%, Algeria/Sonatrach) sits upstream in private/state/oil-major hands that the public wholesale basket does not capture. It clears LOW because the named public wholesalers genuinely control the large majority of refined-helium DISTRIBUTION (~75-80% top-5, of which four of five are these public names) and market-share direction is well-corroborated across multiple industry studies. Sources: Grand View Research helium market report 2024-2030; Mordor Intelligence helium market & competitive matrix (Leaders = Air Liquide, Air Products, Linde, QatarEnergy LNG); Credence Research helium 2032 (top-5 ~80%); visualcapitalist/USGS MCS 2025-2026 (US 42.6%, Qatar 33.2%, Russia 9.5% of production); ExxonMobil LaBarge ~20% of global supply (ExxonMobil corporate / Cowboy State Daily 2024).",
+      "excluded_private": [
+        "ExxonMobil (LaBarge, Wyoming) - approx 20% of GLOBAL helium production; publicly listed but an oil major with negligible helium purity, not in the industrial-gas-major basket - the single largest uncaptured chunk of supply",
+        "QatarEnergy / Qatargas / RasGas (Qatar) - approx 33% of production by country; state-owned, supplies crude helium to the majors as offtakers",
+        "Gazprom (Russia, incl. Amur) - approx 9-13% share; state-owned, EU-sanctioned for Western markets",
+        "Sonatrach (Algeria) - major LNG-associated crude helium source; state-owned",
+        "North American Helium - private US producer (Mordor 'Performer')",
+        "Messer SE & Co. KGaA - private, top-5 industrial-gas major",
+        "Iwatani Corporation (8133.T) - publicly listed and a top-5 helium wholesaler in Japan/Asia, but outside the four chosen candidate operators; a candidate add in v2"
+      ],
+      "constituents": [
+        {
+          "ticker": "AI.PA",
+          "name": "Air Liquide S.A.",
+          "weight": 0.28,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Co-leading helium wholesaler; one industry analysis cites Air Liquide leading 'Specialty Grade' helium at ~11.5%. Helium is an unreported sub-line within a >EUR27bn diversified gas business - low purity.",
+          "source": "Grand View Research helium market report 2024-2030; Mordor Intelligence helium competitive matrix (Leader); industry analysis citing Air Liquide ~11.5% specialty-grade share"
+        },
+        {
+          "ticker": "APD",
+          "name": "Air Products and Chemicals, Inc.",
+          "weight": 0.28,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "One of the world's leading helium distributors with purification/liquefaction across NA, Asia, Europe; co-leader at wholesale level. Helium is a small fraction of APD total revenue - low purity.",
+          "source": "Mordor Intelligence helium competitive matrix (Leader); Grand View Research; expertmarketresearch / techsciresearch top-10 helium companies"
+        },
+        {
+          "ticker": "LIN",
+          "name": "Linde plc",
+          "weight": 0.27,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Global helium business spanning sourcing, purification, distribution and recovery; co-leader at wholesale level. Helium is a small slice of Linde's ~$33bn revenue - low purity.",
+          "source": "Mordor Intelligence helium competitive matrix (Leader); Grand View Research; Linde plc disclosures (helium within broader gas segments, not separately reported)"
+        },
+        {
+          "ticker": "4091.T",
+          "name": "Nippon Sanso Holdings Corporation (formerly Taiyo Nippon Sanso; incl. Matheson Tri-Gas)",
+          "weight": 0.17,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Top-5 global helium wholesaler, smaller than the big three, strongest in Japan/Asia and (via Matheson) the US. Helium is a minor line within a diversified gas business - low purity. Renamed from Taiyo Nippon Sanso in Oct 2020; ticker 4091.T on TSE confirmed active.",
+          "source": "Credence Research / Grand View (top-5 ~80%, Taiyo Nippon Sanso named); Yahoo Finance / JPX listing confirmation 4091.T"
+        }
+      ]
+    },
+    {
+      "commodity": "Argon (electronic grade)",
+      "rating": "LOW",
+      "basket_confidence": "LOW",
+      "weighting_caveat": "FIRST-PASS, REVISABLE IN v2. Weights are derived from UHP-semiconductor-gas revenue-share estimates (the best available proxy for electronic-grade argon, which is not separately reported by any company): Air Liquide + Linde ~35-38% combined, top-5 (Air Liquide, Linde, Air Products, Taiyo Nippon Sanso, Messer) ~72-75% of UHP semi-gas revenue. Air Liquide and Linde are sized as co-leaders, Air Products next, Nippon Sanso meaningful in Asia. Messer (~the fifth top-5 name) is private and excluded, so the four public names are normalized to 1.0 across the remaining public coverage. Electronic-grade argon is a tiny purification premium on a commodity (argon ~1% of air); the equity weight is essentially the company's air-separation/electronics-gas footprint, NOT a scarce-commodity rent.",
+      "confidence_rationale": "LOW because (a) exposure purity is negligible-to-low for every constituent - argon is a cheap, abundant air-separation co-product and even 6N/9N electronic grade is a small premium captured inside large diversified businesses, so the stocks will barely move with argon; (b) there is no electronic-argon revenue disclosure anywhere, so weights are estimates inferred from UHP-gas market studies (estimated, not audited); and (c) a private top-5 player (Messer) plus regional specialists sit outside the public basket. The public coverage of UHP electronic gases is actually good (~72-75% top-5, four of five public), but per Robotnik methodology an all-negligible/low-purity basket with estimated shares is correctly labelled LOW. Sources: MarketResearchFuture / Mordor UHP-gas-for-semiconductor reports (Air Liquide+Linde ~35-38%; top-5 ~72-75%); Fortune Business Insights US electronic specialty gas 2024 ($624.1m); Mordor specialty gas market.",
+      "excluded_private": [
+        "Messer SE & Co. KGaA - private; one of the top-5 UHP electronic-gas suppliers",
+        "Merck KGaA electronics / regional specialty-gas specialists - some specialty-gas share sits with chemical/electronics-materials firms outside the four candidate gas majors",
+        "Iwatani Corporation (8133.T) - public but outside the candidate set; minor electronic-gas role"
+      ],
+      "constituents": [
+        {
+          "ticker": "AI.PA",
+          "name": "Air Liquide S.A.",
+          "weight": 0.3,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Co-leader of UHP semiconductor gases (Air Liquide + Linde together ~35-38%; implies ~18% each). Air Liquide Electronics is a major franchise, but electronic-grade argon specifically is a negligible slice of total revenue.",
+          "source": "MarketResearchFuture electronic specialty gases; Mordor UHP-gas-for-semiconductor (Air Liquide+Linde ~35-38%, top-5 ~72-75%)"
+        },
+        {
+          "ticker": "LIN",
+          "name": "Linde plc",
+          "weight": 0.3,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Co-leader of UHP semiconductor gases via on-site air-separation model (e.g. Apr 2025 expanded N2/Ar supply to Samsung Pyeongtaek). Electronic-grade argon is a negligible fraction of Linde's revenue.",
+          "source": "Mordor UHP-gas-for-semiconductor; Linde 8-K/press (Samsung Pyeongtaek argon/nitrogen expansion Apr 2025)"
+        },
+        {
+          "ticker": "APD",
+          "name": "Air Products and Chemicals, Inc.",
+          "weight": 0.22,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Top-5 UHP electronic-gas supplier, third among the public names. Electronic-grade argon is a negligible slice of APD revenue.",
+          "source": "MarketResearchFuture / Mordor UHP-gas-for-semiconductor (top-5 ~72-75%, APD named)"
+        },
+        {
+          "ticker": "4091.T",
+          "name": "Nippon Sanso Holdings Corporation (incl. Taiyo Nippon Sanso / Matheson)",
+          "weight": 0.18,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Top-5 UHP electronic-gas supplier; relatively higher electronics weighting than peers via Asian 'total gas center' on-site fab supply (Korea/Taiwan/Japan), but still a minor part of total revenue. Ticker 4091.T (TSE) active.",
+          "source": "Mordor UHP-gas-for-semiconductor (Taiyo Nippon Sanso named in top-5); Taiyo Nippon Sanso electronics business pages; JPX listing confirmation"
+        }
+      ]
+    },
+    {
+      "commodity": "Liquid Oxygen (LOX)",
+      "rating": "LOW",
+      "basket_confidence": "LOW",
+      "weighting_caveat": "FIRST-PASS, REVISABLE IN v2. Weights use the merchant-oxygen / air-separation market position as the proxy (LOX is not separately reported): Air Liquide, Linde, Air Products, Messer and Nippon Sanso ~75% of the oxygen market; in the ASU market Linde leads with >15% share. Linde is sized slightly ahead (ASU leader plus the marquee SpaceX Starbase LOX/N2 supply from Mims FL and the new Brownsville plant; 'Linde gases powered 100+ rocket launches in 2024'); Air Products (long-running NASA LOX/LN2 supplier) and Air Liquide are close behind; Nippon Sanso is a smaller fourth and minimal in US rocket-LOX. Messer (private) is excluded so the four public names are normalized to 1.0. Rocket-grade LOX is a tiny niche on top of an essentially commodity bulk-gas line.",
+      "confidence_rationale": "LOW because (a) every constituent is negligible-to-low purity - merchant LOX/oxygen is a commodity air-separation product and a small fraction of each major's diversified revenue, and the rocket-propellant slice (SpaceX/ULA/Blue Origin) is tiny relative to medical/steel/industrial oxygen, so the equities track LOX very weakly; (b) there is no LOX revenue disclosure, so weights are inferred from oxygen/ASU market studies (estimated); and (c) a structural displacement risk: SpaceX began building its OWN on-site air-separation unit at Starbase in 2025 to self-supply LOX/LN2, which erodes the very rocket-LOX merchant demand this proxy is meant to track. Public coverage of merchant oxygen itself is good (~75% top-5), but per methodology an all-low-purity, estimated-share, near-commodity basket is correctly LOW. Sources: Mordor Intelligence oxygen market & companies (~75% top-5); GMInsights/Mordor air-separation-unit market (Linde >15% ASU share); Construction Equipment Guide / ConstructConnect (Linde $100m Brownsville ASU for SpaceX); NASA releases (Air Products NASA LOX/LN2 contracts); NASASpaceFlight Dec 2025 (SpaceX Starbase on-site ASU).",
+      "excluded_private": [
+        "Messer SE & Co. KGaA - private; one of the top-5 merchant-oxygen majors",
+        "SpaceX (private) - building its own Starbase air-separation unit (2025) to self-supply LOX/LN2; vertical integration that REMOVES merchant-LOX demand rather than adding a tradable producer",
+        "Regional / national merchant-oxygen producers and on-site captive plants at steel/medical customers",
+        "Iwatani / Air Water (8133.T / 4088.T) - public Japanese gas firms with merchant-oxygen share but outside the four candidate operators"
+      ],
+      "constituents": [
+        {
+          "ticker": "LIN",
+          "name": "Linde plc",
+          "weight": 0.3,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Leading air-separation operator (>15% ASU share) and the named LOX/LN2 supplier to SpaceX Starbase (Mims FL; new $100m Brownsville plant); 'Linde gases powered 100+ rocket launches in 2024'. Merchant LOX is still a commodity line and small fraction of revenue.",
+          "source": "GMInsights / Mordor air-separation-unit market (Linde >15%); Construction Equipment Guide & ConstructConnect (Brownsville ASU for SpaceX); Linde clean-energy/aerospace materials"
+        },
+        {
+          "ticker": "AI.PA",
+          "name": "Air Liquide S.A.",
+          "weight": 0.27,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Top-3 merchant-oxygen major within ~75% top-5 group; broad LOX supply to industrial and aerospace customers. Negligible share of total revenue.",
+          "source": "Mordor Intelligence oxygen market & companies (~75% top-5, Air Liquide named)"
+        },
+        {
+          "ticker": "APD",
+          "name": "Air Products and Chemicals, Inc.",
+          "weight": 0.26,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Top-3 merchant-oxygen major and long-running NASA liquid-oxygen / liquid-nitrogen supplier (Kennedy Space Center contracts). Rocket-LOX is a tiny niche on a commodity O2 business.",
+          "source": "Mordor Intelligence oxygen market (~75% top-5, APD named); NASA Kennedy release 2014 LN2/LOX contract to Air Products; Air Products aerospace pages"
+        },
+        {
+          "ticker": "4091.T",
+          "name": "Nippon Sanso Holdings Corporation (incl. Taiyo Nippon Sanso / Matheson)",
+          "weight": 0.17,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Smaller of the top-5 merchant-oxygen majors, strongest in Japan/Asia and (via Matheson) the US; minimal role in US rocket-LOX. Negligible share of total revenue. Ticker 4091.T (TSE) active.",
+          "source": "Mordor Intelligence oxygen market (top-5 includes Nippon Sanso); JPX listing confirmation"
+        }
+      ]
+    },
+    {
+      "commodity": "Liquid Hydrogen",
+      "rating": "MEDIUM",
+      "basket_confidence": "MEDIUM",
+      "weighting_caveat": "FIRST-PASS, REVISABLE IN v2. No company reports LH2 revenue, so weights blend liquefaction-capacity and merchant-H2 leadership: Air Products is the world's largest merchant-hydrogen producer, the historical US LH2 leader (four NA plants + the new 30 TPD Louisiana facility, Jan 2024) and primary NASA LH2 supplier; Linde is the global LH2 LIQUEFACTION leader (~170 TPD; built most of the world's liquefaction plants); Air Liquide is a major NA LH2 player; Plug Power has the largest US LH2 CAPACITY (40 TPD across GA/TN/LA) and is the largest LH2 BUYER, but is a green/PEM-electrolytic, pre-profit, going-concern-stressed name whose driver differs from merchant cryogenic LH2; Nippon Sanso is a smaller participant. NOTE the mixed unit basis - TPD plant capacity (PLUG, APD-LA) vs global merchant share (APD, LIN) - so these are soft, not clean revenue shares. PLUG is deliberately held to a modest 0.12 to avoid letting a distressed, differently-driven stock dominate the proxy.",
+      "confidence_rationale": "MEDIUM because public coverage of the LH2 supply chain is strong - Linde (global liquefaction leader ~170 TPD) plus Air Products (largest merchant-H2 / historical US LH2 / NASA) cover the large majority of merchant LH2, AND one constituent (Plug Power) is a HIGH-purity pure-play hydrogen name. It does NOT reach HIGH because (a) the three gas majors are LOW exposure-purity (LH2 is a slice of much larger gas/hydrogen/engineering businesses); (b) the one high-purity name, PLUG, is pre-profit, cash-burning (~$536m operating burn in 2025, going-concern language, ~$296m cash, reliant on a DOE loan guarantee) and skewed to GREEN electrolytic H2, so it adds tracking noise rather than a clean LH2 read; and (c) weights mix TPD-capacity and merchant-share bases (estimated). Unlike helium there is no dominant private/state crude layer, which supports MEDIUM. Sources: Air Products 8-K/press & Mordor (largest merchant-H2 producer; 30 TPD Louisiana Jan 2024; NASA LH2 contracts); Linde clean-energy pages (~170 TPD, global liquefaction leader); Plug Power 8-Ks (40 TPD total capacity, largest LH2 buyer; FY2025 losses & cash burn); Mordor North America liquid hydrogen market (majors: Air Liquide, Air Products, Iwatani, Linde, Air Water).",
+      "excluded_private": [
+        "Iwatani Corporation (8133.T) - public, a top North America / Japan LH2 player (long-time LH2 specialist) but outside the five candidate operators; strong candidate add in v2",
+        "Air Water Inc. (4088.T) - public Japanese gas firm, named NA LH2 participant, outside the candidate set",
+        "Regional / national hydrogen liquefiers and captive refinery/merchant H2 producers",
+        "Note: no single dominant PRIVATE or state crude-supply layer for LH2 comparable to helium's Exxon/Qatar/Gazprom - the gap here is other PUBLIC names (Iwatani, Air Water) rather than private producers, which supports the MEDIUM rating"
+      ],
+      "constituents": [
+        {
+          "ticker": "APD",
+          "name": "Air Products and Chemicals, Inc.",
+          "weight": 0.32,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "World's largest merchant-hydrogen producer and historical US LH2 leader: four NA plants + largest US H2 pipeline, the new 30 TPD Louisiana LH2 facility (Jan 2024), and the primary NASA LH2 supplier (Kennedy Space Center). LH2 sits within a much larger hydrogen/gas business - low purity.",
+          "source": "Air Products 8-K/ARS FY2024 & press (largest merchant-H2 producer; 30 TPD Louisiana; NASA LH2 contracts >$130m); Mordor North America liquid hydrogen market"
+        },
+        {
+          "ticker": "LIN",
+          "name": "Linde plc",
+          "weight": 0.3,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Global LH2 LIQUEFACTION leader at ~170 TPD; built the majority of the world's hydrogen-liquefaction plants and has the largest LH2 capacity and distribution system worldwide. LH2 is a slice of Linde's diversified gas/engineering business - low purity.",
+          "source": "Linde clean-energy / liquefaction pages (~170 TPD, world leader, built most liquefaction plants); Linde-Engineering"
+        },
+        {
+          "ticker": "AI.PA",
+          "name": "Air Liquide S.A.",
+          "weight": 0.18,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Major North America and global LH2 player with liquefaction and distribution assets; smaller LH2 footprint than Air Products/Linde. LH2 is a minor fraction of total revenue - low purity.",
+          "source": "Mordor North America liquid hydrogen market (Air Liquide named major); Air Liquide hydrogen disclosures"
+        },
+        {
+          "ticker": "PLUG",
+          "name": "Plug Power Inc.",
+          "weight": 0.12,
+          "exposure_purity": "high",
+          "commodity_market_share_note": "Largest US LH2 CAPACITY (40 TPD: GA/TN 25 + LA 15) and the largest LH2 BUYER. The only near-pure-play H2 name, but GREEN/PEM-electrolytic-focused and pre-profit/going-concern-stressed (FY2025 ~$536m operating cash burn, ~$296m cash, $1.66bn DOE loan guarantee), so it adds idiosyncratic noise. Weight held modest to prevent a distressed, differently-driven stock from dominating. Nasdaq: PLUG, active.",
+          "source": "Plug Power 8-Ks FY2024-FY2025 (40 TPD capacity; largest LH2 buyer; losses & cash burn; DOE loan guarantee); Motley Fool / Yahoo Finance FY2025 coverage"
+        },
+        {
+          "ticker": "4091.T",
+          "name": "Nippon Sanso Holdings Corporation (incl. Taiyo Nippon Sanso / Matheson)",
+          "weight": 0.08,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Smaller LH2 participant via Japan/Asia and US (Matheson) operations; minor relative to the leaders. LH2 is a negligible-to-low slice of total revenue. Ticker 4091.T (TSE) active.",
+          "source": "Mordor North America / global liquid hydrogen market context; Nippon Sanso hydrogen business; JPX listing confirmation"
+        }
+      ]
+    },
+    {
+      "commodity": "Photoresist (EUV + ArF immersion)",
+      "rating": "HIGH",
+      "basket_confidence": "MEDIUM",
+      "confidence_rationale": "The commodity is a clean, well-documented oligopoly (top ~5 = ~80% of total photoresist; EUV top ~3 = ~90%), and market-share data is reasonably available (Nomura via Reuters: JSR ~22-27%; GMInsights: top-5 ~50-60%). HOWEVER, the single largest player, JSR, was delisted from the Tokyo Stock Exchange in June 2024 after the JIC tender offer (now 100% government-fund-owned, merged into JICC-02) and is NOT publicly investable. Removing the ~25%-share leader from the public basket means the public proxy now misses the dominant operator. The remaining public constituents are all LOW-purity diversified chemical/materials conglomerates (TOK is the only relatively pure name) \u2014 Shin-Etsu, Sumitomo, Fujifilm derive only a few percent of total revenue from photoresist, so the basket tracks the commodity weakly. Both factors (private leader gap + low-purity diversified names) cap this at MEDIUM despite a clean, concentrated commodity. NOT HIGH.",
+      "weighting_caveat": "First-pass revenue-share weights, explicitly revisable in v2. Public-constituent shares re-normalized to 1.0 AFTER removing now-private JSR (~25% of the commodity). Underlying total-photoresist shares used: TOK ~20-25%, Shin-Etsu ~10-15%, Fujifilm ~8-12%, Sumitomo ~5-8% (estimated from GMInsights/Mordor top-5=~50-60% framing and Fountyl/industry commentary; no single source gives all four precise EUV-specific splits, so figures are estimated and rounded). TOK is over-weighted here because it is both the largest remaining public player AND the only high-purity tracker. Because JSR (the true leader) is excluded, this public basket UNDER-represents the commodity by roughly a quarter \u2014 treat the level as a partial proxy, not a full-market proxy.",
+      "constituents": [
+        {
+          "ticker": "4186.T",
+          "name": "Tokyo Ohka Kogyo (TOK)",
+          "weight": 0.5,
+          "exposure_purity": "high",
+          "commodity_market_share_note": "Total-photoresist share ~20-25% (a top-2/3 photoresist maker globally; strong in KrF/ArF and a leading EUV resist supplier). Photoresists/electronic chemicals are TOK's core business, making it the highest-purity public tracker of this commodity. Source: GMInsights top-5 framing (2024) + Mordor Intelligence photoresist report; EUV top-3 (TOK/JSR/Shin-Etsu) ~90% per Fountyl/industry commentary. Share estimated.",
+          "source": "GMInsights 'Photoresist Chemicals for Advanced Lithography' (2024); Mordor Intelligence Photoresist Market; Fountyl industry note (EUV top-3 ~90%). Figure estimated/rounded."
+        },
+        {
+          "ticker": "4063.T",
+          "name": "Shin-Etsu Chemical",
+          "weight": 0.25,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Total-photoresist share ~10-15%; named in EUV top-3 (with JSR and TOK) holding ~90% of EUV resist. BUT photoresist is a small slice of Shin-Etsu's revenue (dominated by PVC, silicon wafers, silicones, rare-earth magnets) \u2014 low purity, so the stock tracks the commodity weakly. Source: Fountyl (EUV top-3 ~90%); GMInsights top-5. Share estimated.",
+          "source": "Fountyl EUV note; GMInsights (2024). Share estimated."
+        },
+        {
+          "ticker": "4901.T",
+          "name": "Fujifilm Holdings",
+          "weight": 0.15,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Total-photoresist share ~8-12%; consistently named in top-5 photoresist players (GMInsights 2024). Photoresist/electronic materials is a tiny fraction of Fujifilm's revenue (dominated by healthcare, imaging, document/business-solutions) \u2014 negligible purity, very weak tracker. Source: GMInsights (2024) top-5. Share estimated.",
+          "source": "GMInsights 'Photoresist Chemicals for Advanced Lithography' (2024). Share estimated."
+        },
+        {
+          "ticker": "4005.T",
+          "name": "Sumitomo Chemical",
+          "weight": 0.1,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Total-photoresist share ~5-8% (smaller specialty/EUV resist position; listed as a candidate operator). Photoresist is negligible within Sumitomo's diversified petrochemicals/agro/pharma/IT-materials portfolio \u2014 negligible purity. No clean standalone share figure available, so weight is an estimate at the bottom of the public set. Source: industry candidate-list framing; share estimated, confidence lowered accordingly.",
+          "source": "Industry candidate framing; no clean standalone market-share figure found. Share estimated."
+        }
+      ],
+      "excluded_private": [
+        "JSR Corporation (4185.T) \u2014 DELISTED June 2024 via JIC tender offer (now 100% Japan Investment Corporation-owned, merged into JICC-02/JSR). Was the LARGEST photoresist maker (~22-27% per Nomura/Reuters; world No.1 EUV resist). No longer publicly investable \u2014 its removal is the single biggest coverage gap in this basket.",
+        "Merck KGaA / AZ Electronic Materials photoresist line (MRK.DE is public but its resist business is a small, blended slice; could optionally be added at low weight/low purity in v2)",
+        "Dongjin Semichem (Korea) \u2014 top-5 photoresist player per GMInsights but effectively closely held; thin public float"
+      ]
+    },
+    {
+      "commodity": "CMP slurry",
+      "rating": "MEDIUM",
+      "basket_confidence": "MEDIUM",
+      "confidence_rationale": "Public coverage of CMP slurry is reasonably good: the top-5 (Entegris/CMC, Fujimi, Resonac/Hitachi, DuPont, JSR) ~64% of global revenue (Valuates/market reports, 2025), and several of those leaders ARE public. Entegris (post-CMC-Materials-2022 acquisition) is a high-purity electronics-materials tracker and Fujimi is a high-purity polishing-materials name with ~18-20% CMP-slurry share. That supports MEDIUM. It is held back from HIGH by: (1) the No.1/No.2 slurry player Versum is now PRIVATE inside Merck KGaA (MRK.DE), a giant pharma/life-science conglomerate where CMP slurry is negligible; (2) several shares are 'estimated' from secondary market reports rather than clean segment disclosures; (3) Resonac and DuPont are diversified, so only part of the public basket is high-purity.",
+      "weighting_caveat": "First-pass revenue-share weights, re-normalized over PUBLIC constituents. Underlying total-CMP-slurry shares used: Entegris/CMC ~25-30% (CMC Materials was the slurry market leader pre-acquisition), Fujimi ~18-20% (company/market reports), Resonac (ex-Hitachi Chemical) ~10-15%, Merck/Versum ~10-15% (private, excluded), DuPont ~8-10%, Korean players (KCTech, Soulbrain) low-single-to-high-single digits domestically. After excluding private Versum, public weights re-normalize as below. KCTech is primarily a CMP EQUIPMENT maker with slurry/electronic-materials as a secondary line (>50% Korea domestic share in CMP equipment AND slurry per company profile), so its global slurry share is small \u2014 weighted low. Soulbrain is a diversified Korean electronic-materials maker (etchants, electrolytes) with modest CMP-slurry share. Note: prompt listed Soulbrain as 357780.KS but it trades on KOSDAQ (357780.KQ); KCTech is 281820.KS (KOSPI). Figures estimated; revisable in v2.",
+      "constituents": [
+        {
+          "ticker": "ENTG",
+          "name": "Entegris (incl. CMC Materials, acq. 2022)",
+          "weight": 0.42,
+          "exposure_purity": "high",
+          "commodity_market_share_note": "Largest public CMP-slurry position via the 2022 acquisition of CMC Materials (Cabot Microelectronics), historically the CMP-slurry market leader; estimated total-slurry share ~25-30%. Entegris is a pure-play semiconductor materials/contamination-control company, so this is a high-purity tracker (though CMP slurry is one of several Entegris product lines). Source: Valuates/market reports top-5 ~64% (2025); CMC Materials historical leadership. Share estimated.",
+          "source": "Valuates 'CMP Slurry' (2025) top-5 ~64%; CMC Materials/Cabot Microelectronics historical market leadership; Entegris 10-K. Share estimated."
+        },
+        {
+          "ticker": "5384.T",
+          "name": "Fujimi Incorporated",
+          "weight": 0.31,
+          "exposure_purity": "high",
+          "commodity_market_share_note": "Estimated CMP-slurry share ~18-20% (market reports); a top-5 global slurry maker. Polishing/CMP materials are Fujimi's core business \u2014 high-purity tracker. Source: MarketGrowthReports 'CMP Slurry and Pads' (Fujimi ~18-20%); Valuates top-5 ~64% (2025). Share estimated.",
+          "source": "MarketGrowthReports 'CMP Slurry and Pads Market'; Valuates (2025). Share estimated."
+        },
+        {
+          "ticker": "4004.T",
+          "name": "Resonac Holdings (ex-Showa Denko / Hitachi Chemical)",
+          "weight": 0.18,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Estimated CMP-slurry share ~10-15% (legacy Hitachi Chemical slurry business; named in top-5). Resonac is a large diversified chemical/semiconductor-materials group (front- and back-end materials, graphite electrodes, petrochemicals) \u2014 CMP slurry is a small slice, so low purity. Source: Valuates top-5 ~64% (2025) listing Hitachi Chemical/Resonac; Resonac corporate materials. Share estimated.",
+          "source": "Valuates 'CMP Slurry' (2025) top-5 listing; Resonac corporate disclosures. Share estimated."
+        },
+        {
+          "ticker": "281820.KS",
+          "name": "KCTech (KC Tech)",
+          "weight": 0.05,
+          "exposure_purity": "medium",
+          "commodity_market_share_note": "Sole domestic Korean CMP-equipment maker AND slurry producer with >50% Korea domestic share in CMP equipment and slurry materials (company/Komachine profile), but small GLOBAL slurry share. Revenue is split between CMP/wet-clean EQUIPMENT and electronic materials (ceria/metal slurry), so medium purity to the slurry commodity specifically. Listed KOSPI 281820.KS. Share is domestic-leadership-qualitative, not a clean global %, so weighted low and confidence lowered. Source: company profile / Komachine; The Worldfolio interview.",
+          "source": "KCTech company profile (Komachine), Yahoo Finance 281820.KS, The Worldfolio interview. Global share qualitative/estimated."
+        },
+        {
+          "ticker": "357780.KQ",
+          "name": "Soulbrain Co., Ltd.",
+          "weight": 0.04,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Korean electronic-materials maker named among CMP-slurry players, but its revenue is dominated by etchants (HF/BOE), electrolytes and other process chemicals \u2014 CMP slurry is a minor line, so low purity and small global slurry share. Trades on KOSDAQ as 357780.KQ (prompt's '357780.KS' is the wrong suffix). No clean standalone slurry % found, so qualitative low weight; confidence lowered. Source: market-report player lists; Yahoo Finance 357780.KQ.",
+          "source": "Coherent/Zion CMP-slurry player lists; Yahoo Finance 357780.KQ. Share qualitative/estimated."
+        }
+      ],
+      "excluded_private": [
+        "Versum Materials \u2014 acquired by Merck KGaA (MRK.DE) in Oct 2019; a top-tier CMP-slurry/electronic-materials supplier (~10-15% est. slurry share) now buried inside a diversified pharma/life-science/electronics conglomerate. MRK.DE is technically public but CMP-slurry purity is negligible; could be added at low weight/low purity in v2 rather than treated as a pure proxy.",
+        "DuPont de Nemours (DD) \u2014 public; named in CMP top-5 (~8-10% est.) but slurry is a small slice of a diversified materials company. Optional low-weight/low-purity add in v2.",
+        "3M, BASF, Saint-Gobain \u2014 listed as slurry players in some reports but with negligible dedicated CMP-slurry purity"
+      ]
+    },
+    {
+      "commodity": "Sputtering targets (Ta, Ti, Cu, Co, Ru)",
+      "rating": "MEDIUM",
+      "basket_confidence": "MEDIUM",
+      "confidence_rationale": "Public coverage is now MUCH better than the prompt assumed because JX Advanced Metals (5020.T) IPO'd on the Tokyo Stock Exchange in March 2025 (ENEOS retains ~42% but it is publicly traded). JX is the clear global leader: Nikkei/Reuters/Wikipedia report ~60% global share of semiconductor sputtering targets (the prompt's '~30%' is outdated/understated; JX's own materials claim global No.1 in Cu/Ta/Ti/W/Co). JX is also a high-purity tracker now reframed as a 'chip materials' stock. That single high-purity, dominant, listed leader supports MEDIUM and arguably borderline-HIGH. It is held back from HIGH by: (1) Plansee (a major refractory-metal/Ta/W target maker) is PRIVATE; (2) the No.2-ish merchant player Honeywell Electronic Materials is buried inside Honeywell (HON) with negligible purity (and HON is spinning out Advanced Materials); (3) Materion (MTRN) is public and reasonably pure to specialty materials but is a smaller share; (4) the '60%' is a reported figure rather than an audited segment %.",
+      "weighting_caveat": "First-pass revenue-share weights re-normalized over PUBLIC constituents. JX ~60% global share (Nikkei/Reuters/Wikipedia 2025) anchors the basket. Materion and Honeywell shares are estimated (top-5 ~40%+ per Valuates, with JX dominating; the residual is split among Materion, Honeywell, Praxair/Linde, Mitsui Mining & Smelting, Plansee). Because the dominant player (JX) is public, the public basket covers the large majority of supply, but the private Plansee gap and HON's negligible purity introduce noise. Honeywell weight is tiny AND flagged negligible-purity (sputtering targets are an immaterial fraction of HON revenue; HON's Advanced Materials spin-off as Solstice Advanced Materials may change the right vehicle in v2). Figures estimated/revisable.",
+      "constituents": [
+        {
+          "ticker": "5020.T",
+          "name": "JX Advanced Metals",
+          "weight": 0.82,
+          "exposure_purity": "high",
+          "commodity_market_share_note": "Global leader, ~60% share of semiconductor sputtering targets (Nikkei Asia, Reuters, Wikipedia, 2025); claims world No.1 in Cu, Ta, Ti, W and Co targets specifically (company product site). NOTE: prompt's '~30% share' is outdated/understated \u2014 multiple post-IPO sources consistently cite ~60%. IPO'd Tokyo Stock Exchange 19 Mar 2025 (ENEOS retains ~42%). Now positioned as a high-purity semiconductor-materials stock, the best public proxy for this commodity. Source: Nikkei Asia IPO coverage; Reuters; Wikipedia 'JX Advanced Metals'; company product pages.",
+          "source": "Nikkei Asia (Mar 2025 IPO), Reuters (IPO pricing), Wikipedia 'JX Advanced Metals', JX-nmm.com product pages. ~60% reported (not audited segment %)."
+        },
+        {
+          "ticker": "MTRN",
+          "name": "Materion Corporation",
+          "weight": 0.15,
+          "exposure_purity": "medium",
+          "commodity_market_share_note": "A leading merchant supplier of specialty/advanced sputtering targets (Cu/Mo/Al and specialty alloys) named among global top players (Materion, JX, Praxair, Plansee, Mitsui M&S; top-5 ~40%+). Estimated single-digit-to-low-teens global share of the semiconductor target market. Materion's Performance/Electronic Materials businesses make it a medium-purity tracker (targets are one line within a broader advanced-materials portfolio incl. beryllium). Source: Verified Market Research / Valuates player lists; Materion 10-K. Share estimated.",
+          "source": "Valuates/Verified Market Research 'Sputtering Target Material for Semiconductor'; Materion 10-K. Share estimated."
+        },
+        {
+          "ticker": "HON",
+          "name": "Honeywell Electronic Materials",
+          "weight": 0.03,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Honeywell Electronic Materials is a historical merchant sputtering-target supplier (Ta/Ti/Al/Cu) but is an IMMATERIAL fraction of Honeywell International's revenue (aerospace/automation/energy dominate) \u2014 negligible purity, so the stock will not track the commodity. HON is also spinning off its Advanced Materials segment (Solstice Advanced Materials, targeted 2025/early-2026), which may make a different vehicle the correct proxy in v2. Tiny weight + negligible-purity flag. Source: HON 8-K filings (Advanced Materials spin-off); industry player lists. Share estimated/qualitative.",
+          "source": "Honeywell 8-K (2024/2025 spin-off announcements); sputtering-target player lists. Share qualitative/estimated, confidence lowered."
+        }
+      ],
+      "excluded_private": [
+        "Plansee Group (Austria) \u2014 PRIVATE; one of the largest refractory-metal (Ta, W, Mo) sputtering-target and powder makers, a meaningful share of the Ta/W/refractory segment. Not investable.",
+        "Solar Applied Materials (3674.TWO) \u2014 Taiwanese target maker (precious-metal & semiconductor targets) trades on the Taipei Exchange (thinly); could be a low-weight v2 add. Excluded here as a thin/secondary listing rather than a core proxy.",
+        "Mitsui Mining & Smelting target operations and Praxair/Linde target lines \u2014 embedded in larger diversified groups with low dedicated purity"
+      ]
+    },
+    {
+      "commodity": "Synthetic fused silica / EUV mask blanks",
+      "rating": "HIGH",
+      "basket_confidence": "HIGH",
+      "confidence_rationale": "This is the cleanest of the seven. EUV mask blanks are an effective DUOPOLY of two PUBLIC Japanese companies \u2014 Hoya (7741.T) and AGC (5201.T) \u2014 which together hold ~90%+ of the market (multiple sources agree top-2 ~93%). Both operators are public and directly investable, so the public basket covers the large majority of global supply. At least one constituent (Hoya, via its mask-blank/photomask leadership and high-margin electronics franchise) is a strong tracker. Adding Shin-Etsu and Tosoh extends coverage into the broader synthetic-fused-silica / quartz substrate value chain. This is the configuration the methodology explicitly cites as HIGH. The ONLY material caveat (and why this is HIGH-but-not-perfect) is a genuine SOURCE CONFLICT on the Hoya/AGC split: industry/Yole consensus and the project brief put Hoya as the dominant leader (~70%+) with AGC ~25-30%, while several SEO market-research-mill reports invert this to AGC ~59% / Hoya ~34%. I weight toward the industry-consensus (Hoya-leads) view but cannot resolve the exact split to a precise %, so I use a rounded ~70/30-type split and flag it.",
+      "weighting_caveat": "First-pass revenue-share weights for the EUV-mask-blank duopoly. SOURCE CONFLICT on the split: industry consensus / project brief = Hoya ~70%+, AGC ~25-30%; low-quality market-mill reports (intelmarketresearch et al.) = AGC ~59%, Hoya ~34%. I adopt the Hoya-leads consensus and use Hoya 0.60 / AGC 0.27 for the two mask-blank constituents, then add small weights for Shin-Etsu and Tosoh to represent the adjacent synthetic-fused-silica/quartz substrate layer (Shin-Etsu strong in 193nm/ArF photomask substrates and synthetic quartz; Tosoh a recognized fused-silica/quartz-glass supplier). Exact mask-blank percentages are NOT precisely resolvable from public sources, so treat the 60/27 as rounded/estimated and revisable in v2; the qualitative conclusion (Hoya >> AGC, the two ~90%+) is robust. If the basket is meant to be EUV-mask-blanks ONLY, drop Shin-Etsu/Tosoh and renormalize Hoya/AGC to ~69/31.",
+      "constituents": [
+        {
+          "ticker": "7741.T",
+          "name": "Hoya Corporation",
+          "weight": 0.6,
+          "exposure_purity": "medium",
+          "commodity_market_share_note": "Dominant EUV mask-blank leader per industry consensus / Yole / project brief (~70%+ of EUV blanks; 'dominance exceeds 75% by volume' per one substrate-industry write-up). Also leading in mask blanks broadly and photomask substrates. NOTE the source conflict: some market-mill reports instead put Hoya at ~34% and AGC at ~59% \u2014 I judge those lower-quality and adopt Hoya-leads. Purity is MEDIUM: mask blanks/electronics are a major Hoya segment but the group also has a large eyeglass-lens/medical/optics business. Source: SemiEngineering 'EUV Mask Blank Biz Heats Up'; substrate-industry commentary; project brief. Split estimated.",
+          "source": "SemiEngineering (EUV mask-blank coverage); industry/Yole-attributed commentary; project brief. Hoya-leads consensus; exact % estimated."
+        },
+        {
+          "ticker": "5201.T",
+          "name": "AGC Inc. (Asahi Glass)",
+          "weight": 0.27,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "The clear No.2 in EUV mask blanks (~25-30% on the Hoya-leads consensus; the conflicting market-mill view puts AGC first at ~59% \u2014 see caveat). Together Hoya+AGC ~90%+. Purity is LOW: AGC is a giant diversified glass/chemicals/ceramics conglomerate (architectural & automotive glass, chlor-alkali chemicals) where EUV mask blanks are a tiny revenue slice, so the stock tracks the commodity weakly. Source: SemiEngineering; intelmarketresearch (conflicting); project brief. Split estimated.",
+          "source": "SemiEngineering; intelmarketresearch EUV Mask Blanks (conflicting figures); project brief. Exact % estimated."
+        },
+        {
+          "ticker": "4063.T",
+          "name": "Shin-Etsu Chemical",
+          "weight": 0.08,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Strong supplier of synthetic quartz / 193nm (ArF) photomask substrates and a recognized synthetic-fused-silica name (listed alongside Corning/Heraeus/Tosoh as a major non-crystalline quartz supplier). Included to extend coverage into the broader fused-silica substrate layer beyond EUV blanks. Negligible purity \u2014 fused silica/photomask substrate is a tiny fraction of Shin-Etsu's PVC/wafer/silicone/magnet revenue. Source: industry quartz-supplier lists (Tosoh/Corning/Heraeus/SCHOTT/Shin-Etsu); project brief. Share qualitative.",
+          "source": "Tosoh/industry quartz-glass supplier listings; project brief. Qualitative, no clean %; confidence-neutral small weight."
+        },
+        {
+          "ticker": "4042.T",
+          "name": "Tosoh Corporation",
+          "weight": 0.05,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Recognized supplier of fused silica / fused-quartz glass for semiconductor and optical use (named among Corning/Heraeus/SCHOTT/Shin-Etsu as a major quartz-glass maker). Included for synthetic-fused-silica coverage. Negligible purity \u2014 quartz glass is a small line within Tosoh's large commodity-chemicals/bioscience/specialty portfolio. Source: Tosoh product pages; industry supplier lists. Share qualitative.",
+          "source": "Tosoh.com silica-glass product pages; industry quartz-glass supplier listings. Qualitative, no clean %."
+        }
+      ],
+      "excluded_private": [
+        "Heraeus (Germany) \u2014 PRIVATE; a leading synthetic-fused-silica boule / quartz-glass producer (major in the broader fused-silica commodity, though not a commercial EUV-mask-blank supplier). Material private gap on the fused-silica side.",
+        "Corning Incorporated (GLW) \u2014 PUBLIC and a major synthetic-fused-silica boule maker (HPFS), but fused silica is negligible within Corning's optical-fibre/display/specialty-materials revenue (negligible purity). Optional low-weight/low-purity v2 add on the fused-silica leg; excluded from the EUV-blank-focused core.",
+        "SCHOTT (Germany) \u2014 private/foundation-owned specialty-glass maker present in the quartz/fused-silica space"
+      ]
+    },
+    {
+      "commodity": "Tungsten Hexafluoride (WF6)",
+      "rating": "MEDIUM",
+      "basket_confidence": "LOW",
+      "confidence_rationale": "WF6 is a concentrated oligopoly (top-6 ~90% per THE ELEC), but the PUBLIC-investability of that oligopoly is poor. The Korean leader for specialty CVD gases including WF6 \u2014 SK Specialty \u2014 is now a PRIVATE subsidiary of SK Inc. (the old SK Materials KOSDAQ ticker 036490 was delisted Dec 2021 when SK Materials merged into SK Inc.); the only listed vehicle is the diversified holding company SK Inc. (034730.KS), where WF6 purity is negligible. Of the named candidates, only Kanto Denka (4047.T) and Resonac (4004.T) are cleanly listed, and both are diversified (Kanto Denka is the purer of the two but is a small fluorine-gas specialist with no published WF6 %; Resonac is a giant conglomerate). No source gives clean per-company WF6 market-share percentages \u2014 figures are qualitative. Private leader + diversified/low-purity public names + no clean share data \u21d2 LOW confidence, even though the commodity itself is well-defined. Honest LOW label.",
+      "weighting_caveat": "First-pass weights are QUALITATIVE (no defensible per-company WF6 % was found; do not over-read the precision). Japanese suppliers ~25% of global WF6 (THE ELEC), led by Kanto Denka and Central Glass (Central Glass = 4044.T, public, could be a v2 add); Korea (SK Specialty, Foosung) and China (CSSC/718th Institute, Haohua) hold much of the rest. I weight Kanto Denka highest among public names because it is the purer fluorine-specialty-gas play, with Resonac second (diversified). SK Specialty is the likely overall leader but is excluded as private (only investable via diversified SK Inc., which I do NOT include as a proxy). Weights are equal-ish/qualitative and explicitly revisable in v2 once a clean WF6 share study (TECHCET/QYResearch full report) is obtained.",
+      "constituents": [
+        {
+          "ticker": "4047.T",
+          "name": "Kanto Denka Kogyo",
+          "weight": 0.55,
+          "exposure_purity": "medium",
+          "commodity_market_share_note": "Long-standing Japanese fluorine-specialty-gas maker; a recognized major WF6 supplier and part of the Japanese bloc that is ~25% of global WF6 (THE ELEC). Medium purity: fluorine specialty gases (NF3, WF6, etching gases, ClF3) are Kanto Denka's core, making it the purest cleanly-listed public WF6 tracker, though it also has batteries/industrial chemicals. No published WF6 % \u2014 weight qualitative. Source: THE ELEC (Japan ~25% of WF6, Kanto Denka named); Kanto Denka product pages. Qualitative.",
+          "source": "THE ELEC 'Tungsten Supply Risks / Japan Cuts WF6 Output'; Kanto Denka specialty-gas product pages. No clean %; qualitative weight."
+        },
+        {
+          "ticker": "4004.T",
+          "name": "Resonac Holdings (ex-Showa Denko)",
+          "weight": 0.45,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Showa Denko/Resonac is a recognized high-purity electronic-gas supplier (named among WF6 players as 'Showa Denko') with 'global top-level share' in several semiconductor materials. Low purity for WF6 specifically \u2014 it is a small line within a very large diversified chemical/semiconductor-materials/petrochemical group. No published WF6 % \u2014 weight qualitative. Source: WF6 player lists (openPR/Verified Market Reports naming Showa Denko); Resonac corporate materials. Qualitative.",
+          "source": "openPR/Verified Market Reports WF6 player lists (Showa Denko); Resonac corporate disclosures. No clean %; qualitative weight."
+        }
+      ],
+      "excluded_private": [
+        "SK Specialty (formerly SK Materials' specialty-gas unit) \u2014 now a PRIVATE subsidiary of SK Inc.; old KOSDAQ ticker 036490 (SK Materials) was DELISTED Dec 2021 on merger into SK Inc. Likely a leading WF6 supplier in Korea, but only investable via diversified holdco SK Inc. (034730.KS), which has negligible WF6 purity. Major private/structural gap \u2014 primary reason confidence is LOW. (Prompt's '036490.KQ' is no longer a tradable specialty-gas pure-play.)",
+        "Central Glass (4044.T) \u2014 PUBLIC Japanese WF6 supplier named alongside Kanto Denka in the Japanese ~25% bloc; a reasonable low-weight v2 add (omitted here only because no clean share figure was found).",
+        "Foosung (093370.KS) \u2014 Korean fluorine-chemicals maker named in the WF6/tungsten-import context; possible v2 add.",
+        "China State Shipbuilding 718th Research Institute / Haohua Chemical \u2014 large Chinese WF6 producers, effectively not investable to Western index users."
+      ]
+    },
+    {
+      "commodity": "Nitrogen trifluoride (NF3)",
+      "rating": "MEDIUM",
+      "basket_confidence": "LOW",
+      "confidence_rationale": "NF3 is ~80% Korean-controlled and the global No.1 is SK Specialty with >40% global share (SK Inc. corporate materials) \u2014 but SK Specialty is PRIVATE (old SK Materials KOSDAQ ticker 036490 delisted Dec 2021 on merger into SK Inc.; only investable via the diversified holdco SK Inc., 034730.KS, where NF3 purity is negligible). That removes the ~40%+ leader from the public basket \u2014 a very large coverage gap. The cleanly-listed public NF3 names are Hyosung Chemical (298000.KS), Foosung (093370.KS) and Kanto Denka (4047.T) in Japan, plus diversified Resonac (4004.T). Hyosung Chemical and Foosung give decent Korean public coverage and are reasonably pure to specialty gases/fluorine chemistry, which is why this is MEDIUM-rated as a commodity. But the missing >40% private leader, plus the lack of clean per-company % (top-3 ~45% per QYResearch but not split by name), force LOW basket_confidence. Honest LOW.",
+      "weighting_caveat": "First-pass weights are largely QUALITATIVE. Known anchor: SK Specialty >40% global NF3 (SK Inc.) \u2014 EXCLUDED as private. Global top-3 ~45% (QYResearch) but not name-split. Among PUBLIC names I weight the Korean specialty-gas makers (Hyosung Chemical, Foosung) above the diversified Japanese names, with Kanto Denka as the purer Japanese fluorine-gas play and Resonac (diversified) lowest. Because the dominant private player is excluded, this public basket covers well under half the commodity \u2014 treat as a partial proxy. Note: prompt listed both 'SK Specialty / SK Materials (036490.KQ)' as the lead candidate; that ticker is delisted and NOT usable. Weights estimated/qualitative, revisable in v2 once a name-split NF3 study is obtained.",
+      "constituents": [
+        {
+          "ticker": "298000.KS",
+          "name": "Hyosung Chemical",
+          "weight": 0.4,
+          "exposure_purity": "medium",
+          "commodity_market_share_note": "Korean producer named among the main NF3 players (with SK Specialty, Kanto Denka, Merck, PERIC, Mitsui). Part of the ~80% Korean NF3 bloc; the largest cleanly-listed Korean NF3 pure-ish specialty-gas play after private SK Specialty. Medium purity \u2014 NF3/specialty gas is a meaningful but not sole business (also TPA/PP/films). No clean standalone NF3 % found \u2014 weight qualitative. Listed KOSPI 298000.KS (Bloomberg/Yahoo confirm). Source: ReAnIn/Stratview/QYResearch NF3 player lists; Yahoo/Bloomberg 298000.KS. Qualitative.",
+          "source": "ReAnIn / Stratview / QYResearch NF3 player lists; Yahoo Finance & Bloomberg 298000.KS. No clean %; qualitative weight."
+        },
+        {
+          "ticker": "093370.KS",
+          "name": "Foosung Co., Ltd.",
+          "weight": 0.3,
+          "exposure_purity": "medium",
+          "commodity_market_share_note": "Korean fluorine-chemicals maker named among NF3/special-gas players and in the WF6/tungsten-import context; part of the Korean NF3 bloc. Medium purity \u2014 fluorine chemistry (NF3, electrolytes/LiPF6) is core, though diversified across battery materials. No clean standalone NF3 % \u2014 weight qualitative. Listed KOSPI 093370.KS (Bloomberg). Source: NF3 player lists; THE ELEC (Foosung tungsten imports); Bloomberg 093370.KS. Qualitative.",
+          "source": "QYResearch/Verified Market Research NF3 player lists; THE ELEC; Bloomberg 093370.KS. No clean %; qualitative weight."
+        },
+        {
+          "ticker": "4047.T",
+          "name": "Kanto Denka Kogyo",
+          "weight": 0.2,
+          "exposure_purity": "medium",
+          "commodity_market_share_note": "The principal Japanese NF3 producer (with Resonac/Mitsui), a recognized fluorine-specialty-gas specialist; represents the non-Korean (~Japan) slice of NF3. Medium purity (fluorine specialty gases are its core). No published NF3 % \u2014 weight qualitative. Source: NF3 player lists (Kanto Denka named); Kanto Denka product pages. Qualitative.",
+          "source": "ReAnIn/QYResearch NF3 player lists; Kanto Denka product pages. No clean %; qualitative weight."
+        },
+        {
+          "ticker": "4004.T",
+          "name": "Resonac Holdings (ex-Showa Denko)",
+          "weight": 0.1,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Japanese electronic-gas supplier with NF3 among its specialty-gas line, but low purity \u2014 a small line within a very large diversified group. Included for Japanese coverage breadth. No clean NF3 % \u2014 weight qualitative. Source: NF3/electronic-gas player references; Resonac corporate materials. Qualitative.",
+          "source": "NF3 electronic-gas player references; Resonac corporate disclosures. No clean %; qualitative weight."
+        }
+      ],
+      "excluded_private": [
+        "SK Specialty (ex-SK Materials specialty-gas unit) \u2014 PRIVATE subsidiary of SK Inc.; GLOBAL NF3 LEADER with >40% share (SK Inc. corporate materials). Old KOSDAQ ticker 036490 DELISTED Dec 2021 on merger into SK Inc. Only investable via diversified holdco SK Inc. (034730.KS) with negligible NF3 purity. This >40% private gap is the single biggest reason basket_confidence is LOW.",
+        "Merck KGaA / Versum (MRK.DE) \u2014 public but NF3 is negligible within the conglomerate (low/negligible purity); optional low-weight v2 add.",
+        "Mitsui Chemicals (4183.T) \u2014 public Japanese NF3 player; possible low-weight v2 add (omitted here, no clean share figure).",
+        "PERIC / Liming / Chinese NF3 producers \u2014 effectively not investable to Western index users."
+      ]
+    },
+    {
+      "commodity": "Silane (SiH4) / Disilane (Si2H6)",
+      "rating": "MEDIUM",
+      "basket_confidence": "LOW",
+      "confidence_rationale": "Electronic-grade silane has only weak public-equity purity. The named pure-ish merchant leader, REC Silicon (RECSI.OL), is the largest single SiH4 producer by one estimate (>~13% share) BUT it shut its Moses Lake polysilicon plant (Dec 2024/Jan 2025) and pivoted its remaining silane output (Butte, MT) heavily toward BATTERY-ANODE silane rather than semiconductor grade \u2014 so even the 'purest' name is now a weak semiconductor-silane tracker and a distressed micro-cap. The remaining public names \u2014 Linde (LIN), Air Liquide (AI.PA), Mitsui Chemicals (4183.T) \u2014 are huge diversified industrial-gas/chemical companies where silane is a negligible revenue slice. Much silane is also CAPTIVE to private polysilicon makers (Wacker, and Chinese producers like Inner Mongolia Xingyang who hold large share), and China is >74% of consumption \u2014 a large private/captive gap. Top-5 ~47% with REC ~13% leading (QYResearch via openPR). Private/captive gap + all-low-purity diversified public names + a distressed lead name \u21d2 LOW. Honest LOW.",
+      "weighting_caveat": "First-pass weights re-normalized over the named PUBLIC operators. Anchor: QYResearch (via openPR) top-5 (REC Silicon, Air Liquide, Linde, Inner Mongolia Xingyang, CNS) ~47%, with REC ~12.89% (the largest). Of the public names: REC ~13%, Air Liquide and Linde mid-single-digits each (estimated; their silane is a tiny captive/merchant line), Mitsui Chemicals low-single-digits. I keep a meaningful REC weight to reflect its lead share BUT pair it with a negligible-to-low purity flag because of the Moses Lake shutdown and battery-anode pivot. The industrial-gas majors get medium weight (they are the realistic LIQUID public proxies even though low purity). Note REC's semiconductor-grade exposure is now thin; if v2 wants SEMICONDUCTOR silane specifically, REC's weight should be cut further. Figures estimated/qualitative and explicitly revisable.",
+      "constituents": [
+        {
+          "ticker": "RECSI.OL",
+          "name": "REC Silicon ASA",
+          "weight": 0.4,
+          "exposure_purity": "low",
+          "commodity_market_share_note": "Largest single named silane producer (~12.89% share, QYResearch via openPR) and the most silane-focused public name. BUT purity is now LOW (downgraded): shut Moses Lake polysilicon Dec 2024/Jan 2025 (laid off 224), now focuses remaining silane (Butte, MT) on BATTERY-ANODE silane more than semiconductor grade; distressed micro-cap amid the Hanwha dispute. So it tracks SiH4 demand somewhat but is no longer a clean semiconductor-silane proxy. Source: openPR/QYResearch (REC ~12.89% silane); Solar Power World / GeekWire / Manufacturing Dive (Moses Lake shutdown 2024-25). Share per QYResearch.",
+          "source": "openPR 'Electronic Grade SiH4' (QYResearch, top-5 ~47%, REC ~12.89%); Solar Power World, GeekWire, Manufacturing Dive (Moses Lake shutdown). Share estimated/sourced."
+        },
+        {
+          "ticker": "LIN",
+          "name": "Linde plc",
+          "weight": 0.28,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Named in the silane top-5 and a core industrial/electronic-gas major (delivers silane to fabs), but silane is a negligible slice of Linde's vast industrial-gas revenue \u2014 negligible purity, will not track the commodity, though it is a highly LIQUID public proxy. Estimated mid-single-digit silane share. Source: openPR/QYResearch top-5 (Linde named); Valuates. Share estimated.",
+          "source": "openPR/QYResearch 'Electronic Grade SiH4' top-5; Valuates high-purity-silane reports. Share estimated."
+        },
+        {
+          "ticker": "AI.PA",
+          "name": "Air Liquide",
+          "weight": 0.22,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Named in the silane top-5 and a core electronic-gas major supplying fabs, but silane is a negligible slice of Air Liquide's diversified industrial-gas revenue \u2014 negligible purity. Liquid public proxy. Estimated mid-single-digit silane share. Source: openPR/QYResearch top-5 (Air Liquide named); Valuates. Share estimated.",
+          "source": "openPR/QYResearch 'Electronic Grade SiH4' top-5; Valuates. Share estimated."
+        },
+        {
+          "ticker": "4183.T",
+          "name": "Mitsui Chemicals",
+          "weight": 0.1,
+          "exposure_purity": "negligible",
+          "commodity_market_share_note": "Listed among silane-market participants (Mitsui Chemicals named in Valuates/openPR competitive sets) but silane is negligible within Mitsui's large diversified petrochemical/performance-materials portfolio \u2014 negligible purity, small share. No clean % \u2014 weight qualitative. Source: Valuates/openPR silane competitive listings. Qualitative.",
+          "source": "Valuates / openPR silane market competitive listings (Mitsui Chemicals named). No clean %; qualitative weight."
+        }
+      ],
+      "excluded_private": [
+        "Wacker Chemie (WCH.DE) \u2014 PUBLIC but silane is largely CAPTIVE to its polysilicon business and a negligible disclosed merchant line; effectively a private/captive gap for merchant SiH4. Could be a low-weight/low-purity v2 add.",
+        "Inner Mongolia Xingyang Technology / CNS / Henan Silane / Zhejiang Zhongning \u2014 large CHINESE silane producers (China is >74% of consumption); a major captive/effectively-non-investable gap that the public basket does not cover. Primary reason confidence is LOW.",
+        "Shin-Etsu Chemical & Sumitomo Chemical silane lines \u2014 captive/negligible-purity within diversified groups (Shin-Etsu is public 4063.T but silane purity negligible).",
+        "Disilane (Si2H6) specifically (~$5,000/kg niche) is supplied by a handful of specialty players with essentially no clean public-share data \u2014 this sub-commodity is largely unmodellable from public equities."
+      ]
+    },
+    {
+      "commodity": "SiC substrates",
+      "rating": "MEDIUM",
+      "constituents": [
+        {
+          "ticker": "WOLF",
+          "name": "Wolfspeed, Inc.",
+          "weight": 0.411,
+          "exposure_purity": "high",
+          "source": "TrendForce (May 2025, reported in Semiconductor Today): Wolfspeed = 33.7% of 2024 global SiC substrate revenue ($1.04bn market). Normalized across the four named public operators (combined 82% global share).",
+          "commodity_market_share_note": "33.7% of global SiC substrate revenue in 2024 (TrendForce), the single largest. Pure-play SiC substrate + device maker, so wafer revenue ~= ASP x volume disclosed quarterly (good price proxy mechanically). CRITICAL CAVEAT: Wolfspeed filed prepackaged Chapter 11 in June 2025 and emerged late Sept 2025; ALL legacy shares were cancelled and only ~1.3M new shares issued to old holders at a ~0.0083 ratio (<1% of new equity). The post-reorg equity still trades NYSE:WOLF but the price series is discontinuous and the equity is a distressed-restructuring story, which contaminates its value as a clean SiC price proxy."
+        },
+        {
+          "ticker": "688275.SS",
+          "name": "TanKeBlue Semiconductor (Beijing Tianke Heda)",
+          "weight": 0.211,
+          "exposure_purity": "high",
+          "source": "TrendForce (May 2025): TanKeBlue = 17.3% of 2024 global SiC substrate revenue, 2nd place. Listed on Shanghai STAR Market (688275). Normalized across the four named public operators.",
+          "commodity_market_share_note": "17.3% global share (TrendForce 2024); largest domestic Chinese SiC substrate supplier. Effectively a SiC substrate pure-play, so high exposure purity. Newer listing (STAR Market) with shorter price history and China A-share liquidity/accessibility constraints for foreign data consumers."
+        },
+        {
+          "ticker": "688234.SS",
+          "name": "SICC Co., Ltd.",
+          "weight": 0.209,
+          "exposure_purity": "high",
+          "source": "TrendForce (May 2025): SICC = 17.1% of 2024 global SiC substrate revenue, 3rd place. Listed on Shanghai STAR Market (688234) since Jan 2022. Normalized across the four named public operators.",
+          "commodity_market_share_note": "17.1% global share per TrendForce (2024); ~80% of SICC's own revenue is SiC substrates (high purity). NOTE: SICC's own corporate materials claim a higher ~22.8% global share / world's-#2 position - a discrepancy versus the TrendForce third-party ranking used here; the lower third-party figure is used for consistency. Leads the 8-inch (200mm) segment and launched a 12-inch substrate in 2024."
+        },
+        {
+          "ticker": "COHR",
+          "name": "Coherent Corp.",
+          "weight": 0.17,
+          "exposure_purity": "low",
+          "source": "TrendForce (May 2025): Coherent = 13.9% of 2024 global SiC substrate revenue, 4th place. Normalized across the four named public operators.",
+          "commodity_market_share_note": "13.9% of global SiC substrate revenue (TrendForce 2024). LOW exposure purity: SiC generated only ~$300M of Coherent's ~$5.2-5.7bn total revenue (~5-6%); the stock is dominated by lasers and datacom/optical-networking transceivers. Coherent has also announced a transaction to separate/spin its SiC business (reported 75% / 12.5% / 12.5% ownership split with strategic partners), which will further detach COHR's equity from SiC ASPs."
+        }
+      ],
+      "excluded_private": [
+        "SK Siltron CSS (private subsidiary of SK Siltron / SK Group, Korea/US - a top-tier conductive-substrate supplier, qualified at Infineon, not separately investable)",
+        "Resonac/SiCrystal (4004.T is public but SiC substrates are a negligible slice of Resonac's broad chemicals/materials revenue, so it is not a usable proxy; ROHM owns SiCrystal)",
+        "STMicroelectronics in-house substrate capacity (Norstel) - captive, not sold on merchant market",
+        "SanAn Optoelectronics / Synlight and other emerging Chinese conductive-substrate capacity not separately ranked by TrendForce"
+      ],
+      "basket_confidence": "MEDIUM",
+      "confidence_rationale": "Public operators cover ~82% of the global SiC substrate market (TrendForce 2024 top-4 are all listed), market-share data is clean and from a single reputable third party, and three of four constituents are high-purity SiC trackers - all of which argues for HIGH. It is held to MEDIUM by two material defects: (1) the dominant 41%-weight constituent, Wolfspeed, went through Chapter 11 in 2025 with full cancellation of legacy equity, so its price series is discontinuous and now reflects a distressed-restructuring narrative rather than clean SiC price discovery; and (2) the two Chinese pure-plays (TanKeBlue, SICC) are recent STAR-Market listings with short histories and A-share accessibility frictions, while the one liquid Western diversified name (Coherent) is low-purity and is spinning out its SiC unit. The mechanical logic (pure-play wafer revenue ~= ASP x volume) is the strongest of the five baskets, but the WOLF discontinuity is a real price-discovery hazard.",
+      "weighting_caveat": "First-pass revenue-share weights, normalized over the four TrendForce-named public operators (their raw 33.7/17.3/17.1/13.9 of a 100% market summing to 82% public coverage). Explicitly revisable in v2. The remaining ~18% (SK Siltron CSS captive/private, Resonac, STMicro, smaller Chinese names) is not in the basket, so the basket over-represents these four relative to true global supply. The Wolfspeed Chapter 11 reset means pre-Sept-2025 WOLF price history must be treated as a separate, terminated series; do NOT splice old and new WOLF closes when computing the proxy."
+    },
+    {
+      "commodity": "GaN substrates",
+      "rating": "MEDIUM",
+      "constituents": [
+        {
+          "ticker": "5802.T",
+          "name": "Sumitomo Electric Industries, Ltd.",
+          "weight": 0.45,
+          "exposure_purity": "negligible",
+          "source": "Industry consensus (multiple market reports, e.g. Mordor Intelligence, QYResearch/openPR freestanding-GaN studies 2024) identify Sumitomo Electric as the dominant freestanding/bulk-GaN substrate supplier via its proprietary low-dislocation HVPE process. Top-3 (Sumitomo Electric + SCIOCS + Mitsubishi Chemical) = 78.84% of the 2024 freestanding-GaN market (QYResearch via openPR). No clean public per-company split exists; Sumitomo Electric assigned the largest of the three as the recognized leader (qualitative/estimated, NOT a published precise figure).",
+          "commodity_market_share_note": "Widely regarded as the #1 freestanding GaN substrate producer, but NO published precise single-company percentage exists - weight is a qualitative estimate within the 78.84% top-3 cluster (hence reduced basket confidence). NEGLIGIBLE exposure purity: Sumitomo Electric is a ~JPY 4-trillion-revenue conglomerate (automotive wiring harnesses, electric wire/cable, optical fiber, infocomm); bulk GaN substrate is a rounding-error revenue line. The stock will essentially not track GaN substrate ASPs."
+        },
+        {
+          "ticker": "4005.T",
+          "name": "Sumitomo Chemical Co., Ltd. (SCIOCS Company)",
+          "weight": 0.3,
+          "exposure_purity": "negligible",
+          "source": "QYResearch/openPR freestanding-GaN 2024: SCIOCS named in the top-3 (combined 78.84%). SCIOCS Company Ltd. is a Sumitomo Chemical subsidiary (formerly Hitachi Cable's GaN business). Per-company share is estimated, not published; assigned the middle of the three.",
+          "commodity_market_share_note": "SCIOCS is a recognized top-3 freestanding-GaN and GaN-epi supplier, but its share is bundled in the 78.84% top-3 figure with no clean split (estimated weight). NEGLIGIBLE purity: SCIOCS is a small subsidiary of Sumitomo Chemical (4005.T), a multi-segment chemicals giant (petrochemicals, agro, pharma, IT-related materials). GaN is immaterial to the parent's equity. NOTE: ticker 4005.T is Sumitomo Chemical; some sources list Sumitomo Chemical as 4005.T on TSE."
+        },
+        {
+          "ticker": "4188.T",
+          "name": "Mitsubishi Chemical Group Corp.",
+          "weight": 0.25,
+          "exposure_purity": "negligible",
+          "source": "QYResearch/openPR freestanding-GaN 2024: Mitsubishi Chemical named in the top-3 (combined 78.84%). Per-company share is estimated, not published; assigned the smallest of the three.",
+          "commodity_market_share_note": "Mitsubishi Chemical runs an ammonothermal bulk-GaN effort and is a recognized top-3 supplier, but its GaN substrate operation is effectively a small/semi-carved-out unit and its share within the 78.84% top-3 is not separately published (estimated weight). NEGLIGIBLE purity: parent Mitsubishi Chemical Group (4188.T) is one of the world's largest diversified chemical companies; GaN substrate is immaterial to the equity."
+        }
+      ],
+      "excluded_private": [
+        "Mitsubishi Chemical's bulk-GaN operation is sometimes described as a quasi-private/internal unit - its standalone economics are not separately disclosed even though the parent (4188.T) is public",
+        "Suzhou Nanowin (Sino Nitride) - private Chinese freestanding-GaN entrant scaling 2-4 inch capacity",
+        "Eta Research Ltd. - private Chinese GaN substrate entrant",
+        "Soitec (SOI.PA) and Sumco (3436.T) make GaN-on-Si / engineered-substrate epi, NOT bulk freestanding GaN - excluded from the freestanding-substrate basket (different product; both also low/negligible GaN purity)",
+        "Sumitomo Electric's, SCIOCS's and Mitsubishi's exact individual shares are themselves effectively undisclosed (private within the conglomerates)"
+      ],
+      "basket_confidence": "LOW",
+      "confidence_rationale": "Although public parent companies cover ~79% of the freestanding-GaN market (top-3 = 78.84%, all three parents listed), this basket is LOW confidence for three compounding reasons: (1) EVERY constituent is negligible-purity - Sumitomo Electric, Sumitomo Chemical and Mitsubishi Chemical are giant diversified conglomerates where bulk GaN is a rounding-error revenue line, so none of the stocks will meaningfully track GaN substrate ASPs; (2) there is NO published per-company share split inside the 78.84% top-3 cluster, so the intra-basket weights are qualitative estimates, not defensible market-share figures (per anti-fabrication rules this forces lower confidence); and (3) the bulk freestanding-GaN market is tiny (~$400M in 2024), so even the leaders capture immaterial revenue. The proxy is directionally informative about WHO supplies GaN substrates but is a weak price-discovery instrument.",
+      "weighting_caveat": "First-pass weights are QUALITATIVE ESTIMATES (Sumitomo Electric > SCIOCS > Mitsubishi within the 78.84% top-3) because no public per-company freestanding-GaN share is disclosed - these are explicitly NOT defensible precise percentages and are flagged for v2 revision. Because all three constituents are negligible-purity diversified conglomerates, the basket will track the broad Japanese chemical/industrial equity complex far more than GaN substrate prices. Sumitomo Chemical ticker shown as 4005.T (parent of SCIOCS); confirm exact TSE code in implementation."
+    },
+    {
+      "commodity": "Hyperpure polysilicon (semi grade)",
+      "rating": "MEDIUM",
+      "constituents": [
+        {
+          "ticker": "WCH.DE",
+          "name": "Wacker Chemie AG",
+          "weight": 0.6,
+          "exposure_purity": "medium",
+          "source": "Wacker 2024 Annual Report (Polysilicon segment) + Wacker corporate statements: Wacker is the self-described and industry-recognized global market LEADER in hyperpure semiconductor-grade polysilicon; the hyperpure semi-grade share of its volumes rose again in 2024 and it aims to double semiconductor sales by 2030. Search syntheses citing Wacker+Hemlock at ~3/4 of the semi-poly market. Public semi-grade-specific percentages are not disclosed; weight is an estimate reflecting clear #1 status among PUBLIC producers (Hemlock, the other co-leader, is private).",
+          "commodity_market_share_note": "Recognized global #1 in electronic/semiconductor-grade (11N) polysilicon. Largest PUBLIC pure exposure to semi-grade poly. MEDIUM purity: Wacker's Polysilicon division is one of several divisions (Silicones, Polymers, Biosolutions also large), and even within Polysilicon the SOLAR-grade business has historically dominated volume/revenue (2024 Polysilicon sales fell 40.6% to EUR 949m mostly on solar weakness). So the equity carries large non-semi-poly exposure, but semi-grade is a growing, high-margin, strategically emphasized slice - the best public tracker available."
+        },
+        {
+          "ticker": "4043.T",
+          "name": "Tokuyama Corporation",
+          "weight": 0.28,
+          "exposure_purity": "medium",
+          "source": "Industry consensus (multiple trade sources): Tokuyama is widely described as the world's THIRD-largest semiconductor-grade polysilicon producer (after Wacker and the private Hemlock). Semi-grade-specific share not publicly quantified; weight estimated as clear #2 among public producers.",
+          "commodity_market_share_note": "World's ~#3 semiconductor-grade polysilicon producer; completed a JPY 30bn Shunan expansion for sub-3nm-node purity in 2024 and is building an OCI JV (OSTM) in Malaysia (commercial ~2029). MEDIUM purity: Tokuyama is a diversified chemicals company (electronic materials, cement, plastics, health care), but electronic-materials/semi-poly is a more material and strategically central slice than at the GaN conglomerates."
+        },
+        {
+          "ticker": "3800.HK",
+          "name": "GCL Technology Holdings Ltd.",
+          "weight": 0.12,
+          "exposure_purity": "low",
+          "source": "GCL corporate disclosures (gcl-power.com): electronic-grade high-purity (11N, 99.99999999999%) polysilicon capacity of 5,000 t/yr Xuzhou + 10,000 t/yr Inner Mongolia (with TCL JV); claims >50% DOMESTIC (China) electronic-grade share. Global semi-grade share is small and not cleanly disclosed; weight estimated as the smallest public constituent.",
+          "commodity_market_share_note": "Emerging Chinese electronic-grade producer (>50% domestic China share per company), but globally still small versus Wacker/Hemlock/Tokuyama and ramping. LOW purity: GCL is overwhelmingly a SOLAR-grade polysilicon and granular-silicon company (60,000+ t solar capacity in Xuzhou alone); semiconductor-grade is a small, new segment. The equity tracks the (oversupplied, China-priced) SOLAR poly cycle, which the methodology explicitly warns is MISLEADING for semi-grade."
+        }
+      ],
+      "excluded_private": [
+        "Hemlock Semiconductor Corp. (USA) - PRIVATE (Corning/DuPont JV); the #2 global semiconductor-grade poly producer and co-leader with Wacker. This is the single largest coverage gap - a top-2 producer entirely absent from any public basket.",
+        "OCI Holdings semiconductor-grade ambitions sit partly in the private OCI/Tokuyama Malaysia JV (OSTM, ~2029); OCI Holdings (010060.KS) is itself listed but its semi-grade poly is pre-commercial and immaterial today",
+        "Mitsubishi Materials / smaller Japanese producers with minor semi-grade output",
+        "Solar-grade Chinese majors (Daqo, Tongwei, Xinte) - not semi-grade producers; excluded by design"
+      ],
+      "basket_confidence": "LOW",
+      "confidence_rationale": "Held to LOW (despite Wacker being a genuinely strong leader) primarily because of a large PRIVATE coverage gap and weak purity: (1) Hemlock - the co-#1/#2 semiconductor-grade producer globally - is entirely private (Corning/DuPont), so any public basket structurally misses a top-2 supplier; (2) no operator discloses a semi-grade-SPECIFIC market share, so all weights are estimates of relative public-producer rank, not defensible percentages; and (3) purity is compromised because the methodology's own warning bites hard here - Wacker, Tokuyama and especially GCL all carry large SOLAR-grade and/or unrelated-chemicals revenue, and solar-grade poly pricing (currently depressed by Chinese oversupply) moves these stocks in a direction that is explicitly misleading for the 10-20x-priced semi-grade product sold under LTAs. Wacker is the best available single proxy, but the basket as a whole is a soft tracker.",
+      "weighting_caveat": "First-pass weights are ESTIMATES of relative standing among PUBLIC semi-grade producers (Wacker #1 > Tokuyama #3-public > GCL emerging), because semiconductor-grade-specific shares are not publicly quantified - explicitly revisable in v2. The basket covers only the public producers and entirely omits Hemlock (private top-2), so it materially under-represents true global semi-grade supply. Because semi-grade prices are set in confidential long-term agreements at a large multiple of the visible solar-grade price, NONE of these equities is a tight price proxy; treat the basket as an indicative supply-side composite rather than a price feed."
+    },
+    {
+      "commodity": "Tantalum",
+      "rating": "MEDIUM",
+      "constituents": [
+        {
+          "ticker": "AMG.AS",
+          "name": "AMG Critical Materials N.V.",
+          "weight": 0.55,
+          "exposure_purity": "low",
+          "source": "AMG Critical Materials 2024 Annual Report (published 12 Mar 2025); AMG runs the Mibra mine (Minas Gerais, Brazil) producing tantalum (Ta2O5) concentrate alongside lithium/spodumene, and is repeatedly named in tantalum market-share studies (Mordor, NextMSC) among the top vertically integrated suppliers (top-4 processors Taniobis/Mitsui/AMG/GAM control >50% of output). No clean public Ta-specific percentage exists; weight reflects AMG being the most prominent PUBLIC tantalum-exposed name (estimated/qualitative).",
+          "commodity_market_share_note": "AMG is the principal LISTED tantalum-exposed operator (Mibra Ta2O5 concentrate, originally a world-leading tantalum mine). It is one of the named top-tier suppliers but a precise Ta market share is not publicly disclosed (estimated weight). LOW exposure purity: AMG has repositioned around LITHIUM, vanadium and other critical materials; Mibra now centers on a 130 ktpy spodumene/lithium plant using tantalum tailings as feedstock, so tantalum is a minor and shrinking revenue line. The equity tracks lithium/vanadium far more than tantalum."
+        },
+        {
+          "ticker": "PLS.AX",
+          "name": "Pilbara Minerals Ltd.",
+          "weight": 0.25,
+          "exposure_purity": "negligible",
+          "source": "USGS / INN tantalum coverage: Australian hard-rock lithium operations (Pilgangoora) produce a tantalite (Ta2O5) BY-PRODUCT; Australia is a leading source of tantalum mine supply (USGS import-source data showed Australia ~54% of US Ta concentrate imports 2019-22). No published Pilbara Ta market-share %; weight estimated and small.",
+          "commodity_market_share_note": "Produces tantalite strictly as a BY-PRODUCT of spodumene/lithium mining at Pilgangoora; a real but small contributor to ex-Africa tantalum mine supply. NEGLIGIBLE purity: Pilbara is a pure LITHIUM equity - tantalum is an immaterial by-product credit. Included only to add some non-Central-African mine-supply representation; it will not track tantalum prices."
+        },
+        {
+          "ticker": "5706.T",
+          "name": "Mitsui Mining & Smelting Co. (Mitsui Kinzoku)",
+          "weight": 0.2,
+          "exposure_purity": "negligible",
+          "source": "Tantalum market-share syntheses (Mordor/NextMSC) name Mitsui Kinzoku among the top-4 tantalum processors (Taniobis, Mitsui Kinzoku, AMG, GAM control >50% of output). Mitsui Kinzoku is listed in Tokyo (5706.T). No clean public Ta-specific percentage; weight estimated and small.",
+          "commodity_market_share_note": "A named top-4 tantalum processor, providing some PUBLIC exposure to the refining/powder stage. NEGLIGIBLE purity: Mitsui Mining & Smelting is a large diversified non-ferrous metals and materials group (zinc, copper, battery materials, electronic materials, auto parts catalysts); tantalum processing is a minor line. Will not track tantalum prices."
+        }
+      ],
+      "excluded_private": [
+        "Global Advanced Metals Pty Ltd (GAM) - PRIVATE; the leading tantalum producer/processor (~19.4% of tantalum-pentoxide-powder output per NextMSC) and conflict-free/recycling leader. Largest single coverage gap.",
+        "Taniobis GmbH (formerly H.C. Starck Tantalum & Niobium; JX/private ownership) - a top-4 tantalum powder processor, private.",
+        "Ningxia Orient Tantalum Industry / CNMC Ningxia Orient - state-owned (China), dominant Asian refiner and capacitor-grade powder producer, not investable.",
+        "Cabot Corp tantalum legacy (now within GAM lineage); various DRC/Rwanda artisanal coltan miners (~50% of mine supply, informal/private).",
+        "Minsur / Mineracao Taboca (Brazil) - tin-niobium-tantalum byproduct, parent Minsur is Peru-listed but Ta is immaterial."
+      ],
+      "basket_confidence": "LOW",
+      "confidence_rationale": "LOW confidence: tantalum has NO clean public pure-play and the largest producers are private or state-owned. The dominant processor (Global Advanced Metals, ~19% of pentoxide powder) is private; the leading refiners Taniobis and Ningxia Orient are private/state; and ~50% of MINE supply is informal DRC/Rwanda coltan. The investable names are all low- or negligible-purity: AMG has pivoted to lithium (tantalum is a minor, shrinking segment at Mibra), Pilbara's tantalite is a pure lithium-mining by-product, and Mitsui Kinzoku's Ta processing is a rounding error in a diversified base-metals group. There is also NO published company-level tantalum market-share table, so the weights are qualitative. The basket captures only a minority slice of a private/state-dominated chain via stocks that overwhelmingly reflect other commodities (mostly lithium).",
+      "weighting_caveat": "First-pass weights are QUALITATIVE (AMG as the principal public Ta-exposed name > Pilbara by-product mine supply > Mitsui processing), since no public company-level tantalum market-share figures exist - explicitly revisable in v2 and among the weakest in the set. The basket omits the true tantalum leaders (GAM, Taniobis, Ningxia Orient, DRC/Rwanda artisanal supply), so it under-represents the commodity by a wide margin, and every constituent is dominated by non-tantalum (largely lithium) businesses. Treat as an indicative, low-fidelity proxy only."
+    },
+    {
+      "commodity": "Niobium",
+      "rating": "MEDIUM",
+      "constituents": [
+        {
+          "ticker": "3993.HK",
+          "name": "CMOC Group Ltd. (China Molybdenum)",
+          "weight": 0.684,
+          "exposure_purity": "negligible",
+          "source": "CMOC 2024 Annual Results (en.cmoc.com): CMOC Brasil produced 10,024 mt of niobium in 2024 (record), and is the world's SECOND-LARGEST niobium producer (~11% global share per Intel Market Research / multiple syntheses; CBMM ~77-80%). CMOC acquired the Brazil niobium/phosphate business from Anglo American in 2016. Among PUBLIC, directly-investable niobium PRODUCERS, CMOC is essentially the only one with a real production share; weight reflects that.",
+          "commodity_market_share_note": "World's #2 niobium producer at ~11% global share (CBMM at ~77-80% is private). The ONLY public company that actually MINES and sells niobium at scale. NEGLIGIBLE exposure purity: CMOC is a global copper-cobalt giant (huge DRC copper/cobalt operations, plus molybdenum/tungsten); 2024 net profit was ~RMB 13.5bn driven by copper/cobalt. Niobium is a tiny revenue/earnings line, so the stock tracks copper/cobalt, NOT niobium prices."
+        },
+        {
+          "ticker": "5401.T",
+          "name": "Nippon Steel Corp.",
+          "weight": 0.105,
+          "exposure_purity": "negligible",
+          "source": "Verified holding (CBMM consortium): in 2011 a Japanese-Korean consortium (JFE Steel, Nippon Steel, POSCO, ex-NSSMC) acquired ~15% of CBMM; CBMM controls ~77-80% of global niobium (USGS 2024; PRNewswire historic 84%). Nippon Steel (5401.T) is a consortium member. This is an EQUITY-STAKE exposure, not production; weight is a small token reflecting the passive minority CBMM interest.",
+          "commodity_market_share_note": "Holds a passive minority share of CBMM (the ~80% global niobium leader) via the 2011 ~15% Japanese-Korean consortium. NEGLIGIBLE purity: Nippon Steel is one of the world's largest STEELMAKERS; a passive fractional stake in CBMM is immaterial to its equity, which tracks steel spreads. Included only to represent indirect public exposure to the otherwise-private CBMM."
+        },
+        {
+          "ticker": "005490.KS",
+          "name": "POSCO Holdings Inc.",
+          "weight": 0.105,
+          "exposure_purity": "negligible",
+          "source": "Verified holding (CBMM consortium): POSCO is a member of the 2011 ~15% Japanese-Korean consortium owning a stake in CBMM (~80% global niobium share). POSCO Holdings trades on KRX (005490.KS). Equity-stake exposure, not production; small token weight.",
+          "commodity_market_share_note": "Passive minority CBMM stake via the 2011 consortium. NEGLIGIBLE purity: POSCO Holdings is a giant steel-and-battery-materials group; the CBMM interest is immaterial. Indirect, non-tracking exposure to private CBMM."
+        },
+        {
+          "ticker": "8001.T",
+          "name": "ITOCHU Corp.",
+          "weight": 0.053,
+          "exposure_purity": "negligible",
+          "source": "Per Robotnik task brief / consortium structure, ITOCHU (8001.T, Tokyo) is associated with the CBMM stakeholder consortium. Equity/offtake-stake exposure, not production; smallest token weight. (Consortium membership for the trading houses is less precisely documented than the steelmakers' 2011 15% deal, hence the smaller, lower-confidence weight.)",
+          "commodity_market_share_note": "Trading-house exposure linked to the CBMM consortium / niobium offtake. NEGLIGIBLE purity: ITOCHU is a vast general trading house (energy, food, textiles, machinery, etc.); any niobium-linked interest is immaterial. Indirect, non-tracking."
+        },
+        {
+          "ticker": "0267.HK",
+          "name": "CITIC Ltd.",
+          "weight": 0.053,
+          "exposure_purity": "negligible",
+          "source": "Verified holding (CBMM consortium): in 2011 a Chinese consortium led by CITIC (with Anshan, Shougang, Taiyuan, Baosteel) acquired ~15% of CBMM. CITIC Limited trades on HKEX (0267.HK). Equity-stake exposure, not production; small token weight. NOTE: the listed consortium parent is CITIC Limited (0267.HK), not CITIC Resources or CITIC Securities.",
+          "commodity_market_share_note": "Passive minority CBMM stake via the 2011 Chinese ~15% consortium. NEGLIGIBLE purity: CITIC Limited is a sprawling conglomerate (financial services, resources, manufacturing, real estate); the CBMM interest is immaterial. Indirect, non-tracking exposure to private CBMM."
+        }
+      ],
+      "excluded_private": [
+        "CBMM (Companhia Brasileira de Metalurgia e Mineracao, Brazil) - PRIVATE; controls ~77-80% of global niobium (USGS 2024). The overwhelming majority of the commodity is therefore NOT directly investable; only a ~30% equity stake (two 2011 ~15% consortia) is held by listed companies, and even that is immaterial to each holder.",
+        "Niobec (Saint-Honore, Quebec) - owned by Magris Resources, PRIVATE; the main non-Brazilian primary niobium (ferroniobium) producer.",
+        "Mineracao Taboca / CMOC's own Brazilian unit details are inside CMOC; Anshan, Shougang, Taiyuan, Baosteel (CITIC consortium co-members) are largely state-owned/separately listed steel entities with the same negligible-purity issue."
+      ],
+      "basket_confidence": "LOW",
+      "confidence_rationale": "LOW confidence: niobium is structurally the hardest of the five to proxy publicly because ~77-80% of global supply is CBMM, which is PRIVATE. The only listed company that actually produces niobium at scale is CMOC (~11% share), and for CMOC niobium is a negligible earnings line inside a copper-cobalt major - so even the best constituent does not track niobium prices. The remaining public exposure is purely passive minority equity stakes in CBMM (the ~30% held across the 2011 Japanese-Korean and Chinese consortia), spread across steelmakers and trading houses for whom the stake is immaterial - these are indirect, non-tracking, and their weights are necessarily tiny qualitative tokens. With ~88% of the commodity (CBMM + private Niobec) outside any tracking equity and every constituent negligible-purity, this basket is an ownership map of niobium, not a price proxy.",
+      "weighting_caveat": "First-pass weights are QUALITATIVE TOKENS: CMOC gets the majority weight as the only real public producer, and the five consortium members get small tokens reflecting passive ~15%+15% CBMM equity stakes (steelmakers slightly above trading houses; the trading-house/ITOCHU linkage is the least precisely documented). These are NOT defensible market-share percentages and are explicitly flagged for v2 revision. Because CBMM (~80%) and Niobec are private, the basket cannot represent the commodity's price - it should be read as indirect/ownership exposure only, and CMOC's price will be driven by copper and cobalt, not niobium.",
+      "_normalization_note": "Weights re-normalized to 1.0 from raw 0.95 (rounding drift in agent output)."
+    }
+  ]
+}
