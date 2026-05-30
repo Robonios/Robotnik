@@ -1317,3 +1317,69 @@ Landed in the same commit as this section:
      a pure-play; WF6/NF3 baskets route around it.
    - **Wolfspeed (`WOLF`)** Chapter 11 reorg (2025) terminates the pre-reorg
      price series — the SiC basket must not splice pre- and post-reorg closes.
+
+---
+
+## 12. Currency normalization — daily-FX conversion (MarketStack migration)
+
+**Introduced:** 2026-05-30, at the EODHD → MarketStack cutover.
+
+### 12.1 What changed and why it is more correct
+
+Index constituents trade in many native currencies; the index is
+USD-denominated. Until the MarketStack migration, the pipeline did **not**
+convert prices to USD via daily FX:
+
+- The legacy fixed-FX table (`FX_TO_USD`) only converted KRW (at a constant
+  rate). Every other non-USD currency (JPY, CNY, EUR, GBP, HKD, TWD, CHF, …)
+  was carried at ×1.0 — i.e. **native units treated as USD**.
+- This "worked" only because EODHD routed most international names to **US
+  ADRs** (already USD). The ADR market bakes in the daily FX move via
+  arbitrage, so EODHD's ADR series *implicitly* carried a currency-return
+  component — but only for the names it ADR-routed. Non-ADR international
+  names (London pence, China A-shares, ASX, SIX, …) were carried as raw local
+  units under EODHD too, with **no** currency-return component and an
+  incorrect level.
+
+**The fix (`scripts/currency_convert.py`):** all three production price
+sources — MarketStack live, MarketStack history, and Yahoo overrides — now
+convert native prices to USD using **daily FX** (Yahoo `<CCY>USD=X`,
+per-bar at each date's rate; London pence handled per quote convention;
+FX cache with most-recent-prior fallback and a hard refusal to ever default a
+non-USD currency to 1.0). `calculate_index.py` is unchanged — the conversion
+lives entirely in the fetch layer.
+
+**Net correctness statement:** because daily-FX conversion adds the
+currency-return component (USD return = local return + FX return) for **every**
+international constituent — not just ADR-routed ones — the **post-fix index is
+more correct than either prior version**: more correct than EODHD (which
+omitted FX for non-ADR international names) and more correct than an unconverted
+MarketStack-only feed (which would have omitted FX for *all* international
+names and tripped the per-share guardrails).
+
+### 12.2 Validation — index before/after
+
+The legacy/contaminated history (mixed EODHD-ADR-USD and pre-fix
+MarketStack-raw-local bars) produced FX-convention discontinuities that
+**guardrail-blocked** the index:
+
+| Series | Pre-fix worst day-over-day | Post-fix |
+|---|---|---|
+| Composite | **+662%** (2026-04-13→14) | swing eliminated |
+| Robotics | **+842%** | eliminated |
+| Materials | **+916%** | eliminated |
+
+After re-fetching all history through the daily-FX pipeline, the historical
+series (2021-05-31 → 2026-05-29) is smooth — maximum day-over-day move
+**−13.9%** (the 2021 base-period point), with no FX-boundary swings. Per-name
+spot checks against EODHD's genuine USD ADRs match within FX noise (Keyence
+$502.98 vs $503; Advantest 0.995) or a clean ADR ratio.
+
+### 12.3 Known follow-up (not a currency defect)
+
+A residual last-day discontinuity arises when the MarketStack **history tail
+freshness is uneven** (some tickers' EOD history lags the live snapshot by a
+few sessions) and the live today-injection adds constituents not present on the
+prior history date. This is a coverage/injection-alignment issue, independent
+of currency, and is tracked separately; it must be resolved before the
+daily-FX index publishes.
