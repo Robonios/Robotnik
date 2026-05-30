@@ -1,3193 +1,2763 @@
 {
-  "fetched_at": "2026-05-28T23:10:31.061590Z",
-  "count": 264,
-  "total_fetched": 343,
-  "excluded": 79,
+  "fetched_at": "2026-05-30T11:57:00.395689Z",
+  "count": 344,
+  "total_fetched": 344,
+  "excluded": 0,
   "sources": [
-    "EODHD (eodhd.com)",
-    "CoinGecko (coingecko.com)"
+    "MarketStack+Yahoo USD daily-FX"
   ],
-  "attribution": "Data provided by CoinGecko",
   "prices": [
     {
-      "ticker": "$CPT",
-      "coingecko_id": "empulser-enterprises",
-      "name": "Empulser Enterprises",
-      "sector": "Token",
-      "price": 0.159942,
-      "currency": "USD",
-      "change_pct": 58.53,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
-    },
-    {
-      "ticker": "002008 C2",
-      "eodhd_symbol": "002008.SHE",
-      "name": "Han's Laser Technology",
-      "sector": "Robotics",
-      "price": 135.98,
-      "currency": "CNY",
-      "change_pct": 3.56,
-      "volume": 45881177,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "002050",
-      "eodhd_symbol": "002050.SHE",
-      "name": "Zhejiang Sanhua Intelligent",
-      "sector": "Robotics",
-      "price": 48.61,
-      "currency": "CNY",
-      "change_pct": -4.72,
-      "volume": 216833875,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "002472",
-      "eodhd_symbol": "002472.SHE",
-      "name": "Zhejiang Shuanghuan Driveline",
-      "sector": "Robotics",
-      "price": 41.39,
-      "currency": "CNY",
-      "change_pct": -2.61,
-      "volume": 39561704,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "002747 C2",
-      "eodhd_symbol": "002747.SHE",
-      "name": "Estun Automation",
-      "sector": "Robotics",
-      "price": 28.32,
-      "currency": "CNY",
-      "change_pct": -0.39,
-      "volume": 84470600,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "002979",
-      "eodhd_symbol": "002979.SHE",
-      "name": "China Leadshine Technology",
-      "sector": "Robotics",
-      "price": 56.99,
-      "currency": "CNY",
-      "change_pct": 1.14,
-      "volume": 19391153,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "003021",
-      "eodhd_symbol": "003021.SHE",
-      "name": "Shenzhen Zhaowei Machinery",
-      "sector": "Robotics",
-      "price": 102.77,
-      "currency": "CNY",
-      "change_pct": -3.13,
-      "volume": 7110857,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "010060 KS",
-      "eodhd_symbol": "010060.KO",
-      "name": "OCI Holdings",
-      "sector": "Materials",
-      "price": 251.0345,
-      "currency": "USD",
-      "change_pct": -6.19,
-      "volume": 406223,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 364000
-    },
-    {
-      "ticker": "012450 KS",
-      "eodhd_symbol": "012450.KS",
-      "override_provider": "yahoo",
-      "name": "Hanwha Aerospace",
-      "sector": "Space",
-      "price": 827.5862,
-      "currency": "USD",
-      "change_pct": -3.54,
-      "volume": 201634,
-      "date": "2026-05-28",
-      "source": "yahoo",
-      "price_local": 1200000.0
-    },
-    {
-      "ticker": "090360 KS",
-      "eodhd_symbol": "090360.KQ",
-      "name": "Robostar Co",
-      "sector": "Robotics",
-      "price": 53.5862,
-      "currency": "USD",
-      "change_pct": -4.07,
-      "volume": 194717,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 77700
-    },
-    {
-      "ticker": "098460 KS",
-      "eodhd_symbol": "098460.KQ",
-      "name": "Koh Young Technology",
-      "sector": "Robotics",
-      "price": 24.4828,
-      "currency": "USD",
-      "change_pct": -4.05,
-      "volume": 1750189,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 35500
-    },
-    {
-      "ticker": "108490 KS",
-      "eodhd_symbol": "108490.KO",
-      "name": "Robotis Co",
-      "sector": "Robotics",
-      "price": 201.7241,
-      "currency": "USD",
-      "change_pct": -3.31,
-      "volume": 206810,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 292500
-    },
-    {
-      "ticker": "1590 TT",
-      "eodhd_symbol": "1590.TW",
-      "name": "Airtac International",
-      "sector": "Robotics",
-      "price": 1390,
-      "currency": "TWD",
-      "change_pct": -3.14,
-      "volume": 1607409,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "189300 KS",
-      "eodhd_symbol": "189300.KQ",
-      "name": "Intellian Technologies",
-      "sector": "Space",
-      "price": 103.4483,
-      "currency": "USD",
-      "change_pct": -0.99,
-      "volume": 183349,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 150000
-    },
-    {
-      "ticker": "2049",
-      "eodhd_symbol": "2049.TW",
-      "name": "Hiwin Technologies",
-      "sector": "Robotics",
-      "price": 388,
-      "currency": "TWD",
-      "change_pct": -5.13,
-      "volume": 9707334,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "2121 HK",
-      "eodhd_symbol": "2121.HK",
-      "name": "AInnovation Technology",
-      "sector": "Robotics",
-      "price": 4.59,
-      "currency": "HKD",
-      "change_pct": -1.08,
-      "volume": 1010900,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "2252 HK",
-      "eodhd_symbol": "2252.HK",
-      "name": "Shanghai MicroPort MedBot",
-      "sector": "Robotics",
-      "price": 25.44,
-      "currency": "HKD",
-      "change_pct": -4.36,
-      "volume": 4138774,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "2308 TT",
-      "eodhd_symbol": "2308.TW",
-      "name": "Delta Electronics",
-      "sector": "Robotics",
-      "price": 2390,
-      "currency": "TWD",
-      "change_pct": -5.16,
-      "volume": 11638517,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "2395 TT",
-      "eodhd_symbol": "2395.TW",
-      "name": "Advantech Co",
-      "sector": "Robotics",
-      "price": 490.5,
-      "currency": "TWD",
-      "change_pct": -3.63,
-      "volume": 4606689,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "2431 HK",
-      "eodhd_symbol": "2431.HK",
-      "name": "MiniEye Technology",
-      "sector": "Robotics",
-      "price": 9.83,
-      "currency": "HKD",
-      "change_pct": 0.82,
-      "volume": 5167046,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "2432 HK",
-      "eodhd_symbol": "2432.HK",
-      "name": "Shenzhen Dobot Corp",
-      "sector": "Robotics",
-      "price": 31.82,
-      "currency": "HKD",
-      "change_pct": -4.96,
-      "volume": 2615447,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "2498 HK",
-      "eodhd_symbol": "2498.HK",
-      "name": "RoboSense Technology",
-      "sector": "Robotics",
-      "price": 30.76,
-      "currency": "HKD",
-      "change_pct": -4.29,
-      "volume": 9142900,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "277810 KS",
-      "eodhd_symbol": "277810.KO",
-      "name": "Rainbow Robotics",
-      "sector": "Robotics",
-      "price": 482.7586,
-      "currency": "USD",
-      "change_pct": -4.37,
-      "volume": 184201,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 700000
-    },
-    {
-      "ticker": "2802 JP",
-      "eodhd_symbol": "AJINY.US",
-      "name": "Ajinomoto Co",
-      "sector": "Materials",
-      "price": 32.51,
-      "currency": "USD",
-      "change_pct": -0.18,
-      "volume": 88867,
-      "date": "2026-05-20",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "300024 C2",
-      "eodhd_symbol": "300024.SHE",
-      "name": "Siasun Robot & Automation",
-      "sector": "Robotics",
-      "price": 15.88,
-      "currency": "CNY",
-      "change_pct": -3.58,
-      "volume": 54289589,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "300100",
-      "eodhd_symbol": "300100.SHE",
-      "name": "Shuanglin Co",
-      "sector": "Robotics",
-      "price": 33.01,
-      "currency": "CNY",
-      "change_pct": -6.86,
-      "volume": 27276451,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "300124 C2",
-      "eodhd_symbol": "300124.SHE",
-      "name": "Shenzhen Inovance Technology",
-      "sector": "Robotics",
-      "price": 76.95,
-      "currency": "CNY",
-      "change_pct": -1.47,
-      "volume": 41691030,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "300757 C2",
-      "eodhd_symbol": "300757.SHE",
-      "name": "Robotechnik Intelligent",
-      "sector": "Robotics",
-      "price": 650.01,
-      "currency": "CNY",
-      "change_pct": 2.69,
-      "volume": 9319981,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "3037 TT",
-      "eodhd_symbol": "3037.TW",
-      "name": "Unimicron",
-      "sector": "Materials",
-      "price": 1025,
-      "currency": "TWD",
-      "change_pct": -5.09,
-      "volume": 25098848,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "3401 JP",
-      "eodhd_symbol": "TINLY.US",
-      "name": "Teijin Ltd",
-      "sector": "Materials",
-      "price": 10.28,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "3402 JP",
-      "eodhd_symbol": "TRYIY.US",
-      "name": "Toray Industries",
-      "sector": "Materials",
-      "price": 14.4,
-      "currency": "USD",
-      "change_pct": 0.42,
-      "volume": 301,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "3407 JP",
-      "eodhd_symbol": "AHKSY.US",
-      "name": "Asahi Kasei",
-      "sector": "Materials",
-      "price": 22.17,
-      "currency": "USD",
-      "change_pct": 1.0,
-      "volume": 203,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "3436 JP",
-      "eodhd_symbol": "SUOPY.US",
-      "name": "SUMCO Corp",
-      "sector": "Materials",
-      "price": 44.16,
-      "currency": "USD",
-      "change_pct": 2.91,
-      "volume": 3077,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "388720 KS",
-      "eodhd_symbol": "388720.KO",
-      "name": "Yuil Robotics",
-      "sector": "Robotics",
-      "price": 59.3103,
-      "currency": "USD",
-      "change_pct": -3.48,
-      "volume": 68590,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 86000
-    },
-    {
-      "ticker": "4005 JP",
-      "eodhd_symbol": "SMMYY.US",
-      "name": "Sumitomo Chemical",
-      "sector": "Materials",
-      "price": 14.22,
-      "currency": "USD",
-      "change_pct": -5.07,
-      "volume": 13250,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "4043 JP",
-      "eodhd_symbol": "TKYMY.US",
-      "name": "Tokuyama Corp",
-      "sector": "Materials",
-      "price": 14,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "4062 JP",
-      "eodhd_symbol": "IBIDF.US",
-      "name": "Ibiden",
-      "sector": "Materials",
-      "price": 127,
-      "currency": "USD",
-      "change_pct": -6.78,
-      "volume": 100,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "4063 JP",
-      "eodhd_symbol": "SHECY.US",
-      "name": "Shin-Etsu Chemical",
-      "sector": "Materials",
-      "price": 23.26,
-      "currency": "USD",
-      "change_pct": 0.09,
-      "volume": 17820,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "4091 JP",
-      "eodhd_symbol": "NPSKY.US",
-      "name": "Nippon Sanso",
-      "sector": "Materials",
-      "price": 14.82,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "4112 JP",
-      "eodhd_symbol": "SHWDF.US",
-      "name": "Daicel Corp",
-      "sector": "Materials",
-      "price": 102.4,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "4188 JP",
-      "eodhd_symbol": "MTLHY.US",
-      "name": "Mitsubishi Chemical",
-      "sector": "Materials",
-      "price": 33.3,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "4208 JP",
-      "eodhd_symbol": "UBEOF.US",
-      "name": "UBE Corp",
-      "sector": "Materials",
-      "price": 15.285,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "454910 KS",
-      "eodhd_symbol": "454910.KO",
-      "name": "Doosan Robotics",
-      "sector": "Robotics",
-      "price": 69.2414,
-      "currency": "USD",
-      "change_pct": -2.52,
-      "volume": 1278622,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 100400
-    },
-    {
-      "ticker": "455900 KS",
-      "eodhd_symbol": "455900.KQ",
-      "name": "Angel Robotics",
-      "sector": "Robotics",
-      "price": 17.5517,
-      "currency": "USD",
-      "change_pct": -1.55,
-      "volume": 55294,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 25450
-    },
-    {
-      "ticker": "474170 KS",
-      "eodhd_symbol": "474170.KQ",
-      "name": "Lumir Inc",
-      "sector": "Space",
-      "price": 8.4897,
-      "currency": "USD",
-      "change_pct": -4.57,
-      "volume": 265851,
-      "date": "2026-05-28",
-      "source": "EODHD",
-      "price_local": 12310
-    },
-    {
-      "ticker": "5384 JP",
-      "eodhd_symbol": "FUJIF.US",
-      "name": "Fujimi Inc",
-      "sector": "Materials",
-      "price": 20,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "5706 JP",
-      "eodhd_symbol": "MMTLF.US",
-      "name": "Mitsui Mining",
-      "sector": "Materials",
-      "price": 1.09,
-      "currency": "USD",
-      "change_pct": 0.93,
-      "volume": 407,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "600111",
-      "eodhd_symbol": "600111.SHG",
-      "name": "China Northern Rare Earth",
-      "sector": "Robotics",
-      "price": 50.98,
-      "currency": "CNY",
-      "change_pct": 5.03,
-      "volume": 137771320,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "600111 C1",
-      "eodhd_symbol": "600111.SHG",
-      "name": "Northern Rare Earth",
-      "sector": "Materials",
-      "price": 50.98,
-      "currency": "CNY",
-      "change_pct": 5.03,
-      "volume": 137771320,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "601100",
-      "eodhd_symbol": "601100.SHG",
-      "name": "Jiangsu Hengli Hydraulic",
-      "sector": "Robotics",
-      "price": 112.09,
-      "currency": "CNY",
-      "change_pct": 1.42,
-      "volume": 8949794,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "603009",
-      "eodhd_symbol": "603009.SHG",
-      "name": "Shanghai Beite Technology",
-      "sector": "Robotics",
-      "price": 52.44,
-      "currency": "CNY",
-      "change_pct": -5.73,
-      "volume": 13079918,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "603662",
-      "eodhd_symbol": "603662.SHG",
-      "name": "Keli Sensing Technology",
-      "sector": "Robotics",
-      "price": 63.73,
-      "currency": "CNY",
-      "change_pct": -3.44,
-      "volume": 9491056,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6104 JP",
-      "eodhd_symbol": "TOA.F",
-      "name": "Shibaura Machine Co",
-      "sector": "Robotics",
-      "price": 21.661,
-      "currency": "EUR",
-      "change_pct": -5.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6113 JP",
-      "eodhd_symbol": "AMDLY.US",
-      "name": "Amada Co",
-      "sector": "Robotics",
-      "price": 74.66,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6134 JP",
-      "eodhd_symbol": "F5M.F",
-      "name": "Fuji Corporation",
-      "sector": "Robotics",
-      "price": 41.795,
-      "currency": "EUR",
-      "change_pct": -2.28,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6141 JP",
-      "eodhd_symbol": "GIL.XETRA",
-      "name": "DMG Mori Co",
-      "sector": "Robotics",
-      "price": 47,
-      "currency": "EUR",
-      "change_pct": 0.64,
-      "volume": 171,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6153 TT",
-      "eodhd_symbol": "6153.TW",
-      "name": "Coretronic",
-      "sector": "Materials",
-      "price": 17.6,
-      "currency": "TWD",
-      "change_pct": -3.56,
-      "volume": 6347596,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6258 JP",
-      "eodhd_symbol": "1ZM.F",
-      "name": "Hirata Corp",
-      "sector": "Robotics",
-      "price": 15.259,
-      "currency": "EUR",
-      "change_pct": -5.07,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6268 JP",
-      "eodhd_symbol": "NCTKY.US",
-      "name": "Nabtesco Corp",
-      "sector": "Robotics",
-      "price": 18.1,
-      "currency": "USD",
-      "change_pct": 1.34,
-      "volume": 2452,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6273 JP",
-      "eodhd_symbol": "SMCAY.US",
-      "name": "SMC Corp",
-      "sector": "Robotics",
-      "price": 21.24,
-      "currency": "USD",
-      "change_pct": 1.97,
-      "volume": 26689,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6324",
-      "eodhd_symbol": "HSYDF.US",
-      "name": "Harmonic Drive Systems",
-      "sector": "Robotics",
-      "price": 49.095,
-      "currency": "USD",
-      "change_pct": -7.37,
-      "volume": 10277,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6383 JP",
-      "eodhd_symbol": "DFKCY.US",
-      "name": "Daifuku Co",
-      "sector": "Robotics",
-      "price": 23.09,
-      "currency": "USD",
-      "change_pct": 2.99,
-      "volume": 9464,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6481 JP",
-      "eodhd_symbol": "THKLY.US",
-      "name": "THK Co",
-      "sector": "Robotics",
-      "price": 23.99,
-      "currency": "USD",
-      "change_pct": 7.0,
-      "volume": 28,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6488 TT",
-      "eodhd_symbol": "6488.TWO",
-      "name": "GlobalWafers",
-      "sector": "Materials",
-      "price": 927,
-      "currency": "USD",
-      "change_pct": -0.32,
-      "volume": 21698061,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6503 JP",
-      "eodhd_symbol": "MIELY.US",
-      "name": "Mitsubishi Electric",
-      "sector": "Robotics",
-      "price": 83.04,
-      "currency": "USD",
-      "change_pct": 1.71,
-      "volume": 3971,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6506 JP",
-      "eodhd_symbol": "YASKY.US",
-      "name": "Yaskawa Electric",
-      "sector": "Robotics",
-      "price": 91.82,
-      "currency": "USD",
-      "change_pct": 3.16,
-      "volume": 800,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6594",
-      "eodhd_symbol": "NJDCY.US",
-      "name": "Nidec Corp",
-      "sector": "Robotics",
-      "price": 4.95,
-      "currency": "USD",
-      "change_pct": 14.85,
-      "volume": 9871,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6600 HK",
-      "eodhd_symbol": "6600.HK",
-      "name": "OneRobotics Shenzhen",
-      "sector": "Robotics",
-      "price": 99.15,
-      "currency": "HKD",
-      "change_pct": -2.32,
-      "volume": 230600,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6622 JP",
-      "eodhd_symbol": "6NV.F",
-      "name": "Daihen Corp",
-      "sector": "Robotics",
-      "price": 88.361,
-      "currency": "EUR",
-      "change_pct": -2.34,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6645 JP",
-      "eodhd_symbol": "OMRNY.US",
-      "name": "Omron Corp",
-      "sector": "Robotics",
-      "price": 35.72,
-      "currency": "USD",
-      "change_pct": 5.21,
-      "volume": 700,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6680 HK",
-      "eodhd_symbol": "6680.HK",
-      "name": "China Rare Earth Resources",
-      "sector": "Materials",
-      "price": 20.08,
-      "currency": "HKD",
-      "change_pct": 1.93,
-      "volume": 6432840,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6723",
-      "eodhd_symbol": "RNECY.US",
-      "name": "Renesas Electronics",
-      "sector": "Robotics",
-      "price": 13.75,
-      "currency": "USD",
-      "change_pct": -0.72,
-      "volume": 46980,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6723 JP",
-      "eodhd_symbol": "RNECY.US",
-      "name": "Renesas Electronics",
-      "sector": "Robotics",
-      "price": 13.75,
-      "currency": "USD",
-      "change_pct": -0.72,
-      "volume": 46980,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6841 JP",
-      "eodhd_symbol": "YOKEY.US",
-      "name": "Yokogawa Electric",
-      "sector": "Robotics",
-      "price": 68.28,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6845 JP",
-      "eodhd_symbol": "YMK.F",
-      "name": "Azbil Corp",
-      "sector": "Robotics",
-      "price": 8.613,
-      "currency": "EUR",
-      "change_pct": 0.2,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6857 JP",
-      "eodhd_symbol": "ATEYY.US",
-      "name": "Advantest Corp",
-      "sector": "Robotics",
-      "price": 171.8,
-      "currency": "USD",
-      "change_pct": 1.09,
-      "volume": 15095,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6861 JP",
-      "eodhd_symbol": "KYCCF.US",
-      "name": "Keyence Corp",
-      "sector": "Robotics",
-      "price": 487.6,
-      "currency": "USD",
-      "change_pct": 2.62,
-      "volume": 1883,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "688017",
-      "eodhd_symbol": "688017.SHG",
-      "name": "Leader Harmonious Drive Systems",
-      "sector": "Robotics",
-      "price": 316.13,
-      "currency": "CNY",
-      "change_pct": -1.52,
-      "volume": 12846767,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "688165 C1",
-      "eodhd_symbol": "688165.SHG",
-      "name": "EFORT Intelligent Robot",
-      "sector": "Robotics",
-      "price": 19.76,
-      "currency": "CNY",
-      "change_pct": -2.61,
-      "volume": 17216938,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "688169 C1",
-      "eodhd_symbol": "688169.SHG",
-      "name": "Beijing Roborock Technology",
-      "sector": "Robotics",
-      "price": 112,
-      "currency": "CNY",
-      "change_pct": -4.27,
-      "volume": 9190430,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "688297 C1",
-      "eodhd_symbol": "688297.SHG",
-      "name": "AVIC Chengdu UAS",
-      "sector": "Robotics",
-      "price": 43.25,
-      "currency": "CNY",
-      "change_pct": -1.17,
-      "volume": 5657279,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6902 JP",
-      "eodhd_symbol": "DNZOY.US",
-      "name": "Denso Corp",
-      "sector": "Robotics",
-      "price": 11.88,
-      "currency": "USD",
-      "change_pct": 0.68,
-      "volume": 15330,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6914 JP",
-      "eodhd_symbol": "OPTX.US",
-      "name": "Optex Group",
-      "sector": "Robotics",
-      "price": 11.04,
-      "currency": "USD",
-      "change_pct": -7.38,
-      "volume": 1175358,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6920 JP",
-      "eodhd_symbol": "LSRCY.US",
-      "name": "Lasertec Corp",
-      "sector": "Robotics",
-      "price": 51.26,
-      "currency": "USD",
-      "change_pct": -2.08,
-      "volume": 13982,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6954 JP",
-      "eodhd_symbol": "FANUY.US",
-      "name": "Fanuc Corp",
-      "sector": "Robotics",
-      "price": 25.5,
-      "currency": "USD",
-      "change_pct": -0.39,
-      "volume": 52978,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "6971 JP",
-      "eodhd_symbol": "KYOCY.US",
-      "name": "Kyocera",
-      "sector": "Materials",
-      "price": 21.59,
-      "currency": "USD",
-      "change_pct": 9.71,
-      "volume": 48123,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "8035 JP",
-      "eodhd_symbol": "TOELY.US",
-      "name": "Tokyo Electron",
-      "sector": "Robotics",
-      "price": 168.31,
-      "currency": "USD",
-      "change_pct": 2.78,
-      "volume": 11131,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "9348 JP",
-      "eodhd_symbol": "IPCFF.US",
-      "name": "ispace Inc",
-      "sector": "Space",
-      "price": 25.97,
-      "currency": "USD",
-      "change_pct": 1.45,
-      "volume": 200,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "9660 HK",
-      "eodhd_symbol": "9660.HK",
-      "name": "Horizon Robotics",
-      "sector": "Robotics",
-      "price": 5.69,
-      "currency": "HKD",
-      "change_pct": -4.69,
-      "volume": 197169445,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "9880 HK",
-      "eodhd_symbol": "9880.HK",
-      "name": "UBTECH Robotics",
-      "sector": "Robotics",
-      "price": 109.8,
-      "currency": "HKD",
-      "change_pct": -6.79,
-      "volume": 13111781,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ABBN SW",
-      "eodhd_symbol": "ABBN.SW",
-      "name": "ABB Ltd",
-      "sector": "Robotics",
-      "price": 83.44,
-      "currency": "CHF",
-      "change_pct": -0.29,
-      "volume": 1482125,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ADI",
-      "eodhd_symbol": "ADI.US",
-      "name": "Analog Devices",
-      "sector": "Cross-stack",
-      "price": 419.01,
-      "currency": "USD",
-      "change_pct": 0.51,
-      "volume": 3582225,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AEIS",
-      "eodhd_symbol": "AEIS.US",
-      "name": "Advanced Energy Industries",
-      "sector": "Semiconductor",
-      "price": 317.08,
-      "currency": "USD",
-      "change_pct": -3.43,
-      "volume": 1237638,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AI FP",
-      "eodhd_symbol": "AI.PA",
-      "name": "Air Liquide",
-      "sector": "Materials",
-      "price": 182,
-      "currency": "EUR",
-      "change_pct": -0.51,
-      "volume": 640614,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ALAB",
-      "eodhd_symbol": "ALAB.US",
-      "name": "Astera Labs",
-      "sector": "Semiconductor",
-      "price": 349.17,
-      "currency": "USD",
-      "change_pct": 7.33,
-      "volume": 5563429,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ALB",
-      "eodhd_symbol": "ALB.US",
-      "name": "Albemarle Corp",
-      "sector": "Materials",
-      "price": 176.32,
-      "currency": "USD",
-      "change_pct": -0.65,
-      "volume": 1386649,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
       "ticker": "ALGM",
-      "eodhd_symbol": "ALGM.US",
-      "name": "Allegro MicroSystems",
+      "price": 47.87,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 51.1,
-      "currency": "USD",
-      "change_pct": 4.29,
-      "volume": 2002226,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AMAT",
-      "eodhd_symbol": "AMAT.US",
-      "name": "Applied Materials",
-      "sector": "Cross-stack",
-      "price": 449.68,
-      "currency": "USD",
-      "change_pct": 0.32,
-      "volume": 5602717,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AMBA",
-      "eodhd_symbol": "AMBA.US",
-      "name": "Ambarella",
-      "sector": "Cross-stack",
-      "price": 91.84,
-      "currency": "USD",
-      "change_pct": 1.39,
-      "volume": 2627890,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AMD",
-      "eodhd_symbol": "AMD.US",
-      "name": "Advanced Micro Devices",
-      "sector": "Cross-stack",
-      "price": 518.09,
-      "currency": "USD",
-      "change_pct": 4.55,
-      "volume": 30696681,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AMG NA",
-      "eodhd_symbol": "AMG.AS",
-      "name": "AMG Critical Materials",
-      "sector": "Materials",
-      "price": 40.04,
-      "currency": "USD",
-      "change_pct": 2.09,
-      "volume": 185061,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AMKR",
-      "eodhd_symbol": "AMKR.US",
-      "name": "Amkor Technology",
-      "sector": "Semiconductor",
-      "price": 70.58,
-      "currency": "USD",
-      "change_pct": -2.23,
-      "volume": 3149112,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
       "ticker": "AOSL",
-      "eodhd_symbol": "AOSL.US",
-      "name": "Alpha + Omega Semiconductor",
+      "price": 45.35,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 49.34,
-      "currency": "USD",
-      "change_pct": 0.98,
-      "volume": 1115616,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "APD",
-      "eodhd_symbol": "APD.US",
-      "name": "Air Products",
-      "sector": "Materials",
-      "price": 283.65,
-      "currency": "USD",
-      "change_pct": -0.73,
-      "volume": 739109,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
       "ticker": "ARM",
-      "eodhd_symbol": "ARM.US",
-      "name": "ARM Holdings ADR",
+      "price": 353.29,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 335.27,
-      "currency": "USD",
-      "change_pct": 10.76,
-      "volume": 14266974,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ARU AU",
-      "eodhd_symbol": "ARU.AU",
-      "name": "Arafura Rare Earths",
-      "sector": "Materials",
-      "price": 0.265,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 49547213,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ASML",
-      "eodhd_symbol": "ASML.US",
-      "name": "ASML Holding ADR",
-      "sector": "Cross-stack",
-      "price": 1605.77,
-      "currency": "USD",
-      "change_pct": 0.49,
-      "volume": 968546,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ASTS",
-      "eodhd_symbol": "ASTS.US",
-      "name": "AST SpaceMobile",
-      "sector": "Space",
-      "price": 133.09,
-      "currency": "USD",
-      "change_pct": 2.69,
-      "volume": 20508541,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
       "ticker": "ASX",
-      "eodhd_symbol": "ASX.US",
-      "name": "ASE Technology Holding ADR",
+      "price": 38.35,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 40.6,
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ALAB",
+      "price": 342.85,
       "currency": "USD",
-      "change_pct": 3.92,
-      "volume": 8834995,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ATI",
-      "eodhd_symbol": "ATI.US",
-      "name": "ATI Inc",
-      "sector": "Materials",
-      "price": 170.53,
-      "currency": "USD",
-      "change_pct": 0.41,
-      "volume": 785141,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ATS CN",
-      "eodhd_symbol": "ATS.TO",
-      "name": "ATS Corp",
-      "sector": "Robotics",
-      "price": 42,
-      "currency": "CAD",
-      "change_pct": -14.27,
-      "volume": 1336368,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AUTO NO",
-      "eodhd_symbol": "AUTO.OL",
-      "name": "AutoStore Holdings",
-      "sector": "Robotics",
-      "price": 13.12,
-      "currency": "NOK",
-      "change_pct": -0.53,
-      "volume": 3588441,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AVAV",
-      "eodhd_symbol": "AVAV.US",
-      "name": "AeroVironment",
-      "sector": "Robotics",
-      "price": 214.39,
-      "currency": "USD",
-      "change_pct": 18.26,
-      "volume": 4058639,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AVGO",
-      "eodhd_symbol": "AVGO.US",
-      "name": "Broadcom",
-      "sector": "Cross-stack",
-      "price": 426.58,
-      "currency": "USD",
-      "change_pct": 1.12,
-      "volume": 17717494,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "AVIO IM",
-      "eodhd_symbol": "2ZP.STU",
-      "name": "Avio SpA",
-      "sector": "Space",
-      "price": 41.8,
-      "currency": "USD",
-      "change_pct": 5.48,
-      "volume": 0,
-      "date": "2026-05-27",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "BAS GR",
-      "eodhd_symbol": "BAS.XETRA",
-      "name": "BASF",
-      "sector": "Materials",
-      "price": 50.72,
-      "currency": "EUR",
-      "change_pct": -0.72,
-      "volume": 1831726,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "BKSY",
-      "eodhd_symbol": "BKSY.US",
-      "name": "BlackSky Technology",
-      "sector": "Space",
-      "price": 51.63,
-      "currency": "USD",
-      "change_pct": 1.24,
-      "volume": 2227284,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "BSL GR",
-      "eodhd_symbol": "BSL.XETRA",
-      "name": "Basler AG",
-      "sector": "Robotics",
-      "price": 28.7,
-      "currency": "EUR",
-      "change_pct": 2.5,
-      "volume": 28792,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "CAMT",
-      "eodhd_symbol": "CAMT.US",
-      "name": "Camtek Ltd",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 174.78,
-      "currency": "USD",
-      "change_pct": 3.04,
-      "volume": 257491,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
-      "ticker": "CDNS",
-      "eodhd_symbol": "CDNS.US",
-      "name": "Cadence Design Systems",
-      "sector": "Cross-stack",
-      "price": 373.85,
+      "ticker": "AEIS",
+      "price": 302.18,
       "currency": "USD",
-      "change_pct": -0.05,
-      "volume": 1913133,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AMKR",
+      "price": 69.56,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
       "ticker": "CEVA",
-      "eodhd_symbol": "CEVA.US",
-      "name": "CEVA Inc",
+      "price": 39.98,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 41.76,
-      "currency": "USD",
-      "change_pct": 2.98,
-      "volume": 445739,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
-      "ticker": "CGNX",
-      "eodhd_symbol": "CGNX.US",
-      "name": "Cognex",
-      "sector": "Robotics",
-      "price": 66.01,
+      "ticker": "CAMT",
+      "price": 171.66,
       "currency": "USD",
-      "change_pct": -1.03,
-      "volume": 1941684,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "CRDO",
-      "eodhd_symbol": "CRDO.US",
-      "name": "Credo Technology Group",
-      "sector": "Cross-stack",
-      "price": 222.35,
-      "currency": "USD",
-      "change_pct": 0.51,
-      "volume": 4822185,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "CRS",
-      "eodhd_symbol": "CRS.US",
-      "name": "Carpenter Technology",
-      "sector": "Materials",
-      "price": 462.01,
-      "currency": "USD",
-      "change_pct": 0.24,
-      "volume": 459567,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
       "ticker": "CRUS",
-      "eodhd_symbol": "CRUS.US",
-      "name": "Cirrus Logic",
+      "price": 169.95,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 174.33,
-      "currency": "USD",
-      "change_pct": 0.43,
-      "volume": 356962,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
-      "ticker": "CSTM FP",
-      "eodhd_symbol": "CSTM.PA",
-      "name": "Constellium",
-      "sector": "Materials",
-      "price": 11,
-      "currency": "EUR",
-      "change_pct": 10.0,
-      "volume": 8848,
-      "date": "2018-02-01",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "DCO",
-      "eodhd_symbol": "DCO.US",
-      "name": "Ducommun",
-      "sector": "Space",
-      "price": 152.24,
+      "ticker": "DVLT",
+      "price": 0.5,
       "currency": "USD",
-      "change_pct": 2.41,
-      "volume": 175109,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "DEUS",
-      "coingecko_id": "xmaquina",
-      "name": "XMAQUINA",
-      "sector": "Token",
-      "price": 0.052955,
-      "currency": "USD",
-      "change_pct": 3.6,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
       "ticker": "DIOD",
-      "eodhd_symbol": "DIOD.US",
-      "name": "Diodes Inc",
+      "price": 105.32,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 109.89,
-      "currency": "USD",
-      "change_pct": 0.7,
-      "volume": 972445,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "DUE GR",
-      "eodhd_symbol": "DUE.XETRA",
-      "name": "Duerr AG",
-      "sector": "Robotics",
-      "price": 21.1,
-      "currency": "EUR",
-      "change_pct": -1.17,
-      "volume": 73131,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "EH",
-      "eodhd_symbol": "EH.US",
-      "name": "EHang Holdings ADR",
-      "sector": "Robotics",
-      "price": 10.26,
-      "currency": "USD",
-      "change_pct": 7.43,
-      "volume": 1053361,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "EMDR",
-      "coingecko_id": "modulr",
-      "name": "Modulr",
-      "sector": "Token",
-      "price": 1.53,
-      "currency": "USD",
-      "change_pct": -5.75,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
-    },
-    {
-      "ticker": "EMR",
-      "eodhd_symbol": "EMR.US",
-      "name": "Emerson Electric",
-      "sector": "Robotics",
-      "price": 141.79,
-      "currency": "USD",
-      "change_pct": 1.48,
-      "volume": 2755713,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
       "ticker": "ENTG",
-      "eodhd_symbol": "ENTG.US",
-      "name": "Entegris",
+      "price": 138.79,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 138.44,
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "FSLR",
+      "price": 306.79,
       "currency": "USD",
-      "change_pct": -1.11,
-      "volume": 2247439,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ETL FP",
-      "eodhd_symbol": "ETL.PA",
-      "name": "Eutelsat Communications",
-      "sector": "Space",
-      "price": 4.51,
-      "currency": "EUR",
-      "change_pct": 5.82,
-      "volume": 5459261,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "EXA FP",
-      "eodhd_symbol": "EXA.PA",
-      "name": "Exail Technologies",
-      "sector": "Robotics",
-      "price": 147.1,
-      "currency": "EUR",
-      "change_pct": 13.24,
-      "volume": 174726,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "FLY",
-      "eodhd_symbol": "FLY.US",
-      "name": "Firefly Aerospace",
-      "sector": "Space",
-      "price": 49.37,
-      "currency": "USD",
-      "change_pct": -13.81,
-      "volume": 15074215,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
       "ticker": "FORM",
-      "eodhd_symbol": "FORM.US",
-      "name": "FormFactor",
+      "price": 124.59,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 130.22,
-      "currency": "USD",
-      "change_pct": -2.11,
-      "volume": 952933,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "G1A GR",
-      "eodhd_symbol": "G1A.XETRA",
-      "name": "GEA Group",
-      "sector": "Robotics",
-      "price": 54.7,
-      "currency": "EUR",
-      "change_pct": -0.91,
-      "volume": 327109,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "GEOD",
-      "coingecko_id": "geodnet",
-      "name": "Geodnet",
-      "sector": "Token",
-      "price": 0.150635,
-      "currency": "USD",
-      "change_pct": -0.72,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
-    },
-    {
-      "ticker": "GILT",
-      "eodhd_symbol": "GILT.US",
-      "name": "Gilat Satellite Networks",
-      "sector": "Space",
-      "price": 17.83,
-      "currency": "USD",
-      "change_pct": 2.29,
-      "volume": 1037579,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "GMED",
-      "eodhd_symbol": "GMED.US",
-      "name": "Globus Medical",
-      "sector": "Robotics",
-      "price": 82.45,
-      "currency": "USD",
-      "change_pct": -0.11,
-      "volume": 1422772,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "GOMX SS",
-      "eodhd_symbol": "GOMX.ST",
-      "name": "GomSpace",
-      "sector": "Space",
-      "price": 21.44,
-      "currency": "SEK",
-      "change_pct": -0.74,
-      "volume": 602927,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "GSAT",
-      "eodhd_symbol": "GSAT.US",
-      "name": "Globalstar Inc",
-      "sector": "Space",
-      "price": 84.43,
-      "currency": "USD",
-      "change_pct": 0.15,
-      "volume": 890545,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "HEI",
-      "eodhd_symbol": "HEI.US",
-      "name": "HEICO Corp",
-      "sector": "Space",
-      "price": 345.07,
-      "currency": "USD",
-      "change_pct": 11.53,
-      "volume": 1392450,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "HEXAB SS",
-      "eodhd_symbol": "HEXA-B.ST",
-      "name": "Hexagon AB",
-      "sector": "Robotics",
-      "price": 84.72,
-      "currency": "SEK",
-      "change_pct": 0.38,
-      "volume": 3557203,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "HIAB FH",
-      "eodhd_symbol": "HIAB.HE",
-      "name": "Hiab Oyj",
-      "sector": "Robotics",
-      "price": 52.3,
-      "currency": "EUR",
-      "change_pct": -2.52,
-      "volume": 50065,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "HSAI",
-      "eodhd_symbol": "HSAI.US",
-      "name": "Hesai Group",
-      "sector": "Robotics",
-      "price": 19.89,
-      "currency": "USD",
-      "change_pct": -3.59,
-      "volume": 1346822,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "HXL",
-      "eodhd_symbol": "HXL.US",
-      "name": "Hexcel Corp",
-      "sector": "Space",
-      "price": 91.08,
-      "currency": "USD",
-      "change_pct": 3.27,
-      "volume": 1207309,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "IFX GR",
-      "eodhd_symbol": "IFX.XETRA",
-      "name": "Infineon Technologies",
-      "sector": "Robotics",
-      "price": 80.11,
-      "currency": "EUR",
-      "change_pct": 4.41,
-      "volume": 5092903,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ILU AU",
-      "eodhd_symbol": "ILU.AU",
-      "name": "Iluka Resources",
-      "sector": "Materials",
-      "price": 7.79,
-      "currency": "USD",
-      "change_pct": -2.14,
-      "volume": 1579069,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "IMI LN",
-      "eodhd_symbol": "IMI.LSE",
-      "name": "IMI PLC",
-      "sector": "Robotics",
-      "price": 2772,
-      "currency": "GBp",
-      "change_pct": -1.0,
-      "volume": 843910,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "INDI",
-      "eodhd_symbol": "INDI.US",
-      "name": "Indie Semiconductor",
-      "sector": "Semiconductor",
-      "price": 5.34,
-      "currency": "USD",
-      "change_pct": 3.49,
-      "volume": 8991731,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "INRN SW",
-      "eodhd_symbol": "INRN.SW",
-      "name": "Interroll Holding",
-      "sector": "Robotics",
-      "price": 1612,
-      "currency": "CHF",
-      "change_pct": -1.71,
-      "volume": 1117,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "INTC",
-      "eodhd_symbol": "INTC.US",
-      "name": "Intel",
-      "sector": "Semiconductor",
-      "price": 120.89,
-      "currency": "USD",
-      "change_pct": -0.72,
-      "volume": 93951500,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "IPGP",
-      "eodhd_symbol": "IPGP.US",
-      "name": "IPG Photonics",
-      "sector": "Robotics",
-      "price": 117.35,
-      "currency": "USD",
-      "change_pct": 0.31,
-      "volume": 325138,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "IRDM",
-      "eodhd_symbol": "IRDM.US",
-      "name": "Iridium Communications",
-      "sector": "Space",
-      "price": 51.26,
-      "currency": "USD",
-      "change_pct": -0.25,
-      "volume": 1864282,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ISRG",
-      "eodhd_symbol": "ISRG.US",
-      "name": "Intuitive Surgical",
-      "sector": "Robotics",
-      "price": 423.63,
-      "currency": "USD",
-      "change_pct": 1.21,
-      "volume": 2153316,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "JBTM",
-      "eodhd_symbol": "JBTM.US",
-      "name": "JBT Marel Corp",
-      "sector": "Robotics",
-      "price": 134.97,
-      "currency": "USD",
-      "change_pct": 0.38,
-      "volume": 370047,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "JEN GR",
-      "eodhd_symbol": "JEN.XETRA",
-      "name": "Jenoptik AG",
-      "sector": "Robotics",
-      "price": 45.18,
-      "currency": "EUR",
-      "change_pct": 1.12,
-      "volume": 139887,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "KALMAR FH",
-      "eodhd_symbol": "KALMAR.HE",
-      "name": "Kalmar Oyj",
-      "sector": "Robotics",
-      "price": 42.16,
-      "currency": "EUR",
-      "change_pct": -2.18,
-      "volume": 30716,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "KARN SW",
-      "eodhd_symbol": "KARN.SW",
-      "name": "Kardex Holding",
-      "sector": "Robotics",
-      "price": 271.5,
-      "currency": "CHF",
-      "change_pct": -0.18,
-      "volume": 6832,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "KCR FH",
-      "eodhd_symbol": "KCR.HE",
-      "name": "Konecranes Oyj",
-      "sector": "Robotics",
-      "price": 27.9,
-      "currency": "EUR",
-      "change_pct": -1.41,
-      "volume": 248648,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "KDK",
-      "eodhd_symbol": "KDK.US",
-      "name": "Kodiak AI",
-      "sector": "Robotics",
-      "price": 7.11,
-      "currency": "USD",
-      "change_pct": -0.28,
-      "volume": 1070723,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "KGX GR",
-      "eodhd_symbol": "KGX.XETRA",
-      "name": "Kion Group",
-      "sector": "Robotics",
-      "price": 43.85,
-      "currency": "EUR",
-      "change_pct": -1.35,
-      "volume": 342275,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "KLAC",
-      "eodhd_symbol": "KLAC.US",
-      "name": "KLA Corp",
-      "sector": "Cross-stack",
-      "price": 1927.63,
-      "currency": "USD",
-      "change_pct": -1.51,
-      "volume": 871721,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "KLIC",
-      "eodhd_symbol": "KLIC.US",
-      "name": "Kulicke & Soffa Industries",
-      "sector": "Semiconductor",
-      "price": 104.75,
-      "currency": "USD",
-      "change_pct": -0.81,
-      "volume": 1072285,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "KRMN",
-      "eodhd_symbol": "KRMN.US",
-      "name": "Karman Holdings",
-      "sector": "Space",
-      "price": 65.86,
-      "currency": "USD",
-      "change_pct": 3.68,
-      "volume": 1514742,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "KRN GR",
-      "eodhd_symbol": "KRN.XETRA",
-      "name": "Krones AG",
-      "sector": "Robotics",
-      "price": 118.2,
-      "currency": "EUR",
-      "change_pct": -1.66,
-      "volume": 36426,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "LASR",
-      "eodhd_symbol": "LASR.US",
-      "name": "nLIGHT",
-      "sector": "Semiconductor",
-      "price": 79.15,
-      "currency": "USD",
-      "change_pct": -2.75,
-      "volume": 1096664,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "LECO",
-      "eodhd_symbol": "LECO.US",
-      "name": "Lincoln Electric Holdings",
-      "sector": "Robotics",
-      "price": 258.94,
-      "currency": "USD",
-      "change_pct": -1.48,
-      "volume": 306711,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "LHX",
-      "eodhd_symbol": "LHX.US",
-      "name": "L3Harris Technologies",
-      "sector": "Space",
-      "price": 314.78,
-      "currency": "USD",
-      "change_pct": 1.85,
-      "volume": 1679407,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "LIN",
-      "eodhd_symbol": "LIN.US",
-      "name": "Linde plc",
-      "sector": "Materials",
-      "price": 501.98,
-      "currency": "USD",
-      "change_pct": -1.16,
-      "volume": 2266172,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "LMT",
-      "eodhd_symbol": "LMT.US",
-      "name": "Lockheed Martin",
-      "sector": "Space",
-      "price": 537.21,
-      "currency": "USD",
-      "change_pct": 1.14,
-      "volume": 1134964,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "LRCX",
-      "eodhd_symbol": "LRCX.US",
-      "name": "Lam Research",
-      "sector": "Cross-stack",
-      "price": 318,
-      "currency": "USD",
-      "change_pct": -0.29,
-      "volume": 8342865,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "LSCC",
-      "eodhd_symbol": "LSCC.US",
-      "name": "Lattice Semiconductor",
-      "sector": "Cross-stack",
-      "price": 147.31,
-      "currency": "USD",
-      "change_pct": -0.41,
-      "volume": 1875237,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "LUNR",
-      "eodhd_symbol": "LUNR.US",
-      "name": "Intuitive Machines",
-      "sector": "Space",
-      "price": 45.7,
-      "currency": "USD",
-      "change_pct": 13.29,
-      "volume": 23240988,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "LYC AU",
-      "eodhd_symbol": "LYC.AU",
-      "name": "Lynas Rare Earths",
-      "sector": "Materials",
-      "price": 18.95,
-      "currency": "USD",
-      "change_pct": -2.52,
-      "volume": 2859894,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MBLY",
-      "eodhd_symbol": "MBLY.US",
-      "name": "Mobileye Global",
-      "sector": "Robotics",
-      "price": 10.41,
-      "currency": "USD",
-      "change_pct": 2.46,
-      "volume": 4228831,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MCHP",
-      "eodhd_symbol": "MCHP.US",
-      "name": "Microchip Technology",
-      "sector": "Cross-stack",
-      "price": 96.04,
-      "currency": "USD",
-      "change_pct": -0.84,
-      "volume": 7694208,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MDA CN",
-      "eodhd_symbol": "MDA.TO",
-      "name": "MDA Space",
-      "sector": "Space",
-      "price": 67.13,
-      "currency": "CAD",
-      "change_pct": 4.73,
-      "volume": 1520772,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MELE",
-      "eodhd_symbol": "MELE.BR",
-      "name": "Melexis NV",
-      "sector": "Robotics",
-      "price": 83.35,
-      "currency": "EUR",
-      "change_pct": 2.08,
-      "volume": 70783,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MKSI",
-      "eodhd_symbol": "MKSI.US",
-      "name": "MKS Instruments",
-      "sector": "Semiconductor",
-      "price": 323.41,
-      "currency": "USD",
-      "change_pct": -1.4,
-      "volume": 1100518,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MNTS",
-      "eodhd_symbol": "MNTS.US",
-      "name": "Momentus",
-      "sector": "Space",
-      "price": 19.4,
-      "currency": "USD",
-      "change_pct": -0.51,
-      "volume": 14538165,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MOG.A",
-      "eodhd_symbol": "MOG-A.US",
-      "name": "Moog Inc",
-      "sector": "Space",
-      "price": 356.94,
-      "currency": "USD",
-      "change_pct": 4.01,
-      "volume": 231943,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MOG/A",
-      "eodhd_symbol": "MOG-A.US",
-      "name": "Moog Inc Class A",
-      "sector": "Robotics",
-      "price": 356.94,
-      "currency": "USD",
-      "change_pct": 4.01,
-      "volume": 231943,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MP",
-      "eodhd_symbol": "MP.US",
-      "name": "MP Materials",
-      "sector": "Robotics",
-      "price": 66.83,
-      "currency": "USD",
-      "change_pct": 2.48,
-      "volume": 4868871,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MPWR",
-      "eodhd_symbol": "MPWR.US",
-      "name": "Monolithic Power Systems",
-      "sector": "Semiconductor",
-      "price": 1633.17,
-      "currency": "USD",
-      "change_pct": 0.8,
-      "volume": 500968,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MRK GR",
-      "eodhd_symbol": "MRK.XETRA",
-      "name": "Merck KGaA",
-      "sector": "Materials",
-      "price": 129.95,
-      "currency": "EUR",
-      "change_pct": 0.35,
-      "volume": 300429,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MRVL",
-      "eodhd_symbol": "MRVL.US",
-      "name": "Marvell Technology",
-      "sector": "Semiconductor",
-      "price": 204.83,
-      "currency": "USD",
-      "change_pct": 3.09,
-      "volume": 52361036,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MTRN",
-      "eodhd_symbol": "MTRN.US",
-      "name": "Materion Corp",
-      "sector": "Materials",
-      "price": 222.23,
-      "currency": "USD",
-      "change_pct": 0.09,
-      "volume": 197545,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MTSI",
-      "eodhd_symbol": "MTSI.US",
-      "name": "MACOM Technology Solutions",
-      "sector": "Semiconductor",
-      "price": 391.09,
-      "currency": "USD",
-      "change_pct": -2.39,
-      "volume": 1333423,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MU",
-      "eodhd_symbol": "MU.US",
-      "name": "Micron Technology",
-      "sector": "Semiconductor",
-      "price": 923.52,
-      "currency": "USD",
-      "change_pct": -0.53,
-      "volume": 48774823,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "MXL",
-      "eodhd_symbol": "MXL.US",
-      "name": "MaxLinear",
-      "sector": "Semiconductor",
-      "price": 97.76,
-      "currency": "USD",
-      "change_pct": -3.3,
-      "volume": 3830714,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "NDSN",
-      "eodhd_symbol": "NDSN.US",
-      "name": "Nordson Corp",
-      "sector": "Robotics",
-      "price": 288.12,
-      "currency": "USD",
-      "change_pct": -0.21,
-      "volume": 369676,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "NOC",
-      "eodhd_symbol": "NOC.US",
-      "name": "Northrop Grumman",
-      "sector": "Space",
-      "price": 559.29,
-      "currency": "USD",
-      "change_pct": 1.44,
-      "volume": 1058747,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "NOVT",
-      "eodhd_symbol": "NOVT.US",
-      "name": "Novanta",
-      "sector": "Robotics",
-      "price": 159.33,
-      "currency": "USD",
-      "change_pct": -1.35,
-      "volume": 368815,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "NVDA",
-      "eodhd_symbol": "NVDA.US",
-      "name": "NVIDIA",
-      "sector": "Cross-stack",
-      "price": 214.25,
-      "currency": "USD",
-      "change_pct": 0.78,
-      "volume": 143588914,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "NVEC",
-      "eodhd_symbol": "NVEC.US",
-      "name": "NVE Corp",
-      "sector": "Semiconductor",
-      "price": 100.865,
-      "currency": "USD",
-      "change_pct": 7.04,
-      "volume": 159192,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "NVMI",
-      "eodhd_symbol": "NVMI.US",
-      "name": "Nova Ltd",
-      "sector": "Cross-stack",
-      "price": 505.97,
-      "currency": "USD",
-      "change_pct": -1.21,
-      "volume": 360876,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "NVTS",
-      "eodhd_symbol": "NVTS.US",
-      "name": "Navitas Semiconductor",
-      "sector": "Semiconductor",
-      "price": 28.51,
-      "currency": "USD",
-      "change_pct": -1.28,
-      "volume": 21061799,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "NXPI",
-      "eodhd_symbol": "NXPI.US",
-      "name": "NXP Semiconductors",
-      "sector": "Cross-stack",
-      "price": 330.28,
-      "currency": "USD",
-      "change_pct": 0.32,
-      "volume": 3214872,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ON",
-      "eodhd_symbol": "ON.US",
-      "name": "ON Semiconductor",
-      "sector": "Cross-stack",
-      "price": 123.77,
-      "currency": "USD",
-      "change_pct": -0.9,
-      "volume": 7489236,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ONO",
-      "coingecko_id": "onocoy-token",
-      "name": "Onocoy Token",
-      "sector": "Token",
-      "price": 0.01913082,
-      "currency": "USD",
-      "change_pct": -4.33,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
-    },
-    {
-      "ticker": "ONTO",
-      "eodhd_symbol": "ONTO.US",
-      "name": "Onto Innovation",
-      "sector": "Robotics",
-      "price": 258.81,
-      "currency": "USD",
-      "change_pct": -3.03,
-      "volume": 967415,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "OUST",
-      "eodhd_symbol": "OUST.US",
-      "name": "Ouster",
-      "sector": "Robotics",
-      "price": 42.33,
-      "currency": "USD",
-      "change_pct": -4.3,
-      "volume": 4831524,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "OVR",
-      "coingecko_id": "ovr",
-      "name": "Ovr",
-      "sector": "Token",
-      "price": 0.0351903,
-      "currency": "USD",
-      "change_pct": -0.76,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
-    },
-    {
-      "ticker": "OVZON SS",
-      "eodhd_symbol": "OVZON.ST",
-      "name": "Ovzon AB",
-      "sector": "Space",
-      "price": 68.8,
-      "currency": "SEK",
-      "change_pct": 2.99,
-      "volume": 594683,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "PEAQ",
-      "coingecko_id": "peaq-2",
-      "name": "peaq",
-      "sector": "Token",
-      "price": 0.03110999,
-      "currency": "USD",
-      "change_pct": -0.02,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
+      "source": "MarketStack"
     },
     {
       "ticker": "PI",
-      "eodhd_symbol": "PI.US",
-      "name": "Impinj",
-      "sector": "Semiconductor",
-      "price": 156.88,
+      "price": 151.0,
       "currency": "USD",
-      "change_pct": -0.58,
-      "volume": 276709,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
-      "ticker": "PL",
-      "eodhd_symbol": "PL.US",
-      "name": "Planet Labs PBC",
-      "sector": "Space",
-      "price": 51.4,
+      "ticker": "INDI",
+      "price": 4.99,
       "currency": "USD",
-      "change_pct": 1.82,
-      "volume": 10227788,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
-      "ticker": "PLAB",
-      "eodhd_symbol": "PLAB.US",
-      "name": "Photronics",
-      "sector": "Semiconductor",
-      "price": 34.02,
+      "ticker": "INTC",
+      "price": 114.68,
       "currency": "USD",
-      "change_pct": -36.42,
-      "volume": 10458775,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AGPXX",
+      "price": 1.0,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KOPN",
+      "price": 5.71,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KLIC",
+      "price": 101.89,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MTSI",
+      "price": 364.64,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MRVL",
+      "price": 205.0,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MU",
+      "price": 971.0,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MKSI",
+      "price": 324.26,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MPWR",
+      "price": 1566.21,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MXL",
+      "price": 92.93,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "NVTS",
+      "price": 26.6,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "NVEC",
+      "price": 97.94,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "PENG",
+      "price": 53.21,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
       "ticker": "POWI",
-      "eodhd_symbol": "POWI.US",
-      "name": "Power Integrations",
+      "price": 84.0,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 87.07,
-      "currency": "USD",
-      "change_pct": 0.2,
-      "volume": 1773388,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
-      "ticker": "PRCT",
-      "eodhd_symbol": "PRCT.US",
-      "name": "PROCEPT BioRobotics",
-      "sector": "Robotics",
-      "price": 27.2,
+      "ticker": "PLAB",
+      "price": 32.35,
       "currency": "USD",
-      "change_pct": 2.8,
-      "volume": 1134673,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "QCOM",
-      "eodhd_symbol": "QCOM.US",
-      "name": "Qualcomm",
-      "sector": "Cross-stack",
-      "price": 243.29,
-      "currency": "USD",
-      "change_pct": 4.24,
-      "volume": 16666180,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
       "ticker": "QRVO",
-      "eodhd_symbol": "QRVO.US",
-      "name": "Qorvo",
+      "price": 103.56,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 106.42,
-      "currency": "USD",
-      "change_pct": 2.42,
-      "volume": 1272633,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "RDW",
-      "eodhd_symbol": "RDW.US",
-      "name": "Redwire Corp",
-      "sector": "Space",
-      "price": 25.9,
-      "currency": "USD",
-      "change_pct": 7.92,
-      "volume": 80730017,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "RKLB",
-      "eodhd_symbol": "RKLB.US",
-      "name": "Rocket Lab USA",
-      "sector": "Space",
-      "price": 148.03,
-      "currency": "USD",
-      "change_pct": -1.46,
-      "volume": 20304067,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
       "ticker": "RMBS",
-      "eodhd_symbol": "RMBS.US",
-      "name": "Rambus",
+      "price": 145.46,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 148.02,
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "RGTI",
+      "price": 25.54,
       "currency": "USD",
-      "change_pct": -0.43,
-      "volume": 1874058,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "ROBO",
-      "coingecko_id": "robo-token-2",
-      "name": "Fabric Protocol",
-      "sector": "Token",
-      "price": 0.01750638,
-      "currency": "USD",
-      "change_pct": -1.76,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
-    },
-    {
-      "ticker": "ROK",
-      "eodhd_symbol": "ROK.US",
-      "name": "Rockwell Automation",
-      "sector": "Robotics",
-      "price": 454.8,
-      "currency": "USD",
-      "change_pct": -0.28,
-      "volume": 562652,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "RPI LN",
-      "eodhd_symbol": "RPI.LSE",
-      "name": "Raspberry Pi Holdings",
-      "sector": "Robotics",
-      "price": 795,
-      "currency": "GBp",
-      "change_pct": 0.82,
-      "volume": 368907,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "RR",
-      "eodhd_symbol": "RR.US",
-      "name": "Richtech Robotics",
-      "sector": "Robotics",
-      "price": 3.25,
-      "currency": "USD",
-      "change_pct": -0.31,
-      "volume": 15661635,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "RRX",
-      "eodhd_symbol": "RRX.US",
-      "name": "Regal Rexnord",
-      "sector": "Robotics",
-      "price": 202.85,
-      "currency": "USD",
-      "change_pct": -1.53,
-      "volume": 520219,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "RSW LN",
-      "eodhd_symbol": "RSW.LSE",
-      "name": "Renishaw PLC",
-      "sector": "Robotics",
-      "price": 5240,
-      "currency": "GBp",
-      "change_pct": 0.19,
-      "volume": 59938,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SATL",
-      "eodhd_symbol": "SATL.US",
-      "name": "Satellogic",
-      "sector": "Space",
-      "price": 9.85,
-      "currency": "USD",
-      "change_pct": 0.82,
-      "volume": 10546302,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SATS",
-      "eodhd_symbol": "SATS.US",
-      "name": "EchoStar Corp",
-      "sector": "Space",
-      "price": 131.07,
-      "currency": "USD",
-      "change_pct": 7.03,
-      "volume": 8214121,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SCC IT",
-      "eodhd_symbol": "SCC.TA",
-      "name": "Space Communication",
-      "sector": "Space",
-      "price": 244.5,
-      "currency": "USD",
-      "change_pct": 0.87,
-      "volume": 301690,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SERV",
-      "eodhd_symbol": "SERV.US",
-      "name": "Serve Robotics",
-      "sector": "Robotics",
-      "price": 9.49,
-      "currency": "USD",
-      "change_pct": 7.35,
-      "volume": 8328669,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SESG FP",
-      "eodhd_symbol": "SESG.PA",
-      "name": "SES SA",
-      "sector": "Space",
-      "price": 9.885,
-      "currency": "EUR",
-      "change_pct": 4.94,
-      "volume": 1506541,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SGL GR",
-      "eodhd_symbol": "SGL.XETRA",
-      "name": "SGL Carbon",
-      "sector": "Materials",
-      "price": 5.01,
-      "currency": "EUR",
-      "change_pct": 6.26,
-      "volume": 432831,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SHA",
-      "eodhd_symbol": "SHA.US",
-      "name": "Schaeffler AG",
-      "sector": "Robotics",
-      "price": 7780,
-      "currency": "USD",
-      "change_pct": 0.0,
-      "volume": 57500,
-      "date": "2022-03-02",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SIDU",
-      "eodhd_symbol": "SIDU.US",
-      "name": "Sidus Space",
-      "sector": "Space",
-      "price": 5.18,
-      "currency": "USD",
-      "change_pct": -14.87,
-      "volume": 52104203,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SIE GR",
-      "eodhd_symbol": "SIE.XETRA",
-      "name": "Siemens AG",
-      "sector": "Robotics",
-      "price": 271.65,
-      "currency": "EUR",
-      "change_pct": -0.88,
-      "volume": 991002,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SITM",
-      "eodhd_symbol": "SITM.US",
-      "name": "SiTime Corp",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 729.51,
-      "currency": "USD",
-      "change_pct": 0.45,
-      "volume": 364381,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SKYT",
-      "eodhd_symbol": "SKYT.US",
-      "name": "SkyWater Technology",
-      "sector": "Semiconductor",
-      "price": 38.97,
-      "currency": "USD",
-      "change_pct": 2.88,
-      "volume": 887078,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
       "ticker": "SLAB",
-      "eodhd_symbol": "SLAB.US",
-      "name": "Silicon Laboratories",
+      "price": 217.6,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 218.41,
-      "currency": "USD",
-      "change_pct": 0.16,
-      "volume": 216950,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
-      "ticker": "SMTC",
-      "eodhd_symbol": "SMTC.US",
-      "name": "Semtech Corp",
+      "ticker": "SKYT",
+      "price": 38.98,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 166.33,
-      "currency": "USD",
-      "change_pct": 5.81,
-      "volume": 4815486,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SNPS",
-      "eodhd_symbol": "SNPS.US",
-      "name": "Synopsys",
-      "sector": "Cross-stack",
-      "price": 480.64,
-      "currency": "USD",
-      "change_pct": -8.61,
-      "volume": 4701872,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SOI FP",
-      "eodhd_symbol": "SOI.PA",
-      "name": "Soitec",
-      "sector": "Materials",
-      "price": 192.2,
-      "currency": "EUR",
-      "change_pct": 24.64,
-      "volume": 950641,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SPCE",
-      "eodhd_symbol": "SPCE.US",
-      "name": "Virgin Galactic",
-      "sector": "Space",
-      "price": 4.53,
-      "currency": "USD",
-      "change_pct": 19.53,
-      "volume": 36643767,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SPIR",
-      "eodhd_symbol": "SPIR.US",
-      "name": "Spire Global",
-      "sector": "Space",
-      "price": 24.1,
-      "currency": "USD",
-      "change_pct": -5.42,
-      "volume": 1538086,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SQM",
-      "eodhd_symbol": "SQM.US",
-      "name": "Sociedad Quimica y Minera",
-      "sector": "Materials",
-      "price": 84.05,
-      "currency": "USD",
-      "change_pct": 0.13,
-      "volume": 1195895,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "STM",
-      "eodhd_symbol": "STM.US",
-      "name": "STMicroelectronics ADR",
-      "sector": "Cross-stack",
-      "price": 69.45,
-      "currency": "USD",
-      "change_pct": 2.51,
-      "volume": 9358339,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "STMPA",
-      "eodhd_symbol": "STMPA.PA",
-      "name": "STMicroelectronics NV",
-      "sector": "Robotics",
-      "price": 59.8,
-      "currency": "EUR",
-      "change_pct": 3.19,
-      "volume": 2489910,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SU FP",
-      "eodhd_symbol": "SU.PA",
-      "name": "Schneider Electric",
-      "sector": "Robotics",
-      "price": 267.25,
-      "currency": "EUR",
-      "change_pct": -0.63,
-      "volume": 1011683,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
       "ticker": "SWKS",
-      "eodhd_symbol": "SWKS.US",
-      "name": "Skyworks Solutions",
+      "price": 77.85,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 81.41,
-      "currency": "USD",
-      "change_pct": 3.47,
-      "volume": 4107421,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "SYM",
-      "eodhd_symbol": "SYM.US",
-      "name": "Symbotic",
-      "sector": "Robotics",
-      "price": 48.81,
-      "currency": "USD",
-      "change_pct": -8.99,
-      "volume": 8607941,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
       "ticker": "SYNA",
-      "eodhd_symbol": "SYNA.US",
-      "name": "Synaptics",
+      "price": 137.28,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 143.26,
-      "currency": "USD",
-      "change_pct": 1.14,
-      "volume": 815445,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
-      "ticker": "TECN SW",
-      "eodhd_symbol": "TECN.SW",
-      "name": "Tecan Group",
-      "sector": "Robotics",
-      "price": 153.2,
-      "currency": "CHF",
-      "change_pct": 1.73,
-      "volume": 60257,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "ticker": "SMTC",
+      "price": 152.54,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
-      "ticker": "TER",
-      "eodhd_symbol": "TER.US",
-      "name": "Teradyne",
-      "sector": "Cross-stack",
-      "price": 382.65,
+      "ticker": "SITM",
+      "price": 710.2,
       "currency": "USD",
-      "change_pct": 1.81,
-      "volume": 2695524,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "TSAT",
-      "eodhd_symbol": "TSAT.US",
-      "name": "Telesat Corp",
-      "sector": "Space",
-      "price": 58.51,
-      "currency": "USD",
-      "change_pct": 2.04,
-      "volume": 113701,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
       "ticker": "TSEM",
-      "eodhd_symbol": "TSEM.US",
-      "name": "Tower Semiconductor",
+      "price": 255.23,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 275.5,
-      "currency": "USD",
-      "change_pct": -0.82,
-      "volume": 1354178,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "TSM",
-      "eodhd_symbol": "TSM.US",
-      "name": "TSMC ADR",
-      "sector": "Cross-stack",
-      "price": 424.86,
-      "currency": "USD",
-      "change_pct": 0.5,
-      "volume": 8861295,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "TXN",
-      "eodhd_symbol": "TXN.US",
-      "name": "Texas Instruments",
-      "sector": "Cross-stack",
-      "price": 315.95,
-      "currency": "USD",
-      "change_pct": -0.47,
-      "volume": 5874090,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
       "ticker": "UMC",
-      "eodhd_symbol": "UMC.US",
-      "name": "United Microelectronics ADR",
+      "price": 22.18,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Semiconductor",
-      "price": 22.68,
-      "currency": "USD",
-      "change_pct": 2.07,
-      "volume": 16039129,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
-      "ticker": "VIRTUAL",
-      "coingecko_id": "virtual-protocol",
-      "name": "Virtuals Protocol",
-      "sector": "Token",
-      "price": 0.71341,
+      "ticker": "OLED",
+      "price": 92.12,
       "currency": "USD",
-      "change_pct": -4.17,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
     },
     {
-      "ticker": "VOYG",
-      "eodhd_symbol": "VOYG.US",
-      "name": "Voyager Technologies",
+      "ticker": "LASR",
+      "price": 74.12,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Semiconductor",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AMD",
+      "price": 516.1,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AMBA",
+      "price": 72.18,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ADI",
+      "price": 413.85,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AMAT",
+      "price": 450.06,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ASML",
+      "price": 1880.331098,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AVGO",
+      "price": 446.77,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "CRDO",
+      "price": 236.03,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "CDNS",
+      "price": 374.93,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KLAC",
+      "price": 1921.71,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "LRCX",
+      "price": 318.18,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "LSCC",
+      "price": 147.08,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MCHP",
+      "price": 94.65,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "NVMI",
+      "price": 502.33,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "NVDA",
+      "price": 211.14,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "NXPI",
+      "price": 321.35,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ON",
+      "price": 120.62,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "QCOM",
+      "price": 251.02,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "STM",
+      "price": 69.31,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SNPS",
+      "price": 475.62,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TSM",
+      "price": 418.45,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TER",
+      "price": 374.31,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TXN",
+      "price": 305.68,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Cross-stack",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ABBN SW",
+      "price": 106.548003,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "2395 TT",
+      "price": 14.864917,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "1590 TT",
+      "price": 44.689836,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AUTO NO",
+      "price": 1.231365,
+      "currency": "USD",
+      "date": "2023-10-18",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "688297 C1",
+      "price": 6.352077,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6857 JP",
+      "price": 164.31217,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6113 JP",
+      "price": 18.92384,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6845 JP",
+      "price": 10.438249,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "688169 C1",
+      "price": 18.643147,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "BSL GR",
+      "price": 31.900059,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6383 JP",
+      "price": 45.903182,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6622 JP",
+      "price": 99.516542,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "2308 TT",
+      "price": 66.400855,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "454910 KS",
+      "price": 70.858813,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "DUE GR",
+      "price": 24.985475,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6902 JP",
+      "price": 11.979657,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6141 JP",
+      "price": 21.629936,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "688165 C1",
+      "price": 3.248806,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "002747 C2",
+      "price": 4.273429,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "EXA FP",
+      "price": 167.541096,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6954 JP",
+      "price": 49.551076,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6134 JP",
+      "price": 49.839893,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "G1A GR",
+      "price": 63.393379,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "002008 C2",
+      "price": 21.50386,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6324",
+      "price": 48.97344,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "HEXAB SS",
+      "price": 9.256079,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "HIAB FH",
+      "price": 58.163861,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6258 JP",
+      "price": 18.063665,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "2049",
+      "price": 11.933137,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "2317 TT",
+      "price": 7.92373,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "IFX GR",
+      "price": 85.2179,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "IMI LN",
+      "price": 36.95526,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "INRN SW",
+      "price": 2039.415238,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "JEN GR",
+      "price": 51.783849,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KALMAR FH",
+      "price": 52.279351,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KARN SW",
+      "price": 338.842993,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6861 JP",
+      "price": 502.982345,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KGX GR",
+      "price": 50.958747,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KRN GR",
+      "price": 136.897158,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KCR FH",
+      "price": 32.416483,
+      "currency": "USD",
+      "date": "2023-10-18",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6920 JP",
+      "price": 251.962071,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6503 JP",
+      "price": 41.175362,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6268 JP",
+      "price": 34.739749,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6645 JP",
+      "price": 36.064544,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6914 JP",
+      "price": 26.747033,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "277810 KS",
+      "price": 501.196482,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "RPI LN",
+      "price": 10.96742,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "300757 C2",
+      "price": 80.779128,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "108490 KS",
+      "price": 202.406271,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SU FP",
+      "price": 314.737084,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "300124 C2",
+      "price": 11.611908,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6104 JP",
+      "price": 24.832046,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "300024 C2",
+      "price": 2.391768,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SIE GR",
+      "price": 311.446846,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6273 JP",
+      "price": 433.917237,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TECN SW",
+      "price": 189.955509,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6481 JP",
+      "price": 47.968857,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "FTI",
+      "price": 68.42,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "8035 JP",
+      "price": 329.126633,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6506 JP",
+      "price": 45.256482,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6841 JP",
+      "price": 31.39951,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "388720 KS",
+      "price": 64.01223,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AVAV",
+      "price": 207.24,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "GOOG",
+      "price": 376.43,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AMZN",
+      "price": 270.64,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "APH",
+      "price": 148.76,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "APTV",
+      "price": 67.94,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ATS CN",
+      "price": 34.357103,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "BIDU",
+      "price": 135.31,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "BWXT",
+      "price": 195.88,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "BYDDY",
+      "price": 11.58,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "CCJ",
+      "price": 112.7,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "CAT",
+      "price": 875.87,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "CLS CN",
+      "price": 279.61459,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "CGNX",
+      "price": 65.85,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "COHR",
+      "price": 361.47,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "DASH",
+      "price": 159.29,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "EH",
+      "price": 10.16,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ESLT",
+      "price": 880.89,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "EMR",
+      "price": 143.82,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "GMED",
+      "price": 81.88,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "HSAI",
+      "price": 18.9,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "LUNR",
+      "price": 43.83,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Space",
-      "price": 51.77,
-      "currency": "USD",
-      "change_pct": 6.54,
-      "volume": 3997232,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "source": "MarketStack"
     },
     {
-      "ticker": "VSAT",
-      "eodhd_symbol": "VSAT.US",
-      "name": "Viasat Inc",
+      "ticker": "ISRG",
+      "price": 424.64,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "IPGP",
+      "price": 114.52,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "IRDM",
+      "price": 51.78,
+      "currency": "USD",
+      "date": "2026-05-29",
       "sector": "Space",
-      "price": 86.69,
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "JBL",
+      "price": 364.56,
       "currency": "USD",
-      "change_pct": 1.31,
-      "volume": 3618965,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
     },
     {
-      "ticker": "WAF GR",
-      "eodhd_symbol": "WAF.XETRA",
-      "name": "Siltronic",
-      "sector": "Materials",
-      "price": 95.9,
-      "currency": "EUR",
-      "change_pct": 2.9,
-      "volume": 134580,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "WCH GR",
-      "eodhd_symbol": "WCH.XETRA",
-      "name": "Wacker Chemie",
-      "sector": "Materials",
-      "price": 99.4,
-      "currency": "EUR",
-      "change_pct": 3.01,
-      "volume": 67540,
-      "date": "2026-05-28",
-      "source": "EODHD"
-    },
-    {
-      "ticker": "WOLF",
-      "eodhd_symbol": "WOLF.US",
-      "name": "Wolfspeed",
-      "sector": "Materials",
-      "price": 65.05,
+      "ticker": "JBTM",
+      "price": 132.03,
       "currency": "USD",
-      "change_pct": 2.83,
-      "volume": 6849017,
-      "date": "2026-05-28",
-      "source": "EODHD"
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
     },
     {
-      "ticker": "XRT",
-      "coingecko_id": "robonomics-network",
-      "name": "Robonomics Network",
-      "sector": "Token",
-      "price": 0.737426,
+      "ticker": "KAI",
+      "price": 319.18,
       "currency": "USD",
-      "change_pct": -0.03,
-      "volume": null,
-      "date": "2026-05-28",
-      "source": "CoinGecko"
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KDK",
+      "price": 7.78,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KMTUY",
+      "price": 40.98,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KTOS",
+      "price": 64.13,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "LECO",
+      "price": 258.49,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "LHX",
+      "price": 315.18,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MG",
+      "price": 17.58,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MBLY",
+      "price": 10.34,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MELE",
+      "price": 94.555205,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MP",
+      "price": 64.7,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "NDSN",
+      "price": 287.33,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "NOVT",
+      "price": 159.33,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "OKLO",
+      "price": 66.88,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ONDS",
+      "price": 13.22,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ONTO",
+      "price": 258.24,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "OUST",
+      "price": 46.05,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "PLTR",
+      "price": 156.54,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "PRCT",
+      "price": 26.33,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "RBC",
+      "price": 571.96,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "RR",
+      "price": 3.02,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "RRX",
+      "price": 201.76,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ROK",
+      "price": 451.06,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SHA",
+      "price": 11.086578,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SERV",
+      "price": 9.35,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SRTA",
+      "price": 6.13,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "STMPA",
+      "price": 68.730325,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ST",
+      "price": 49.39,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SYM",
+      "price": 46.425,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TEL",
+      "price": 213.41,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TDY",
+      "price": 619.83,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TSLA",
+      "price": 435.79,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TRMB",
+      "price": 56.41,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "XPEV",
+      "price": 16.45,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
     },
     {
       "ticker": "ZBRA",
-      "eodhd_symbol": "ZBRA.US",
-      "name": "Zebra Technologies",
-      "sector": "Robotics",
-      "price": 247.9,
+      "price": 243.63,
       "currency": "USD",
-      "change_pct": -1.83,
-      "volume": 1099681,
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "002979",
+      "price": 8.971702,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "600111",
+      "price": 7.510474,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "601100",
+      "price": 17.20691,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "603662",
+      "price": 9.912533,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "688017",
+      "price": 50.275636,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6594",
+      "price": 17.52998,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "601689",
+      "price": 10.591695,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6723",
+      "price": 28.253908,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "603009",
+      "price": 8.643881,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "003021",
+      "price": 16.417494,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "300100",
+      "price": 4.984932,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "9868",
+      "price": 8.628508,
+      "currency": "USD",
+      "date": "2023-10-09",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "002050",
+      "price": 7.945609,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "002472",
+      "price": 6.527012,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Robotics",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "RKLB",
+      "price": 143.48,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ASTS",
+      "price": 113.41,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "HEI",
+      "price": 348.18,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "VSAT",
+      "price": 80.62,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "PL",
+      "price": 51.14,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "RDW",
+      "price": 24.57,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SPIR",
+      "price": 22.84,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "BKSY",
+      "price": 48.47,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "GSAT",
+      "price": 84.21,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TSAT",
+      "price": 54.21,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SATS",
+      "price": 129.19,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "BA",
+      "price": 231.15,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "LMT",
+      "price": 530.45,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "RTX",
+      "price": 153.55,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "NOC",
+      "price": 563.68,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "GD",
+      "price": 346.82,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SPCE",
+      "price": 6.18,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "186A JP",
+      "price": 17.197212,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AVIO IM",
+      "price": 42.10343,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "DCO",
+      "price": 152.22,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ESE",
+      "price": 291.9,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ETL FP",
+      "price": 4.411389,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "FLY",
+      "price": 49.5,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "GILT",
+      "price": 17.17,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "GOGO",
+      "price": 4.57,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "GOMX SS",
+      "price": 2.251713,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "012450 KS",
+      "price": 778.300507,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "HXL",
+      "price": 89.79,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "KRMN",
+      "price": 64.1,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MDA CN",
+      "price": 43.198631,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MNTS",
+      "price": 16.85,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MOG.A",
+      "price": 359.97,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "NN",
+      "price": 20.62,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "OVZON SS",
+      "price": 6.839047,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "PSN",
+      "price": 59.1,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SESG FP",
+      "price": 11.012009,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SATL",
+      "price": 9.51,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SIDU",
+      "price": 4.91,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SCC IT",
+      "price": 86.863635,
+      "currency": "USD",
+      "date": "2026-05-20",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "TTMI",
+      "price": 173.72,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "VOYG",
+      "price": 44.64,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "9348 JP",
+      "price": 4.212972,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Space",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "4063 JP",
+      "price": 48.709737,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "3436 JP",
+      "price": 25.076913,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "WAF GR",
+      "price": 108.367233,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "010060 KS",
+      "price": 209.05344,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "4043 JP",
+      "price": 32.065046,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "WCH GR",
+      "price": 116.792567,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SOI FP",
+      "price": 207.00711,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6153 TT",
+      "price": 0.613297,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "WOLF",
+      "price": 59.28,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "LIN",
+      "price": 497.69,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AI FP",
+      "price": 207.625042,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "APD",
+      "price": 278.62,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "4091 JP",
+      "price": 38.827148,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "4186 JP",
+      "price": 69.127894,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MRK GR",
+      "price": 148.460204,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "BAS GR",
+      "price": 59.988381,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "4112 JP",
+      "price": 15.144095,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "4005 JP",
+      "price": 3.83123,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "4208 JP",
+      "price": 18.537703,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "3407 JP",
+      "price": 11.219941,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "5384 JP",
+      "price": 24.863439,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "5706 JP",
+      "price": 324.166502,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MTRN",
+      "price": 220.04,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "4062 JP",
+      "price": 144.408862,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "3037 TT",
+      "price": 30.744071,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "2802 JP",
+      "price": 32.347585,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "6971 JP",
+      "price": 21.868525,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "LYC AU",
+      "price": 13.748103,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ILU AU",
+      "price": 5.659719,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ARU AU",
+      "price": 0.189851,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ALB",
+      "price": 176.42,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SQM",
+      "price": 85.87,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "AMG NA",
+      "price": 44.509008,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "3402 JP",
+      "price": 7.484146,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "3401 JP",
+      "price": 10.369184,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "4188 JP",
+      "price": 7.201607,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "SGL GR",
+      "price": 5.113306,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "ATI",
+      "price": 162.29,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "CRS",
+      "price": 468.98,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "CSTM FP",
+      "price": 34.26,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "MRSN FP",
+      "price": 45.322489,
+      "currency": "USD",
+      "date": "2026-05-22",
+      "sector": "Materials",
+      "source": "MarketStack"
+    },
+    {
+      "ticker": "090360 KS",
+      "price": 62.370203,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "098460 KS",
+      "price": 22.758489,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "189300 KS",
+      "price": 88.313553,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "455900 KS",
+      "price": 17.184981,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "474170 KS",
+      "price": 7.364992,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "6488 TT",
+      "price": 32.31352,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "1274 HK",
+      "price": 0.548938,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "2121 HK",
+      "price": 0.556598,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "2252 HK",
+      "price": 3.234907,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "2431 HK",
+      "price": 1.262559,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "2432 HK",
+      "price": 3.96257,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "2498 HK",
+      "price": 4.039166,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "6600 HK",
+      "price": 11.846859,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "6680 HK",
+      "price": 2.437032,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "9660 HK",
+      "price": 0.675322,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "9880 HK",
+      "price": 13.046863,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "ANDR AV",
+      "price": 91.057477,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "464A JP",
+      "price": 25.491303,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "290A JP",
+      "price": 11.904313,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "ANIMUS",
+      "price": 1.771e-05,
+      "currency": "USD",
       "date": "2026-05-28",
-      "source": "EODHD"
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "AUKI",
+      "price": 0.00775101,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "ATNM",
+      "price": 4.33e-06,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "CODEC",
+      "price": 0.00541559,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "DPTX",
+      "price": 0.00044974,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "$CPT",
+      "price": 0.159942,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "ROBO",
+      "price": 0.01750638,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "FORMA",
+      "price": 0.00047756,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "GEOD",
+      "price": 0.150635,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "BREW",
+      "price": 0.00174371,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "IOTX",
+      "price": 0.003985,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "JOJO",
+      "price": 0.00270783,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "KAGE",
+      "price": 0.00018524,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "MECHA",
+      "price": 5.197e-05,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "EMDR",
+      "price": 1.53,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "NATIX",
+      "price": 0.0001073,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "OP",
+      "price": 3.826e-05,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "ONO",
+      "price": 0.01913082,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "OPAN",
+      "price": 4.14e-06,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "OPUS",
+      "price": 0.00063925,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "OVR",
+      "price": 0.0351903,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "QACE",
+      "price": 1.325e-05,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "ROBA",
+      "price": 0.00133419,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "ROVR",
+      "price": 0.00305684,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "RICE",
+      "price": 0.00885553,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "ROBCO",
+      "price": 0.0031153,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "ROBOT",
+      "price": 0.00010085,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "XRT",
+      "price": 0.737426,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "RBR",
+      "price": 0.00095869,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "ROX",
+      "price": 0.00034447,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "ROKO",
+      "price": 4.14e-06,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "SLC",
+      "price": 4.107e-05,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "SMPL",
+      "price": 0.0005461,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "SPAWN",
+      "price": 2.395e-05,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "VADER",
+      "price": 0.00217712,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "VIRTUAL",
+      "price": 0.71341,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "SHOW",
+      "price": 0.000214,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "DEUS",
+      "price": 0.052955,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
+    },
+    {
+      "ticker": "PEAQ",
+      "price": 0.03110999,
+      "currency": "USD",
+      "date": "2026-05-28",
+      "sector": "Token",
+      "source": "CoinGecko"
     }
   ]
 }
