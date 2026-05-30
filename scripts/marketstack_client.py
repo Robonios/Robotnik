@@ -37,6 +37,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime
 
 # Reuse the project-standard .env loader so we don't drift from the established
 # pattern (EODHD/COINGECKO fetchers use config.load_env()).
@@ -502,18 +503,61 @@ def fetch_eod_latest(symbols, limit: int = 100, throttle: bool = True,
     return out
 
 
-def fetch_eod_historical(symbol: str, date_from: str, date_to: str,
-                         throttle: bool = True, version: str = None) -> list:
-    """Full daily history for ONE symbol across the date window.
+COVERAGE_TOLERANCE_DAYS = 7    # weekend / holiday / genuine-listing-gap tolerance
+HISTORICAL_MAX_PAGES = 50      # safety bound: 50 * 1000 rows >> any real history
 
-    Single-symbol because pagination caps at 1000 rows/call, and 5Y per
-    ticker is ~1,260 rows — at least 2 calls per ticker, kept inside this
-    helper to hide pagination from the caller.
+
+def _assert_range_coverage(symbol, date_from, date_to, rows, expect_through=None):
+    """Loudly flag silent truncation: warn on stderr if returned data falls
+    short of the requested range at the recent end.
+
+    MarketStack caps `pagination.total` at the page limit (reports total=1000
+    even when 1,285 rows exist), so a loop that trusted it silently dropped the
+    most recent year. This guard makes that class of bug impossible to recur
+    unnoticed — regardless of future vendor cap changes. Returns the shortfall
+    in days (0 = fully covered, None = undetermined) so a caller can treat a
+    shortfall as a hard failure.
+    """
+    if not rows:
+        sys.stderr.write("[marketstack_client] COVERAGE WARN: {} returned NO rows "
+                         "for {}..{}\n".format(symbol, date_from, date_to))
+        return None
+    dates = [str(r.get("date", ""))[:10] for r in rows if r.get("date")]
+    if not dates:
+        return None
+    got_hi = max(dates)
+    target_end = expect_through or date_to
+    try:
+        short_days = (datetime.strptime(target_end, "%Y-%m-%d")
+                      - datetime.strptime(got_hi, "%Y-%m-%d")).days
+    except ValueError:
+        return None
+    if short_days > COVERAGE_TOLERANCE_DAYS:
+        sys.stderr.write("[marketstack_client] COVERAGE SHORT: {} requested through "
+                         "{} but latest bar is {} ({}d short) — truncation or "
+                         "genuine vendor staleness\n"
+                         .format(symbol, target_end, got_hi, short_days))
+    return short_days
+
+
+def fetch_eod_historical(symbol: str, date_from: str, date_to: str,
+                         throttle: bool = True, version: str = None,
+                         expect_through: str = None) -> list:
+    """Full daily history for ONE symbol across the date window, paginated.
+
+    Pagination is by "page is FULL → fetch the next page", NOT by the API's
+    `pagination.total`: MarketStack caps `total` at the page limit (reports
+    total=1000 even when more rows exist), so trusting it silently dropped the
+    most recent year of data. A page shorter than PAGE_LIMIT_MAX is the last.
+
+    After fetching, a range-coverage guard loudly flags any shortfall at the
+    recent end — silent truncation must be impossible. Pass `expect_through`
+    (the latest trading day you KNOW should exist) to tighten the guard.
     Pass `version="v2"` for Tokyo tickers.
     """
     rows = []
     offset = 0
-    while True:
+    for _ in range(HISTORICAL_MAX_PAGES):
         data = _api_get("eod", {
             "symbols": symbol,
             "date_from": date_from,
@@ -524,13 +568,17 @@ def fetch_eod_historical(symbol: str, date_from: str, date_to: str,
         }, version=version)
         page = data.get("data") or []
         rows.extend(page)
-        pag = data.get("pagination") or {}
-        total = pag.get("total", 0)
+        if len(page) < PAGE_LIMIT_MAX:
+            break                       # partial page → last page reached
         offset += len(page)
-        if not page or offset >= total:
-            break
         if throttle:
             time.sleep(INTER_CALL_SLEEP)
+    else:
+        sys.stderr.write("[marketstack_client] WARN: {} hit HISTORICAL_MAX_PAGES "
+                         "({}) — history may be incomplete\n"
+                         .format(symbol, HISTORICAL_MAX_PAGES))
+
+    _assert_range_coverage(symbol, date_from, date_to, rows, expect_through)
     return rows
 
 
