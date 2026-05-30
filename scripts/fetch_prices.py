@@ -112,7 +112,6 @@ EQUITIES = [
     ("PI", "Impinj", "Semiconductor", "United States"),
     ("INDI", "Indie Semiconductor", "Semiconductor", "United States"),
     ("INTC", "Intel", "Semiconductor", "United States"),
-    ("AGPXX", "Invesco Govt & Agency Portfolio", "Semiconductor", "United States"),
     ("KOPN", "Kopin Corp", "Semiconductor", "United States"),
     ("KLIC", "Kulicke & Soffa Industries", "Semiconductor", "United States"),
     ("MTSI", "MACOM Technology Solutions", "Semiconductor", "United States"),

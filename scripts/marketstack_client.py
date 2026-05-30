@@ -544,6 +544,77 @@ def _assert_range_coverage(symbol, date_from, date_to, rows, expect_through=None
     return short_days
 
 
+def apply_split_adjustment(rows, symbol=""):
+    """Back-adjust OHLC for splits on a PRICE-RETURN basis, using the reliable
+    `split_factor` VALUE — NOT MarketStack's `adj_close`, which is systemically
+    broken (~70 names back-adjusted off-by-one).
+
+    Robustness note: `split_factor`'s value is reliable but its recorded DATE can
+    lag the actual price adjustment by a session (e.g. 4063.T: factor 5.0 stamped
+    on 2023-03-30 while the raw price already split on 03-29). So we do NOT trust
+    the stamp date — for each split we SNAP to the true boundary: the first bar
+    whose raw close has actually dropped (forward split) or jumped (reverse
+    split) by ~factor. The first post-split bar is left un-divided; everything
+    strictly older is divided by the cumulative factor. Handles multiple
+    (cumulative) splits and reverse splits (factor < 1 → older bars scaled up).
+    If a split can't be located in the price near its stamp (±2 bars), we warn
+    loudly and fall back to the stamp date rather than silently mis-adjusting.
+
+    Input: raw MS EOD rows (date, open/high/low/close, split_factor) any order.
+    Output: new rows ascending with split-adjusted OHLC (native currency).
+    """
+    srt = sorted(rows, key=lambda r: str(r.get("date", ""))[:10])
+    n = len(srt)
+    closes = [r.get("close") for r in srt]
+
+    # eff[i] = split factor effective AT bar i (i.e. i is the first post-split
+    # bar; bars strictly older than i get divided by it). Snapped to the price.
+    eff = [1.0] * n
+    for i in range(n):
+        sf = srt[i].get("split_factor")
+        if not sf or sf == 1.0:
+            continue
+        # Snap to the BIGGEST price move in the split's direction within ±2 bars
+        # (forward split → drop, ratio<1; reverse → jump, ratio>1). Using the
+        # move's location — not the factor's exact magnitude — tolerates both the
+        # date-lag (4063.T) and approximate factors (distressed reverse splits).
+        snap, best = None, 0.0
+        for j in range(max(1, i - 2), min(n, i + 3)):
+            if closes[j] and closes[j - 1] and closes[j - 1] > 0:
+                ratio = closes[j] / closes[j - 1]
+                move = (1.0 - ratio) if sf > 1.0 else (ratio - 1.0)   # toward the split
+                if move > best:
+                    best, snap = move, j
+        # require a clearly split-like move (≥25%); else warn loudly + stamp date
+        if snap is None or best < 0.25:
+            sys.stderr.write("[marketstack_client] SPLIT WARN: {} split_factor={} at {} "
+                             "— no clear price boundary (±2 bars); using stamp date\n"
+                             .format(symbol or "?", sf, srt[i].get("date")))
+            snap = i
+        eff[snap] *= sf
+
+    cum = 1.0
+    out = [None] * n
+    for i in range(n - 1, -1, -1):                 # newest → oldest
+        r = srt[i]
+
+        def _d(v):
+            return (v / cum) if (v is not None and cum) else v
+
+        out[i] = {
+            "date": str(r.get("date", ""))[:10],
+            "open":   _d(r.get("open")),
+            "high":   _d(r.get("high")),
+            "low":    _d(r.get("low")),
+            "close":  _d(r.get("close")),
+            "volume": r.get("volume"),
+            "split_factor": r.get("split_factor"),
+        }
+        if eff[i] != 1.0:
+            cum *= eff[i]                            # older bars divided by accumulated factor
+    return out
+
+
 def fetch_eod_historical(symbol: str, date_from: str, date_to: str,
                          throttle: bool = True, version: str = None,
                          expect_through: str = None) -> list:

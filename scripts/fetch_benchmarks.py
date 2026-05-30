@@ -50,6 +50,9 @@ def load_env():
 load_env()
 EODHD_KEY = os.environ.get("EODHD_API_KEY", "")
 
+sys.path.insert(0, str(ROOT / "scripts"))
+from marketstack_client import fetch_eod_historical, apply_split_adjustment
+
 # ── config ───────────────────────────────────────────────────────────────
 FROM_DATE = "2021-01-01"
 BASE_DATE = "2025-03-31"
@@ -114,35 +117,42 @@ def fetch_eodhd_daily(symbol):
 
     series = []
     for day in data:
-        # adjusted_close = split + dividend adjusted (total-return). MUST match
-        # the constituent basis (MarketStack adj_close, also TR) so the
-        # composite is not biased vs benchmarks by the dividend differential.
-        # See metrics_methodology §13.
-        adj = day.get("adjusted_close")
         series.append({
             "date": day["date"],
-            "close": adj if adj is not None else day["close"],
+            "close": day["close"],
             "volume": day.get("volume"),
         })
     return series
 
 
+def fetch_ms_daily(eodhd_symbol):
+    """Fetch full daily history from MarketStack, split-adjusted on a PRICE-
+    RETURN basis via the reliable split_factor — IDENTICAL processing to the
+    index constituents (metrics_methodology §13), so the composite and its
+    benchmarks share the PR basis. Benchmarks are USD; no FX conversion.
+    """
+    ms_sym = eodhd_symbol[:-3] if eodhd_symbol.endswith(".US") else eodhd_symbol
+    rows = fetch_eod_historical(ms_sym, FROM_DATE, date.today().isoformat(),
+                                throttle=False)
+    if not rows:
+        return None
+    adj = apply_split_adjustment(rows, ms_sym)
+    return [{"date": r["date"], "close": r.get("close"), "volume": r.get("volume")}
+            for r in adj if r.get("date")]
+
+
 # ── main ─────────────────────────────────────────────────────────────────
 def main():
-    if not EODHD_KEY:
-        print("ERROR: EODHD_API_KEY not set")
-        sys.exit(1)
-
     print("=" * 60)
     print("ROBOTNIK BENCHMARK PRICE FETCHER")
-    print("  Source: EODHD (All-in-One)")
+    print("  Source: MarketStack (split-adjusted, price-return — §13)")
     print("  Range:  {} to today".format(FROM_DATE))
     print("=" * 60)
 
     ts = datetime.utcnow().isoformat() + "Z"
     output = {
         "fetched_at": ts,
-        "source": "EODHD (eodhd.com)",
+        "source": "MarketStack (split-adjusted close, price-return)",
         "base_date": BASE_DATE,
         "base_value": BASE_VALUE,
         "benchmarks": {},
@@ -151,7 +161,7 @@ def main():
     for ticker, info in BENCHMARKS.items():
         print("\n[{}] {} ...".format(ticker, info["eodhd_symbol"]), end=" ")
         try:
-            series = fetch_eodhd_daily(info["eodhd_symbol"])
+            series = fetch_ms_daily(info["eodhd_symbol"])
             if series:
                 print("{} days ({} to {})".format(
                     len(series), series[0]["date"], series[-1]["date"]))

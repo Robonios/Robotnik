@@ -31,7 +31,7 @@ from marketstack_client import (
     AuthError, MarketStackError, MissingKeyError, RateLimitError,
     TransportError, UnknownSymbolError,
     INTER_CALL_SLEEP, MARKETSTACK_UNSUPPORTED, call_count, route_for_ticker,
-    fetch_eod_historical, US_ADR_OVERRIDES,
+    fetch_eod_historical, US_ADR_OVERRIDES, apply_split_adjustment,
 )
 from fetch_prices import EQUITIES
 import currency_convert as cc
@@ -152,24 +152,21 @@ def main():
             failed += 1
             time.sleep(INTER_CALL_SLEEP)
             continue
-        # Use adj_* (split + dividend adjusted = total-return basis) so stock
-        # splits (e.g. NVDA/AVGO 10:1) don't create artificial -90% bars. Falls
-        # back to raw if an adjusted field is absent. TR basis MUST match the
-        # benchmark series (also adjusted) — see metrics_methodology §13.
-        def _adj(rr, field):
-            v = rr.get("adj_" + field)
-            return v if v is not None else rr.get(field)
+        # PRICE-RETURN split adjustment from the reliable split_factor (NOT MS
+        # adj_close, which is systemically broken — see §13), then convert the
+        # split-adjusted NATIVE price to USD via daily FX.
+        adj_rows = apply_split_adjustment(rows, sym)
         conv_rows = []
-        for r in rows:
-            d = str(r.get("date", "")).split("T", 1)[0]
+        for r in adj_rows:
+            d = r.get("date")
             if not d:
                 continue
             conv_rows.append({
                 "date": d,
-                "open":  cc.to_usd(_adj(r, "open"), native_ccy, d),
-                "high":  cc.to_usd(_adj(r, "high"), native_ccy, d),
-                "low":   cc.to_usd(_adj(r, "low"), native_ccy, d),
-                "close": cc.to_usd(_adj(r, "close"), native_ccy, d),
+                "open":  cc.to_usd(r.get("open"), native_ccy, d),
+                "high":  cc.to_usd(r.get("high"), native_ccy, d),
+                "low":   cc.to_usd(r.get("low"), native_ccy, d),
+                "close": cc.to_usd(r.get("close"), native_ccy, d),
                 "volume": r.get("volume"),
             })
 

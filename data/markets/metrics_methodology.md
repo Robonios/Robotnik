@@ -1386,39 +1386,63 @@ daily-FX index publishes.
 
 ---
 
-## 13. Return basis — total-return, and benchmark consistency
+## 13. Return basis — price-return, self-computed split adjustment
 
-**Decided:** 2026-05-30, alongside the MarketStack split-adjustment fix.
+**Decided:** 2026-05-30, during the MarketStack cutover split-adjustment work.
 
-### 13.1 Total-return basis (split + dividend adjusted)
+### 13.1 The basis arc (how we got here)
 
-The index uses **total-return** prices — MarketStack `adj_close` (split *and*
-dividend adjusted) for constituents. This was forced by stock splits:
-MarketStack's raw `close` is split-**un**adjusted, so NVDA's and AVGO's 10-for-1
-splits (Jun/Jul 2024) created artificial −90% bars that broke the
-composite-vs-sub-index guardrail. `adj_close` removes all split (and dividend)
-artifacts uniformly.
+1. **TR attempted via `adj_close`.** Splits forced an adjusted basis (NVDA/AVGO
+   10:1 in 2024 created −90% bars on raw `close`). We first adopted MarketStack
+   `adj_close` (split + dividend = total-return) and flipped benchmarks to
+   `adjusted_close` to match.
+2. **`adj_close` found systemically broken.** A full re-backfill exposed that
+   MarketStack's `adj_close` back-adjusts **only one session before the split**,
+   leaving earlier bars unadjusted — **~70 names** with residual split cliffs
+   (AVGO, LRCX, ISRG, ~20 Japanese splits). It is inconsistent name-to-name and
+   cannot be trusted.
+3. **Reverted to PRICE-RETURN, self-computed.** The reliable signal is the raw
+   `split_factor`. We now self-compute a **split-only** back-adjustment from it
+   (`marketstack_client.apply_split_adjustment`) and use raw `close` everywhere
+   else. This **shrinks the vendor-trust surface to raw close + split_factor +
+   daily FX** — all reliable or self-computed — and eliminates the entire
+   dividend-adjustment category along with the broken `adj_close`.
 
-### 13.2 Benchmarks must match — and now do
+### 13.2 The self-computed split adjustment
 
-A total-return index benchmarked against price-return series would show a
-**systematic, fake outperformance equal to the dividend differential** — the
-kind of artifact an allocator's diligence flags immediately. The benchmark
-series (`SPY / QQQ / SOXX / ROBO / URTH / IXIC`) previously used raw `close`
-(price-return). They have been flipped to **`adjusted_close` (total-return)** in
-`fetch_benchmarks.py` so the index and its benchmarks are on the **same basis**.
+`apply_split_adjustment` walks each series newest→oldest, dividing every bar's
+OHLC by the cumulative factor of splits that took effect after it. It does NOT
+trust the `split_factor` **date** (MarketStack's stamp can lag the actual price
+move by a session — e.g. 4063.T: factor 5.0 stamped 2023-03-30 while the price
+split on 03-29); instead it **snaps each split to the true boundary** — the bar
+carrying the biggest price move in the split's direction. Verified at the
+day-before/of/after boundary for AVGO/NVDA (10:1), 4063.T (5:1, date-lag),
+a 1:50 reverse split, and a synthetic cumulative (2:1→3:1) — all smooth. Where
+no clear price move matches a stamped split it warns loudly and falls back to
+the stamp date (never a silent mis-adjustment).
 
-**Rule of record:** the Robotnik index family is **total-return**, benchmarked
-against **total-return** series. Both legs must stay adjusted; never mix bases.
+### 13.3 Benchmarks share the PR basis
 
-### 13.3 Known caveat — back-adjusted history must be frozen at go-live
+Benchmarks (`SPY / QQQ / SOXX / ROBO / URTH / IXIC`) are sourced from MarketStack
+and run through the **identical** `apply_split_adjustment` (price-return), so the
+composite and its benchmarks share one basis — no dividend-differential bias.
+SOXX's 2024 3:1 split is the one benchmark split, now correctly smoothed;
+indices (IXIC) never split. **Rule of record:** the Robotnik index family is
+**price-return**, benchmarked against **price-return** series.
 
-`adj_close` (and EODHD `adjusted_close`) are **back-adjusted**: every historical
-value is re-scaled each time a new split or dividend occurs. So a historical
-index value recomputed today will differ slightly from the same date recomputed
-after the next corporate action — the series silently drifts.
+### 13.4 Base-period characteristic (not a defect)
 
-This is acceptable pre-launch. **Once the index is published, historical values
-must be frozen point-in-time** (stored as published) rather than perpetually
-recomputed from back-adjusted prices, so a value an allocator saw on date T
-remains that value forever. Not a v1 blocker; tracked for the go-live hardening.
+The first session of the series (2021-05-31→06-01) shows a composite vs
+weighted-sub-index divergence (~9%) flagged by the guardrail. This is a
+**low-coverage base-period edge** — few constituents have data on the very
+first day, so the composite and the sector aggregation are computed over
+slightly different universes — not a bad data point (all individual movers that
+day are <7%). Documented as a base-period characteristic; the series should be
+anchored where coverage is adequate rather than suppressing the flag.
+
+### 13.5 Known caveat — freeze published history at go-live
+
+Self-computed split adjustment is still **back-adjusted** (older values re-scale
+when a new split occurs), though PR removes the larger dividend drift. **Once the
+index is published, historical values must be frozen point-in-time** so a value
+an allocator saw on date T stays that value. Not a v1 blocker; go-live hardening.

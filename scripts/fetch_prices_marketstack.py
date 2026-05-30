@@ -109,9 +109,10 @@ def main():
             continue
 
         r = rows[0]
-        # adj_close (split+div adjusted, total-return basis) to match history +
-        # benchmarks; for the latest bar adj_close == close (no future actions).
-        close = r.get("adj_close") if r.get("adj_close") is not None else r.get("close")
+        # Raw close (price-return basis). The latest bar needs no split
+        # adjustment (no future corporate action); history is split-adjusted
+        # separately. See metrics_methodology §13.
+        close = r.get("close")
         prev = r.get("open")  # not always populated; use open as proxy
         change_pct = None
         if close is not None and prev and prev > 0:
