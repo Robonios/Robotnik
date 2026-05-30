@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-05-30T11:18:52.143324Z",
-  "count": 306,
+  "fetched_at": "2026-05-30T13:20:43.786922Z",
+  "count": 305,
   "source": "MarketStack (+ Yahoo overrides via fetch_yahoo.py --overrides) + Yahoo overrides",
-  "marketstack_resolved": 287,
-  "skipped_for_yahoo_backfill": 19,
+  "marketstack_resolved": 283,
+  "skipped_for_yahoo_backfill": 22,
   "failed": 0,
-  "api_calls_used": 287,
+  "api_calls_used": 283,
   "equities": [
     {
       "ticker": "ALGM",
@@ -293,22 +293,6 @@
       "change_pct": -7.37,
       "volume": 153853296.0,
       "date": "2026-05-29",
-      "source": "MarketStack"
-    },
-    {
-      "ticker": "AGPXX",
-      "marketstack_symbol": "AGPXX",
-      "marketstack_version": "v1",
-      "name": "Invesco Govt & Agency Portfolio",
-      "sector": "Semiconductor",
-      "country": "United States",
-      "price": 1.0,
-      "currency": "USD",
-      "native_price": 1.0,
-      "native_currency": "USD",
-      "change_pct": 0.0,
-      "volume": null,
-      "date": "2026-05-22",
       "source": "MarketStack"
     },
     {
@@ -798,10 +782,10 @@
       "name": "ASML Holding ADR",
       "sector": "Cross-stack",
       "country": "Netherlands",
-      "price": 1880.331098,
+      "price": 1612.760009765625,
       "currency": "USD",
-      "native_price": 1612.76,
-      "native_currency": "EUR",
+      "native_price": 1612.760009765625,
+      "native_currency": "USD",
       "change_pct": -1.24,
       "volume": 1062653.0,
       "date": "2026-05-29",
@@ -1125,22 +1109,6 @@
       "change_pct": -1.4,
       "volume": 1218498.0,
       "date": "2026-05-22",
-      "source": "MarketStack"
-    },
-    {
-      "ticker": "AUTO NO",
-      "marketstack_symbol": "AUTO.XOSL",
-      "marketstack_version": "v1",
-      "name": "AutoStore Holdings",
-      "sector": "Robotics",
-      "country": "Norway",
-      "price": 1.231365,
-      "currency": "USD",
-      "native_price": 13.615,
-      "native_currency": "NOK",
-      "change_pct": 0.85,
-      "volume": 994107.0,
-      "date": "2023-10-18",
       "source": "MarketStack"
     },
     {
@@ -1701,22 +1669,6 @@
       "change_pct": 0.0,
       "volume": null,
       "date": "2026-05-22",
-      "source": "MarketStack"
-    },
-    {
-      "ticker": "KCR FH",
-      "marketstack_symbol": "KCR.XHEL",
-      "marketstack_version": "v1",
-      "name": "Konecranes Oyj",
-      "sector": "Robotics",
-      "country": "Finland",
-      "price": 32.416483,
-      "currency": "USD",
-      "native_price": 30.76,
-      "native_currency": "EUR",
-      "change_pct": -1.66,
-      "volume": 77070.0,
-      "date": "2023-10-18",
       "source": "MarketStack"
     },
     {
@@ -3224,22 +3176,6 @@
       "source": "MarketStack"
     },
     {
-      "ticker": "9868",
-      "marketstack_symbol": "9868.XHKG",
-      "marketstack_version": "v1",
-      "name": "XPeng Inc Class A",
-      "sector": "Robotics",
-      "country": "Hong Kong",
-      "price": 8.628508,
-      "currency": "USD",
-      "native_price": 67.55,
-      "native_currency": "HKD",
-      "change_pct": -3.08,
-      "volume": 9634382.0,
-      "date": "2023-10-09",
-      "source": "MarketStack"
-    },
-    {
       "ticker": "002050",
       "marketstack_symbol": "002050.XSHE",
       "marketstack_version": "v1",
@@ -3486,14 +3422,14 @@
       "name": "RTX Corp",
       "sector": "Space",
       "country": "United States",
-      "price": 153.55,
+      "price": 179.66000366210938,
       "currency": "USD",
-      "native_price": 153.55,
+      "native_price": 179.66000366210938,
       "native_currency": "USD",
       "change_pct": 0.07,
       "volume": 0.0,
       "date": "2026-05-29",
-      "source": "MarketStack"
+      "source": "Yahoo (override)"
     },
     {
       "ticker": "NOC",
@@ -4842,6 +4778,45 @@
       "volume": 4206500,
       "date": "2026-05-29",
       "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "9868",
+      "yahoo_symbol": "9868.HK",
+      "name": "XPeng HK line",
+      "price": 8.151098,
+      "currency": "USD",
+      "native_price": 63.849998474121094,
+      "native_currency": "HKD",
+      "change_pct": -3.77,
+      "volume": 24621056,
+      "date": "2026-05-29",
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "AUTO NO",
+      "yahoo_symbol": "AUTO.OL",
+      "name": "Autostore Holdings (Oslo)",
+      "price": 1.422474,
+      "currency": "USD",
+      "native_price": 13.149999618530273,
+      "native_currency": "NOK",
+      "change_pct": 0.23,
+      "volume": 6417994,
+      "date": "2026-05-29",
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "KCR FH",
+      "yahoo_symbol": "KCR.HE",
+      "name": "Konecranes (Helsinki)",
+      "price": 33.11181,
+      "currency": "USD",
+      "native_price": 28.399999618530273,
+      "native_currency": "EUR",
+      "change_pct": 1.87,
+      "volume": 142508,
+      "date": "2026-05-29",
+      "source": "Yahoo (override)"
     }
   ],
   "skipped_yahoo": [
@@ -4857,6 +4832,13 @@
       "name": "Angel Robotics",
       "sector": "Robotics",
       "country": "South Korea",
+      "reason": "marketstack_unsupported"
+    },
+    {
+      "ticker": "AUTO NO",
+      "name": "AutoStore Holdings",
+      "sector": "Robotics",
+      "country": "Norway",
       "reason": "marketstack_unsupported"
     },
     {
@@ -4885,6 +4867,13 @@
       "name": "Koh Young Technology",
       "sector": "Robotics",
       "country": "South Korea",
+      "reason": "marketstack_unsupported"
+    },
+    {
+      "ticker": "KCR FH",
+      "name": "Konecranes Oyj",
+      "sector": "Robotics",
+      "country": "Finland",
       "reason": "marketstack_unsupported"
     },
     {
@@ -4934,6 +4923,13 @@
       "name": "Shanghai MicroPort MedBot",
       "sector": "Robotics",
       "country": "China",
+      "reason": "marketstack_unsupported"
+    },
+    {
+      "ticker": "9868",
+      "name": "XPeng Inc Class A",
+      "sector": "Robotics",
+      "country": "Hong Kong",
       "reason": "marketstack_unsupported"
     },
     {

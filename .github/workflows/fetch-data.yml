@@ -5,7 +5,8 @@ on:
     - cron: '0 22 * * 1-5'   # Weekdays at 22:00 UTC — EOD pipeline (after US close)
     - cron: '0 5 * * 0'      # Sunday at 05:00 UTC — market caps refresh
     - cron: '0 23 * * 0'    # Sunday at 23:00 UTC — weekly health check
-    - cron: '*/30 14-20 * * 1-5'  # US market hours: live prices every 30 min (14:00-20:30 UTC)
+    # (live-prices 30-min job removed at MarketStack cutover — EODHD intraday,
+    #  not displayed, not the product; saved ~8.7k EODHD calls/mo)
   workflow_dispatch:
     inputs:
       run_intel:
@@ -14,37 +15,7 @@ on:
         default: false
 
 jobs:
-  # ── Live prices (every 30 min during US market hours) ──
-  live-prices:
-    runs-on: ubuntu-latest
-    if: github.event.schedule == '*/30 14-20 * * 1-5'
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Fetch live prices (all entities + benchmarks)
-        env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-        run: python scripts/fetch_live_prices.py
-      - name: Fetch intraday index (SOXX proxy)
-        env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-        run: python scripts/fetch_intraday_index.py
-        continue-on-error: true
-      - name: Commit live data
-        run: |
-          git config user.name "Robotnik Pipeline"
-          git config user.email "data@robotniks.com"
-          git add data/prices/live.json data/prices/intraday.json data/prices/intraday_index.json
-          if git diff --cached --quiet; then
-            echo "No live price changes"
-          else
-            git commit -m "data: live price update $(date -u +%Y-%m-%dT%H:%M)"
-            git push
-          fi
+  # (live-prices intraday job removed at MarketStack cutover — EODHD, not displayed)
 
   # ── Full EOD pipeline (after US market close) ──
   fetch-prices:
@@ -65,37 +36,38 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Fetch prices (EODHD + CoinGecko)
+      # ── PRICES: MarketStack (PR, daily-FX, split-adjusted) + Yahoo overrides
+      #    + assemble. fetch_prices_marketstack writes equities.json (MS),
+      #    fetch_yahoo_overrides merges the override names, assemble_all_prices
+      #    combines with tokens into all_prices.json. EODHD is OFF this path.
+      - name: Fetch prices (MarketStack + Yahoo overrides + assemble)
         env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
-        run: python scripts/fetch_prices.py
+          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
+        run: |
+          python scripts/fetch_prices_marketstack.py
+          python scripts/fetch_yahoo_overrides.py --overrides
+          python scripts/assemble_all_prices.py
 
-      - name: Fetch market caps (EODHD + CoinGecko)
-        env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+      - name: Fetch market caps (Yahoo)
         run: python scripts/fetch_market_caps.py
 
-      - name: Refresh price history (incremental, merges with existing)
+      - name: Refresh price history (MarketStack + Yahoo overrides, merges)
         env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
+          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
         # --refresh pulls the last 45 days per ticker and merges with the on-disk
-        # 5-year series. This is what keeps "yesterday's close" in history. The
-        # prior --backfill call was a no-op because every ticker already had a
-        # file, which is what left history 11+ days stale.
-        run: python scripts/fetch_price_history.py --refresh
+        # 5-year series; the Yahoo pass refreshes the override names' history.
+        run: |
+          python scripts/fetch_price_history_marketstack.py --refresh
+          python scripts/fetch_yahoo_overrides.py --history-overrides
 
       - name: Backfill any newly-added tickers (no-op when universe stable)
         env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-          COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
-        run: python scripts/fetch_price_history.py --backfill
+          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
+        run: python scripts/fetch_price_history_marketstack.py --backfill
 
-      - name: Fetch benchmark prices (SPY, QQQ, SOXX, ROBO)
+      - name: Fetch benchmark prices (MarketStack, split-adjusted PR)
         env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
         run: python scripts/fetch_benchmarks.py
 
       - name: Calculate Robotnik Index
@@ -108,17 +80,30 @@ jobs:
       - name: Verify index (independent reconstruction must match)
         run: python scripts/verify_index_reconstruction.py
 
+      - name: Calculate bottleneck-weighted composite (own Δ=0 self-check)
+        run: python scripts/calculate_bottleneck_composite.py
+
+      # Standing MS-vs-Yahoo cross-check — catches the next RTX/Ibiden. Runs
+      # AFTER the index so it gates the commit (corruption → job fails → no
+      # publish). Distinguishes vendor lag (date mismatch, expected) from
+      # corruption (same date, prices diverge). Sundays = full universe.
+      - name: MS-vs-Yahoo parity guard
+        env:
+          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
+        run: |
+          if [ "$(date -u +%u)" = "7" ]; then
+            python scripts/parity_guard.py --weekly
+          else
+            python scripts/parity_guard.py --daily
+          fi
+
       - name: Fetch fundamentals (weekly — Mondays only)
         if: github.event.schedule == '0 6 * * 1' || github.event_name == 'workflow_dispatch'
         env:
           EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
         run: python scripts/fetch_fundamentals.py
 
-      - name: Fetch live prices (top 20 entities, 15-min delayed)
-        env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-        run: python scripts/fetch_live_prices.py
-        continue-on-error: true
+      # (EOD live-prices step removed at cutover — EODHD, fetcher archived)
 
       - name: Fetch commodities prices
         env:

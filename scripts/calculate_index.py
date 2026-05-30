@@ -223,6 +223,81 @@ def backfill_index(entities, weights, price_matrix, all_dates, base_date_str, cu
     return series, base_date_str, base_prices
 
 
+# Bankruptcy / wipeout reorgs: {ticker: effective_date}. The old equity is
+# cancelled to ~0 and a NEW equity issued at a fresh basis on this date — so the
+# return across it is NOT zero (as a reverse-split is); it is a -100% wipeout of
+# the old equity, then a fresh re-entry of the new instrument. Curated from real
+# corporate events (anti-fabrication), distinct from the reverse-splits the CA
+# guard neutralises to flat.
+REORG_EVENTS = {
+    "WOLF": "2025-09-29",   # Wolfspeed — Chapter 11 emergence; old ~$1.21 -> new ~$22
+}
+
+
+def backfill_index_chained(sector_entities, weights, price_matrix, all_dates):
+    """Chain-linked daily-return sub-index (enter-at-first-price).
+
+    index(d) = index(d-1) x [ Σ_i w_i·(p_i(d)/p_i(d-1)) / Σ_i w_i ], over
+    constituents live on BOTH d-1 and d. A constituent that gets its first
+    real price on day T joins last_known on T but is absent from the T-1
+    snapshot, so it contributes NO return on its entry day (return ≡ 1.0, no
+    dilution jump) and only its subsequent moves count. This is the only
+    construction that admits post-base IPOs (R1 — Rocket Lab, Planet, …)
+    without a fake entry-day step. Carry-forward: a missing day yields ratio
+    1.0; a resume-after-gap attributes the gap move to the resume day (caught
+    by the dod guardrail if implausible). Returns an UN-normalised series
+    (caller normalises to 1000 on NORMALISE_DATE).
+    """
+    tickers = [e["ticker"] for e in sector_entities]
+    wt = {t: weights.get(t, 0.0) for t in tickers}
+    last_known, prev_known = {}, {}
+    series = []
+    idx = 1.0
+    for k, d in enumerate(all_dates):
+        day = price_matrix.get(d, {})
+        for t in tickers:
+            p = day.get(t)
+            if p is not None and p > 0:
+                last_known[t] = p
+        if k == 0:
+            series.append({"date": d, "value": round(idx, 2)})
+            prev_known = dict(last_known)
+            continue
+        num = den = 0.0
+        for t in tickers:
+            w = wt[t]
+            if w <= 0:
+                continue
+            pp, pc = prev_known.get(t), last_known.get(t)
+            if pp is not None and pc is not None and pp > 0:
+                r = pc / pp
+                if REORG_EVENTS.get(t) == d:
+                    # Bankruptcy/wipeout reorg: old equity -> ~0 (holders wiped),
+                    # new equity issued at a fresh basis. Realize the -100%
+                    # wipeout HERE (NOT flat — flat would hide the old-holder
+                    # loss); the new instrument re-enters next day at its first
+                    # price (prev_known resets to it automatically). The pre-reorg
+                    # decline is already captured in the price history.
+                    print("    [chain-link REORG] {} {}: old equity -> 0 "
+                          "(-100% wipeout realized), new equity re-enters".format(t, d))
+                    r = 0.0
+                elif r > 5.0 or r < 0.2:
+                    # Reverse-split / bad print: a share-count change preserves
+                    # holder value, so neutralise to flat 1.0 (index continuous
+                    # across the split). e.g. Ouster 1:10, Momentus 1:50,
+                    # BlackSky 1:9. Chain-linking would otherwise compound the
+                    # split ratio into every later point. Logged, not masked.
+                    print("    [chain-link CA] {} {}: ratio {:.2f} neutralised "
+                          "(reverse-split / bad print -> flat)".format(t, d, r))
+                    r = 1.0
+                num += w * r
+                den += w
+        idx *= (num / den) if den > 0 else 1.0
+        series.append({"date": d, "value": round(idx, 2)})
+        prev_known = dict(last_known)
+    return series
+
+
 class IndexGuardrailError(Exception):
     """Raised when a computed index series fails a publish-blocking health check."""
 
@@ -399,8 +474,17 @@ def main():
         token_tickers = {k for k, v in _reg.items()
                          if isinstance(v, dict)
                          and (v.get("type") == "token" or v.get("sector") in ("Token", "Tokens"))}
+        # Membership: the index MUST honor registry status — same gate as
+        # calculate_bottleneck_composite.py ("parity is essential"). Reading
+        # status off market_caps (always null) silently admitted ~40% of weight
+        # in deliberately-excluded names (GOOG/AMZN/TSLA/etc.). Registry is the
+        # single source of truth for membership.
+        registry_excluded = {k for k, v in _reg.items()
+                             if isinstance(v, dict)
+                             and v.get("status") in ("excluded", "data_quarantine")}
     except Exception:
         token_tickers = set()
+        registry_excluded = set()
 
     # build price lookup: ticker -> price (USD)
     prices_by_ticker = {}
@@ -418,9 +502,21 @@ def main():
     eligible = [e for e in entities
                 if e["market_cap_usd"] >= MIN_MARKET_CAP
                 and e["ticker"] in prices_by_ticker
+                and e["ticker"] not in registry_excluded       # registry = source of truth
                 and e.get("status") not in ("excluded", "data_quarantine")
                 and e["ticker"] not in token_tickers
                 and e.get("sector") != "Token"]
+
+    # ── Parity guard (publish-blocking) ──────────────────────────────
+    # The index universe MUST equal the bottleneck-composite universe (both
+    # gate on registry exclusions + tokens). If any registry-excluded name
+    # leaks into eligible, the membership invariant is broken — abort rather
+    # than publish a Big-Tech-contaminated index again.
+    _leak = registry_excluded & {e["ticker"] for e in eligible}
+    if _leak:
+        raise IndexGuardrailError(
+            "Membership parity violation — {} registry-excluded name(s) leaked "
+            "into the index universe: {}".format(len(_leak), sorted(_leak)[:20]))
 
     excluded_micro = [e for e in entities
                       if 0 < e["market_cap_usd"] < MIN_MARKET_CAP and e["ticker"] in prices_by_ticker]
@@ -623,21 +719,24 @@ def main():
         sector_weights = compute_capped_weights(sector_entities)
 
         if all_dates and price_matrix:
-            sub_series_raw, _, _ = backfill_index(
-                sector_entities, sector_weights, price_matrix, all_dates, sub_base_str
+            # Chain-linked daily-return sub-index — admits R1 post-base IPOs via
+            # enter-at-first-price (see backfill_index_chained). The 20x-median
+            # cap is intentionally dropped: it clips individual points, but a
+            # compounded series carries a spike forward into every later point,
+            # so mid-series clipping distorts the level. The dod guardrail blocks
+            # a genuine daily spike at its source instead.
+            sub_series_raw = backfill_index_chained(
+                sector_entities, sector_weights, price_matrix, all_dates
             )
-            # Sanity cap at 20x median per day to catch stray currency/
-            # unit-mismatch artefacts from individual constituents.
-            if sub_series_raw:
-                vals = [pt["value"] for pt in sub_series_raw if pt["value"] > 0]
-                if vals:
-                    median_val = sorted(vals)[len(vals) // 2]
-                    cap = median_val * 20
-                    for pt in sub_series_raw:
-                        if pt["value"] > cap:
-                            pt["value"] = cap
-            sub_series = sub_series_raw
-            sub_series, sub_norm_date, sub_norm_factor = normalise_series(sub_series)
+            # Emit only from the robust-coverage base date. The chain warms up
+            # (carry-forward + compounding) over the earliest ~20 dates, but the
+            # thinnest pre-quorum days — where the composite's share weighting
+            # and the sub-index daily-change legitimately diverge on near-empty
+            # coverage — are not published. Normalised values for every retained
+            # date are identical (anchor = 2025-03-31), so this only trims the
+            # thin head, exactly as the prior fixed-base method did.
+            sub_series_raw = [pt for pt in sub_series_raw if pt["date"] >= sub_base_str]
+            sub_series, sub_norm_date, sub_norm_factor = normalise_series(sub_series_raw)
             sector_value = sub_series[-1]["value"] if sub_series else BASE_VALUE
             print(f"    {sector}: normalised on {sub_norm_date} (factor: {sub_norm_factor:.6f})")
         else:

@@ -237,3 +237,22 @@ The verifier held **Yttrium** at CRITICAL despite Lynas Malaysia announcing Y re
 - **Lithium hydroxide** vs **lithium carbonate** — hydroxide is more concentrated; consider sub-field flag.
 - **GaN bulk HVPE freestanding** vs **GaN-on-Si epi** — sub-segment severity differs; consider sub-field flag.
 - **Tungsten** entry already captures the WF6 sub-field severity at the upstream stage; WF6 MEDIUM is the downstream-only call. Confirm this two-entry structure reads cleanly.
+
+---
+
+## Principle-2 named suppliers — removed from the EQUITY INDEX, retained here
+
+These companies make a critical frontier input but their **equity is dominated by
+non-frontier revenue**, so they are excluded from the equity index (Principle 2)
+while their input stays tracked in this bottleneck/commodities layer with the
+company NAMED. This preserves the supply-chain intelligence the index would lose.
+
+| Critical input | Tracked entry | Named supplier(s) — out of index | Why out of index |
+|----------------|---------------|----------------------------------|------------------|
+| **ABF (Ajinomoto Build-up Film), IC substrate dielectric** | IC substrate / ABF | **Ajinomoto (2802 JP)** | Core business is food/seasonings/amino acids; ABF is a small but critical line. |
+| **Nickel/cobalt superalloys, titanium (space/jet-engine structural)** | Superalloys / Titanium | **Carpenter Technology (CRS)**, ATI Inc (ATI) | Equity dominated by commercial-aerospace specialty metals; frontier (space) a minority. |
+| **Carbon-fibre composites (launch/satellite structures)** | *(add carbon-fibre entry — Toray/Hexcel/Teijin ~70%)* | **Hexcel (HXL)**, Toray, Teijin | Equity dominated by commercial-aerospace composites; space/defense a minority. |
+| **Industrial & specialty gases (He, Ar, N₂, specialty etch/dep gases)** | He / Ar / specialty-gas entries (already named) | **Linde (LIN), Air Liquide (AI FP), Air Products (APD), Nippon Sanso (4091 JP)** | Horizontal gas majors; semiconductor ≈10–15% of revenue. Already in the He/Ar/LOX/LH₂ equity baskets. |
+
+*Note:* carbon-fibre composite is not yet a standalone tracked commodity — flagged to
+add (Toray/Hexcel/Teijin concentration, launch-structure bottleneck) in commodities coverage work.

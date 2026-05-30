@@ -94,6 +94,54 @@ SECTOR_MAP = {
     "Tokens":             "Token",
 }
 
+# Reuse the EXACT chain-link + reorg logic from the standard index so the two
+# composites are methodologically identical — the divergence is then tilt-only.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from calculate_index import backfill_index_chained, REORG_EVENTS  # noqa: E402
+
+
+def _selfcheck_chain(entities, weights, price_matrix, all_dates, base_date_str, prod_series):
+    """Independent dense-array chain-link recompute — must match the
+    backfill_index_chained output to <0.01. Gives the bottleneck composite its
+    own Δ=0 verification (not just 'it ran'), same discipline as the standard
+    index's reconstruction."""
+    tickers = [e["ticker"] for e in entities]
+    ff = {}
+    for t in tickers:
+        arr, last = [], None
+        for d in all_dates:
+            p = price_matrix.get(d, {}).get(t)
+            if p is not None and p > 0:
+                last = p
+            arr.append(last)
+        ff[t] = arr
+    raw, idx = [], 1.0
+    for k, d in enumerate(all_dates):
+        if k == 0:
+            raw.append(round(idx, 2)); continue
+        num = den = 0.0
+        for t in tickers:
+            w = weights.get(t, 0.0)
+            if w <= 0:
+                continue
+            pp, pc = ff[t][k - 1], ff[t][k]
+            if pp is not None and pc is not None and pp > 0:
+                r = pc / pp
+                if REORG_EVENTS.get(t) == d:
+                    r = 0.0
+                elif r > 5.0 or r < 0.2:
+                    r = 1.0
+                num += w * r; den += w
+        idx *= (num / den) if den > 0 else 1.0
+        raw.append(round(idx, 2))
+    raw2 = [{"date": d, "value": v} for d, v in zip(all_dates, raw) if d >= base_date_str]
+    norm, _, _ = normalise_series(raw2)
+    nm = {pt["date"]: pt["value"] for pt in norm}
+    pm = {pt["date"]: pt["value"] for pt in prod_series}
+    common = set(nm) & set(pm)
+    worst = max((abs(nm[d] - pm[d]) for d in common), default=0.0)
+    return (worst < 0.01 and not (set(nm) ^ set(pm))), worst
+
 
 def load_json(path):
     with open(path) as f:
@@ -317,49 +365,68 @@ def main():
         mult = BOTTLENECK_MULTIPLIERS.get(bn if bn != "UNRATED" else None, 1.0)
         print("    {:8s}  ×{:.1f}   {:>4d}  ({:5.1f}%)".format(bn, mult, n, pct))
 
-    # ── 5% cap (same as mcap composite) ──
-    weights = compute_capped_weights(raw_weights)
+    # ── capped weights: bottleneck tilt AND mcap baseline. SAME universe,
+    #    SAME chain-linked methodology — the only difference is the weighting,
+    #    so the divergence between them is TILT-ONLY (the old comparison to the
+    #    Option-A composite conflated structure with tilt and is dropped). ──
+    weights = compute_capped_weights(raw_weights)                       # bottleneck-tilted
+    mcap_weights = compute_capped_weights({e["ticker"]: e["market_cap_usd"] for e in eligible})
 
-    # ── load history ──
+    # ── load history + trading-day filter (== standard index) ──
     price_matrix, ticker_meta, all_dates = load_all_history()
+    elig_tk = {e["ticker"] for e in eligible}
+    _need_td = max(1, int(len(eligible) * 0.5))
+    all_dates = [d for d in all_dates
+                 if sum(1 for t in elig_tk if t in price_matrix.get(d, {})) >= _need_td]
 
-    # inject today's live prices
-    if today_str not in price_matrix:
-        price_matrix[today_str] = {}
-        all_dates.append(today_str)
-        all_dates.sort()
-    for t, p in prices_by_ticker.items():
-        if p is not None and 0 < p <= 5000:
-            price_matrix[today_str][t] = p
+    # ── injection gating: a real trading day only, never the wall clock ──
+    from collections import Counter as _C
+    _dc = _C(str(p.get("date"))[:10] for p in prices_data["prices"]
+             if p.get("price") is not None and p.get("date")
+             and str(p.get("date"))[:10] <= today_str and p.get("ticker") in elig_tk)
+    _q = max(10, int(len(eligible) * 0.05))
+    _td = sorted(d for d, c in _dc.items() if c >= _q)
+    data_date = _td[-1] if _td else None
+    last_hist = all_dates[-1] if all_dates else None
+    if data_date and (last_hist is None or data_date > last_hist):
+        price_matrix.setdefault(data_date, {})
+        if data_date not in all_dates:
+            all_dates.append(data_date); all_dates.sort()
+        for t, p in prices_by_ticker.items():
+            if p is not None and 0 < p <= 5000:
+                price_matrix[data_date][t] = p
 
-    # ── base date selection ──
-    # Same heuristic as calculate_index.py: earliest date within ~5Y window
-    # where ≥30% of capped weight is represented.
-    min_cov = sum(weights.values()) * 0.3
-    base_date_str = all_dates[0]
+    # ── base date (== standard) ──
     target_5y = (datetime.strptime(today_str, "%Y-%m-%d") - timedelta(days=1825)).strftime("%Y-%m-%d")
+    base_date_str = all_dates[0]
     for d in all_dates:
-        if d >= target_5y:
-            day_w = sum(w for t, w in weights.items() if t in price_matrix.get(d, {}))
-            if day_w >= min_cov:
-                base_date_str = d
-                break
-    print("  Base date: {}".format(base_date_str))
+        if d >= target_5y and sum(1 for t in elig_tk if t in price_matrix.get(d, {})) >= len(eligible) * 0.3:
+            base_date_str = d
+            break
+    print("  Base date: {} | trading days: {}".format(base_date_str, len(all_dates)))
 
-    # ── backfill ──
-    raw_series, actual_base, _ = backfill_index(weights, price_matrix, all_dates, base_date_str)
-    series, norm_date, factor = normalise_series(raw_series)
-    print("  Normalised to {}={} (date: {}, factor: {:.6f})".format(
-        BASE_VALUE, BASE_VALUE, norm_date, factor))
+    # ── chain-linked backfill (== standard), emit from base, normalise ──
+    def _chain(wts):
+        raw = backfill_index_chained(eligible, wts, price_matrix, all_dates)
+        raw = [pt for pt in raw if pt["date"] >= base_date_str]
+        s, _, _ = normalise_series(raw)
+        return s
+    series = _chain(weights)            # bottleneck-tilted
+    mcap_series = _chain(mcap_weights)  # mcap baseline single-basket (tilt-only reference)
     if not series:
-        print("  ERROR: empty series produced", file=sys.stderr)
-        sys.exit(1)
-
+        print("  ERROR: empty series produced", file=sys.stderr); sys.exit(1)
     last_value = series[-1]["value"]
-    print("  Last value: {} ({})".format(last_value, series[-1]["date"]))
+    print("  Last value (bottleneck): {} ({})".format(last_value, series[-1]["date"]))
+    print("  Last value (mcap basis): {} ({})".format(mcap_series[-1]["value"], mcap_series[-1]["date"]))
 
-    # ── divergence vs mcap composite ──
-    per_day_div, flag_lines = compute_divergence(series, composite.get("series", []))
+    # ── self-check: independent dense-array recompute must match (Δ=0) ──
+    ok, worst = _selfcheck_chain(eligible, weights, price_matrix, all_dates, base_date_str, series)
+    print("  Self-check (independent recompute): {} (max|Δ|={:.4f})".format("MATCH" if ok else "DRIFT", worst))
+    if not ok:
+        print("  ERROR: bottleneck self-check FAILED — aborting", file=sys.stderr); sys.exit(1)
+
+    # ── divergence vs the mcap-weighted SINGLE BASKET (tilt-only) ──
+    per_day_div, flag_lines = compute_divergence(series, mcap_series)
     flagged_months = [l for l in flag_lines if l.endswith("Y")]
     print("  Divergence vs mcap composite: {} months flagged (|avg| >= {}%)".format(
         len(flagged_months), DIVERGENCE_FLAG_PCT))

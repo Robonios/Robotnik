@@ -195,10 +195,17 @@ def fetch_equity_mcaps():
                     mcap = info.get("marketCap")
                     currency = info.get("currency", "USD")
 
-                    # Convert to USD if not already
+                    # Convert to USD if not already.
+                    # GBp FIX: Yahoo reports marketCap in the MAJOR unit (GBP
+                    # pounds) even when the quote `currency` is the minor unit
+                    # "GBp" (pence). Applying the pence price-rate (GBPUSD/100)
+                    # to the already-pounds marketCap deflates it 100x — observed
+                    # on RPI/IMI/RSW LN. Convert market cap with the major-unit
+                    # rate. (Prices stay on the GBp ÷100 rate elsewhere.)
                     if mcap and mcap > 0:
-                        rate = fx_rates.get(currency, None)
-                        if rate and currency != "USD":
+                        conv_ccy = "GBP" if currency == "GBp" else currency
+                        rate = fx_rates.get(conv_ccy, None)
+                        if rate and conv_ccy != "USD":
                             mcap_usd = mcap * rate
                         else:
                             mcap_usd = mcap

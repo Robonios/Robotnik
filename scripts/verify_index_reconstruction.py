@@ -42,6 +42,7 @@ BASE_VALUE      = 1000.0
 TRADING_COVER   = 0.50          # trading-day filter (eligible coverage)
 SUB_COVER       = 0.30          # base-date coverage threshold
 LOOKBACK_DAYS   = 1825          # ~5y for the raw sub-index base
+REORG_EVENTS    = {"WOLF": "2025-09-29"}   # bankruptcy/wipeout reorgs == production
 COMPOSITE_SECTORS = ["semiconductor", "robotics", "space", "materials"]
 SECTOR_MAP = {
     "Semiconductor":"Semiconductor","Semiconductors":"Semiconductor","Semis":"Semiconductor",
@@ -82,13 +83,17 @@ def main():
     tokens = {k for k, v in reg.items()
               if isinstance(v, dict) and (v.get("type") == "token"
               or v.get("sector") in ("Token", "Tokens"))}
+    registry_excluded = {k for k, v in reg.items()
+                         if isinstance(v, dict)
+                         and v.get("status") in ("excluded", "data_quarantine")}
 
-    # ── eligible universe (replicated filter) ────────────────────────────
+    # ── eligible universe (replicated filter — registry is source of truth) ──
     for e in mc:
         e["sector"] = SECTOR_MAP.get(e.get("sector", ""), e.get("sector", "Other"))
     elig = [e for e in mc
             if e["market_cap_usd"] >= MIN_MCAP
             and e["ticker"] in price_now
+            and e["ticker"] not in registry_excluded
             and e.get("status") not in ("excluded", "data_quarantine")
             and e["ticker"] not in tokens
             and e["sector"] != "Token"]
@@ -143,34 +148,40 @@ def main():
         ents = {e["ticker"]: e["market_cap_usd"] for e in elig if e["sector"] == sector}
         if not ents: return None
         w = capped_weights(ents)
-        # production emits backfill points only for dates >= base_date (it
-        # `continue`s past earlier dates); replicate by emitting from bi.
-        edates = trading[bi:]
+        # Chain-linked daily-return (enter-at-first-price), matching production's
+        # backfill_index_chained: idx[k] = idx[k-1] * weighted-avg daily ratio over
+        # constituents live on BOTH k-1 and k; idx rounded each step to 2dp. ffill
+        # is None until a constituent's first real bar, so a late IPO contributes
+        # no return on its entry day (no dilution jump).
         raw = []
-        for dt in edates:
-            i = didx[dt]
-            wr = aw = 0.0
+        idx = 1.0
+        for k in range(len(trading)):
+            if k == 0:
+                raw.append(round(idx, 2)); continue
+            num = den = 0.0
             for tk, wt in w.items():
-                pn = ffill.get(tk, [None]*len(trading))[i]
-                pb = ffill.get(tk, [None]*len(trading))[bi]
-                if pn is not None and pb is not None and pb > 0:
-                    wr += wt * (pn / pb); aw += wt
-            v = BASE_VALUE * (wr / aw) if aw > 0 else (raw[-1] if raw else BASE_VALUE)
-            raw.append(round(v, 2))             # production rounds raw backfill (line 221)
-        # 20x-median sanity cap (replicated)
-        pos = [v for v in raw if v > 0]
-        if pos:
-            med = sorted(pos)[len(pos)//2]; capv = med * 20
-            raw = [min(v, capv) for v in raw]
+                arr = ffill.get(tk)
+                if not arr: continue
+                pp, pc = arr[k - 1], arr[k]
+                if pp is not None and pc is not None and pp > 0:
+                    r = pc / pp
+                    if REORG_EVENTS.get(tk) == trading[k]:   # wipeout reorg == production
+                        r = 0.0
+                    elif r > 5.0 or r < 0.2:                  # reverse-split/bad print -> flat
+                        r = 1.0
+                    num += wt * r; den += wt
+            idx *= (num / den) if den > 0 else 1.0
+            raw.append(round(idx, 2))
         # normalise to 1000 on NORMALISE_DATE (exact match; 2025-03-31 present)
-        ed_idx = {dt: k for k, dt in enumerate(edates)}
-        if NORMALISE_DATE in ed_idx:
-            base_v = raw[ed_idx[NORMALISE_DATE]]
-        else:                                   # nearest >= target fallback
-            j = next((k for k, dt in enumerate(edates) if dt >= NORMALISE_DATE), len(edates)-1)
+        if NORMALISE_DATE in didx:
+            base_v = raw[didx[NORMALISE_DATE]]
+        else:
+            j = next((k for k, dt in enumerate(trading) if dt >= NORMALISE_DATE), len(trading)-1)
             base_v = raw[j]
         factor = BASE_VALUE / base_v if base_v else 1.0
-        return dict(zip(edates, [round(v * factor, 2) for v in raw])), w
+        # emit only from sub_base (chain warmed up over earlier dates) — == production
+        return {dt: round(v * factor, 2)
+                for dt, v in zip(trading, raw) if dt >= sub_base}, w
 
     subs = {}
     sub_w = {}
@@ -186,7 +197,7 @@ def main():
         if cp and cp > 0 and m > 0:
             shares[e["ticker"]] = m / cp
             sector_of[e["ticker"]] = e["sector"].lower()
-    edates = trading[bi:]            # composite dates = union of sub-series dates (all start at sub_base)
+    edates = trading[bi:]            # emit from sub_base (chain warmed up earlier) == production
     comp_raw = []
     for dt in edates:
         i = didx[dt]

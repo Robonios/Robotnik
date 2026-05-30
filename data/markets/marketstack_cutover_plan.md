@@ -1,6 +1,6 @@
 # MarketStack Cutover Plan
 
-**Status:** DRAFT. EODHD decommission is settled; this document is "how to transition off cleanly", not "should we".
+**Status:** EXECUTED 2026-05-30. Price/index pipeline cut over to MarketStack+Yahoo (chain-linked, daily-FX, split-adjusted); EODHD off the price path; price-history/live/intraday fetchers archived to `archive/scripts/eodhd/`; EODHD key retained 30 days for rollback. fetch_prices.py kept (defines EQUITIES universe; EODHD main() dormant). Fundamentals/earnings/commodities remain on EODHD (deferred, within key-retention window).
 
 **Prerequisites for cutover start:**
 1. ✓ Licence-basis confirmation (MarketStack permits redistribution + display)

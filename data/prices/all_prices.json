@@ -1,11 +1,7 @@
 {
-  "fetched_at": "2026-05-30T11:57:00.395689Z",
-  "count": 344,
-  "total_fetched": 344,
-  "excluded": 0,
-  "sources": [
-    "MarketStack+Yahoo USD daily-FX"
-  ],
+  "fetched_at": "2026-05-30T20:47:36.196630+00:00Z",
+  "count": 343,
+  "source": "MarketStack + Yahoo overrides + CoinGecko (assembled)",
   "prices": [
     {
       "ticker": "ALGM",
@@ -148,14 +144,6 @@
       "price": 114.68,
       "currency": "USD",
       "date": "2026-05-29",
-      "sector": "Semiconductor",
-      "source": "MarketStack"
-    },
-    {
-      "ticker": "AGPXX",
-      "price": 1.0,
-      "currency": "USD",
-      "date": "2026-05-22",
       "sector": "Semiconductor",
       "source": "MarketStack"
     },
@@ -401,7 +389,7 @@
     },
     {
       "ticker": "ASML",
-      "price": 1880.331098,
+      "price": 1612.760009765625,
       "currency": "USD",
       "date": "2026-05-29",
       "sector": "Cross-stack",
@@ -564,14 +552,6 @@
       "price": 44.689836,
       "currency": "USD",
       "date": "2026-05-22",
-      "sector": "Robotics",
-      "source": "MarketStack"
-    },
-    {
-      "ticker": "AUTO NO",
-      "price": 1.231365,
-      "currency": "USD",
-      "date": "2023-10-18",
       "sector": "Robotics",
       "source": "MarketStack"
     },
@@ -852,14 +832,6 @@
       "price": 136.897158,
       "currency": "USD",
       "date": "2026-05-22",
-      "sector": "Robotics",
-      "source": "MarketStack"
-    },
-    {
-      "ticker": "KCR FH",
-      "price": 32.416483,
-      "currency": "USD",
-      "date": "2023-10-18",
       "sector": "Robotics",
       "source": "MarketStack"
     },
@@ -1608,14 +1580,6 @@
       "source": "MarketStack"
     },
     {
-      "ticker": "9868",
-      "price": 8.628508,
-      "currency": "USD",
-      "date": "2023-10-09",
-      "sector": "Robotics",
-      "source": "MarketStack"
-    },
-    {
       "ticker": "002050",
       "price": 7.945609,
       "currency": "USD",
@@ -1737,11 +1701,11 @@
     },
     {
       "ticker": "RTX",
-      "price": 153.55,
+      "price": 179.66000366210938,
       "currency": "USD",
       "date": "2026-05-29",
       "sector": "Space",
-      "source": "MarketStack"
+      "source": "Yahoo (override)"
     },
     {
       "ticker": "NOC",
@@ -2442,6 +2406,30 @@
     {
       "ticker": "290A JP",
       "price": 11.904313,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "9868",
+      "price": 8.151098,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "AUTO NO",
+      "price": 1.422474,
+      "currency": "USD",
+      "date": "2026-05-29",
+      "sector": null,
+      "source": "Yahoo (override)"
+    },
+    {
+      "ticker": "KCR FH",
+      "price": 33.11181,
       "currency": "USD",
       "date": "2026-05-29",
       "sector": null,

@@ -1468,3 +1468,53 @@ MarketStack's EOD history genuinely lags by up to ~1 week for some exchanges
 Independent (non-circular) validation: top-weighted constituents are checked
 MarketStack vs Yahoo vs exchange — not against EODHD alone (which has its own
 bugs). This is what caught the ASML routing and RTX corruption faults.
+
+---
+
+## §14 — Frontier membership, chain-linked methodology, and Yahoo's role (MarketStack cutover)
+
+### 14.1 Index membership — frontier pure-play
+The Composite is a **deliberate, name-by-name frontier book**, not a market-cap
+sweep. A constituent is IN only if its **core business is the physical
+frontier-stack value chain** (semiconductors / robotics-automation / space /
+frontier materials), including direct supply chain, frontier-SPECIFIC software
+(EDA in; general AI/data/enterprise software out), and operators+integrators of
+frontier hardware. OUT: Big-Tech (GOOG/AMZN/TSLA), diversified industrials
+(CAT/Siemens/ABB), diversified defense primes (RTX/LMT/NOC), EMS + horizontal
+interconnect (Foxconn/Amphenol), diversified chemicals (BASF), industrial-gas
+majors (Linde), energy/nuclear (OKLO/Cameco), autos.
+- **Principle 1** — supply chain means frontier-SPECIFIC suppliers, not
+  horizontal suppliers serving all electronics.
+- **Principle 2** — the equity-index bar is stricter than the bottleneck bar: an
+  equity dominated by non-frontier revenue is OUT of the index even if it makes a
+  critical frontier input — that input stays tracked in the bottleneck/commodities
+  layer with the company NAMED (e.g. Ajinomoto→ABF, Carpenter/ATI→superalloys,
+  Hexcel→carbon-fibre, Linde/Air Liquide→industrial gases).
+- **Enforcement is a guarded invariant**: the index reads `status:"excluded"`
+  from the **registry** (single source of truth), same gate as the bottleneck
+  composite, with a publish-blocking parity guard (index universe ≡ bottleneck
+  universe). Result: **182 frontier constituents**, ~40% of prior weight removed.
+- **Character (disclosed honestly):** a concentrated, higher-beta pure-play book.
+  +222% from base sits *above* SOXX (+202%) because it carries the space/materials
+  supercycle winners SOXX excludes — the correct signature, not a red flag. The
+  prior Big-Tech-diluted readings (+81.7% / +157%) understated the frontier tilt.
+
+### 14.2 Chain-linked construction
+Sub-indices are **chain-linked daily-return** (industry-standard), not fixed-base
+weighted-average-of-total-returns. This is what admits post-base IPOs (Rocket Lab,
+Planet, …) via **enter-at-first-price** (return ≡ 1.0 on entry, no dilution jump).
+Corporate actions are guarded: **reverse-splits** (Ouster 1:10, Momentus 1:50,
+BlackSky 1:9) neutralise to flat; **bankruptcy/wipeout reorgs** (Wolfspeed Ch.11)
+realise the −100% wipeout and re-enter the new equity at first price. Every
+single-day move >5× is neutralised + logged (transparent, not masked).
+
+### 14.3 Yahoo Finance — THREE load-bearing roles (do not remove)
+Yahoo is NOT a redundant second equity vendor. It is three distinct dependencies:
+1. **Primary price source** for the ~25 `MARKETSTACK_UNSUPPORTED` override names
+   (HK/KOSDAQ/TPEx + Ibiden + RTX) MarketStack cannot serve.
+2. **The daily-FX source** (`<CCY>USD=X`) the ENTIRE currency conversion rests on
+   (native → USD for every non-USD constituent and benchmark).
+3. **The independent validation source** / basis for the standing MS-vs-Yahoo
+   parity guard (catches the next RTX/Ibiden; distinguishes vendor lag from
+   corruption).
+A future cleanup must not treat it as removable.
