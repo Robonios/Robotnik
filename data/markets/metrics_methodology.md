@@ -1383,3 +1383,42 @@ few sessions) and the live today-injection adds constituents not present on the
 prior history date. This is a coverage/injection-alignment issue, independent
 of currency, and is tracked separately; it must be resolved before the
 daily-FX index publishes.
+
+---
+
+## 13. Return basis — total-return, and benchmark consistency
+
+**Decided:** 2026-05-30, alongside the MarketStack split-adjustment fix.
+
+### 13.1 Total-return basis (split + dividend adjusted)
+
+The index uses **total-return** prices — MarketStack `adj_close` (split *and*
+dividend adjusted) for constituents. This was forced by stock splits:
+MarketStack's raw `close` is split-**un**adjusted, so NVDA's and AVGO's 10-for-1
+splits (Jun/Jul 2024) created artificial −90% bars that broke the
+composite-vs-sub-index guardrail. `adj_close` removes all split (and dividend)
+artifacts uniformly.
+
+### 13.2 Benchmarks must match — and now do
+
+A total-return index benchmarked against price-return series would show a
+**systematic, fake outperformance equal to the dividend differential** — the
+kind of artifact an allocator's diligence flags immediately. The benchmark
+series (`SPY / QQQ / SOXX / ROBO / URTH / IXIC`) previously used raw `close`
+(price-return). They have been flipped to **`adjusted_close` (total-return)** in
+`fetch_benchmarks.py` so the index and its benchmarks are on the **same basis**.
+
+**Rule of record:** the Robotnik index family is **total-return**, benchmarked
+against **total-return** series. Both legs must stay adjusted; never mix bases.
+
+### 13.3 Known caveat — back-adjusted history must be frozen at go-live
+
+`adj_close` (and EODHD `adjusted_close`) are **back-adjusted**: every historical
+value is re-scaled each time a new split or dividend occurs. So a historical
+index value recomputed today will differ slightly from the same date recomputed
+after the next corporate action — the series silently drifts.
+
+This is acceptable pre-launch. **Once the index is published, historical values
+must be frozen point-in-time** (stored as published) rather than perpetually
+recomputed from back-adjusted prices, so a value an allocator saw on date T
+remains that value forever. Not a v1 blocker; tracked for the go-live hardening.

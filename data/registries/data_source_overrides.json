@@ -1,135 +1,229 @@
 {
   "_meta": {
-    "vendor_health_signal": "If this list exceeds ~5% of the 309-equity universe (≈15 entries), flag for primary-vendor re-evaluation. Currently 21 entries → 6.8%, ABOVE threshold. Drivers: MarketStack HK feed frozen at 2023-10-09 (10 HK entries) + 5 KOSDAQ + 1 Taiwan TPEx + 1 Hanwha KRW cap + 4 Round-3 vendor-uncovered (ANDR Vienna, 464A/290A Japan post-2024 letter IPOs, MOG/A duplicate). Supplementing with Yahoo at cutover; expected to stabilise here post-Round-3 absent further geography surprises.",
-    "providers_observed": ["eodhd", "marketstack"],
+    "vendor_health_signal": "If this list exceeds ~5% of the 309-equity universe (\u224815 entries), flag for primary-vendor re-evaluation. Currently 21 entries \u2192 6.8%, ABOVE threshold. Drivers: MarketStack HK feed frozen at 2023-10-09 (10 HK entries) + 5 KOSDAQ + 1 Taiwan TPEx + 1 Hanwha KRW cap + 4 Round-3 vendor-uncovered (ANDR Vienna, 464A/290A Japan post-2024 letter IPOs, MOG/A duplicate). Supplementing with Yahoo at cutover; expected to stabilise here post-Round-3 absent further geography surprises.",
+    "providers_observed": [
+      "eodhd",
+      "marketstack"
+    ],
     "last_audit_date": "2026-05-29"
   },
   "012450 KS": {
     "provider": "yahoo",
     "yahoo_symbol": "012450.KS",
-    "applies_to_vendors": ["eodhd", "marketstack"],
-    "reason": "Both EODHD and MarketStack cap KRW values at ₩999,999.9999; real price (~₩1,519,000) exceeds the cap on both, so the override applies regardless of which vendor is active. Alpha Vantage lacks KOSPI coverage (confirmed 2026-04-16). Yahoo Finance returns native KRW without ceiling.",
+    "applies_to_vendors": [
+      "eodhd",
+      "marketstack"
+    ],
+    "reason": "Both EODHD and MarketStack cap KRW values at \u20a9999,999.9999; real price (~\u20a91,519,000) exceeds the cap on both, so the override applies regardless of which vendor is active. Alpha Vantage lacks KOSPI coverage (confirmed 2026-04-16). Yahoo Finance returns native KRW without ceiling.",
     "added_date": "2026-04-16",
     "marketstack_confirmed_date": "2026-05-29"
   },
   "090360 KS": {
-    "provider": "yahoo", "yahoo_symbol": "090360.KQ",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Robostar — KOSDAQ ticker absent from MarketStack catalogue (probed 2026-05-29 on all symbol formats; v1 XKRX returns 'not available, try V2'; v2 XKRX returns 'not available'; XKOS / .KS / bare all 'no_valid_symbols_provided').",
+    "provider": "yahoo",
+    "yahoo_symbol": "090360.KQ",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Robostar \u2014 KOSDAQ ticker absent from MarketStack catalogue (probed 2026-05-29 on all symbol formats; v1 XKRX returns 'not available, try V2'; v2 XKRX returns 'not available'; XKOS / .KS / bare all 'no_valid_symbols_provided').",
     "added_date": "2026-05-29"
   },
   "098460 KS": {
-    "provider": "yahoo", "yahoo_symbol": "098460.KQ",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Koh Young Technology — KOSDAQ; same MarketStack absence pattern as 090360 KS.",
+    "provider": "yahoo",
+    "yahoo_symbol": "098460.KQ",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Koh Young Technology \u2014 KOSDAQ; same MarketStack absence pattern as 090360 KS.",
     "added_date": "2026-05-29"
   },
   "189300 KS": {
-    "provider": "yahoo", "yahoo_symbol": "189300.KQ",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Intellian Technologies — KOSDAQ; absent from MarketStack catalogue.",
+    "provider": "yahoo",
+    "yahoo_symbol": "189300.KQ",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Intellian Technologies \u2014 KOSDAQ; absent from MarketStack catalogue.",
     "added_date": "2026-05-29"
   },
   "455900 KS": {
-    "provider": "yahoo", "yahoo_symbol": "455900.KQ",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Angel Robotics — not in MarketStack reference universe at all (registry search returns zero results).",
+    "provider": "yahoo",
+    "yahoo_symbol": "455900.KQ",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Angel Robotics \u2014 not in MarketStack reference universe at all (registry search returns zero results).",
     "added_date": "2026-05-29"
   },
   "474170 KS": {
-    "provider": "yahoo", "yahoo_symbol": "474170.KQ",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Lumir Inc — not in MarketStack reference universe at all.",
+    "provider": "yahoo",
+    "yahoo_symbol": "474170.KQ",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Lumir Inc \u2014 not in MarketStack reference universe at all.",
     "added_date": "2026-05-29"
   },
   "6488 TT": {
-    "provider": "yahoo", "yahoo_symbol": "6488.TWO",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "GlobalWafers — Taiwan TPEx (OTC) listing. MarketStack's XTAI MIC covers TWSE main board only; TPEx is unsupported. Yahoo handles TPEx via .TWO suffix.",
+    "provider": "yahoo",
+    "yahoo_symbol": "6488.TWO",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "GlobalWafers \u2014 Taiwan TPEx (OTC) listing. MarketStack's XTAI MIC covers TWSE main board only; TPEx is unsupported. Yahoo handles TPEx via .TWO suffix.",
     "added_date": "2026-05-29"
   },
   "1274 HK": {
-    "provider": "yahoo", "yahoo_symbol": "1274.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "iMotion Automotive — IPO'd Dec 2023, after MarketStack's HK data cutoff (2023-10-09). Not in MarketStack catalogue.",
+    "provider": "yahoo",
+    "yahoo_symbol": "1274.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "iMotion Automotive \u2014 IPO'd Dec 2023, after MarketStack's HK data cutoff (2023-10-09). Not in MarketStack catalogue.",
     "added_date": "2026-05-29"
   },
   "2121 HK": {
-    "provider": "yahoo", "yahoo_symbol": "2121.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "AInnovation Technology — MarketStack carries the right instrument but data frozen at 2023-10-09 (2.5+ years stale), unusable for live tracking.",
+    "provider": "yahoo",
+    "yahoo_symbol": "2121.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "AInnovation Technology \u2014 MarketStack carries the right instrument but data frozen at 2023-10-09 (2.5+ years stale), unusable for live tracking.",
     "added_date": "2026-05-29"
   },
   "2252 HK": {
-    "provider": "yahoo", "yahoo_symbol": "2252.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Shanghai MicroPort MedBot — same HK staleness pattern as 2121 HK.",
+    "provider": "yahoo",
+    "yahoo_symbol": "2252.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Shanghai MicroPort MedBot \u2014 same HK staleness pattern as 2121 HK.",
     "added_date": "2026-05-29"
   },
   "2431 HK": {
-    "provider": "yahoo", "yahoo_symbol": "2431.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "MiniEye Technology — IPO'd mid-2024, not in MarketStack catalogue.",
+    "provider": "yahoo",
+    "yahoo_symbol": "2431.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "MiniEye Technology \u2014 IPO'd mid-2024, not in MarketStack catalogue.",
     "added_date": "2026-05-29"
   },
   "2432 HK": {
-    "provider": "yahoo", "yahoo_symbol": "2432.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Shenzhen Dobot Corp — IPO'd Dec 2024, not in MarketStack catalogue.",
+    "provider": "yahoo",
+    "yahoo_symbol": "2432.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Shenzhen Dobot Corp \u2014 IPO'd Dec 2024, not in MarketStack catalogue.",
     "added_date": "2026-05-29"
   },
   "2498 HK": {
-    "provider": "yahoo", "yahoo_symbol": "2498.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "RoboSense Technology — IPO'd Jan 2024, not in MarketStack catalogue.",
+    "provider": "yahoo",
+    "yahoo_symbol": "2498.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "RoboSense Technology \u2014 IPO'd Jan 2024, not in MarketStack catalogue.",
     "added_date": "2026-05-29"
   },
   "6600 HK": {
-    "provider": "yahoo", "yahoo_symbol": "6600.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "OneRobotics/Geek+ — MarketStack returns WRONG instrument (legacy Sciclone Pharms — ticker slot was reissued). Confirmed via /tickers/6600.XHKG endpoint.",
+    "provider": "yahoo",
+    "yahoo_symbol": "6600.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "OneRobotics/Geek+ \u2014 MarketStack returns WRONG instrument (legacy Sciclone Pharms \u2014 ticker slot was reissued). Confirmed via /tickers/6600.XHKG endpoint.",
     "added_date": "2026-05-29"
   },
   "6680 HK": {
-    "provider": "yahoo", "yahoo_symbol": "6680.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "China Rare Earth Resources — MarketStack returns JL Mag Rare-Earth instead; ambiguous mapping. Defer to Yahoo for primary.",
+    "provider": "yahoo",
+    "yahoo_symbol": "6680.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "China Rare Earth Resources \u2014 MarketStack returns JL Mag Rare-Earth instead; ambiguous mapping. Defer to Yahoo for primary.",
     "added_date": "2026-05-29"
   },
   "9660 HK": {
-    "provider": "yahoo", "yahoo_symbol": "9660.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Horizon Robotics — IPO'd Oct 2024, not in MarketStack catalogue.",
+    "provider": "yahoo",
+    "yahoo_symbol": "9660.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Horizon Robotics \u2014 IPO'd Oct 2024, not in MarketStack catalogue.",
     "added_date": "2026-05-29"
   },
   "9880 HK": {
-    "provider": "yahoo", "yahoo_symbol": "9880.HK",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "UBTECH Robotics — IPO'd Dec 2023, not in MarketStack catalogue.",
+    "provider": "yahoo",
+    "yahoo_symbol": "9880.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "UBTECH Robotics \u2014 IPO'd Dec 2023, not in MarketStack catalogue.",
     "added_date": "2026-05-29"
   },
   "ANDR AV": {
-    "provider": "yahoo", "yahoo_symbol": "ANDR.VI",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Andritz AG — MarketStack does not carry Wiener Börse (XWBO) at all. German cross-listings (XETRA/XFRA) are stale by ~1 week vs Vienna primary. Confirmed Round 3 (2026-05-29).",
+    "provider": "yahoo",
+    "yahoo_symbol": "ANDR.VI",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Andritz AG \u2014 MarketStack does not carry Wiener B\u00f6rse (XWBO) at all. German cross-listings (XETRA/XFRA) are stale by ~1 week vs Vienna primary. Confirmed Round 3 (2026-05-29).",
     "added_date": "2026-05-29"
   },
   "464A JP": {
-    "provider": "yahoo", "yahoo_symbol": "464A.T",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Tokyo Metro — IPO'd Oct 2024. Letter-suffix tickers for post-2024 XJPX IPOs absent from MarketStack catalogue.",
+    "provider": "yahoo",
+    "yahoo_symbol": "464A.T",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Tokyo Metro \u2014 IPO'd Oct 2024. Letter-suffix tickers for post-2024 XJPX IPOs absent from MarketStack catalogue.",
     "added_date": "2026-05-29"
   },
   "290A JP": {
-    "provider": "yahoo", "yahoo_symbol": "290A.T",
-    "applies_to_vendors": ["marketstack"],
-    "reason": "Kioxia Holdings — IPO'd Dec 2024. Letter-suffix tickers for post-2024 XJPX IPOs absent from MarketStack catalogue.",
+    "provider": "yahoo",
+    "yahoo_symbol": "290A.T",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Kioxia Holdings \u2014 IPO'd Dec 2024. Letter-suffix tickers for post-2024 XJPX IPOs absent from MarketStack catalogue.",
     "added_date": "2026-05-29"
   },
   "MOG/A": {
     "provider": "skip",
-    "applies_to_vendors": ["marketstack", "eodhd", "yahoo"],
-    "reason": "REGISTRY DUPLICATE — same entity as MOG.A in registry. Skip in all vendor fetchers; flag for registry hygiene cleanup (delete this ticker, keep MOG.A canonical).",
+    "applies_to_vendors": [
+      "marketstack",
+      "eodhd",
+      "yahoo"
+    ],
+    "reason": "REGISTRY DUPLICATE \u2014 same entity as MOG.A in registry. Skip in all vendor fetchers; flag for registry hygiene cleanup (delete this ticker, keep MOG.A canonical).",
     "added_date": "2026-05-29"
+  },
+  "9868": {
+    "provider": "yahoo",
+    "yahoo_symbol": "9868.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "XPeng HK line \u2014 MarketStack HK feed frozen at 2023-10-09 (>2.5yr stale). Surfaced by the fetch_eod_historical coverage guard. Yahoo returns current HKD, converted to USD via daily FX.",
+    "added_date": "2026-05-30"
+  },
+  "AUTO NO": {
+    "provider": "yahoo",
+    "yahoo_symbol": "AUTO.OL",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Autostore Holdings (Oslo) \u2014 MarketStack data stale at 2023-10-18. Surfaced by coverage guard. Yahoo returns current NOK, converted to USD via daily FX.",
+    "added_date": "2026-05-30"
+  },
+  "KCR FH": {
+    "provider": "yahoo",
+    "yahoo_symbol": "KCR.HE",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Konecranes (Helsinki) \u2014 MarketStack data stale at 2023-10-18. Surfaced by coverage guard. Yahoo returns current EUR, converted to USD via daily FX.",
+    "added_date": "2026-05-30"
   }
 }

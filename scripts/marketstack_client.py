@@ -405,6 +405,10 @@ MARKETSTACK_UNSUPPORTED = {
     "464A JP",  # Tokyo Metro (Oct 2024 IPO) — letter-suffix tickers not in MS catalog
     "290A JP",  # Kioxia Holdings (Dec 2024 IPO)
     "MOG/A",    # Registry duplicate of MOG.A — flag for hygiene, route nothing
+    # Genuinely stale on MS (>2yr) — surfaced by the coverage guard → route to Yahoo
+    "9868",     # XPeng HK line — MS HK feed frozen 2023-10-09
+    "AUTO NO",  # Autostore (Oslo) — MS data stale at 2023-10-18
+    "KCR FH",   # Konecranes (Helsinki) — MS data stale at 2023-10-18
 }
 
 

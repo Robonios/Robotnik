@@ -109,7 +109,9 @@ def main():
             continue
 
         r = rows[0]
-        close = r.get("close")
+        # adj_close (split+div adjusted, total-return basis) to match history +
+        # benchmarks; for the latest bar adj_close == close (no future actions).
+        close = r.get("adj_close") if r.get("adj_close") is not None else r.get("close")
         prev = r.get("open")  # not always populated; use open as proxy
         change_pct = None
         if close is not None and prev and prev > 0:

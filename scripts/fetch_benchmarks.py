@@ -114,9 +114,14 @@ def fetch_eodhd_daily(symbol):
 
     series = []
     for day in data:
+        # adjusted_close = split + dividend adjusted (total-return). MUST match
+        # the constituent basis (MarketStack adj_close, also TR) so the
+        # composite is not biased vs benchmarks by the dividend differential.
+        # See metrics_methodology §13.
+        adj = day.get("adjusted_close")
         series.append({
             "date": day["date"],
-            "close": day["close"],
+            "close": adj if adj is not None else day["close"],
             "volume": day.get("volume"),
         })
     return series
