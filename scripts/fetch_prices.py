@@ -817,8 +817,9 @@ def main():
         print("ERROR: EODHD_API_KEY not set")
         sys.exit(1)
     if not COINGECKO_KEY:
-        print("ERROR: COINGECKO_API_KEY not set")
-        sys.exit(1)
+        print("WARNING: COINGECKO_API_KEY not set — token watchlist fetch will be "
+              "skipped. Tokens are a non-functional background category and must not "
+              "block the equities pipeline.")
 
     print("=" * 60)
     print("ROBOTNIK PRICE FETCHER")
@@ -838,19 +839,29 @@ def main():
         json.dump(eq_output, f, indent=2)
     print("\nEquities: {}/{} succeeded -> {}".format(len(eq_results), len(EQUITIES), EQUITIES_JSON))
 
-    print("\n--- Fetching {} tokens (CoinGecko) ---\n".format(len(TOKENS)))
-    tk_results, tk_errors = fetch_coingecko_prices()
+    # Tokens are a non-functional background watchlist (excluded from every
+    # equity aggregation). The CoinGecko fetch is skipped-with-warning when the
+    # key is absent so it can never block the core equities pipeline; the
+    # existing tokens.json is left untouched on skip.
+    tk_results, tk_errors = [], []
+    if COINGECKO_KEY:
+        print("\n--- Fetching {} tokens (CoinGecko) ---\n".format(len(TOKENS)))
+        tk_results, tk_errors = fetch_coingecko_prices()
 
-    tk_output = {
-        "fetched_at": ts,
-        "count": len(tk_results),
-        "source": "CoinGecko (coingecko.com)",
-        "attribution": "Data provided by CoinGecko",
-        "tokens": tk_results,
-    }
-    with open(TOKENS_JSON, "w") as f:
-        json.dump(tk_output, f, indent=2)
-    print("\nTokens: {}/{} succeeded -> {}".format(len(tk_results), len(TOKENS), TOKENS_JSON))
+        tk_output = {
+            "fetched_at": ts,
+            "count": len(tk_results),
+            "source": "CoinGecko (coingecko.com)",
+            "attribution": "Data provided by CoinGecko",
+            "tokens": tk_results,
+        }
+        with open(TOKENS_JSON, "w") as f:
+            json.dump(tk_output, f, indent=2)
+        print("\nTokens: {}/{} succeeded -> {}".format(len(tk_results), len(TOKENS), TOKENS_JSON))
+    else:
+        print("\n--- Skipping {} tokens: COINGECKO_API_KEY not set ---".format(len(TOKENS)))
+        print("    (non-functional watchlist; equities pipeline proceeds, "
+              "existing tokens.json left as-is)")
 
     # Load entity registry to filter out excluded entities
     excluded_tickers = set()
