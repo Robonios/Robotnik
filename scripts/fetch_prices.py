@@ -45,6 +45,9 @@ def load_env():
                     os.environ.setdefault(k.strip(), v.strip())
 
 load_env()
+# deprecated: EODHD is off the pipeline. This module is still imported live (for EQUITIES);
+# the soft .get() keeps import safe when the key is gone, and the legacy main() self-guards
+# on an empty key (prints + exits). Do NOT change to a hard os.environ[...] load.
 EODHD_KEY = os.environ.get("EODHD_API_KEY", "")
 COINGECKO_KEY = os.environ.get("COINGECKO_API_KEY", "")
 

@@ -48,6 +48,8 @@ def load_env():
                     os.environ.setdefault(k.strip(), v.strip())
 
 load_env()
+# deprecated: benchmarks fetch via MarketStack (main() routes to fetch_ms_daily). The soft
+# .get() keeps import/run safe when the key is gone; the EODHD path below is dormant.
 EODHD_KEY = os.environ.get("EODHD_API_KEY", "")
 
 sys.path.insert(0, str(ROOT / "scripts"))
