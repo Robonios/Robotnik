@@ -7,6 +7,15 @@
     ],
     "last_audit_date": "2026-05-29"
   },
+  "RSW LN": {
+    "provider": "yahoo",
+    "yahoo_symbol": "RSW.L",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Renishaw — MarketStack returns the RSW.L ticker metadata but a null close (native_currency GBp), so assemble_all_prices drops it (no current price) and the index excluded it despite valid history + a valid market cap. Yahoo RSW.L returns a clean GBp close; converted to USD via daily FX. Recovered in the B-sweep index-completion pass.",
+    "added_date": "2026-05-31"
+  },
   "4062 JP": {
     "provider": "yahoo",
     "yahoo_symbol": "4062.T",

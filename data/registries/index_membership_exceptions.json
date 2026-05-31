@@ -1,0 +1,9 @@
+{
+  "_meta": {
+    "purpose": "Reverse-parity escape hatch. The reverse-parity guard in calculate_index.py asserts: {non-excluded frontier public names in the registry} == {index constituents} UNION {these exceptions}. A name belongs here ONLY when it is legitimately non-excluded yet legitimately NOT in the index, with a documented reason (e.g. a secondary listing already counted under its primary, or a genuine unrecoverable market-data gap). An EMPTY exceptions map means the index exactly equals the non-excluded frontier set.",
+    "guard": "calculate_index.py reverse-parity guard (publish-blocking)",
+    "last_reviewed": "2026-05-31",
+    "history": "Created in the B-sweep index-completion pass after closing a silent 13-name market-cap-coverage gap (Lynas, GlobalWafers, China Northern Rare Earth, 6 KOSDAQ robotics, etc.) + Renishaw (all_prices gap) + de-duplicating STM (ADR of STMPA). Post-fix the set is perfectly closed (196 == 196), so this map is empty."
+  },
+  "exceptions": {}
+}

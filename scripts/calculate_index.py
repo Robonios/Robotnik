@@ -518,6 +518,36 @@ def main():
             "Membership parity violation — {} registry-excluded name(s) leaked "
             "into the index universe: {}".format(len(_leak), sorted(_leak)[:20]))
 
+    # ── Reverse-parity guard (publish-blocking) ──────────────────────
+    # The forward guard (above) catches registry-EXCLUDED names leaking INTO the
+    # index. This catches the OPPOSITE direction — the failure mode that hid the
+    # B-sweep's silent 13-name gap: a non-excluded FRONTIER name MISSING from the
+    # index (added to the registry but lacking a market cap → no weight → dropped,
+    # with nothing to flag it). Every non-excluded public name must be IN the index
+    # OR acknowledged in index_membership_exceptions.json (secondary listings,
+    # genuine unrecoverable data gaps). Makes missing-names structurally visible.
+    try:
+        _rev_reg = load_json(_reg_path)
+    except Exception:
+        _rev_reg = {}
+    _exc_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                             "data", "registries", "index_membership_exceptions.json")
+    try:
+        _documented = set((load_json(_exc_path).get("exceptions") or {}).keys())
+    except Exception:
+        _documented = set()
+    _non_excl_public = {k for k, v in _rev_reg.items() if isinstance(v, dict)
+                        and v.get("type") == "public"
+                        and v.get("status") not in ("excluded", "data_quarantine")}
+    _missing = _non_excl_public - {e["ticker"] for e in eligible} - _documented
+    if _missing:
+        raise IndexGuardrailError(
+            "Reverse-parity violation — {} non-excluded frontier name(s) MISSING from "
+            "the index (no market cap / no weight). Backfill the cap (scripts/"
+            "backfill_market_caps.py) or fix membership, or document the reason in "
+            "data/registries/index_membership_exceptions.json: {}".format(
+                len(_missing), sorted(_missing)[:20]))
+
     excluded_micro = [e for e in entities
                       if 0 < e["market_cap_usd"] < MIN_MARKET_CAP and e["ticker"] in prices_by_ticker]
 

@@ -75,6 +75,16 @@ YF_OVERRIDES = {
     "HEXAB SS": "HEXA-B.ST",
     "STMPA": "STM",  # STMicro US ADR
     "MELE": "MELE.BR",
+    "6488 TT": "6488.TWO",  # GlobalWafers — TPEx (emerging board), not TWSE → .TWO not .TW
+    # KOSDAQ names: Bloomberg " KS" defaults to KOSPI (.KS), but these list on KOSDAQ (.KQ).
+    # Without these the weekly mcap fetch returns no cap → the name silently drops from the
+    # index (the B-sweep gap). Validated px*shares on each at backfill.
+    "090360 KS": "090360.KQ",  # Robostar
+    "098460 KS": "098460.KQ",  # Koh Young
+    "108490 KS": "108490.KQ",  # Robotis
+    "189300 KS": "189300.KQ",  # Intellian
+    "277810 KS": "277810.KQ",  # Rainbow Robotics
+    "455900 KS": "455900.KQ",  # Angel Robotics
 }
 
 def ticker_to_yahoo(ticker, country):
@@ -89,6 +99,11 @@ def ticker_to_yahoo(ticker, country):
         "C1": "SS", "C2": "SZ", "GR": "DE", "LN": "L",
         "SW": "SW", "FP": "PA", "FH": "HE", "SS": "ST",
         "NO": "OL", "AV": "VI", "CN": "TO",
+        # added (B-sweep): these suffixes were unmapped → ticker_to_yahoo returned the
+        # raw "TICKER CC" string → Yahoo lookup failed → no market cap → the name was
+        # silently dropped from the index. AU=Australia, IM=Italy(Milan), NA=Netherlands,
+        # IT=Israel(Tel Aviv, NOT Italy). Recovered Lynas/Iluka/Arafura/AMG/Avio.
+        "AU": "AX", "IM": "MI", "NA": "AS", "IT": "TA",
     }
 
     parts = t.split()

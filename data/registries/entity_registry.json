@@ -1220,7 +1220,11 @@
       "STMICROELECTRONICS ADR NV",
       "stmicroelectronics adr nv"
     ],
-    "value_chain": "Components & Subsystems"
+    "value_chain": "Components & Subsystems",
+    "status": "excluded",
+    "exclude_reason": "secondary_listing",
+    "exclude_note": "US ADR of STMicroelectronics; the primary listing STMPA (Euronext Paris) is the index constituent. Both map to Yahoo 'STM' — excluded here to prevent double-counting.",
+    "membership_audit": "2026-05-31"
   },
   "SNPS": {
     "id": "SNPS",
@@ -11224,8 +11228,8 @@
     "id": "600111",
     "name": "China Northern Rare Earth",
     "type": "public",
-    "sector": "Robotics",
-    "subsector": "Motion Control & Actuators",
+    "sector": "Materials",
+    "subsector": "Rare Earths",
     "country": "China",
     "city": null,
     "eodhd_ticker": "600111.600111.SHG",
