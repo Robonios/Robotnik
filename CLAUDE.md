@@ -41,7 +41,7 @@ Robotnik/
 │   ├── fetch_prices.py     # EODHD + CoinGecko (equities + tokens)
 │   ├── fetch_market_caps.py # Market cap data
 │   ├── fetch_price_history.py # Historical price data
-│   ├── calculate_index.py  # Robotnik Composite Index + 6 sub-indices
+│   ├── calculate_index.py  # Robotnik Composite Index + 4 sub-indices
 │   ├── fetch_prices_alphavantage.py  # Legacy Alpha Vantage fetcher
 │   ├── fetch_news.py       # ~30 RSS feeds
 │   ├── fetch_research.py   # OpenAlex API
@@ -96,7 +96,7 @@ Robotnik/
 
 - **Universe**: 347 entities (Robotnik_Universe_v5.xlsx) — Semi (45), Cross-stack (22), Robotics (152), Space (41), Materials (44), Tokens (43)
 - **Live data**: 331/347 entities with price feeds
-- **Robotnik Composite Index**: Market-cap weighted + 6 sub-indices
+- **Robotnik Composite Index**: Market-cap weighted + 4 sub-indices (semiconductors, robotics, space, materials). Cross-stack entities are redistributed into these 4 by primary sector; tokens are isolated out of the index (token isolation policy). The "6 sectors" below describe the full 347-entity *universe*, not the index sub-indices.
 - API keys stored in `.env` (not committed), loaded by `scripts/config.py`
 
 ## Data Fetcher Scripts
