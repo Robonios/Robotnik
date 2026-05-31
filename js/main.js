@@ -180,7 +180,7 @@ async function loadPriceData() {
       if (note) {
         const ts = priceData.fetched_at ? fmtDateRobotnik(priceData.fetched_at).split(' ')[0] : 'unknown';
         const liveTag = isLive ? ' · Live (15-min delayed)' : '';
-        note.textContent = uniqueCompanies.length + ' entities · Prices as of ' + ts + liveTag + ' · Source: EODHD · Updates daily';
+        note.textContent = uniqueCompanies.length + ' entities · Prices as of ' + ts + liveTag + ' · Source: MarketStack + Yahoo · Updates daily';
       }
     }
   } catch (err) {

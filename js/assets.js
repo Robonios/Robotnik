@@ -217,7 +217,7 @@ function sortVal(e,key){
     var withMcap=assetsData.filter(function(e){return e.market_cap>0;}).length;
     document.getElementById('assets-summary').textContent=total+' entities \u00b7 '+withMcap+' with market cap \u00b7 Updated '+new Date(data.last_updated).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
     var descEl=document.getElementById('assets-desc');
-    if(descEl)descEl.textContent=total+' frontier technology equities across semiconductors, robotics, space, and materials. Data from EODHD. Fundamentals weekly.';
+    if(descEl)descEl.textContent=total+' frontier technology equities across semiconductors, robotics, space, and materials. Prices via MarketStack & Yahoo.';
     // Per-sector counts derived from index eligibility
     var sc={semi:0,robo:0,space:0,materials:0};
     if(weightsData&&weightsData.weights){
