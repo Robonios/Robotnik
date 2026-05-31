@@ -33,14 +33,16 @@ A history rewrite (`git filter-repo`) is riskier than the served-tree removal an
 launch — served-tree removal eliminates the *active* GitHub-Pages exposure. Counsel to advise
 whether history scrubbing is warranted.
 
-### 1b. Displayed EODHD **fundamentals** — **STILL LIVE → Workstream B (priority)**
-`data/markets/fundamentals.json` (EODHD, stale 2026-04-09) → consumed by
-`scripts/calculate_metrics.py` → emitted into **`data/markets/robotnik_public_markets.json`**,
-which **is displayed** (assets.html per-name + search). So EODHD-derived fundamentals
-(revenue / margins / multiples) are **on the live site today.** This is a *licensing* exposure,
-not merely a staleness/consistency one. **Close it as part of the EODHD cleanup, not deferred:**
-rebuild `robotnik_public_markets.json` **without** the EODHD fundamentals fields (on the
-182-membership), **then** delete `fundamentals.json`. Tracked as a B item (see §4).
+### 1b. Displayed EODHD **fundamentals** — **CLOSED (B-sweep)**
+Was: `data/markets/fundamentals.json` (EODHD, stale 2026-04-09) → `calculate_metrics.py` →
+displayed `robotnik_public_markets.json` (assets.html). EODHD-derived fundamentals
+(revenue / margins / multiples / PE / EV-EBITDA / shares / earnings) were on the live site.
+**Resolved:** `calculate_metrics.py` rewired to drop ALL EODHD fundamentals fields and mirror
+the index (196 constituents — no excluded, no tokens); `fundamentals.json` **deleted**. RPM now
+carries only price/market/membership data (`market_cap` from Yahoo `market_caps.json`).
+**This was the last EODHD-sourced *data* file** — the EODHD data exposure is fully closed.
+(Residual: internal `eodhd_ticker` *mapping identifiers* in the registry/equities are stale
+symbology strings, not EODHD-sourced data — separate low-priority hygiene.)
 
 ---
 
@@ -90,6 +92,6 @@ pre-launch, because this is the one that an external data-diligence pass would c
 ## 5. Bottom line
 - **Active EODHD stored-data exposure on GitHub Pages: closed** (served tree; git-history residual flagged, non-blocking).
 - **EODHD off the live workflow:** commodities step removed (no fetcher) — the pipeline now makes **zero EODHD calls**; the only remaining EODHD touch is displayed `fundamentals.json` (→ B).
-- **Displayed EODHD fundamentals: still live** → B priority (regen-then-delete).
+- **Displayed EODHD fundamentals: CLOSED** (B-sweep) — RPM rewired to drop all fundamentals fields + mirror the 196 index; `fundamentals.json` deleted. No EODHD-sourced data remains.
 - **Yahoo (overrides + FX): newly flagged, displayed, bounded** → same licence read; clean-source paths identified.
 - **Net legal read needed on:** EODHD stored-data history residual + EODHD displayed fundamentals + Yahoo displayed prices/FX. MarketStack is the clean-terms target.

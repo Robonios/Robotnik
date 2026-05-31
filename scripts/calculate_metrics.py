@@ -12,8 +12,13 @@ Calculates derived metrics for all active public entities:
 Inputs:
     data/prices/all_prices.json
     data/prices/history/*.json
-    data/markets/fundamentals.json
+    data/index/weights.json          (index constituents — RPM mirrors the index)
+    data/index/market_caps.json
     data/registries/entity_registry.json
+
+NOTE: EODHD fundamentals (revenue/margins/PE/EV-EBITDA/shares/etc.) were removed in the
+B-sweep — EODHD is decommissioned and those fields were a licensing exposure via this
+displayed file. Re-source from a clean-terms vendor before re-adding.
 
 Output:
     data/markets/robotnik_public_markets.json
@@ -32,7 +37,7 @@ from collections import defaultdict
 ROOT = Path(__file__).resolve().parent.parent
 PRICES_PATH = ROOT / "data" / "prices" / "all_prices.json"
 HISTORY_DIR = ROOT / "data" / "prices" / "history"
-FUNDAMENTALS_PATH = ROOT / "data" / "markets" / "fundamentals.json"
+WEIGHTS_PATH = ROOT / "data" / "index" / "weights.json"
 REGISTRY_PATH = ROOT / "data" / "registries" / "entity_registry.json"
 OUTPUT_PATH = ROOT / "data" / "markets" / "robotnik_public_markets.json"
 OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -112,9 +117,15 @@ def main():
     # Load data sources
     reg = load_json(REGISTRY_PATH) or {}
     prices_data = load_json(PRICES_PATH) or {"prices": []}
-    fundamentals_data = load_json(FUNDAMENTALS_PATH) or {"entities": {}}
     mcap_path = ROOT / "data" / "index" / "market_caps.json"
     mcap_json = load_json(mcap_path) or {"market_caps": []}
+
+    # RPM mirrors the INDEX: restrict to the index constituents (weights.json) so the
+    # displayed Public Market Universe == the validated index — no excluded names, no
+    # tokens (both already absent from the index), structurally pinned to the
+    # reverse-parity-guarded 196-name membership set.
+    weights_json = load_json(WEIGHTS_PATH) or {"weights": []}
+    index_constituents = {w["ticker"] for w in weights_json.get("weights", [])}
 
     excluded = {k for k, v in reg.items() if isinstance(v, dict) and v.get("status") == "excluded"}
     sector_map = {k: v.get("sector", "") for k, v in reg.items()
@@ -128,13 +139,11 @@ def main():
     mcap_usd = {m["ticker"]: m["market_cap_usd"] for m in mcap_json.get("market_caps", [])
                 if m.get("market_cap_usd") and m["ticker"] not in excluded}
 
-    # Current price lookup
+    # Current price lookup — restricted to the index constituents (RPM mirrors index)
     current_prices = {}
     for p in prices_data.get("prices", []):
-        if p["ticker"] not in excluded:
+        if p["ticker"] in index_constituents:
             current_prices[p["ticker"]] = p
-
-    fundas = fundamentals_data.get("entities", {})
 
     today = date.today()
     today_str = today.isoformat()
@@ -259,9 +268,6 @@ def main():
         vol_30d = [volume_series[d] for d in sorted_vol_dates[-30:]] if len(sorted_vol_dates) >= 30 else []
         vol_current = volume_series.get(sorted_vol_dates[-1]) if sorted_vol_dates else cp.get("volume")
 
-        # Fundamentals data
-        fdata = fundas.get(ticker, {})
-
         # Use USD market cap from market_caps.json (already currency-converted)
         usd_mcap = mcap_usd.get(ticker)
         subsector = subsector_map.get(ticker) or None
@@ -292,29 +298,15 @@ def main():
             "pct_from_ath": pct_from_ath,
             # Sparkline
             "sparkline_30d": sparkline_30d[-30:] if sparkline_30d else [],
-            # Market cap (USD-converted from market_caps.json)
+            # Market cap (USD-converted from market_caps.json — Yahoo, not EODHD)
             "market_cap": usd_mcap,
-            "shares_outstanding": fdata.get("shares_outstanding"),
             # Volume
             "volume": vol_current,
             "volume_avg_7d": round(sum(vol_7d) / len(vol_7d)) if vol_7d else None,
             "volume_avg_30d": round(sum(vol_30d) / len(vol_30d)) if vol_30d else None,
-            # Fundamentals (from fetch_fundamentals.py)
-            "revenue_ttm": fdata.get("revenue_ttm"),
-            "revenue_growth_yoy": fdata.get("revenue_growth_yoy"),
-            "operating_margin": fdata.get("operating_margin"),
-            "net_income_ttm": fdata.get("net_income_ttm"),
-            "eps": fdata.get("eps"),
-            "pe_ratio": fdata.get("pe_ratio"),
-            "forward_pe": fdata.get("forward_pe"),
-            "ev": fdata.get("ev"),
-            "ev_ebitda": fdata.get("ev_ebitda"),
-            "ps_ratio": fdata.get("ps_ratio"),
-            "pb_ratio": fdata.get("pb_ratio"),
-            "dividend_yield": fdata.get("dividend_yield"),
-            "total_debt": fdata.get("annual_total_debt"),
-            "free_cash_flow": fdata.get("annual_free_cash_flow"),
-            "next_earnings_date": fdata.get("next_earnings_date"),
+            # EODHD fundamentals (revenue/margins/PE/EV-EBITDA/shares/earnings) removed in
+            # the B-sweep: EODHD decommissioned + licensing exposure via this displayed file.
+            # Re-source from a clean-terms vendor before re-adding.
         }
         results[ticker] = entity
         processed += 1
