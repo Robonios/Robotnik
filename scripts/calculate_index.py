@@ -482,9 +482,24 @@ def main():
         registry_excluded = {k for k, v in _reg.items()
                              if isinstance(v, dict)
                              and v.get("status") in ("excluded", "data_quarantine")}
+        # Lifecycle (Workstream C): the registry key is the immutable entity_id; the
+        # trading symbol is the public_ticker FIELD. Resolve a market_caps ticker ->
+        # entity_id via public_ticker (identity for native-public names). Only
+        # lifecycle_status=="public" entities are index-eligible; private / pre_ipo_* /
+        # delisted / acquired / withdrawn are excluded by status, the same as tokens.
+        _pubtkr2eid = {v.get("public_ticker"): k for k, v in _reg.items()
+                       if isinstance(v, dict) and v.get("public_ticker")}
+        _lifecycle = {k: v.get("lifecycle_status") for k, v in _reg.items()
+                      if isinstance(v, dict)}
     except Exception:
         token_tickers = set()
         registry_excluded = set()
+        _pubtkr2eid = {}
+        _lifecycle = {}
+
+    def _eid(tkr):
+        """market_caps / price ticker -> registry entity_id (identity for native-public)."""
+        return _pubtkr2eid.get(tkr, tkr)
 
     # build price lookup: ticker -> price (USD)
     prices_by_ticker = {}
@@ -502,10 +517,11 @@ def main():
     eligible = [e for e in entities
                 if e["market_cap_usd"] >= MIN_MARKET_CAP
                 and e["ticker"] in prices_by_ticker
-                and e["ticker"] not in registry_excluded       # registry = source of truth
+                and _eid(e["ticker"]) not in registry_excluded   # registry = source of truth
                 and e.get("status") not in ("excluded", "data_quarantine")
-                and e["ticker"] not in token_tickers
-                and e.get("sector") != "Token"]
+                and _eid(e["ticker"]) not in token_tickers
+                and e.get("sector") != "Token"
+                and _lifecycle.get(_eid(e["ticker"])) == "public"]   # lifecycle gate (C)
 
     # ── Parity guard (publish-blocking) ──────────────────────────────
     # The index universe MUST equal the bottleneck-composite universe (both
@@ -537,9 +553,10 @@ def main():
     except Exception:
         _documented = set()
     _non_excl_public = {k for k, v in _rev_reg.items() if isinstance(v, dict)
-                        and v.get("type") == "public"
+                        and v.get("lifecycle_status") == "public"
                         and v.get("status") not in ("excluded", "data_quarantine")}
-    _missing = _non_excl_public - {e["ticker"] for e in eligible} - _documented
+    _elig_eids = {_eid(e["ticker"]) for e in eligible}
+    _missing = _non_excl_public - _elig_eids - _documented
     if _missing:
         raise IndexGuardrailError(
             "Reverse-parity violation — {} non-excluded frontier name(s) MISSING from "
@@ -547,6 +564,26 @@ def main():
             "backfill_market_caps.py) or fix membership, or document the reason in "
             "data/registries/index_membership_exceptions.json: {}".format(
                 len(_missing), sorted(_missing)[:20]))
+
+    # ── Lifecycle-parity guard (publish-blocking, Workstream C) ───────
+    # Only lifecycle_status=="public" entities may be in the index; private /
+    # pre_ipo_* / delisted / acquired / withdrawn are index-excluded by status
+    # (the same gate as excluded/token). And no entity_id may appear in BOTH the
+    # active-private set and the public index — no double-count across the
+    # private→public boundary. Both are structural under the single-row immutable-
+    # entity_id model; asserted here so a future scan bug can't silently break it.
+    _nonpublic_in_index = {eid for eid in _elig_eids if _lifecycle.get(eid) != "public"}
+    if _nonpublic_in_index:
+        raise IndexGuardrailError(
+            "Lifecycle violation — {} non-public entity(ies) in the index: {}".format(
+                len(_nonpublic_in_index), sorted(_nonpublic_in_index)[:20]))
+    _active_private = {k for k, v in _rev_reg.items() if isinstance(v, dict)
+                       and v.get("lifecycle_status") in ("private", "pre_ipo_filed", "pre_ipo_priced")}
+    _double = _active_private & _elig_eids
+    if _double:
+        raise IndexGuardrailError(
+            "Double-count violation — {} entity_id(s) in BOTH the active-private set and the "
+            "public index: {}".format(len(_double), sorted(_double)[:20]))
 
     excluded_micro = [e for e in entities
                       if 0 < e["market_cap_usd"] < MIN_MARKET_CAP and e["ticker"] in prices_by_ticker]

@@ -74,21 +74,26 @@ rule, so Δ=0 holds).
 for all 562). It never changes across the lifecycle. The registry is the master entity list;
 `rounds.json` and the index both reference `entity_id`.
 
-**Recommended mechanic — single canonical entity, re-key on transition:**
-On `private → public`, the entity's registry record is **re-keyed to the public ticker** (so the
-ticker-keyed index finds it), with `lifecycle_status: public`, `public_ticker` set, and
-**`entity_id` preserved** (the original slug). Its private-phase fields (`total_raised_m`, rounds
-via `entity_id`) stay attached — one row, the entity's full history.
-- e.g. `cerebras-systems` (private) → re-keyed `CBRS`, `entity_id: cerebras-systems` preserved,
-  `lifecycle_status: public`, `public_ticker: CBRS`. The 15 Cerebras rounds keep
-  `entity_id: cerebras-systems` and still resolve to the (now CBRS-keyed) entity.
-- **Required code change:** `rounds ↔ registry` linking moves from *key-match* to **`entity_id`-field
-  match** (in `calculate_private_index.py` + any linker). Because `entity_id` is backfilled = key,
-  every existing link is preserved; only re-keyed entities differ.
+**Approved mechanic — IMMUTABLE `entity_id` key (no re-key):**
+The registry **key IS the immutable `entity_id`** and **never changes** across the lifecycle. The
+trading symbol is a **`public_ticker` FIELD**, not the key. All index/price/RPM lookups reference
+`public_ticker` (= the ticker for native-public names → a no-op for them; = the assigned ticker for
+transitioned ones). A `private → public` transition is a **pure field update** — set
+`lifecycle_status: public` + `public_ticker: <TICKER>` on the existing row. No destructive mutation,
+one row, **no-double-count by construction**.
+- e.g. `cerebras-systems` stays keyed `cerebras-systems` (immutable); on IPO it gains
+  `public_ticker: CBRS`, `lifecycle_status: public`. Its 15 rounds keep `entity_id: cerebras-systems`
+  and resolve to the same unchanged row.
+- **Why immutable, not re-key:** the fragility we keep killing is the *mutable key*. The fix is an
+  immutable identity key — not a guarded re-key of a mutable one. The ticker-keyed price/index
+  pipeline resolves `public_ticker → entity_id` (identity for native-public names).
+- **Backfill:** `entity_id` = current key (dict does not move) + explicit field for downstream code;
+  add `public_ticker` (= ticker for public, null for private/pre-IPO) + `lifecycle_status`.
+  `rounds ↔ registry` linking stays **key-match** (key == entity_id, immutable) — **no linking change**.
 
-*Alternative considered (two rows: a private "history anchor" + a separate public record, linked by
-`entity_id`, dedup guard enforcing no-double-count) — rejected as redundant; the single-canonical
-model makes double-counting impossible by construction (one entity, one `lifecycle_status`).*
+*Alternatives rejected: (a) two rows (private anchor + public record) — reintroduces the
+filter-dependent double-count class we've been eliminating; (b) re-key on transition — a guarded
+mutation of a mutable key, strictly worse than an immutable one.*
 
 **Orphans/duplicates (surfaced for cleanup):** 900/1244 rounds carry `entity_id`s with no registry
 entity — mostly out-of-scope small rounds, but any *frontier* orphan that has since IPO'd is a

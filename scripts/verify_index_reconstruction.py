@@ -86,6 +86,14 @@ def main():
     registry_excluded = {k for k, v in reg.items()
                          if isinstance(v, dict)
                          and v.get("status") in ("excluded", "data_quarantine")}
+    # Lifecycle mirror (Workstream C): resolve market_caps ticker -> entity_id via the
+    # public_ticker field (identity for native-public); only lifecycle_status=="public"
+    # is index-eligible. Mirrors calculate_index so the two implementations agree even
+    # across private→public / delisted transitions.
+    pubtkr2eid = {v.get("public_ticker"): k for k, v in reg.items()
+                  if isinstance(v, dict) and v.get("public_ticker")}
+    lifecycle = {k: v.get("lifecycle_status") for k, v in reg.items() if isinstance(v, dict)}
+    _eid = lambda t: pubtkr2eid.get(t, t)
 
     # ── eligible universe (replicated filter — registry is source of truth) ──
     for e in mc:
@@ -93,10 +101,11 @@ def main():
     elig = [e for e in mc
             if e["market_cap_usd"] >= MIN_MCAP
             and e["ticker"] in price_now
-            and e["ticker"] not in registry_excluded
+            and _eid(e["ticker"]) not in registry_excluded
             and e.get("status") not in ("excluded", "data_quarantine")
-            and e["ticker"] not in tokens
-            and e["sector"] != "Token"]
+            and _eid(e["ticker"]) not in tokens
+            and e["sector"] != "Token"
+            and lifecycle.get(_eid(e["ticker"])) == "public"]
     elig_tk = {e["ticker"] for e in elig}
     N = len(elig)
 
