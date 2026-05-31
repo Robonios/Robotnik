@@ -98,3 +98,51 @@ key loads in `config.py:25`, `fetch_prices.py`, `fetch_benchmarks.py`.
 - `fetch_prices.py` confirmed runtime-dormant; critical path has zero EODHD.
 
 *(Bonus for Workstream B: the display agent's full DISPLAYED-artifact list is captured in the workflow output for B1 — incl. a `funding.html`/RPCI surface and an `assets.html` "Frontier Assets" view, and a weights/universe "253" count to reconcile against the new 182-membership.)*
+
+---
+
+## 6. Step-0 A2 execution record
+
+### 6a. Descheduled + archived (commit `0856ca9c`)
+- `fetch_fundamentals.py`, `fetch_earnings_calendar.py` → `archive/scripts/eodhd/`; YAML steps removed.
+- Retired served stale-EODHD `live.json` / `intraday.json` / `intraday_index.json` (frontend handles absence gracefully — verified).
+- EODHD_API_KEY now on a **single** YAML step (the commodities fetcher, pending §6c).
+
+### 6b. Stored-data removal (this commit) — raw EODHD purged from the served public tree
+| Target | Action | Note |
+|---|---|---|
+| `data/prices/_compare/` | removed (tree+disk) | incl. raw `eodhd_2026-05-29.json`; readers = dormant cutover one-offs, not in YAML |
+| `data/markets/prices/history/` (315) | removed (tree+disk) | confirmed **zero readers** (served history is `data/prices/history/`) |
+| `data/prices/history/MOG_A.json` | removed | lone EODHD file in served history; Moog = `excluded`, not in index |
+| `data/markets/earnings_calendar.json` | removed | orphaned (producer archived) |
+| `data/prices/_history_eodhd_backup/` (349) | removed from tree, **retained local + gitignored** | rollback aid until 30-day window closes |
+| **`data/markets/fundamentals.json`** | **LEFT** | displayed via `robotnik_public_markets.json` → **Workstream B** (regen-then-delete) |
+
+**Flagged, not removed (scope / not approved):** the 4 stale Apr-2 sibling snapshots still under
+`data/markets/prices/` (`all_prices.json`, `equities.json`, `history_index.json`, `tokens.json` —
+zero readers, same EODHD-era staleness); `data/prices/_equities_eodhd_backup.json` (mislabeled —
+actually MarketStack content); dormant cutover scripts `parity_report.py` / `parallel_day.py`.
+One-word approval folds any of these into the next removal. Licensing detail → `data_licensing_review.md`.
+
+### 6c. Commodities reconciliation (NOT a straight port — reconciled against the cohort + energy decisions)
+The legacy `fetch_commodities.py` (10 EODHD symbols) predates the commodities-cohort and energy
+scope calls. Reconciled keep/drop (sources: `proposed_commodities_cohort.md`, `…_data_sourcing.md`):
+
+| Legacy item | Symbol | Cohort verdict | Disposition |
+|---|---|---|---|
+| Gold | XAUUSD.FOREX | **excluded** (monetary/macro) | DROP |
+| Platinum | XPTUSD.FOREX | **excluded** (no distinct frontier use) | DROP |
+| Crude WTI | USO.US | **excluded** (macro/OPEC) | DROP |
+| Lithium | LIT.US | ETF **replaced** by direct Li carbonate/hydroxide (specialist) | DROP → specialist |
+| Rare Earths | REMX.US | ETF **replaced** by underlying Nd/Pr/Dy/Sm (specialist) | DROP → specialist |
+| Uranium | URA.US | in-cohort (energy) but **deferred** per scope call | DROP (deferred) |
+| Natural Gas | UNG.US | energy bucket (methalox proxy) | DROP |
+| Palladium | XPDUSD.FOREX | in-cohort but **minority frontier** (auto-cat dominates); intended source NYMEX PA (live), not ETF | DROP → proper buildout |
+| **Silver** | XAGUSD.FOREX | **in-cohort + frontier** (PV/MLCC/die-attach); intended source LBMA/COMEX (live), **not an ETF** | **FOUNDER CALL** (defer-to-proper-source recommended; SLV interim optional) |
+| **Copper** | CPER.US | **in-cohort + frontier** (datacenter/EV/BEOL); clean copper ETF, MS-served | **KEEP → CPER.US on MarketStack** |
+
+**Net: 1 confirmed survivor (Copper) + 1 founder decision (Silver).** Whole legacy
+`commodities.json` is **internal / not displayed** (no frontend `fetch()`), and the proper
+56-commodity surface is a separate future build sourced per `…_data_sourcing.md` — so dropping
+9 of 10 has **zero product impact**. Fetcher build is **STOP-gated** pending founder sign-off on
+the keep/drop list (esp. the Silver call).

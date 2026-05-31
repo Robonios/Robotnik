@@ -24,6 +24,11 @@ data/prices/errors.log
 # Daily FX-rate cache (regenerated on each fetch; native→USD conversion)
 data/prices/fx/
 
+# Raw EODHD price-history backup — removed from the public tree (licensing) but
+# retained locally as a rollback aid until the 30-day cutover window closes.
+# Delete the local dir once the window passes. See data/markets/data_licensing_review.md.
+data/prices/_history_eodhd_backup/
+
 # Claude
 .claude/
 data/exports/entity_registry_for_review.csv
