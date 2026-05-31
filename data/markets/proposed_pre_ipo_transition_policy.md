@@ -1,162 +1,180 @@
-# Workstream C — Pre-IPO / IPO Transition Policy (Surface for Review)
+# Entity Lifecycle Policy — private → pre-IPO → public → delisted (FINALIZED for review)
 
-**Status:** DRAFT. Nothing applied. STOP for review before applying.
+**Status:** FINALIZED DRAFT. Nothing applied. **STOP for review (C2)** before applying the
+field migration; **STOP again (C4)** before committing the near-term case dispositions.
 
-Goal: a clean, repeatable handoff so a frontier-tech entity moving private →
-public is **neither lost nor double-counted**, and so the entity carries its
-identity, history, and rating across the boundary.
-
----
-
-## 0. The timeline has moved past the prompt's April data
-
-The brief was written on April-2026 data ("SpaceX S-1 filed at ~$1.75T;
-Cerebras refiled"). As of **late May 2026** the facts have advanced, and the
-policy must apply to *current* reality:
-
-- **Cerebras has already IPO'd** — priced **May 13 2026 @ $185**, trading
-  **May 14 2026 on Nasdaq `CBRS`** (~$56.4B pricing valuation; CFIUS cleared,
-  G42 off the cap table). It is no longer pre-IPO — it is a **live
-  private→public transition that has already occurred** and is currently
-  *uncaptured* in the equities universe.
-- **SpaceX filed its public S-1 on May 20 2026** (~$1.75T **target**, raise up
-  to ~$75B; first trade expected mid-to-late June 2026). Genuinely
-  `pre_ipo_filed` — but **SpaceX is not in the entity registry at all**, so the
-  brief's "ensure the existing CRITICAL rating is attached" cannot be done as
-  written: there is no existing SpaceX entity or rating to attach.
-
-These two cases are the policy's first real applications and are time-sensitive
-(both land before/around the June scan).
+Goal: a unified `entity_id` lifecycle so a frontier entity moving private → public is
+**neither lost nor double-counted**, carries its identity/history/rating across the boundary,
+and is handled **by design** rather than patched per-case. This is the structural answer to the
+class of membership-rigor gaps the B-sweep just closed.
 
 ---
 
-## 1. The `lifecycle_status` field
+## C1 — Current state (surfaced)
 
-Add `lifecycle_status` to the **entity registry** (the source of truth for
-entity identity). Enum:
+| Structure | Today | Gap |
+|---|---|---|
+| Registry | 562 entries; **key == `id`** for all. 214 private (keyed by **slug**, e.g. `cerebras-systems`), 305 public (keyed by **ticker**, e.g. `ALGM`), 43 token. Private entries carry `total_raised_m`/`last_round`. | **No `lifecycle_status`, no `entity_id` field, no `public_ticker`** — the lifecycle machinery does not exist yet. |
+| `rounds.json` | 1244 rounds, each with an `entity_id` field. | **Only 344/1244 link to a registry entity** (900 orphan entity_ids — companies funded but not in the registry). |
+| RPCI (`calculate_private_index.py`) | Excludes `IPO` + `IPO (filed)` round types; M&A conditional on private in-universe acquirer. | **No `lifecycle_status` filter** — a company that has gone public is not yet structurally removed from "active private". |
+| Index (`calculate_index.py`) | Keys by ticker; registry membership lookups by ticker (works because public key==ticker); forward + reverse parity guards live. | Slug-keyed private entities are **not ticker-findable** — the unresolved entity_id↔ticker bridge. |
+| Cases | `cerebras-systems`, `unitree-robotics` exist as `private`. | **SpaceX, York/`YSS`, `CBRS` are absent** from the registry. |
 
-| Value | Meaning | In which dataset | Counted in equity indices? |
+**The architectural crux:** the registry key is the ticker for public entities but a slug for
+private ones. The index finds public names by ticker; a private slug going public must become
+ticker-findable *without* breaking its rounds-link or creating a silent duplicate. §3 resolves this.
+
+---
+
+## 1. States — the `lifecycle_status` enum (7)
+
+| Value | Meaning | Lives in | In equity indices? |
 |---|---|---|---|
-| `private` | Private company, no IPO process | rounds.json (historical), registry | No |
-| `pre_ipo_filed` | S-1 / F-1 / confidential filing confirmed, not priced | rounds.json + registry; **filing valuation recorded as metadata, NOT a market cap** | No |
-| `pre_ipo_priced` | Priced/allocated, not yet first trading day | registry | No |
-| `public` | First trading day has occurred | equities.json + EQUITIES + registry | **Yes** |
-| `delisted` | Was public, no longer trades | registry (historical) | No |
+| `private` | Private company, no IPO process | rounds.json (history) + registry | No |
+| `pre_ipo_filed` | S-1/F-1/confidential filing confirmed, not priced | registry (+ rounds); **filing valuation = metadata, NOT a market cap** | No |
+| `pre_ipo_priced` | Priced/allocated, not yet first trade | registry | No |
+| `public` | First trading day has occurred | EQUITIES + equities.json + registry | **Yes** |
+| `delisted` | Was public, ceased trading (bankruptcy/going-private) | registry (history) | No — exits via CA/reorg |
+| `acquired` | Was public, absorbed via M&A (ticker retired) | registry (history) | No — exits via CA on close |
+| `withdrawn` | Filed then pulled the IPO → **reverts to `private`** | registry | No |
 
-Default for the 214 existing private entities: `private`. No fabrication —
-status is only advanced when a filing/pricing/first-trade is sourced.
+*Additions vs the draft:* `acquired` (M&A exit — distinct from `delisted`; the acquirer/terms are
+recorded) and `withdrawn` (filed-then-pulled → back to `private`). *Not adding* a `halted` state —
+a temporary trading halt stays `public`; only permanent cessation moves to `delisted`/`acquired`.
+**Default:** the 214 existing private entities → `private`; 305 public → `public`; status advances
+**only** when a filing/pricing/first-trade is sourced (no fabrication).
 
 ---
 
-## 2. Transition trigger = **actual first trading day** (not S-1 filing)
-
-An S-1 can be withdrawn or delayed; a target valuation is not a market price.
-Until there is a tradeable close, there is no public-equity data to ingest.
+## 2. Transitions & triggers
 
 ```
-  S-1 / confidential filing confirmed   → pre_ipo_filed
-        (filing valuation = METADATA, never treated as market cap)
-  Priced / allocated                    → pre_ipo_priced
-  FIRST TRADING DAY                      → public
-        (entity enters equities.json + EQUITIES, picked up by the price
-         pipeline, evaluated for index inclusion)
-  Ceases trading                         → delisted
+  filing confirmed (S-1/F-1)          → pre_ipo_filed   (filing valuation = METADATA, never mcap)
+  priced / allocated                  → pre_ipo_priced
+  FIRST TRADING DAY                    → public          (enters EQUITIES; chain-link entry:
+                                                          first price, return 1.0, no jump —
+                                                          identical rule in the reconstruction)
+  ceases trading (bankruptcy/private)  → delisted        (exit via CA/reorg: WOLF-class wipeout
+                                                          realizes the loss; reverse-split = flat)
+  acquired / merged away               → acquired        (exit via CA on deal close)
+  IPO withdrawn / pulled               → withdrawn → private
 ```
 
-**The market-cap rule (anti-fabrication):** a *target / filing* valuation
-(SpaceX ~$1.75T; Figure AI's $39B private round; Cerebras's $56.4B at pricing)
-is **not** an actual market cap. Only after the first trade does a market cap
-exist and feed the index. Pre-trade valuations live in a `filing_valuation_m`
-metadata field, explicitly fenced off from `market_cap_usd`.
+**Index entry trigger = actual first trading day** — not the S-1 filing, not the pricing. An S-1
+can be withdrawn; a target valuation is not a market price. Only after a tradeable close does a
+market cap exist and feed the index, via the established chain-link entry (enter-at-first-price,
+day-one return forced to 1.0, no artificial jump; the independent reconstruction applies the same
+rule, so Δ=0 holds).
 
 ---
 
-## 3. Linking + no double-counting (shared `entity_id`)
+## 3. Entity-linking — the `entity_id` backbone (resolves the crux)
 
-The mechanism already partly exists: **every round in `rounds.json` carries an
-`entity_id`** (e.g. `cerebras-systems`), and registry keys *are* those ids.
-Currently 344 / 1244 rounds link to a registry entity.
+**Add `entity_id` as a stable, immutable field on every registry entry** (backfill = current key
+for all 562). It never changes across the lifecycle. The registry is the master entity list;
+`rounds.json` and the index both reference `entity_id`.
 
-Policy:
-- The **registry entity is the canonical identity**, keyed by `entity_id`.
-- `rounds.json` (historical private rounds) and the public-equity record both
-  reference the **same `entity_id`**. On transition the entity gains a
-  `public_ticker` (e.g. `CBRS`) and `lifecycle_status: public`; its historical
-  rounds stay in `rounds.json` as a permanent record (they happened).
-- **No double-counting:** the composite/bottleneck indices read the
-  *public-equity* set (now filtered to `lifecycle_status == public` — same
-  place the token `type` filter lives). Private rounds are a separate dataset
-  and never enter the equity composite. A future "total frontier composite"
-  (§8 of the methodology) de-dupes by `entity_id`, so an entity that is both a
-  historical private round and a current public equity is counted **once**.
+**Recommended mechanic — single canonical entity, re-key on transition:**
+On `private → public`, the entity's registry record is **re-keyed to the public ticker** (so the
+ticker-keyed index finds it), with `lifecycle_status: public`, `public_ticker` set, and
+**`entity_id` preserved** (the original slug). Its private-phase fields (`total_raised_m`, rounds
+via `entity_id`) stay attached — one row, the entity's full history.
+- e.g. `cerebras-systems` (private) → re-keyed `CBRS`, `entity_id: cerebras-systems` preserved,
+  `lifecycle_status: public`, `public_ticker: CBRS`. The 15 Cerebras rounds keep
+  `entity_id: cerebras-systems` and still resolve to the (now CBRS-keyed) entity.
+- **Required code change:** `rounds ↔ registry` linking moves from *key-match* to **`entity_id`-field
+  match** (in `calculate_private_index.py` + any linker). Because `entity_id` is backfilled = key,
+  every existing link is preserved; only re-keyed entities differ.
 
----
+*Alternative considered (two rows: a private "history anchor" + a separate public record, linked by
+`entity_id`, dedup guard enforcing no-double-count) — rejected as redundant; the single-canonical
+model makes double-counting impossible by construction (one entity, one `lifecycle_status`).*
 
-## 4. Rating carryover
-
-A bottleneck rating assigned while private **transfers to the public record on
-transition** — it is **re-validated, not re-derived from scratch**:
-
-- The latest private rating travels with the `entity_id`.
-- At first-trade, it is re-validated against the public disclosures the IPO
-  produces (the S-1/prospectus is far richer than private data) and confirmed
-  or adjusted, with the change logged.
-- Example: Cerebras's private rounds carry `bottleneck_risk: High`
-  (System Integration tier). On its public transition that **HIGH carries
-  over**, re-validated against the 424B4 prospectus.
+**Orphans/duplicates (surfaced for cleanup):** 900/1244 rounds carry `entity_id`s with no registry
+entity — mostly out-of-scope small rounds, but any *frontier* orphan that has since IPO'd is a
+reverse-parity candidate. Duplicate detection reuses the STM/STMPA discipline: no two `entity_id`s
+for the same company; no company keyed under both a slug and a ticker simultaneously.
 
 ---
 
-## 5. Transition-candidate list (current status, late May 2026)
+## 4. No-double-count invariant
 
-Confirmed, sourced (target valuation ≠ market cap flagged):
-
-| Entity | In registry? | In rounds? | Actual current status | Proposed `lifecycle_status` | Action on approval |
-|---|---|---|---|---|---|
-| **Cerebras Systems** | ✅ `cerebras-systems` (private) | ✅ (risk=High; has `IPO (filed)` rounds) | **PUBLIC — `CBRS` Nasdaq, trading May 14 2026** | **`public`** | **Immediate:** add `CBRS` to EQUITIES/equities.json linked via `entity_id`; carry HIGH rating, re-validate vs 424B4; set registry `public_ticker=CBRS`. First live application. |
-| **SpaceX** | ❌ **not in registry** | ✅ `SpaceX` rounds exist | S-1 filed May 20 2026; ~$1.75T target; first trade ~mid-late June | **`pre_ipo_filed`** | **Add** registry entity (`entity_id: spacex`); `filing_valuation_m≈1,750,000` as metadata (NOT mcap); **assign a rating** (CRITICAL candidate — no prior rating exists); on first trade → `public`. |
-| **Unitree Robotics** | ✅ `unitree-robotics` (private) | ✅ | Shanghai STAR draft S-1 accepted Mar 20 2026; ~$610M; review ~Jun 1 | **`pre_ipo_filed`** | Flag `pre_ipo_filed`; `filing_valuation_m` metadata; rate at Workstream D. |
-| **York Space Systems** | ❌ not in registry | ✅ (`York Space Systems / ALL.SPACE`) | **PUBLIC — `YSS` NYSE, trading Jan 29 2026** | **`public`** | Decide universe inclusion; if in-scope, add `YSS` + `entity_id: york-space`, rate. |
-
-**Speculative — NOT flagged (no confirmed filing; do not tag as filed):**
-Figure AI ($39B *private* round, listing eyed 2027-28), Impulse Space, Stoke
-Space, Boston Dynamics ("$100B IPO" is SEO rumor). These stay `private`.
-
-**Context — already public >6 months (not new transitions):** Firefly
-Aerospace (`FLY`, Aug 2025), Voyager (`VOYG`, Jun 2025), Karman (`KRMN`, Feb
-2025), CoreWeave (`CRWV`, Mar 2025). Flag for the Workstream B
-excluded-equities audit if any belong in-universe and aren't yet tracked.
+A company contributes to the **private** aggregations (funding / RPCI) during its private phase and
+to the **public** index during its public phase — **never both simultaneously**, with a clean handoff
+at the IPO trading date. With the single-canonical model this is **structural**: one entity has one
+`lifecycle_status`, so it is counted in exactly one layer. Its historical private rounds **remain in
+`rounds.json`** as a permanent record (they happened), but once `lifecycle_status: public` it is no
+longer an *active-private* entity for RPCI. A future "total frontier composite" de-dupes by
+`entity_id` so the entity is counted once.
 
 ---
 
-## 6. Coordination with the June private-market scan
+## 5. Pre-IPO valuation handling (anti-fabrication — critical)
 
-This policy should be **applied before the first-week-of-June scan** so the May
-ingestion stamps `lifecycle_status` correctly on anything new. The scan will
-pick up new rounds and may surface new `pre_ipo_filed` candidates; with the
-field + trigger in place, it can tag them under the monthly template rather than
-needing a retrofit. SpaceX's expected mid-late-June first trade falls right in
-this window — the `pre_ipo_filed → public` path must be ready.
+A target/filing valuation (SpaceX ~$1.75T; Cerebras's pricing valuation; Figure AI's $39B round) is
+**not** a market cap. Stored only as **labelled metadata**: `filing_valuation_m` (or
+`private_valuation_m`) **with `valuation_source` + `valuation_as_of`**, explicitly fenced from
+`market_cap_usd`. A pre-IPO entity has **no index weight by definition** (it does not trade). Never
+synthesize or interpolate a pre-IPO market cap.
 
 ---
 
-## STOP — decisions for review
+## 6. Rating carryover + re-validation
 
-1. **Approve the `lifecycle_status` enum + first-trading-day trigger** (§1-§2)?
-2. **Approve the linking / no-double-count design** (§3 — registry entity as
-   canonical `entity_id`, indices filter `lifecycle_status==public`, rounds stay
-   historical)?
-3. **Cerebras (already public):** approve the immediate private→public
-   transition — add `CBRS`, carry HIGH (re-validated)? This is the most
-   time-sensitive item (it's already trading and currently uncaptured).
-4. **SpaceX:** approve **adding** it to the registry as `pre_ipo_filed` (it
-   isn't there today) and assigning a fresh **CRITICAL** rating (there is no
-   pre-existing rating to "carry")? Filing valuation stays metadata-only.
-5. **York Space / Unitree:** in-universe? York is already public (`YSS`);
-   Unitree is `pre_ipo_filed` (Shanghai STAR). Add both, or defer York to the
-   Workstream B audit?
-6. **Rating carryover mechanics** (§4) — re-validate-not-re-derive, with the
-   change logged — acceptable?
+A private/pre-IPO bottleneck rating travels with the `entity_id` as a **starting point**, and is
+**re-validated on transition** (the S-1/424B4 prospectus is far richer than private data) via the
+rigorous rating process (research + **adversarial verifier for CRITICAL/HIGH**), with the change
+logged. It is re-validated, **not re-derived from scratch**.
 
-On approval I apply the field + the four dispositions, then the June scan and
-Workstream D operate on a lifecycle-aware registry.
+---
+
+## 7. Display-eligibility (data-capability only; display itself is step-1)
+
+Pre-IPO entities are defined as **display-eligible but index-walled-off**: the data is structured so
+a future pre-IPO watchlist *could* render them (`lifecycle_status`, bottleneck rating, labelled
+`filing_valuation_m`) while the lifecycle-parity guard (§C3) keeps them out of **every** index
+aggregation. **No display is built here** — data-capability only.
+
+---
+
+## C3 — Lifecycle-parity guard (to build, publish-blocking)
+
+Mirrors the membership-parity guards with a lifecycle dimension:
+1. **No-double-count:** no `entity_id` appears in both the active-private set (RPCI universe) and the
+   public-index set. (Structural under single-canonical; the guard asserts it anyway.)
+2. **Index eligibility:** only `lifecycle_status == public` (and non-excluded, non-token, frontier)
+   entities are index-eligible; `private` / `pre_ipo_*` / `delisted` / `acquired` / `withdrawn` are
+   index-excluded **by status** — the same gate as `excluded` / `token`.
+3. **Negative-tested:** confirm it fires if a `pre_ipo` entity is given an index weight, or if one
+   `entity_id` lands in both aggregations.
+
+---
+
+## C4 — Near-term cases (dispositions surfaced at the C4 STOP, not here)
+
+Cerebras (`CBRS`, public 2026-05-14 — add + rate + chain-link entry; reverse-parity guard should
+*require* it once it's a non-excluded public frontier entry), SpaceX (`pre_ipo_filed`, rate CRITICAL
+via verifier, ~$1.75T as metadata, not indexed), Unitree (`pre_ipo_filed`, rate), York/`YSS`
+(confirm disposition — was routed to B), plus a sweep for any other transition in the project window.
+Full re-validation after Cerebras enters (196 → ~197).
+
+---
+
+## C5 — Scan integration (policy-aware, not run here)
+
+The June private-market scan becomes lifecycle-aware: it adds new rounds **and** detects + applies
+transitions — `private → pre_ipo_filed` on a sourced filing, `pre_ipo_* → public` on first trading
+day, `public → delisted/acquired` on cessation — routing each through entity-linking + no-double-count
++ rating-carryover. Detection signals surfaced before the scan runs.
+
+---
+
+## STOP (C2) — decisions for review
+1. **Enum (7 states)** incl. the added `acquired` + `withdrawn`, and the first-trading-day trigger (§1–§2)?
+2. **`entity_id` backbone + single-canonical re-key-on-transition** mechanic (§3), incl. moving
+   rounds↔registry linking to `entity_id`-field match?
+3. **No-double-count via single `lifecycle_status`** + RPCI filtering on it (§4)?
+4. **Pre-IPO valuation = labelled metadata, never mcap** (§5) + **rating re-validate-not-re-derive** (§6)?
+5. **Display-eligible-but-index-walled-off** data shape for pre-IPO (§7)?
+6. Proceed to build the **lifecycle-parity guard (C3)** + backfill the fields, then bring the
+   **near-term cases (C4)** for a second STOP?
