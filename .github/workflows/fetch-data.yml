@@ -97,11 +97,7 @@ jobs:
             python scripts/parity_guard.py --daily
           fi
 
-      - name: Fetch fundamentals (weekly — Mondays only)
-        if: github.event.schedule == '0 6 * * 1' || github.event_name == 'workflow_dispatch'
-        env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-        run: python scripts/fetch_fundamentals.py
+      # (fundamentals step removed — EODHD descheduled at A2; data frozen, re-sourcing deferred)
 
       # (EOD live-prices step removed at cutover — EODHD, fetcher archived)
 
@@ -111,12 +107,7 @@ jobs:
         run: python scripts/fetch_commodities.py
         continue-on-error: true
 
-      - name: Fetch earnings calendar (weekly — Mondays only)
-        if: github.event.schedule == '0 6 * * 1' || github.event_name == 'workflow_dispatch'
-        env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-        run: python scripts/fetch_earnings_calendar.py
-        continue-on-error: true
+      # (earnings-calendar step removed — EODHD descheduled at A2; re-sourcing deferred)
 
       - name: Calculate public markets metrics
         run: python scripts/calculate_metrics.py
