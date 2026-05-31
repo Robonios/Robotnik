@@ -9537,9 +9537,9 @@
   "cerebras-systems": {
     "id": "cerebras-systems",
     "name": "Cerebras Systems",
-    "type": "private",
+    "type": "public",
     "sector": "Semiconductors",
-    "subsector": "Fabless Design",
+    "subsector": "AI Accelerators",
     "country": "USA",
     "city": "Sunnyvale, CA",
     "eodhd_ticker": null,
@@ -9554,8 +9554,12 @@
     "total_raised_m": 1000.0,
     "value_chain": "IP & Design",
     "entity_id": "cerebras-systems",
-    "lifecycle_status": "private",
-    "public_ticker": null
+    "lifecycle_status": "public",
+    "public_ticker": "CBRS",
+    "ipo_date": "2026-05-14",
+    "bottleneck_risk": "MEDIUM",
+    "transition_note": "private\u2192public via Cerebras IPO (CBRS, Nasdaq, first trade 2026-05-14). Immutable entity_id; lifecycle field-update only.",
+    "rating_note": "Re-validated MEDIUM at IPO via adversarial verifier (NOT carryover HIGH): differentiated wafer-scale AI compute but substitutable (NVIDIA-dominant + AMD/TPU/Groq) and downstream of TSMC/CoWoS/HBM."
   },
   "positron": {
     "id": "positron",
@@ -10611,8 +10615,15 @@
     "total_raised_m": 610.0,
     "value_chain": "System Integration",
     "entity_id": "unitree-robotics",
-    "lifecycle_status": "private",
-    "public_ticker": null
+    "lifecycle_status": "pre_ipo_filed",
+    "public_ticker": null,
+    "filing_valuation_m": null,
+    "valuation_source": "Shanghai STAR draft S-1 (accepted 2026-03-20); valuation not cleanly disclosed \u2192 null (no fabrication)",
+    "valuation_as_of": "2026-03-20",
+    "bottleneck_risk": "HIGH",
+    "rating_provisional": true,
+    "rating_note": "PROVISIONAL \u2014 leading Chinese humanoid/quadruped maker; finalize in Workstream D.",
+    "note": "Shanghai STAR draft S-1 accepted 2026-03-20; pre-IPO, NOT in any index."
   },
   "kandou-ai": {
     "id": "kandou-ai",
@@ -12925,5 +12936,31 @@
     "entity_id": "600111",
     "lifecycle_status": "public",
     "public_ticker": "600111"
+  },
+  "spacex": {
+    "id": "spacex",
+    "entity_id": "spacex",
+    "name": "SpaceX",
+    "type": "private",
+    "sector": "Space",
+    "subsector": "Launch & Propulsion",
+    "country": "United States",
+    "city": null,
+    "eodhd_ticker": null,
+    "coingecko_id": null,
+    "description": null,
+    "aliases": [
+      "SpaceX",
+      "Space Exploration Technologies Corp"
+    ],
+    "value_chain": "Launch Services",
+    "lifecycle_status": "pre_ipo_filed",
+    "public_ticker": null,
+    "filing_valuation_m": 1750000,
+    "valuation_source": "Form S-1 (filed 2026-05-20)",
+    "valuation_as_of": "2026-05-20",
+    "bottleneck_risk": "CRITICAL",
+    "rating_note": "CRITICAL via adversarial verifier: dominant launch (Falcon 9 majority of global launch mass) + Starlink = access-to-orbit chokepoint.",
+    "note": "S-1 filed 2026-05-20; ~$1.75T is a FILING/TARGET valuation (metadata), NOT a market cap; pre-IPO, NOT in any index."
   }
 }

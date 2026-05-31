@@ -134,6 +134,12 @@ def main():
                      if isinstance(v, dict) and v.get("status") != "excluded"}
     value_chain_map = {k: v.get("value_chain") for k, v in reg.items()
                        if isinstance(v, dict) and v.get("status") != "excluded"}
+    # Lifecycle (Workstream C): registry key is the immutable entity_id; resolve a
+    # market_caps/price ticker -> entity_id via public_ticker (identity for native-public)
+    # so transitioned names (e.g. CBRS -> cerebras-systems) inherit registry metadata.
+    _pubtkr2eid = {v.get("public_ticker"): k for k, v in reg.items()
+                   if isinstance(v, dict) and v.get("public_ticker")}
+    _eid = lambda t: _pubtkr2eid.get(t, t)
 
     # USD market cap lookup (already converted by fetch_market_caps.py)
     mcap_usd = {m["ticker"]: m["market_cap_usd"] for m in mcap_json.get("market_caps", [])
@@ -166,7 +172,7 @@ def main():
 
     # Process each active public entity with current price data
     for ticker, cp in current_prices.items():
-        sector = sector_map.get(ticker, cp.get("sector", ""))
+        sector = sector_map.get(_eid(ticker)) or cp.get("sector", "")
         name = cp.get("name", ticker)
         current_close = cp.get("price", 0)
         currency = cp.get("currency", "USD")
@@ -270,8 +276,8 @@ def main():
 
         # Use USD market cap from market_caps.json (already currency-converted)
         usd_mcap = mcap_usd.get(ticker)
-        subsector = subsector_map.get(ticker) or None
-        value_chain = value_chain_map.get(ticker) or None
+        subsector = subsector_map.get(_eid(ticker)) or None
+        value_chain = value_chain_map.get(_eid(ticker)) or None
 
         entity = {
             "ticker": ticker,

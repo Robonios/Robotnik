@@ -156,6 +156,7 @@ EQUITIES = [
     ("MCHP", "Microchip Technology", "Cross-stack", "United States"),
     ("NVMI", "Nova Ltd", "Cross-stack", "Israel"),
     ("NVDA", "NVIDIA", "Cross-stack", "United States"),
+    ("CBRS", "Cerebras Systems", "Semiconductors", "United States"),  # C4: IPO 2026-05-14 (private→public)
     ("NXPI", "NXP Semiconductors", "Cross-stack", "Netherlands"),
     ("ON", "ON Semiconductor", "Cross-stack", "United States"),
     ("QCOM", "Qualcomm", "Cross-stack", "United States"),
