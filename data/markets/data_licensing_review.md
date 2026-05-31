@@ -17,13 +17,16 @@ EODHD's non-pro/standard licence forbade **redistribution or public display** of
 The API key is being decommissioned (~2-week deadline; Workstream A). Two exposure classes,
 independent of the API deadline:
 
-### 1a. Stored raw EODHD data committed to the public GitHub Pages repo — **CLOSED (this commit)**
+### 1a. Stored raw EODHD data committed to the public GitHub Pages repo — **CLOSED** (`cc9d7771` + final commit)
 | Path | Disposition |
 |---|---|
 | `data/prices/_compare/eodhd_2026-05-29.json` (+ MS/parity siblings) | removed from tree |
 | `data/markets/prices/history/` (315 files, ~34M; 276+ EODHD-marked) | removed from tree |
 | `data/prices/history/MOG_A.json` (lone EODHD file in served history; Moog = excluded) | removed from tree |
 | `data/prices/_history_eodhd_backup/` (349 files, ~51M) | removed from tree; **retained locally, gitignored** as a rollback aid until the 30-day window closes, then delete |
+| `data/markets/prices/*.json` (4 stale Apr-2 snapshots) | removed from tree (final commit) |
+| `data/prices/_equities_eodhd_backup.json` | removed from tree (final commit) |
+| `data/prices/commodities.json` + `scripts/fetch_commodities.py` | dropped / archived (final commit) — EODHD commodities step removed; **EODHD now fully off the live workflow** |
 
 **Residual (lower-priority, flagged):** the same data remains in **git history** (prior commits).
 A history rewrite (`git filter-repo`) is riskier than the served-tree removal and does not block
@@ -86,6 +89,7 @@ pre-launch, because this is the one that an external data-diligence pass would c
 
 ## 5. Bottom line
 - **Active EODHD stored-data exposure on GitHub Pages: closed** (served tree; git-history residual flagged, non-blocking).
+- **EODHD off the live workflow:** commodities step removed (no fetcher) — the pipeline now makes **zero EODHD calls**; the only remaining EODHD touch is displayed `fundamentals.json` (→ B).
 - **Displayed EODHD fundamentals: still live** → B priority (regen-then-delete).
 - **Yahoo (overrides + FX): newly flagged, displayed, bounded** → same licence read; clean-source paths identified.
 - **Net legal read needed on:** EODHD stored-data history residual + EODHD displayed fundamentals + Yahoo displayed prices/FX. MarketStack is the clean-terms target.

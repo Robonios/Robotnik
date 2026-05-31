@@ -101,11 +101,14 @@ jobs:
 
       # (EOD live-prices step removed at cutover — EODHD, fetcher archived)
 
-      - name: Fetch commodities prices
-        env:
-          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
-        run: python scripts/fetch_commodities.py
-        continue-on-error: true
+      # (commodities step removed — EODHD now FULLY off the live workflow. The 10 legacy
+      #  ETF/FOREX proxies cohort-reconciled to ZERO survivors: each either has a true
+      #  exchange price (Cu/Ag/Pd/Au/Pt — a proxy-where-a-true-price-exists) or is
+      #  cohort-excluded/deferred (WTI/Li/REE/U/NatGas), so an interim proxy fetcher for a
+      #  non-displayed feed would be a half-measure ripped out when the proper surface lands.
+      #  Commodities sourcing deferred to the Concentration Index build (true prices +
+      #  specialist feeds per proposed_commodities_data_sourcing.md).
+      #  fetch_commodities.py → archive/scripts/eodhd/.)
 
       # (earnings-calendar step removed — EODHD descheduled at A2; re-sourcing deferred)
 

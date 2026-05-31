@@ -138,11 +138,15 @@ scope calls. Reconciled keep/drop (sources: `proposed_commodities_cohort.md`, `�
 | Uranium | URA.US | in-cohort (energy) but **deferred** per scope call | DROP (deferred) |
 | Natural Gas | UNG.US | energy bucket (methalox proxy) | DROP |
 | Palladium | XPDUSD.FOREX | in-cohort but **minority frontier** (auto-cat dominates); intended source NYMEX PA (live), not ETF | DROP → proper buildout |
-| **Silver** | XAGUSD.FOREX | **in-cohort + frontier** (PV/MLCC/die-attach); intended source LBMA/COMEX (live), **not an ETF** | **FOUNDER CALL** (defer-to-proper-source recommended; SLV interim optional) |
-| **Copper** | CPER.US | **in-cohort + frontier** (datacenter/EV/BEOL); clean copper ETF, MS-served | **KEEP → CPER.US on MarketStack** |
+| **Silver** | XAGUSD.FOREX | in-cohort + frontier (PV/MLCC/die-attach) but has a **true exchange price** (LBMA/COMEX) → ETF/FOREX = proxy-where-true-price-exists, fails "intended source" test | **DROP** → proper buildout |
+| **Copper** | CPER.US | in-cohort + frontier (datacenter/EV/BEOL) but has a **true exchange price** (COMEX/LME) → CPER = proxy-where-true-price-exists, fails "intended source" test | **DROP** → proper buildout |
 
-**Net: 1 confirmed survivor (Copper) + 1 founder decision (Silver).** Whole legacy
-`commodities.json` is **internal / not displayed** (no frontend `fetch()`), and the proper
-56-commodity surface is a separate future build sourced per `…_data_sourcing.md` — so dropping
-9 of 10 has **zero product impact**. Fetcher build is **STOP-gated** pending founder sign-off on
-the keep/drop list (esp. the Silver call).
+**FINAL DECISION: DROP ALL 10, no interim fetcher.** Copper fails the "ETF-proxy is the
+intended source" test exactly like Silver — both have true exchange prices, so CPER/SLV would be
+proxies-where-a-true-price-exists. An interim proxy fetcher for an **internal, not-displayed**
+feed (`commodities.json`, no frontend `fetch()`) is a half-measure that would be ripped out when
+the proper 56-commodity surface (true prices + specialist sourcing per `…_data_sourcing.md`) is
+built. So: the EODHD commodities YAML step is **removed**, `fetch_commodities.py` archived,
+`commodities.json` dropped, and commodities sourcing is **deferred to the Concentration Index
+build**. This takes **EODHD fully off the live workflow** — the last remaining EODHD touch is the
+displayed stale `fundamentals.json` (→ Workstream B: regen-without-EODHD-fields, then delete).
