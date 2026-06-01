@@ -1,6 +1,6 @@
 # Robotnik Data Quality — Weekly Report
-**Generated:** 24-May-2026 23:58 UTC
-**Period:** 17-May to 24-May-2026
+**Generated:** 01-Jun-2026 00:05 UTC
+**Period:** 25-May to 01-Jun-2026
 
 ## 🟢 Ready for Reinstatement
 No entities ready for reinstatement.
@@ -15,46 +15,52 @@ No entities quarantined.
 No new candidates this week.
 
 ## 📊 Index-Side Quarantine Events This Week
-- 2026-05-17: **SHA** — index-side validation
-- 2026-05-18: **SHA** — index-side validation
-- 2026-05-19: **SHA** — index-side validation
-- 2026-05-19: **XRT** — index-side validation
-- 2026-05-20: **RSW LN** — index-side validation
-- 2026-05-20: **SHA** — index-side validation
-- 2026-05-21: **SHA** — index-side validation
-- 2026-05-21: **$CPT** — index-side validation
-- 2026-05-21: **RSW LN** — index-side validation
-- 2026-05-22: **RSW LN** — index-side validation
-- 2026-05-22: **SHA** — index-side validation
-- 2026-05-24: **RSW LN** — index-side validation
-- 2026-05-24: **SHA** — index-side validation
+- 2026-05-25: **RSW LN** — index-side validation
+- 2026-05-25: **XRT** — index-side validation
+- 2026-05-25: **SHA** — index-side validation
+- 2026-05-26: **SHA** — index-side validation
+- 2026-05-26: **RSW LN** — index-side validation
+- 2026-05-26: **XRT** — index-side validation
+- 2026-05-27: **RSW LN** — index-side validation
+- 2026-05-27: **SHA** — index-side validation
+- 2026-05-28: **XRT** — index-side validation
+- 2026-05-28: **RSW LN** — index-side validation
+- 2026-05-28: **SHA** — index-side validation
+- 2026-05-30: **RSW LN** — index-side validation
+- 2026-05-30: **SHA** — index-side validation
 
 ## 📋 Fetcher Rejection Summary (7 days)
 No rejection log found.
 
 ## ⏱ Price History Staleness
-Scanned **332** history files. Newest last-close: **2026-05-24**. Yesterday (UTC): **2026-05-23**. Threshold: **>3 days stale** (aligned with the 24H freshness gate in `calculate_metrics.py`).
-🟠 **20 file(s) stale** beyond threshold. Each of these will show `—` in the 24H column and may degrade the 7D column if the staleness exceeds the 5-day lookback window.
-- **DEUS** (XMAQUINA) — last close `1970-01-01`, **20596d stale** [Token]
-- **SHA** (Schaeffler AG) — last close `2022-03-02`, **1543d stale** [Robotics]
-- **ROBCO** (RobCo Network) — last close `2026-03-01`, **83d stale** [Token]
-- **3401 JP** (Teijin Ltd) — last close `2026-04-07`, **46d stale** [Materials]
-- **4112 JP** (Resonac Holdings) — last close `2026-04-07`, **46d stale** [Materials]
-- **5384 JP** (Fujimi Inc) — last close `2026-04-07`, **46d stale** [Materials]
-- **2802 JP** (Ajinomoto Co) — last close `2026-04-08`, **45d stale** [Materials]
-- **3402 JP** (Toray Industries) — last close `2026-04-08`, **45d stale** [Materials]
-- **3407 JP** (Asahi Kasei) — last close `2026-04-08`, **45d stale** [Materials]
-- **3436 JP** (SUMCO Corp) — last close `2026-04-08`, **45d stale** [Materials]
-- **4005 JP** (Sumitomo Chemical) — last close `2026-04-08`, **45d stale** [Materials]
-- **4043 JP** (Tokuyama Corp) — last close `2026-04-08`, **45d stale** [Materials]
-- **4062 JP** (Ibiden Co) — last close `2026-04-08`, **45d stale** [Materials]
-- **4063 JP** (Shin-Etsu Chemical) — last close `2026-04-08`, **45d stale** [Materials]
-- **4091 JP** (Nippon Sanso Holdings) — last close `2026-04-08`, **45d stale** [Materials]
-- **4188 JP** (Mitsubishi Chemical Group) — last close `2026-04-08`, **45d stale** [Materials]
-- **4208 JP** (UBE Corp) — last close `2026-04-08`, **45d stale** [Materials]
-- **5706 JP** (Mitsui Mining & Smelting) — last close `2026-04-08`, **45d stale** [Materials]
-- **9348 JP** (ispace Inc) — last close `2026-04-08`, **45d stale** [Space]
-- **QACE** (Qace Dynamics) — last close `2026-05-19`, **4d stale** [Token]
+Scanned **348** history files. Newest last-close: **2026-05-29**. Yesterday (UTC): **2026-05-31**. Threshold: **>3 days stale** (aligned with the 24H freshness gate in `calculate_metrics.py`).
+🟠 **70 file(s) stale** beyond threshold. Each of these will show `—` in the 24H column and may degrade the 7D column if the staleness exceeds the 5-day lookback window.
+- **ROBCO** (RobCo Network) — last close `2026-03-01`, **91d stale** [Token]
+- **SCC IT** (Space Communication) — last close `2026-05-20`, **11d stale** [Space]
+- **002008 C2** (Han's Laser Technology) — last close `2026-05-22`, **9d stale** [Robotics]
+- **002050** (Zhejiang Sanhua Intelligent) — last close `2026-05-22`, **9d stale** [Robotics]
+- **002472** (Zhejiang Shuanghuan Driveline) — last close `2026-05-22`, **9d stale** [Robotics]
+- **002747 C2** (Estun Automation) — last close `2026-05-22`, **9d stale** [Robotics]
+- **002979** (China Leadshine Technology) — last close `2026-05-22`, **9d stale** [Robotics]
+- **003021** (Shenzhen Zhaowei Machinery) — last close `2026-05-22`, **9d stale** [Robotics]
+- **010060 KS** (OCI Holdings) — last close `2026-05-22`, **9d stale** [Materials]
+- **108490 KS** (Robotis Co) — last close `2026-05-22`, **9d stale** [Robotics]
+- **1590 TT** (Airtac International) — last close `2026-05-22`, **9d stale** [Robotics]
+- **2049** (Hiwin Technologies) — last close `2026-05-22`, **9d stale** [Robotics]
+- **2308 TT** (Delta Electronics) — last close `2026-05-22`, **9d stale** [Robotics]
+- **2317 TT** (Hon Hai Precision (Foxconn)) — last close `2026-05-22`, **9d stale** [Robotics]
+- **2395 TT** (Advantech Co) — last close `2026-05-22`, **9d stale** [Robotics]
+- **277810 KS** (Rainbow Robotics) — last close `2026-05-22`, **9d stale** [Robotics]
+- **300024 C2** (Siasun Robot & Automation) — last close `2026-05-22`, **9d stale** [Robotics]
+- **300100** (Shuanglin Co) — last close `2026-05-22`, **9d stale** [Robotics]
+- **300124 C2** (Shenzhen Inovance Technology) — last close `2026-05-22`, **9d stale** [Robotics]
+- **300757 C2** (Robotechnik Intelligent) — last close `2026-05-22`, **9d stale** [Robotics]
+- **3037 TT** (Unimicron) — last close `2026-05-22`, **9d stale** [Materials]
+- **388720 KS** (Yuil Robotics) — last close `2026-05-22`, **9d stale** [Robotics]
+- **454910 KS** (Doosan Robotics) — last close `2026-05-22`, **9d stale** [Robotics]
+- **600111** (China Northern Rare Earth) — last close `2026-05-22`, **9d stale** [Robotics]
+- **601100** (Jiangsu Hengli Hydraulic) — last close `2026-05-22`, **9d stale** [Robotics]
+- _…and 45 more. Run `python scripts/fetch_price_history.py --refresh` to catch up._
 
 ---
 *Report generated by `scripts/quarantine_health_check.py`*
