@@ -23,6 +23,10 @@ jobs:
     if: github.event.schedule == '0 22 * * 1-5' || github.event.schedule == '0 5 * * 0' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: write
+    # JOB-LEVEL env: every step inherits the key. Per-step env blocks silently omitted it
+    # from the parity-guard step (run #242 → MissingKeyError); job-level prevents that class.
+    env:
+      MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
 
     steps:
       - name: Checkout repo
@@ -41,8 +45,6 @@ jobs:
       #    fetch_yahoo_overrides merges the override names, assemble_all_prices
       #    combines with tokens into all_prices.json. EODHD is OFF this path.
       - name: Fetch prices (MarketStack + Yahoo overrides + assemble)
-        env:
-          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
         run: |
           python scripts/fetch_prices_marketstack.py
           python scripts/fetch_yahoo_overrides.py --overrides
@@ -52,8 +54,6 @@ jobs:
         run: python scripts/fetch_market_caps.py
 
       - name: Refresh price history (MarketStack + Yahoo overrides, merges)
-        env:
-          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
         # --refresh pulls the last 45 days per ticker and merges with the on-disk
         # 5-year series; the Yahoo pass refreshes the override names' history.
         run: |
@@ -61,13 +61,9 @@ jobs:
           python scripts/fetch_yahoo_overrides.py --history-overrides
 
       - name: Backfill any newly-added tickers (no-op when universe stable)
-        env:
-          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
         run: python scripts/fetch_price_history_marketstack.py --backfill
 
       - name: Fetch benchmark prices (MarketStack, split-adjusted PR)
-        env:
-          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
         run: python scripts/fetch_benchmarks.py
 
       - name: Calculate Robotnik Index
@@ -88,8 +84,6 @@ jobs:
       # publish). Distinguishes vendor lag (date mismatch, expected) from
       # corruption (same date, prices diverge). Sundays = full universe.
       - name: MS-vs-Yahoo parity guard
-        env:
-          MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
         run: |
           if [ "$(date -u +%u)" = "7" ]; then
             python scripts/parity_guard.py --weekly
