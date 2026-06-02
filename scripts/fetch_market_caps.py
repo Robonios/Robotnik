@@ -307,20 +307,54 @@ def fetch_token_mcaps():
 def main():
     equity_mcaps = fetch_equity_mcaps()
     token_mcaps = fetch_token_mcaps()
-    all_mcaps = equity_mcaps + token_mcaps
+    fresh = {m["ticker"]: m for m in (equity_mcaps + token_mcaps)}
 
-    # Sort by market cap descending
-    all_mcaps.sort(key=lambda x: x["market_cap_usd"], reverse=True)
+    # ── Resilience: MERGE the fresh fetch OVER the prior committed market_caps ──
+    # fetch_market_caps pulls EVERY mcap from Yahoo (yfinance), which Yahoo blocks on
+    # datacenter IPs (GitHub Actions) — so a CI run can silently drop names. A full
+    # REPLACE then drops them from market_caps.json and the index's reverse-parity
+    # guard (correctly) FAILS the pipeline (this is what broke run #241). Instead, keep
+    # the prior mcap for any in-universe name the fresh fetch missed (flagged stale), so
+    # a transient vendor gap degrades to slightly-stale weights, not a failed index.
+    # Mirrors the price-history --refresh merge. A genuinely-new name that never fetched
+    # has no prior → still surfaces via the guard (a real gap, not masked).
+    universe = {e[0] for e in EQUITIES} | set(TOKENS.keys())
+    prior = {}
+    if MCAP_JSON.exists():
+        try:
+            prior = {m["ticker"]: m for m in json.loads(MCAP_JSON.read_text()).get("market_caps", [])}
+        except Exception:
+            prior = {}
+    merged, kept_stale = {}, []
+    for t in universe:
+        if t in fresh:
+            merged[t] = fresh[t]
+        elif t in prior:
+            row = dict(prior[t]); row["stale"] = True
+            row.setdefault("stale_since", row.get("date_fetched"))
+            merged[t] = row; kept_stale.append(t)
+    all_mcaps = sorted(merged.values(), key=lambda x: x["market_cap_usd"], reverse=True)
+    fresh_n = len(all_mcaps) - len(kept_stale)
 
     output = {
         "fetched_at": datetime.utcnow().isoformat() + "Z",
         "count": len(all_mcaps),
+        "fresh_count": fresh_n,
+        "kept_stale_count": len(kept_stale),
         "market_caps": all_mcaps,
     }
 
     with open(MCAP_JSON, "w") as f:
         json.dump(output, f, indent=2)
-    print("\nSaved {} market caps to {}".format(len(all_mcaps), MCAP_JSON))
+    print("\nSaved {} market caps ({} fresh, {} kept-stale from prior) to {}".format(
+        len(all_mcaps), fresh_n, len(kept_stale), MCAP_JSON))
+    if kept_stale:
+        print("  KEPT-STALE (fresh fetch missed; prior mcap retained): {}{}".format(
+            sorted(kept_stale)[:15], " …" if len(kept_stale) > 15 else ""))
+    if len(kept_stale) > 0.05 * max(1, len(universe)):
+        print("  WARNING: {:.0%} of mcaps retained from prior (stale) — vendor (Yahoo) likely "
+              "rate-limited/blocked this run. Index still publishes on the retained caps.".format(
+              len(kept_stale) / len(universe)))
 
     # Write error log
     with open(ERROR_LOG, "w") as f:

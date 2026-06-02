@@ -63,17 +63,41 @@ def main():
         except Exception as exc:
             print("  WARN: tokens.json unreadable ({}); assembling equities only".format(exc))
 
+    # ── Resilience: keep prior price for any in-universe name this assembly missed ──
+    # MarketStack can return a null close, and the Yahoo-override fetch is blocked on CI
+    # datacenter IPs — either drops a name from all_prices, which then trips the index
+    # reverse-parity guard (the run #241 failure mode; same pattern as fetch_market_caps).
+    # Keep the prior committed price (stale-flagged) so a transient vendor gap degrades to
+    # a slightly-stale price, not a failed index. A name removed from the universe drops.
+    kept_stale = 0
+    if OUT_PATH.exists():
+        try:
+            from fetch_prices import EQUITIES, TOKENS
+            universe = {e[0] for e in EQUITIES} | set(TOKENS.keys())
+            fresh_tickers = {p["ticker"] for p in prices}
+            for p in json.loads(OUT_PATH.read_text()).get("prices", []):
+                t = p.get("ticker")
+                if t in universe and t not in fresh_tickers and p.get("price") is not None:
+                    row = dict(p); row["stale"] = True
+                    prices.append(row); kept_stale += 1
+        except Exception as exc:
+            print("  WARN: prior all_prices merge skipped ({})".format(exc))
+
     out = {
         "fetched_at": datetime.now(timezone.utc).isoformat() + "Z",
         "count": len(prices),
+        "kept_stale_count": kept_stale,
         "source": "MarketStack + Yahoo overrides + CoinGecko (assembled)",
         "prices": prices,
     }
     OUT_PATH.write_text(json.dumps(out, indent=2))
     from collections import Counter
-    mix = dict(Counter(p["source"] for p in prices))
-    print("Assembled all_prices.json: {} equities + {} tokens = {} rows  {}".format(
-        n_eq, n_tok, len(prices), mix))
+    mix = dict(Counter(p.get("source") for p in prices))
+    print("Assembled all_prices.json: {} equities + {} tokens + {} kept-stale = {} rows  {}".format(
+        n_eq, n_tok, kept_stale, len(prices), mix))
+    if kept_stale > 0.05 * max(1, n_eq):
+        print("  WARNING: {} prices retained from prior (stale) — a vendor likely failed this "
+              "run; index still publishes on retained prices.".format(kept_stale))
 
 
 if __name__ == "__main__":
