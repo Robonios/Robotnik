@@ -29,6 +29,16 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 MCAP_JSON = DATA_DIR / "market_caps.json"
 ERROR_LOG = DATA_DIR / "mcap_errors.log"
 
+# Baseline-age floor (see main()): the merge keeps the index COMPLETE (so the membership /
+# reverse-parity guard passes), but that guard checks presence, not freshness. Gate on how
+# OLD the caps are — i.e. whether the refresh has succeeded ANYWHERE (CI or out-of-band) —
+# NOT on how many a single (Yahoo-blocked) CI run happened to refresh.
+STALE_DAYS = 14            # a market cap older than this is "stale"
+STALE_WARN_FRAC = 0.34     # warn if > ~1/3 of caps are stale
+STALE_FAIL_FRAC = 0.60     # FAIL if > ~3/5 are stale — refresh has stopped everywhere
+MCAP_BATCH_RETRIES = 2     # retry a ZERO-result batch (transient throttle); bounded, dup-safe
+MCAP_BACKOFF_BASE = 2.0    # backoff seconds, exponential (2s, 4s)
+
 # ---------------------------------------------------------------------------
 # API keys (CoinGecko only — yfinance needs no key)
 # ---------------------------------------------------------------------------
@@ -201,47 +211,56 @@ def fetch_equity_mcaps():
             start + 1, min(start + batch_size, len(yf_symbols)), len(yf_symbols)
         ))
 
-        try:
-            tickers_obj = yf.Tickers(batch_str)
-            for yf_sym in batch:
-                ticker, name, sector = yf_map[yf_sym]
-                try:
-                    info = tickers_obj.tickers[yf_sym].info
-                    mcap = info.get("marketCap")
-                    currency = info.get("currency", "USD")
+        # Retry-with-backoff: a transient throttle often blanks a WHOLE batch. Retry only a
+        # zero-result batch (dup-safe — nothing was appended on the failed attempt), bounded
+        # by MCAP_BATCH_RETRIES. At a sustained ~90% block this won't recover CI (the baseline
+        # merge carries it), but it materially improves the out-of-band refresh where Yahoo works.
+        for attempt in range(MCAP_BATCH_RETRIES + 1):
+            before = len(results)
+            try:
+                tickers_obj = yf.Tickers(batch_str)
+                for yf_sym in batch:
+                    ticker, name, sector = yf_map[yf_sym]
+                    try:
+                        info = tickers_obj.tickers[yf_sym].info
+                        mcap = info.get("marketCap")
+                        currency = info.get("currency", "USD")
 
-                    # Convert to USD if not already.
-                    # GBp FIX: Yahoo reports marketCap in the MAJOR unit (GBP
-                    # pounds) even when the quote `currency` is the minor unit
-                    # "GBp" (pence). Applying the pence price-rate (GBPUSD/100)
-                    # to the already-pounds marketCap deflates it 100x — observed
-                    # on RPI/IMI/RSW LN. Convert market cap with the major-unit
-                    # rate. (Prices stay on the GBp ÷100 rate elsewhere.)
-                    if mcap and mcap > 0:
-                        conv_ccy = "GBP" if currency == "GBp" else currency
-                        rate = fx_rates.get(conv_ccy, None)
-                        if rate and conv_ccy != "USD":
-                            mcap_usd = mcap * rate
+                        # Convert to USD if not already.
+                        # GBp FIX: Yahoo reports marketCap in the MAJOR unit (GBP
+                        # pounds) even when the quote `currency` is the minor unit
+                        # "GBp" (pence). Applying the pence price-rate (GBPUSD/100)
+                        # to the already-pounds marketCap deflates it 100x — observed
+                        # on RPI/IMI/RSW LN. Convert market cap with the major-unit
+                        # rate. (Prices stay on the GBp ÷100 rate elsewhere.)
+                        if mcap and mcap > 0:
+                            conv_ccy = "GBP" if currency == "GBp" else currency
+                            rate = fx_rates.get(conv_ccy, None)
+                            if rate and conv_ccy != "USD":
+                                mcap_usd = mcap * rate
+                            else:
+                                mcap_usd = mcap
+
+                            results.append({
+                                "ticker": ticker,
+                                "name": name,
+                                "sector": sector,
+                                "market_cap_usd": round(mcap_usd),
+                                "date_fetched": datetime.utcnow().strftime("%Y-%m-%d"),
+                                "source": "Yahoo Finance",
+                            })
                         else:
-                            mcap_usd = mcap
-
-                        results.append({
-                            "ticker": ticker,
-                            "name": name,
-                            "sector": sector,
-                            "market_cap_usd": round(mcap_usd),
-                            "date_fetched": datetime.utcnow().strftime("%Y-%m-%d"),
-                            "source": "Yahoo Finance",
-                        })
-                    else:
-                        log_error(ticker, "No market cap for {} (yf: {})".format(ticker, yf_sym))
-                except Exception as e:
-                    log_error(ticker, "yfinance error for {}: {}".format(yf_sym, str(e)[:80]))
-        except Exception as e:
-            print("  Batch error: {}".format(str(e)[:100]))
-            for yf_sym in batch:
-                ticker, name, sector = yf_map[yf_sym]
-                log_error(ticker, "Batch failed")
+                            log_error(ticker, "No market cap for {} (yf: {})".format(ticker, yf_sym))
+                    except Exception as e:
+                        log_error(ticker, "yfinance error for {}: {}".format(yf_sym, str(e)[:80]))
+            except Exception as e:
+                print("  Batch error: {}".format(str(e)[:100]))
+            if len(results) > before or attempt == MCAP_BATCH_RETRIES:
+                break
+            backoff = MCAP_BACKOFF_BASE * (2 ** attempt)
+            print("    batch yielded 0 — retry {}/{} after {:.0f}s (likely transient throttle)".format(
+                attempt + 1, MCAP_BATCH_RETRIES, backoff))
+            time.sleep(backoff)
 
         time.sleep(1)  # Rate limiting between batches
 
@@ -349,12 +368,37 @@ def main():
     print("\nSaved {} market caps ({} fresh, {} kept-stale from prior) to {}".format(
         len(all_mcaps), fresh_n, len(kept_stale), MCAP_JSON))
     if kept_stale:
-        print("  KEPT-STALE (fresh fetch missed; prior mcap retained): {}{}".format(
-            sorted(kept_stale)[:15], " …" if len(kept_stale) > 15 else ""))
-    if len(kept_stale) > 0.05 * max(1, len(universe)):
-        print("  WARNING: {:.0%} of mcaps retained from prior (stale) — vendor (Yahoo) likely "
-              "rate-limited/blocked this run. Index still publishes on the retained caps.".format(
-              len(kept_stale) / len(universe)))
+        print("  merged: {} cap(s) retained from prior baseline this run (fresh fetch missed them)".format(
+            len(kept_stale)))
+        print("    " + ", ".join(sorted(kept_stale)[:40]) + (" …" if len(kept_stale) > 40 else ""))
+
+    # ── Baseline-age floor (NOT this-run coverage) ───────────────────────────────────────
+    # A blanket vendor block (Yahoo throttles the CI datacenter IP → ~90% missed EVERY run)
+    # must NOT fail the pipeline — the merge retains a complete baseline. But it must also not
+    # let the index publish on silently-ageing caps forever. So gate on the BASELINE'S AGE:
+    # fail only when the caps are genuinely old — the refresh has not succeeded anywhere (CI
+    # or the out-of-band job) in too long. A normal run (bulk refreshed out-of-band days ago)
+    # passes regardless of how throttled THIS run was.
+    today = datetime.utcnow().date()
+    def _age_days(row):
+        df = str(row.get("date_fetched") or "")[:10]
+        try:    return (today - datetime.strptime(df, "%Y-%m-%d").date()).days
+        except Exception: return 10**6
+    ages = sorted(_age_days(r) for r in all_mcaps)
+    stale_n = sum(1 for a in ages if a > STALE_DAYS)
+    stale_frac = stale_n / max(1, len(all_mcaps))
+    print("  baseline age: newest {}d, median {}d, {}/{} (>{}d) = {:.0%} stale".format(
+        ages[0] if ages else -1, ages[len(ages) // 2] if ages else -1,
+        stale_n, len(all_mcaps), STALE_DAYS, stale_frac))
+    if stale_frac > STALE_FAIL_FRAC:
+        print("  FATAL: {:.0%} of market caps are >{}d old — the cap REFRESH has not run anywhere "
+              "(CI or out-of-band) in too long; real staleness, not a one-run vendor block. Run "
+              "fetch_market_caps where Yahoo is reachable and commit the baseline.".format(
+              stale_frac, STALE_DAYS), file=sys.stderr)
+        sys.exit(1)
+    if stale_frac > STALE_WARN_FRAC:
+        print("  WARNING: {:.0%} of market caps are >{}d old — cap refresh overdue.".format(
+              stale_frac, STALE_DAYS))
 
     # Write error log
     with open(ERROR_LOG, "w") as f:
