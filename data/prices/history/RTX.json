@@ -1,8 +1,8 @@
 {
   "ticker": "RTX",
   "yahoo_symbol": "RTX",
-  "native_currency": "USD",
   "currency": "USD",
+  "native_currency": "USD",
   "series": [
     {
       "date": "2021-06-01",
@@ -10043,7 +10043,24 @@
       "low": 176.0399932861328,
       "close": 179.66000366210938,
       "volume": 8754400
+    },
+    {
+      "date": "2026-06-01",
+      "open": 177.44000244140625,
+      "high": 178.69000244140625,
+      "low": 174.1300048828125,
+      "close": 174.41000366210938,
+      "volume": 5474900
+    },
+    {
+      "date": "2026-06-02",
+      "open": 173.88999938964844,
+      "high": 175.72999572753906,
+      "low": 172.99000549316406,
+      "close": 174.55999755859375,
+      "volume": 2185858
     }
   ],
+  "last_fetched": "2026-06-02T19:01:08.677166Z",
   "source": "Yahoo (override, USD via daily FX)"
 }
