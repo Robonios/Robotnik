@@ -1,6 +1,10 @@
 {
   "ticker": "ASML",
   "marketstack_symbol": "ASML",
+  "marketstack_version": "v1",
+  "name": "ASML Holding ADR",
+  "sector": "Cross-stack",
+  "country": "Netherlands",
   "native_currency": "USD",
   "series": [
     {
@@ -10042,7 +10046,24 @@
       "low": 1604.86,
       "close": 1612.76,
       "volume": 1062653.0
+    },
+    {
+      "date": "2026-06-01",
+      "open": 1594.53,
+      "high": 1646.53,
+      "low": 1585.61,
+      "close": 1628.5699,
+      "volume": 1053771.0
+    },
+    {
+      "date": "2026-06-02",
+      "open": 1659.535,
+      "high": 1708.3199,
+      "low": 1647.59,
+      "close": 1705.37,
+      "volume": 1474879.0
     }
   ],
+  "last_fetched": "2026-06-03T12:55:17.527435Z",
   "source": "MarketStack (USD via daily FX)"
 }
