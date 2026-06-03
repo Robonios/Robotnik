@@ -244,9 +244,10 @@ def refresh_all(backfill=False, fetcher=None):
 
 
 if __name__ == "__main__":
-    from fetch_yahoo import fetch_yahoo_daily
-    print("Backfilling 5Y FX for {} currencies...".format(len(FX_CURRENCIES)))
-    counts = refresh_all(backfill=True, fetcher=fetch_yahoo_daily)
+    from fetch_fx import fetch_fx_daily
+    print("Backfilling 5Y FX for {} currencies (ECB-primary, Yahoo fallback for TWD)...".format(
+        len(FX_CURRENCIES)))
+    counts = refresh_all(backfill=True, fetcher=fetch_fx_daily)
     for ccy, n in counts.items():
         dates = _FX_CACHE[ccy]["dates"]
         span = "{} → {}".format(dates[0], dates[-1]) if dates else "EMPTY"

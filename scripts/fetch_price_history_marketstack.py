@@ -35,7 +35,7 @@ from marketstack_client import (
 )
 from fetch_prices import EQUITIES
 import currency_convert as cc
-from fetch_yahoo import fetch_yahoo_daily
+from fetch_fx import fetch_fx_daily   # ECB-primary FX (CI-resilient), Yahoo fallback for TWD
 
 HISTORY_DIR = ROOT / "data" / "prices" / "history"
 HISTORY_DIR.mkdir(parents=True, exist_ok=True)
@@ -88,7 +88,7 @@ def main():
     print("=" * 60)
 
     print("  Refreshing daily FX rates (native → USD)...")
-    cc.refresh_all(backfill=args.backfill, fetcher=fetch_yahoo_daily)
+    cc.refresh_all(backfill=args.backfill, fetcher=fetch_fx_daily)
 
     refreshed = 0
     skipped_yahoo = 0

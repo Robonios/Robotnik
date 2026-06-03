@@ -30,7 +30,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import currency_convert as cc
-from fetch_yahoo import fetch_yahoo_daily
+from fetch_yahoo import fetch_yahoo_daily   # Yahoo is the independent PRICE reference leg
+from fetch_fx import fetch_fx_daily         # but FX uses the shared ECB-primary source
 from marketstack_client import (route_for_ticker, fetch_eod_latest, US_ADR_OVERRIDES,
                                  MARKETSTACK_UNSUPPORTED)
 from fetch_prices import EQUITIES
@@ -126,7 +127,7 @@ def main():
         names = [w["ticker"] for w in weights]
         scope = "weekly/full"
 
-    cc.refresh_all(fetcher=fetch_yahoo_daily)
+    cc.refresh_all(fetcher=fetch_fx_daily)
     print("PARITY GUARD ({}) — {} names, threshold {:.0%}".format(scope, len(names), THRESHOLD))
 
     corruption, lag, checked, errors = [], [], 0, []

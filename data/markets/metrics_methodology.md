@@ -1343,11 +1343,25 @@ convert prices to USD via daily FX:
 
 **The fix (`scripts/currency_convert.py`):** all three production price
 sources — MarketStack live, MarketStack history, and Yahoo overrides — now
-convert native prices to USD using **daily FX** (Yahoo `<CCY>USD=X`,
-per-bar at each date's rate; London pence handled per quote convention;
-FX cache with most-recent-prior fallback and a hard refusal to ever default a
-non-USD currency to 1.0). `calculate_index.py` is unchanged — the conversion
-lives entirely in the fetch layer.
+convert native prices to USD using **daily FX** (per-bar at each date's rate;
+London pence handled per quote convention; FX cache with most-recent-prior
+fallback and a hard refusal to ever default a non-USD currency to 1.0).
+`calculate_index.py` is unchanged — the conversion lives entirely in the fetch
+layer.
+
+**FX source — updated 2026-06-02 (`scripts/fetch_fx.py`):** the daily-FX source
+is now the **ECB euro foreign-exchange reference rates** (free, key-less, clean
+terms, reachable from CI), cross-rated through EUR to USD-per-unit. **Yahoo
+`<CCY>USD=X` remains only as the fallback** for currencies ECB does not publish
+(currently **TWD** — 8 Taiwan constituents) and for transient ECB failures.
+Rationale: Yahoo blocks the GitHub-Actions datacenter IP, so the gitignored FX
+cache could never be rebuilt in CI → every non-USD price failed to convert and
+the international book silently degraded to stale. ECB is reachable in CI, so the
+12 ECB-covered currencies now refresh on every run; only TWD stays CI-stale
+(out-of-band-fresh, backstopped by the `all_prices` price age-floor). Validated:
+ECB agrees with the prior Yahoo rates to **<1% on every currency** (the expected
+ECB-reference-fix vs Yahoo-intraday-spot drift). This also materially reduces the
+displayed-data Yahoo licence exposure (see the licensing review).
 
 **Net correctness statement:** because daily-FX conversion adds the
 currency-return component (USD return = local return + FX return) for **every**
@@ -1512,9 +1526,14 @@ single-day move >5× is neutralised + logged (transparent, not masked).
 Yahoo is NOT a redundant second equity vendor. It is three distinct dependencies:
 1. **Primary price source** for the ~25 `MARKETSTACK_UNSUPPORTED` override names
    (HK/KOSDAQ/TPEx + Ibiden + RTX) MarketStack cannot serve.
-2. **The daily-FX source** (`<CCY>USD=X`) the ENTIRE currency conversion rests on
-   (native → USD for every non-USD constituent and benchmark).
+2. **FX fallback only** (`<CCY>USD=X`) — *reduced 2026-06-02.* The daily-FX
+   source is now the **ECB euro reference rates** (`fetch_fx.py`, CI-resilient,
+   clean terms); Yahoo serves FX only for currencies ECB does not publish
+   (currently **TWD**, 8 Taiwan constituents) and as a transient-failure
+   fallback. (Was: the SOLE FX source the ENTIRE conversion rested on — migrated
+   to ECB to survive the CI Yahoo-IP block and cut the displayed-data licence
+   exposure; see §12.)
 3. **The independent validation source** / basis for the standing MS-vs-Yahoo
    parity guard (catches the next RTX/Ibiden; distinguishes vendor lag from
-   corruption).
+   corruption). *Skipped in CI where Yahoo is unreachable; runs out-of-band.*
 A future cleanup must not treat it as removable.

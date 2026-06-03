@@ -31,6 +31,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from fetch_yahoo import fetch_yahoo_daily, fetch_latest_from_yahoo, YahooFetchError
+from fetch_fx import fetch_fx_daily   # ECB-primary FX (CI-resilient); override PRICES stay on Yahoo
 import currency_convert as cc
 
 OVERRIDES_PATH = ROOT / "data" / "registries" / "data_source_overrides.json"
@@ -79,7 +80,7 @@ def cmd_overrides():
     print("YAHOO OVERRIDE FETCHER — latest EOD")
     print("  {} override tickers to fetch".format(len(targets)))
     print("=" * 60)
-    cc.refresh_all(fetcher=fetch_yahoo_daily)
+    cc.refresh_all(fetcher=fetch_fx_daily)
 
     # Load existing equities.json to merge into
     eq = {"equities": []}
@@ -138,7 +139,7 @@ def cmd_history_overrides(backfill=False):
         "5Y backfill" if backfill else "compact refresh"))
     print("  {} override tickers to fetch".format(len(targets)))
     print("=" * 60)
-    cc.refresh_all(backfill=backfill, fetcher=fetch_yahoo_daily)
+    cc.refresh_all(backfill=backfill, fetcher=fetch_fx_daily)
 
     size = "5y" if backfill else "compact"
     ok = failed = 0

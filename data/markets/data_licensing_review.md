@@ -55,13 +55,16 @@ exposure class as EODHD*. Yahoo currently feeds the displayed index in **two loa
 | Role | Mechanism | Displayed? | Exposure |
 |---|---|---|---|
 | **~21 override prices** | `fetch_yahoo_overrides.py` merges Yahoo closes for MS-unsupported names into `equities.json` → `all_prices.json` → index + market table | **YES** — in the headline index + displayed prices | direct |
-| **Daily FX** | `currency_convert.py` / `fetch_yahoo_daily` pulls daily rates converting *every* native price to USD | **YES** — touches **every** displayed USD price | pervasive |
+| **Daily FX** | ~~`fetch_yahoo_daily`~~ → **migrated to ECB euro reference rates** (`fetch_fx.py`, 2026-06-02). Yahoo now only the **TWD fallback** (8 Taiwan names ECB doesn't publish) | YES — TWD names only | **reduced → minor** |
 | Parity guard (validation) | `parity_guard.py` cross-checks MS vs Yahoo | no (internal CI) | low-risk |
 
 **Bounded and addressable** (none are blockers; all have clean-source paths):
 - **Internal validation use** (parity guard) — low-risk; internal, not displayed.
-- **Daily FX** — re-sourceable from **clean public reference rates** (ECB euro reference rates,
-  US Federal Reserve H.10) or a licensed FX feed. Mechanical swap; no methodology change.
+- **Daily FX — DONE (2026-06-02):** migrated to **ECB euro reference rates** (`fetch_fx.py` —
+  free, key-less, clean-terms, CI-reachable). Yahoo retained *only* as the **TWD fallback** (ECB
+  does not publish TWD → 8 Taiwan constituents) and transient-failure fallback. Mechanical swap,
+  no methodology change; ECB validated to **<1%** vs the prior Yahoo rates. Residual Yahoo FX
+  exposure = **TWD only** (closes with a clean-terms TWD-covering provider).
 - **~21 override names** — need a **clean-terms** price source (MarketStack where it can be
   coaxed to route them, a licensed feed, or exchange-direct). Smallest, most specific gap.
 
@@ -85,7 +88,7 @@ pre-launch, because this is the one that an external data-diligence pass would c
 2. **"Data from EODHD. Fundamentals weekly."** displayed subtitle (assets.html) — now false; fix text.
 3. **253 → 182** universe-count reconciliation across displayed views (assets meta, weights/registry).
 4. **funding.html / RPCI** (`private_capital_index.json`) + **assets.html "Frontier Assets"** — B1 targets.
-5. **Yahoo FX + overrides** clean-source migration (§2) — schedule before commercial launch.
+5. **Yahoo overrides** clean-source migration + **TWD FX** residual (§2) — schedule before commercial launch. *(Daily FX migrated to ECB 2026-06-02; only the ~21 overrides + TWD FX remain on Yahoo.)*
 
 ---
 
@@ -93,5 +96,5 @@ pre-launch, because this is the one that an external data-diligence pass would c
 - **Active EODHD stored-data exposure on GitHub Pages: closed** (served tree; git-history residual flagged, non-blocking).
 - **EODHD off the live workflow:** commodities step removed (no fetcher) — the pipeline now makes **zero EODHD calls**; the only remaining EODHD touch is displayed `fundamentals.json` (→ B).
 - **Displayed EODHD fundamentals: CLOSED** (B-sweep) — RPM rewired to drop all fundamentals fields + mirror the 196 index; `fundamentals.json` deleted. No EODHD-sourced data remains.
-- **Yahoo (overrides + FX): newly flagged, displayed, bounded** → same licence read; clean-source paths identified.
+- **Yahoo: reduced.** Daily FX migrated to **ECB** (2026-06-02); residual Yahoo displayed exposure = **~21 override prices + TWD FX** (8 Taiwan names) → same licence read; clean-source paths identified.
 - **Net legal read needed on:** EODHD stored-data history residual + EODHD displayed fundamentals + Yahoo displayed prices/FX. MarketStack is the clean-terms target.

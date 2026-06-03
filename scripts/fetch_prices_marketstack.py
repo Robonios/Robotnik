@@ -35,7 +35,7 @@ from marketstack_client import (
 )
 from fetch_prices import EQUITIES, guess_currency  # canonical universe
 import currency_convert as cc
-from fetch_yahoo import fetch_yahoo_daily
+from fetch_fx import fetch_fx_daily   # ECB-primary FX (CI-resilient), Yahoo fallback for TWD
 
 OUTPUT_PATH = ROOT / "data" / "prices" / "equities.json"
 
@@ -54,7 +54,7 @@ def main():
     print("=" * 60)
 
     print("  Refreshing daily FX rates (native → USD)...")
-    cc.refresh_all(fetcher=fetch_yahoo_daily)
+    cc.refresh_all(fetcher=fetch_fx_daily)
 
     results = []
     skipped_yahoo = []     # tickers in MARKETSTACK_UNSUPPORTED → caller routes to Yahoo
