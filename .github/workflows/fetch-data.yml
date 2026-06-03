@@ -23,17 +23,20 @@ jobs:
     if: github.event.schedule == '0 22 * * 1-5' || github.event.schedule == '0 5 * * 0' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: write
-    # JOB-LEVEL env: every step inherits the key. Per-step env blocks silently omitted it
-    # from the parity-guard step (run #242 → MissingKeyError); job-level prevents that class.
+    # JOB-LEVEL env: every step inherits the key (robust default). NB: the real #241/#242
+    # root cause was a SECRET NAME MISMATCH — the repo secret was named MARKETSTACK while the
+    # code/.env read MARKETSTACK_API_KEY, so this reference resolved EMPTY and MS made 0 calls
+    # (fixed 2026-06-03 by renaming the secret to MARKETSTACK_API_KEY; this ref is canonical —
+    # do NOT repoint it at a non-canonical secret name).
     env:
       MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -149,12 +152,12 @@ jobs:
           fi
 
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: main
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -193,8 +196,8 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
       - name: Run quarantine health check
