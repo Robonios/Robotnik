@@ -47,6 +47,26 @@ def normalise_iso_date(d):
     return str(d).split("T", 1)[0]
 
 
+def require_marketstack_resolved(n_resolved, n_failed, api_calls):
+    """Fail loud on a SYSTEMIC MarketStack failure — 0 names resolved while names
+    WERE routable. That is not a partial miss (assemble's merge handles a few
+    dropped names); it is an outage — a missing/mismatched MARKETSTACK_API_KEY
+    (the secret-name-mismatch class that froze the book), an auth failure, or a
+    total IP block. Without this, the merge silently retains the ENTIRE prior
+    book and the run goes GREEN on stale data. Exit non-zero so the step errors
+    and the pipeline serves last-good instead of committing a frozen book. Makes
+    a post-key-fix run self-verifying: it can only pass if MS actually resolved.
+    """
+    routable = n_resolved + n_failed
+    if routable > 0 and n_resolved == 0:
+        print("FATAL: MarketStack resolved 0 of {} routable names "
+              "(api_calls_used={}) — SYSTEMIC vendor failure (missing/mismatched "
+              "MARKETSTACK_API_KEY, auth, or total block), NOT a partial miss. "
+              "Failing the run to serve last-good rather than commit a "
+              "green-but-stale book.".format(routable, api_calls), file=sys.stderr)
+        sys.exit(1)
+
+
 def main():
     print("=" * 60)
     print("ROBOTNIK PRICE FETCHER — MarketStack")
@@ -181,12 +201,20 @@ def main():
     print("  Output: {}".format(OUTPUT_PATH.relative_to(ROOT)))
     print("=" * 60)
 
+    # Systemic-failure guard (write-then-gate): equities.json with failed_detail
+    # is already persisted above for diagnosis; now fail loud if MS resolved zero
+    # while names were routable (the secret-name-mismatch / auth / block class).
+    require_marketstack_resolved(len(results), len(failed), call_count())
+
 
 if __name__ == "__main__":
     try:
         main()
     except MissingKeyError as e:
-        print("FAIL: {}".format(e))
+        # Belt-and-suspenders: if a key error ever propagates uncaught, fail the
+        # process (was: printed FAIL but exited 0 — a silent green on no data).
+        print("FAIL: {}".format(e), file=sys.stderr)
+        sys.exit(1)
         sys.exit(1)
     except AuthError as e:
         print("AUTH FAIL: {}".format(e))
