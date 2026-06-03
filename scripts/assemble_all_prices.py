@@ -121,17 +121,40 @@ def main():
     except Exception as exc:
         print("  WARN: price age-floor universe load failed ({}) — floor not enforced".format(exc))
     eq_prices = [p for p in prices if p.get("ticker") in eq_universe and p.get("price") is not None]
+
+    # ── Documented known-lag exclusion (#55, STOPGAP) ──────────────────────────
+    # data/markets/known_lag_cohort.json lists names MarketStack eod/latest has
+    # frozen at ~2026-05-22 (mostly China-A/TW/KR/EU; feed-gap vs rolling-lag is
+    # UNDER DIAGNOSIS — NOT plan-gated). Only cohort names that are STILL stale are
+    # exempted from the gate (a refreshed cohort name re-enters automatically);
+    # they still PUBLISH and are LOGGED every run — documented degradation, not a
+    # silent quieting. Staleness in any name NOT on the list gates normally.
+    # Remove the list when MS catches up or #48 sources these fresh.
+    cohort = set()
+    try:
+        _cf = ROOT / "data" / "markets" / "known_lag_cohort.json"
+        if _cf.exists():
+            cohort = set(json.loads(_cf.read_text()).get("tickers", []))
+    except Exception as exc:
+        print("  WARN: known_lag_cohort load failed ({}) — no exclusion applied".format(exc))
+
+    def _excluded(p):
+        return p.get("ticker") in cohort and _age_days(p) > STALE_DAYS
+    excluded = [p for p in eq_prices if _excluded(p)]
+    gated = [p for p in eq_prices if not _excluded(p)]
+    raw_stale = sum(1 for p in eq_prices if _age_days(p) > STALE_DAYS)
+    gated_stale = sum(1 for p in gated if _age_days(p) > STALE_DAYS)
+    stale_frac = (gated_stale / len(gated)) if gated else 0.0
     ages = sorted(_age_days(p) for p in eq_prices)
-    stale_n = sum(1 for a in ages if a > STALE_DAYS)
-    stale_frac = (stale_n / len(eq_prices)) if eq_prices else 0.0
 
     out = {
         "fetched_at": datetime.now(timezone.utc).isoformat() + "Z",
         "count": len(prices),
         "kept_stale_count": kept_stale,
         "equity_count": len(eq_prices),
-        "equity_stale_over_{}d".format(STALE_DAYS): stale_n,
-        "equity_stale_frac": round(stale_frac, 4),
+        "equity_stale_over_{}d".format(STALE_DAYS): raw_stale,
+        "known_lag_excluded": len(excluded),
+        "equity_stale_frac": round(stale_frac, 4),   # gated (excludes #55 known-lag)
         "source": "MarketStack + Yahoo overrides + CoinGecko (assembled)",
         "prices": prices,
     }
@@ -144,21 +167,25 @@ def main():
         print("  WARNING: {} prices retained from prior (stale) — a vendor likely failed this "
               "run; index still publishes on retained prices.".format(kept_stale))
 
-    # Age line — printed EVERY run, so a partially-stale publish is never silent
-    # (the fraction is also recorded in the output metadata above).
-    print("  price baseline age: newest {}d, median {}d, {}/{} (>{}d) = {:.0%} stale".format(
+    # Age line — printed EVERY run, so a partially-stale publish is never silent.
+    print("  price baseline age: newest {}d, median {}d | raw {}/{} (>{}d); excluded {} known-lag "
+          "(#55); GATED {}/{} = {:.0%} stale".format(
         ages[0] if ages else -1, ages[len(ages) // 2] if ages else -1,
-        stale_n, len(eq_prices), STALE_DAYS, stale_frac))
-    if eq_prices and stale_frac > STALE_FAIL_FRAC:
-        print("  FATAL: {:.0%} of equity prices are >{}d old (floor {:.0%}) — a region-wide "
-              "freeze, most likely the FX source (ECB unreachable → fallback to the CI-blocked "
-              "Yahoo) or a broad refresh failure. A partial-as-of index misattributes the day's "
-              "move, so the run is blocked to serve last-good. Fix FX / run the fetchers where "
-              "the vendors are reachable, then commit the baseline.".format(
+        raw_stale, len(eq_prices), STALE_DAYS, len(excluded),
+        gated_stale, len(gated), stale_frac))
+    if excluded:
+        names = sorted(p.get("ticker") for p in excluded)
+        print("  #55 known-lag EXCLUDED from floor ({} names, publishing STALE pending diagnosis): "
+              "{}{}".format(len(names), ", ".join(names[:30]), " …" if len(names) > 30 else ""))
+    if gated and stale_frac > STALE_FAIL_FRAC:
+        print("  FATAL: {:.0%} of NON-excluded equity prices are >{}d old (floor {:.0%}) — staleness "
+              "BEYOND the documented #55 known-lag cohort. A partial-as-of index misattributes the "
+              "day's move, so the run is blocked to serve last-good. Investigate the fetch/FX path, "
+              "run where the vendors are reachable, then commit the baseline.".format(
                   stale_frac, STALE_DAYS, STALE_FAIL_FRAC), file=sys.stderr)
         sys.exit(1)
     if stale_frac > STALE_WARN_FRAC:
-        print("  WARNING: {:.0%} of equity prices are >{}d old — price refresh overdue.".format(
+        print("  WARNING: {:.0%} of non-excluded equity prices are >{}d old — refresh overdue.".format(
               stale_frac, STALE_DAYS))
 
 

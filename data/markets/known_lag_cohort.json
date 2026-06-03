@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "issue": "#55",
+    "title": "MarketStack eod/latest frozen at 2026-05-22 for a cohort of intl names",
+    "fact": "As of 2026-06-03, MarketStack eod/latest returns 2026-05-22 (one name 05-20) for these 68 names while US names are fresh (Jun-2/3). All are source=MarketStack. fetch_prices_marketstack uses the EOD endpoint (verified), so this is MS's own EOD data, not an intraday/endpoint mixup.",
+    "status": "UNDETERMINED — temporary feed gap vs rolling ~12d lag. NOT plan/exchange-gating (MarketStack does not gate EOD by exchange; the v2 'not available in your plan' 406 was v2-endpoint access tiering, a red herring). #48 escalation is ON HOLD pending diagnosis.",
+    "diagnosis_pending": [
+      "Tomorrow's cohort date: advances -> rolling lag (keep exclusion until a fresh source via #48); frozen -> feed gap.",
+      "MarketStack support ticket: why is eod for these names frozen at 05-22, and when does it resolve? (feed-gap question, NOT a plan question)."
+    ],
+    "effect": "These tickers are EXCLUDED from the all_prices price age-floor's stale fraction so the floor does not FAIL on a known, under-diagnosis vendor lag (it would otherwise FAIL ~Mon Jun 8: 68/306 = 22% > 0.15). They are LOGGED every run and still PUBLISH (stale) — this is documented degradation, NOT a silent quieting. Only cohort names that are STILL stale (>STALE_DAYS) are exempted; as MS refreshes a name it re-enters the floor automatically. Staleness in any name NOT on this list still gates normally.",
+    "added": "2026-06-03",
+    "remove_when": "MarketStack feed catches up for these names (delete this list, or it self-narrows as names refresh) OR #48 sources fresh intl EOD for them.",
+    "review": "re-check each EOD run"
+  },
+  "tickers": [
+    "002008 C2", "002050", "002472", "002747 C2", "002979", "003021",
+    "010060 KS", "108490 KS", "1590 TT", "2049", "2308 TT", "2317 TT",
+    "2395 TT", "277810 KS", "300024 C2", "300100", "300124 C2", "300757 C2",
+    "3037 TT", "388720 KS", "454910 KS", "600111", "601100", "601689",
+    "603009", "603662", "6153 TT", "688017", "688165 C1", "688169 C1",
+    "688297 C1", "ABBN SW", "AMG NA", "ATI", "ATS CN", "AVIO IM", "BAS GR",
+    "BSL GR", "CBRS", "DUE GR", "ETL FP", "FLY", "G1A GR", "HIAB FH",
+    "IFX GR", "IMI LN", "INRN SW", "JBTM", "JEN GR", "KARN SW", "KDK",
+    "KGX GR", "KRMN", "KRN GR", "MDA CN", "MRK GR", "MRSN FP", "OVZON SS",
+    "PENG", "SCC IT", "SGL GR", "SHA", "SIE GR", "SRTA", "TECN SW", "VOYG",
+    "WAF GR", "WCH GR"
+  ]
+}

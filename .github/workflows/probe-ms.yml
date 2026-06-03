@@ -1,0 +1,35 @@
+# TEMP diagnostic — delete once #55 is resolved.
+# MarketStack works in CI (run #247 = 282/282); this surfaces the v1-vs-v2 EOD
+# freshness comparison on demand so the SUMMARY can be read straight from the
+# step log. Reusable for the #48 provider eval (point the probe at any vendor).
+name: MS v1-vs-v2 probe (temp · #55)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'sample (representative subset) or full (auto-detected lagged cohort)'
+        type: choice
+        options: [sample, full]
+        default: sample
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    # Same canonical secret reference as the main pipeline (post-rename it resolves).
+    env:
+      MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Probe MarketStack v1 vs v2
+        run: |
+          if [ "${{ inputs.mode }}" = "full" ]; then
+            python scripts/probe_marketstack_v1_v2.py
+          else
+            python scripts/probe_marketstack_v1_v2.py --sample
+          fi
