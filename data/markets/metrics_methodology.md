@@ -1363,6 +1363,16 @@ ECB agrees with the prior Yahoo rates to **<1% on every currency** (the expected
 ECB-reference-fix vs Yahoo-intraday-spot drift). This also materially reduces the
 displayed-data Yahoo licence exposure (see the licensing review).
 
+**Accepted one-time seam (documented, not a defect):** stored historical USD
+prices were converted with the prior Yahoo FX; the switchover re-converts only
+the recent tail via ECB, so non-US names carry a one-time **~0.2–0.4% FX-source
+step** at the boundary. This is an immaterial *data-source discontinuity*, not a
+structural error — it does not affect daily returns (both legs of a daily ratio
+shift by the same source delta), the independent-reconstruction Δ=0 (both
+implementations read the same stored prices), or the parity guard (4% threshold,
+the seam is ~10× smaller). A full history re-backfill through ECB erases it and is
+**deferred as optional polish**.
+
 **Net correctness statement:** because daily-FX conversion adds the
 currency-return component (USD return = local return + FX return) for **every**
 international constituent — not just ADR-routed ones — the **post-fix index is

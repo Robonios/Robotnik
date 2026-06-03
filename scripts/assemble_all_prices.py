@@ -32,15 +32,23 @@ EQ_PATH  = ROOT / "data" / "prices" / "equities.json"
 TK_PATH  = ROOT / "data" / "prices" / "tokens.json"
 OUT_PATH = ROOT / "data" / "prices" / "all_prices.json"
 
-# ── Baseline-age floor constants (sibling to fetch_market_caps's cap floor) ──
+# ── Baseline-age floor constants (price-specific calibration) ──
 # Prices refresh daily on weekdays; a still-current EOD price is at most a few
 # days old (Fri close seen Mon/Tue, plus holiday runs). 14d absorbs weekends and
-# holidays yet catches a multi-week freeze — the CI-Yahoo-FX-block degradation
-# the price merge silently rode before. Mirrors the cap floor's constants so the
-# two staleness gates read identically.
+# holidays yet catches a multi-week freeze.
+# The FAIL fraction is tuned BELOW the international book's share of the universe,
+# NOT mirrored from the cap floor (.60). Non-US names are ~22% of the equity book
+# and all convert via FX, so an FX-source-wide freeze (ECB unreachable → fallback
+# to the CI-blocked Yahoo, or the parser breaking) re-freezes ALL of them at once
+# → ~19-22% stale. A 22%-stale index is DISTORTED — frozen names post zero daily
+# return, so the day's move is misattributed — so we block-and-serve-last-good
+# rather than publish a mixed-as-of index. FAIL=0.15 sits below that 22% (the
+# freeze trips it) and above the post-fix normal (TWD-only via Yahoo fallback,
+# ~3%; up to ~10-12% if the Yahoo overrides are ALSO CI-blocked — the open #48
+# probe), so a healthy run passes. WARN=0.10 is the pre-alarm step below it.
 STALE_DAYS      = 14
-STALE_WARN_FRAC = 0.34
-STALE_FAIL_FRAC = 0.60
+STALE_WARN_FRAC = 0.10
+STALE_FAIL_FRAC = 0.15
 
 
 def _row(e):
@@ -142,10 +150,12 @@ def main():
         ages[0] if ages else -1, ages[len(ages) // 2] if ages else -1,
         stale_n, len(eq_prices), STALE_DAYS, stale_frac))
     if eq_prices and stale_frac > STALE_FAIL_FRAC:
-        print("  FATAL: {:.0%} of equity prices are >{}d old — the price REFRESH has not run "
-              "anywhere (CI or out-of-band) in too long; real staleness, not a one-run vendor "
-              "block. Run the price fetchers where the vendors are reachable and commit the "
-              "baseline.".format(stale_frac, STALE_DAYS), file=sys.stderr)
+        print("  FATAL: {:.0%} of equity prices are >{}d old (floor {:.0%}) — a region-wide "
+              "freeze, most likely the FX source (ECB unreachable → fallback to the CI-blocked "
+              "Yahoo) or a broad refresh failure. A partial-as-of index misattributes the day's "
+              "move, so the run is blocked to serve last-good. Fix FX / run the fetchers where "
+              "the vendors are reachable, then commit the baseline.".format(
+                  stale_frac, STALE_DAYS, STALE_FAIL_FRAC), file=sys.stderr)
         sys.exit(1)
     if stale_frac > STALE_WARN_FRAC:
         print("  WARNING: {:.0%} of equity prices are >{}d old — price refresh overdue.".format(
