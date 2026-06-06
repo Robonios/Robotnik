@@ -1,0 +1,5 @@
+#!/bin/sh
+# Robotnik pre-commit hook (#55): reject merge-conflict markers before they can be
+# committed/pushed — the guard that would have stopped the e4232597 botched merge.
+# Install:  cp scripts/git-hooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+exec python3 "$(git rev-parse --show-toplevel)/scripts/check_conflict_markers.py" --staged

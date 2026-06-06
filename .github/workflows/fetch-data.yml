@@ -43,6 +43,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # #55 guard: fail fast if a botched merge ever lands conflict markers on the
+      # remote (the e4232597 class — invalid JSON, broken pipeline). The primary guard
+      # is the local pre-commit hook (scripts/git-hooks/pre-commit); this is the CI
+      # backstop so bad data is never processed/published. NOTE: pause this cron during
+      # big out-of-band pushes (#55-class) so there is nothing for the push to collide with.
+      - name: Reject conflict markers (#55 guard)
+        run: python scripts/check_conflict_markers.py
+
       # ── PRICES: MarketStack (PR, daily-FX, split-adjusted) + Yahoo overrides
       #    + assemble. fetch_prices_marketstack writes equities.json (MS),
       #    fetch_yahoo_overrides merges the override names, assemble_all_prices
