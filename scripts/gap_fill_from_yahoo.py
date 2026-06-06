@@ -179,6 +179,10 @@ def main():
     fillable = [r for r in results if r.get("fills")]
     surfaced = [r for r in results if r.get("surfaced")]
     errored = [r for r in results if r.get("error")]
+    # Holes detected but nothing to fill: every gap is a real holiday Yahoo also lacks,
+    # so the flat carry-forward is CORRECT (not a hole). Tracked so a material constituent
+    # with a genuinely UNFILLED hole (errored/surfaced) is never silently left flat.
+    noop = [r for r in results if not r.get("fills") and not r.get("surfaced") and not r.get("error")]
     tot_w = sum(r["weight"] or 0 for r in fillable)
     tot_bars = sum(len(r["fills"]) for r in fillable)
 
@@ -198,7 +202,16 @@ def main():
             for s in r["surfaced"]:
                 print("  {:11} {} {}".format(r["ticker"], s["window"], s["reason"]))
     if errored:
-        print("\nERRORED (Yahoo/symbol):", ", ".join("{}({})".format(r["ticker"], r["error"]) for r in errored))
+        print("\nERRORED — Yahoo/symbol fetch failed (hole left UNFILLED — surface if material):")
+        for r in sorted(errored, key=lambda r: -(r["weight"] or 0)):
+            print("  {:11} w={:>6.3f}  {}".format(r["ticker"], r["weight"] or 0, r["error"]))
+    if noop:
+        mx = max((r["weight"] or 0) for r in noop)
+        print("\nHOLES but 0 fillable bars — every detected gap is a holiday Yahoo also lacks, so "
+              "flat carry-forward is CORRECT (NOT an unfilled hole): {} names, max wt {:.3f}%".format(
+                  len(noop), mx))
+        for r in sorted(noop, key=lambda r: -(r["weight"] or 0))[:8]:
+            print("  {:11} w={:>6.3f}  ({} holiday gaps)".format(r["ticker"], r["weight"] or 0, r["n_gaps"]))
 
     if args.apply:
         n = 0

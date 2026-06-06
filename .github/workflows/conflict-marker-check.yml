@@ -1,0 +1,20 @@
+name: Conflict marker check
+
+# Fires on EVERY push and PR — the load-bearing backstop for commit paths that bypass
+# the local pre-commit hook (GitHub Desktop's merge-resolution path, the web UI). The
+# e4232597 botched merge (#55) reached the remote because nothing checked on push; this
+# runs immediately, regardless of how the commit was made, and goes red if markers land.
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Reject conflict markers (#55 guard)
+        run: python scripts/check_conflict_markers.py
