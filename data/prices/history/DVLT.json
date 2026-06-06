@@ -1,7 +1,7 @@
 {
   "ticker": "DVLT",
   "marketstack_symbol": "DVLT",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "DataVault AI",
   "sector": "Semiconductor",
   "country": "United States",
@@ -2296,14 +2296,6 @@
       "volume": 28261300.0
     },
     {
-      "date": "2026-04-08",
-      "open": 0.7441,
-      "high": 0.756,
-      "low": 0.69,
-      "close": 0.0,
-      "volume": 35044220.0
-    },
-    {
       "date": "2026-04-09",
       "open": 0.69,
       "high": 0.7,
@@ -2606,8 +2598,20 @@
       "low": 0.51,
       "close": 0.51,
       "volume": 42604500.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 0.51,
+      "high": 0.51,
+      "low": 0.47,
+      "close": 0.47,
+      "volume": 35957000.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:06.104931Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2025-02-14",
+    "latest": "2026-06-03",
+    "n_bars": 325
+  }
 }

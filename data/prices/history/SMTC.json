@@ -1,44 +1,12 @@
 {
   "ticker": "SMTC",
   "marketstack_symbol": "SMTC",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Semtech Corp",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 68.56,
-      "high": 68.64,
-      "low": 65.87,
-      "close": 66.3,
-      "volume": 203764.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 65.18,
-      "high": 65.18,
-      "low": 63.37,
-      "close": 63.66,
-      "volume": 324001.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 64.47,
-      "high": 64.57,
-      "low": 62.77,
-      "close": 63.46,
-      "volume": 462663.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 63.04,
-      "high": 63.12,
-      "low": 61.76,
-      "close": 63.03,
-      "volume": 297343.0
-    },
     {
       "date": "2021-05-07",
       "open": 63.96,
@@ -10222,8 +10190,28 @@
       "low": 157.8055,
       "close": 166.63,
       "volume": 2801507.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 168.52,
+      "high": 168.62,
+      "low": 160.88,
+      "close": 163.5,
+      "volume": 2919408.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 155.04,
+      "high": 171.37,
+      "low": 154.0,
+      "close": 169.35,
+      "volume": 2634094.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:14.616304Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

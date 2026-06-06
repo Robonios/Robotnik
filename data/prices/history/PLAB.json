@@ -1,44 +1,12 @@
 {
   "ticker": "PLAB",
   "marketstack_symbol": "PLAB",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Photronics",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 12.79,
-      "high": 12.98,
-      "low": 12.76,
-      "close": 12.94,
-      "volume": 377379.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 12.88,
-      "high": 12.88,
-      "low": 12.515,
-      "close": 12.64,
-      "volume": 432012.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 12.77,
-      "high": 12.88,
-      "low": 12.66,
-      "close": 12.74,
-      "volume": 338854.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 12.74,
-      "high": 12.83,
-      "low": 12.5,
-      "close": 12.73,
-      "volume": 339929.0
-    },
     {
       "date": "2021-05-07",
       "open": 12.82,
@@ -10222,8 +10190,28 @@
       "low": 32.1919,
       "close": 33.14,
       "volume": 2767166.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 33.862,
+      "high": 34.4945,
+      "low": 32.075,
+      "close": 32.11,
+      "volume": 2714119.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 31.104,
+      "high": 31.93,
+      "low": 30.67,
+      "close": 31.52,
+      "volume": 1679020.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:12.253470Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

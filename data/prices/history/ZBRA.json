@@ -1,44 +1,12 @@
 {
   "ticker": "ZBRA",
   "marketstack_symbol": "ZBRA",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Zebra Technologies",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 492.13,
-      "high": 492.13,
-      "low": 475.12,
-      "close": 479.05,
-      "volume": 487013.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 478.06,
-      "high": 480.61,
-      "low": 455.71,
-      "close": 470.62,
-      "volume": 512000.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 483.62,
-      "high": 485.39,
-      "low": 472.36,
-      "close": 482.42,
-      "volume": 446000.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 475.32,
-      "high": 478.0,
-      "low": 463.1,
-      "close": 471.41,
-      "volume": 549349.0
-    },
     {
       "date": "2021-05-07",
       "open": 471.41,
@@ -10222,8 +10190,28 @@
       "low": 248.45,
       "close": 254.44,
       "volume": 900337.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 252.0,
+      "high": 252.26,
+      "low": 245.65,
+      "close": 249.3,
+      "volume": 950904.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 250.19,
+      "high": 252.3,
+      "low": 245.37,
+      "close": 245.48,
+      "volume": 747254.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:58.428056Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

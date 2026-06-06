@@ -1,44 +1,12 @@
 {
   "ticker": "SNPS",
   "marketstack_symbol": "SNPS",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Synopsys",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 248.91,
-      "high": 249.83,
-      "low": 243.995,
-      "close": 244.81,
-      "volume": 467093.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 241.22,
-      "high": 242.22,
-      "low": 234.555,
-      "close": 237.07,
-      "volume": 1243656.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 240.69,
-      "high": 241.82,
-      "low": 236.59,
-      "close": 237.46,
-      "volume": 812837.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 235.79,
-      "high": 239.08,
-      "low": 232.75,
-      "close": 237.46,
-      "volume": 828431.0
-    },
     {
       "date": "2021-05-07",
       "open": 240.23,
@@ -10222,8 +10190,28 @@
       "low": 485.63,
       "close": 508.35,
       "volume": 2296635.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 502.78,
+      "high": 504.1218,
+      "low": 491.2,
+      "close": 498.02,
+      "volume": 1483647.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 500.3,
+      "high": 500.35,
+      "low": 485.0,
+      "close": 494.48,
+      "volume": 2005985.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:21.991033Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

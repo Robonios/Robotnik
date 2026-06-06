@@ -1,44 +1,12 @@
 {
   "ticker": "LRCX",
   "marketstack_symbol": "LRCX",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Lam Research",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 62.92721,
-      "high": 63.0,
-      "low": 61.3778,
-      "close": 61.724000000000004,
-      "volume": 1137617.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 60.838,
-      "high": 60.955,
-      "low": 59.032000000000004,
-      "close": 60.629,
-      "volume": 1587756.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 61.730999999999995,
-      "high": 62.099000000000004,
-      "low": 60.336,
-      "close": 61.1,
-      "volume": 982900.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 60.916,
-      "high": 61.911620000000006,
-      "low": 60.141,
-      "close": 61.74400000000001,
-      "volume": 1176093.0
-    },
     {
       "date": "2021-05-07",
       "open": 62.599000000000004,
@@ -10222,8 +10190,28 @@
       "low": 320.86,
       "close": 334.41,
       "volume": 8004721.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 335.05,
+      "high": 346.18,
+      "low": 332.13,
+      "close": 343.71,
+      "volume": 8478289.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 329.35,
+      "high": 342.369,
+      "low": 324.72,
+      "close": 336.41,
+      "volume": 8176709.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:19.077454Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

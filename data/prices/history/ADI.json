@@ -1,44 +1,12 @@
 {
   "ticker": "ADI",
   "marketstack_symbol": "ADI",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Analog Devices",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 154.0,
-      "high": 154.15,
-      "low": 150.695,
-      "close": 151.32,
-      "volume": 3072712.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 150.0,
-      "high": 152.0,
-      "low": 148.56,
-      "close": 151.91,
-      "volume": 3849712.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 153.28,
-      "high": 155.22,
-      "low": 152.3,
-      "close": 153.93,
-      "volume": 4415400.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 153.99,
-      "high": 156.48,
-      "low": 152.86,
-      "close": 155.42,
-      "volume": 4680402.0
-    },
     {
       "date": "2021-05-07",
       "open": 156.67,
@@ -10222,8 +10190,28 @@
       "low": 409.0,
       "close": 423.2,
       "volume": 4774639.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 424.95,
+      "high": 439.51,
+      "low": 418.22,
+      "close": 437.67,
+      "volume": 5666146.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 427.78,
+      "high": 432.27,
+      "low": 420.59,
+      "close": 428.76,
+      "volume": 3348255.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:16.915511Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

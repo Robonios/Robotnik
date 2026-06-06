@@ -1,7 +1,7 @@
 {
   "ticker": "BKSY",
   "marketstack_symbol": "BKSY",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "BlackSky Technology",
   "sector": "Space",
   "country": "United States",
@@ -9168,22 +9168,6 @@
       "volume": 2524000.0
     },
     {
-      "date": "2026-04-07",
-      "open": 30.47,
-      "high": 34.12,
-      "low": 28.6816,
-      "close": 0.0,
-      "volume": 2999750.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 35.15,
-      "high": 36.3,
-      "low": 32.91,
-      "close": 0.0,
-      "volume": 4080219.0
-    },
-    {
       "date": "2026-04-09",
       "open": 33.11,
       "high": 35.71,
@@ -9486,8 +9470,20 @@
       "low": 42.41,
       "close": 43.91,
       "volume": 1574500.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 42.5,
+      "high": 42.51,
+      "low": 37.1,
+      "close": 37.48,
+      "volume": 3114500.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:07.595797Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-09-13",
+    "latest": "2026-06-03",
+    "n_bars": 1184
+  }
 }

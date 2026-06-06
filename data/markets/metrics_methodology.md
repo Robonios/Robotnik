@@ -1408,6 +1408,72 @@ prior history date. This is a coverage/injection-alignment issue, independent
 of currency, and is tracked separately; it must be resolved before the
 daily-FX index publishes.
 
+### 12.4 Data corrections surfaced at the MarketStack v2 cutover (#55, 2026-06-04)
+
+The v1→v2 short-symbol cutover ran a staged before/after dry-run with a
+**same-date source-isolation** check (the new v2 price computed *on each name's
+own old date* vs the committed USD, removing the price-move confound). 113/115
+non-USD names matched ~1.0; **two carried bad v1 data and are corrected at the
+cutover. Neither is an index constituent — the published composite and returns
+were NOT distorted; impact is the displayed market table only.**
+
+| ticker | cause | v1 (wrong) | v2 (validated) | impact |
+|---|---|---|---|---|
+| `SCC IT` (Spacecom, TASE) | TASE quotes in **agorot** (1/100 ILS); old `XTAE→ILS` lacked the ÷100 → **100× overstated** | $86.24 | $0.90 | displayed only (0 index weight); mcap independently currency-correct (~$189M) |
+| `CLS CN` (Celestica, TSX) | v1 `CLS.XTSE` returned a corrupt price (**~38% low** on a fresh date) | $341.40 | $473.23 — matches NYSE `CLS` $472.40 ✓ | displayed only (0 index weight) |
+
+Fix: v2 short-suffix routing + a `suffix→ccy` minor-unit layer (`.TA→ILA ÷100`,
+`.L→GBp ÷100`, verified against Yahoo's `ILA`/`GBp` labels). **Note:** the
+independent-reconstruction Δ=0 parity could NOT have caught the SCC currency
+error — both reconstructions read the same price — so **temporal same-date
+continuity is the only guard that does**, and is the standing gate for any
+currency-basis change.
+
+### 12.5 FX convention — ECB daily reference fixing (history + daily, one basis)
+
+**Convention.** Native→USD conversion uses the **ECB euro foreign-exchange daily
+reference rates** (`fetch_fx.py`), cross-rated through EUR, applied **consistently
+across the full 5-year history AND the daily price** — a single authoritative basis,
+no history-vs-daily seam. The one currency ECB does not publish, **TWD**, falls back
+to Yahoo `TWDUSD=X` — the SAME fallback in both history and daily, so Taiwan names
+carry no seam either.
+
+**Why a reference fixing.** A single authoritative daily reference fixing is standard,
+defensible index-FX methodology; it is CI-resilient (clean terms, reachable) and
+internally consistent. The prior Yahoo `<CCY>USD=X` spot was an inconsistent intraday
+snapshot — replacing it (snapshot → authoritative fixing) is a correctness improvement,
+the same family as the agorot and freeze corrections.
+
+**Known limitation (disclosed).** ECB publishes ONE fixing per day (~14:15 CET). For
+non-European markets (Tokyo, Taiwan, Korea, US) whose close is at a different hour, the
+fixing and the local close are not contemporaneous. Immaterial on normal days; on
+**FX-volatile days** (e.g. the Oct–Nov-2022 BoJ JPY intervention, ±2–5% intraday) the
+fixing-vs-close timing introduces a small per-day USD-return difference. This is a
+known, bounded property of single-fixing FX, **not a defect**, and it nets out over time.
+
+### 12.6 History restatement — v2 re-backfill (#55, 2026-06-05)
+
+The v2 re-backfill re-converted the **whole 5Y history** on v2-native prices + ECB-FX,
+replacing the v1 (Yahoo-FX, MIC-symbol) history. This **restates the index's historical
+daily path** — justified as more correct (v2 currency / cross-listing / corporate-action
+fixes + the consistent ECB fixing). **Scope: international constituents only** — US
+history is unchanged (v1 ≡ v2, verified). The prior v1 history is preserved at
+`data/prices/history_v1_baseline/` as the restatement baseline.
+
+**Impact (exact, chain-linked, decomposed at the last common date 2026-06-02, residual 0):**
+
+| component | contribution | note |
+|---|---|---|
+| corporate-action corrections (19 Yahoo-routed names) | **+0.138%** | removing v2's missed bonus/scrip/rights (§13.7) |
+| FX-basis (Yahoo spot → ECB fixing) | **−0.290%** | dominant driver; a *distributed* chain-linked effect (first-order level diff only −0.003%, so not a concentrated error), ~19% of days move >0.5%, largest on FX-volatile days |
+| un-freeze (intl 05-22→06-02, the v1 freeze) | **−0.054%** | intl un-frozen, slightly underperformed flat |
+| **net since-inception restatement** | **−0.206%** | the prior +0.23% was a first-order weighted-cumret *estimate*; the true chain-linked figure is −0.206% |
+
+The restatement was gated: a same-date reconcile against a clean v1 rebuild confirmed
+the −0.206% decomposes into these explained parts with **zero unexplained residual**
+and US constituents contributing ≈0 (the "nothing hides under a price move" check that
+caught CLS).
+
 ---
 
 ## 13. Return basis — price-return, self-computed split adjustment
@@ -1493,6 +1559,47 @@ Independent (non-circular) validation: top-weighted constituents are checked
 MarketStack vs Yahoo vs exchange — not against EODHD alone (which has its own
 bugs). This is what caught the ASML routing and RTX corruption faults.
 
+### 13.7 MarketStack v2 `split_factor` misses non-split corporate actions (#55, 2026-06-05)
+
+**Confirmed vendor gap.** MarketStack v2's `split_factor` adjusts **stock splits
+only** — it does NOT encode **bonus-share / scrip-dividend / rights** attributions.
+Yahoo's (split-adjusted, non-dividend-adjusted) `close` DOES back-adjust them. So a
+pure-v2 history **under-adjusts** any name with such an action: the unadjusted
+ex-date appears as a spurious price-return drop in the historical curve. (The
+**latest** price is post-all-events, so the **daily book is unaffected — HISTORY
+only**.) Example: Air Liquide's 1-for-10 free-share attribution (Jun-2024) put a
+fake ~−9% bar in v2 history; Coherent/II-VI shows −83% in v2 vs −10% in Yahoo.
+
+**Discovery method (re-runnable).** `sweep_v2_vs_yahoo.py` compares every v2-staged
+name to Yahoo, both converted to USD via the **same** ECB FX so the FX layer cancels
+in the ratio. A **converging ratio** (old ≠ 1, recent ≈ 1) is the signature of a
+past corporate action v2 missed; a constant ratio is a currency-label/instrument
+difference (excluded). The sweep found **19 names (Σ0.41% index weight)** — the
+hand-confirmed five were NOT the full list, which is exactly why the fix is a guard,
+not a static list.
+
+**Fix (interim, shipped): history-only Yahoo route.** `corporate_action_route.json`
+lists the affected names; their **history** is sourced from Yahoo (which adjusts the
+action), their **daily price stays v2** (correct). The three history paths
+(`rebackfill_history_v2.py`, `fetch_price_history_marketstack.py`,
+`fetch_yahoo_overrides.py --history-overrides`) consult the registry; the daily
+fetcher does not.
+
+**Standing guard (not a static list).** The gap is permanent, so a clean name
+regresses silently on its **next** scrip. `guard_corporate_actions.py` is a
+**jump-triggered cross-check**: a v2 single-day move past 7% (below a 1-for-10
+bonus's ~9% drop) NOT explained by a `split_factor` → cross-check Yahoo; if Yahoo is
+**smooth** where v2 jumped, it is a confirmed miss → recorded to the route registry +
+surfaced. It fires only on jumps (cheap); the periodic sustained-ratio sweep is the
+small-event backstop. It runs **out-of-band** (Yahoo is CI-blocked); CI merely
+**consults** the registry (no Yahoo needed) — detection and routing are separated.
+
+**#48 provider requirement (concrete).** The eventual displayed-data provider MUST
+back-adjust **bonus/scrip/rights**, not just stock splits. Durable architecture:
+corporate-action adjustment is **separable from price freshness** — the proper
+long-term answer is *raw v2 price + a complete adjustment layer*, not reliance on a
+single vendor's `split_factor`. B-with-the-guard is the right fix for now.
+
 ---
 
 ## §14 — Frontier membership, chain-linked methodology, and Yahoo's role (MarketStack cutover)
@@ -1532,8 +1639,8 @@ BlackSky 1:9) neutralise to flat; **bankruptcy/wipeout reorgs** (Wolfspeed Ch.11
 realise the −100% wipeout and re-enter the new equity at first price. Every
 single-day move >5× is neutralised + logged (transparent, not masked).
 
-### 14.3 Yahoo Finance — THREE load-bearing roles (do not remove)
-Yahoo is NOT a redundant second equity vendor. It is three distinct dependencies:
+### 14.3 Yahoo Finance — FOUR load-bearing roles (do not remove)
+Yahoo is NOT a redundant second equity vendor. It is four distinct dependencies:
 1. **Primary price source** for the ~25 `MARKETSTACK_UNSUPPORTED` override names
    (HK/KOSDAQ/TPEx + Ibiden + RTX) MarketStack cannot serve.
 2. **FX fallback only** (`<CCY>USD=X`) — *reduced 2026-06-02.* The daily-FX
@@ -1546,4 +1653,7 @@ Yahoo is NOT a redundant second equity vendor. It is three distinct dependencies
 3. **The independent validation source** / basis for the standing MS-vs-Yahoo
    parity guard (catches the next RTX/Ibiden; distinguishes vendor lag from
    corruption). *Skipped in CI where Yahoo is unreachable; runs out-of-band.*
+4. **Corporate-action-adjusted HISTORY source** for the `corporate_action_route.json`
+   names — v2's `split_factor` adjusts splits only, missing bonus/scrip/rights, which
+   Yahoo back-adjusts (§13.7). HISTORY only; the daily price for these names stays v2.
 A future cleanup must not treat it as removable.

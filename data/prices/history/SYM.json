@@ -1,7 +1,7 @@
 {
   "ticker": "SYM",
   "marketstack_symbol": "SYM",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Symbotic",
   "sector": "Robotics",
   "country": "United States",
@@ -7672,22 +7672,6 @@
       "volume": 601700.0
     },
     {
-      "date": "2026-04-07",
-      "open": 52.61,
-      "high": 53.13,
-      "low": 50.5,
-      "close": 0.0,
-      "volume": 1048791.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 55.09,
-      "high": 56.845,
-      "low": 53.8201,
-      "close": 0.0,
-      "volume": 1478661.0
-    },
-    {
       "date": "2026-04-09",
       "open": 54.25,
       "high": 54.93,
@@ -7990,8 +7974,20 @@
       "low": 48.06,
       "close": 49.09,
       "volume": 2307800.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 48.87,
+      "high": 49.56,
+      "low": 47.15,
+      "close": 47.21,
+      "volume": 2861800.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:56.705189Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2022-06-09",
+    "latest": "2026-06-03",
+    "n_bars": 997
+  }
 }

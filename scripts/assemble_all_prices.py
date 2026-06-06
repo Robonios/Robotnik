@@ -177,6 +177,58 @@ def main():
         names = sorted(p.get("ticker") for p in excluded)
         print("  #55 known-lag EXCLUDED from floor ({} names, publishing STALE pending diagnosis): "
               "{}{}".format(len(names), ", ".join(names[:30]), " …" if len(names) > 30 else ""))
+
+    # ── Floor-re-verify guard (#55): re-resolve BEFORE concluding "feed gap" ──
+    # A name can trip the staleness floor for two opposite reasons that look
+    # identical in the stored book: a GENUINE feed gap (serve last-good is right)
+    # or a RE-TICKER (SHA→SHA0, JBT→JBTM, Hiab spinoff) where our resolved-symbol
+    # map points at a now-dead symbol while a DIFFERENT symbol trades live. The
+    # floor's FATAL/WARN decision below is UNCHANGED — it gates on the local
+    # stale fraction, the only thing that can't itself be wrong. This block only
+    # re-classifies the stale names so the log says "re-ticker → fix the map"
+    # instead of silently implying "wait for the vendor". Best-effort: any
+    # failure (missing key, network) is swallowed and the floor decision stands.
+    stale_names = sorted({p.get("ticker") for p in gated if _age_days(p) > STALE_DAYS})
+    if stale_names:
+        REVERIFY_CAP = 40   # 1-5 names = catch the individual re-ticker; beyond
+                            # that it's a systemic freeze, not 40 simultaneous re-tickers
+        try:
+            from resolve_marketstack_symbols import reverify_symbol
+            country_by = {}
+            try:
+                from fetch_prices import EQUITIES as _EQ2
+                country_by = {e[0]: e[3] for e in _EQ2}
+            except Exception as exc:
+                print("  #55 floor-re-verify: country map load failed ({})".format(str(exc)[:60]))
+            verdicts = []
+            for tk in stale_names[:REVERIFY_CAP]:
+                try:
+                    verdicts.append(reverify_symbol(tk, country_by.get(tk, "")))
+                except Exception as exc:
+                    verdicts.append({"ticker": tk, "verdict": "reverify_error", "err": str(exc)[:60]})
+            retk = [v for v in verdicts if v.get("verdict") == "reticker"]
+            fetchstale = [v for v in verdicts if v.get("verdict") == "symbol_ok_fetch_stale"]
+            gap = [v for v in verdicts if v.get("verdict") == "genuine_gap"]
+            print("  #55 floor-re-verify ({}{} stale re-checked): reticker={} fetch-stale={} "
+                  "genuine-gap={}".format(
+                      min(len(stale_names), REVERIFY_CAP),
+                      " of {}".format(len(stale_names)) if len(stale_names) > REVERIFY_CAP else "",
+                      len(retk), len(fetchstale), len(gap)))
+            if retk:
+                print("  ⚠ RE-TICKER — map points at a dead symbol while a LIVE one exists; "
+                      "UPDATE THE MAP (re-run resolve_marketstack_symbols.py), this is NOT a feed gap:")
+                for v in retk:
+                    print("     {:11} map={!s} (last {}) → live={!s} (last {})".format(
+                        v["ticker"], v.get("map_symbol"), v.get("map_last"),
+                        v.get("rer_symbol"), v.get("rer_last")))
+            if fetchstale:
+                print("  ↻ SYMBOL-OK / FETCH-STALE — symbol is fresh at source but our stored price "
+                      "is old; re-run the price fetch (transient miss): {}".format(
+                          ", ".join(v["ticker"] for v in fetchstale)))
+        except Exception as exc:
+            print("  #55 floor-re-verify unavailable ({}) — floor decision unaffected".format(
+                str(exc)[:80]))
+
     if gated and stale_frac > STALE_FAIL_FRAC:
         print("  FATAL: {:.0%} of NON-excluded equity prices are >{}d old (floor {:.0%}) — staleness "
               "BEYOND the documented #55 known-lag cohort. A partial-as-of index misattributes the "

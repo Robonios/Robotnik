@@ -31,7 +31,7 @@ from marketstack_client import (
     AuthError, MarketStackError, MissingKeyError, RateLimitError,
     TransportError, UnknownSymbolError,
     INTER_CALL_SLEEP, call_count, route_for_ticker,
-    fetch_eod_latest, US_ADR_OVERRIDES,
+    fetch_eod_latest, fetch_v2_eod, US_ADR_OVERRIDES,
 )
 from fetch_prices import EQUITIES, guess_currency  # canonical universe
 import currency_convert as cc
@@ -76,6 +76,15 @@ def main():
     print("  Refreshing daily FX rates (native → USD)...")
     cc.refresh_all(fetcher=fetch_fx_daily)
 
+    # UNIFORM-V2 (#55): names not MS-fresh must have a Yahoo override; any with
+    # neither is a resolution-completeness gap, surfaced + gated below.
+    try:
+        _ov = json.loads((ROOT / "data" / "registries" / "data_source_overrides.json").read_text())
+        OVERRIDE_TICKERS = {k for k, v in _ov.items()
+                            if not k.startswith("_") and isinstance(v, dict) and v.get("provider") != "skip"}
+    except Exception:
+        OVERRIDE_TICKERS = set()
+
     results = []
     skipped_yahoo = []     # tickers in MARKETSTACK_UNSUPPORTED → caller routes to Yahoo
     failed = []            # tickers that should resolve but didn't
@@ -83,23 +92,21 @@ def main():
     for i, (ticker, name, sector, country) in enumerate(EQUITIES, 1):
         sym, ver, supported = route_for_ticker(ticker, country)
         if not supported:
-            # Either MARKETSTACK_UNSUPPORTED (intentional Yahoo route) OR
-            # country_not_mapped (registry hygiene gap).
-            if sym == "UNAVAILABLE":
-                # Distinguish the two cases via the unsupported set membership.
-                from marketstack_client import MARKETSTACK_UNSUPPORTED
-                if ticker in MARKETSTACK_UNSUPPORTED:
-                    skipped_yahoo.append({"ticker": ticker, "name": name,
-                                          "sector": sector, "country": country,
-                                          "reason": "marketstack_unsupported"})
-                else:
-                    failed.append({"ticker": ticker, "name": name,
-                                   "country": country,
-                                   "reason": "country_not_mapped"})
+            # UNIFORM-V2 (#55): not MS-fresh → route to the Yahoo override (the 28
+            # recent-listing / native-EU residual). NO override = a resolution-
+            # completeness gap → surfaced (and gated by the completeness guard).
+            if ticker in OVERRIDE_TICKERS:
+                skipped_yahoo.append({"ticker": ticker, "name": name,
+                                      "sector": sector, "country": country,
+                                      "reason": "yahoo_override"})
+            else:
+                failed.append({"ticker": ticker, "name": name,
+                               "country": country,
+                               "reason": "unresolved_no_override"})
             continue
 
         try:
-            rows = fetch_eod_latest([sym], limit=1, throttle=False, version=ver)
+            r = fetch_v2_eod(sym)
         except AuthError:
             raise  # fatal
         except UnknownSymbolError:
@@ -121,14 +128,12 @@ def main():
             time.sleep(INTER_CALL_SLEEP)
             continue
 
-        if not rows:
+        if r is None:
             failed.append({"ticker": ticker, "name": name,
                            "country": country, "ms_symbol": sym,
-                           "reason": "empty_response"})
+                           "reason": "no_nonzero_close"})
             time.sleep(INTER_CALL_SLEEP)
             continue
-
-        r = rows[0]
         # Raw close (price-return basis). The latest bar needs no split
         # adjustment (no future corporate action); history is split-adjusted
         # separately. See metrics_methodology §13.
@@ -205,6 +210,18 @@ def main():
     # is already persisted above for diagnosis; now fail loud if MS resolved zero
     # while names were routable (the secret-name-mismatch / auth / block class).
     require_marketstack_resolved(len(results), len(failed), call_count())
+
+    # Resolution-completeness guard (#55): every routable entity must be EITHER
+    # MS-fresh OR have a Yahoo override. A name with neither ("unresolved_no_override")
+    # would silently drop from the book — surface it and fail rather than publish a
+    # gap. (Catches a re-ticker / a newly-added universe name with no resolution.)
+    gaps = sorted(f["ticker"] for f in failed if f.get("reason") == "unresolved_no_override")
+    if gaps:
+        print("FATAL: resolution-completeness violation — {} routable name(s) have "
+              "neither a fresh MarketStack symbol nor a Yahoo override: {}. Re-run "
+              "resolve_marketstack_symbols.py or add a data_source_overrides entry "
+              "before publishing.".format(len(gaps), ", ".join(gaps)), file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

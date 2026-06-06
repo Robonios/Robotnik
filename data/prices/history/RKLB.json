@@ -1,7 +1,7 @@
 {
   "ticker": "RKLB",
   "marketstack_symbol": "RKLB",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Rocket Lab USA",
   "sector": "Space",
   "country": "United States",
@@ -9256,22 +9256,6 @@
       "volume": 22298200.0
     },
     {
-      "date": "2026-04-07",
-      "open": 67.115,
-      "high": 68.2999,
-      "low": 63.96,
-      "close": 0.0,
-      "volume": 23755248.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 72.0,
-      "high": 73.6675,
-      "low": 67.8107,
-      "close": 0.0,
-      "volume": 25687387.0
-    },
-    {
       "date": "2026-04-09",
       "open": 69.06,
       "high": 69.79,
@@ -9574,8 +9558,20 @@
       "low": 122.56,
       "close": 123.32,
       "volume": 19341100.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 119.58,
+      "high": 122.505,
+      "low": 113.66,
+      "close": 114.7,
+      "volume": 21235000.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:05.565874Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-08-26",
+    "latest": "2026-06-03",
+    "n_bars": 1195
+  }
 }

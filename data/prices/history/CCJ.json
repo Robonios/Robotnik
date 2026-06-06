@@ -1,44 +1,12 @@
 {
   "ticker": "CCJ",
   "marketstack_symbol": "CCJ",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Cameco Corp",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 17.02,
-      "high": 18.74,
-      "low": 16.97,
-      "close": 18.5,
-      "volume": 7385694.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 18.39,
-      "high": 18.44,
-      "low": 17.73,
-      "close": 18.18,
-      "volume": 4731300.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 18.55,
-      "high": 19.25,
-      "low": 18.55,
-      "close": 18.93,
-      "volume": 5609000.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 19.01,
-      "high": 19.078,
-      "low": 18.09,
-      "close": 18.16,
-      "volume": 6191757.0
-    },
     {
       "date": "2021-05-07",
       "open": 18.14,
@@ -10222,8 +10190,28 @@
       "low": 112.2,
       "close": 120.51,
       "volume": 4664437.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 119.57,
+      "high": 120.655,
+      "low": 112.55,
+      "close": 114.56,
+      "volume": 3835464.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 113.88,
+      "high": 114.85,
+      "low": 112.3991,
+      "close": 114.02,
+      "volume": 1881452.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:43.727122Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

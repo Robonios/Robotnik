@@ -1,44 +1,12 @@
 {
   "ticker": "RMBS",
   "marketstack_symbol": "RMBS",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Rambus",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 19.05,
-      "high": 19.07,
-      "low": 18.72,
-      "close": 18.77,
-      "volume": 834166.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 18.64,
-      "high": 19.36,
-      "low": 18.64,
-      "close": 19.15,
-      "volume": 1562800.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 19.35,
-      "high": 19.38,
-      "low": 18.84,
-      "close": 19.0,
-      "volume": 530300.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 18.94,
-      "high": 19.04,
-      "low": 18.75,
-      "close": 19.01,
-      "volume": 520800.0
-    },
     {
       "date": "2021-05-07",
       "open": 19.11,
@@ -10222,8 +10190,28 @@
       "low": 148.0,
       "close": 166.78,
       "volume": 3206823.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 166.11,
+      "high": 174.1,
+      "low": 161.8925,
+      "close": 170.66,
+      "volume": 2381602.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 164.34,
+      "high": 171.279,
+      "low": 157.51,
+      "close": 169.35,
+      "volume": 2139728.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:12.836733Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

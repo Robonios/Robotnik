@@ -1,44 +1,12 @@
 {
   "ticker": "ALGM",
   "marketstack_symbol": "ALGM",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Allegro MicroSystems",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 24.75,
-      "high": 24.75,
-      "low": 24.175,
-      "close": 24.36,
-      "volume": 372198.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 24.005,
-      "high": 24.35,
-      "low": 23.42,
-      "close": 24.11,
-      "volume": 721348.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 24.3,
-      "high": 25.59,
-      "low": 24.21,
-      "close": 25.24,
-      "volume": 676471.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 25.66,
-      "high": 26.0,
-      "low": 24.64,
-      "close": 24.85,
-      "volume": 432167.0
-    },
     {
       "date": "2021-05-07",
       "open": 24.76,
@@ -10222,8 +10190,20 @@
       "low": 48.4,
       "close": 50.33,
       "volume": 2339300.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 50.33,
+      "high": 54.1,
+      "low": 49.02,
+      "close": 53.11,
+      "volume": 2880500.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:02.560301Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-03",
+    "n_bars": 1274
+  }
 }

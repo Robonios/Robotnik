@@ -1,44 +1,12 @@
 {
   "ticker": "IPGP",
   "marketstack_symbol": "IPGP",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "IPG Photonics",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 218.1,
-      "high": 218.93,
-      "low": 210.99,
-      "close": 211.57,
-      "volume": 461363.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 208.27,
-      "high": 209.26,
-      "low": 188.11,
-      "close": 189.49,
-      "volume": 880300.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 189.75,
-      "high": 194.11,
-      "low": 186.43,
-      "close": 189.65,
-      "volume": 687200.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 189.83,
-      "high": 197.61,
-      "low": 187.395,
-      "close": 197.33,
-      "volume": 637177.0
-    },
     {
       "date": "2021-05-07",
       "open": 197.77,
@@ -10222,8 +10190,28 @@
       "low": 115.77,
       "close": 121.96,
       "volume": 1022164.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 127.19,
+      "high": 135.0,
+      "low": 120.88,
+      "close": 121.62,
+      "volume": 1400704.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 115.4128,
+      "high": 126.4,
+      "low": 115.4128,
+      "close": 122.51,
+      "volume": 736460.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:47.600181Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

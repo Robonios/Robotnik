@@ -1,44 +1,12 @@
 {
   "ticker": "ESE",
   "marketstack_symbol": "ESE",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "ESCO Technologies",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 109.5,
-      "high": 110.77,
-      "low": 108.07,
-      "close": 109.57,
-      "volume": 70395.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 108.97,
-      "high": 109.73,
-      "low": 108.17,
-      "close": 109.36,
-      "volume": 74200.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 108.9,
-      "high": 110.3,
-      "low": 108.9,
-      "close": 109.02,
-      "volume": 82700.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 109.31,
-      "high": 110.78,
-      "low": 107.84,
-      "close": 110.74,
-      "volume": 159204.0
-    },
     {
       "date": "2021-05-07",
       "open": 110.4,
@@ -10222,8 +10190,28 @@
       "low": 287.96,
       "close": 291.57,
       "volume": 138354.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 291.0,
+      "high": 299.32,
+      "low": 291.005,
+      "close": 295.43,
+      "volume": 167404.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 294.36,
+      "high": 294.94,
+      "low": 289.44,
+      "close": 291.96,
+      "volume": 175889.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:10.987908Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

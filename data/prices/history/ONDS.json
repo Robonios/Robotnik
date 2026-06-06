@@ -1,44 +1,12 @@
 {
   "ticker": "ONDS",
   "marketstack_symbol": "ONDS",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Ondas Inc",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 8.03,
-      "high": 8.03,
-      "low": 7.23,
-      "close": 7.64,
-      "volume": 300493.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 7.58,
-      "high": 7.59,
-      "low": 6.88,
-      "close": 7.0,
-      "volume": 280089.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 7.15,
-      "high": 7.5,
-      "low": 6.97,
-      "close": 7.16,
-      "volume": 179899.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 7.0175,
-      "high": 7.19,
-      "low": 6.35,
-      "close": 6.66,
-      "volume": 490045.0
-    },
     {
       "date": "2021-05-07",
       "open": 6.72,
@@ -9904,22 +9872,6 @@
       "volume": 45208400.0
     },
     {
-      "date": "2026-04-07",
-      "open": 9.43,
-      "high": 9.69,
-      "low": 9.192,
-      "close": 0.0,
-      "volume": 43242250.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 10.185,
-      "high": 10.37,
-      "low": 9.34,
-      "close": 0.0,
-      "volume": 55614097.0
-    },
-    {
       "date": "2026-04-09",
       "open": 9.415,
       "high": 9.52,
@@ -10222,8 +10174,20 @@
       "low": 13.09,
       "close": 13.58,
       "volume": 92459100.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 12.96,
+      "high": 13.0,
+      "low": 11.53,
+      "close": 11.61,
+      "volume": 94124500.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:52.552489Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-03",
+    "n_bars": 1272
+  }
 }

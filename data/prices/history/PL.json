@@ -1,7 +1,7 @@
 {
   "ticker": "PL",
   "marketstack_symbol": "PL",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Planet Labs PBC",
   "sector": "Space",
   "country": "United States",
@@ -8862,8 +8862,20 @@
       "low": 46.46,
       "close": 48.09,
       "volume": 11339900.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 47.62,
+      "high": 47.62,
+      "low": 42.665,
+      "close": 43.13,
+      "volume": 15689700.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:06.708312Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-12-10",
+    "latest": "2026-06-03",
+    "n_bars": 1108
+  }
 }

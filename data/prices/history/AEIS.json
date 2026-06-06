@@ -1,44 +1,12 @@
 {
   "ticker": "AEIS",
   "marketstack_symbol": "AEIS",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Advanced Energy Industries",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 111.56,
-      "high": 111.66,
-      "low": 108.345,
-      "close": 108.36,
-      "volume": 136684.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 106.29,
-      "high": 106.29,
-      "low": 102.12,
-      "close": 103.24,
-      "volume": 298128.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 96.9,
-      "high": 100.17,
-      "low": 91.68,
-      "close": 93.68,
-      "volume": 904714.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 92.52,
-      "high": 92.52,
-      "low": 89.15,
-      "close": 90.41,
-      "volume": 659352.0
-    },
     {
       "date": "2021-05-07",
       "open": 91.88,
@@ -10222,8 +10190,28 @@
       "low": 298.85,
       "close": 312.28,
       "volume": 1011025.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 315.77,
+      "high": 328.091,
+      "low": 312.16,
+      "close": 322.5,
+      "volume": 838886.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 318.25,
+      "high": 326.74,
+      "low": 308.245,
+      "close": 320.92,
+      "volume": 566410.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:04.566837Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

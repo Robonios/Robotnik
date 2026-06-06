@@ -1,44 +1,12 @@
 {
   "ticker": "GSAT",
   "marketstack_symbol": "GSAT",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Globalstar Inc",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 18.955223880597014,
-      "high": 19.104477611940297,
-      "low": 17.61194029850746,
-      "close": 17.91044776119403,
-      "volume": 12856033.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 17.16417910447761,
-      "high": 20.0,
-      "low": 16.417910447761194,
-      "close": 19.402985074626866,
-      "volume": 29236600.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 18.507462686567163,
-      "high": 18.80597014925373,
-      "low": 17.61194029850746,
-      "close": 17.91044776119403,
-      "volume": 7077100.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 18.05970149253731,
-      "high": 18.507462686567163,
-      "low": 17.313432835820894,
-      "close": 18.35820895522388,
-      "volume": 8670384.0
-    },
     {
       "date": "2021-05-07",
       "open": 16.417910447761194,
@@ -10230,8 +10198,28 @@
       "low": 81.96,
       "close": 82.64,
       "volume": 1323593.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 82.325,
+      "high": 82.71,
+      "low": 81.5,
+      "close": 81.6,
+      "volume": 1608576.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 81.95,
+      "high": 82.99,
+      "low": 81.68,
+      "close": 82.65,
+      "volume": 1106089.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:07.883476Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1276
+  }
 }

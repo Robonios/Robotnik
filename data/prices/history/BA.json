@@ -1,44 +1,12 @@
 {
   "ticker": "BA",
   "marketstack_symbol": "BA",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Boeing Co",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 234.11,
-      "high": 237.089,
-      "low": 233.8205,
-      "close": 235.19,
-      "volume": 9779236.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 235.75,
-      "high": 236.65,
-      "low": 225.65,
-      "close": 233.63,
-      "volume": 17807709.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 232.45,
-      "high": 232.45,
-      "low": 227.56,
-      "close": 228.18,
-      "volume": 8518900.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 229.3,
-      "high": 231.165,
-      "low": 226.545,
-      "close": 229.81,
-      "volume": 11748642.0
-    },
     {
       "date": "2021-05-07",
       "open": 229.8,
@@ -10222,8 +10190,28 @@
       "low": 215.02,
       "close": 217.7,
       "volume": 6883563.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 216.1,
+      "high": 216.35,
+      "low": 209.65,
+      "close": 210.58,
+      "volume": 9070534.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 213.0,
+      "high": 221.6,
+      "low": 213.0,
+      "close": 217.42,
+      "volume": 6848992.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:08.732505Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

@@ -1,44 +1,12 @@
 {
   "ticker": "APH",
   "marketstack_symbol": "APH",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Amphenol",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 34.085,
-      "high": 34.155,
-      "low": 33.055,
-      "close": 33.125,
-      "volume": 3259251.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 32.95,
-      "high": 33.12,
-      "low": 32.54,
-      "close": 33.035,
-      "volume": 4549363.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 33.35,
-      "high": 33.745,
-      "low": 33.125,
-      "close": 33.45,
-      "volume": 3270374.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 33.34,
-      "high": 33.59,
-      "low": 32.915,
-      "close": 33.475,
-      "volume": 2556139.0
-    },
     {
       "date": "2021-05-07",
       "open": 33.585,
@@ -10222,8 +10190,28 @@
       "low": 141.5,
       "close": 148.4,
       "volume": 11416593.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 148.6,
+      "high": 151.92,
+      "low": 146.09,
+      "close": 147.62,
+      "volume": 8449756.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 145.27,
+      "high": 147.84,
+      "low": 141.82,
+      "close": 146.77,
+      "volume": 5617573.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:41.967936Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

@@ -1,44 +1,12 @@
 {
   "ticker": "MP",
   "marketstack_symbol": "MP",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "MP Materials",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 30.0,
-      "high": 30.9951,
-      "low": 29.71,
-      "close": 30.55,
-      "volume": 2170261.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 31.0,
-      "high": 32.17,
-      "low": 30.07,
-      "close": 32.14,
-      "volume": 5719559.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 32.31,
-      "high": 32.35,
-      "low": 31.1,
-      "close": 31.49,
-      "volume": 1879765.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 31.19,
-      "high": 31.375,
-      "low": 28.07,
-      "close": 29.31,
-      "volume": 4696783.0
-    },
     {
       "date": "2021-05-07",
       "open": 30.13,
@@ -10222,8 +10190,20 @@
       "low": 69.51,
       "close": 72.24,
       "volume": 6651100.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 70.38,
+      "high": 71.926,
+      "low": 67.41,
+      "close": 68.55,
+      "volume": 5646700.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:51.402136Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-03",
+    "n_bars": 1274
+  }
 }

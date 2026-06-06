@@ -1,44 +1,12 @@
 {
   "ticker": "AMAT",
   "marketstack_symbol": "AMAT",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Applied Materials",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 134.25,
-      "high": 135.61,
-      "low": 131.7,
-      "close": 132.85,
-      "volume": 7559895.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 129.99,
-      "high": 130.68,
-      "low": 125.32,
-      "close": 128.72,
-      "volume": 14190800.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 131.73,
-      "high": 132.52,
-      "low": 128.76,
-      "close": 130.29,
-      "volume": 7272800.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 129.64,
-      "high": 131.89,
-      "low": 127.76,
-      "close": 131.73,
-      "volume": 7270467.0
-    },
     {
       "date": "2021-05-07",
       "open": 132.55,
@@ -10222,8 +10190,28 @@
       "low": 461.45,
       "close": 490.05,
       "volume": 9256709.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 487.95,
+      "high": 508.2599,
+      "low": 487.42,
+      "close": 500.77,
+      "volume": 8232105.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 485.655,
+      "high": 510.75,
+      "low": 480.11,
+      "close": 501.7,
+      "volume": 6693349.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:17.252774Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

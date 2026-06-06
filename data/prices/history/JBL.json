@@ -1,44 +1,12 @@
 {
   "ticker": "JBL",
   "marketstack_symbol": "JBL",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Jabil",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 52.94,
-      "high": 53.33,
-      "low": 52.44,
-      "close": 52.6,
-      "volume": 871387.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 51.83,
-      "high": 52.22,
-      "low": 51.37,
-      "close": 51.93,
-      "volume": 919900.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 52.54,
-      "high": 52.7,
-      "low": 52.12,
-      "close": 52.37,
-      "volume": 536100.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 52.33,
-      "high": 52.83,
-      "low": 51.71,
-      "close": 52.82,
-      "volume": 1053201.0
-    },
     {
       "date": "2021-05-07",
       "open": 53.08,
@@ -10222,8 +10190,28 @@
       "low": 366.43,
       "close": 373.16,
       "volume": 1233056.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 375.75,
+      "high": 384.7,
+      "low": 374.7225,
+      "close": 379.04,
+      "volume": 881488.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 368.58,
+      "high": 378.74,
+      "low": 359.54,
+      "close": 373.82,
+      "volume": 807232.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:48.209301Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

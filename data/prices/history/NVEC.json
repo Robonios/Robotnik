@@ -1,44 +1,12 @@
 {
   "ticker": "NVEC",
   "marketstack_symbol": "NVEC",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "NVE Corp",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 77.73,
-      "high": 81.42,
-      "low": 76.5,
-      "close": 77.45,
-      "volume": 43963.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 78.0,
-      "high": 78.0,
-      "low": 72.58,
-      "close": 74.0,
-      "volume": 24900.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 74.29,
-      "high": 75.56,
-      "low": 72.93,
-      "close": 75.56,
-      "volume": 16935.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 75.0,
-      "high": 78.0259,
-      "low": 75.0,
-      "close": 76.4,
-      "volume": 47729.0
-    },
     {
       "date": "2021-05-07",
       "open": 76.4,
@@ -10222,8 +10190,28 @@
       "low": 101.2,
       "close": 112.415,
       "volume": 187982.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 111.92,
+      "high": 114.36,
+      "low": 107.55,
+      "close": 110.02,
+      "volume": 190640.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 106.43,
+      "high": 112.2999,
+      "low": 104.825,
+      "close": 109.08,
+      "volume": 147597.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:11.352023Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

@@ -1,44 +1,12 @@
 {
   "ticker": "SATS",
   "marketstack_symbol": "SATS",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "EchoStar Corp",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 24.54,
-      "high": 24.79,
-      "low": 24.22,
-      "close": 24.6,
-      "volume": 450013.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 24.39,
-      "high": 24.72,
-      "low": 23.67,
-      "close": 23.98,
-      "volume": 683100.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 23.99,
-      "high": 24.4,
-      "low": 23.42,
-      "close": 23.47,
-      "volume": 610613.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 24.2,
-      "high": 26.2,
-      "low": 24.0,
-      "close": 26.14,
-      "volume": 1315575.0
-    },
     {
       "date": "2021-05-07",
       "open": 26.54,
@@ -10222,8 +10190,28 @@
       "low": 122.5,
       "close": 123.55,
       "volume": 4502190.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 122.35,
+      "high": 125.03,
+      "low": 120.17,
+      "close": 120.92,
+      "volume": 5481849.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 119.5,
+      "high": 126.57,
+      "low": 117.75,
+      "close": 124.64,
+      "volume": 6083576.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:08.455928Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

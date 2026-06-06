@@ -1,44 +1,12 @@
 {
   "ticker": "GOOG",
   "marketstack_symbol": "GOOG",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Alphabet",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 120.136,
-      "high": 120.98499999999999,
-      "low": 119.225,
-      "close": 119.7585,
-      "volume": 33787780.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 118.487,
-      "high": 118.96300000000001,
-      "low": 115.585,
-      "close": 117.7125,
-      "volume": 35120300.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 118.421,
-      "high": 119.10999999999999,
-      "low": 117.5705,
-      "close": 117.83699999999999,
-      "volume": 21805500.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 117.532,
-      "high": 119.13550000000001,
-      "low": 117.11690000000002,
-      "close": 119.0675,
-      "volume": 20617180.0
-    },
     {
       "date": "2021-05-07",
       "open": 120.0,
@@ -10222,8 +10190,28 @@
       "low": 355.0,
       "close": 358.39,
       "volume": 33710414.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 358.335,
+      "high": 362.5,
+      "low": 354.4,
+      "close": 355.68,
+      "volume": 41053259.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 355.48,
+      "high": 369.845,
+      "low": 354.8,
+      "close": 369.27,
+      "volume": 37645382.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:41.390254Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

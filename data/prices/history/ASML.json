@@ -1,12 +1,140 @@
 {
   "ticker": "ASML",
   "marketstack_symbol": "ASML",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "ASML Holding ADR",
   "sector": "Cross-stack",
   "country": "Netherlands",
   "native_currency": "USD",
   "series": [
+    {
+      "date": "2021-05-07",
+      "open": 651.78,
+      "high": 661.29,
+      "low": 647.7068,
+      "close": 658.57,
+      "volume": 573866.0
+    },
+    {
+      "date": "2021-05-10",
+      "open": 648.305,
+      "high": 648.64,
+      "low": 626.52,
+      "close": 627.26,
+      "volume": 882685.0
+    },
+    {
+      "date": "2021-05-11",
+      "open": 616.12,
+      "high": 633.66,
+      "low": 614.61,
+      "close": 630.66,
+      "volume": 891268.0
+    },
+    {
+      "date": "2021-05-12",
+      "open": 615.0,
+      "high": 619.71,
+      "low": 600.26,
+      "close": 601.88,
+      "volume": 1090342.0
+    },
+    {
+      "date": "2021-05-13",
+      "open": 621.64,
+      "high": 628.75,
+      "low": 611.81,
+      "close": 623.09,
+      "volume": 1435004.0
+    },
+    {
+      "date": "2021-05-14",
+      "open": 630.14,
+      "high": 651.12,
+      "low": 625.75,
+      "close": 647.76,
+      "volume": 1331015.0
+    },
+    {
+      "date": "2021-05-17",
+      "open": 631.89,
+      "high": 636.075,
+      "low": 623.3,
+      "close": 635.35,
+      "volume": 923160.0
+    },
+    {
+      "date": "2021-05-18",
+      "open": 641.4,
+      "high": 643.76,
+      "low": 631.64,
+      "close": 632.19,
+      "volume": 644764.0
+    },
+    {
+      "date": "2021-05-19",
+      "open": 608.01,
+      "high": 630.98,
+      "low": 606.64,
+      "close": 630.78,
+      "volume": 1044432.0
+    },
+    {
+      "date": "2021-05-20",
+      "open": 632.69,
+      "high": 652.25,
+      "low": 631.75,
+      "close": 648.77,
+      "volume": 1087067.0
+    },
+    {
+      "date": "2021-05-21",
+      "open": 645.864,
+      "high": 647.36,
+      "low": 636.18,
+      "close": 639.22,
+      "volume": 845690.0
+    },
+    {
+      "date": "2021-05-24",
+      "open": 647.5,
+      "high": 662.259,
+      "low": 645.76,
+      "close": 658.95,
+      "volume": 792631.0
+    },
+    {
+      "date": "2021-05-25",
+      "open": 671.17,
+      "high": 679.4438,
+      "low": 667.34,
+      "close": 672.29,
+      "volume": 1088772.0
+    },
+    {
+      "date": "2021-05-26",
+      "open": 667.22,
+      "high": 669.44,
+      "low": 659.8579,
+      "close": 665.77,
+      "volume": 593809.0
+    },
+    {
+      "date": "2021-05-27",
+      "open": 661.0,
+      "high": 667.73,
+      "low": 658.9344,
+      "close": 665.09,
+      "volume": 652605.0
+    },
+    {
+      "date": "2021-05-28",
+      "open": 669.03,
+      "high": 675.98,
+      "low": 666.94,
+      "close": 675.47,
+      "volume": 610723.0
+    },
     {
       "date": "2021-06-01",
       "open": 684.74,
@@ -10062,8 +10190,28 @@
       "low": 1647.59,
       "close": 1705.37,
       "volume": 1474879.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 1710.73,
+      "high": 1743.27,
+      "low": 1690.0,
+      "close": 1726.36,
+      "volume": 1812048.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 1678.11,
+      "high": 1779.285,
+      "low": 1672.4301,
+      "close": 1757.47,
+      "volume": 2243501.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:17.527435Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

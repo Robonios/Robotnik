@@ -1,44 +1,12 @@
 {
   "ticker": "BWXT",
   "marketstack_symbol": "BWXT",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "BWX Technologies",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 66.94,
-      "high": 67.48,
-      "low": 66.54,
-      "close": 67.27,
-      "volume": 302439.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 68.38,
-      "high": 68.68,
-      "low": 66.39,
-      "close": 67.18,
-      "volume": 311800.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 67.11,
-      "high": 67.11,
-      "low": 65.3,
-      "close": 65.62,
-      "volume": 303017.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 65.51,
-      "high": 65.68,
-      "low": 64.905,
-      "close": 65.38,
-      "volume": 247524.0
-    },
     {
       "date": "2021-05-07",
       "open": 65.23,
@@ -10230,8 +10198,28 @@
       "low": 183.29,
       "close": 187.26,
       "volume": 1559069.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 185.96,
+      "high": 187.47,
+      "low": 182.635,
+      "close": 184.72,
+      "volume": 1270838.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 183.76,
+      "high": 190.76,
+      "low": 183.02,
+      "close": 190.76,
+      "volume": 717054.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:43.140233Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1276
+  }
 }

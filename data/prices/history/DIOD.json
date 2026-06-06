@@ -1,44 +1,12 @@
 {
   "ticker": "DIOD",
   "marketstack_symbol": "DIOD",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Diodes Inc",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 77.37,
-      "high": 77.37,
-      "low": 75.15,
-      "close": 75.67,
-      "volume": 246953.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 74.73,
-      "high": 74.79,
-      "low": 71.69,
-      "close": 72.22,
-      "volume": 311557.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 73.09,
-      "high": 73.58,
-      "low": 71.83,
-      "close": 72.6,
-      "volume": 527600.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 72.3,
-      "high": 72.78,
-      "low": 70.44,
-      "close": 72.33,
-      "volume": 366815.0
-    },
     {
       "date": "2021-05-07",
       "open": 77.69,
@@ -10222,8 +10190,28 @@
       "low": 104.68,
       "close": 114.13,
       "volume": 937242.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 115.8,
+      "high": 121.96,
+      "low": 112.54,
+      "close": 116.22,
+      "volume": 890583.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 111.79,
+      "high": 115.43,
+      "low": 107.86,
+      "close": 112.5,
+      "volume": 385826.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:06.427043Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

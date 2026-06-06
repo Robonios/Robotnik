@@ -29,6 +29,13 @@ data/prices/fx/
 # Delete the local dir once the window passes. See data/markets/data_licensing_review.md.
 data/prices/_history_eodhd_backup/
 
+# #55 v2 history restatement (2026-06-05): the v1 history is the restatement baseline,
+# retained locally as a rollback aid (also recoverable from git history — the commit
+# prior to the restatement). Staging is the pre-swap scratch dir. See methodology §12.6.
+data/prices/history_v1_baseline/
+data/prices/history_v2_staging/
+data/prices/history_v2_staging_manifest.json
+
 # Claude
 .claude/
 data/exports/entity_registry_for_review.csv

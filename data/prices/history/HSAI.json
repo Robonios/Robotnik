@@ -1,7 +1,7 @@
 {
   "ticker": "HSAI",
   "marketstack_symbol": "HSAI",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Hesai Group",
   "sector": "Robotics",
   "country": "China",
@@ -6144,22 +6144,6 @@
       "volume": 923200.0
     },
     {
-      "date": "2026-04-07",
-      "open": 20.29,
-      "high": 20.53,
-      "low": 19.84,
-      "close": 0.0,
-      "volume": 753782.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 22.02,
-      "high": 22.28,
-      "low": 21.51,
-      "close": 0.0,
-      "volume": 1698195.0
-    },
-    {
       "date": "2026-04-09",
       "open": 21.8,
       "high": 22.129,
@@ -6462,8 +6446,20 @@
       "low": 21.21,
       "close": 21.66,
       "volume": 3851800.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 21.18,
+      "high": 21.335,
+      "low": 20.6,
+      "close": 20.78,
+      "volume": 1692000.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:46.726283Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2023-03-15",
+    "latest": "2026-06-03",
+    "n_bars": 806
+  }
 }

@@ -1,44 +1,12 @@
 {
   "ticker": "BIDU",
   "marketstack_symbol": "BIDU",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Baidu ADR",
   "sector": "Robotics",
   "country": "China",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 210.55,
-      "high": 212.7099,
-      "low": 204.32,
-      "close": 204.94,
-      "volume": 5657173.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 205.8,
-      "high": 207.75,
-      "low": 199.23,
-      "close": 199.98,
-      "volume": 8341135.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 201.42,
-      "high": 203.33,
-      "low": 194.96,
-      "close": 195.63,
-      "volume": 5818824.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 195.71,
-      "high": 196.62,
-      "low": 190.0,
-      "close": 192.33,
-      "volume": 7306974.0
-    },
     {
       "date": "2021-05-07",
       "open": 194.2,
@@ -10222,8 +10190,28 @@
       "low": 134.98,
       "close": 136.72,
       "volume": 2180625.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 134.32,
+      "high": 136.96,
+      "low": 132.59,
+      "close": 132.68,
+      "volume": 1799816.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 132.175,
+      "high": 135.78,
+      "low": 131.89,
+      "close": 134.8,
+      "volume": 2858383.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:42.855245Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

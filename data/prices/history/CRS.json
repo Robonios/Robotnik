@@ -1,44 +1,12 @@
 {
   "ticker": "CRS",
   "marketstack_symbol": "CRS",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Carpenter Technology",
   "sector": "Materials",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 38.17,
-      "high": 39.88,
-      "low": 37.92,
-      "close": 39.85,
-      "volume": 473013.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 39.48,
-      "high": 40.62,
-      "low": 39.29,
-      "close": 39.79,
-      "volume": 292488.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 40.16,
-      "high": 40.82,
-      "low": 40.16,
-      "close": 40.58,
-      "volume": 159293.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 40.76,
-      "high": 41.38,
-      "low": 40.03,
-      "close": 41.34,
-      "volume": 207046.0
-    },
     {
       "date": "2021-05-07",
       "open": 41.13,
@@ -10230,8 +10198,28 @@
       "low": 482.35,
       "close": 487.25,
       "volume": 366975.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 483.33,
+      "high": 491.635,
+      "low": 480.0,
+      "close": 487.05,
+      "volume": 649723.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 481.42,
+      "high": 495.515,
+      "low": 477.83,
+      "close": 492.62,
+      "volume": 601958.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:28.465106Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1276
+  }
 }

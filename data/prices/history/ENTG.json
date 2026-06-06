@@ -1,44 +1,12 @@
 {
   "ticker": "ENTG",
   "marketstack_symbol": "ENTG",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Entegris",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 114.58,
-      "high": 114.93,
-      "low": 111.1,
-      "close": 111.36,
-      "volume": 1160922.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 110.8,
-      "high": 111.61,
-      "low": 106.17,
-      "close": 108.89,
-      "volume": 1264800.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 110.86,
-      "high": 112.08,
-      "low": 108.19,
-      "close": 110.7,
-      "volume": 661300.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 109.75,
-      "high": 111.31,
-      "low": 107.91,
-      "close": 111.3,
-      "volume": 754684.0
-    },
     {
       "date": "2021-05-07",
       "open": 112.68,
@@ -10222,8 +10190,28 @@
       "low": 135.73,
       "close": 142.92,
       "volume": 4245507.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 143.59,
+      "high": 147.38,
+      "low": 140.05,
+      "close": 140.33,
+      "volume": 2261329.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 136.26,
+      "high": 144.16,
+      "low": 135.59,
+      "close": 139.88,
+      "volume": 2352824.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:06.772228Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

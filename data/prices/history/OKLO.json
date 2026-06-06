@@ -1,7 +1,7 @@
 {
   "ticker": "OKLO",
   "marketstack_symbol": "OKLO",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Oklo",
   "sector": "Robotics",
   "country": "United States",
@@ -3824,14 +3824,6 @@
       "volume": 6486300.0
     },
     {
-      "date": "2026-04-08",
-      "open": 50.52,
-      "high": 51.38,
-      "low": 48.0,
-      "close": 0.0,
-      "volume": 8535008.0
-    },
-    {
       "date": "2026-04-09",
       "open": 49.53,
       "high": 50.36,
@@ -4134,8 +4126,20 @@
       "low": 65.66,
       "close": 73.47,
       "volume": 23902700.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 70.72,
+      "high": 70.85,
+      "low": 64.05,
+      "close": 65.21,
+      "volume": 22634700.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:52.276512Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2024-05-10",
+    "latest": "2026-06-03",
+    "n_bars": 516
+  }
 }

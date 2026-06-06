@@ -30,10 +30,11 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from marketstack_client import (
     AuthError, MarketStackError, MissingKeyError, RateLimitError,
     TransportError, UnknownSymbolError,
-    INTER_CALL_SLEEP, MARKETSTACK_UNSUPPORTED, call_count, route_for_ticker,
+    INTER_CALL_SLEEP, call_count, route_for_ticker,
     fetch_eod_historical, US_ADR_OVERRIDES, apply_split_adjustment,
 )
 from fetch_prices import EQUITIES
+from guard_corporate_actions import load_route as load_ca_route
 import currency_convert as cc
 from fetch_fx import fetch_fx_daily   # ECB-primary FX (CI-resilient), Yahoo fallback for TWD
 
@@ -90,10 +91,29 @@ def main():
     print("  Refreshing daily FX rates (native → USD)...")
     cc.refresh_all(backfill=args.backfill, fetcher=fetch_fx_daily)
 
+    # UNIFORM-V2 (#55): names not MS-fresh must have a Yahoo override (the residual,
+    # back-filled via fetch_yahoo.py --history-overrides); any with neither is a
+    # resolution-completeness gap, surfaced + gated below. Mirrors the daily
+    # fetcher's gate EXACTLY so the two pipelines route identically — a divergence
+    # here would seam the history tail against the daily price.
+    try:
+        _ov = json.loads((ROOT / "data" / "registries" / "data_source_overrides.json").read_text())
+        OVERRIDE_TICKERS = {k for k, v in _ov.items()
+                            if not k.startswith("_") and isinstance(v, dict) and v.get("provider") != "skip"}
+    except Exception:
+        OVERRIDE_TICKERS = set()
+
+    # Corporate-action route (#55): names whose v2 split_factor misses a bonus/scrip/rights.
+    # Their HISTORY is Yahoo-sourced (fetch_yahoo_overrides --history-overrides); skip them
+    # here so the v2 path does not re-write them under-adjusted on each refresh. Daily latest
+    # price still uses v2 (post-all-events, correct). Surfaced by guard_corporate_actions.
+    CA_ROUTE = load_ca_route()
+
     refreshed = 0
     skipped_yahoo = 0
     failed = 0
     backfilled = 0
+    gaps = []   # routable names with neither an MS-fresh symbol nor a Yahoo override
 
     for i, (ticker, name, sector, country) in enumerate(EQUITIES, 1):
         fname = ticker_to_filename(ticker)
@@ -102,11 +122,20 @@ def main():
         if args.backfill and hpath.exists():
             continue  # backfill only for new tickers without history
 
+        if ticker in CA_ROUTE:
+            # v2 misses this name's corporate action → Yahoo-sourced history. Skip the
+            # v2 path (fetch_yahoo_overrides --history-overrides writes it instead).
+            skipped_yahoo += 1
+            continue
+
         sym, ver, supported = route_for_ticker(ticker, country)
         if not supported:
-            if ticker in MARKETSTACK_UNSUPPORTED:
+            # not MS-fresh → Yahoo override (history-overrides path). No override =
+            # completeness gap → surfaced + gated (same as the daily fetcher).
+            if ticker in OVERRIDE_TICKERS:
                 skipped_yahoo += 1
             else:
+                gaps.append(ticker)
                 failed += 1
             continue
 
@@ -130,6 +159,11 @@ def main():
             time.sleep(INTER_CALL_SLEEP)
             continue
 
+        # Drop non-positive-close bars (v2 unsettled current day / dead-listing
+        # zeros) BEFORE adjust+convert — a 0 close becomes $0 and a −100%/+inf
+        # return artifact in the 5y series. Mirrors the daily path's
+        # non-zero-close rule (fetch_v2_eod scans for the first real close).
+        rows = [r for r in rows if r.get("close") is not None and float(r.get("close")) > 0]
         if not rows:
             failed += 1
             time.sleep(INTER_CALL_SLEEP)
@@ -204,6 +238,19 @@ def main():
     print("  Failed: {}".format(failed))
     print("  API calls used: {}".format(call_count()))
     print("=" * 60)
+
+    # Resolution-completeness guard (#55) — mirror the daily fetcher: every
+    # routable entity must be EITHER MS-fresh OR have a Yahoo override. A name
+    # with neither would silently stop refreshing its history → a return seam
+    # against its fresh daily price. Surface + fail rather than degrade silently.
+    # In the normal pipeline the daily fetcher hard-gates this FIRST, so history
+    # sees gaps only if run standalone — failing loud is still correct there.
+    if gaps:
+        print("FATAL: resolution-completeness violation (history) — {} routable name(s) have "
+              "neither a fresh MarketStack symbol nor a Yahoo override: {}. Re-run "
+              "resolve_marketstack_symbols.py or add a data_source_overrides entry."
+              .format(len(gaps), ", ".join(sorted(gaps))), file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

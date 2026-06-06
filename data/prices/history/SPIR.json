@@ -1,7 +1,7 @@
 {
   "ticker": "SPIR",
   "marketstack_symbol": "SPIR",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Spire Global",
   "sector": "Space",
   "country": "United States",
@@ -9630,8 +9630,28 @@
       "low": 20.45,
       "close": 21.35,
       "volume": 1202630.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 21.08,
+      "high": 21.37,
+      "low": 18.525,
+      "close": 19.04,
+      "volume": 1291518.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 19.3,
+      "high": 21.5711,
+      "low": 19.0,
+      "close": 20.04,
+      "volume": 1647811.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:07.323127Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-08-18",
+    "latest": "2026-06-04",
+    "n_bars": 1205
+  }
 }

@@ -133,6 +133,16 @@ def cmd_overrides():
 def cmd_history_overrides(backfill=False):
     """Fetch history for each override ticker and write per-ticker JSON."""
     targets = load_active_overrides()
+    # ALSO include corporate-action-route names (#55): MarketStack v2's split_factor
+    # misses their bonus/scrip/rights, so their HISTORY must come from Yahoo (which
+    # back-adjusts it). This is HISTORY-ONLY — cmd_overrides (daily latest price) does
+    # NOT include them, because the latest price is post-all-events and v2 is correct.
+    from guard_corporate_actions import load_route as _load_ca_route
+    _existing = {t[0] for t in targets}
+    for _tk, _info in _load_ca_route().items():
+        if _tk not in _existing and _info.get("yahoo_symbol"):
+            targets.append((_tk, _info["yahoo_symbol"],
+                            {"reason": "corporate-action route — v2 misses bonus/scrip/rights"}))
     HISTORY_DIR.mkdir(parents=True, exist_ok=True)
     print("=" * 60)
     print("YAHOO OVERRIDE FETCHER — history ({})".format(

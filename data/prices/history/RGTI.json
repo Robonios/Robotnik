@@ -1,7 +1,7 @@
 {
   "ticker": "RGTI",
   "marketstack_symbol": "RGTI",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Rigetti Computing",
   "sector": "Semiconductor",
   "country": "United States",
@@ -8542,8 +8542,20 @@
       "low": 25.43,
       "close": 26.88,
       "volume": 73831200.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 26.56,
+      "high": 28.06,
+      "low": 23.78,
+      "close": 24.095,
+      "volume": 77880300.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:13.115742Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2022-03-02",
+    "latest": "2026-06-03",
+    "n_bars": 1068
+  }
 }

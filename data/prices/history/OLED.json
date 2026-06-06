@@ -1,44 +1,12 @@
 {
   "ticker": "OLED",
   "marketstack_symbol": "OLED",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Universal Display Corp",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 226.36,
-      "high": 227.99,
-      "low": 222.2,
-      "close": 222.73,
-      "volume": 259637.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 220.37,
-      "high": 223.07,
-      "low": 216.16,
-      "close": 221.49,
-      "volume": 270700.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 223.28,
-      "high": 224.05,
-      "low": 219.12,
-      "close": 220.0,
-      "volume": 160400.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 220.0,
-      "high": 222.1,
-      "low": 214.05,
-      "close": 218.24,
-      "volume": 349334.0
-    },
     {
       "date": "2021-05-07",
       "open": 214.0,
@@ -10222,8 +10190,28 @@
       "low": 93.15,
       "close": 93.79,
       "volume": 516519.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 93.8,
+      "high": 94.11,
+      "low": 90.2201,
+      "close": 90.84,
+      "volume": 546635.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 90.12,
+      "high": 91.32,
+      "low": 89.49,
+      "close": 90.2,
+      "volume": 634592.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:15.777158Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

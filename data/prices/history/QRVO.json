@@ -1,44 +1,12 @@
 {
   "ticker": "QRVO",
   "marketstack_symbol": "QRVO",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Qorvo",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 190.062,
-      "high": 190.062,
-      "low": 183.04,
-      "close": 184.54,
-      "volume": 1167106.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 182.97,
-      "high": 182.97,
-      "low": 177.285,
-      "close": 182.41,
-      "volume": 1337418.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 183.28,
-      "high": 185.89,
-      "low": 180.115,
-      "close": 182.56,
-      "volume": 1382339.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 183.5,
-      "high": 188.3199,
-      "low": 180.19,
-      "close": 184.69,
-      "volume": 1923422.0
-    },
     {
       "date": "2021-05-07",
       "open": 186.47,
@@ -10222,8 +10190,28 @@
       "low": 100.655,
       "close": 102.74,
       "volume": 1967859.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 103.01,
+      "high": 106.2052,
+      "low": 101.66,
+      "close": 104.73,
+      "volume": 1064625.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 103.0,
+      "high": 106.22,
+      "low": 102.8,
+      "close": 103.97,
+      "volume": 724725.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:12.544843Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

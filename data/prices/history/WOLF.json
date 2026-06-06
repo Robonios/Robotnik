@@ -1,7 +1,7 @@
 {
   "ticker": "WOLF",
   "marketstack_symbol": "WOLF",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Wolfspeed",
   "sector": "Materials",
   "country": "United States",
@@ -9000,22 +9000,6 @@
       "volume": 912000.0
     },
     {
-      "date": "2026-04-07",
-      "open": 17.92,
-      "high": 18.93,
-      "low": 17.8501,
-      "close": 0.0,
-      "volume": 742434.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 19.9,
-      "high": 20.79,
-      "low": 19.51,
-      "close": 0.0,
-      "volume": 1844781.0
-    },
-    {
       "date": "2026-04-09",
       "open": 20.96,
       "high": 25.09,
@@ -9318,8 +9302,20 @@
       "low": 54.99,
       "close": 61.06,
       "volume": 8799500.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 65.9,
+      "high": 67.25,
+      "low": 60.34,
+      "close": 61.67,
+      "volume": 7934500.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:19.715185Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-10-12",
+    "latest": "2026-06-03",
+    "n_bars": 1163
+  }
 }

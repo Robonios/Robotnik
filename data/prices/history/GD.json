@@ -1,44 +1,12 @@
 {
   "ticker": "GD",
   "marketstack_symbol": "GD",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "General Dynamics",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 190.99,
-      "high": 192.74,
-      "low": 189.39,
-      "close": 191.69,
-      "volume": 833487.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 191.65,
-      "high": 192.79,
-      "low": 191.58,
-      "close": 191.99,
-      "volume": 1396000.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 191.62,
-      "high": 191.9,
-      "low": 190.295,
-      "close": 190.68,
-      "volume": 1098782.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 191.72,
-      "high": 192.75,
-      "low": 190.67,
-      "close": 192.68,
-      "volume": 1263222.0
-    },
     {
       "date": "2021-05-07",
       "open": 193.0,
@@ -10222,8 +10190,28 @@
       "low": 335.775,
       "close": 337.61,
       "volume": 555256.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 335.71,
+      "high": 341.96,
+      "low": 335.02,
+      "close": 337.04,
+      "volume": 628547.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 340.38,
+      "high": 343.9,
+      "low": 340.12,
+      "close": 341.5,
+      "volume": 662246.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:09.598590Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

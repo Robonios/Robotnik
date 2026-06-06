@@ -1,44 +1,12 @@
 {
   "ticker": "MU",
   "marketstack_symbol": "MU",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Micron Technology",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 86.97,
-      "high": 87.0102,
-      "low": 83.87,
-      "close": 85.02,
-      "volume": 16088334.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 84.14,
-      "high": 85.44,
-      "low": 82.03,
-      "close": 84.41,
-      "volume": 17832300.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 85.49,
-      "high": 85.95,
-      "low": 84.03,
-      "close": 85.15,
-      "volume": 13165000.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 84.865,
-      "high": 85.11,
-      "low": 83.28,
-      "close": 84.8,
-      "volume": 13716894.0
-    },
     {
       "date": "2021-05-07",
       "open": 85.91,
@@ -10222,8 +10190,28 @@
       "low": 1017.27,
       "close": 1064.1,
       "volume": 46275666.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 1079.01,
+      "high": 1089.29,
+      "low": 1038.5,
+      "close": 1079.5699,
+      "volume": 39267880.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 1007.1,
+      "high": 1036.3699,
+      "low": 971.68,
+      "close": 996.0,
+      "volume": 53659458.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:09.947484Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

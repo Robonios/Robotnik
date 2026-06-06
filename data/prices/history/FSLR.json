@@ -1,44 +1,12 @@
 {
   "ticker": "FSLR",
   "marketstack_symbol": "FSLR",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "First Solar",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 77.62,
-      "high": 77.74,
-      "low": 74.05,
-      "close": 75.77,
-      "volume": 4807048.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 74.0,
-      "high": 74.47,
-      "low": 71.71,
-      "close": 73.82,
-      "volume": 3100600.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 74.01,
-      "high": 75.45,
-      "low": 72.8,
-      "close": 74.39,
-      "volume": 2418000.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 74.165,
-      "high": 74.55,
-      "low": 71.76,
-      "close": 73.63,
-      "volume": 2409478.0
-    },
     {
       "date": "2021-05-07",
       "open": 74.89,
@@ -10222,8 +10190,28 @@
       "low": 297.76,
       "close": 311.01,
       "volume": 2849519.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 305.442,
+      "high": 320.95,
+      "low": 302.0,
+      "close": 318.25,
+      "volume": 2698981.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 309.0,
+      "high": 320.64,
+      "low": 303.1,
+      "close": 314.95,
+      "volume": 2717185.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:07.275172Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

@@ -1,44 +1,12 @@
 {
   "ticker": "MPWR",
   "marketstack_symbol": "MPWR",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Monolithic Power Systems",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 362.25,
-      "high": 365.39,
-      "low": 349.36,
-      "close": 350.28,
-      "volume": 541358.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 343.58,
-      "high": 345.46,
-      "low": 330.28,
-      "close": 334.12,
-      "volume": 494900.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 345.0,
-      "high": 349.29,
-      "low": 336.62,
-      "close": 337.82,
-      "volume": 510000.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 333.04,
-      "high": 334.805,
-      "low": 326.31,
-      "close": 333.38,
-      "volume": 351061.0
-    },
     {
       "date": "2021-05-07",
       "open": 339.79,
@@ -10222,8 +10190,28 @@
       "low": 1558.11,
       "close": 1624.99,
       "volume": 689403.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 1645.475,
+      "high": 1697.35,
+      "low": 1617.8315,
+      "close": 1689.89,
+      "volume": 423394.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 1625.96,
+      "high": 1666.6899,
+      "low": 1591.64,
+      "close": 1652.6,
+      "volume": 678529.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:10.491071Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

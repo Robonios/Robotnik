@@ -1,31 +1,34 @@
 {
   "ticker": "6600 HK",
   "yahoo_symbol": "6600.HK",
-  "currency": "USD",
+  "marketstack_version": "yahoo",
+  "name": "OneRobotics Shenzhen",
+  "sector": "Robotics",
+  "country": "China",
   "native_currency": "HKD",
   "series": [
     {
       "date": "2025-12-30",
-      "open": 9.494368,
-      "high": 9.648747,
-      "low": 9.494368,
-      "close": 9.5008,
+      "open": 9.481556,
+      "high": 9.635727,
+      "low": 9.481556,
+      "close": 9.487979,
       "volume": 4724850
     },
     {
       "date": "2025-12-31",
-      "open": 10.359018,
-      "high": 10.359018,
-      "low": 10.359018,
-      "close": 10.359018,
+      "open": 10.354347,
+      "high": 10.354347,
+      "low": 10.354347,
+      "close": 10.354347,
       "volume": 0
     },
     {
       "date": "2026-01-02",
-      "open": 10.359214,
-      "high": 11.977641,
-      "low": 9.93534,
-      "close": 11.817083,
+      "open": 10.350476,
+      "high": 11.967538,
+      "low": 9.92696,
+      "close": 11.807115,
       "volume": 730700
     },
     {
@@ -822,13 +825,25 @@
     },
     {
       "date": "2026-06-03",
-      "open": 10.928354,
-      "high": 11.081465,
-      "low": 10.181934,
-      "close": 10.373324,
-      "volume": 569900
+      "open": 10.929758,
+      "high": 11.082889,
+      "low": 10.183242,
+      "close": 10.374656,
+      "volume": 569700
+    },
+    {
+      "date": "2026-06-04",
+      "open": 10.339859,
+      "high": 10.90153,
+      "low": 10.020727,
+      "close": 10.595164,
+      "volume": 368400
     }
   ],
-  "last_fetched": "2026-06-03T12:56:32.010347Z",
-  "source": "Yahoo (override, USD via daily FX)"
+  "source": "Yahoo (override) (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2025-12-30",
+    "latest": "2026-06-04",
+    "n_bars": 104
+  }
 }

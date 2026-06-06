@@ -1,44 +1,12 @@
 {
   "ticker": "LSCC",
   "marketstack_symbol": "LSCC",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Lattice Semiconductor",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 50.81,
-      "high": 51.0041,
-      "low": 48.9,
-      "close": 49.09,
-      "volume": 1537931.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 48.16,
-      "high": 48.69,
-      "low": 46.78,
-      "close": 47.81,
-      "volume": 2456900.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 48.14,
-      "high": 50.19,
-      "low": 47.66,
-      "close": 48.56,
-      "volume": 1567600.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 48.56,
-      "high": 49.63,
-      "low": 47.81,
-      "close": 49.52,
-      "volume": 1516751.0
-    },
     {
       "date": "2021-05-07",
       "open": 50.26,
@@ -10222,8 +10190,28 @@
       "low": 146.01,
       "close": 151.35,
       "volume": 2140271.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 152.75,
+      "high": 155.82,
+      "low": 149.185,
+      "close": 154.6,
+      "volume": 1373967.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 148.2,
+      "high": 154.895,
+      "low": 146.29,
+      "close": 151.92,
+      "volume": 1068935.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:19.380944Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

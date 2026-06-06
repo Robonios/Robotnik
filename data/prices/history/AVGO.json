@@ -1,44 +1,12 @@
 {
   "ticker": "AVGO",
   "marketstack_symbol": "AVGO",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Broadcom",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 45.975,
-      "high": 45.983999999999995,
-      "low": 44.827999999999996,
-      "close": 45.013999999999996,
-      "volume": 1484482.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 44.722,
-      "high": 44.769999999999996,
-      "low": 43.731,
-      "close": 44.454,
-      "volume": 2349723.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 45.041430000000005,
-      "high": 45.144,
-      "low": 44.237,
-      "close": 44.382999999999996,
-      "volume": 1638981.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 44.38,
-      "high": 44.909,
-      "low": 43.9925,
-      "close": 44.858,
-      "volume": 1319786.0
-    },
     {
       "date": "2021-05-07",
       "open": 45.458999999999996,
@@ -10222,8 +10190,28 @@
       "low": 470.459,
       "close": 481.57,
       "volume": 34919080.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 494.79,
+      "high": 495.0,
+      "low": 472.64,
+      "close": 479.23,
+      "volume": 36128462.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 409.165,
+      "high": 426.48,
+      "low": 403.0101,
+      "close": 418.91,
+      "volume": 80554978.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:17.817861Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

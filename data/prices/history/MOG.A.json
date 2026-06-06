@@ -1,44 +1,12 @@
 {
   "ticker": "MOG.A",
   "marketstack_symbol": "MOG-A",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Moog Inc",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 87.99,
-      "high": 88.36,
-      "low": 86.14,
-      "close": 86.47,
-      "volume": 102294.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 86.31,
-      "high": 86.485,
-      "low": 85.145,
-      "close": 86.48,
-      "volume": 104007.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 86.15,
-      "high": 87.06,
-      "low": 86.15,
-      "close": 86.68,
-      "volume": 58343.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 86.79,
-      "high": 88.41,
-      "low": 86.72,
-      "close": 88.4,
-      "volume": 88528.0
-    },
     {
       "date": "2021-05-07",
       "open": 88.4,
@@ -10230,8 +10198,28 @@
       "low": 367.46,
       "close": 373.33,
       "volume": 396192.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 372.87,
+      "high": 381.365,
+      "low": 367.34,
+      "close": 373.94,
+      "volume": 367419.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 374.25,
+      "high": 379.1,
+      "low": 370.425,
+      "close": 371.22,
+      "volume": 156928.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:14.090836Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1276
+  }
 }

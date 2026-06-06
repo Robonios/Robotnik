@@ -1,44 +1,12 @@
 {
   "ticker": "MXL",
   "marketstack_symbol": "MXL",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "MaxLinear",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 36.07,
-      "high": 36.765,
-      "low": 35.615,
-      "close": 35.94,
-      "volume": 502961.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 35.36,
-      "high": 35.735,
-      "low": 34.82,
-      "close": 35.21,
-      "volume": 460198.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 35.79,
-      "high": 36.155,
-      "low": 34.94,
-      "close": 35.15,
-      "volume": 297619.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 34.83,
-      "high": 35.35,
-      "low": 33.7,
-      "close": 34.54,
-      "volume": 607671.0
-    },
     {
       "date": "2021-05-07",
       "open": 35.18,
@@ -10222,8 +10190,28 @@
       "low": 84.16,
       "close": 88.76,
       "volume": 7965709.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 90.5,
+      "high": 102.0,
+      "low": 90.0,
+      "close": 91.39,
+      "volume": 5445475.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 88.13,
+      "high": 97.7,
+      "low": 85.38,
+      "close": 94.21,
+      "volume": 3558864.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:10.769073Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

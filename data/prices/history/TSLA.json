@@ -1,44 +1,12 @@
 {
   "ticker": "TSLA",
   "marketstack_symbol": "TSLA",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Tesla",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 234.6,
-      "high": 235.33333333333334,
-      "low": 226.83333333333334,
-      "close": 228.29999999999998,
-      "volume": 27043143.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 226.31333333333336,
-      "high": 227.8166666666667,
-      "low": 219.23333333333335,
-      "close": 224.53333333333333,
-      "volume": 29621900.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 227.01999999999998,
-      "high": 228.4333333333333,
-      "low": 222.4466666666667,
-      "close": 223.64666666666668,
-      "volume": 21836000.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 226.92,
-      "high": 227.00666666666666,
-      "low": 216.66666666666666,
-      "close": 221.17999999999998,
-      "volume": 27514595.0
-    },
     {
       "date": "2021-05-07",
       "open": 221.9333333333333,
@@ -10222,8 +10190,28 @@
       "low": 413.65,
       "close": 423.74,
       "volume": 35948130.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 418.7,
+      "high": 433.6,
+      "low": 416.0,
+      "close": 423.7,
+      "volume": 43747438.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 419.79,
+      "high": 426.3499,
+      "low": 417.16,
+      "close": 418.45,
+      "volume": 34237925.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:57.577391Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

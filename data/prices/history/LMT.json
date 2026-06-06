@@ -1,44 +1,12 @@
 {
   "ticker": "LMT",
   "marketstack_symbol": "LMT",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Lockheed Martin",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 379.77,
-      "high": 386.39,
-      "low": 379.06,
-      "close": 385.31,
-      "volume": 1347374.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 387.25,
-      "high": 390.15,
-      "low": 384.54,
-      "close": 387.48,
-      "volume": 1509589.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 386.34,
-      "high": 386.925,
-      "low": 383.86,
-      "close": 386.37,
-      "volume": 759842.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 387.99,
-      "high": 389.3,
-      "low": 386.0,
-      "close": 387.34,
-      "volume": 1079568.0
-    },
     {
       "date": "2021-05-07",
       "open": 387.0,
@@ -10222,8 +10190,28 @@
       "low": 510.1,
       "close": 513.43,
       "volume": 733515.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 512.25,
+      "high": 524.54,
+      "low": 510.54,
+      "close": 512.03,
+      "volume": 1042089.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 517.74,
+      "high": 522.702,
+      "low": 514.14,
+      "close": 519.05,
+      "volume": 593588.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:09.030136Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

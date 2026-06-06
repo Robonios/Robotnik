@@ -1,44 +1,12 @@
 {
   "ticker": "CSTM FP",
   "marketstack_symbol": "CSTM",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Constellium",
   "sector": "Materials",
   "country": "France",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 15.7,
-      "high": 15.71,
-      "low": 15.04,
-      "close": 15.42,
-      "volume": 1278657.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 15.3,
-      "high": 16.65,
-      "low": 15.3,
-      "close": 16.62,
-      "volume": 2124036.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 16.6,
-      "high": 17.43,
-      "low": 16.53,
-      "close": 17.25,
-      "volume": 1416108.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 17.3,
-      "high": 17.44,
-      "low": 16.855,
-      "close": 17.06,
-      "volume": 770815.0
-    },
     {
       "date": "2021-05-07",
       "open": 16.96,
@@ -10222,8 +10190,28 @@
       "low": 34.75,
       "close": 36.07,
       "volume": 3245237.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 35.69,
+      "high": 36.585,
+      "low": 35.17,
+      "close": 35.86,
+      "volume": 2212210.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 35.01,
+      "high": 36.88,
+      "low": 34.95,
+      "close": 36.15,
+      "volume": 1511242.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:28.734085Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

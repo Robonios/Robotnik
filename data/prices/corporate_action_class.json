@@ -1,0 +1,2816 @@
+{
+  "_meta": {
+    "swept_at": "2026-06-05T18:56:32.189541+00:00Z",
+    "v2_names": 278,
+    "counts": {
+      "clean": 259,
+      "corporate_action_miss": 19,
+      "persistent_divergence": 0,
+      "recent_divergence": 0,
+      "yahoo_error": 0
+    },
+    "yahoo_route": [
+      "2395 TT",
+      "6680 HK",
+      "688169 C1",
+      "010060 KS",
+      "ILU AU",
+      "EXA FP",
+      "189300 KS",
+      "OVZON SS",
+      "MNTS",
+      "003021",
+      "300100",
+      "300757 C2",
+      "601689",
+      "ABBN SW",
+      "AI FP",
+      "COHR",
+      "GOMX SS",
+      "MRSN FP",
+      "RBC"
+    ]
+  },
+  "names": {
+    "002008 C2": {
+      "class": "clean",
+      "symbol": "002008.SZ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2247,
+      "n_overlap": 1152,
+      "yahoo_currency": "CNY"
+    },
+    "002050": {
+      "class": "clean",
+      "symbol": "002050.SZ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.317,
+      "n_overlap": 1153,
+      "yahoo_currency": "CNY"
+    },
+    "002472": {
+      "class": "clean",
+      "symbol": "002472.SZ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0572,
+      "n_overlap": 1153,
+      "yahoo_currency": "CNY"
+    },
+    "002747 C2": {
+      "class": "clean",
+      "symbol": "002747.SZ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.047,
+      "n_overlap": 1152,
+      "yahoo_currency": "CNY"
+    },
+    "002979": {
+      "class": "clean",
+      "symbol": "002979.SZ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1151,
+      "yahoo_currency": "CNY"
+    },
+    "003021": {
+      "class": "corporate_action_miss",
+      "symbol": "003021.SZ",
+      "old_ratio": 1.4,
+      "recent_ratio": 1.0,
+      "dispersion": 1.4,
+      "weight_pct": null,
+      "n_overlap": 1152,
+      "yahoo_currency": "CNY"
+    },
+    "010060 KS": {
+      "class": "corporate_action_miss",
+      "symbol": "010060.KS",
+      "old_ratio": 1.5811,
+      "recent_ratio": 1.0,
+      "dispersion": 1.5811,
+      "weight_pct": 0.0436,
+      "n_overlap": 1162,
+      "yahoo_currency": "KRW"
+    },
+    "012450 KS": {
+      "class": "clean",
+      "symbol": "012450.KS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1163,
+      "yahoo_currency": "KRW"
+    },
+    "090360 KS": {
+      "class": "clean",
+      "symbol": "090360.KQ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0115,
+      "n_overlap": 1168,
+      "yahoo_currency": "KRW"
+    },
+    "098460 KS": {
+      "class": "clean",
+      "symbol": "098460.KQ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0158,
+      "n_overlap": 1169,
+      "yahoo_currency": "KRW"
+    },
+    "108490 KS": {
+      "class": "clean",
+      "symbol": "108490.KQ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0392,
+      "n_overlap": 1172,
+      "yahoo_currency": "KRW"
+    },
+    "1590 TT": {
+      "class": "clean",
+      "symbol": "1590.TW",
+      "old_ratio": 1.0117,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0117,
+      "weight_pct": 0.0987,
+      "n_overlap": 1156,
+      "yahoo_currency": "TWD"
+    },
+    "186A JP": {
+      "class": "clean",
+      "symbol": "186A.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0199,
+      "n_overlap": 436,
+      "yahoo_currency": "JPY"
+    },
+    "189300 KS": {
+      "class": "corporate_action_miss",
+      "symbol": "189300.KQ",
+      "old_ratio": 1.0332,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0332,
+      "weight_pct": 0.0095,
+      "n_overlap": 1173,
+      "yahoo_currency": "KRW"
+    },
+    "2049": {
+      "class": "clean",
+      "symbol": "2049.TW",
+      "old_ratio": 1.009,
+      "recent_ratio": 1.0,
+      "dispersion": 1.009,
+      "weight_pct": 0.047,
+      "n_overlap": 1160,
+      "yahoo_currency": "TWD"
+    },
+    "2121 HK": {
+      "class": "clean",
+      "symbol": "2121.HK",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1011,
+      "yahoo_currency": "HKD"
+    },
+    "2252 HK": {
+      "class": "clean",
+      "symbol": "2252.HK",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0373,
+      "n_overlap": 1066,
+      "yahoo_currency": "HKD"
+    },
+    "2308 TT": {
+      "class": "clean",
+      "symbol": "2308.TW",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1159,
+      "yahoo_currency": "TWD"
+    },
+    "2317 TT": {
+      "class": "clean",
+      "symbol": "2317.TW",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1155,
+      "yahoo_currency": "TWD"
+    },
+    "2395 TT": {
+      "class": "corporate_action_miss",
+      "symbol": "2395.TW",
+      "old_ratio": 1.0999,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0999,
+      "weight_pct": 0.1604,
+      "n_overlap": 1155,
+      "yahoo_currency": "TWD"
+    },
+    "277810 KS": {
+      "class": "clean",
+      "symbol": "277810.KQ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1096,
+      "n_overlap": 1173,
+      "yahoo_currency": "KRW"
+    },
+    "2802 JP": {
+      "class": "clean",
+      "symbol": "2802.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1158,
+      "yahoo_currency": "JPY"
+    },
+    "300024 C2": {
+      "class": "clean",
+      "symbol": "300024.SZ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0388,
+      "n_overlap": 1154,
+      "yahoo_currency": "CNY"
+    },
+    "300100": {
+      "class": "corporate_action_miss",
+      "symbol": "300100.SZ",
+      "old_ratio": 1.4,
+      "recent_ratio": 1.0,
+      "dispersion": 1.4,
+      "weight_pct": null,
+      "n_overlap": 1155,
+      "yahoo_currency": "CNY"
+    },
+    "300124 C2": {
+      "class": "clean",
+      "symbol": "300124.SZ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.3433,
+      "n_overlap": 1153,
+      "yahoo_currency": "CNY"
+    },
+    "300757 C2": {
+      "class": "corporate_action_miss",
+      "symbol": "300757.SZ",
+      "old_ratio": 1.4,
+      "recent_ratio": 1.0,
+      "dispersion": 1.4,
+      "weight_pct": null,
+      "n_overlap": 1153,
+      "yahoo_currency": "CNY"
+    },
+    "3037 TT": {
+      "class": "clean",
+      "symbol": "3037.TW",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.567,
+      "n_overlap": 1157,
+      "yahoo_currency": "TWD"
+    },
+    "3401 JP": {
+      "class": "clean",
+      "symbol": "3401.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1168,
+      "yahoo_currency": "JPY"
+    },
+    "3402 JP": {
+      "class": "clean",
+      "symbol": "3402.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1170,
+      "yahoo_currency": "JPY"
+    },
+    "3407 JP": {
+      "class": "clean",
+      "symbol": "3407.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1168,
+      "yahoo_currency": "JPY"
+    },
+    "3436 JP": {
+      "class": "clean",
+      "symbol": "3436.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1103,
+      "n_overlap": 1165,
+      "yahoo_currency": "JPY"
+    },
+    "388720 KS": {
+      "class": "clean",
+      "symbol": "388720.KQ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 981,
+      "yahoo_currency": "KRW"
+    },
+    "4005 JP": {
+      "class": "clean",
+      "symbol": "4005.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "4043 JP": {
+      "class": "clean",
+      "symbol": "4043.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0286,
+      "n_overlap": 1167,
+      "yahoo_currency": "JPY"
+    },
+    "4062 JP": {
+      "class": "clean",
+      "symbol": "4062.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.4334,
+      "n_overlap": 1166,
+      "yahoo_currency": "JPY"
+    },
+    "4063 JP": {
+      "class": "clean",
+      "symbol": "4063.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 1.0253,
+      "n_overlap": 1163,
+      "yahoo_currency": "JPY"
+    },
+    "4091 JP": {
+      "class": "clean",
+      "symbol": "4091.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1167,
+      "yahoo_currency": "JPY"
+    },
+    "4112 JP": {
+      "class": "clean",
+      "symbol": "4112.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0025,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "4186 JP": {
+      "class": "clean",
+      "symbol": "4186.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0907,
+      "n_overlap": 1166,
+      "yahoo_currency": "JPY"
+    },
+    "4188 JP": {
+      "class": "clean",
+      "symbol": "4188.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "4208 JP": {
+      "class": "clean",
+      "symbol": "4208.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1165,
+      "yahoo_currency": "JPY"
+    },
+    "454910 KS": {
+      "class": "clean",
+      "symbol": "454910.KS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.08,
+      "n_overlap": 598,
+      "yahoo_currency": "KRW"
+    },
+    "5384 JP": {
+      "class": "clean",
+      "symbol": "5384.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0221,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "5706 JP": {
+      "class": "clean",
+      "symbol": "5706.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1926,
+      "n_overlap": 1166,
+      "yahoo_currency": "JPY"
+    },
+    "600111": {
+      "class": "clean",
+      "symbol": "600111.SS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.301,
+      "n_overlap": 1154,
+      "yahoo_currency": "CNY"
+    },
+    "601100": {
+      "class": "clean",
+      "symbol": "601100.SS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2524,
+      "n_overlap": 1154,
+      "yahoo_currency": "CNY"
+    },
+    "601689": {
+      "class": "corporate_action_miss",
+      "symbol": "601689.SS",
+      "old_ratio": 1.45,
+      "recent_ratio": 1.0,
+      "dispersion": 1.45,
+      "weight_pct": null,
+      "n_overlap": 1155,
+      "yahoo_currency": "CNY"
+    },
+    "603009": {
+      "class": "clean",
+      "symbol": "603009.SS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1152,
+      "yahoo_currency": "CNY"
+    },
+    "603662": {
+      "class": "clean",
+      "symbol": "603662.SS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1151,
+      "yahoo_currency": "CNY"
+    },
+    "6104 JP": {
+      "class": "clean",
+      "symbol": "6104.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0069,
+      "n_overlap": 1168,
+      "yahoo_currency": "JPY"
+    },
+    "6113 JP": {
+      "class": "clean",
+      "symbol": "6113.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0654,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "6134 JP": {
+      "class": "clean",
+      "symbol": "6134.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0487,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "6141 JP": {
+      "class": "clean",
+      "symbol": "6141.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0343,
+      "n_overlap": 1169,
+      "yahoo_currency": "JPY"
+    },
+    "6153 TT": {
+      "class": "clean",
+      "symbol": "6153.TW",
+      "old_ratio": 1.0109,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0109,
+      "weight_pct": null,
+      "n_overlap": 1158,
+      "yahoo_currency": "TWD"
+    },
+    "6258 JP": {
+      "class": "clean",
+      "symbol": "6258.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0061,
+      "n_overlap": 1170,
+      "yahoo_currency": "JPY"
+    },
+    "6268 JP": {
+      "class": "clean",
+      "symbol": "6268.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0456,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "6273 JP": {
+      "class": "clean",
+      "symbol": "6273.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2858,
+      "n_overlap": 1167,
+      "yahoo_currency": "JPY"
+    },
+    "6324": {
+      "class": "clean",
+      "symbol": "6324.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0496,
+      "n_overlap": 1170,
+      "yahoo_currency": "JPY"
+    },
+    "6383 JP": {
+      "class": "clean",
+      "symbol": "6383.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1841,
+      "n_overlap": 1167,
+      "yahoo_currency": "JPY"
+    },
+    "6481 JP": {
+      "class": "clean",
+      "symbol": "6481.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0629,
+      "n_overlap": 1166,
+      "yahoo_currency": "JPY"
+    },
+    "6503 JP": {
+      "class": "clean",
+      "symbol": "6503.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1162,
+      "yahoo_currency": "JPY"
+    },
+    "6506 JP": {
+      "class": "clean",
+      "symbol": "6506.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1312,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "6594": {
+      "class": "clean",
+      "symbol": "6594.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1165,
+      "yahoo_currency": "JPY"
+    },
+    "6622 JP": {
+      "class": "clean",
+      "symbol": "6622.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0262,
+      "n_overlap": 1171,
+      "yahoo_currency": "JPY"
+    },
+    "6645 JP": {
+      "class": "clean",
+      "symbol": "6645.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0861,
+      "n_overlap": 1167,
+      "yahoo_currency": "JPY"
+    },
+    "6680 HK": {
+      "class": "corporate_action_miss",
+      "symbol": "6680.HK",
+      "old_ratio": 1.6,
+      "recent_ratio": 1.0,
+      "dispersion": 1.6,
+      "weight_pct": 0.07,
+      "n_overlap": 1015,
+      "yahoo_currency": "HKD"
+    },
+    "6723": {
+      "class": "clean",
+      "symbol": "6723.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.6191,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "6841 JP": {
+      "class": "clean",
+      "symbol": "6841.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0964,
+      "n_overlap": 1163,
+      "yahoo_currency": "JPY"
+    },
+    "6845 JP": {
+      "class": "clean",
+      "symbol": "6845.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0602,
+      "n_overlap": 1168,
+      "yahoo_currency": "JPY"
+    },
+    "6857 JP": {
+      "class": "clean",
+      "symbol": "6857.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 1.4193,
+      "n_overlap": 1165,
+      "yahoo_currency": "JPY"
+    },
+    "6861 JP": {
+      "class": "clean",
+      "symbol": "6861.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 1.3832,
+      "n_overlap": 1166,
+      "yahoo_currency": "JPY"
+    },
+    "688017": {
+      "class": "clean",
+      "symbol": "688017.SS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0965,
+      "n_overlap": 1153,
+      "yahoo_currency": "CNY"
+    },
+    "688165 C1": {
+      "class": "clean",
+      "symbol": "688165.SS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0164,
+      "n_overlap": 1151,
+      "yahoo_currency": "CNY"
+    },
+    "688169 C1": {
+      "class": "corporate_action_miss",
+      "symbol": "688169.SS",
+      "old_ratio": 2.744,
+      "recent_ratio": 1.0,
+      "dispersion": 2.744,
+      "weight_pct": 0.0454,
+      "n_overlap": 1153,
+      "yahoo_currency": "CNY"
+    },
+    "688297 C1": {
+      "class": "clean",
+      "symbol": "688297.SS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 894,
+      "yahoo_currency": "CNY"
+    },
+    "6902 JP": {
+      "class": "clean",
+      "symbol": "6902.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1163,
+      "yahoo_currency": "JPY"
+    },
+    "6914 JP": {
+      "class": "clean",
+      "symbol": "6914.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0114,
+      "n_overlap": 1168,
+      "yahoo_currency": "JPY"
+    },
+    "6920 JP": {
+      "class": "clean",
+      "symbol": "6920.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2648,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "6954 JP": {
+      "class": "clean",
+      "symbol": "6954.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.5264,
+      "n_overlap": 1165,
+      "yahoo_currency": "JPY"
+    },
+    "6971 JP": {
+      "class": "clean",
+      "symbol": "6971.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1168,
+      "yahoo_currency": "JPY"
+    },
+    "8035 JP": {
+      "class": "clean",
+      "symbol": "8035.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 1.9679,
+      "n_overlap": 1164,
+      "yahoo_currency": "JPY"
+    },
+    "9348 JP": {
+      "class": "clean",
+      "symbol": "9348.T",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0061,
+      "n_overlap": 716,
+      "yahoo_currency": "JPY"
+    },
+    "9868": {
+      "class": "clean",
+      "symbol": "9868.HK",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1150,
+      "yahoo_currency": "HKD"
+    },
+    "ABBN SW": {
+      "class": "corporate_action_miss",
+      "symbol": "ABBN.SW",
+      "old_ratio": 1.0424,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0424,
+      "weight_pct": null,
+      "n_overlap": 1207,
+      "yahoo_currency": "CHF"
+    },
+    "ADI": {
+      "class": "clean",
+      "symbol": "ADI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 2.332,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "AEIS": {
+      "class": "clean",
+      "symbol": "AEIS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1413,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "AI FP": {
+      "class": "corporate_action_miss",
+      "symbol": "AI.PA",
+      "old_ratio": 1.1,
+      "recent_ratio": 1.0,
+      "dispersion": 1.1,
+      "weight_pct": null,
+      "n_overlap": 1215,
+      "yahoo_currency": "EUR"
+    },
+    "ALAB": {
+      "class": "clean",
+      "symbol": "ALAB",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.6899,
+      "n_overlap": 551,
+      "yahoo_currency": "USD"
+    },
+    "ALB": {
+      "class": "clean",
+      "symbol": "ALB",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2292,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ALGM": {
+      "class": "clean",
+      "symbol": "ALGM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.106,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "AMAT": {
+      "class": "clean",
+      "symbol": "AMAT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 4.4016,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "AMBA": {
+      "class": "clean",
+      "symbol": "AMBA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0389,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "AMD": {
+      "class": "clean",
+      "symbol": "AMD",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 5.0,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "AMG NA": {
+      "class": "clean",
+      "symbol": "AMG.AS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0188,
+      "n_overlap": 1228,
+      "yahoo_currency": "EUR"
+    },
+    "AMKR": {
+      "class": "clean",
+      "symbol": "AMKR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2096,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "AMZN": {
+      "class": "clean",
+      "symbol": "AMZN",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ANDR AV": {
+      "class": "clean",
+      "symbol": "ANDR.VI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1220,
+      "yahoo_currency": "EUR"
+    },
+    "AOSL": {
+      "class": "clean",
+      "symbol": "AOSL",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0181,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "APD": {
+      "class": "clean",
+      "symbol": "APD",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "APH": {
+      "class": "clean",
+      "symbol": "APH",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "APTV": {
+      "class": "clean",
+      "symbol": "APTV",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "ARM": {
+      "class": "clean",
+      "symbol": "ARM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 4.8659,
+      "n_overlap": 680,
+      "yahoo_currency": "USD"
+    },
+    "ARU AU": {
+      "class": "clean",
+      "symbol": "ARU.AX",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0148,
+      "n_overlap": 1162,
+      "yahoo_currency": "AUD"
+    },
+    "ASML": {
+      "class": "clean",
+      "symbol": "ASML",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 5.0,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ASTS": {
+      "class": "clean",
+      "symbol": "ASTS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.5189,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "ASX": {
+      "class": "clean",
+      "symbol": "ASX",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.9744,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ATS CN": {
+      "class": "clean",
+      "symbol": "ATS.TO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0328,
+      "n_overlap": 1210,
+      "yahoo_currency": "CAD"
+    },
+    "AUTO NO": {
+      "class": "clean",
+      "symbol": "AUTO.OL",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0533,
+      "n_overlap": 1112,
+      "yahoo_currency": "NOK"
+    },
+    "AVAV": {
+      "class": "clean",
+      "symbol": "AVAV",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.117,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "AVGO": {
+      "class": "clean",
+      "symbol": "AVGO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 5.0,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "AVIO IM": {
+      "class": "clean",
+      "symbol": "AVIO.MI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0226,
+      "n_overlap": 1223,
+      "yahoo_currency": "EUR"
+    },
+    "BA": {
+      "class": "clean",
+      "symbol": "BA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "BAS GR": {
+      "class": "clean",
+      "symbol": "BAS.F",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1174,
+      "yahoo_currency": "EUR"
+    },
+    "BIDU": {
+      "class": "clean",
+      "symbol": "BIDU",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "BKSY": {
+      "class": "clean",
+      "symbol": "BKSY",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0184,
+      "n_overlap": 1184,
+      "yahoo_currency": "USD"
+    },
+    "BSL GR": {
+      "class": "clean",
+      "symbol": "BSL.DE",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0119,
+      "n_overlap": 1213,
+      "yahoo_currency": "EUR"
+    },
+    "BWXT": {
+      "class": "clean",
+      "symbol": "BWXT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "BYDDY": {
+      "class": "clean",
+      "symbol": "BYDDY",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0013,
+      "weight_pct": null,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "CAMT": {
+      "class": "clean",
+      "symbol": "CAMT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0977,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "CAT": {
+      "class": "clean",
+      "symbol": "CAT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "CCJ": {
+      "class": "clean",
+      "symbol": "CCJ",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "CDNS": {
+      "class": "clean",
+      "symbol": "CDNS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 1.2992,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "CEVA": {
+      "class": "clean",
+      "symbol": "CEVA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0156,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "CGNX": {
+      "class": "clean",
+      "symbol": "CGNX",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1244,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "CLS CN": {
+      "class": "clean",
+      "symbol": "CLS.TO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1215,
+      "yahoo_currency": "CAD"
+    },
+    "COHR": {
+      "class": "corporate_action_miss",
+      "symbol": "COHR",
+      "old_ratio": 3.6992,
+      "recent_ratio": 1.0,
+      "dispersion": 4.2714,
+      "weight_pct": null,
+      "n_overlap": 1208,
+      "yahoo_currency": "USD"
+    },
+    "CRDO": {
+      "class": "clean",
+      "symbol": "CRDO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.4778,
+      "n_overlap": 1088,
+      "yahoo_currency": "USD"
+    },
+    "CRS": {
+      "class": "clean",
+      "symbol": "CRS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "CRUS": {
+      "class": "clean",
+      "symbol": "CRUS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0976,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "CSTM FP": {
+      "class": "clean",
+      "symbol": "CSTM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "DASH": {
+      "class": "clean",
+      "symbol": "DASH",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "DCO": {
+      "class": "clean",
+      "symbol": "DCO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "DIOD": {
+      "class": "clean",
+      "symbol": "DIOD",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0593,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "DUE GR": {
+      "class": "clean",
+      "symbol": "DUE.DE",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1211,
+      "yahoo_currency": "EUR"
+    },
+    "DVLT": {
+      "class": "clean",
+      "symbol": "DVLT",
+      "old_ratio": 0.9833,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0189,
+      "weight_pct": null,
+      "n_overlap": 325,
+      "yahoo_currency": "USD"
+    },
+    "EH": {
+      "class": "clean",
+      "symbol": "EH",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0088,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "EMR": {
+      "class": "clean",
+      "symbol": "EMR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ENTG": {
+      "class": "clean",
+      "symbol": "ENTG",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2462,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ESE": {
+      "class": "clean",
+      "symbol": "ESE",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ESLT": {
+      "class": "clean",
+      "symbol": "ESLT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "ETL FP": {
+      "class": "clean",
+      "symbol": "ETL.PA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0526,
+      "n_overlap": 1214,
+      "yahoo_currency": "EUR"
+    },
+    "EXA FP": {
+      "class": "corporate_action_miss",
+      "symbol": "EXA.PA",
+      "old_ratio": 1.3459,
+      "recent_ratio": 1.0,
+      "dispersion": 1.3459,
+      "weight_pct": 0.0297,
+      "n_overlap": 1228,
+      "yahoo_currency": "EUR"
+    },
+    "FORM": {
+      "class": "clean",
+      "symbol": "FORM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1103,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "FSLR": {
+      "class": "clean",
+      "symbol": "FSLR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "FTI": {
+      "class": "clean",
+      "symbol": "FTI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "G1A GR": {
+      "class": "clean",
+      "symbol": "G1A.F",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1173,
+      "yahoo_currency": "EUR"
+    },
+    "GD": {
+      "class": "clean",
+      "symbol": "GD",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "GILT": {
+      "class": "clean",
+      "symbol": "GILT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0139,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "GMED": {
+      "class": "clean",
+      "symbol": "GMED",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1202,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "GOGO": {
+      "class": "clean",
+      "symbol": "GOGO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "GOMX SS": {
+      "class": "corporate_action_miss",
+      "symbol": "GOMX.ST",
+      "old_ratio": 1.3253,
+      "recent_ratio": 1.0,
+      "dispersion": 1.3253,
+      "weight_pct": null,
+      "n_overlap": 1205,
+      "yahoo_currency": "SEK"
+    },
+    "GOOG": {
+      "class": "clean",
+      "symbol": "GOOG",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "GSAT": {
+      "class": "clean",
+      "symbol": "GSAT",
+      "old_ratio": 0.995,
+      "recent_ratio": 1.0,
+      "dispersion": 1.005,
+      "weight_pct": 0.1204,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "HEI": {
+      "class": "clean",
+      "symbol": "HEI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "HEXAB SS": {
+      "class": "clean",
+      "symbol": "HEXA-B.ST",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1206,
+      "yahoo_currency": "SEK"
+    },
+    "HSAI": {
+      "class": "clean",
+      "symbol": "HSAI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0385,
+      "n_overlap": 806,
+      "yahoo_currency": "USD"
+    },
+    "HXL": {
+      "class": "clean",
+      "symbol": "HXL",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "ILU AU": {
+      "class": "corporate_action_miss",
+      "symbol": "ILU.AX",
+      "old_ratio": 1.0485,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0485,
+      "weight_pct": 0.0394,
+      "n_overlap": 1162,
+      "yahoo_currency": "AUD"
+    },
+    "IMI LN": {
+      "class": "clean",
+      "symbol": "IMI.L",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1184,
+      "yahoo_currency": "GBp"
+    },
+    "INDI": {
+      "class": "clean",
+      "symbol": "INDI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0122,
+      "n_overlap": 1247,
+      "yahoo_currency": "USD"
+    },
+    "INRN SW": {
+      "class": "clean",
+      "symbol": "INRN.SW",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0182,
+      "n_overlap": 1208,
+      "yahoo_currency": "CHF"
+    },
+    "INTC": {
+      "class": "clean",
+      "symbol": "INTC",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 5.0,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "IPGP": {
+      "class": "clean",
+      "symbol": "IPGP",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0586,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "IRDM": {
+      "class": "clean",
+      "symbol": "IRDM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0593,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ISRG": {
+      "class": "clean",
+      "symbol": "ISRG",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 1.6118,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "JBL": {
+      "class": "clean",
+      "symbol": "JBL",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "JEN GR": {
+      "class": "clean",
+      "symbol": "JEN.F",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0356,
+      "n_overlap": 1173,
+      "yahoo_currency": "EUR"
+    },
+    "KAI": {
+      "class": "clean",
+      "symbol": "KAI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "KALMAR FH": {
+      "class": "clean",
+      "symbol": "KALMAR.HE",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 434,
+      "yahoo_currency": "EUR"
+    },
+    "KARN SW": {
+      "class": "clean",
+      "symbol": "KARN.SW",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0294,
+      "n_overlap": 1207,
+      "yahoo_currency": "CHF"
+    },
+    "KCR FH": {
+      "class": "clean",
+      "symbol": "KCR.HE",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0852,
+      "n_overlap": 1209,
+      "yahoo_currency": "EUR"
+    },
+    "KLAC": {
+      "class": "clean",
+      "symbol": "KLAC",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 3.0223,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "KLIC": {
+      "class": "clean",
+      "symbol": "KLIC",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0642,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "KMTUY": {
+      "class": "clean",
+      "symbol": "KMTUY",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0009,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "KOPN": {
+      "class": "clean",
+      "symbol": "KOPN",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0003,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "KTOS": {
+      "class": "clean",
+      "symbol": "KTOS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1342,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "LASR": {
+      "class": "clean",
+      "symbol": "LASR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0487,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "LECO": {
+      "class": "clean",
+      "symbol": "LECO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1576,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "LHX": {
+      "class": "clean",
+      "symbol": "LHX",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "LIN": {
+      "class": "clean",
+      "symbol": "LIN",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1253,
+      "yahoo_currency": "USD"
+    },
+    "LMT": {
+      "class": "clean",
+      "symbol": "LMT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "LRCX": {
+      "class": "clean",
+      "symbol": "LRCX",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 4.731,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "LSCC": {
+      "class": "clean",
+      "symbol": "LSCC",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2346,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "LUNR": {
+      "class": "clean",
+      "symbol": "LUNR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0718,
+      "n_overlap": 826,
+      "yahoo_currency": "USD"
+    },
+    "LYC AU": {
+      "class": "clean",
+      "symbol": "LYC.AX",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2219,
+      "n_overlap": 1162,
+      "yahoo_currency": "AUD"
+    },
+    "MBLY": {
+      "class": "clean",
+      "symbol": "MBLY",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1028,
+      "n_overlap": 904,
+      "yahoo_currency": "USD"
+    },
+    "MCHP": {
+      "class": "clean",
+      "symbol": "MCHP",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.5946,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "MDA CN": {
+      "class": "clean",
+      "symbol": "MDA.TO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0672,
+      "n_overlap": 1216,
+      "yahoo_currency": "CAD"
+    },
+    "MELE": {
+      "class": "clean",
+      "symbol": "MELE.BR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0447,
+      "n_overlap": 1228,
+      "yahoo_currency": "EUR"
+    },
+    "MG": {
+      "class": "clean",
+      "symbol": "MG",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "MKSI": {
+      "class": "clean",
+      "symbol": "MKSI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2532,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "MNTS": {
+      "class": "corporate_action_miss",
+      "symbol": "MNTS",
+      "old_ratio": 0.001,
+      "recent_ratio": 1.0,
+      "dispersion": 1000.0,
+      "weight_pct": 0.0023,
+      "n_overlap": 1203,
+      "yahoo_currency": "USD"
+    },
+    "MOG.A": {
+      "class": "clean",
+      "symbol": "MOG-A",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "MP": {
+      "class": "clean",
+      "symbol": "MP",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1455,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "MPWR": {
+      "class": "clean",
+      "symbol": "MPWR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.9032,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "MRK GR": {
+      "class": "clean",
+      "symbol": "MRK.F",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1173,
+      "yahoo_currency": "EUR"
+    },
+    "MRSN FP": {
+      "class": "corporate_action_miss",
+      "symbol": "MRN.PA",
+      "old_ratio": 1.0435,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0435,
+      "weight_pct": null,
+      "n_overlap": 1221,
+      "yahoo_currency": "EUR"
+    },
+    "MRVL": {
+      "class": "clean",
+      "symbol": "MRVL",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 2.8802,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "MTRN": {
+      "class": "clean",
+      "symbol": "MTRN",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "MTSI": {
+      "class": "clean",
+      "symbol": "MTSI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.33,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "MU": {
+      "class": "clean",
+      "symbol": "MU",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 5.0,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "MXL": {
+      "class": "clean",
+      "symbol": "MXL",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0899,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "NDSN": {
+      "class": "clean",
+      "symbol": "NDSN",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "NN": {
+      "class": "clean",
+      "symbol": "NN",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1112,
+      "yahoo_currency": "USD"
+    },
+    "NOC": {
+      "class": "clean",
+      "symbol": "NOC",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "NOVT": {
+      "class": "clean",
+      "symbol": "NOVT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0679,
+      "n_overlap": 1253,
+      "yahoo_currency": "USD"
+    },
+    "NVDA": {
+      "class": "clean",
+      "symbol": "NVDA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 5.0,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "NVEC": {
+      "class": "clean",
+      "symbol": "NVEC",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0062,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "NVMI": {
+      "class": "clean",
+      "symbol": "NVMI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1882,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "NVTS": {
+      "class": "clean",
+      "symbol": "NVTS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0693,
+      "n_overlap": 1159,
+      "yahoo_currency": "USD"
+    },
+    "NXPI": {
+      "class": "clean",
+      "symbol": "NXPI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.9243,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "OKLO": {
+      "class": "clean",
+      "symbol": "OKLO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 516,
+      "yahoo_currency": "USD"
+    },
+    "OLED": {
+      "class": "clean",
+      "symbol": "OLED",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0496,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ON": {
+      "class": "clean",
+      "symbol": "ON",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.5658,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ONDS": {
+      "class": "clean",
+      "symbol": "ONDS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0004,
+      "weight_pct": null,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "ONTO": {
+      "class": "clean",
+      "symbol": "ONTO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1565,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "OUST": {
+      "class": "clean",
+      "symbol": "OUST",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0332,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "OVZON SS": {
+      "class": "corporate_action_miss",
+      "symbol": "OVZON.ST",
+      "old_ratio": 1.216,
+      "recent_ratio": 1.0,
+      "dispersion": 1.216,
+      "weight_pct": 0.0083,
+      "n_overlap": 1205,
+      "yahoo_currency": "SEK"
+    },
+    "PI": {
+      "class": "clean",
+      "symbol": "PI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0494,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "PL": {
+      "class": "clean",
+      "symbol": "PL",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1939,
+      "n_overlap": 1108,
+      "yahoo_currency": "USD"
+    },
+    "PLAB": {
+      "class": "clean",
+      "symbol": "PLAB",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0221,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "PLTR": {
+      "class": "clean",
+      "symbol": "PLTR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "POWI": {
+      "class": "clean",
+      "symbol": "POWI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0531,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "PRCT": {
+      "class": "clean",
+      "symbol": "PRCT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0172,
+      "n_overlap": 1183,
+      "yahoo_currency": "USD"
+    },
+    "PSN": {
+      "class": "clean",
+      "symbol": "PSN",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "QCOM": {
+      "class": "clean",
+      "symbol": "QCOM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 2.8717,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "QRVO": {
+      "class": "clean",
+      "symbol": "QRVO",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1023,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "RBC": {
+      "class": "corporate_action_miss",
+      "symbol": "RBC",
+      "old_ratio": 0.6697,
+      "recent_ratio": 1.0,
+      "dispersion": 1.5111,
+      "weight_pct": null,
+      "n_overlap": 1053,
+      "yahoo_currency": "USD"
+    },
+    "RDW": {
+      "class": "clean",
+      "symbol": "RDW",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0463,
+      "n_overlap": 1190,
+      "yahoo_currency": "USD"
+    },
+    "RGTI": {
+      "class": "clean",
+      "symbol": "RGTI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0001,
+      "weight_pct": 0.1011,
+      "n_overlap": 1068,
+      "yahoo_currency": "USD"
+    },
+    "RKLB": {
+      "class": "clean",
+      "symbol": "RKLB",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.8076,
+      "n_overlap": 1195,
+      "yahoo_currency": "USD"
+    },
+    "RMBS": {
+      "class": "clean",
+      "symbol": "RMBS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.204,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ROK": {
+      "class": "clean",
+      "symbol": "ROK",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.5833,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "RPI LN": {
+      "class": "clean",
+      "symbol": "RPI.L",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0258,
+      "n_overlap": 456,
+      "yahoo_currency": "GBp"
+    },
+    "RR": {
+      "class": "clean",
+      "symbol": "RR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0001,
+      "weight_pct": 0.0076,
+      "n_overlap": 634,
+      "yahoo_currency": "USD"
+    },
+    "RRX": {
+      "class": "clean",
+      "symbol": "RRX",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1169,
+      "yahoo_currency": "USD"
+    },
+    "RSW LN": {
+      "class": "clean",
+      "symbol": "RSW.L",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0599,
+      "n_overlap": 1185,
+      "yahoo_currency": "GBp"
+    },
+    "SATL": {
+      "class": "clean",
+      "symbol": "SATL",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0146,
+      "n_overlap": 1089,
+      "yahoo_currency": "USD"
+    },
+    "SATS": {
+      "class": "clean",
+      "symbol": "SATS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.4051,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "SCC IT": {
+      "class": "clean",
+      "symbol": "SCC.TA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 967,
+      "yahoo_currency": "ILA"
+    },
+    "SERV": {
+      "class": "clean",
+      "symbol": "SERV",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0087,
+      "n_overlap": 471,
+      "yahoo_currency": "USD"
+    },
+    "SESG FP": {
+      "class": "clean",
+      "symbol": "SESG.PA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0484,
+      "n_overlap": 1219,
+      "yahoo_currency": "EUR"
+    },
+    "SIDU": {
+      "class": "clean",
+      "symbol": "SIDU",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0002,
+      "weight_pct": 0.0045,
+      "n_overlap": 1118,
+      "yahoo_currency": "USD"
+    },
+    "SIE GR": {
+      "class": "clean",
+      "symbol": "SIE.F",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1171,
+      "yahoo_currency": "EUR"
+    },
+    "SITM": {
+      "class": "clean",
+      "symbol": "SITM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2094,
+      "n_overlap": 1254,
+      "yahoo_currency": "USD"
+    },
+    "SKYT": {
+      "class": "clean",
+      "symbol": "SKYT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0222,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "SLAB": {
+      "class": "clean",
+      "symbol": "SLAB",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0816,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "SMTC": {
+      "class": "clean",
+      "symbol": "SMTC",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1756,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "SNPS": {
+      "class": "clean",
+      "symbol": "SNPS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 1.1012,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "SOI FP": {
+      "class": "clean",
+      "symbol": "SOI.PA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0755,
+      "n_overlap": 1213,
+      "yahoo_currency": "EUR"
+    },
+    "SPCE": {
+      "class": "clean",
+      "symbol": "SPCE",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0054,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "SPIR": {
+      "class": "clean",
+      "symbol": "SPIR",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0093,
+      "n_overlap": 1204,
+      "yahoo_currency": "USD"
+    },
+    "SQM": {
+      "class": "clean",
+      "symbol": "SQM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.2612,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "ST": {
+      "class": "clean",
+      "symbol": "ST",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "STM": {
+      "class": "clean",
+      "symbol": "STM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "STMPA": {
+      "class": "clean",
+      "symbol": "STMPA.PA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.7994,
+      "n_overlap": 1229,
+      "yahoo_currency": "EUR"
+    },
+    "SU FP": {
+      "class": "clean",
+      "symbol": "SU.PA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1212,
+      "yahoo_currency": "EUR"
+    },
+    "SWKS": {
+      "class": "clean",
+      "symbol": "SWKS",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1346,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "SYM": {
+      "class": "clean",
+      "symbol": "SYM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.3352,
+      "n_overlap": 997,
+      "yahoo_currency": "USD"
+    },
+    "SYNA": {
+      "class": "clean",
+      "symbol": "SYNA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0638,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "TDY": {
+      "class": "clean",
+      "symbol": "TDY",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "TECN SW": {
+      "class": "clean",
+      "symbol": "TECN.SW",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0282,
+      "n_overlap": 1209,
+      "yahoo_currency": "CHF"
+    },
+    "TEL": {
+      "class": "clean",
+      "symbol": "TEL",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "TER": {
+      "class": "clean",
+      "symbol": "TER",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.6953,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "TRMB": {
+      "class": "clean",
+      "symbol": "TRMB",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "TSAT": {
+      "class": "clean",
+      "symbol": "TSAT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0291,
+      "n_overlap": 1137,
+      "yahoo_currency": "USD"
+    },
+    "TSEM": {
+      "class": "clean",
+      "symbol": "TSEM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.3698,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "TSLA": {
+      "class": "clean",
+      "symbol": "TSLA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "TSM": {
+      "class": "clean",
+      "symbol": "TSM",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 5.0,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "TTMI": {
+      "class": "clean",
+      "symbol": "TTMI",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "TXN": {
+      "class": "clean",
+      "symbol": "TXN",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 3.1723,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "UMC": {
+      "class": "clean",
+      "symbol": "UMC",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.6376,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "VSAT": {
+      "class": "clean",
+      "symbol": "VSAT",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.1122,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    },
+    "WAF GR": {
+      "class": "clean",
+      "symbol": "WAF.DE",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0408,
+      "n_overlap": 1211,
+      "yahoo_currency": "EUR"
+    },
+    "WCH GR": {
+      "class": "clean",
+      "symbol": "WCH.F",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0682,
+      "n_overlap": 1170,
+      "yahoo_currency": "EUR"
+    },
+    "WOLF": {
+      "class": "clean",
+      "symbol": "WOLF",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": 0.0334,
+      "n_overlap": 169,
+      "yahoo_currency": "USD"
+    },
+    "XPEV": {
+      "class": "clean",
+      "symbol": "XPEV",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1252,
+      "yahoo_currency": "USD"
+    },
+    "ZBRA": {
+      "class": "clean",
+      "symbol": "ZBRA",
+      "old_ratio": 1.0,
+      "recent_ratio": 1.0,
+      "dispersion": 1.0,
+      "weight_pct": null,
+      "n_overlap": 1255,
+      "yahoo_currency": "USD"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "ticker": "SIDU",
   "marketstack_symbol": "SIDU",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Sidus Space",
   "sector": "Space",
   "country": "United States",
@@ -8640,22 +8640,6 @@
       "volume": 64325400.0
     },
     {
-      "date": "2026-04-07",
-      "open": 3.362,
-      "high": 4.2,
-      "low": 3.33,
-      "close": 0.0,
-      "volume": 48468755.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 4.265,
-      "high": 4.265,
-      "low": 3.41,
-      "close": 0.0,
-      "volume": 41022840.0
-    },
-    {
       "date": "2026-04-09",
       "open": 3.57,
       "high": 3.85,
@@ -8958,8 +8942,20 @@
       "low": 4.557,
       "close": 4.91,
       "volume": 28657500.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 4.77,
+      "high": 4.878,
+      "low": 4.2,
+      "close": 4.29,
+      "volume": 20905500.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:15.877851Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-12-15",
+    "latest": "2026-06-03",
+    "n_bars": 1118
+  }
 }

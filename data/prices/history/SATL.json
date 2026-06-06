@@ -1,7 +1,7 @@
 {
   "ticker": "SATL",
   "marketstack_symbol": "SATL",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Satellogic",
   "sector": "Space",
   "country": "Argentina",
@@ -8408,22 +8408,6 @@
       "volume": 14841400.0
     },
     {
-      "date": "2026-04-07",
-      "open": 6.79,
-      "high": 7.18,
-      "low": 6.65,
-      "close": 0.0,
-      "volume": 10427822.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 7.43,
-      "high": 7.55,
-      "low": 6.73,
-      "close": 0.0,
-      "volume": 14518712.0
-    },
-    {
       "date": "2026-04-09",
       "open": 6.71,
       "high": 7.99,
@@ -8726,8 +8710,20 @@
       "low": 8.32,
       "close": 8.68,
       "volume": 8562800.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 8.58,
+      "high": 8.68,
+      "low": 7.625,
+      "close": 7.84,
+      "volume": 9176500.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:15.592765Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2022-01-27",
+    "latest": "2026-06-03",
+    "n_bars": 1089
+  }
 }

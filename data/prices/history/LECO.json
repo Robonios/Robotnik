@@ -1,44 +1,12 @@
 {
   "ticker": "LECO",
   "marketstack_symbol": "LECO",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Lincoln Electric Holdings",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 128.77,
-      "high": 130.75,
-      "low": 127.675,
-      "close": 129.53,
-      "volume": 198811.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 128.83,
-      "high": 132.15,
-      "low": 128.83,
-      "close": 131.82,
-      "volume": 237565.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 132.23,
-      "high": 132.77,
-      "low": 130.78,
-      "close": 131.97,
-      "volume": 164067.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 132.78,
-      "high": 133.62,
-      "low": 131.5544,
-      "close": 133.61,
-      "volume": 149162.0
-    },
     {
       "date": "2021-05-07",
       "open": 132.82,
@@ -10214,8 +10182,28 @@
       "low": 250.835,
       "close": 254.28,
       "volume": 308880.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 254.94,
+      "high": 264.12,
+      "low": 252.0,
+      "close": 262.82,
+      "volume": 504615.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 265.18,
+      "high": 265.95,
+      "low": 262.31,
+      "close": 263.84,
+      "volume": 236457.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:49.954240Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1274
+  }
 }

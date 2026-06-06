@@ -1,44 +1,12 @@
 {
   "ticker": "STM",
   "marketstack_symbol": "STM",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "STMicroelectronics ADR",
   "sector": "Cross-stack",
   "country": "Switzerland",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 37.78,
-      "high": 37.81,
-      "low": 36.87,
-      "close": 37.06,
-      "volume": 2326839.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 36.45,
-      "high": 36.574,
-      "low": 35.93,
-      "close": 36.48,
-      "volume": 2601322.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 36.89,
-      "high": 37.05,
-      "low": 36.39,
-      "close": 36.51,
-      "volume": 2232537.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 36.08,
-      "high": 36.565,
-      "low": 35.91,
-      "close": 36.56,
-      "volume": 2262538.0
-    },
     {
       "date": "2021-05-07",
       "open": 37.31,
@@ -10222,8 +10190,28 @@
       "low": 75.64,
       "close": 79.51,
       "volume": 19871343.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 80.295,
+      "high": 81.42,
+      "low": 78.09,
+      "close": 79.71,
+      "volume": 13332421.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 75.0,
+      "high": 78.635,
+      "low": 74.72,
+      "close": 78.36,
+      "volume": 12793063.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:21.709384Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

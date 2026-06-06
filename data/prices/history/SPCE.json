@@ -1,44 +1,12 @@
 {
   "ticker": "SPCE",
   "marketstack_symbol": "SPCE",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Virgin Galactic",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 434.4,
-      "high": 434.444,
-      "low": 400.2,
-      "close": 402.8,
-      "volume": 13572196.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 400.0,
-      "high": 431.0,
-      "low": 383.2,
-      "close": 416.0,
-      "volume": 16535400.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 404.4,
-      "high": 413.8,
-      "low": 396.4,
-      "close": 398.8,
-      "volume": 5605000.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 400.0,
-      "high": 400.0,
-      "low": 373.59999999999997,
-      "close": 383.59999999999997,
-      "volume": 14260498.0
-    },
     {
       "date": "2021-05-07",
       "open": 381.59999999999997,
@@ -9904,22 +9872,6 @@
       "volume": 34743700.0
     },
     {
-      "date": "2026-04-07",
-      "open": 3.04,
-      "high": 3.15,
-      "low": 2.74,
-      "close": 0.0,
-      "volume": 18574653.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 3.295,
-      "high": 3.31,
-      "low": 2.915,
-      "close": 0.0,
-      "volume": 12494601.0
-    },
-    {
       "date": "2026-04-09",
       "open": 2.92,
       "high": 3.12,
@@ -10222,8 +10174,20 @@
       "low": 4.51,
       "close": 4.59,
       "volume": 127886400.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 4.58,
+      "high": 5.088,
+      "low": 4.19,
+      "close": 4.29,
+      "volume": 55570500.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:09.866484Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-03",
+    "n_bars": 1272
+  }
 }

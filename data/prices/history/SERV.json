@@ -1,7 +1,7 @@
 {
   "ticker": "SERV",
   "marketstack_symbol": "SERV",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Serve Robotics",
   "sector": "Robotics",
   "country": "United States",
@@ -3758,8 +3758,28 @@
       "low": 8.94,
       "close": 9.07,
       "volume": 6598974.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 8.861,
+      "high": 8.87,
+      "low": 8.16,
+      "close": 8.24,
+      "volume": 7270469.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 8.2,
+      "high": 8.66,
+      "low": 8.1114,
+      "close": 8.415,
+      "volume": 4268616.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:55.581432Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2024-07-19",
+    "latest": "2026-06-04",
+    "n_bars": 471
+  }
 }

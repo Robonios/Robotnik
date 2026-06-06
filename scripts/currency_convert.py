@@ -65,16 +65,18 @@ MIC_TO_CURRENCY = {
     "XPAR": "EUR", "PA": "EUR", "XAMS": "EUR", "AS": "EUR",
     "XMIL": "EUR", "MI": "EUR", "XBRU": "EUR", "BR": "EUR",
     "XHEL": "EUR", "HE": "EUR", "XMAD": "EUR", "MC": "EUR",
-    "XWBO": "EUR", "VI": "EUR", "XDUB": "EUR", "IR": "EUR",
+    "XWBO": "EUR", "VI": "EUR", "XDUB": "EUR", "IR": "EUR", "XLIS": "EUR", "LS": "EUR",
     # Other Europe
     "XSWX": "CHF", "SW": "CHF", "SWX": "CHF",
     "XSTO": "SEK", "ST": "SEK",
     "XOSL": "NOK", "OL": "NOK",
-    # Israel
-    "XTAE": "ILS", "TA": "ILS",
+    # Israel — TASE quotes in AGOROT (1/100 ILS). The v2-short suffix "TA" → "ILA"
+    # so to_usd divides by 100 (verified vs Yahoo's ILA label). The old v1 "XTAE"→ILS
+    # path lacked the ÷100 — a latent 100x overstatement (SCC), corrected at the v2 cutover.
+    "XTAE": "ILS", "TA": "ILA",
     # APAC / NA
     "XASX": "AUD", "AX": "AUD", "ASX": "AUD",
-    "XTSE": "CAD", "TO": "CAD", "TSX": "CAD", "XTSX": "CAD",
+    "XTSE": "CAD", "TO": "CAD", "TSX": "CAD", "XTSX": "CAD", "V": "CAD",
     # US (and bare symbols)
     "US": "USD", "": "USD",
 }
@@ -94,6 +96,11 @@ COUNTRY_TO_CURRENCY = {
 # Currencies we fetch FX for. GBp is NOT a Yahoo pair — it maps to GBP/100.
 FX_CURRENCIES = ["JPY", "CNY", "EUR", "GBP", "HKD", "KRW", "TWD",
                  "CHF", "SEK", "NOK", "AUD", "CAD", "ILS"]
+
+# Minor units quoted in 1/100 of a major currency → divide by 100, then apply the
+# MAJOR currency's FX. GBp (London pence) and ILA (Tel-Aviv agorot) verified against
+# Yahoo's currency labels; a pence/agorot-as-major error is a silent 100x.
+MINOR_UNIT = {"GBp": ("GBP", 100.0), "GBX": ("GBP", 100.0), "ILA": ("ILS", 100.0)}
 
 _FX_CACHE = {}          # ccy -> {"dates": [...sorted...], "rates": {date: rate}}
 _WARNED_STALE = set()   # (ccy) one-time staleness warnings
@@ -216,8 +223,9 @@ def to_usd(price, currency, date):
         return None
     if currency == "USD":
         return float(price)
-    if currency in ("GBp", "GBX"):
-        return round(float(price) / 100.0 * fx_rate("GBP", date), 6)
+    if currency in MINOR_UNIT:
+        major, div = MINOR_UNIT[currency]
+        return round(float(price) / div * fx_rate(major, date), 6)
     return round(float(price) * fx_rate(currency, date), 6)
 
 

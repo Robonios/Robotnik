@@ -1,44 +1,12 @@
 {
   "ticker": "NVDA",
   "marketstack_symbol": "NVDA",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "NVIDIA",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 15.125,
-      "high": 15.24675,
-      "low": 14.7875,
-      "close": 14.83675,
-      "volume": 203911838.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 14.63725,
-      "high": 14.6375,
-      "low": 14.01025,
-      "close": 14.351249999999999,
-      "volume": 405324796.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 14.709,
-      "high": 14.8135,
-      "low": 14.3875,
-      "close": 14.4585,
-      "volume": 292023037.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 14.495249999999999,
-      "high": 14.571250000000001,
-      "low": 14.218100000000002,
-      "close": 14.523,
-      "volume": 193380918.0
-    },
     {
       "date": "2021-05-07",
       "open": 14.808250000000001,
@@ -10222,8 +10190,28 @@
       "low": 221.35,
       "close": 222.82,
       "volume": 164860193.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 221.685,
+      "high": 222.82,
+      "low": 214.51,
+      "close": 214.75,
+      "volume": 150147825.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 213.905,
+      "high": 221.6,
+      "low": 210.97,
+      "close": 218.66,
+      "volume": 167707274.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:20.246416Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

@@ -1,44 +1,12 @@
 {
   "ticker": "TDY",
   "marketstack_symbol": "TDY",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Teledyne Technologies",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 448.49,
-      "high": 449.765,
-      "low": 440.39,
-      "close": 442.16,
-      "volume": 333771.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 440.28,
-      "high": 440.6,
-      "low": 428.4,
-      "close": 432.31,
-      "volume": 251631.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 434.02,
-      "high": 434.02,
-      "low": 424.95,
-      "close": 429.28,
-      "volume": 279800.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 429.74,
-      "high": 434.97,
-      "low": 427.53,
-      "close": 433.87,
-      "volume": 170090.0
-    },
     {
       "date": "2021-05-07",
       "open": 432.32,
@@ -10230,8 +10198,28 @@
       "low": 607.71,
       "close": 618.81,
       "volume": 181768.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 618.84,
+      "high": 625.9587,
+      "low": 616.62,
+      "close": 618.02,
+      "volume": 217266.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 621.25,
+      "high": 623.75,
+      "low": 615.4,
+      "close": 618.59,
+      "volume": 177163.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:57.270492Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1276
+  }
 }

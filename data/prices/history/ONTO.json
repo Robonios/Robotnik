@@ -1,44 +1,12 @@
 {
   "ticker": "ONTO",
   "marketstack_symbol": "ONTO",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Onto Innovation",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 69.57,
-      "high": 70.35,
-      "low": 67.94,
-      "close": 68.5,
-      "volume": 414396.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 67.54,
-      "high": 67.552,
-      "low": 63.43,
-      "close": 64.05,
-      "volume": 366000.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 64.7,
-      "high": 64.9,
-      "low": 63.41,
-      "close": 63.82,
-      "volume": 209000.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 63.54,
-      "high": 64.08,
-      "low": 62.07,
-      "close": 64.06,
-      "volume": 223482.0
-    },
     {
       "date": "2021-05-07",
       "open": 64.81,
@@ -9904,22 +9872,6 @@
       "volume": 433100.0
     },
     {
-      "date": "2026-04-07",
-      "open": 219.65,
-      "high": 224.8395,
-      "low": 214.865,
-      "close": 0.0,
-      "volume": 467217.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 237.14,
-      "high": 240.81,
-      "low": 230.0,
-      "close": 0.0,
-      "volume": 856538.0
-    },
-    {
       "date": "2026-04-09",
       "open": 240.0,
       "high": 249.59,
@@ -10222,8 +10174,20 @@
       "low": 261.68,
       "close": 278.02,
       "volume": 1969000.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 280.0,
+      "high": 285.03,
+      "low": 273.38,
+      "close": 279.98,
+      "volume": 1112600.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:52.863983Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-03",
+    "n_bars": 1272
+  }
 }

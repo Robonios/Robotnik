@@ -1,44 +1,12 @@
 {
   "ticker": "TRMB",
   "marketstack_symbol": "TRMB",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Trimble",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 82.58,
-      "high": 82.74,
-      "low": 80.45,
-      "close": 81.2,
-      "volume": 1303851.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 80.5,
-      "high": 80.57,
-      "low": 78.58,
-      "close": 79.93,
-      "volume": 1224100.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 80.76,
-      "high": 81.91,
-      "low": 79.91,
-      "close": 81.11,
-      "volume": 1622300.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 79.01,
-      "high": 79.68,
-      "low": 75.1,
-      "close": 75.92,
-      "volume": 3100581.0
-    },
     {
       "date": "2021-05-07",
       "open": 76.41,
@@ -10222,8 +10190,28 @@
       "low": 55.97,
       "close": 57.74,
       "volume": 2794269.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 57.2,
+      "high": 57.2,
+      "low": 55.205,
+      "close": 55.52,
+      "volume": 2243440.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 56.225,
+      "high": 57.35,
+      "low": 55.61,
+      "close": 55.7,
+      "volume": 2090462.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:57.842218Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

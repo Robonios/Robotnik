@@ -13,7 +13,7 @@
     "applies_to_vendors": [
       "marketstack"
     ],
-    "reason": "Renishaw — MarketStack returns the RSW.L ticker metadata but a null close (native_currency GBp), so assemble_all_prices drops it (no current price) and the index excluded it despite valid history + a valid market cap. Yahoo RSW.L returns a clean GBp close; converted to USD via daily FX. Recovered in the B-sweep index-completion pass.",
+    "reason": "Renishaw \u2014 MarketStack returns the RSW.L ticker metadata but a null close (native_currency GBp), so assemble_all_prices drops it (no current price) and the index excluded it despite valid history + a valid market cap. Yahoo RSW.L returns a clean GBp close; converted to USD via daily FX. Recovered in the B-sweep index-completion pass.",
     "added_date": "2026-05-31"
   },
   "4062 JP": {
@@ -252,5 +252,125 @@
     ],
     "reason": "MarketStack RTX data corrupted (alternates ~150 vs ~177 on consecutive days); Yahoo+EODHD agree ~179.66. Caught by independent MS-vs-Yahoo-vs-EODHD validation.",
     "added_date": "2026-05-30"
+  },
+  "ATI": {
+    "provider": "yahoo",
+    "yahoo_symbol": "ATI",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55 MS recent-listing coverage lag \u2014 frozen 2026-05-22 on MarketStack v1+v2 (recent IPO/rename); Yahoo serves the US listing fresh. Future-review: re-verify MS coverage catches up, then retire."
+  },
+  "CBRS": {
+    "provider": "yahoo",
+    "yahoo_symbol": "CBRS",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55 MS recent-listing coverage lag \u2014 frozen 2026-05-22 on MarketStack v1+v2 (recent IPO/rename); Yahoo serves the US listing fresh. Future-review: re-verify MS coverage catches up, then retire."
+  },
+  "FLY": {
+    "provider": "yahoo",
+    "yahoo_symbol": "FLY",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55 MS recent-listing coverage lag \u2014 frozen 2026-05-22 on MarketStack v1+v2 (recent IPO/rename); Yahoo serves the US listing fresh. Future-review: re-verify MS coverage catches up, then retire."
+  },
+  "JBTM": {
+    "provider": "yahoo",
+    "yahoo_symbol": "JBTM",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55 MS recent-listing coverage lag \u2014 frozen 2026-05-22 on MarketStack v1+v2 (recent IPO/rename); Yahoo serves the US listing fresh. Future-review: re-verify MS coverage catches up, then retire."
+  },
+  "KDK": {
+    "provider": "yahoo",
+    "yahoo_symbol": "KDK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55 MS recent-listing coverage lag \u2014 frozen 2026-05-22 on MarketStack v1+v2 (recent IPO/rename); Yahoo serves the US listing fresh. Future-review: re-verify MS coverage catches up, then retire."
+  },
+  "KRMN": {
+    "provider": "yahoo",
+    "yahoo_symbol": "KRMN",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55 MS recent-listing coverage lag \u2014 frozen 2026-05-22 on MarketStack v1+v2 (recent IPO/rename); Yahoo serves the US listing fresh. Future-review: re-verify MS coverage catches up, then retire."
+  },
+  "PENG": {
+    "provider": "yahoo",
+    "yahoo_symbol": "PENG",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55 MS recent-listing coverage lag \u2014 frozen 2026-05-22 on MarketStack v1+v2 (recent IPO/rename); Yahoo serves the US listing fresh. Future-review: re-verify MS coverage catches up, then retire."
+  },
+  "SRTA": {
+    "provider": "yahoo",
+    "yahoo_symbol": "SRTA",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55 MS recent-listing coverage lag \u2014 frozen 2026-05-22 on MarketStack v1+v2 (recent IPO/rename); Yahoo serves the US listing fresh. Future-review: re-verify MS coverage catches up, then retire."
+  },
+  "VOYG": {
+    "provider": "yahoo",
+    "yahoo_symbol": "VOYG",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55 MS recent-listing coverage lag \u2014 frozen 2026-05-22 on MarketStack v1+v2 (recent IPO/rename); Yahoo serves the US listing fresh. Future-review: re-verify MS coverage catches up, then retire."
+  },
+  "HIAB FH": {
+    "provider": "yahoo",
+    "yahoo_symbol": "HIAB.HE",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55/#48 MS-v2 has no fresh native EOD (zero-close on .DE/.F/.HE); Yahoo serves the native HIAB.HE fresh. #48: clean-terms provider must cover native continental-EU EOD."
+  },
+  "IFX GR": {
+    "provider": "yahoo",
+    "yahoo_symbol": "IFX.DE",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55/#48 MS-v2 has no fresh native EOD (zero-close on .DE/.F/.HE); Yahoo serves the native IFX.DE fresh. #48: clean-terms provider must cover native continental-EU EOD."
+  },
+  "KGX GR": {
+    "provider": "yahoo",
+    "yahoo_symbol": "KGX.DE",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55/#48 MS-v2 has no fresh native EOD (zero-close on .DE/.F/.HE); Yahoo serves the native KGX.DE fresh. #48: clean-terms provider must cover native continental-EU EOD."
+  },
+  "KRN GR": {
+    "provider": "yahoo",
+    "yahoo_symbol": "KRN.DE",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55/#48 MS-v2 has no fresh native EOD (zero-close on .DE/.F/.HE); Yahoo serves the native KRN.DE fresh. #48: clean-terms provider must cover native continental-EU EOD."
+  },
+  "SGL GR": {
+    "provider": "yahoo",
+    "yahoo_symbol": "SGL.DE",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55/#48 MS-v2 has no fresh native EOD (zero-close on .DE/.F/.HE); Yahoo serves the native SGL.DE fresh. #48: clean-terms provider must cover native continental-EU EOD."
+  },
+  "SHA": {
+    "provider": "yahoo",
+    "yahoo_symbol": "SHA0.DE",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "#55/#48 MS-v2 has no fresh native EOD (zero-close on .DE/.F/.HE); Yahoo serves the native SHA0.DE fresh. #48: clean-terms provider must cover native continental-EU EOD."
   }
 }

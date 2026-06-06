@@ -1,44 +1,12 @@
 {
   "ticker": "AVAV",
   "marketstack_symbol": "AVAV",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "AeroVironment",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 110.35,
-      "high": 110.92,
-      "low": 109.015,
-      "close": 109.75,
-      "volume": 216461.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 108.85,
-      "high": 109.35,
-      "low": 105.85,
-      "close": 108.04,
-      "volume": 110500.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 108.73,
-      "high": 108.81,
-      "low": 106.25,
-      "close": 106.65,
-      "volume": 92100.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 106.16,
-      "high": 109.56,
-      "low": 105.2,
-      "close": 109.4,
-      "volume": 132010.0
-    },
     {
       "date": "2021-05-07",
       "open": 109.5,
@@ -10222,8 +10190,28 @@
       "low": 196.6,
       "close": 204.35,
       "volume": 1078979.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 201.51,
+      "high": 201.51,
+      "low": 189.13,
+      "close": 191.47,
+      "volume": 1297859.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 191.0,
+      "high": 205.552,
+      "low": 189.12,
+      "close": 204.4,
+      "volume": 1005162.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:41.103047Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

@@ -1,44 +1,12 @@
 {
   "ticker": "KMTUY",
   "marketstack_symbol": "KMTUY",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Komatsu ADR",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 30.37,
-      "high": 30.37,
-      "low": 29.0,
-      "close": 29.44,
-      "volume": 89869.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 29.2,
-      "high": 29.5,
-      "low": 28.71,
-      "close": 29.01,
-      "volume": 56419.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 29.5,
-      "high": 29.55,
-      "low": 29.0435,
-      "close": 29.52,
-      "volume": 69640.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 30.5665,
-      "high": 30.5665,
-      "low": 30.25,
-      "close": 30.45,
-      "volume": 585584.0
-    },
     {
       "date": "2021-05-07",
       "open": 31.0,
@@ -10222,8 +10190,28 @@
       "low": 40.8,
       "close": 41.17,
       "volume": 5121.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 44.03,
+      "high": 44.11,
+      "low": 43.61,
+      "close": 44.02,
+      "volume": 5451.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 43.93,
+      "high": 43.93,
+      "low": 43.63,
+      "close": 43.84,
+      "volume": 4527.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:49.325067Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

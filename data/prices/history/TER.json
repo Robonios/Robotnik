@@ -1,44 +1,12 @@
 {
   "ticker": "TER",
   "marketstack_symbol": "TER",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Teradyne",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 126.32,
-      "high": 127.4115,
-      "low": 123.76,
-      "close": 124.99,
-      "volume": 1061528.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 122.34,
-      "high": 123.15,
-      "low": 119.65,
-      "close": 122.99,
-      "volume": 1362200.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 125.06,
-      "high": 126.03,
-      "low": 122.34,
-      "close": 124.52,
-      "volume": 1160900.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 123.84,
-      "high": 126.14,
-      "low": 121.63,
-      "close": 125.94,
-      "volume": 1357012.0
-    },
     {
       "date": "2021-05-07",
       "open": 127.45,
@@ -10222,8 +10190,28 @@
       "low": 365.78,
       "close": 392.62,
       "volume": 2258515.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 396.5,
+      "high": 420.6,
+      "low": 393.6001,
+      "close": 409.67,
+      "volume": 3096667.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 397.89,
+      "high": 413.87,
+      "low": 388.09,
+      "close": 406.86,
+      "volume": 4210437.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:22.597148Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

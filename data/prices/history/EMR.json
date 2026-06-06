@@ -1,44 +1,12 @@
 {
   "ticker": "EMR",
   "marketstack_symbol": "EMR",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Emerson Electric",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 91.67,
-      "high": 91.93,
-      "low": 90.69,
-      "close": 90.93,
-      "volume": 2351936.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 90.51,
-      "high": 91.27,
-      "low": 89.58,
-      "close": 91.11,
-      "volume": 3092100.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 90.59,
-      "high": 91.39,
-      "low": 90.59,
-      "close": 90.89,
-      "volume": 3256363.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 91.52,
-      "high": 93.86,
-      "low": 91.01,
-      "close": 93.72,
-      "volume": 4273621.0
-    },
     {
       "date": "2021-05-07",
       "open": 93.66,
@@ -10238,8 +10206,28 @@
       "low": 140.06,
       "close": 142.03,
       "volume": 2258139.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 140.37,
+      "high": 143.12,
+      "low": 140.04,
+      "close": 140.88,
+      "volume": 2241517.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 141.81,
+      "high": 142.775,
+      "low": 140.72,
+      "close": 142.06,
+      "volume": 1448188.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:46.139804Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1277
+  }
 }

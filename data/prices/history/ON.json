@@ -1,44 +1,12 @@
 {
   "ticker": "ON",
   "marketstack_symbol": "ON",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "ON Semiconductor",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 38.22,
-      "high": 38.99,
-      "low": 37.1,
-      "close": 37.57,
-      "volume": 11020024.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 37.97,
-      "high": 37.99,
-      "low": 36.22,
-      "close": 37.25,
-      "volume": 10940575.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 37.65,
-      "high": 37.97,
-      "low": 36.88,
-      "close": 37.55,
-      "volume": 6034669.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 37.4,
-      "high": 37.69,
-      "low": 36.38,
-      "close": 37.59,
-      "volume": 4863286.0
-    },
     {
       "date": "2021-05-07",
       "open": 38.1,
@@ -10222,8 +10190,28 @@
       "low": 123.33,
       "close": 128.64,
       "volume": 10733561.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 130.0,
+      "high": 134.92,
+      "low": 126.15,
+      "close": 133.93,
+      "volume": 9600734.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 127.78,
+      "high": 134.485,
+      "low": 124.93,
+      "close": 131.82,
+      "volume": 10079151.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:21.101178Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

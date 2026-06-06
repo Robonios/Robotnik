@@ -1,44 +1,12 @@
 {
   "ticker": "BYDDY",
   "marketstack_symbol": "BYDDY",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "BYD Co ADR",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 6.88,
-      "high": 6.948333333333333,
-      "low": 6.708333333333333,
-      "close": 6.713333333333334,
-      "volume": 255781.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 6.883333333333333,
-      "high": 6.883333333333333,
-      "low": 6.591666666666666,
-      "close": 6.66,
-      "volume": 229255.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 6.6866666666666665,
-      "high": 6.815,
-      "low": 6.6866666666666665,
-      "close": 6.733333333333333,
-      "volume": 123951.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 6.56,
-      "high": 6.56,
-      "low": 6.396666666666667,
-      "close": 6.47,
-      "volume": 298920.0
-    },
     {
       "date": "2021-05-07",
       "open": 6.22,
@@ -10222,8 +10190,20 @@
       "low": 12.14,
       "close": 12.14,
       "volume": 468422.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 11.92,
+      "high": 11.92,
+      "low": 11.7,
+      "close": 11.72,
+      "volume": 413470.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:43.430628Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-03",
+    "n_bars": 1274
+  }
 }

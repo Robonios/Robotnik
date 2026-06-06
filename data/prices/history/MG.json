@@ -1,44 +1,12 @@
 {
   "ticker": "MG",
   "marketstack_symbol": "MG",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Magna International",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 11.25,
-      "high": 12.14,
-      "low": 11.1132,
-      "close": 12.07,
-      "volume": 126479.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 12.03,
-      "high": 12.09,
-      "low": 11.65,
-      "close": 11.87,
-      "volume": 95570.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 11.74,
-      "high": 11.74,
-      "low": 11.23,
-      "close": 11.74,
-      "volume": 78785.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 11.8,
-      "high": 11.8,
-      "low": 10.55,
-      "close": 11.4,
-      "volume": 258046.0
-    },
     {
       "date": "2021-05-07",
       "open": 11.4,
@@ -10222,8 +10190,28 @@
       "low": 17.54,
       "close": 18.04,
       "volume": 164764.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 17.92,
+      "high": 18.055,
+      "low": 17.33,
+      "close": 17.6,
+      "volume": 136747.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 17.71,
+      "high": 18.59,
+      "low": 17.73,
+      "close": 18.48,
+      "volume": 155035.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:50.561343Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

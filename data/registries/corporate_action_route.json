@@ -1,0 +1,181 @@
+{
+  "_meta": {
+    "updated_at": "2026-06-05T19:00:48.727848+00:00Z",
+    "count": 19,
+    "purpose": "v2 split_factor misses bonus/scrip/rights; these names' HISTORY routes to Yahoo. Detected by sweep_v2_vs_yahoo (sustained-ratio) + guard_corporate_actions (jump, standing).",
+    "source": "sweep_v2_vs_yahoo.py sustained-ratio enumeration"
+  },
+  "tickers": {
+    "2395 TT": {
+      "yahoo_symbol": "2395.TW",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.0999,
+      "recent_ratio": 1.0,
+      "weight_pct": 0.1604,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727856+00:00Z"
+    },
+    "6680 HK": {
+      "yahoo_symbol": "6680.HK",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.6,
+      "recent_ratio": 1.0,
+      "weight_pct": 0.07,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727859+00:00Z"
+    },
+    "688169 C1": {
+      "yahoo_symbol": "688169.SS",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 2.744,
+      "recent_ratio": 1.0,
+      "weight_pct": 0.0454,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727861+00:00Z"
+    },
+    "010060 KS": {
+      "yahoo_symbol": "010060.KS",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.5811,
+      "recent_ratio": 1.0,
+      "weight_pct": 0.0436,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727863+00:00Z"
+    },
+    "ILU AU": {
+      "yahoo_symbol": "ILU.AX",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.0485,
+      "recent_ratio": 1.0,
+      "weight_pct": 0.0394,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727865+00:00Z"
+    },
+    "EXA FP": {
+      "yahoo_symbol": "EXA.PA",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.3459,
+      "recent_ratio": 1.0,
+      "weight_pct": 0.0297,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727866+00:00Z"
+    },
+    "189300 KS": {
+      "yahoo_symbol": "189300.KQ",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.0332,
+      "recent_ratio": 1.0,
+      "weight_pct": 0.0095,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727868+00:00Z"
+    },
+    "OVZON SS": {
+      "yahoo_symbol": "OVZON.ST",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.216,
+      "recent_ratio": 1.0,
+      "weight_pct": 0.0083,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727870+00:00Z"
+    },
+    "MNTS": {
+      "yahoo_symbol": "MNTS",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 0.001,
+      "recent_ratio": 1.0,
+      "weight_pct": 0.0023,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727872+00:00Z"
+    },
+    "003021": {
+      "yahoo_symbol": "003021.SZ",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.4,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727874+00:00Z"
+    },
+    "300100": {
+      "yahoo_symbol": "300100.SZ",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.4,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727875+00:00Z"
+    },
+    "300757 C2": {
+      "yahoo_symbol": "300757.SZ",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.4,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727877+00:00Z"
+    },
+    "601689": {
+      "yahoo_symbol": "601689.SS",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.45,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727879+00:00Z"
+    },
+    "ABBN SW": {
+      "yahoo_symbol": "ABBN.SW",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.0424,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727880+00:00Z"
+    },
+    "AI FP": {
+      "yahoo_symbol": "AI.PA",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.1,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727882+00:00Z"
+    },
+    "COHR": {
+      "yahoo_symbol": "COHR",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 3.6992,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727884+00:00Z"
+    },
+    "GOMX SS": {
+      "yahoo_symbol": "GOMX.ST",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.3253,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727885+00:00Z"
+    },
+    "MRSN FP": {
+      "yahoo_symbol": "MRN.PA",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 1.0435,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727887+00:00Z"
+    },
+    "RBC": {
+      "yahoo_symbol": "RBC",
+      "reason": "corporate_action_miss (v2 under-adjusts vs Yahoo)",
+      "old_ratio": 0.6697,
+      "recent_ratio": 1.0,
+      "weight_pct": null,
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-05T19:00:48.727889+00:00Z"
+    }
+  }
+}

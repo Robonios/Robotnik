@@ -1,44 +1,12 @@
 {
   "ticker": "GOGO",
   "marketstack_symbol": "GOGO",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Gogo Inc",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 10.52,
-      "high": 10.59,
-      "low": 10.04,
-      "close": 10.32,
-      "volume": 1150354.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 10.17,
-      "high": 10.54,
-      "low": 10.05,
-      "close": 10.525,
-      "volume": 1136600.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 10.68,
-      "high": 10.68,
-      "low": 9.72,
-      "close": 9.88,
-      "volume": 2166700.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 9.81,
-      "high": 11.04,
-      "low": 9.65,
-      "close": 10.68,
-      "volume": 2186732.0
-    },
     {
       "date": "2021-05-07",
       "open": 10.82,
@@ -10222,8 +10190,28 @@
       "low": 4.255,
       "close": 4.37,
       "volume": 1123421.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 4.32,
+      "high": 4.335,
+      "low": 3.915,
+      "close": 3.93,
+      "volume": 1698463.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 4.02,
+      "high": 4.225,
+      "low": 4.02,
+      "close": 4.12,
+      "volume": 1083936.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:12.094368Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

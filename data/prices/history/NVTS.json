@@ -1,7 +1,7 @@
 {
   "ticker": "NVTS",
   "marketstack_symbol": "NVTS",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Navitas Semiconductor",
   "sector": "Semiconductor",
   "country": "United States",
@@ -9270,8 +9270,20 @@
       "low": 25.53,
       "close": 25.86,
       "volume": 25448800.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 30.645,
+      "high": 34.17,
+      "low": 29.7,
+      "close": 30.84,
+      "volume": 111883300.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:11.054200Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-10-20",
+    "latest": "2026-06-03",
+    "n_bars": 1159
+  }
 }

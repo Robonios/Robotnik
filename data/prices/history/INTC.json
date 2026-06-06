@@ -1,44 +1,12 @@
 {
   "ticker": "INTC",
   "marketstack_symbol": "INTC",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Intel",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 57.855,
-      "high": 57.8768,
-      "low": 56.84,
-      "close": 57.26,
-      "volume": 22281701.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 56.88,
-      "high": 56.98,
-      "low": 55.82,
-      "close": 56.9,
-      "volume": 33690508.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 56.96,
-      "high": 57.3,
-      "low": 56.4602,
-      "close": 56.85,
-      "volume": 19844330.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 56.615,
-      "high": 57.25,
-      "low": 56.245,
-      "close": 57.19,
-      "volume": 25529252.0
-    },
     {
       "date": "2021-05-07",
       "open": 57.7,
@@ -10222,8 +10190,28 @@
       "low": 104.17,
       "close": 107.93,
       "volume": 104474192.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 116.3975,
+      "high": 118.29,
+      "low": 110.86,
+      "close": 112.71,
+      "volume": 116558375.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 108.39,
+      "high": 113.14,
+      "low": 107.4801,
+      "close": 111.78,
+      "volume": 76359899.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:08.503904Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

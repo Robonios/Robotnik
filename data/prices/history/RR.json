@@ -1,7 +1,7 @@
 {
   "ticker": "RR",
   "marketstack_symbol": "RR",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Richtech Robotics",
   "sector": "Robotics",
   "country": "United States",
@@ -4768,22 +4768,6 @@
       "volume": 6661500.0
     },
     {
-      "date": "2026-04-07",
-      "open": 1.99,
-      "high": 2.01,
-      "low": 1.905,
-      "close": 0.0,
-      "volume": 8973422.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 2.14,
-      "high": 2.28,
-      "low": 2.04,
-      "close": 0.0,
-      "volume": 11861446.0
-    },
-    {
       "date": "2026-04-09",
       "open": 2.06,
       "high": 2.08,
@@ -5086,8 +5070,20 @@
       "low": 2.96,
       "close": 2.99,
       "volume": 12884800.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 2.88,
+      "high": 2.89,
+      "low": 2.68,
+      "close": 2.695,
+      "volume": 13561100.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:54.425979Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2023-11-17",
+    "latest": "2026-06-03",
+    "n_bars": 634
+  }
 }

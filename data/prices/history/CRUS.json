@@ -1,44 +1,12 @@
 {
   "ticker": "CRUS",
   "marketstack_symbol": "CRUS",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Cirrus Logic",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 74.1,
-      "high": 74.39,
-      "low": 72.45,
-      "close": 73.0,
-      "volume": 1340360.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 73.05,
-      "high": 75.2,
-      "low": 72.7,
-      "close": 75.12,
-      "volume": 1168000.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 75.45,
-      "high": 78.34,
-      "low": 75.45,
-      "close": 76.17,
-      "volume": 1162500.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 75.62,
-      "high": 76.68,
-      "low": 74.61,
-      "close": 76.35,
-      "volume": 606287.0
-    },
     {
       "date": "2021-05-07",
       "open": 77.24,
@@ -10222,8 +10190,28 @@
       "low": 164.74,
       "close": 170.62,
       "volume": 800531.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 170.83,
+      "high": 180.18,
+      "low": 170.81,
+      "close": 178.9,
+      "volume": 450112.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 175.65,
+      "high": 178.1986,
+      "low": 172.74,
+      "close": 175.63,
+      "volume": 370522.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:05.820424Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

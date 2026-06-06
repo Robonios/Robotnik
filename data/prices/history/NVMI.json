@@ -1,44 +1,12 @@
 {
   "ticker": "NVMI",
   "marketstack_symbol": "NVMI",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Nova Ltd",
   "sector": "Cross-stack",
   "country": "Israel",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 94.24,
-      "high": 95.21,
-      "low": 92.08,
-      "close": 92.65,
-      "volume": 67974.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 91.54,
-      "high": 91.54,
-      "low": 88.04,
-      "close": 89.62,
-      "volume": 82649.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 91.79,
-      "high": 92.33,
-      "low": 89.63,
-      "close": 89.69,
-      "volume": 264883.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 93.27,
-      "high": 93.27,
-      "low": 86.91,
-      "close": 91.94,
-      "volume": 154979.0
-    },
     {
       "date": "2021-05-07",
       "open": 92.82,
@@ -10222,8 +10190,28 @@
       "low": 488.34,
       "close": 523.13,
       "volume": 486565.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 521.6277,
+      "high": 536.33,
+      "low": 511.015,
+      "close": 530.04,
+      "volume": 244585.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 520.0,
+      "high": 535.545,
+      "low": 508.73,
+      "close": 520.4,
+      "volume": 521074.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:19.961591Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

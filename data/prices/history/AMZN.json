@@ -1,44 +1,12 @@
 {
   "ticker": "AMZN",
   "marketstack_symbol": "AMZN",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Amazon",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 174.2365,
-      "high": 174.33225,
-      "low": 168.63506,
-      "close": 169.3245,
-      "volume": 5875530.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 167.8095,
-      "high": 168.39875,
-      "low": 163.6065,
-      "close": 165.5935,
-      "volume": 5439449.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 166.94275,
-      "high": 167.73475000000002,
-      "low": 163.21800000000002,
-      "close": 163.527,
-      "volume": 3711308.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 163.5,
-      "high": 165.72,
-      "low": 162.35999999999999,
-      "close": 165.3185,
-      "volume": 4447696.0
-    },
     {
       "date": "2021-05-07",
       "open": 165.9545,
@@ -10222,8 +10190,28 @@
       "low": 254.37,
       "close": 256.52,
       "volume": 41263898.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 254.7,
+      "high": 257.09,
+      "low": 247.71,
+      "close": 250.02,
+      "volume": 50988687.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 253.32,
+      "high": 255.8299,
+      "low": 251.78,
+      "close": 253.79,
+      "volume": 35528228.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:41.683789Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

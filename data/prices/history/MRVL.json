@@ -1,44 +1,12 @@
 {
   "ticker": "MRVL",
   "marketstack_symbol": "MRVL",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Marvell Technology",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 45.48,
-      "high": 45.5397,
-      "low": 44.12,
-      "close": 44.31,
-      "volume": 7360121.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 43.69,
-      "high": 44.5,
-      "low": 42.69,
-      "close": 44.49,
-      "volume": 9912100.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 44.86,
-      "high": 45.63,
-      "low": 44.39,
-      "close": 44.79,
-      "volume": 6351604.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 44.45,
-      "high": 45.665,
-      "low": 44.05,
-      "close": 45.54,
-      "volume": 6760527.0
-    },
     {
       "date": "2021-05-07",
       "open": 45.9,
@@ -10222,8 +10190,28 @@
       "low": 252.4301,
       "close": 290.79,
       "volume": 101985331.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 318.05,
+      "high": 324.15,
+      "low": 294.0101,
+      "close": 301.65,
+      "volume": 108602556.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 282.95,
+      "high": 321.5,
+      "low": 277.59,
+      "close": 316.43,
+      "volume": 85668645.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:09.681700Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

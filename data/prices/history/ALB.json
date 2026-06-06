@@ -1,44 +1,12 @@
 {
   "ticker": "ALB",
   "marketstack_symbol": "ALB",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Albemarle Corp",
   "sector": "Materials",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 169.51,
-      "high": 169.99,
-      "low": 165.47,
-      "close": 165.99,
-      "volume": 652054.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 163.51,
-      "high": 163.92,
-      "low": 158.54,
-      "close": 162.11,
-      "volume": 948100.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 165.98,
-      "high": 168.58,
-      "low": 165.49,
-      "close": 167.15,
-      "volume": 738800.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 157.74,
-      "high": 159.13,
-      "low": 150.0,
-      "close": 152.85,
-      "volume": 2521969.0
-    },
     {
       "date": "2021-05-07",
       "open": 154.46,
@@ -10222,8 +10190,28 @@
       "low": 163.59,
       "close": 171.77,
       "volume": 2029479.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 170.24,
+      "high": 172.22,
+      "low": 166.78,
+      "close": 168.34,
+      "volume": 1174095.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 165.15,
+      "high": 168.2399,
+      "low": 163.75,
+      "close": 165.65,
+      "volume": 1760381.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:26.127828Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

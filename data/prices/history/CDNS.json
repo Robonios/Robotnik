@@ -1,44 +1,12 @@
 {
   "ticker": "CDNS",
   "marketstack_symbol": "CDNS",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Cadence Design Systems",
   "sector": "Cross-stack",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 132.32,
-      "high": 133.07,
-      "low": 129.51,
-      "close": 129.62,
-      "volume": 1488688.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 127.85,
-      "high": 128.46,
-      "low": 124.64,
-      "close": 126.35,
-      "volume": 1845399.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 127.11,
-      "high": 128.75,
-      "low": 126.32,
-      "close": 126.89,
-      "volume": 2090445.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 125.79,
-      "high": 127.0,
-      "low": 124.44,
-      "close": 126.9,
-      "volume": 1710010.0
-    },
     {
       "date": "2021-05-07",
       "open": 129.04,
@@ -10222,8 +10190,28 @@
       "low": 401.04,
       "close": 416.39,
       "volume": 2556744.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 410.26,
+      "high": 411.04,
+      "low": 401.03,
+      "close": 408.0,
+      "volume": 2842220.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 407.82,
+      "high": 415.83,
+      "low": 401.93,
+      "close": 411.68,
+      "volume": 2979705.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:18.461060Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

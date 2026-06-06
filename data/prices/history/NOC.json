@@ -1,44 +1,12 @@
 {
   "ticker": "NOC",
   "marketstack_symbol": "NOC",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Northrop Grumman",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 352.04,
-      "high": 362.83,
-      "low": 352.04,
-      "close": 361.0,
-      "volume": 1041692.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 362.64,
-      "high": 368.52,
-      "low": 361.5,
-      "close": 368.12,
-      "volume": 1108668.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 368.46,
-      "high": 373.2416,
-      "low": 366.47,
-      "close": 372.75,
-      "volume": 1297095.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 374.01,
-      "high": 375.93,
-      "low": 368.35,
-      "close": 370.05,
-      "volume": 1072817.0
-    },
     {
       "date": "2021-05-07",
       "open": 369.18,
@@ -10222,8 +10190,28 @@
       "low": 531.8,
       "close": 536.59,
       "volume": 1272414.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 533.54,
+      "high": 538.43,
+      "low": 525.73,
+      "close": 526.06,
+      "volume": 1153703.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 532.5,
+      "high": 545.4,
+      "low": 531.33,
+      "close": 545.17,
+      "volume": 859235.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:09.317771Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

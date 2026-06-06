@@ -94,6 +94,18 @@ jobs:
             python scripts/parity_guard.py --daily
           fi
 
+      # Standing corporate-action sweep (#55, weekly Sunday). v2 `split_factor` adjusts
+      # SPLITS ONLY — it misses bonus/scrip/rights (see methodology §13.7). The >7% jump
+      # guard (guard_corporate_actions.py) catches big events in real time; THIS sustained-
+      # ratio sweep is the sub-7%-scrip BACKSTOP — without it standing, a 1-for-20 bonus
+      # (~5%) is a permanent blind spot. Self-maintains corporate_action_route.json (the
+      # history fetchers consult it → those names' history routes to Yahoo, which adjusts
+      # the action). Non-failing: Yahoo-unreachable degrades each name to "undetermined".
+      - name: Corporate-action sweep (weekly v2-vs-Yahoo backstop)
+        if: github.event.schedule == '0 5 * * 0' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: python scripts/sweep_v2_vs_yahoo.py
+
       # (fundamentals step removed — EODHD descheduled at A2; data frozen, re-sourcing deferred)
 
       # (EOD live-prices step removed at cutover — EODHD, fetcher archived)
@@ -123,7 +135,7 @@ jobs:
         run: |
           git config user.name "Robotnik Pipeline"
           git config user.email "data@robotniks.com"
-          git add data/prices/ data/index/ data/markets/ data/news.json data/funding/
+          git add data/prices/ data/index/ data/markets/ data/registries/ data/news.json data/funding/
           if git diff --cached --quiet; then
             echo "No price/index/news changes — skipping commit"
           else

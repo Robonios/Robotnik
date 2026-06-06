@@ -1,44 +1,12 @@
 {
   "ticker": "DASH",
   "marketstack_symbol": "DASH",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "DoorDash",
   "sector": "Robotics",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 142.85,
-      "high": 146.43,
-      "low": 139.7,
-      "close": 140.47,
-      "volume": 1283725.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 137.31,
-      "high": 138.03,
-      "low": 129.59,
-      "close": 135.22,
-      "volume": 2022166.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 134.0,
-      "high": 134.625,
-      "low": 124.93,
-      "close": 128.39,
-      "volume": 2786433.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 127.88,
-      "high": 131.0,
-      "low": 120.06,
-      "close": 122.77,
-      "volume": 2970106.0
-    },
     {
       "date": "2021-05-07",
       "open": 126.49,
@@ -9904,22 +9872,6 @@
       "volume": 3032300.0
     },
     {
-      "date": "2026-04-07",
-      "open": 154.64,
-      "high": 157.47,
-      "low": 152.28,
-      "close": 0.0,
-      "volume": 3267540.0
-    },
-    {
-      "date": "2026-04-08",
-      "open": 163.9,
-      "high": 168.0,
-      "low": 159.61,
-      "close": 0.0,
-      "volume": 3995594.0
-    },
-    {
       "date": "2026-04-09",
       "open": 159.505,
       "high": 161.59,
@@ -10222,8 +10174,20 @@
       "low": 154.9,
       "close": 156.95,
       "volume": 3806800.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 155.64,
+      "high": 156.224,
+      "low": 151.66,
+      "close": 154.58,
+      "volume": 4132400.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:45.243740Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-03",
+    "n_bars": 1272
+  }
 }

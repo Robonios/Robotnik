@@ -1,44 +1,12 @@
 {
   "ticker": "SQM",
   "marketstack_symbol": "SQM",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Sociedad Quimica y Minera",
   "sector": "Materials",
   "country": "Chile",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 53.33,
-      "high": 53.36,
-      "low": 52.095,
-      "close": 52.57,
-      "volume": 578985.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 52.41,
-      "high": 52.7793,
-      "low": 51.29,
-      "close": 52.68,
-      "volume": 823646.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 54.09,
-      "high": 54.67,
-      "low": 54.09,
-      "close": 54.57,
-      "volume": 726738.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 53.74,
-      "high": 53.86,
-      "low": 51.66,
-      "close": 53.14,
-      "volume": 1459376.0
-    },
     {
       "date": "2021-05-07",
       "open": 53.26,
@@ -10222,8 +10190,28 @@
       "low": 78.53,
       "close": 80.84,
       "volume": 1598984.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 80.19,
+      "high": 80.61,
+      "low": 78.47,
+      "close": 78.58,
+      "volume": 1549767.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 77.73,
+      "high": 79.145,
+      "low": 77.02,
+      "close": 77.69,
+      "volume": 778270.0
     }
   ],
-  "last_fetched": "2026-06-03T12:56:26.405016Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

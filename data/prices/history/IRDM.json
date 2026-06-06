@@ -1,44 +1,12 @@
 {
   "ticker": "IRDM",
   "marketstack_symbol": "IRDM",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "Iridium Communications",
   "sector": "Space",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 37.91,
-      "high": 38.112,
-      "low": 37.4301,
-      "close": 37.48,
-      "volume": 752039.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 36.88,
-      "high": 37.44,
-      "low": 36.54,
-      "close": 37.14,
-      "volume": 1911000.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 37.41,
-      "high": 37.49,
-      "low": 36.46,
-      "close": 36.9,
-      "volume": 1140000.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 36.84,
-      "high": 38.24,
-      "low": 36.15,
-      "close": 38.22,
-      "volume": 1127988.0
-    },
     {
       "date": "2021-05-07",
       "open": 38.74,
@@ -10222,8 +10190,28 @@
       "low": 48.0,
       "close": 49.6,
       "volume": 1587556.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 50.21,
+      "high": 53.8299,
+      "low": 48.94,
+      "close": 48.97,
+      "volume": 2524384.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 47.905,
+      "high": 53.3191,
+      "low": 47.27,
+      "close": 52.07,
+      "volume": 2556859.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:47.876161Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

@@ -1,0 +1,3396 @@
+{
+  "_meta": {
+    "resolved_at": "2026-06-04T08:10:18.421924+00:00Z",
+    "criterion": "validity (eod/latest returns a bar) on v2; freshness is the floor's job",
+    "fresh": 278,
+    "stale": 9,
+    "unresolved": 19,
+    "total": 306
+  },
+  "symbols": {
+    "ALGM": {
+      "symbol": "ALGM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 53.11,
+      "candidates_tried": [
+        "ALGM"
+      ],
+      "country": "United States"
+    },
+    "AOSL": {
+      "symbol": "AOSL",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 52.72,
+      "candidates_tried": [
+        "AOSL"
+      ],
+      "country": "United States"
+    },
+    "ARM": {
+      "symbol": "ARM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 402.71,
+      "candidates_tried": [
+        "ARM"
+      ],
+      "country": "United Kingdom"
+    },
+    "ASX": {
+      "symbol": "ASX",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 39.91,
+      "candidates_tried": [
+        "ASX"
+      ],
+      "country": "Taiwan"
+    },
+    "ALAB": {
+      "symbol": "ALAB",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 355.76,
+      "candidates_tried": [
+        "ALAB"
+      ],
+      "country": "United States"
+    },
+    "AEIS": {
+      "symbol": "AEIS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 322.5,
+      "candidates_tried": [
+        "AEIS"
+      ],
+      "country": "United States"
+    },
+    "AMKR": {
+      "symbol": "AMKR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 75.2,
+      "candidates_tried": [
+        "AMKR"
+      ],
+      "country": "United States"
+    },
+    "CEVA": {
+      "symbol": "CEVA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 50.06,
+      "candidates_tried": [
+        "CEVA"
+      ],
+      "country": "United States"
+    },
+    "CAMT": {
+      "symbol": "CAMT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 183.45,
+      "candidates_tried": [
+        "CAMT"
+      ],
+      "country": "United States"
+    },
+    "CRUS": {
+      "symbol": "CRUS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 178.9,
+      "candidates_tried": [
+        "CRUS"
+      ],
+      "country": "United States"
+    },
+    "DVLT": {
+      "symbol": "DVLT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 0.51,
+      "candidates_tried": [
+        "DVLT"
+      ],
+      "country": "United States"
+    },
+    "DIOD": {
+      "symbol": "DIOD",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 116.22,
+      "candidates_tried": [
+        "DIOD"
+      ],
+      "country": "United States"
+    },
+    "ENTG": {
+      "symbol": "ENTG",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 140.33,
+      "candidates_tried": [
+        "ENTG"
+      ],
+      "country": "United States"
+    },
+    "FSLR": {
+      "symbol": "FSLR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 318.25,
+      "candidates_tried": [
+        "FSLR"
+      ],
+      "country": "United States"
+    },
+    "FORM": {
+      "symbol": "FORM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 126.02,
+      "candidates_tried": [
+        "FORM"
+      ],
+      "country": "United States"
+    },
+    "PI": {
+      "symbol": "PI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 137.76,
+      "candidates_tried": [
+        "PI"
+      ],
+      "country": "United States"
+    },
+    "INDI": {
+      "symbol": "INDI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 5.1,
+      "candidates_tried": [
+        "INDI"
+      ],
+      "country": "United States"
+    },
+    "INTC": {
+      "symbol": "INTC",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 112.71,
+      "candidates_tried": [
+        "INTC"
+      ],
+      "country": "United States"
+    },
+    "KOPN": {
+      "symbol": "KOPN",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 6.19,
+      "candidates_tried": [
+        "KOPN"
+      ],
+      "country": "United States"
+    },
+    "KLIC": {
+      "symbol": "KLIC",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 108.4,
+      "candidates_tried": [
+        "KLIC"
+      ],
+      "country": "United States"
+    },
+    "MTSI": {
+      "symbol": "MTSI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 390.34,
+      "candidates_tried": [
+        "MTSI"
+      ],
+      "country": "United States"
+    },
+    "MRVL": {
+      "symbol": "MRVL",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 301.65,
+      "candidates_tried": [
+        "MRVL"
+      ],
+      "country": "United States"
+    },
+    "MU": {
+      "symbol": "MU",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1079.5699,
+      "candidates_tried": [
+        "MU"
+      ],
+      "country": "United States"
+    },
+    "MKSI": {
+      "symbol": "MKSI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 335.15,
+      "candidates_tried": [
+        "MKSI"
+      ],
+      "country": "United States"
+    },
+    "MPWR": {
+      "symbol": "MPWR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1689.89,
+      "candidates_tried": [
+        "MPWR"
+      ],
+      "country": "United States"
+    },
+    "MXL": {
+      "symbol": "MXL",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 91.39,
+      "candidates_tried": [
+        "MXL"
+      ],
+      "country": "United States"
+    },
+    "NVTS": {
+      "symbol": "NVTS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 30.84,
+      "candidates_tried": [
+        "NVTS"
+      ],
+      "country": "United States"
+    },
+    "NVEC": {
+      "symbol": "NVEC",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 110.02,
+      "candidates_tried": [
+        "NVEC"
+      ],
+      "country": "United States"
+    },
+    "PENG": {
+      "symbol": "PENG",
+      "version": "v2",
+      "status": "stale",
+      "last_date": "2026-05-22",
+      "last_close": 53.21,
+      "candidates_tried": [
+        "PENG"
+      ],
+      "country": "United States"
+    },
+    "POWI": {
+      "symbol": "POWI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 84.99,
+      "candidates_tried": [
+        "POWI"
+      ],
+      "country": "United States"
+    },
+    "PLAB": {
+      "symbol": "PLAB",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 32.11,
+      "candidates_tried": [
+        "PLAB"
+      ],
+      "country": "United States"
+    },
+    "QRVO": {
+      "symbol": "QRVO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 104.73,
+      "candidates_tried": [
+        "QRVO"
+      ],
+      "country": "United States"
+    },
+    "RMBS": {
+      "symbol": "RMBS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 170.66,
+      "candidates_tried": [
+        "RMBS"
+      ],
+      "country": "United States"
+    },
+    "RGTI": {
+      "symbol": "RGTI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 24.095,
+      "candidates_tried": [
+        "RGTI"
+      ],
+      "country": "United States"
+    },
+    "SLAB": {
+      "symbol": "SLAB",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 219.13,
+      "candidates_tried": [
+        "SLAB"
+      ],
+      "country": "United States"
+    },
+    "SKYT": {
+      "symbol": "SKYT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 39.91,
+      "candidates_tried": [
+        "SKYT"
+      ],
+      "country": "United States"
+    },
+    "SWKS": {
+      "symbol": "SWKS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 80.66,
+      "candidates_tried": [
+        "SWKS"
+      ],
+      "country": "United States"
+    },
+    "SYNA": {
+      "symbol": "SYNA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 144.98,
+      "candidates_tried": [
+        "SYNA"
+      ],
+      "country": "United States"
+    },
+    "SMTC": {
+      "symbol": "SMTC",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 163.5,
+      "candidates_tried": [
+        "SMTC"
+      ],
+      "country": "United States"
+    },
+    "SITM": {
+      "symbol": "SITM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 712.75,
+      "candidates_tried": [
+        "SITM"
+      ],
+      "country": "United States"
+    },
+    "TSEM": {
+      "symbol": "TSEM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 267.91,
+      "candidates_tried": [
+        "TSEM"
+      ],
+      "country": "United States"
+    },
+    "UMC": {
+      "symbol": "UMC",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 21.42,
+      "candidates_tried": [
+        "UMC"
+      ],
+      "country": "Taiwan"
+    },
+    "OLED": {
+      "symbol": "OLED",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 90.84,
+      "candidates_tried": [
+        "OLED"
+      ],
+      "country": "United States"
+    },
+    "LASR": {
+      "symbol": "LASR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 76.36,
+      "candidates_tried": [
+        "LASR"
+      ],
+      "country": "United States"
+    },
+    "AMD": {
+      "symbol": "AMD",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 542.52,
+      "candidates_tried": [
+        "AMD"
+      ],
+      "country": "United States"
+    },
+    "AMBA": {
+      "symbol": "AMBA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 73.8,
+      "candidates_tried": [
+        "AMBA"
+      ],
+      "country": "United States"
+    },
+    "ADI": {
+      "symbol": "ADI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 437.67,
+      "candidates_tried": [
+        "ADI"
+      ],
+      "country": "United States"
+    },
+    "AMAT": {
+      "symbol": "AMAT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 500.77,
+      "candidates_tried": [
+        "AMAT"
+      ],
+      "country": "United States"
+    },
+    "ASML": {
+      "symbol": "ASML",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1726.36,
+      "candidates_tried": [
+        "ASML"
+      ],
+      "country": "Netherlands"
+    },
+    "AVGO": {
+      "symbol": "AVGO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 479.23,
+      "candidates_tried": [
+        "AVGO"
+      ],
+      "country": "United States"
+    },
+    "CRDO": {
+      "symbol": "CRDO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 214.6,
+      "candidates_tried": [
+        "CRDO"
+      ],
+      "country": "United States"
+    },
+    "CDNS": {
+      "symbol": "CDNS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 408.0,
+      "candidates_tried": [
+        "CDNS"
+      ],
+      "country": "United States"
+    },
+    "KLAC": {
+      "symbol": "KLAC",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 2125.1101,
+      "candidates_tried": [
+        "KLAC"
+      ],
+      "country": "United States"
+    },
+    "LRCX": {
+      "symbol": "LRCX",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 343.71,
+      "candidates_tried": [
+        "LRCX"
+      ],
+      "country": "United States"
+    },
+    "LSCC": {
+      "symbol": "LSCC",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 154.6,
+      "candidates_tried": [
+        "LSCC"
+      ],
+      "country": "United States"
+    },
+    "MCHP": {
+      "symbol": "MCHP",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 96.55,
+      "candidates_tried": [
+        "MCHP"
+      ],
+      "country": "United States"
+    },
+    "NVMI": {
+      "symbol": "NVMI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 530.04,
+      "candidates_tried": [
+        "NVMI"
+      ],
+      "country": "Israel"
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 214.75,
+      "candidates_tried": [
+        "NVDA"
+      ],
+      "country": "United States"
+    },
+    "CBRS": {
+      "symbol": "CBRS",
+      "version": "v2",
+      "status": "stale",
+      "last_date": "2026-05-22",
+      "last_close": 256.78,
+      "candidates_tried": [
+        "CBRS"
+      ],
+      "country": "United States"
+    },
+    "NXPI": {
+      "symbol": "NXPI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 321.88,
+      "candidates_tried": [
+        "NXPI"
+      ],
+      "country": "Netherlands"
+    },
+    "ON": {
+      "symbol": "ON",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 133.93,
+      "candidates_tried": [
+        "ON"
+      ],
+      "country": "United States"
+    },
+    "QCOM": {
+      "symbol": "QCOM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 250.01,
+      "candidates_tried": [
+        "QCOM"
+      ],
+      "country": "United States"
+    },
+    "STM": {
+      "symbol": "STM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 79.71,
+      "candidates_tried": [
+        "STM"
+      ],
+      "country": "Switzerland"
+    },
+    "SNPS": {
+      "symbol": "SNPS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 498.02,
+      "candidates_tried": [
+        "SNPS"
+      ],
+      "country": "United States"
+    },
+    "TSM": {
+      "symbol": "TSM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 436.69,
+      "candidates_tried": [
+        "TSM"
+      ],
+      "country": "Taiwan"
+    },
+    "TER": {
+      "symbol": "TER",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 409.67,
+      "candidates_tried": [
+        "TER"
+      ],
+      "country": "United States"
+    },
+    "TXN": {
+      "symbol": "TXN",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 308.59,
+      "candidates_tried": [
+        "TXN"
+      ],
+      "country": "United States"
+    },
+    "ABBN SW": {
+      "symbol": "ABBN.SW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 85.56,
+      "candidates_tried": [
+        "ABBN.SW"
+      ],
+      "country": "Switzerland"
+    },
+    "2395 TT": {
+      "symbol": "2395.TW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 513.0,
+      "candidates_tried": [
+        "2395.TW"
+      ],
+      "country": "Taiwan"
+    },
+    "2121 HK": {
+      "symbol": "2121.HK",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 4.37,
+      "candidates_tried": [
+        "2121.HK"
+      ],
+      "country": "China"
+    },
+    "1590 TT": {
+      "symbol": "1590.TW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1370.0,
+      "candidates_tried": [
+        "1590.TW"
+      ],
+      "country": "Taiwan"
+    },
+    "455900 KS": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "455900.KS",
+        "455900.KQ"
+      ],
+      "country": "South Korea"
+    },
+    "AUTO NO": {
+      "symbol": "AUTO.OL",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 13.05,
+      "candidates_tried": [
+        "AUTO.OL"
+      ],
+      "country": "Norway"
+    },
+    "688297 C1": {
+      "symbol": "688297.SS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 46.16,
+      "candidates_tried": [
+        "688297.SS"
+      ],
+      "country": "China"
+    },
+    "6857 JP": {
+      "symbol": "6857.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 27660.0,
+      "candidates_tried": [
+        "6857.T"
+      ],
+      "country": "Japan"
+    },
+    "6113 JP": {
+      "symbol": "6113.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 2977.0,
+      "candidates_tried": [
+        "6113.T"
+      ],
+      "country": "Japan"
+    },
+    "ANDR AV": {
+      "symbol": "ANDR.VI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 78.5,
+      "candidates_tried": [
+        "ANDR.VI"
+      ],
+      "country": "Austria"
+    },
+    "6845 JP": {
+      "symbol": "6845.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1676.0,
+      "candidates_tried": [
+        "6845.T"
+      ],
+      "country": "Japan"
+    },
+    "688169 C1": {
+      "symbol": "688169.SS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 104.87,
+      "candidates_tried": [
+        "688169.SS"
+      ],
+      "country": "China"
+    },
+    "BSL GR": {
+      "symbol": "BSL.DE",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 29.3,
+      "candidates_tried": [
+        "BSL.DE"
+      ],
+      "country": "Germany"
+    },
+    "6383 JP": {
+      "symbol": "6383.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 7076.0,
+      "candidates_tried": [
+        "6383.T"
+      ],
+      "country": "Japan"
+    },
+    "6622 JP": {
+      "symbol": "6622.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 15700.0,
+      "candidates_tried": [
+        "6622.T"
+      ],
+      "country": "Japan"
+    },
+    "2308 TT": {
+      "symbol": "2308.TW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 2455.0,
+      "candidates_tried": [
+        "2308.TW"
+      ],
+      "country": "Taiwan"
+    },
+    "454910 KS": {
+      "symbol": "454910.KS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 166700.0,
+      "candidates_tried": [
+        "454910.KS"
+      ],
+      "country": "South Korea"
+    },
+    "DUE GR": {
+      "symbol": "DUE.DE",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 20.65,
+      "candidates_tried": [
+        "DUE.DE"
+      ],
+      "country": "Germany"
+    },
+    "6902 JP": {
+      "symbol": "6902.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1926.0,
+      "candidates_tried": [
+        "6902.T"
+      ],
+      "country": "Japan"
+    },
+    "6141 JP": {
+      "symbol": "6141.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 3437.0,
+      "candidates_tried": [
+        "6141.T"
+      ],
+      "country": "Japan"
+    },
+    "688165 C1": {
+      "symbol": "688165.SS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 18.86,
+      "candidates_tried": [
+        "688165.SS"
+      ],
+      "country": "China"
+    },
+    "002747 C2": {
+      "symbol": "002747.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 29.04,
+      "candidates_tried": [
+        "002747.SZ"
+      ],
+      "country": "China"
+    },
+    "EXA FP": {
+      "symbol": "EXA.PA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 132.2,
+      "candidates_tried": [
+        "EXA.PA"
+      ],
+      "country": "France"
+    },
+    "6954 JP": {
+      "symbol": "6954.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 7975.0,
+      "candidates_tried": [
+        "6954.T"
+      ],
+      "country": "Japan"
+    },
+    "6134 JP": {
+      "symbol": "6134.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 7835.0,
+      "candidates_tried": [
+        "6134.T"
+      ],
+      "country": "Japan"
+    },
+    "G1A GR": {
+      "symbol": "G1A.F",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 53.9,
+      "candidates_tried": [
+        "G1A.DE",
+        "G1A.F"
+      ],
+      "country": "Germany"
+    },
+    "002008 C2": {
+      "symbol": "002008.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 127.0,
+      "candidates_tried": [
+        "002008.SZ"
+      ],
+      "country": "China"
+    },
+    "6324": {
+      "symbol": "6324.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 7110.0,
+      "candidates_tried": [
+        "6324.T"
+      ],
+      "country": "Japan"
+    },
+    "HEXAB SS": {
+      "symbol": "HEXA-B.ST",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 84.98,
+      "candidates_tried": [
+        "HEXA-B.ST"
+      ],
+      "country": "Sweden"
+    },
+    "HIAB FH": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "HIAB.HE"
+      ],
+      "country": "Finland"
+    },
+    "6258 JP": {
+      "symbol": "6258.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 2765.0,
+      "candidates_tried": [
+        "6258.T"
+      ],
+      "country": "Japan"
+    },
+    "2049": {
+      "symbol": "2049.TW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 369.0,
+      "candidates_tried": [
+        "2049.TW"
+      ],
+      "country": "Taiwan"
+    },
+    "2317 TT": {
+      "symbol": "2317.TW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 309.0,
+      "candidates_tried": [
+        "2317.TW"
+      ],
+      "country": "Taiwan"
+    },
+    "9660 HK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "9660.HK"
+      ],
+      "country": "China"
+    },
+    "1274 HK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "1274.HK"
+      ],
+      "country": "China"
+    },
+    "IFX GR": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "IFX.DE",
+        "IFX.F"
+      ],
+      "country": "Germany"
+    },
+    "IMI LN": {
+      "symbol": "IMI.L",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 2800.0,
+      "candidates_tried": [
+        "IMI.L"
+      ],
+      "country": "United Kingdom"
+    },
+    "INRN SW": {
+      "symbol": "INRN.SW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1522.0,
+      "candidates_tried": [
+        "INRN.SW"
+      ],
+      "country": "Switzerland"
+    },
+    "JEN GR": {
+      "symbol": "JEN.F",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 47.9,
+      "candidates_tried": [
+        "JEN.DE",
+        "JEN.F"
+      ],
+      "country": "Germany"
+    },
+    "KALMAR FH": {
+      "symbol": "KALMAR.HE",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 43.44,
+      "candidates_tried": [
+        "KALMAR.HE"
+      ],
+      "country": "Finland"
+    },
+    "KARN SW": {
+      "symbol": "KARN.SW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 266.0,
+      "candidates_tried": [
+        "KARN.SW"
+      ],
+      "country": "Switzerland"
+    },
+    "6861 JP": {
+      "symbol": "6861.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 80630.0,
+      "candidates_tried": [
+        "6861.T"
+      ],
+      "country": "Japan"
+    },
+    "KGX GR": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "KGX.DE",
+        "KGX.F"
+      ],
+      "country": "Germany"
+    },
+    "098460 KS": {
+      "symbol": "098460.KQ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 32300.0,
+      "candidates_tried": [
+        "098460.KS",
+        "098460.KQ"
+      ],
+      "country": "South Korea"
+    },
+    "KRN GR": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "KRN.DE",
+        "KRN.F"
+      ],
+      "country": "Germany"
+    },
+    "KCR FH": {
+      "symbol": "KCR.HE",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 27.64,
+      "candidates_tried": [
+        "KCR.HE"
+      ],
+      "country": "Finland"
+    },
+    "6920 JP": {
+      "symbol": "6920.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 41770.0,
+      "candidates_tried": [
+        "6920.T"
+      ],
+      "country": "Japan"
+    },
+    "2431 HK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "2431.HK"
+      ],
+      "country": "China"
+    },
+    "6503 JP": {
+      "symbol": "6503.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 6085.0,
+      "candidates_tried": [
+        "6503.T"
+      ],
+      "country": "Japan"
+    },
+    "6268 JP": {
+      "symbol": "6268.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 5502.0,
+      "candidates_tried": [
+        "6268.T"
+      ],
+      "country": "Japan"
+    },
+    "6645 JP": {
+      "symbol": "6645.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 6192.0,
+      "candidates_tried": [
+        "6645.T"
+      ],
+      "country": "Japan"
+    },
+    "6600 HK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "6600.HK"
+      ],
+      "country": "China"
+    },
+    "6914 JP": {
+      "symbol": "6914.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 4520.0,
+      "candidates_tried": [
+        "6914.T"
+      ],
+      "country": "Japan"
+    },
+    "277810 KS": {
+      "symbol": "277810.KQ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 763000.0,
+      "candidates_tried": [
+        "277810.KS",
+        "277810.KQ"
+      ],
+      "country": "South Korea"
+    },
+    "RPI LN": {
+      "symbol": "RPI.L",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 896.5,
+      "candidates_tried": [
+        "RPI.L"
+      ],
+      "country": "United Kingdom"
+    },
+    "RSW LN": {
+      "symbol": "RSW.L",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 5455.0,
+      "candidates_tried": [
+        "RSW.L"
+      ],
+      "country": "United Kingdom"
+    },
+    "2498 HK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "2498.HK"
+      ],
+      "country": "China"
+    },
+    "090360 KS": {
+      "symbol": "090360.KQ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 158800.0,
+      "candidates_tried": [
+        "090360.KS",
+        "090360.KQ"
+      ],
+      "country": "South Korea"
+    },
+    "300757 C2": {
+      "symbol": "300757.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 650.59,
+      "candidates_tried": [
+        "300757.SZ"
+      ],
+      "country": "China"
+    },
+    "108490 KS": {
+      "symbol": "108490.KQ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 405000.0,
+      "candidates_tried": [
+        "108490.KS",
+        "108490.KQ"
+      ],
+      "country": "South Korea"
+    },
+    "SU FP": {
+      "symbol": "SU.PA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 287.15,
+      "candidates_tried": [
+        "SU.PA"
+      ],
+      "country": "France"
+    },
+    "300124 C2": {
+      "symbol": "300124.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 76.47,
+      "candidates_tried": [
+        "300124.SZ"
+      ],
+      "country": "China"
+    },
+    "6104 JP": {
+      "symbol": "6104.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 4130.0,
+      "candidates_tried": [
+        "6104.T"
+      ],
+      "country": "Japan"
+    },
+    "300024 C2": {
+      "symbol": "300024.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 14.81,
+      "candidates_tried": [
+        "300024.SZ"
+      ],
+      "country": "China"
+    },
+    "SIE GR": {
+      "symbol": "SIE.F",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 274.35,
+      "candidates_tried": [
+        "SIE.DE",
+        "SIE.F"
+      ],
+      "country": "Germany"
+    },
+    "6273 JP": {
+      "symbol": "6273.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 64000.0,
+      "candidates_tried": [
+        "6273.T"
+      ],
+      "country": "Japan"
+    },
+    "TECN SW": {
+      "symbol": "TECN.SW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 156.9,
+      "candidates_tried": [
+        "TECN.SW"
+      ],
+      "country": "Switzerland"
+    },
+    "6481 JP": {
+      "symbol": "6481.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 7929.0,
+      "candidates_tried": [
+        "6481.T"
+      ],
+      "country": "Japan"
+    },
+    "FTI": {
+      "symbol": "FTI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 67.94,
+      "candidates_tried": [
+        "FTI"
+      ],
+      "country": "United Kingdom"
+    },
+    "8035 JP": {
+      "symbol": "8035.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 60900.0,
+      "candidates_tried": [
+        "8035.T"
+      ],
+      "country": "Japan"
+    },
+    "9880 HK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "9880.HK"
+      ],
+      "country": "China"
+    },
+    "6506 JP": {
+      "symbol": "6506.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 7152.0,
+      "candidates_tried": [
+        "6506.T"
+      ],
+      "country": "Japan"
+    },
+    "6841 JP": {
+      "symbol": "6841.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 5350.0,
+      "candidates_tried": [
+        "6841.T"
+      ],
+      "country": "Japan"
+    },
+    "388720 KS": {
+      "symbol": "388720.KQ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 108800.0,
+      "candidates_tried": [
+        "388720.KS",
+        "388720.KQ"
+      ],
+      "country": "South Korea"
+    },
+    "2432 HK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "2432.HK"
+      ],
+      "country": "China"
+    },
+    "2252 HK": {
+      "symbol": "2252.HK",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 25.06,
+      "candidates_tried": [
+        "2252.HK"
+      ],
+      "country": "China"
+    },
+    "AVAV": {
+      "symbol": "AVAV",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 191.47,
+      "candidates_tried": [
+        "AVAV"
+      ],
+      "country": "United States"
+    },
+    "GOOG": {
+      "symbol": "GOOG",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 355.68,
+      "candidates_tried": [
+        "GOOG"
+      ],
+      "country": "United States"
+    },
+    "AMZN": {
+      "symbol": "AMZN",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 250.02,
+      "candidates_tried": [
+        "AMZN"
+      ],
+      "country": "United States"
+    },
+    "APH": {
+      "symbol": "APH",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 147.62,
+      "candidates_tried": [
+        "APH"
+      ],
+      "country": "United States"
+    },
+    "APTV": {
+      "symbol": "APTV",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 76.82,
+      "candidates_tried": [
+        "APTV"
+      ],
+      "country": "Ireland"
+    },
+    "ATS CN": {
+      "symbol": "ATS.TO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 40.18,
+      "candidates_tried": [
+        "ATS.TO"
+      ],
+      "country": "Canada"
+    },
+    "BIDU": {
+      "symbol": "BIDU",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 132.68,
+      "candidates_tried": [
+        "BIDU"
+      ],
+      "country": "China"
+    },
+    "BWXT": {
+      "symbol": "BWXT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 184.72,
+      "candidates_tried": [
+        "BWXT"
+      ],
+      "country": "United States"
+    },
+    "BYDDY": {
+      "symbol": "BYDDY",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 11.72,
+      "candidates_tried": [
+        "BYDDY"
+      ],
+      "country": "United States"
+    },
+    "CCJ": {
+      "symbol": "CCJ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 114.56,
+      "candidates_tried": [
+        "CCJ"
+      ],
+      "country": "United States"
+    },
+    "CAT": {
+      "symbol": "CAT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 926.18,
+      "candidates_tried": [
+        "CAT"
+      ],
+      "country": "United States"
+    },
+    "CLS CN": {
+      "symbol": "CLS.TO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 636.06,
+      "candidates_tried": [
+        "CLS.TO"
+      ],
+      "country": "Canada"
+    },
+    "CGNX": {
+      "symbol": "CGNX",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 66.06,
+      "candidates_tried": [
+        "CGNX"
+      ],
+      "country": "United States"
+    },
+    "COHR": {
+      "symbol": "COHR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 417.43,
+      "candidates_tried": [
+        "COHR"
+      ],
+      "country": "United States"
+    },
+    "DASH": {
+      "symbol": "DASH",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 154.58,
+      "candidates_tried": [
+        "DASH"
+      ],
+      "country": "United States"
+    },
+    "EH": {
+      "symbol": "EH",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 9.78,
+      "candidates_tried": [
+        "EH"
+      ],
+      "country": "China"
+    },
+    "ESLT": {
+      "symbol": "ESLT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 829.81,
+      "candidates_tried": [
+        "ESLT"
+      ],
+      "country": "United States"
+    },
+    "EMR": {
+      "symbol": "EMR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 140.88,
+      "candidates_tried": [
+        "EMR"
+      ],
+      "country": "United States"
+    },
+    "GMED": {
+      "symbol": "GMED",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 77.95,
+      "candidates_tried": [
+        "GMED"
+      ],
+      "country": "United States"
+    },
+    "HSAI": {
+      "symbol": "HSAI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 20.78,
+      "candidates_tried": [
+        "HSAI"
+      ],
+      "country": "China"
+    },
+    "LUNR": {
+      "symbol": "LUNR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 39.57,
+      "candidates_tried": [
+        "LUNR"
+      ],
+      "country": "United States"
+    },
+    "ISRG": {
+      "symbol": "ISRG",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 407.29,
+      "candidates_tried": [
+        "ISRG"
+      ],
+      "country": "United States"
+    },
+    "IPGP": {
+      "symbol": "IPGP",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 121.62,
+      "candidates_tried": [
+        "IPGP"
+      ],
+      "country": "United States"
+    },
+    "IRDM": {
+      "symbol": "IRDM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 48.97,
+      "candidates_tried": [
+        "IRDM"
+      ],
+      "country": "United States"
+    },
+    "JBL": {
+      "symbol": "JBL",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 379.04,
+      "candidates_tried": [
+        "JBL"
+      ],
+      "country": "United States"
+    },
+    "JBTM": {
+      "symbol": "JBTM",
+      "version": "v2",
+      "status": "stale",
+      "last_date": "2026-05-22",
+      "last_close": 132.03,
+      "candidates_tried": [
+        "JBTM"
+      ],
+      "country": "United States"
+    },
+    "KAI": {
+      "symbol": "KAI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 312.25,
+      "candidates_tried": [
+        "KAI"
+      ],
+      "country": "United States"
+    },
+    "KDK": {
+      "symbol": "KDK",
+      "version": "v2",
+      "status": "stale",
+      "last_date": "2026-05-22",
+      "last_close": 7.78,
+      "candidates_tried": [
+        "KDK"
+      ],
+      "country": "United States"
+    },
+    "KMTUY": {
+      "symbol": "KMTUY",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 44.02,
+      "candidates_tried": [
+        "KMTUY"
+      ],
+      "country": "United States"
+    },
+    "KTOS": {
+      "symbol": "KTOS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 58.43,
+      "candidates_tried": [
+        "KTOS"
+      ],
+      "country": "United States"
+    },
+    "LECO": {
+      "symbol": "LECO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 262.82,
+      "candidates_tried": [
+        "LECO"
+      ],
+      "country": "United States"
+    },
+    "LHX": {
+      "symbol": "LHX",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 308.12,
+      "candidates_tried": [
+        "LHX"
+      ],
+      "country": "United States"
+    },
+    "MG": {
+      "symbol": "MG",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 17.6,
+      "candidates_tried": [
+        "MG"
+      ],
+      "country": "United States"
+    },
+    "MBLY": {
+      "symbol": "MBLY",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 10.74,
+      "candidates_tried": [
+        "MBLY"
+      ],
+      "country": "United States"
+    },
+    "MELE": {
+      "symbol": "MELE.BR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 85.8,
+      "candidates_tried": [
+        "MELE.BR"
+      ],
+      "country": "United States"
+    },
+    "MP": {
+      "symbol": "MP",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 68.55,
+      "candidates_tried": [
+        "MP"
+      ],
+      "country": "United States"
+    },
+    "NDSN": {
+      "symbol": "NDSN",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 289.45,
+      "candidates_tried": [
+        "NDSN"
+      ],
+      "country": "United States"
+    },
+    "NOVT": {
+      "symbol": "NOVT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 168.59,
+      "candidates_tried": [
+        "NOVT"
+      ],
+      "country": "United States"
+    },
+    "OKLO": {
+      "symbol": "OKLO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 73.47,
+      "candidates_tried": [
+        "OKLO"
+      ],
+      "country": "United States"
+    },
+    "ONDS": {
+      "symbol": "ONDS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 13.58,
+      "candidates_tried": [
+        "ONDS"
+      ],
+      "country": "United States"
+    },
+    "ONTO": {
+      "symbol": "ONTO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 278.02,
+      "candidates_tried": [
+        "ONTO"
+      ],
+      "country": "United States"
+    },
+    "OUST": {
+      "symbol": "OUST",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 46.03,
+      "candidates_tried": [
+        "OUST"
+      ],
+      "country": "United States"
+    },
+    "PLTR": {
+      "symbol": "PLTR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 152.17,
+      "candidates_tried": [
+        "PLTR"
+      ],
+      "country": "United States"
+    },
+    "PRCT": {
+      "symbol": "PRCT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 26.33,
+      "candidates_tried": [
+        "PRCT"
+      ],
+      "country": "United States"
+    },
+    "RBC": {
+      "symbol": "RBC",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 584.18,
+      "candidates_tried": [
+        "RBC"
+      ],
+      "country": "United States"
+    },
+    "RR": {
+      "symbol": "RR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 2.99,
+      "candidates_tried": [
+        "RR"
+      ],
+      "country": "United States"
+    },
+    "RRX": {
+      "symbol": "RRX",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 215.27,
+      "candidates_tried": [
+        "RRX"
+      ],
+      "country": "United States"
+    },
+    "ROK": {
+      "symbol": "ROK",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 461.73,
+      "candidates_tried": [
+        "ROK"
+      ],
+      "country": "United States"
+    },
+    "SHA": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "SHA.DE",
+        "SHA.F"
+      ],
+      "country": "Germany"
+    },
+    "SERV": {
+      "symbol": "SERV",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 8.24,
+      "candidates_tried": [
+        "SERV"
+      ],
+      "country": "United States"
+    },
+    "SRTA": {
+      "symbol": "SRTA",
+      "version": "v2",
+      "status": "stale",
+      "last_date": "2026-05-22",
+      "last_close": 6.13,
+      "candidates_tried": [
+        "SRTA"
+      ],
+      "country": "United States"
+    },
+    "STMPA": {
+      "symbol": "STMPA.PA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 68.28,
+      "candidates_tried": [
+        "STMPA.PA"
+      ],
+      "country": "France"
+    },
+    "ST": {
+      "symbol": "ST",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 53.55,
+      "candidates_tried": [
+        "ST"
+      ],
+      "country": "United States"
+    },
+    "SYM": {
+      "symbol": "SYM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 49.09,
+      "candidates_tried": [
+        "SYM"
+      ],
+      "country": "United States"
+    },
+    "TEL": {
+      "symbol": "TEL",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 218.39,
+      "candidates_tried": [
+        "TEL"
+      ],
+      "country": "United States"
+    },
+    "TDY": {
+      "symbol": "TDY",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 618.02,
+      "candidates_tried": [
+        "TDY"
+      ],
+      "country": "United States"
+    },
+    "TSLA": {
+      "symbol": "TSLA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 423.7,
+      "candidates_tried": [
+        "TSLA"
+      ],
+      "country": "United States"
+    },
+    "TRMB": {
+      "symbol": "TRMB",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 55.52,
+      "candidates_tried": [
+        "TRMB"
+      ],
+      "country": "United States"
+    },
+    "XPEV": {
+      "symbol": "XPEV",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 17.89,
+      "candidates_tried": [
+        "XPEV"
+      ],
+      "country": "China"
+    },
+    "ZBRA": {
+      "symbol": "ZBRA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 249.3,
+      "candidates_tried": [
+        "ZBRA"
+      ],
+      "country": "United States"
+    },
+    "002979": {
+      "symbol": "002979.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 52.5,
+      "candidates_tried": [
+        "002979.SZ"
+      ],
+      "country": "China"
+    },
+    "600111": {
+      "symbol": "600111.SS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 49.82,
+      "candidates_tried": [
+        "600111.SS"
+      ],
+      "country": "China"
+    },
+    "601100": {
+      "symbol": "601100.SS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 112.64,
+      "candidates_tried": [
+        "601100.SS"
+      ],
+      "country": "China"
+    },
+    "603662": {
+      "symbol": "603662.SS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 60.8,
+      "candidates_tried": [
+        "603662.SS"
+      ],
+      "country": "China"
+    },
+    "688017": {
+      "symbol": "688017.SS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 306.0,
+      "candidates_tried": [
+        "688017.SS"
+      ],
+      "country": "China"
+    },
+    "6594": {
+      "symbol": "6594.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 2859.0,
+      "candidates_tried": [
+        "6594.T"
+      ],
+      "country": "Japan"
+    },
+    "601689": {
+      "symbol": "601689.SS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 62.63,
+      "candidates_tried": [
+        "601689.SS"
+      ],
+      "country": "China"
+    },
+    "6723": {
+      "symbol": "6723.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 4824.0,
+      "candidates_tried": [
+        "6723.T"
+      ],
+      "country": "Japan"
+    },
+    "603009": {
+      "symbol": "603009.SS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 48.74,
+      "candidates_tried": [
+        "603009.SS"
+      ],
+      "country": "China"
+    },
+    "003021": {
+      "symbol": "003021.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 97.25,
+      "candidates_tried": [
+        "003021.SZ"
+      ],
+      "country": "China"
+    },
+    "300100": {
+      "symbol": "300100.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 30.0,
+      "candidates_tried": [
+        "300100.SZ"
+      ],
+      "country": "China"
+    },
+    "9868": {
+      "symbol": "9868.HK",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 72.0,
+      "candidates_tried": [
+        "9868.HK"
+      ],
+      "country": "Hong Kong"
+    },
+    "002050": {
+      "symbol": "002050.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 45.17,
+      "candidates_tried": [
+        "002050.SZ"
+      ],
+      "country": "China"
+    },
+    "002472": {
+      "symbol": "002472.SZ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 39.98,
+      "candidates_tried": [
+        "002472.SZ"
+      ],
+      "country": "China"
+    },
+    "RKLB": {
+      "symbol": "RKLB",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 123.32,
+      "candidates_tried": [
+        "RKLB"
+      ],
+      "country": "United States"
+    },
+    "ASTS": {
+      "symbol": "ASTS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 107.73,
+      "candidates_tried": [
+        "ASTS"
+      ],
+      "country": "United States"
+    },
+    "HEI": {
+      "symbol": "HEI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 329.11,
+      "candidates_tried": [
+        "HEI"
+      ],
+      "country": "United States"
+    },
+    "VSAT": {
+      "symbol": "VSAT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 69.62,
+      "candidates_tried": [
+        "VSAT"
+      ],
+      "country": "United States"
+    },
+    "PL": {
+      "symbol": "PL",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 43.13,
+      "candidates_tried": [
+        "PL"
+      ],
+      "country": "United States"
+    },
+    "RDW": {
+      "symbol": "RDW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 18.62,
+      "candidates_tried": [
+        "RDW"
+      ],
+      "country": "United States"
+    },
+    "SPIR": {
+      "symbol": "SPIR",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 19.04,
+      "candidates_tried": [
+        "SPIR"
+      ],
+      "country": "United States"
+    },
+    "BKSY": {
+      "symbol": "BKSY",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 37.48,
+      "candidates_tried": [
+        "BKSY"
+      ],
+      "country": "United States"
+    },
+    "GSAT": {
+      "symbol": "GSAT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 81.6,
+      "candidates_tried": [
+        "GSAT"
+      ],
+      "country": "United States"
+    },
+    "TSAT": {
+      "symbol": "TSAT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 46.79,
+      "candidates_tried": [
+        "TSAT"
+      ],
+      "country": "United States"
+    },
+    "SATS": {
+      "symbol": "SATS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 120.92,
+      "candidates_tried": [
+        "SATS"
+      ],
+      "country": "United States"
+    },
+    "BA": {
+      "symbol": "BA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 210.58,
+      "candidates_tried": [
+        "BA"
+      ],
+      "country": "United States"
+    },
+    "LMT": {
+      "symbol": "LMT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 512.03,
+      "candidates_tried": [
+        "LMT"
+      ],
+      "country": "United States"
+    },
+    "RTX": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [],
+      "country": "United States"
+    },
+    "NOC": {
+      "symbol": "NOC",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 526.06,
+      "candidates_tried": [
+        "NOC"
+      ],
+      "country": "United States"
+    },
+    "GD": {
+      "symbol": "GD",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 337.04,
+      "candidates_tried": [
+        "GD"
+      ],
+      "country": "United States"
+    },
+    "SPCE": {
+      "symbol": "SPCE",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 4.29,
+      "candidates_tried": [
+        "SPCE"
+      ],
+      "country": "United States"
+    },
+    "186A JP": {
+      "symbol": "186A.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 2145.0,
+      "candidates_tried": [
+        "186A.T"
+      ],
+      "country": "Japan"
+    },
+    "AVIO IM": {
+      "symbol": "AVIO.MI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 37.43,
+      "candidates_tried": [
+        "AVIO.MI"
+      ],
+      "country": "Italy"
+    },
+    "DCO": {
+      "symbol": "DCO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 146.92,
+      "candidates_tried": [
+        "DCO"
+      ],
+      "country": "United States"
+    },
+    "ESE": {
+      "symbol": "ESE",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 295.43,
+      "candidates_tried": [
+        "ESE"
+      ],
+      "country": "United States"
+    },
+    "ETL FP": {
+      "symbol": "ETL.PA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 3.495,
+      "candidates_tried": [
+        "ETL.PA"
+      ],
+      "country": "France"
+    },
+    "FLY": {
+      "symbol": "FLY",
+      "version": "v2",
+      "status": "stale",
+      "last_date": "2026-05-22",
+      "last_close": 49.5,
+      "candidates_tried": [
+        "FLY"
+      ],
+      "country": "United States"
+    },
+    "GILT": {
+      "symbol": "GILT",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 15.48,
+      "candidates_tried": [
+        "GILT"
+      ],
+      "country": "Israel"
+    },
+    "GOGO": {
+      "symbol": "GOGO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 3.93,
+      "candidates_tried": [
+        "GOGO"
+      ],
+      "country": "United States"
+    },
+    "GOMX SS": {
+      "symbol": "GOMX.ST",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 18.82,
+      "candidates_tried": [
+        "GOMX.ST"
+      ],
+      "country": "Denmark"
+    },
+    "012450 KS": {
+      "symbol": "012450.KS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 1070000.0,
+      "candidates_tried": [
+        "012450.KS"
+      ],
+      "country": "South Korea"
+    },
+    "HXL": {
+      "symbol": "HXL",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 88.07,
+      "candidates_tried": [
+        "HXL"
+      ],
+      "country": "United States"
+    },
+    "189300 KS": {
+      "symbol": "189300.KQ",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 124900.0,
+      "candidates_tried": [
+        "189300.KS",
+        "189300.KQ"
+      ],
+      "country": "South Korea"
+    },
+    "KRMN": {
+      "symbol": "KRMN",
+      "version": "v2",
+      "status": "stale",
+      "last_date": "2026-05-22",
+      "last_close": 64.1,
+      "candidates_tried": [
+        "KRMN"
+      ],
+      "country": "United States"
+    },
+    "474170 KS": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "474170.KS",
+        "474170.KQ"
+      ],
+      "country": "South Korea"
+    },
+    "MDA CN": {
+      "symbol": "MDA.TO",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 55.84,
+      "candidates_tried": [
+        "MDA.TO"
+      ],
+      "country": "Canada"
+    },
+    "MNTS": {
+      "symbol": "MNTS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 14.08,
+      "candidates_tried": [
+        "MNTS"
+      ],
+      "country": "United States"
+    },
+    "MOG.A": {
+      "symbol": "MOG-A",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 373.94,
+      "candidates_tried": [
+        "MOG-A"
+      ],
+      "country": "United States"
+    },
+    "NN": {
+      "symbol": "NN",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 21.57,
+      "candidates_tried": [
+        "NN"
+      ],
+      "country": "United States"
+    },
+    "OVZON SS": {
+      "symbol": "OVZON.ST",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 60.0,
+      "candidates_tried": [
+        "OVZON.ST"
+      ],
+      "country": "Sweden"
+    },
+    "PSN": {
+      "symbol": "PSN",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 59.95,
+      "candidates_tried": [
+        "PSN"
+      ],
+      "country": "United States"
+    },
+    "464A JP": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "464A.T"
+      ],
+      "country": "Japan"
+    },
+    "SESG FP": {
+      "symbol": "SESG.PA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 8.51,
+      "candidates_tried": [
+        "SESG.PA"
+      ],
+      "country": "Luxembourg"
+    },
+    "SATL": {
+      "symbol": "SATL",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 8.68,
+      "candidates_tried": [
+        "SATL"
+      ],
+      "country": "Argentina"
+    },
+    "SIDU": {
+      "symbol": "SIDU",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 4.91,
+      "candidates_tried": [
+        "SIDU"
+      ],
+      "country": "United States"
+    },
+    "SCC IT": {
+      "symbol": "SCC.TA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 253.5,
+      "candidates_tried": [
+        "SCC.TA"
+      ],
+      "country": "Israel"
+    },
+    "290A JP": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "290A.T"
+      ],
+      "country": "Japan"
+    },
+    "TTMI": {
+      "symbol": "TTMI",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 189.6,
+      "candidates_tried": [
+        "TTMI"
+      ],
+      "country": "United States"
+    },
+    "VOYG": {
+      "symbol": "VOYG",
+      "version": "v2",
+      "status": "stale",
+      "last_date": "2026-05-22",
+      "last_close": 44.64,
+      "candidates_tried": [
+        "VOYG"
+      ],
+      "country": "United States"
+    },
+    "9348 JP": {
+      "symbol": "9348.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 583.0,
+      "candidates_tried": [
+        "9348.T"
+      ],
+      "country": "Japan"
+    },
+    "4063 JP": {
+      "symbol": "4063.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 7806.0,
+      "candidates_tried": [
+        "4063.T"
+      ],
+      "country": "Japan"
+    },
+    "3436 JP": {
+      "symbol": "3436.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 4459.0,
+      "candidates_tried": [
+        "3436.T"
+      ],
+      "country": "Japan"
+    },
+    "6488 TT": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "6488.TW",
+        "6488.TWO"
+      ],
+      "country": "Taiwan"
+    },
+    "WAF GR": {
+      "symbol": "WAF.DE",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 104.5,
+      "candidates_tried": [
+        "WAF.DE"
+      ],
+      "country": "Germany"
+    },
+    "010060 KS": {
+      "symbol": "010060.KS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 316500.0,
+      "candidates_tried": [
+        "010060.KS"
+      ],
+      "country": "South Korea"
+    },
+    "4043 JP": {
+      "symbol": "4043.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 5622.0,
+      "candidates_tried": [
+        "4043.T"
+      ],
+      "country": "Japan"
+    },
+    "WCH GR": {
+      "symbol": "WCH.F",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 104.5,
+      "candidates_tried": [
+        "WCH.DE",
+        "WCH.F"
+      ],
+      "country": "Germany"
+    },
+    "SOI FP": {
+      "symbol": "SOI.PA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 153.05,
+      "candidates_tried": [
+        "SOI.PA"
+      ],
+      "country": "France"
+    },
+    "6153 TT": {
+      "symbol": "6153.TW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 19.6,
+      "candidates_tried": [
+        "6153.TW"
+      ],
+      "country": "Taiwan"
+    },
+    "WOLF": {
+      "symbol": "WOLF",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 61.06,
+      "candidates_tried": [
+        "WOLF"
+      ],
+      "country": "United States"
+    },
+    "LIN": {
+      "symbol": "LIN",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 495.91,
+      "candidates_tried": [
+        "LIN"
+      ],
+      "country": "United States"
+    },
+    "AI FP": {
+      "symbol": "AI.PA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 176.54,
+      "candidates_tried": [
+        "AI.PA"
+      ],
+      "country": "France"
+    },
+    "APD": {
+      "symbol": "APD",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 282.27,
+      "candidates_tried": [
+        "APD"
+      ],
+      "country": "United States"
+    },
+    "4091 JP": {
+      "symbol": "4091.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 5679.0,
+      "candidates_tried": [
+        "4091.T"
+      ],
+      "country": "Japan"
+    },
+    "4186 JP": {
+      "symbol": "4186.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 10690.0,
+      "candidates_tried": [
+        "4186.T"
+      ],
+      "country": "Japan"
+    },
+    "MRK GR": {
+      "symbol": "MRK.F",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 133.05,
+      "candidates_tried": [
+        "MRK.DE",
+        "MRK.F"
+      ],
+      "country": "Germany"
+    },
+    "BAS GR": {
+      "symbol": "BAS.F",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 50.6,
+      "candidates_tried": [
+        "BAS.DE",
+        "BAS.F"
+      ],
+      "country": "Germany"
+    },
+    "4112 JP": {
+      "symbol": "4112.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 2254.0,
+      "candidates_tried": [
+        "4112.T"
+      ],
+      "country": "Japan"
+    },
+    "4005 JP": {
+      "symbol": "4005.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 586.8,
+      "candidates_tried": [
+        "4005.T"
+      ],
+      "country": "Japan"
+    },
+    "4208 JP": {
+      "symbol": "4208.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 2992.0,
+      "candidates_tried": [
+        "4208.T"
+      ],
+      "country": "Japan"
+    },
+    "3407 JP": {
+      "symbol": "3407.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1757.5,
+      "candidates_tried": [
+        "3407.T"
+      ],
+      "country": "Japan"
+    },
+    "5384 JP": {
+      "symbol": "5384.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 4220.0,
+      "candidates_tried": [
+        "5384.T"
+      ],
+      "country": "Japan"
+    },
+    "5706 JP": {
+      "symbol": "5706.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 47600.0,
+      "candidates_tried": [
+        "5706.T"
+      ],
+      "country": "Japan"
+    },
+    "MTRN": {
+      "symbol": "MTRN",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 228.52,
+      "candidates_tried": [
+        "MTRN"
+      ],
+      "country": "United States"
+    },
+    "4062 JP": {
+      "symbol": "4062.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 21940.0,
+      "candidates_tried": [
+        "4062.T"
+      ],
+      "country": "Japan"
+    },
+    "3037 TT": {
+      "symbol": "3037.TW",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1000.0,
+      "candidates_tried": [
+        "3037.TW"
+      ],
+      "country": "Taiwan"
+    },
+    "2802 JP": {
+      "symbol": "2802.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 5227.0,
+      "candidates_tried": [
+        "2802.T"
+      ],
+      "country": "Japan"
+    },
+    "6971 JP": {
+      "symbol": "6971.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 3813.0,
+      "candidates_tried": [
+        "6971.T"
+      ],
+      "country": "Japan"
+    },
+    "LYC AU": {
+      "symbol": "LYC.AX",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 19.49,
+      "candidates_tried": [
+        "LYC.AX"
+      ],
+      "country": "Australia"
+    },
+    "ILU AU": {
+      "symbol": "ILU.AX",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 8.08,
+      "candidates_tried": [
+        "ILU.AX"
+      ],
+      "country": "Australia"
+    },
+    "ARU AU": {
+      "symbol": "ARU.AX",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 0.28,
+      "candidates_tried": [
+        "ARU.AX"
+      ],
+      "country": "Australia"
+    },
+    "6680 HK": {
+      "symbol": "6680.HK",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 18.99,
+      "candidates_tried": [
+        "6680.HK"
+      ],
+      "country": "China"
+    },
+    "ALB": {
+      "symbol": "ALB",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 168.34,
+      "candidates_tried": [
+        "ALB"
+      ],
+      "country": "United States"
+    },
+    "SQM": {
+      "symbol": "SQM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 78.58,
+      "candidates_tried": [
+        "SQM"
+      ],
+      "country": "Chile"
+    },
+    "AMG NA": {
+      "symbol": "AMG.AS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 39.86,
+      "candidates_tried": [
+        "AMG.AS"
+      ],
+      "country": "Netherlands"
+    },
+    "3402 JP": {
+      "symbol": "3402.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 1121.5,
+      "candidates_tried": [
+        "3402.T"
+      ],
+      "country": "Japan"
+    },
+    "3401 JP": {
+      "symbol": "3401.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-02",
+      "last_close": 1612.0,
+      "candidates_tried": [
+        "3401.T"
+      ],
+      "country": "Japan"
+    },
+    "4188 JP": {
+      "symbol": "4188.T",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 1099.0,
+      "candidates_tried": [
+        "4188.T"
+      ],
+      "country": "Japan"
+    },
+    "SGL GR": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "SGL.DE",
+        "SGL.F"
+      ],
+      "country": "Germany"
+    },
+    "ATI": {
+      "symbol": "ATI",
+      "version": "v2",
+      "status": "stale",
+      "last_date": "2026-05-22",
+      "last_close": 162.29,
+      "candidates_tried": [
+        "ATI"
+      ],
+      "country": "United States"
+    },
+    "CRS": {
+      "symbol": "CRS",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 487.05,
+      "candidates_tried": [
+        "CRS"
+      ],
+      "country": "United States"
+    },
+    "CSTM FP": {
+      "symbol": "CSTM",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 35.86,
+      "candidates_tried": [
+        "CSTM"
+      ],
+      "country": "France"
+    },
+    "MRSN FP": {
+      "symbol": "MRN.PA",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-06-03",
+      "last_close": 43.8,
+      "candidates_tried": [
+        "MRN.PA"
+      ],
+      "country": "France"
+    }
+  }
+}

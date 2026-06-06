@@ -1,44 +1,12 @@
 {
   "ticker": "UMC",
   "marketstack_symbol": "UMC",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "United Microelectronics ADR",
   "sector": "Semiconductor",
   "country": "Taiwan",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 9.62,
-      "high": 9.69,
-      "low": 9.52,
-      "close": 9.55,
-      "volume": 7355854.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 9.7,
-      "high": 9.77,
-      "low": 9.3601,
-      "close": 9.76,
-      "volume": 6764559.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 9.46,
-      "high": 9.47,
-      "low": 9.31,
-      "close": 9.39,
-      "volume": 5431022.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 9.32,
-      "high": 9.385,
-      "low": 9.16,
-      "close": 9.32,
-      "volume": 4393595.0
-    },
     {
       "date": "2021-05-07",
       "open": 9.62,
@@ -10222,8 +10190,28 @@
       "low": 21.87,
       "close": 22.46,
       "volume": 14977828.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 21.11,
+      "high": 21.5,
+      "low": 20.58,
+      "close": 21.42,
+      "volume": 15646200.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 20.22,
+      "high": 20.975,
+      "low": 19.9101,
+      "close": 20.79,
+      "volume": 17521664.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:15.490769Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

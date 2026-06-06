@@ -1,44 +1,12 @@
 {
   "ticker": "ASX",
   "marketstack_symbol": "ASX",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "ASE Technology Holding ADR",
   "sector": "Semiconductor",
   "country": "Taiwan",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 8.16,
-      "high": 8.17,
-      "low": 8.03,
-      "close": 8.07,
-      "volume": 1960216.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 7.95,
-      "high": 7.97,
-      "low": 7.805,
-      "close": 7.95,
-      "volume": 1846623.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 7.76,
-      "high": 7.86,
-      "low": 7.76,
-      "close": 7.76,
-      "volume": 1775443.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 7.8,
-      "high": 7.84,
-      "low": 7.71,
-      "close": 7.83,
-      "volume": 1451960.0
-    },
     {
       "date": "2021-05-07",
       "open": 8.09,
@@ -10230,8 +10198,28 @@
       "low": 37.21,
       "close": 39.26,
       "volume": 10473601.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 39.13,
+      "high": 40.4697,
+      "low": 38.95,
+      "close": 39.91,
+      "volume": 8875096.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 37.92,
+      "high": 38.68,
+      "low": 37.07,
+      "close": 38.4,
+      "volume": 11142466.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:03.753219Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1276
+  }
 }

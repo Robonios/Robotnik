@@ -1,44 +1,12 @@
 {
   "ticker": "MKSI",
   "marketstack_symbol": "MKSI",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "MKS Instruments",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 181.16,
-      "high": 181.17,
-      "low": 177.01,
-      "close": 177.98,
-      "volume": 285901.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 175.12,
-      "high": 176.59,
-      "low": 172.49,
-      "close": 176.49,
-      "volume": 334300.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 179.45,
-      "high": 179.92,
-      "low": 173.93,
-      "close": 176.47,
-      "volume": 284700.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 175.58,
-      "high": 179.85,
-      "low": 174.3032,
-      "close": 179.55,
-      "volume": 256203.0
-    },
     {
       "date": "2021-05-07",
       "open": 181.0,
@@ -10222,8 +10190,28 @@
       "low": 320.3801,
       "close": 331.36,
       "volume": 1116933.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 334.8,
+      "high": 341.81,
+      "low": 326.81,
+      "close": 335.15,
+      "volume": 711089.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 323.2,
+      "high": 335.83,
+      "low": 318.01,
+      "close": 330.23,
+      "volume": 656762.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:10.227132Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

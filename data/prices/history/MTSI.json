@@ -1,44 +1,12 @@
 {
   "ticker": "MTSI",
   "marketstack_symbol": "MTSI",
-  "marketstack_version": "v1",
+  "marketstack_version": "v2",
   "name": "MACOM Technology Solutions",
   "sector": "Semiconductor",
   "country": "United States",
   "native_currency": "USD",
   "series": [
-    {
-      "date": "2021-05-03",
-      "open": 57.1,
-      "high": 57.485,
-      "low": 55.54,
-      "close": 55.87,
-      "volume": 828539.0
-    },
-    {
-      "date": "2021-05-04",
-      "open": 55.37,
-      "high": 55.49,
-      "low": 53.2,
-      "close": 53.93,
-      "volume": 758700.0
-    },
-    {
-      "date": "2021-05-05",
-      "open": 54.41,
-      "high": 55.12,
-      "low": 53.35,
-      "close": 53.65,
-      "volume": 315100.0
-    },
-    {
-      "date": "2021-05-06",
-      "open": 53.33,
-      "high": 54.38,
-      "low": 52.55,
-      "close": 54.32,
-      "volume": 393619.0
-    },
     {
       "date": "2021-05-07",
       "open": 54.99,
@@ -10222,8 +10190,28 @@
       "low": 354.715,
       "close": 382.35,
       "volume": 2304759.0
+    },
+    {
+      "date": "2026-06-03",
+      "open": 388.62,
+      "high": 395.305,
+      "low": 376.93,
+      "close": 390.34,
+      "volume": 1555902.0
+    },
+    {
+      "date": "2026-06-04",
+      "open": 373.63,
+      "high": 390.34,
+      "low": 367.6601,
+      "close": 382.74,
+      "volume": 1249149.0
     }
   ],
-  "last_fetched": "2026-06-03T12:55:09.411072Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack v2 (USD via daily FX)",
+  "_rebackfill": {
+    "earliest": "2021-05-07",
+    "latest": "2026-06-04",
+    "n_bars": 1275
+  }
 }

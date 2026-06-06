@@ -38,6 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime
+from pathlib import Path
 
 # Reuse the project-standard .env loader so we don't drift from the established
 # pattern (EODHD/COINGECKO fetchers use config.load_env()).
@@ -314,20 +315,53 @@ def route_for_ticker(ticker: str, country: str):
     default. Callers should prefer this over calling ticker_to_marketstack()
     and country_api_version() separately when both are needed at once.
 
+    UNIFORM-V2 (#55): the verified resolved-symbol map
+    (data/registries/marketstack_symbols.json) is the single source of truth. A
+    name with a `fresh` map entry routes to its verified v2 symbol; everything else
+    (stale / unresolved / absent) returns UNAVAILABLE, which the fetcher routes to a
+    Yahoo override (and the resolution-completeness guard surfaces any with no
+    override). The legacy v1 MIC-construction + TICKER_OVERRIDES path is RETIRED for
+    production — the helpers below remain only for the one-time resolver / reference.
+
     Returns:
-        (symbol, version, supported) where:
-          - symbol is the MarketStack symbol to query, or "UNAVAILABLE"
-          - version is "v1" or "v2"
-          - supported is False when the ticker is in MARKETSTACK_UNSUPPORTED
+        (symbol, version, supported)
     """
-    if ticker in MARKETSTACK_UNSUPPORTED:
-        return "UNAVAILABLE", API_VERSION, False
-    if ticker in TICKER_OVERRIDES:
-        sym, ver = TICKER_OVERRIDES[ticker]
-        return sym, ver, True
-    sym = ticker_to_marketstack(ticker, country)
-    ver = country_api_version(country)
-    return sym, ver, sym != "UNAVAILABLE"
+    info = _load_resolved().get(ticker)
+    if info and info.get("status") == "fresh" and info.get("symbol"):
+        return info["symbol"], info.get("version", "v2"), True
+    return "UNAVAILABLE", "v2", False
+
+
+_RESOLVED_PATH = Path(__file__).resolve().parent.parent / "data" / "registries" / "marketstack_symbols.json"
+_RESOLVED_CACHE = None
+
+
+def _load_resolved():
+    """Load (once) the verified ticker → v2-symbol resolution map."""
+    global _RESOLVED_CACHE
+    if _RESOLVED_CACHE is None:
+        try:
+            _RESOLVED_CACHE = json.loads(_RESOLVED_PATH.read_text()).get("symbols", {})
+        except Exception as e:
+            sys.stderr.write("[marketstack_client] WARN: resolved-symbol map "
+                             "unavailable ({}); all names route to override\n".format(str(e)[:80]))
+            _RESOLVED_CACHE = {}
+    return _RESOLVED_CACHE
+
+
+def fetch_v2_eod(symbol):
+    """Latest SETTLED EOD bar on v2 — the most-recent NON-ZERO close in a short
+    window. eod/latest's `close` is 0 for the unsettled current day, and a dead
+    listing is all-zero, so we scan a small window and take the first real close
+    (this is exactly what the dry-run validated, so production reproduces the sim).
+    Returns the bar dict (close/date/open/...) or None. Propagates typed transport/
+    auth errors like fetch_eod_latest so the fetcher's handlers still apply."""
+    data = _api_get("eod", {"symbols": symbol, "limit": 10}, version="v2")
+    for r in (data.get("data") or []):
+        c = r.get("close")
+        if c and float(c) > 0:
+            return r
+    return None
 
 
 # ── per-ticker overrides (live-probe verified — see Round 2 findings) ────
