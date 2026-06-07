@@ -7760,6 +7760,51 @@
       "volume": 9176661.0
     },
     {
+      "date": "2025-05-09",
+      "open": 3.092273,
+      "high": 3.118702,
+      "low": 3.03611,
+      "close": 3.102184,
+      "volume": 9623422,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-12",
+      "open": 3.13229,
+      "high": 3.356025,
+      "low": 3.129,
+      "close": 3.323123,
+      "volume": 28707239,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-13",
+      "open": 3.418242,
+      "high": 3.483977,
+      "low": 3.26705,
+      "close": 3.280197,
+      "volume": 31261779,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-14",
+      "open": 3.345451,
+      "high": 3.411372,
+      "low": 3.296011,
+      "close": 3.378412,
+      "volume": 18937044,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-15",
+      "open": 3.381178,
+      "high": 3.381178,
+      "low": 3.314881,
+      "close": 3.348029,
+      "volume": 10169702,
+      "_source": "yahoo-gapfill"
+    },
+    {
       "date": "2025-05-16",
       "open": 3.397753,
       "high": 3.430901,
@@ -7862,6 +7907,51 @@
       "low": 3.279423,
       "close": 3.316195,
       "volume": 10010563.0
+    },
+    {
+      "date": "2025-06-10",
+      "open": 3.373957,
+      "high": 3.573403,
+      "low": 3.373957,
+      "close": 3.556782,
+      "volume": 25735944,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-11",
+      "open": 3.566495,
+      "high": 3.66649,
+      "low": 3.516497,
+      "close": 3.633159,
+      "volume": 24114317,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-12",
+      "open": 3.651072,
+      "high": 3.651072,
+      "low": 3.583771,
+      "close": 3.600596,
+      "volume": 10353464,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-13",
+      "open": 3.550121,
+      "high": 3.566946,
+      "low": 3.449169,
+      "close": 3.449169,
+      "volume": 13991909,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-16",
+      "open": 3.493902,
+      "high": 3.528157,
+      "low": 3.459648,
+      "close": 3.528157,
+      "volume": 8555554,
+      "_source": "yahoo-gapfill"
     },
     {
       "date": "2025-06-17",
@@ -9457,5 +9547,32 @@
     }
   ],
   "last_fetched": "2026-06-07T08:28:44.296607Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack (USD via daily FX)",
+  "_gapfill": {
+    "filled_bars": 10,
+    "source": "yahoo (ECB FX, edge-anchored)",
+    "windows": [
+      {
+        "window": [
+          "2025-05-08",
+          "2025-05-16"
+        ],
+        "days": 8,
+        "n_fill": 5,
+        "edge_scale": 1.0,
+        "scale_consistent": 1.0
+      },
+      {
+        "window": [
+          "2025-06-09",
+          "2025-06-17"
+        ],
+        "days": 8,
+        "n_fill": 5,
+        "edge_scale": 0.99354,
+        "scale_consistent": 0.9969
+      }
+    ],
+    "at": "#64"
+  }
 }

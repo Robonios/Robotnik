@@ -6365,6 +6365,51 @@
       "volume": 1025900.0
     },
     {
+      "date": "2025-05-09",
+      "open": 0.527122,
+      "high": 0.527122,
+      "low": 0.515551,
+      "close": 0.524551,
+      "volume": 819196,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-12",
+      "open": 0.523638,
+      "high": 0.549306,
+      "low": 0.518504,
+      "close": 0.544173,
+      "volume": 2579200,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-13",
+      "open": 0.550334,
+      "high": 0.550334,
+      "low": 0.52596,
+      "close": 0.531092,
+      "volume": 1067500,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-14",
+      "open": 0.529186,
+      "high": 0.536874,
+      "low": 0.518935,
+      "close": 0.53303,
+      "volume": 463600,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-15",
+      "open": 0.531552,
+      "high": 0.545641,
+      "low": 0.52899,
+      "close": 0.535394,
+      "volume": 952194,
+      "_source": "yahoo-gapfill"
+    },
+    {
       "date": "2025-05-16",
       "open": 0.531049,
       "high": 0.602709,
@@ -8110,5 +8155,22 @@
     }
   ],
   "last_fetched": "2026-06-07T08:28:48.827821Z",
-  "source": "Yahoo (override, USD via daily FX)"
+  "source": "Yahoo (override, USD via daily FX)",
+  "_gapfill": {
+    "filled_bars": 5,
+    "source": "yahoo (ECB FX, edge-anchored)",
+    "windows": [
+      {
+        "window": [
+          "2025-05-08",
+          "2025-05-16"
+        ],
+        "days": 8,
+        "n_fill": 5,
+        "edge_scale": 1.0,
+        "scale_consistent": 1.0
+      }
+    ],
+    "at": "#64"
+  }
 }

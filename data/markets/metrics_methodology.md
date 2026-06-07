@@ -1474,6 +1474,37 @@ the −0.206% decomposes into these explained parts with **zero unexplained resi
 and US constituents contributing ≈0 (the "nothing hides under a price move" check that
 caught CLS).
 
+### 12.7 MS coverage-hole gap-fill from Yahoo (#64, 2026-06-07)
+
+MarketStack has **recurring multi-week holes in international coverage** (esp. Asian —
+Japan/China/Korea/Taiwan), e.g. **2025-06-20→07-29 (39d)**, a 2025-05 window, and recent
+2026-04/05 holes in German names — present in BOTH v1 and v2 (a vendor-coverage property,
+NOT a #55 regression). The freshness FLOOR (§13.6) catches a stale TAIL; it does not catch
+a hole in the MIDDLE of an active series, so these were silently carry-forward-flat — the
+index's 2025 historical path distorted across ~14% of weight.
+
+**Fix** (`gap_fill_from_yahoo.py`): fill each genuine MS hole from Yahoo, *self-classifying*
+— a real market holiday is absent from Yahoo too, so only true holes fill. Two correctness
+rules: (i) Yahoo RAW native prices through the SAME ECB FX layer (§12.5), NOT Yahoo's USD,
+so no spot-vs-fixing seam re-enters inside the gaps; (ii) each fill is **anchor-scaled to
+the MS bar at BOTH gap edges** — a fill whose two edges imply inconsistent scale (a
+corporate action inside the gap) is refused and surfaced, never stepped (a boundary step
+would be worse than the flat carry-forward it replaces).
+
+**Scope:** 109 names / **14.60% index weight** / 3,782 bars filled; every edge-scale ∈
+[0.993, 1.007] (no boundary steps); 0 surfaced; the 11 unfillable were all holiday-only
+(Yahoo also lacks them → correctly flat). **Index impact: −0.014%** net at the current
+level — the filled gap-period returns net ~flat vs the prior carry-forward, so the value
+is *path correctness* (the 2025 segments are no longer flat-lined), not a level move. Δ=0
+reconstruction re-verified after the fill; the change is confined to the filled gap windows.
+
+**Standing guard:** `gap_fill_from_yahoo.py --dry` runs weekly — the *contiguity* surface
+the freshness floor cannot provide (mid-series holes) — tracking per-name hole **recurrence**
+(MS holes are permanent: the 2025 window is still absent a year later, so chronic-holers
+become candidates for daily Yahoo-routing, like the corporate-action route — monitor-then-
+decide). The recurring MS multi-week international gap is logged as a concrete #48 provider
+data-reliability requirement (alongside shares-outstanding and bonus/scrip).
+
 ---
 
 ## 13. Return basis — price-return, self-computed split adjustment

@@ -7792,6 +7792,69 @@
       "volume": 3342500.0
     },
     {
+      "date": "2025-05-07",
+      "open": 7.015876,
+      "high": 7.043772,
+      "low": 6.787128,
+      "close": 6.787128,
+      "volume": 6488000,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-08",
+      "open": 6.759539,
+      "high": 6.903991,
+      "low": 6.704246,
+      "close": 6.870815,
+      "volume": 6710900,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-09",
+      "open": 6.542774,
+      "high": 6.836196,
+      "low": 6.467696,
+      "close": 6.708082,
+      "volume": 9257500,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-12",
+      "open": 6.61795,
+      "high": 6.82054,
+      "low": 6.464656,
+      "close": 6.82054,
+      "volume": 6932400,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-13",
+      "open": 7.057649,
+      "high": 7.148781,
+      "low": 6.764002,
+      "close": 6.791004,
+      "volume": 5791500,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-14",
+      "open": 6.939949,
+      "high": 6.970717,
+      "low": 6.677393,
+      "close": 6.844225,
+      "volume": 5360500,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-15",
+      "open": 6.695246,
+      "high": 6.941823,
+      "low": 6.657575,
+      "close": 6.934974,
+      "volume": 4355900,
+      "_source": "yahoo-gapfill"
+    },
+    {
       "date": "2025-05-16",
       "open": 6.885975,
       "high": 6.944331,
@@ -9505,5 +9568,22 @@
     }
   ],
   "last_fetched": "2026-06-07T08:28:39.815222Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack (USD via daily FX)",
+  "_gapfill": {
+    "filled_bars": 7,
+    "source": "yahoo (ECB FX, edge-anchored)",
+    "windows": [
+      {
+        "window": [
+          "2025-05-02",
+          "2025-05-16"
+        ],
+        "days": 14,
+        "n_fill": 7,
+        "edge_scale": 1.0,
+        "scale_consistent": 1.0
+      }
+    ],
+    "at": "#64"
+  }
 }

@@ -229,7 +229,35 @@ def main():
             n += 1
         print("\nAPPLIED: filled {} names. NEXT: calculate_index + verify_index_reconstruction (Δ=0) + §12.6.".format(n))
     else:
-        print("\nDRY — nothing written. Checkpoint this scope, then --apply.")
+        # Per-name hole RECURRENCE registry (#64): MS holes are permanent, so a name that
+        # recurs in this weekly surface is a chronic-holer → candidate for daily Yahoo-routing
+        # (monitor-then-DECIDE; no auto-routing here). Only the standing --dry accrues it.
+        from datetime import datetime, timezone
+        REC = ROOT / "data" / "markets" / "ms_gap_recurrence.json"
+        try:
+            reg = json.loads(REC.read_text()) if REC.exists() else {"_meta": {"runs": 0}, "names": {}}
+            today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            for r in results:
+                if r.get("error"):
+                    continue
+                tk = r["ticker"]
+                e = reg["names"].setdefault(tk, {"runs_with_hole": 0, "first_seen": today})
+                e["runs_with_hole"] = e.get("runs_with_hole", 0) + 1
+                e["last_seen"] = today
+                e["weight_pct"] = r.get("weight")
+            reg["_meta"] = {"runs": reg["_meta"].get("runs", 0) + 1, "last_run": today,
+                            "chronic_threshold": 4,
+                            "note": "runs_with_hole >= chronic_threshold = chronic-holer, "
+                                    "candidate for daily Yahoo-routing (monitor-then-decide)"}
+            REC.write_text(json.dumps(reg, indent=2))
+            chronic = sorted(tk for tk, e in reg["names"].items()
+                             if e.get("runs_with_hole", 0) >= reg["_meta"]["chronic_threshold"])
+            if chronic:
+                print("\nCHRONIC HOLERS (>={} weekly runs with a hole — Yahoo-routing candidates): {}".format(
+                    reg["_meta"]["chronic_threshold"], ", ".join(chronic)))
+        except Exception as exc:
+            print("  recurrence registry update skipped ({})".format(str(exc)[:60]))
+        print("\nDRY — nothing written to history. Checkpoint this scope, then --apply.")
 
 
 if __name__ == "__main__":

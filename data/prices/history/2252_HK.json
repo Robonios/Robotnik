@@ -6829,6 +6829,78 @@
       "volume": 2290366.0
     },
     {
+      "date": "2025-05-06",
+      "open": 2.513541,
+      "high": 2.619347,
+      "low": 2.461928,
+      "close": 2.503219,
+      "volume": 9402470,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-07",
+      "open": 2.500414,
+      "high": 2.564858,
+      "low": 2.376682,
+      "close": 2.428237,
+      "volume": 6652216,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-08",
+      "open": 2.429352,
+      "high": 2.45766,
+      "low": 2.372736,
+      "close": 2.395897,
+      "volume": 2503920,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-09",
+      "open": 2.417048,
+      "high": 2.46076,
+      "low": 2.360479,
+      "close": 2.424762,
+      "volume": 4153977,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-12",
+      "open": 2.464178,
+      "high": 2.484713,
+      "low": 2.361504,
+      "close": 2.464178,
+      "volume": 8012270,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-13",
+      "open": 2.48869,
+      "high": 2.537437,
+      "low": 2.283437,
+      "close": 2.306528,
+      "volume": 6781876,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-14",
+      "open": 2.065491,
+      "high": 2.214124,
+      "low": 1.998862,
+      "close": 2.116744,
+      "volume": 89355780,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-05-15",
+      "open": 2.108275,
+      "high": 2.128769,
+      "low": 2.005807,
+      "close": 2.013492,
+      "volume": 13725152,
+      "_source": "yahoo-gapfill"
+    },
+    {
       "date": "2025-05-16",
       "open": 2.026943,
       "high": 2.057655,
@@ -6923,6 +6995,51 @@
       "low": 2.038706,
       "close": 2.087125,
       "volume": 8144500.0
+    },
+    {
+      "date": "2025-06-10",
+      "open": 2.10096,
+      "high": 2.197149,
+      "low": 2.073116,
+      "close": 2.154117,
+      "volume": 14111591,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-11",
+      "open": 2.214655,
+      "high": 2.315896,
+      "low": 2.174159,
+      "close": 2.181752,
+      "volume": 13890520,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-12",
+      "open": 2.181745,
+      "high": 2.308296,
+      "low": 2.164028,
+      "close": 2.250083,
+      "volume": 13167900,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-13",
+      "open": 2.257635,
+      "high": 2.288007,
+      "low": 2.098183,
+      "close": 2.120962,
+      "volume": 12510300,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-16",
+      "open": 2.08796,
+      "high": 2.184132,
+      "low": 2.077837,
+      "close": 2.153762,
+      "volume": 4044000,
+      "_source": "yahoo-gapfill"
     },
     {
       "date": "2025-06-17",
@@ -8558,5 +8675,32 @@
     }
   ],
   "last_fetched": "2026-06-07T08:28:48.972477Z",
-  "source": "Yahoo (override, USD via daily FX)"
+  "source": "Yahoo (override, USD via daily FX)",
+  "_gapfill": {
+    "filled_bars": 13,
+    "source": "yahoo (ECB FX, edge-anchored)",
+    "windows": [
+      {
+        "window": [
+          "2025-05-02",
+          "2025-05-16"
+        ],
+        "days": 14,
+        "n_fill": 8,
+        "edge_scale": 1.0,
+        "scale_consistent": 1.0
+      },
+      {
+        "window": [
+          "2025-06-09",
+          "2025-06-17"
+        ],
+        "days": 8,
+        "n_fill": 5,
+        "edge_scale": 0.99333,
+        "scale_consistent": 1.0036
+      }
+    ],
+    "at": "#64"
+  }
 }

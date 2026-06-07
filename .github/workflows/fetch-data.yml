@@ -114,6 +114,16 @@ jobs:
         continue-on-error: true
         run: python scripts/sweep_v2_vs_yahoo.py
 
+      # Coverage-hole CONTIGUITY surface (#64, weekly). The freshness floor catches a
+      # stale TAIL; this catches a hole in the MIDDLE of an active series (MS's recurring
+      # multi-week intl gaps). --dry surfaces current holes + tracks per-name RECURRENCE
+      # (chronic-holers → candidates for daily Yahoo-routing; monitor-then-decide). Non-
+      # failing; Yahoo-unreachable degrades gracefully. Remediate out-of-band with --apply.
+      - name: Coverage-hole contiguity surface (weekly gap-fill --dry)
+        if: github.event.schedule == '0 5 * * 0' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        run: python scripts/gap_fill_from_yahoo.py
+
       # (fundamentals step removed — EODHD descheduled at A2; data frozen, re-sourcing deferred)
 
       # (EOD live-prices step removed at cutover — EODHD, fetcher archived)
