@@ -1,10 +1,7 @@
 {
   "ticker": "290A JP",
   "yahoo_symbol": "290A.T",
-  "marketstack_version": "yahoo",
-  "name": "Synspective",
-  "sector": "Space",
-  "country": "Japan",
+  "currency": "USD",
   "native_currency": "JPY",
   "series": [
     {
@@ -2505,10 +2502,10 @@
     },
     {
       "date": "2026-04-06",
-      "open": 7.590038,
-      "high": 7.921946,
-      "low": 7.558726,
-      "close": 7.77791,
+      "open": 7.593944,
+      "high": 7.926022,
+      "low": 7.562616,
+      "close": 7.781913,
       "volume": 1617500
     },
     {
@@ -2822,12 +2819,16 @@
       "low": 8.541799,
       "close": 8.942293,
       "volume": 3918600
+    },
+    {
+      "date": "2026-06-05",
+      "open": 9.383061,
+      "high": 9.764639,
+      "low": 9.28923,
+      "close": 9.495658,
+      "volume": 3149700
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2024-12-19",
-    "latest": "2026-06-04",
-    "n_bars": 352
-  }
+  "last_fetched": "2026-06-07T08:28:50.485189Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "KRMN",
   "yahoo_symbol": "KRMN",
-  "marketstack_version": "yahoo",
-  "name": "Karman Holdings",
-  "sector": "Space",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -2635,15 +2632,11 @@
       "date": "2026-06-05",
       "open": 53.189998626708984,
       "high": 53.599998474121094,
-      "low": 50.5099983215332,
-      "close": 50.57500076293945,
-      "volume": 1564887
+      "low": 49.060001373291016,
+      "close": 49.439998626708984,
+      "volume": 3116400
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2025-02-13",
-    "latest": "2026-06-05",
-    "n_bars": 329
-  }
+  "last_fetched": "2026-06-07T08:28:52.170891Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

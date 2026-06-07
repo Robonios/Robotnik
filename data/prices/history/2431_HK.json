@@ -1,10 +1,7 @@
 {
   "ticker": "2431 HK",
   "yahoo_symbol": "2431.HK",
-  "marketstack_version": "yahoo",
-  "name": "MiniEye Technology",
-  "sector": "Robotics",
-  "country": "China",
+  "currency": "USD",
   "native_currency": "HKD",
   "series": [
     {
@@ -2814,12 +2811,16 @@
       "low": 1.210146,
       "close": 1.222912,
       "volume": 2464414
+    },
+    {
+      "date": "2026-06-05",
+      "open": 1.225465,
+      "high": 1.654377,
+      "low": 1.20887,
+      "close": 1.356947,
+      "volume": 70506059
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2024-12-27",
-    "latest": "2026-06-04",
-    "n_bars": 351
-  }
+  "last_fetched": "2026-06-07T08:28:49.147630Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

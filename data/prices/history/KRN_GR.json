@@ -1,10 +1,7 @@
 {
   "ticker": "KRN GR",
   "yahoo_symbol": "KRN.DE",
-  "marketstack_version": "yahoo",
-  "name": "Krones AG",
-  "sector": "Robotics",
-  "country": "Germany",
+  "currency": "USD",
   "native_currency": "EUR",
   "series": [
     {
@@ -10205,13 +10202,9 @@
       "high": 135.024,
       "low": 132.696,
       "close": 132.696,
-      "volume": 21999
+      "volume": 22029
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1275
-  }
+  "last_fetched": "2026-06-07T08:28:53.348208Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

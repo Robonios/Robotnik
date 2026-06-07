@@ -1,10 +1,7 @@
 {
   "ticker": "189300 KS",
   "yahoo_symbol": "189300.KQ",
-  "marketstack_version": "yahoo",
-  "name": "Intellian Technologies",
-  "sector": "Space",
-  "country": "South Korea",
+  "currency": "USD",
   "native_currency": "KRW",
   "series": [
     {
@@ -9441,10 +9438,10 @@
     },
     {
       "date": "2026-04-06",
-      "open": 78.787681,
-      "high": 78.787681,
-      "low": 71.890443,
-      "close": 73.349474,
+      "open": 78.330492,
+      "high": 78.330492,
+      "low": 71.473277,
+      "close": 72.923842,
       "volume": 140681
     },
     {
@@ -9768,10 +9765,6 @@
       "volume": 195307
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1220
-  }
+  "last_fetched": "2026-06-07T08:28:48.063982Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

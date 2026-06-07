@@ -1,10 +1,7 @@
 {
   "ticker": "FLY",
   "yahoo_symbol": "FLY",
-  "marketstack_version": "yahoo",
-  "name": "Firefly Aerospace",
-  "sector": "Space",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -1673,17 +1670,13 @@
     },
     {
       "date": "2026-06-05",
-      "open": 39.56700134277344,
+      "open": 39.685001373291016,
       "high": 40.790000915527344,
-      "low": 36.08000183105469,
-      "close": 36.287601470947266,
-      "volume": 4228269
+      "low": 35.54999923706055,
+      "close": 36.099998474121094,
+      "volume": 6641300
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2025-08-07",
-    "latest": "2026-06-05",
-    "n_bars": 209
-  }
+  "last_fetched": "2026-06-07T08:28:51.696389Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "EXA FP",
   "yahoo_symbol": "EXA.PA",
-  "marketstack_version": "yahoo",
-  "name": "Exail Technologies",
-  "sector": "Robotics",
-  "country": "France",
+  "currency": "USD",
   "native_currency": "EUR",
   "series": [
     {
@@ -10251,15 +10248,11 @@
       "date": "2026-06-05",
       "open": 156.092407,
       "high": 159.700796,
-      "low": 153.066,
+      "low": 152.949593,
       "close": 153.415204,
       "volume": 38064
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1281
-  }
+  "last_fetched": "2026-06-07T08:28:54.590289Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

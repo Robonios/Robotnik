@@ -1,10 +1,7 @@
 {
   "ticker": "PENG",
   "yahoo_symbol": "PENG",
-  "marketstack_version": "yahoo",
-  "name": "Penguin Solutions",
-  "sector": "Semiconductor",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -10049,17 +10046,13 @@
     },
     {
       "date": "2026-06-05",
-      "open": 68.19000244140625,
-      "high": 68.70279693603516,
-      "low": 59.915000915527344,
-      "close": 60.400001525878906,
-      "volume": 2806195
+      "open": 68.16999816894531,
+      "high": 68.7030029296875,
+      "low": 58.582000732421875,
+      "close": 59.86000061035156,
+      "volume": 4770000
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1256
-  }
+  "last_fetched": "2026-06-07T08:28:52.312727Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "6600 HK",
   "yahoo_symbol": "6600.HK",
-  "marketstack_version": "yahoo",
-  "name": "OneRobotics Shenzhen",
-  "sector": "Robotics",
-  "country": "China",
+  "currency": "USD",
   "native_currency": "HKD",
   "series": [
     {
@@ -838,12 +835,16 @@
       "low": 10.020727,
       "close": 10.595164,
       "volume": 368400
+    },
+    {
+      "date": "2026-06-05",
+      "open": 10.595164,
+      "high": 10.965356,
+      "low": 10.193058,
+      "close": 10.339859,
+      "volume": 497726
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2025-12-30",
-    "latest": "2026-06-04",
-    "n_bars": 104
-  }
+  "last_fetched": "2026-06-07T08:28:49.578181Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "ABBN SW",
   "yahoo_symbol": "ABBN.SW",
-  "marketstack_version": "yahoo",
-  "name": "ABB Ltd",
-  "sector": "Robotics",
-  "country": "Switzerland",
+  "currency": "USD",
   "native_currency": "CHF",
   "series": [
     {
@@ -10053,7 +10050,7 @@
       "high": 108.959947,
       "low": 105.912825,
       "close": 107.487177,
-      "volume": 2081075
+      "volume": 2081105
     },
     {
       "date": "2026-06-05",
@@ -10064,10 +10061,6 @@
       "volume": 1740267
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1257
-  }
+  "last_fetched": "2026-06-07T08:28:55.813030Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

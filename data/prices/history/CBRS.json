@@ -1,10 +1,7 @@
 {
   "ticker": "CBRS",
   "yahoo_symbol": "CBRS",
-  "marketstack_version": "yahoo",
-  "name": "Cerebras Systems",
-  "sector": "Semiconductors",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -131,15 +128,11 @@
       "date": "2026-06-05",
       "open": 208.67999267578125,
       "high": 222.77999877929688,
-      "low": 201.69000244140625,
-      "close": 201.75,
-      "volume": 2421505
+      "low": 196.72999572753906,
+      "close": 201.00999450683594,
+      "volume": 4374400
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2026-05-14",
-    "latest": "2026-06-05",
-    "n_bars": 16
-  }
+  "last_fetched": "2026-06-07T08:28:51.555889Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

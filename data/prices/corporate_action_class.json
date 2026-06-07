@@ -1,34 +1,16 @@
 {
   "_meta": {
-    "swept_at": "2026-06-05T18:56:32.189541+00:00Z",
-    "v2_names": 278,
+    "swept_at": "2026-06-07T08:29:45.812159+00:00Z",
+    "v2_names": 251,
     "counts": {
-      "clean": 259,
-      "corporate_action_miss": 19,
-      "persistent_divergence": 0,
+      "clean": 248,
+      "corporate_action_miss": 1,
+      "persistent_divergence": 1,
       "recent_divergence": 0,
-      "yahoo_error": 0
+      "yahoo_error": 1
     },
     "yahoo_route": [
-      "2395 TT",
-      "6680 HK",
-      "688169 C1",
-      "010060 KS",
-      "ILU AU",
-      "EXA FP",
-      "189300 KS",
-      "OVZON SS",
-      "MNTS",
-      "003021",
-      "300100",
-      "300757 C2",
-      "601689",
-      "ABBN SW",
-      "AI FP",
-      "COHR",
-      "GOMX SS",
-      "MRSN FP",
-      "RBC"
+      "AGPXX"
     ]
   },
   "names": {
@@ -38,8 +20,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2247,
-      "n_overlap": 1152,
+      "weight_pct": 0.2391,
+      "n_overlap": 1153,
       "yahoo_currency": "CNY"
     },
     "002050": {
@@ -48,8 +30,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.317,
-      "n_overlap": 1153,
+      "weight_pct": 0.3631,
+      "n_overlap": 1154,
       "yahoo_currency": "CNY"
     },
     "002472": {
@@ -58,8 +40,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0572,
-      "n_overlap": 1153,
+      "weight_pct": 0.0662,
+      "n_overlap": 1154,
       "yahoo_currency": "CNY"
     },
     "002747 C2": {
@@ -68,8 +50,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.047,
-      "n_overlap": 1152,
+      "weight_pct": 0.0545,
+      "n_overlap": 1153,
       "yahoo_currency": "CNY"
     },
     "002979": {
@@ -79,58 +61,8 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1151,
-      "yahoo_currency": "CNY"
-    },
-    "003021": {
-      "class": "corporate_action_miss",
-      "symbol": "003021.SZ",
-      "old_ratio": 1.4,
-      "recent_ratio": 1.0,
-      "dispersion": 1.4,
-      "weight_pct": null,
       "n_overlap": 1152,
       "yahoo_currency": "CNY"
-    },
-    "010060 KS": {
-      "class": "corporate_action_miss",
-      "symbol": "010060.KS",
-      "old_ratio": 1.5811,
-      "recent_ratio": 1.0,
-      "dispersion": 1.5811,
-      "weight_pct": 0.0436,
-      "n_overlap": 1162,
-      "yahoo_currency": "KRW"
-    },
-    "012450 KS": {
-      "class": "clean",
-      "symbol": "012450.KS",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": null,
-      "n_overlap": 1163,
-      "yahoo_currency": "KRW"
-    },
-    "090360 KS": {
-      "class": "clean",
-      "symbol": "090360.KQ",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": 0.0115,
-      "n_overlap": 1168,
-      "yahoo_currency": "KRW"
-    },
-    "098460 KS": {
-      "class": "clean",
-      "symbol": "098460.KQ",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": 0.0158,
-      "n_overlap": 1169,
-      "yahoo_currency": "KRW"
     },
     "108490 KS": {
       "class": "clean",
@@ -138,8 +70,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0392,
-      "n_overlap": 1172,
+      "weight_pct": 0.033,
+      "n_overlap": 1173,
       "yahoo_currency": "KRW"
     },
     "1590 TT": {
@@ -148,8 +80,8 @@
       "old_ratio": 1.0117,
       "recent_ratio": 1.0,
       "dispersion": 1.0117,
-      "weight_pct": 0.0987,
-      "n_overlap": 1156,
+      "weight_pct": 0.1027,
+      "n_overlap": 1157,
       "yahoo_currency": "TWD"
     },
     "186A JP": {
@@ -158,19 +90,9 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0199,
-      "n_overlap": 436,
+      "weight_pct": 0.0218,
+      "n_overlap": 437,
       "yahoo_currency": "JPY"
-    },
-    "189300 KS": {
-      "class": "corporate_action_miss",
-      "symbol": "189300.KQ",
-      "old_ratio": 1.0332,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0332,
-      "weight_pct": 0.0095,
-      "n_overlap": 1173,
-      "yahoo_currency": "KRW"
     },
     "2049": {
       "class": "clean",
@@ -178,29 +100,9 @@
       "old_ratio": 1.009,
       "recent_ratio": 1.0,
       "dispersion": 1.009,
-      "weight_pct": 0.047,
-      "n_overlap": 1160,
+      "weight_pct": 0.0475,
+      "n_overlap": 1161,
       "yahoo_currency": "TWD"
-    },
-    "2121 HK": {
-      "class": "clean",
-      "symbol": "2121.HK",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": null,
-      "n_overlap": 1011,
-      "yahoo_currency": "HKD"
-    },
-    "2252 HK": {
-      "class": "clean",
-      "symbol": "2252.HK",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": 0.0373,
-      "n_overlap": 1066,
-      "yahoo_currency": "HKD"
     },
     "2308 TT": {
       "class": "clean",
@@ -209,7 +111,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1159,
+      "n_overlap": 1160,
       "yahoo_currency": "TWD"
     },
     "2317 TT": {
@@ -219,17 +121,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1155,
-      "yahoo_currency": "TWD"
-    },
-    "2395 TT": {
-      "class": "corporate_action_miss",
-      "symbol": "2395.TW",
-      "old_ratio": 1.0999,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0999,
-      "weight_pct": 0.1604,
-      "n_overlap": 1155,
+      "n_overlap": 1156,
       "yahoo_currency": "TWD"
     },
     "277810 KS": {
@@ -238,8 +130,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1096,
-      "n_overlap": 1173,
+      "weight_pct": 0.1022,
+      "n_overlap": 1174,
       "yahoo_currency": "KRW"
     },
     "2802 JP": {
@@ -249,7 +141,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1158,
+      "n_overlap": 1159,
       "yahoo_currency": "JPY"
     },
     "300024 C2": {
@@ -258,17 +150,7 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0388,
-      "n_overlap": 1154,
-      "yahoo_currency": "CNY"
-    },
-    "300100": {
-      "class": "corporate_action_miss",
-      "symbol": "300100.SZ",
-      "old_ratio": 1.4,
-      "recent_ratio": 1.0,
-      "dispersion": 1.4,
-      "weight_pct": null,
+      "weight_pct": 0.0443,
       "n_overlap": 1155,
       "yahoo_currency": "CNY"
     },
@@ -278,18 +160,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.3433,
-      "n_overlap": 1153,
-      "yahoo_currency": "CNY"
-    },
-    "300757 C2": {
-      "class": "corporate_action_miss",
-      "symbol": "300757.SZ",
-      "old_ratio": 1.4,
-      "recent_ratio": 1.0,
-      "dispersion": 1.4,
-      "weight_pct": null,
-      "n_overlap": 1153,
+      "weight_pct": 0.3692,
+      "n_overlap": 1154,
       "yahoo_currency": "CNY"
     },
     "3037 TT": {
@@ -298,8 +170,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.567,
-      "n_overlap": 1157,
+      "weight_pct": 0.5714,
+      "n_overlap": 1158,
       "yahoo_currency": "TWD"
     },
     "3401 JP": {
@@ -309,7 +181,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1168,
+      "n_overlap": 1169,
       "yahoo_currency": "JPY"
     },
     "3402 JP": {
@@ -319,7 +191,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1170,
+      "n_overlap": 1171,
       "yahoo_currency": "JPY"
     },
     "3407 JP": {
@@ -329,7 +201,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1168,
+      "n_overlap": 1169,
       "yahoo_currency": "JPY"
     },
     "3436 JP": {
@@ -338,8 +210,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1103,
-      "n_overlap": 1165,
+      "weight_pct": 0.1083,
+      "n_overlap": 1166,
       "yahoo_currency": "JPY"
     },
     "388720 KS": {
@@ -349,7 +221,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 981,
+      "n_overlap": 982,
       "yahoo_currency": "KRW"
     },
     "4005 JP": {
@@ -359,7 +231,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1164,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "4043 JP": {
@@ -368,18 +240,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0286,
-      "n_overlap": 1167,
-      "yahoo_currency": "JPY"
-    },
-    "4062 JP": {
-      "class": "clean",
-      "symbol": "4062.T",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": 0.4334,
-      "n_overlap": 1166,
+      "weight_pct": 0.0304,
+      "n_overlap": 1168,
       "yahoo_currency": "JPY"
     },
     "4063 JP": {
@@ -388,8 +250,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 1.0253,
-      "n_overlap": 1163,
+      "weight_pct": 1.0463,
+      "n_overlap": 1164,
       "yahoo_currency": "JPY"
     },
     "4091 JP": {
@@ -399,7 +261,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1167,
+      "n_overlap": 1168,
       "yahoo_currency": "JPY"
     },
     "4112 JP": {
@@ -408,8 +270,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0025,
-      "n_overlap": 1164,
+      "weight_pct": 0.0028,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "4186 JP": {
@@ -418,8 +280,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0907,
-      "n_overlap": 1166,
+      "weight_pct": 0.0958,
+      "n_overlap": 1167,
       "yahoo_currency": "JPY"
     },
     "4188 JP": {
@@ -429,7 +291,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1164,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "4208 JP": {
@@ -439,7 +301,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1165,
+      "n_overlap": 1166,
       "yahoo_currency": "JPY"
     },
     "454910 KS": {
@@ -448,8 +310,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.08,
-      "n_overlap": 598,
+      "weight_pct": 0.0717,
+      "n_overlap": 599,
       "yahoo_currency": "KRW"
     },
     "5384 JP": {
@@ -458,8 +320,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0221,
-      "n_overlap": 1164,
+      "weight_pct": 0.0229,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "5706 JP": {
@@ -468,8 +330,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1926,
-      "n_overlap": 1166,
+      "weight_pct": 0.1951,
+      "n_overlap": 1167,
       "yahoo_currency": "JPY"
     },
     "600111": {
@@ -478,9 +340,13 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.301,
-      "n_overlap": 1154,
+      "weight_pct": 0.3261,
+      "n_overlap": 1155,
       "yahoo_currency": "CNY"
+    },
+    "600111 C1": {
+      "class": "yahoo_error",
+      "err": "HTTP 404 from Yahoo: Not Found"
     },
     "601100": {
       "class": "clean",
@@ -488,17 +354,7 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2524,
-      "n_overlap": 1154,
-      "yahoo_currency": "CNY"
-    },
-    "601689": {
-      "class": "corporate_action_miss",
-      "symbol": "601689.SS",
-      "old_ratio": 1.45,
-      "recent_ratio": 1.0,
-      "dispersion": 1.45,
-      "weight_pct": null,
+      "weight_pct": 0.2854,
       "n_overlap": 1155,
       "yahoo_currency": "CNY"
     },
@@ -509,7 +365,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1152,
+      "n_overlap": 1153,
       "yahoo_currency": "CNY"
     },
     "603662": {
@@ -519,7 +375,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1151,
+      "n_overlap": 1152,
       "yahoo_currency": "CNY"
     },
     "6104 JP": {
@@ -528,8 +384,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0069,
-      "n_overlap": 1168,
+      "weight_pct": 0.0077,
+      "n_overlap": 1169,
       "yahoo_currency": "JPY"
     },
     "6113 JP": {
@@ -538,8 +394,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0654,
-      "n_overlap": 1164,
+      "weight_pct": 0.0736,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "6134 JP": {
@@ -548,8 +404,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0487,
-      "n_overlap": 1164,
+      "weight_pct": 0.0521,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "6141 JP": {
@@ -558,8 +414,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0343,
-      "n_overlap": 1169,
+      "weight_pct": 0.0365,
+      "n_overlap": 1170,
       "yahoo_currency": "JPY"
     },
     "6153 TT": {
@@ -569,7 +425,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0109,
       "weight_pct": null,
-      "n_overlap": 1158,
+      "n_overlap": 1159,
       "yahoo_currency": "TWD"
     },
     "6258 JP": {
@@ -578,8 +434,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0061,
-      "n_overlap": 1170,
+      "weight_pct": 0.0066,
+      "n_overlap": 1171,
       "yahoo_currency": "JPY"
     },
     "6268 JP": {
@@ -588,8 +444,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0456,
-      "n_overlap": 1164,
+      "weight_pct": 0.0465,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "6273 JP": {
@@ -598,8 +454,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2858,
-      "n_overlap": 1167,
+      "weight_pct": 0.3159,
+      "n_overlap": 1168,
       "yahoo_currency": "JPY"
     },
     "6324": {
@@ -608,8 +464,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0496,
-      "n_overlap": 1170,
+      "weight_pct": 0.0515,
+      "n_overlap": 1171,
       "yahoo_currency": "JPY"
     },
     "6383 JP": {
@@ -618,8 +474,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1841,
-      "n_overlap": 1167,
+      "weight_pct": 0.194,
+      "n_overlap": 1168,
       "yahoo_currency": "JPY"
     },
     "6481 JP": {
@@ -628,8 +484,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0629,
-      "n_overlap": 1166,
+      "weight_pct": 0.0654,
+      "n_overlap": 1167,
       "yahoo_currency": "JPY"
     },
     "6503 JP": {
@@ -639,7 +495,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1162,
+      "n_overlap": 1163,
       "yahoo_currency": "JPY"
     },
     "6506 JP": {
@@ -648,8 +504,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1312,
-      "n_overlap": 1164,
+      "weight_pct": 0.1364,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "6594": {
@@ -659,7 +515,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1165,
+      "n_overlap": 1166,
       "yahoo_currency": "JPY"
     },
     "6622 JP": {
@@ -668,8 +524,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0262,
-      "n_overlap": 1171,
+      "weight_pct": 0.0293,
+      "n_overlap": 1172,
       "yahoo_currency": "JPY"
     },
     "6645 JP": {
@@ -678,19 +534,9 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0861,
-      "n_overlap": 1167,
+      "weight_pct": 0.0929,
+      "n_overlap": 1168,
       "yahoo_currency": "JPY"
-    },
-    "6680 HK": {
-      "class": "corporate_action_miss",
-      "symbol": "6680.HK",
-      "old_ratio": 1.6,
-      "recent_ratio": 1.0,
-      "dispersion": 1.6,
-      "weight_pct": 0.07,
-      "n_overlap": 1015,
-      "yahoo_currency": "HKD"
     },
     "6723": {
       "class": "clean",
@@ -698,8 +544,18 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.6191,
-      "n_overlap": 1164,
+      "weight_pct": 0.6354,
+      "n_overlap": 1165,
+      "yahoo_currency": "JPY"
+    },
+    "6723 JP": {
+      "class": "persistent_divergence",
+      "symbol": "6723.T",
+      "old_ratio": 0.4784,
+      "recent_ratio": 159.0071,
+      "dispersion": 1.0494,
+      "weight_pct": null,
+      "n_overlap": 1173,
       "yahoo_currency": "JPY"
     },
     "6841 JP": {
@@ -708,8 +564,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0964,
-      "n_overlap": 1163,
+      "weight_pct": 0.1012,
+      "n_overlap": 1164,
       "yahoo_currency": "JPY"
     },
     "6845 JP": {
@@ -718,8 +574,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0602,
-      "n_overlap": 1168,
+      "weight_pct": 0.0627,
+      "n_overlap": 1169,
       "yahoo_currency": "JPY"
     },
     "6857 JP": {
@@ -728,8 +584,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 1.4193,
-      "n_overlap": 1165,
+      "weight_pct": 1.4884,
+      "n_overlap": 1166,
       "yahoo_currency": "JPY"
     },
     "6861 JP": {
@@ -738,8 +594,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 1.3832,
-      "n_overlap": 1166,
+      "weight_pct": 1.4516,
+      "n_overlap": 1167,
       "yahoo_currency": "JPY"
     },
     "688017": {
@@ -748,8 +604,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0965,
-      "n_overlap": 1153,
+      "weight_pct": 0.1309,
+      "n_overlap": 1154,
       "yahoo_currency": "CNY"
     },
     "688165 C1": {
@@ -758,18 +614,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0164,
-      "n_overlap": 1151,
-      "yahoo_currency": "CNY"
-    },
-    "688169 C1": {
-      "class": "corporate_action_miss",
-      "symbol": "688169.SS",
-      "old_ratio": 2.744,
-      "recent_ratio": 1.0,
-      "dispersion": 2.744,
-      "weight_pct": 0.0454,
-      "n_overlap": 1153,
+      "weight_pct": 0.0194,
+      "n_overlap": 1152,
       "yahoo_currency": "CNY"
     },
     "688297 C1": {
@@ -779,7 +625,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 894,
+      "n_overlap": 895,
       "yahoo_currency": "CNY"
     },
     "6902 JP": {
@@ -789,7 +635,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1163,
+      "n_overlap": 1164,
       "yahoo_currency": "JPY"
     },
     "6914 JP": {
@@ -798,8 +644,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0114,
-      "n_overlap": 1168,
+      "weight_pct": 0.0126,
+      "n_overlap": 1169,
       "yahoo_currency": "JPY"
     },
     "6920 JP": {
@@ -808,8 +654,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2648,
-      "n_overlap": 1164,
+      "weight_pct": 0.2898,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "6954 JP": {
@@ -818,8 +664,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.5264,
-      "n_overlap": 1165,
+      "weight_pct": 0.5471,
+      "n_overlap": 1166,
       "yahoo_currency": "JPY"
     },
     "6971 JP": {
@@ -829,7 +675,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1168,
+      "n_overlap": 1169,
       "yahoo_currency": "JPY"
     },
     "8035 JP": {
@@ -838,8 +684,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 1.9679,
-      "n_overlap": 1164,
+      "weight_pct": 2.082,
+      "n_overlap": 1165,
       "yahoo_currency": "JPY"
     },
     "9348 JP": {
@@ -848,29 +694,9 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0061,
-      "n_overlap": 716,
+      "weight_pct": 0.0069,
+      "n_overlap": 717,
       "yahoo_currency": "JPY"
-    },
-    "9868": {
-      "class": "clean",
-      "symbol": "9868.HK",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": null,
-      "n_overlap": 1150,
-      "yahoo_currency": "HKD"
-    },
-    "ABBN SW": {
-      "class": "corporate_action_miss",
-      "symbol": "ABBN.SW",
-      "old_ratio": 1.0424,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0424,
-      "weight_pct": null,
-      "n_overlap": 1207,
-      "yahoo_currency": "CHF"
     },
     "ADI": {
       "class": "clean",
@@ -878,8 +704,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 2.332,
-      "n_overlap": 1255,
+      "weight_pct": 2.4026,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "AEIS": {
@@ -888,19 +714,19 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1413,
-      "n_overlap": 1255,
+      "weight_pct": 0.145,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
-    "AI FP": {
+    "AGPXX": {
       "class": "corporate_action_miss",
-      "symbol": "AI.PA",
-      "old_ratio": 1.1,
+      "symbol": "AGPXX",
+      "old_ratio": 0.9214,
       "recent_ratio": 1.0,
-      "dispersion": 1.1,
+      "dispersion": 1.0757,
       "weight_pct": null,
-      "n_overlap": 1215,
-      "yahoo_currency": "EUR"
+      "n_overlap": 553,
+      "yahoo_currency": "USD"
     },
     "ALAB": {
       "class": "clean",
@@ -908,8 +734,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.6899,
-      "n_overlap": 551,
+      "weight_pct": 0.6679,
+      "n_overlap": 552,
       "yahoo_currency": "USD"
     },
     "ALB": {
@@ -918,8 +744,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2292,
-      "n_overlap": 1255,
+      "weight_pct": 0.2253,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ALGM": {
@@ -928,8 +754,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.106,
-      "n_overlap": 1254,
+      "weight_pct": 0.1062,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "AMAT": {
@@ -938,8 +764,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 4.4016,
-      "n_overlap": 1255,
+      "weight_pct": 4.4199,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "AMBA": {
@@ -948,8 +774,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0389,
-      "n_overlap": 1255,
+      "weight_pct": 0.0342,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "AMD": {
@@ -959,7 +785,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": 5.0,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "AMG NA": {
@@ -968,8 +794,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0188,
-      "n_overlap": 1228,
+      "weight_pct": 0.0184,
+      "n_overlap": 1229,
       "yahoo_currency": "EUR"
     },
     "AMKR": {
@@ -978,8 +804,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2096,
-      "n_overlap": 1255,
+      "weight_pct": 0.1978,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "AMZN": {
@@ -989,18 +815,8 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
-    },
-    "ANDR AV": {
-      "class": "clean",
-      "symbol": "ANDR.VI",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": null,
-      "n_overlap": 1220,
-      "yahoo_currency": "EUR"
     },
     "AOSL": {
       "class": "clean",
@@ -1008,8 +824,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0181,
-      "n_overlap": 1255,
+      "weight_pct": 0.0155,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "APD": {
@@ -1019,7 +835,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "APH": {
@@ -1029,7 +845,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "APTV": {
@@ -1039,7 +855,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1254,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "ARM": {
@@ -1048,8 +864,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 4.8659,
-      "n_overlap": 680,
+      "weight_pct": 4.5011,
+      "n_overlap": 681,
       "yahoo_currency": "USD"
     },
     "ARU AU": {
@@ -1058,8 +874,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0148,
-      "n_overlap": 1162,
+      "weight_pct": 0.0174,
+      "n_overlap": 1163,
       "yahoo_currency": "AUD"
     },
     "ASML": {
@@ -1069,7 +885,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": 5.0,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ASTS": {
@@ -1078,8 +894,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.5189,
-      "n_overlap": 1254,
+      "weight_pct": 0.4464,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "ASX": {
@@ -1088,8 +904,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.9744,
-      "n_overlap": 1255,
+      "weight_pct": 0.9175,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ATS CN": {
@@ -1098,19 +914,9 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0328,
-      "n_overlap": 1210,
+      "weight_pct": 0.0321,
+      "n_overlap": 1211,
       "yahoo_currency": "CAD"
-    },
-    "AUTO NO": {
-      "class": "clean",
-      "symbol": "AUTO.OL",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": 0.0533,
-      "n_overlap": 1112,
-      "yahoo_currency": "NOK"
     },
     "AVAV": {
       "class": "clean",
@@ -1118,8 +924,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.117,
-      "n_overlap": 1255,
+      "weight_pct": 0.1156,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "AVGO": {
@@ -1129,7 +935,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": 5.0,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "AVIO IM": {
@@ -1138,8 +944,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0226,
-      "n_overlap": 1223,
+      "weight_pct": 0.0249,
+      "n_overlap": 1224,
       "yahoo_currency": "EUR"
     },
     "BA": {
@@ -1149,7 +955,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "BAS GR": {
@@ -1169,7 +975,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "BKSY": {
@@ -1178,8 +984,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0184,
-      "n_overlap": 1184,
+      "weight_pct": 0.0159,
+      "n_overlap": 1185,
       "yahoo_currency": "USD"
     },
     "BSL GR": {
@@ -1188,7 +994,7 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0119,
+      "weight_pct": 0.0115,
       "n_overlap": 1213,
       "yahoo_currency": "EUR"
     },
@@ -1199,7 +1005,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "BYDDY": {
@@ -1209,7 +1015,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0013,
       "weight_pct": null,
-      "n_overlap": 1254,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "CAMT": {
@@ -1218,8 +1024,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0977,
-      "n_overlap": 1255,
+      "weight_pct": 0.0929,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "CAT": {
@@ -1229,7 +1035,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "CCJ": {
@@ -1239,7 +1045,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "CDNS": {
@@ -1248,8 +1054,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 1.2992,
-      "n_overlap": 1255,
+      "weight_pct": 1.2751,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "CEVA": {
@@ -1258,8 +1064,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0156,
-      "n_overlap": 1255,
+      "weight_pct": 0.0149,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "CGNX": {
@@ -1269,7 +1075,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": 0.1244,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "CLS CN": {
@@ -1279,18 +1085,8 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1215,
+      "n_overlap": 1216,
       "yahoo_currency": "CAD"
-    },
-    "COHR": {
-      "class": "corporate_action_miss",
-      "symbol": "COHR",
-      "old_ratio": 3.6992,
-      "recent_ratio": 1.0,
-      "dispersion": 4.2714,
-      "weight_pct": null,
-      "n_overlap": 1208,
-      "yahoo_currency": "USD"
     },
     "CRDO": {
       "class": "clean",
@@ -1298,8 +1094,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.4778,
-      "n_overlap": 1088,
+      "weight_pct": 0.469,
+      "n_overlap": 1089,
       "yahoo_currency": "USD"
     },
     "CRS": {
@@ -1309,7 +1105,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "CRUS": {
@@ -1318,8 +1114,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0976,
-      "n_overlap": 1255,
+      "weight_pct": 0.1019,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "CSTM FP": {
@@ -1329,7 +1125,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "DASH": {
@@ -1339,7 +1135,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1252,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
     },
     "DCO": {
@@ -1349,7 +1145,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "DIOD": {
@@ -1358,8 +1154,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0593,
-      "n_overlap": 1255,
+      "weight_pct": 0.0571,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "DUE GR": {
@@ -1379,7 +1175,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0189,
       "weight_pct": null,
-      "n_overlap": 325,
+      "n_overlap": 326,
       "yahoo_currency": "USD"
     },
     "EH": {
@@ -1388,8 +1184,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0088,
-      "n_overlap": 1254,
+      "weight_pct": 0.0074,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "EMR": {
@@ -1399,7 +1195,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ENTG": {
@@ -1408,8 +1204,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2462,
-      "n_overlap": 1255,
+      "weight_pct": 0.2347,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ESE": {
@@ -1419,7 +1215,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ESLT": {
@@ -1429,7 +1225,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1254,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "ETL FP": {
@@ -1438,18 +1234,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0526,
-      "n_overlap": 1214,
-      "yahoo_currency": "EUR"
-    },
-    "EXA FP": {
-      "class": "corporate_action_miss",
-      "symbol": "EXA.PA",
-      "old_ratio": 1.3459,
-      "recent_ratio": 1.0,
-      "dispersion": 1.3459,
-      "weight_pct": 0.0297,
-      "n_overlap": 1228,
+      "weight_pct": 0.0503,
+      "n_overlap": 1215,
       "yahoo_currency": "EUR"
     },
     "FORM": {
@@ -1458,8 +1244,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1103,
-      "n_overlap": 1255,
+      "weight_pct": 0.1118,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "FSLR": {
@@ -1469,7 +1255,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "FTI": {
@@ -1479,7 +1265,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "G1A GR": {
@@ -1499,7 +1285,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "GILT": {
@@ -1508,8 +1294,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0139,
-      "n_overlap": 1255,
+      "weight_pct": 0.0135,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "GMED": {
@@ -1518,8 +1304,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1202,
-      "n_overlap": 1255,
+      "weight_pct": 0.1335,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "GOGO": {
@@ -1529,18 +1315,8 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
-    },
-    "GOMX SS": {
-      "class": "corporate_action_miss",
-      "symbol": "GOMX.ST",
-      "old_ratio": 1.3253,
-      "recent_ratio": 1.0,
-      "dispersion": 1.3253,
-      "weight_pct": null,
-      "n_overlap": 1205,
-      "yahoo_currency": "SEK"
     },
     "GOOG": {
       "class": "clean",
@@ -1549,7 +1325,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "GSAT": {
@@ -1558,8 +1334,8 @@
       "old_ratio": 0.995,
       "recent_ratio": 1.0,
       "dispersion": 1.005,
-      "weight_pct": 0.1204,
-      "n_overlap": 1255,
+      "weight_pct": 0.129,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "HEI": {
@@ -1569,7 +1345,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1254,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "HEXAB SS": {
@@ -1579,7 +1355,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1206,
+      "n_overlap": 1207,
       "yahoo_currency": "SEK"
     },
     "HSAI": {
@@ -1588,8 +1364,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0385,
-      "n_overlap": 806,
+      "weight_pct": 0.0357,
+      "n_overlap": 807,
       "yahoo_currency": "USD"
     },
     "HXL": {
@@ -1599,18 +1375,8 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1254,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
-    },
-    "ILU AU": {
-      "class": "corporate_action_miss",
-      "symbol": "ILU.AX",
-      "old_ratio": 1.0485,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0485,
-      "weight_pct": 0.0394,
-      "n_overlap": 1162,
-      "yahoo_currency": "AUD"
     },
     "IMI LN": {
       "class": "clean",
@@ -1619,7 +1385,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1184,
+      "n_overlap": 1185,
       "yahoo_currency": "GBp"
     },
     "INDI": {
@@ -1628,8 +1394,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0122,
-      "n_overlap": 1247,
+      "weight_pct": 0.0105,
+      "n_overlap": 1248,
       "yahoo_currency": "USD"
     },
     "INRN SW": {
@@ -1638,8 +1404,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0182,
-      "n_overlap": 1208,
+      "weight_pct": 0.0192,
+      "n_overlap": 1209,
       "yahoo_currency": "CHF"
     },
     "INTC": {
@@ -1649,7 +1415,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": 5.0,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "IPGP": {
@@ -1658,8 +1424,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0586,
-      "n_overlap": 1255,
+      "weight_pct": 0.056,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "IRDM": {
@@ -1668,8 +1434,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0593,
-      "n_overlap": 1255,
+      "weight_pct": 0.0615,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ISRG": {
@@ -1678,8 +1444,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 1.6118,
-      "n_overlap": 1255,
+      "weight_pct": 1.8369,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "JBL": {
@@ -1689,7 +1455,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "JEN GR": {
@@ -1698,7 +1464,7 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0356,
+      "weight_pct": 0.0359,
       "n_overlap": 1173,
       "yahoo_currency": "EUR"
     },
@@ -1709,7 +1475,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "KALMAR FH": {
@@ -1719,7 +1485,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 434,
+      "n_overlap": 435,
       "yahoo_currency": "EUR"
     },
     "KARN SW": {
@@ -1728,19 +1494,9 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0294,
-      "n_overlap": 1207,
+      "weight_pct": 0.0313,
+      "n_overlap": 1208,
       "yahoo_currency": "CHF"
-    },
-    "KCR FH": {
-      "class": "clean",
-      "symbol": "KCR.HE",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": 0.0852,
-      "n_overlap": 1209,
-      "yahoo_currency": "EUR"
     },
     "KLAC": {
       "class": "clean",
@@ -1748,8 +1504,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 3.0223,
-      "n_overlap": 1255,
+      "weight_pct": 3.0969,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "KLIC": {
@@ -1758,8 +1514,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0642,
-      "n_overlap": 1255,
+      "weight_pct": 0.0631,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "KMTUY": {
@@ -1769,7 +1525,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0009,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "KOPN": {
@@ -1779,7 +1535,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0003,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "KTOS": {
@@ -1788,8 +1544,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1342,
-      "n_overlap": 1255,
+      "weight_pct": 0.1349,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "LASR": {
@@ -1798,8 +1554,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0487,
-      "n_overlap": 1252,
+      "weight_pct": 0.0456,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
     },
     "LECO": {
@@ -1808,8 +1564,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1576,
-      "n_overlap": 1254,
+      "weight_pct": 0.1765,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "LHX": {
@@ -1819,7 +1575,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1252,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
     },
     "LIN": {
@@ -1829,7 +1585,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1253,
+      "n_overlap": 1254,
       "yahoo_currency": "USD"
     },
     "LMT": {
@@ -1839,7 +1595,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "LRCX": {
@@ -1848,8 +1604,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 4.731,
-      "n_overlap": 1255,
+      "weight_pct": 4.6608,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "LSCC": {
@@ -1858,8 +1614,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2346,
-      "n_overlap": 1255,
+      "weight_pct": 0.2283,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "LUNR": {
@@ -1868,8 +1624,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0718,
-      "n_overlap": 826,
+      "weight_pct": 0.0579,
+      "n_overlap": 827,
       "yahoo_currency": "USD"
     },
     "LYC AU": {
@@ -1877,9 +1633,9 @@
       "symbol": "LYC.AX",
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": 0.2219,
-      "n_overlap": 1162,
+      "dispersion": 1.0003,
+      "weight_pct": 0.2246,
+      "n_overlap": 1163,
       "yahoo_currency": "AUD"
     },
     "MBLY": {
@@ -1888,8 +1644,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1028,
-      "n_overlap": 904,
+      "weight_pct": 0.098,
+      "n_overlap": 905,
       "yahoo_currency": "USD"
     },
     "MCHP": {
@@ -1898,8 +1654,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.5946,
-      "n_overlap": 1255,
+      "weight_pct": 0.5885,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "MDA CN": {
@@ -1908,8 +1664,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0672,
-      "n_overlap": 1216,
+      "weight_pct": 0.0655,
+      "n_overlap": 1217,
       "yahoo_currency": "CAD"
     },
     "MELE": {
@@ -1918,8 +1674,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0447,
-      "n_overlap": 1228,
+      "weight_pct": 0.0449,
+      "n_overlap": 1229,
       "yahoo_currency": "EUR"
     },
     "MG": {
@@ -1929,7 +1685,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "MKSI": {
@@ -1938,18 +1694,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2532,
-      "n_overlap": 1255,
-      "yahoo_currency": "USD"
-    },
-    "MNTS": {
-      "class": "corporate_action_miss",
-      "symbol": "MNTS",
-      "old_ratio": 0.001,
-      "recent_ratio": 1.0,
-      "dispersion": 1000.0,
-      "weight_pct": 0.0023,
-      "n_overlap": 1203,
+      "weight_pct": 0.2504,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "MOG.A": {
@@ -1959,7 +1705,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "MP": {
@@ -1968,8 +1714,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1455,
-      "n_overlap": 1254,
+      "weight_pct": 0.1295,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "MPWR": {
@@ -1978,8 +1724,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.9032,
-      "n_overlap": 1255,
+      "weight_pct": 0.8942,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "MRK GR": {
@@ -1992,24 +1738,14 @@
       "n_overlap": 1173,
       "yahoo_currency": "EUR"
     },
-    "MRSN FP": {
-      "class": "corporate_action_miss",
-      "symbol": "MRN.PA",
-      "old_ratio": 1.0435,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0435,
-      "weight_pct": null,
-      "n_overlap": 1221,
-      "yahoo_currency": "EUR"
-    },
     "MRVL": {
       "class": "clean",
       "symbol": "MRVL",
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 2.8802,
-      "n_overlap": 1255,
+      "weight_pct": 2.8324,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "MTRN": {
@@ -2019,7 +1755,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "MTSI": {
@@ -2028,8 +1764,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.33,
-      "n_overlap": 1255,
+      "weight_pct": 0.3238,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "MU": {
@@ -2039,7 +1775,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": 5.0,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "MXL": {
@@ -2048,8 +1784,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0899,
-      "n_overlap": 1255,
+      "weight_pct": 0.089,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "NDSN": {
@@ -2059,7 +1795,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "NN": {
@@ -2069,7 +1805,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1112,
+      "n_overlap": 1113,
       "yahoo_currency": "USD"
     },
     "NOC": {
@@ -2079,7 +1815,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "NOVT": {
@@ -2088,8 +1824,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0679,
-      "n_overlap": 1253,
+      "weight_pct": 0.0684,
+      "n_overlap": 1254,
       "yahoo_currency": "USD"
     },
     "NVDA": {
@@ -2099,7 +1835,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": 5.0,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "NVEC": {
@@ -2108,8 +1844,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0062,
-      "n_overlap": 1255,
+      "weight_pct": 0.0061,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "NVMI": {
@@ -2118,8 +1854,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1882,
-      "n_overlap": 1255,
+      "weight_pct": 0.186,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "NVTS": {
@@ -2128,8 +1864,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0693,
-      "n_overlap": 1159,
+      "weight_pct": 0.0741,
+      "n_overlap": 1160,
       "yahoo_currency": "USD"
     },
     "NXPI": {
@@ -2138,8 +1874,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.9243,
-      "n_overlap": 1255,
+      "weight_pct": 0.9182,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "OKLO": {
@@ -2149,7 +1885,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 516,
+      "n_overlap": 517,
       "yahoo_currency": "USD"
     },
     "OLED": {
@@ -2158,8 +1894,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0496,
-      "n_overlap": 1255,
+      "weight_pct": 0.0495,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ON": {
@@ -2168,8 +1904,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.5658,
-      "n_overlap": 1255,
+      "weight_pct": 0.5603,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ONDS": {
@@ -2179,7 +1915,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0004,
       "weight_pct": null,
-      "n_overlap": 1252,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
     },
     "ONTO": {
@@ -2188,8 +1924,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1565,
-      "n_overlap": 1252,
+      "weight_pct": 0.1548,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
     },
     "OUST": {
@@ -2198,19 +1934,9 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0332,
-      "n_overlap": 1252,
+      "weight_pct": 0.031,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
-    },
-    "OVZON SS": {
-      "class": "corporate_action_miss",
-      "symbol": "OVZON.ST",
-      "old_ratio": 1.216,
-      "recent_ratio": 1.0,
-      "dispersion": 1.216,
-      "weight_pct": 0.0083,
-      "n_overlap": 1205,
-      "yahoo_currency": "SEK"
     },
     "PI": {
       "class": "clean",
@@ -2218,8 +1944,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0494,
-      "n_overlap": 1254,
+      "weight_pct": 0.0453,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "PL": {
@@ -2228,8 +1954,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1939,
-      "n_overlap": 1108,
+      "weight_pct": 0.1411,
+      "n_overlap": 1109,
       "yahoo_currency": "USD"
     },
     "PLAB": {
@@ -2238,8 +1964,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0221,
-      "n_overlap": 1255,
+      "weight_pct": 0.0211,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "PLTR": {
@@ -2249,7 +1975,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1252,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
     },
     "POWI": {
@@ -2258,8 +1984,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0531,
-      "n_overlap": 1255,
+      "weight_pct": 0.0527,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "PRCT": {
@@ -2268,8 +1994,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0172,
-      "n_overlap": 1183,
+      "weight_pct": 0.0195,
+      "n_overlap": 1184,
       "yahoo_currency": "USD"
     },
     "PSN": {
@@ -2279,7 +2005,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1254,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "QCOM": {
@@ -2288,8 +2014,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 2.8717,
-      "n_overlap": 1255,
+      "weight_pct": 2.7969,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "QRVO": {
@@ -2298,18 +2024,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1023,
-      "n_overlap": 1255,
-      "yahoo_currency": "USD"
-    },
-    "RBC": {
-      "class": "corporate_action_miss",
-      "symbol": "RBC",
-      "old_ratio": 0.6697,
-      "recent_ratio": 1.0,
-      "dispersion": 1.5111,
-      "weight_pct": null,
-      "n_overlap": 1053,
+      "weight_pct": 0.1063,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "RDW": {
@@ -2318,8 +2034,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0463,
-      "n_overlap": 1190,
+      "weight_pct": 0.0451,
+      "n_overlap": 1191,
       "yahoo_currency": "USD"
     },
     "RGTI": {
@@ -2328,8 +2044,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0001,
-      "weight_pct": 0.1011,
-      "n_overlap": 1068,
+      "weight_pct": 0.0845,
+      "n_overlap": 1069,
       "yahoo_currency": "USD"
     },
     "RKLB": {
@@ -2338,8 +2054,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.8076,
-      "n_overlap": 1195,
+      "weight_pct": 0.8452,
+      "n_overlap": 1196,
       "yahoo_currency": "USD"
     },
     "RMBS": {
@@ -2348,8 +2064,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.204,
-      "n_overlap": 1255,
+      "weight_pct": 0.1931,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ROK": {
@@ -2358,8 +2074,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.5833,
-      "n_overlap": 1255,
+      "weight_pct": 0.6108,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "RPI LN": {
@@ -2368,8 +2084,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0258,
-      "n_overlap": 456,
+      "weight_pct": 0.0333,
+      "n_overlap": 457,
       "yahoo_currency": "GBp"
     },
     "RR": {
@@ -2378,8 +2094,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0001,
-      "weight_pct": 0.0076,
-      "n_overlap": 634,
+      "weight_pct": 0.0066,
+      "n_overlap": 635,
       "yahoo_currency": "USD"
     },
     "RRX": {
@@ -2389,18 +2105,8 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1169,
+      "n_overlap": 1170,
       "yahoo_currency": "USD"
-    },
-    "RSW LN": {
-      "class": "clean",
-      "symbol": "RSW.L",
-      "old_ratio": 1.0,
-      "recent_ratio": 1.0,
-      "dispersion": 1.0,
-      "weight_pct": 0.0599,
-      "n_overlap": 1185,
-      "yahoo_currency": "GBp"
     },
     "SATL": {
       "class": "clean",
@@ -2408,8 +2114,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0146,
-      "n_overlap": 1089,
+      "weight_pct": 0.013,
+      "n_overlap": 1090,
       "yahoo_currency": "USD"
     },
     "SATS": {
@@ -2418,8 +2124,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.4051,
-      "n_overlap": 1255,
+      "weight_pct": 0.4141,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "SCC IT": {
@@ -2429,7 +2135,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 967,
+      "n_overlap": 968,
       "yahoo_currency": "ILA"
     },
     "SERV": {
@@ -2438,8 +2144,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0087,
-      "n_overlap": 471,
+      "weight_pct": 0.0081,
+      "n_overlap": 472,
       "yahoo_currency": "USD"
     },
     "SESG FP": {
@@ -2448,8 +2154,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0484,
-      "n_overlap": 1219,
+      "weight_pct": 0.0496,
+      "n_overlap": 1220,
       "yahoo_currency": "EUR"
     },
     "SIDU": {
@@ -2458,8 +2164,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0002,
-      "weight_pct": 0.0045,
-      "n_overlap": 1118,
+      "weight_pct": 0.005,
+      "n_overlap": 1119,
       "yahoo_currency": "USD"
     },
     "SIE GR": {
@@ -2478,8 +2184,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2094,
-      "n_overlap": 1254,
+      "weight_pct": 0.203,
+      "n_overlap": 1255,
       "yahoo_currency": "USD"
     },
     "SKYT": {
@@ -2488,8 +2194,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0222,
-      "n_overlap": 1252,
+      "weight_pct": 0.0211,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
     },
     "SLAB": {
@@ -2498,8 +2204,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0816,
-      "n_overlap": 1255,
+      "weight_pct": 0.0884,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "SMTC": {
@@ -2508,8 +2214,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1756,
-      "n_overlap": 1255,
+      "weight_pct": 0.1729,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "SNPS": {
@@ -2518,8 +2224,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 1.1012,
-      "n_overlap": 1255,
+      "weight_pct": 1.0938,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "SOI FP": {
@@ -2528,8 +2234,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0755,
-      "n_overlap": 1213,
+      "weight_pct": 0.0742,
+      "n_overlap": 1214,
       "yahoo_currency": "EUR"
     },
     "SPCE": {
@@ -2538,8 +2244,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0054,
-      "n_overlap": 1252,
+      "weight_pct": 0.0056,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
     },
     "SPIR": {
@@ -2548,8 +2254,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0093,
-      "n_overlap": 1204,
+      "weight_pct": 0.0082,
+      "n_overlap": 1205,
       "yahoo_currency": "USD"
     },
     "SQM": {
@@ -2558,8 +2264,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.2612,
-      "n_overlap": 1255,
+      "weight_pct": 0.2648,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "ST": {
@@ -2569,7 +2275,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "STM": {
@@ -2579,7 +2285,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "STMPA": {
@@ -2588,8 +2294,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.7994,
-      "n_overlap": 1229,
+      "weight_pct": 0.7724,
+      "n_overlap": 1230,
       "yahoo_currency": "EUR"
     },
     "SU FP": {
@@ -2599,7 +2305,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1212,
+      "n_overlap": 1213,
       "yahoo_currency": "EUR"
     },
     "SWKS": {
@@ -2608,8 +2314,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1346,
-      "n_overlap": 1255,
+      "weight_pct": 0.136,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "SYM": {
@@ -2618,8 +2324,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.3352,
-      "n_overlap": 997,
+      "weight_pct": 0.3265,
+      "n_overlap": 998,
       "yahoo_currency": "USD"
     },
     "SYNA": {
@@ -2628,8 +2334,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0638,
-      "n_overlap": 1255,
+      "weight_pct": 0.0583,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "TDY": {
@@ -2639,7 +2345,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "TECN SW": {
@@ -2648,8 +2354,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0282,
-      "n_overlap": 1209,
+      "weight_pct": 0.0306,
+      "n_overlap": 1210,
       "yahoo_currency": "CHF"
     },
     "TEL": {
@@ -2659,7 +2365,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "TER": {
@@ -2668,8 +2374,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.6953,
-      "n_overlap": 1255,
+      "weight_pct": 0.6886,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "TRMB": {
@@ -2679,7 +2385,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "TSAT": {
@@ -2688,8 +2394,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0291,
-      "n_overlap": 1137,
+      "weight_pct": 0.0281,
+      "n_overlap": 1138,
       "yahoo_currency": "USD"
     },
     "TSEM": {
@@ -2698,8 +2404,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.3698,
-      "n_overlap": 1255,
+      "weight_pct": 0.3443,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "TSLA": {
@@ -2709,7 +2415,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "TSM": {
@@ -2719,7 +2425,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": 5.0,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "TTMI": {
@@ -2729,7 +2435,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "TXN": {
@@ -2738,8 +2444,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 3.1723,
-      "n_overlap": 1255,
+      "weight_pct": 3.1881,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "UMC": {
@@ -2748,8 +2454,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.6376,
-      "n_overlap": 1255,
+      "weight_pct": 0.6075,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "VSAT": {
@@ -2758,8 +2464,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.1122,
-      "n_overlap": 1255,
+      "weight_pct": 0.1127,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     },
     "WAF GR": {
@@ -2768,7 +2474,7 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0408,
+      "weight_pct": 0.0388,
       "n_overlap": 1211,
       "yahoo_currency": "EUR"
     },
@@ -2778,7 +2484,7 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0682,
+      "weight_pct": 0.069,
       "n_overlap": 1170,
       "yahoo_currency": "EUR"
     },
@@ -2788,8 +2494,8 @@
       "old_ratio": 1.0,
       "recent_ratio": 1.0,
       "dispersion": 1.0,
-      "weight_pct": 0.0334,
-      "n_overlap": 169,
+      "weight_pct": 0.0327,
+      "n_overlap": 170,
       "yahoo_currency": "USD"
     },
     "XPEV": {
@@ -2799,7 +2505,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1252,
+      "n_overlap": 1253,
       "yahoo_currency": "USD"
     },
     "ZBRA": {
@@ -2809,7 +2515,7 @@
       "recent_ratio": 1.0,
       "dispersion": 1.0,
       "weight_pct": null,
-      "n_overlap": 1255,
+      "n_overlap": 1256,
       "yahoo_currency": "USD"
     }
   }

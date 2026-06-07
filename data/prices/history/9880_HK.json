@@ -1,10 +1,7 @@
 {
   "ticker": "9880 HK",
   "yahoo_symbol": "9880.HK",
-  "marketstack_version": "yahoo",
-  "name": "UBTECH Robotics",
-  "sector": "Robotics",
-  "country": "China",
+  "currency": "USD",
   "native_currency": "HKD",
   "series": [
     {
@@ -4766,12 +4763,16 @@
       "low": 14.041783,
       "close": 14.092844,
       "volume": 5086133
+    },
+    {
+      "date": "2026-06-05",
+      "open": 14.271558,
+      "high": 14.807699,
+      "low": 13.735417,
+      "close": 14.080079,
+      "volume": 9483984
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2023-12-29",
-    "latest": "2026-06-04",
-    "n_bars": 595
-  }
+  "last_fetched": "2026-06-07T08:28:50.003734Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "6680 HK",
   "yahoo_symbol": "6680.HK",
-  "marketstack_version": "yahoo",
-  "name": "China Rare Earth Resources",
-  "sector": "Materials",
-  "country": "China",
+  "currency": "USD",
   "native_currency": "HKD",
   "series": [
     {
@@ -8608,10 +8605,6 @@
       "volume": 5277720
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2022-01-14",
-    "latest": "2026-06-05",
-    "n_bars": 1075
-  }
+  "last_fetched": "2026-06-07T08:28:49.719706Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "OVZON SS",
   "yahoo_symbol": "OVZON.ST",
-  "marketstack_version": "yahoo",
-  "name": "Ovzon AB",
-  "sector": "Space",
-  "country": "Sweden",
+  "currency": "USD",
   "native_currency": "SEK",
   "series": [
     {
@@ -10061,13 +10058,9 @@
       "high": 7.379766,
       "low": 6.86029,
       "close": 6.871001,
-      "volume": 1072869
+      "volume": 1072964
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1257
-  }
+  "last_fetched": "2026-06-07T08:28:54.736265Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

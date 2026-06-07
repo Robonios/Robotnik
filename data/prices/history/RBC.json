@@ -1,10 +1,7 @@
 {
   "ticker": "RBC",
   "yahoo_symbol": "RBC",
-  "marketstack_version": "yahoo",
-  "name": "RBC Bearings",
-  "sector": "Robotics",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -10052,14 +10049,10 @@
       "open": 585.1699829101562,
       "high": 594.6500244140625,
       "low": 581.0399780273438,
-      "close": 588.8400268554688,
-      "volume": 198594
+      "close": 590.0900268554688,
+      "volume": 302200
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1256
-  }
+  "last_fetched": "2026-06-07T08:28:56.672853Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

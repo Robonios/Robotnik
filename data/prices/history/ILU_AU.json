@@ -1,10 +1,7 @@
 {
   "ticker": "ILU AU",
   "yahoo_symbol": "ILU.AX",
-  "marketstack_version": "yahoo",
-  "name": "Iluka Resources",
-  "sector": "Materials",
-  "country": "Australia",
+  "currency": "USD",
   "native_currency": "AUD",
   "series": [
     {
@@ -9745,10 +9742,10 @@
     },
     {
       "date": "2026-03-29",
-      "open": 4.425682,
-      "high": 4.559275,
-      "low": 4.391428,
-      "close": 4.507893,
+      "open": 4.446824,
+      "high": 4.581055,
+      "low": 4.412406,
+      "close": 4.529428,
       "volume": 1809913
     },
     {
@@ -10128,10 +10125,6 @@
       "volume": 1020046
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1265
-  }
+  "last_fetched": "2026-06-07T08:28:54.396782Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "010060 KS",
   "yahoo_symbol": "010060.KS",
-  "marketstack_version": "yahoo",
-  "name": "OCI Holdings",
-  "sector": "Materials",
-  "country": "South Korea",
+  "currency": "USD",
   "native_currency": "KRW",
   "series": [
     {
@@ -9441,10 +9438,10 @@
     },
     {
       "date": "2026-04-06",
-      "open": 147.229505,
-      "high": 149.550691,
-      "low": 138.939556,
-      "close": 143.581927,
+      "open": 146.375162,
+      "high": 148.682878,
+      "low": 138.133317,
+      "close": 142.74875,
       "volume": 234415
     },
     {
@@ -9768,10 +9765,6 @@
       "volume": 211984
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1220
-  }
+  "last_fetched": "2026-06-07T08:28:54.202628Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

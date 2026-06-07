@@ -1,10 +1,7 @@
 {
   "ticker": "6488 TT",
   "yahoo_symbol": "6488.TWO",
-  "marketstack_version": "yahoo",
-  "name": "GlobalWafers",
-  "sector": "Materials",
-  "country": "Taiwan",
+  "currency": "USD",
   "native_currency": "TWD",
   "series": [
     {
@@ -9673,10 +9670,10 @@
     },
     {
       "date": "2026-05-29",
-      "open": 32.31352,
-      "high": 32.31352,
-      "low": 31.517621,
-      "close": 32.31352,
+      "open": 32.300154,
+      "high": 32.300154,
+      "low": 31.504584,
+      "close": 32.300154,
       "volume": 10764561
     },
     {
@@ -9705,17 +9702,21 @@
     },
     {
       "date": "2026-06-04",
-      "open": 29.486916,
-      "high": 29.677358,
-      "low": 27.614227,
-      "close": 27.614227,
+      "open": 29.489255,
+      "high": 29.679713,
+      "low": 27.616418,
+      "close": 27.616418,
       "volume": 1425562
+    },
+    {
+      "date": "2026-06-05",
+      "open": 25.96169,
+      "high": 25.96169,
+      "low": 25.328478,
+      "close": 25.676745,
+      "volume": 2601168
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-04",
-    "n_bars": 1213
-  }
+  "last_fetched": "2026-06-07T08:28:48.520990Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

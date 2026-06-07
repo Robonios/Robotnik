@@ -1,10 +1,7 @@
 {
   "ticker": "VOYG",
   "yahoo_symbol": "VOYG",
-  "marketstack_version": "yahoo",
-  "name": "Voyager Technologies",
-  "sector": "Space",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -1987,15 +1984,11 @@
       "date": "2026-06-05",
       "open": 47.20000076293945,
       "high": 47.43000030517578,
-      "low": 41.81999969482422,
-      "close": 42.08000183105469,
-      "volume": 1135957
+      "low": 41.31999969482422,
+      "close": 41.54999923706055,
+      "volume": 2253100
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2025-06-11",
-    "latest": "2026-06-05",
-    "n_bars": 248
-  }
+  "last_fetched": "2026-06-07T08:28:52.610676Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "464A JP",
   "yahoo_symbol": "464A.T",
-  "marketstack_version": "yahoo",
-  "name": "QPS Holdings",
-  "sector": "Space",
-  "country": "Japan",
+  "currency": "USD",
   "native_currency": "JPY",
   "series": [
     {
@@ -4545,10 +4542,10 @@
     },
     {
       "date": "2026-04-06",
-      "open": 14.841906,
-      "high": 15.42431,
-      "low": 14.816856,
-      "close": 15.11119,
+      "open": 14.849543,
+      "high": 15.432247,
+      "low": 14.824481,
+      "close": 15.118965,
       "volume": 1995200
     },
     {
@@ -4862,12 +4859,16 @@
       "low": 16.270093,
       "close": 17.02102,
       "volume": 3895500
+    },
+    {
+      "date": "2026-06-05",
+      "open": 18.734845,
+      "high": 19.798259,
+      "low": 17.721475,
+      "close": 18.259437,
+      "volume": 3751100
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2023-12-06",
-    "latest": "2026-06-04",
-    "n_bars": 607
-  }
+  "last_fetched": "2026-06-07T08:28:50.341465Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

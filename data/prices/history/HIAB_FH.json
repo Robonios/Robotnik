@@ -1,10 +1,7 @@
 {
   "ticker": "HIAB FH",
   "yahoo_symbol": "HIAB.HE",
-  "marketstack_version": "yahoo",
-  "name": "Hiab Oyj",
-  "sector": "Robotics",
-  "country": "Finland",
+  "currency": "USD",
   "native_currency": "EUR",
   "series": [
     {
@@ -10060,14 +10057,10 @@
       "open": 67.919398,
       "high": 67.919398,
       "low": 66.522602,
-      "close": 66.522602,
-      "volume": 42480
+      "close": 66.639,
+      "volume": 24680
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1257
-  }
+  "last_fetched": "2026-06-07T08:28:52.793485Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

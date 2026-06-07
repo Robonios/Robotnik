@@ -1,10 +1,7 @@
 {
   "ticker": "KGX GR",
   "yahoo_symbol": "KGX.DE",
-  "marketstack_version": "yahoo",
-  "name": "Kion Group",
-  "sector": "Robotics",
-  "country": "Germany",
+  "currency": "USD",
   "native_currency": "EUR",
   "series": [
     {
@@ -10205,13 +10202,9 @@
       "high": 48.375842,
       "low": 46.95576,
       "close": 47.025602,
-      "volume": 263565
+      "volume": 264060
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1275
-  }
+  "last_fetched": "2026-06-07T08:28:53.170041Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "2432 HK",
   "yahoo_symbol": "2432.HK",
-  "marketstack_version": "yahoo",
-  "name": "Shenzhen Dobot Corp",
-  "sector": "Robotics",
-  "country": "China",
+  "currency": "USD",
   "native_currency": "HKD",
   "series": [
     {
@@ -2830,12 +2827,16 @@
       "low": 3.908722,
       "close": 3.964889,
       "volume": 1836513
+    },
+    {
+      "date": "2026-06-05",
+      "open": 3.959783,
+      "high": 3.995525,
+      "low": 3.755539,
+      "close": 3.855108,
+      "volume": 4577540
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2024-12-23",
-    "latest": "2026-06-04",
-    "n_bars": 353
-  }
+  "last_fetched": "2026-06-07T08:28:49.288981Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "IFX GR",
   "yahoo_symbol": "IFX.DE",
-  "marketstack_version": "yahoo",
-  "name": "Infineon Technologies",
-  "sector": "Robotics",
-  "country": "Germany",
+  "currency": "USD",
   "native_currency": "EUR",
   "series": [
     {
@@ -10205,13 +10202,9 @@
       "high": 95.354878,
       "low": 89.54652,
       "close": 89.977204,
-      "volume": 8243592
+      "volume": 8277564
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1275
-  }
+  "last_fetched": "2026-06-07T08:28:53.004596Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

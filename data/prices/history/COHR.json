@@ -1,10 +1,7 @@
 {
   "ticker": "COHR",
   "yahoo_symbol": "COHR",
-  "marketstack_version": "yahoo",
-  "name": "Coherent Corp",
-  "sector": "Robotics",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -10050,16 +10047,12 @@
     {
       "date": "2026-06-05",
       "open": 405.2699890136719,
-      "high": 417.75,
+      "high": 417.760009765625,
       "low": 375.0899963378906,
-      "close": 382.3399963378906,
-      "volume": 4707107
+      "close": 376.989990234375,
+      "volume": 6392000
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1256
-  }
+  "last_fetched": "2026-06-07T08:28:56.160839Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

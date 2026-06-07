@@ -1,10 +1,7 @@
 {
   "ticker": "2498 HK",
   "yahoo_symbol": "2498.HK",
-  "marketstack_version": "yahoo",
-  "name": "RoboSense Technology",
-  "sector": "Robotics",
-  "country": "China",
+  "currency": "USD",
   "native_currency": "HKD",
   "series": [
     {
@@ -4734,12 +4731,16 @@
       "low": 3.967442,
       "close": 3.995525,
       "volume": 3531281
+    },
+    {
+      "date": "2026-06-05",
+      "open": 4.051693,
+      "high": 4.184451,
+      "low": 3.921487,
+      "close": 4.112966,
+      "volume": 7589666
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2024-01-05",
-    "latest": "2026-06-04",
-    "n_bars": 591
-  }
+  "last_fetched": "2026-06-07T08:28:49.428542Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

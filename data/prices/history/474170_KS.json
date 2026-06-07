@@ -1,10 +1,7 @@
 {
   "ticker": "474170 KS",
   "yahoo_symbol": "474170.KQ",
-  "marketstack_version": "yahoo",
-  "name": "Lumir Inc",
-  "sector": "Space",
-  "country": "South Korea",
+  "currency": "USD",
   "native_currency": "KRW",
   "series": [
     {
@@ -2833,10 +2830,10 @@
     },
     {
       "date": "2026-04-06",
-      "open": 8.973041,
-      "high": 9.198528,
-      "low": 8.581756,
-      "close": 8.754187,
+      "open": 8.920973,
+      "high": 9.145151,
+      "low": 8.531958,
+      "close": 8.703388,
       "volume": 310055
     },
     {
@@ -3150,12 +3147,16 @@
       "low": 6.590464,
       "close": 6.916725,
       "volume": 153321
+    },
+    {
+      "date": "2026-06-05",
+      "open": 6.586941,
+      "high": 7.086639,
+      "low": 6.586941,
+      "close": 6.878972,
+      "volume": 179226
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2024-10-21",
-    "latest": "2026-06-04",
-    "n_bars": 393
-  }
+  "last_fetched": "2026-06-07T08:28:48.365439Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

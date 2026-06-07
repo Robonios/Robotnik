@@ -1,10 +1,7 @@
 {
   "ticker": "9660 HK",
   "yahoo_symbol": "9660.HK",
-  "marketstack_version": "yahoo",
-  "name": "Horizon Robotics",
-  "sector": "Robotics",
-  "country": "China",
+  "currency": "USD",
   "native_currency": "HKD",
   "series": [
     {
@@ -3166,12 +3163,16 @@
       "low": 0.652305,
       "close": 0.659964,
       "volume": 125967816
+    },
+    {
+      "date": "2026-06-05",
+      "open": 0.652305,
+      "high": 0.658687,
+      "low": 0.63188,
+      "close": 0.639539,
+      "volume": 192349167
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2024-10-24",
-    "latest": "2026-06-04",
-    "n_bars": 395
-  }
+  "last_fetched": "2026-06-07T08:28:49.865016Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "SRTA",
   "yahoo_symbol": "SRTA",
-  "marketstack_version": "yahoo",
-  "name": "Strata Critical Medical",
-  "sector": "Robotics",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -10051,15 +10048,11 @@
       "date": "2026-06-05",
       "open": 6.25,
       "high": 6.275000095367432,
-      "low": 5.885000228881836,
-      "close": 5.90500020980835,
-      "volume": 591288
+      "low": 5.769999980926514,
+      "close": 5.789999961853027,
+      "volume": 1022900
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1256
-  }
+  "last_fetched": "2026-06-07T08:28:52.461259Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

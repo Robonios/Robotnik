@@ -1,10 +1,7 @@
 {
   "ticker": "2395 TT",
   "yahoo_symbol": "2395.TW",
-  "marketstack_version": "yahoo",
-  "name": "Advantech Co",
-  "sector": "Robotics",
-  "country": "Taiwan",
+  "currency": "USD",
   "native_currency": "TWD",
   "series": [
     {
@@ -9673,10 +9670,10 @@
     },
     {
       "date": "2026-05-29",
-      "open": 15.790646,
-      "high": 16.39553,
-      "low": 15.663303,
-      "close": 15.75881,
+      "open": 15.784115,
+      "high": 16.388748,
+      "low": 15.656823,
+      "close": 15.752292,
       "volume": 10455019
     },
     {
@@ -9705,25 +9702,21 @@
     },
     {
       "date": "2026-06-04",
-      "open": 16.15591,
-      "high": 17.108124,
-      "low": 16.124169,
-      "close": 16.568536,
+      "open": 16.157191,
+      "high": 17.109482,
+      "low": 16.125448,
+      "close": 16.569851,
       "volume": 4793492
     },
     {
       "date": "2026-06-05",
-      "open": 16.190355,
-      "high": 16.317089,
-      "low": 15.620049,
-      "close": 15.7151,
+      "open": 16.178565,
+      "high": 16.305208,
+      "low": 15.608675,
+      "close": 15.703656,
       "volume": 5052018
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1214
-  }
+  "last_fetched": "2026-06-07T08:28:53.862799Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "MRSN FP",
   "yahoo_symbol": "MRN.PA",
-  "marketstack_version": "yahoo",
-  "name": "Mersen",
-  "sector": "Materials",
-  "country": "France",
+  "currency": "USD",
   "native_currency": "EUR",
   "series": [
     {
@@ -10256,10 +10253,6 @@
       "volume": 103724
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1281
-  }
+  "last_fetched": "2026-06-07T08:28:56.517703Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,10 +1,7 @@
 {
   "ticker": "JBTM",
   "yahoo_symbol": "JBTM",
-  "marketstack_version": "yahoo",
-  "name": "JBT Marel Corp",
-  "sector": "Robotics",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -10051,15 +10048,11 @@
       "date": "2026-06-05",
       "open": 124.4800033569336,
       "high": 125.5199966430664,
-      "low": 124.02999877929688,
-      "close": 124.94000244140625,
-      "volume": 127862
+      "low": 123.73999786376953,
+      "close": 124.0,
+      "volume": 307800
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1256
-  }
+  "last_fetched": "2026-06-07T08:28:51.862609Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

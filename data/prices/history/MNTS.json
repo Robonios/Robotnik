@@ -1,10 +1,7 @@
 {
   "ticker": "MNTS",
   "yahoo_symbol": "MNTS",
-  "marketstack_version": "yahoo",
-  "name": "Momentus",
-  "sector": "Space",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -10049,17 +10046,13 @@
     },
     {
       "date": "2026-06-05",
-      "open": 16.898099899291992,
+      "open": 16.898000717163086,
       "high": 17.690000534057617,
       "low": 14.109999656677246,
-      "close": 15.050000190734863,
-      "volume": 7262356
+      "close": 14.90999984741211,
+      "volume": 8000300
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1256
-  }
+  "last_fetched": "2026-06-07T08:28:54.916175Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

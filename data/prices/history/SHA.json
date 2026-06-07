@@ -1,10 +1,7 @@
 {
   "ticker": "SHA",
   "yahoo_symbol": "SHA0.DE",
-  "marketstack_version": "yahoo",
-  "name": "Schaeffler AG",
-  "sector": "Robotics",
-  "country": "Germany",
+  "currency": "USD",
   "native_currency": "EUR",
   "series": [
     {
@@ -10205,13 +10202,9 @@
       "high": 11.53524,
       "low": 11.1162,
       "close": 11.30244,
-      "volume": 797684
+      "volume": 798684
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1275
-  }
+  "last_fetched": "2026-06-07T08:28:53.682706Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

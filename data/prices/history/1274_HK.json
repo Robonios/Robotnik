@@ -1,10 +1,7 @@
 {
   "ticker": "1274 HK",
   "yahoo_symbol": "1274.HK",
-  "marketstack_version": "yahoo",
-  "name": "iMotion Automotive",
-  "sector": "Robotics",
-  "country": "China",
+  "currency": "USD",
   "native_currency": "HKD",
   "series": [
     {
@@ -4806,12 +4803,16 @@
       "low": 0.469761,
       "close": 0.472315,
       "volume": 580500
+    },
+    {
+      "date": "2026-06-05",
+      "open": 0.476144,
+      "high": 0.527205,
+      "low": 0.460826,
+      "close": 0.525929,
+      "volume": 718400
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2023-12-20",
-    "latest": "2026-06-04",
-    "n_bars": 600
-  }
+  "last_fetched": "2026-06-07T08:28:48.664337Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

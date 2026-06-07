@@ -1,10 +1,7 @@
 {
   "ticker": "300757 C2",
   "yahoo_symbol": "300757.SZ",
-  "marketstack_version": "yahoo",
-  "name": "Robotechnik Intelligent",
-  "sector": "Robotics",
-  "country": "China",
+  "currency": "USD",
   "native_currency": "CNY",
   "series": [
     {
@@ -9696,10 +9693,6 @@
       "volume": 8660334
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1211
-  }
+  "last_fetched": "2026-06-07T08:28:55.431733Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

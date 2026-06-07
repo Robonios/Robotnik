@@ -1,10 +1,7 @@
 {
   "ticker": "AI FP",
   "yahoo_symbol": "AI.PA",
-  "marketstack_version": "yahoo",
-  "name": "Air Liquide",
-  "sector": "Materials",
-  "country": "France",
+  "currency": "USD",
   "native_currency": "EUR",
   "series": [
     {
@@ -10217,49 +10214,45 @@
     },
     {
       "date": "2026-06-01",
-      "open": 206.949416,
-      "high": 207.508419,
-      "low": 205.435433,
-      "close": 206.62333,
-      "volume": 773463
+      "open": 188.135838,
+      "high": 188.644018,
+      "low": 186.759486,
+      "close": 187.839392,
+      "volume": 850809
     },
     {
       "date": "2026-06-02",
-      "open": 206.676556,
-      "high": 207.818153,
-      "low": 205.453407,
-      "close": 205.651438,
-      "volume": 672933
+      "open": 187.88778,
+      "high": 188.925606,
+      "low": 186.775831,
+      "close": 186.955856,
+      "volume": 740226
     },
     {
       "date": "2026-06-03",
-      "open": 203.848933,
-      "high": 211.398033,
-      "low": 203.8257,
-      "close": 208.935853,
-      "volume": 1020842
+      "open": 185.317199,
+      "high": 192.180032,
+      "low": 185.296093,
+      "close": 189.941693,
+      "volume": 1122926
     },
     {
       "date": "2026-06-04",
-      "open": 209.52,
-      "high": 212.267041,
-      "low": 208.588796,
-      "close": 211.475511,
-      "volume": 895592
+      "open": 190.472732,
+      "high": 192.970032,
+      "low": 189.626179,
+      "close": 192.250471,
+      "volume": 985151
     },
     {
       "date": "2026-06-05",
-      "open": 211.848,
-      "high": 214.408796,
-      "low": 211.848,
-      "close": 213.477593,
-      "volume": 847290
+      "open": 192.589089,
+      "high": 194.917089,
+      "low": 192.589089,
+      "close": 194.070536,
+      "volume": 932019
     }
   ],
-  "source": "Yahoo (corporate-action route) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1281
-  }
+  "last_fetched": "2026-06-07T08:28:56.009395Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

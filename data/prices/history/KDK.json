@@ -1,10 +1,7 @@
 {
   "ticker": "KDK",
   "yahoo_symbol": "KDK",
-  "marketstack_version": "yahoo",
-  "name": "Kodiak AI",
-  "sector": "Robotics",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -1403,15 +1400,11 @@
       "date": "2026-06-05",
       "open": 6.829999923706055,
       "high": 6.920000076293945,
-      "low": 6.440000057220459,
-      "close": 6.454999923706055,
-      "volume": 610273
+      "low": 6.349999904632568,
+      "close": 6.380000114440918,
+      "volume": 821700
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2025-09-25",
-    "latest": "2026-06-05",
-    "n_bars": 175
-  }
+  "last_fetched": "2026-06-07T08:28:52.021781Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

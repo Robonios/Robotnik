@@ -1,10 +1,7 @@
 {
   "ticker": "RTX",
   "yahoo_symbol": "RTX",
-  "marketstack_version": "yahoo",
-  "name": "RTX Corp",
-  "sector": "Space",
-  "country": "United States",
+  "currency": "USD",
   "native_currency": "USD",
   "series": [
     {
@@ -10052,14 +10049,10 @@
       "open": 179.1699981689453,
       "high": 182.52999877929688,
       "low": 178.00999450683594,
-      "close": 182.0749969482422,
-      "volume": 2879112
+      "close": 180.99000549316406,
+      "volume": 6269700
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1256
-  }
+  "last_fetched": "2026-06-07T08:28:51.228045Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

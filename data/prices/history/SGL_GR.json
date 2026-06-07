@@ -1,10 +1,7 @@
 {
   "ticker": "SGL GR",
   "yahoo_symbol": "SGL.DE",
-  "marketstack_version": "yahoo",
-  "name": "SGL Carbon",
-  "sector": "Materials",
-  "country": "Germany",
+  "currency": "USD",
   "native_currency": "EUR",
   "series": [
     {
@@ -10205,13 +10202,9 @@
       "high": 6.00624,
       "low": 5.529,
       "close": 5.54064,
-      "volume": 256501
+      "volume": 256651
     }
   ],
-  "source": "Yahoo (override) (USD via daily FX)",
-  "_rebackfill": {
-    "earliest": "2021-06-07",
-    "latest": "2026-06-05",
-    "n_bars": 1275
-  }
+  "last_fetched": "2026-06-07T08:28:53.517941Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }

@@ -1,9 +1,8 @@
 {
   "_meta": {
-    "updated_at": "2026-06-05T19:00:48.727848+00:00Z",
-    "count": 19,
-    "purpose": "v2 split_factor misses bonus/scrip/rights; these names' HISTORY routes to Yahoo. Detected by sweep_v2_vs_yahoo (sustained-ratio) + guard_corporate_actions (jump, standing).",
-    "source": "sweep_v2_vs_yahoo.py sustained-ratio enumeration"
+    "updated_at": "2026-06-07T08:29:45.811683+00:00Z",
+    "count": 20,
+    "purpose": "v2 split_factor misses bonus/scrip/rights; these names' HISTORY routes to Yahoo"
   },
   "tickers": {
     "2395 TT": {
@@ -176,6 +175,18 @@
       "weight_pct": null,
       "detected_by": "sweep_v2_vs_yahoo",
       "recorded_at": "2026-06-05T19:00:48.727889+00:00Z"
+    },
+    "AGPXX": {
+      "reason": "corporate_action_miss \u2014 v2 under-adjusts vs Yahoo (sustained-ratio sweep)",
+      "yahoo_symbol": "AGPXX",
+      "evidence": [
+        {
+          "old_ratio": 0.9214,
+          "recent_ratio": 1.0
+        }
+      ],
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-07T08:29:45.811668+00:00Z"
     }
   }
 }
