@@ -15,20 +15,30 @@ Structured intelligence platform for robotics and semiconductors — like Messar
 
 ```
 Robotnik/
-├── index.html              # Dashboard homepage (Robotnik Index, price chart, market table)
+├── index.html              # Home page — "The Frontier Stack" graph + index family (reads data/home.json)
+├── assets.html             # Frontier Assets (market table / registry)
+├── funding.html            # Funding Ops
+├── research.html           # Research index (coming-soon placeholder)
 ├── intelligence.html       # News/research feed with filters
 ├── signals.html            # Placeholder (greyed out)
 ├── commodities.html        # Placeholder (greyed out)
-├── funding.html            # Placeholder (greyed out)
+├── portfolio.html          # Placeholder (greyed out)
 ├── thesis.html             # Mission directive + roadmap
 ├── recreation.html         # Tetris game
 ├── tetris.html             # Legacy landing/teaser page
 ├── cosmonaut-bg.png        # Background image
 ├── css/
-│   └── style.css           # All styles
+│   ├── style.css           # Shared styles (chrome, dashboard, tables)
+│   ├── typography.css      # Space Grotesk / Mulish type system
+│   ├── frontier-stack.css  # Home-page Frontier Stack graph styles
+│   └── home.css            # Home-page sections + Build-Brief token palette
 ├── js/
-│   ├── main.js             # Main JavaScript
-│   └── nav.js              # Left sidebar navigation (injected on all pages)
+│   ├── main.js             # Legacy dashboard JS (NOT loaded on the new home page)
+│   ├── nav.js              # Left sidebar navigation (injected on all pages)
+│   ├── assets.js           # Frontier Assets page
+│   ├── funding.js          # Funding Ops page
+│   ├── frontier-stack.js   # Reusable FrontierStack graph module
+│   └── home.js             # Home-page controller (reads data/home.json)
 ├── requirements.txt        # Python dependencies
 ├── .env                    # API keys (gitignored)
 ├── .gitignore
@@ -63,6 +73,7 @@ Robotnik/
 │   │   ├── eodhd_tickers.json
 │   │   ├── coingecko_ids.json
 │   │   └── pending_tickers.json
+│   ├── home.json           # Home-page data contract (PLACEHOLDER — research preview; see js/home.js)
 │   ├── news.json
 │   ├── research.json
 │   ├── filings.json
@@ -77,20 +88,22 @@ Robotnik/
 
 ## Design System
 
-- **Font**: Roboto Mono (monospace) — ONLY font allowed, never use any other font
-- **Background**: `#111318` (dark theme)
+- **Fonts**: **Space Grotesk** (headings, labels, numerals — with `font-variant-numeric: tabular-nums`) and **Mulish** (body / prose). Roboto Mono remains only as a stack fallback. Loaded via Google Fonts; the type system lives in `css/typography.css` (local font files in `assets/fonts/`). The earlier "Roboto Mono only" rule is retired.
+- **Background**: `#111318` (dark theme). The home page uses a darker `#0A0B0E` base and the Build-Brief token palette layered in `css/home.css`.
 - **Yellow accent**: `#F5D921` (primary brand color)
-- **CSS variables are defined in `:root` in `css/style.css`**
+- **CSS variables are defined in `:root` in `css/style.css`** (home-page-only tokens in `css/home.css`)
 
 ## Site Pages
 
-1. **Dashboard** (`index.html`) — Robotnik Composite Index, price chart, market table with all 347 entities
-2. **Intelligence** (`intelligence.html`) — News/research feed with type and category filters
-3. **Signals** (`signals.html`) — Placeholder, greyed out in nav
-4. **Commodities** (`commodities.html`) — Placeholder, greyed out in nav
-5. **Funding** (`funding.html`) — Placeholder, greyed out in nav
-6. **Thesis** (`thesis.html`) — Mission directive and roadmap
-7. **Recreation** (`recreation.html`) — Tetris game (Recreation Bay)
+1. **Home** (`index.html`) — "The Frontier Stack" graph centerpiece (Stack⇄Flat morph, dot doorway, disruption cascade), index family, sector cards, research rail. Reads `data/home.json` (placeholder values — research preview).
+2. **Frontier Assets** (`assets.html`) — market table / asset registry
+3. **Funding Ops** (`funding.html`) — private-market funding rounds
+4. **Research** (`research.html`) — research index (coming-soon placeholder)
+5. **Intelligence** (`intelligence.html`) — News/research feed with type and category filters
+6. **Signals** (`signals.html`) — Placeholder, greyed out in nav
+7. **Commodities** (`commodities.html`) — Placeholder, greyed out in nav
+8. **Thesis** (`thesis.html`) — Mission directive and roadmap
+9. **Recreation** (`recreation.html`) — Tetris game (Recreation Bay)
 
 ## Data
 

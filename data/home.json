@@ -1,0 +1,134 @@
+{
+  "_placeholder": "PLACEHOLDER DATA — research preview. All values here are illustrative and NOT live. The home page reads exclusively from this file; swap it for a live-generated equivalent (same shape) to move the page to real data. See the Robotnik Build Brief §7 for the contract.",
+  "meta": { "universe": 197, "base": 1000, "baseDate": "2025-03-31", "preview": true },
+
+  "indexes": {
+    "composite": {
+      "name": "Robotnik Composite Index",
+      "value": 3433.56,
+      "change1y": 197.85,
+      "flagship": true,
+      "blurb": "The flagship. Market-cap weighted across the full public frontier universe.",
+      "series": [1150, 1180, 1240, 1210, 1300, 1380, 1450, 1420, 1520, 1610, 1700, 1680, 1790, 1900, 2050, 2010, 2180, 2320, 2500, 2460, 2650, 2820, 3010, 2980, 3210, 3433.56],
+      "methodologyUrl": "/methodology/composite",
+      "chartUrl": "/index/composite"
+    },
+    "bottleneck": {
+      "name": "Bottleneck-Weighted",
+      "value": 3641.0,
+      "change1y": null,
+      "blurb": "Re-weights the universe by bottleneck criticality — chokepoints carry more.",
+      "series": [1200, 1250, 1320, 1290, 1390, 1480, 1560, 1530, 1650, 1760, 1880, 1850, 1990, 2140, 2300, 2260, 2450, 2620, 2820, 2780, 3000, 3200, 3410, 3380, 3560, 3641.0],
+      "methodologyUrl": "/methodology/bottleneck",
+      "chartUrl": "/index/bottleneck"
+    },
+    "public": {
+      "name": "Public Equities",
+      "value": null,
+      "change1y": null,
+      "calibrating": true,
+      "blurb": "Listed names only — the investable public surface of the stack.",
+      "series": [],
+      "methodologyUrl": "/methodology/public",
+      "chartUrl": "/index/public"
+    },
+    "commodities": {
+      "name": "Commodities",
+      "status": "soon",
+      "blurb": "Rare earths, wafers, gases — the material inputs beneath the stack.",
+      "methodologyUrl": "/methodology/commodities"
+    },
+    "private": {
+      "name": "Private Market (RPCI)",
+      "value": 1540.0,
+      "cadence": "monthly",
+      "change1y": null,
+      "blurb": "Robotnik Private Capital Index — the pre-IPO farm team, marked monthly.",
+      "series": [1000, 1040, 1075, 1110, 1095, 1160, 1210, 1255, 1240, 1320, 1380, 1420, 1465, 1505, 1540.0],
+      "methodologyUrl": "/methodology/rpci",
+      "chartUrl": "/index/rpci"
+    }
+  },
+
+  "product": {
+    "name": "Robotnik Companion",
+    "kind": "chrome-extension",
+    "status": "mvp",
+    "tagline": "The ledger, wherever you read.",
+    "blurb": "A browser companion that detects frontier-stack assets on any page and surfaces a condensed read — classification, bottleneck rating, dependency, market — with a jump to the full 9-layer ledger.",
+    "demo": {
+      "asset": "ASML Holding",
+      "ticker": "ASML",
+      "sector": "Semiconductors",
+      "tier": "Capital Equipment",
+      "criticality": "critical",
+      "line": "Sole-source EUV. The single most critical node in the public universe."
+    },
+    "url": "/product"
+  },
+
+  "tiers": ["Upstream Materials", "IP & Design", "Capital Equip.", "Fabrication", "Components", "System Integ.", "Deployment", "Software & Svcs"],
+
+  "sectors": [
+    { "key": "space",     "name": "Space",              "hue": "#E8675C", "tierLabel": "top",  "index": { "value": 4125.00, "change24h": -4.81, "changeYTD": 79.5 },  "public": 31, "private": 13, "commodities": 0 },
+    { "key": "robotics",  "name": "Robotics",           "hue": "#3FB68F",                       "index": { "value": 2213.68, "change24h": 1.57,  "changeYTD": 41.5 },  "public": 82, "private": 20, "commodities": 0 },
+    { "key": "semi",      "name": "Semiconductors",     "hue": "#5B8DEF",                       "index": { "value": 3524.69, "change24h": 1.42,  "changeYTD": 97.6 },  "public": 62, "private": 11, "commodities": 0 },
+    { "key": "materials", "name": "Materials & Inputs", "hue": "#A98BEA", "tierLabel": "base", "index": { "value": 3736.11, "change24h": 1.13,  "changeYTD": 116.9 }, "public": 22, "private": 3,  "commodities": 18 }
+  ],
+
+  "cells": [
+    { "sector": "semi", "tier": 3, "stage": "Equipment",             "criticality": "critical", "public": 9,  "private": 1,  "commodities": 0, "sampleNames": "ASML · Applied Materials · Lam" },
+    { "sector": "semi", "tier": 4, "stage": "Foundry",               "criticality": "critical", "public": 6,  "private": 0,  "commodities": 0, "sampleNames": "TSMC · Intel" },
+    { "sector": "semi", "tier": 2, "stage": "Fabless Design",        "criticality": "high",     "public": 18, "private": 4,  "commodities": 0, "sampleNames": "NVIDIA · Broadcom · AMD" },
+    { "sector": "semi", "tier": 5, "stage": "Memory",                "criticality": "medium",   "public": 29, "private": 3,  "commodities": 0, "sampleNames": "Micron · SK Hynix" },
+    { "sector": "robotics", "tier": 5, "stage": "Motion Control",    "criticality": "medium",   "public": 22, "private": 3,  "commodities": 0, "sampleNames": "Fanuc · Yaskawa · Nidec" },
+    { "sector": "robotics", "tier": 6, "stage": "System Integration","criticality": "medium",   "public": 40, "private": 12, "commodities": 0, "sampleNames": "ABB · Figure · 1X" },
+    { "sector": "robotics", "tier": 7, "stage": "Field & Surgical",  "criticality": "low",      "public": 20, "private": 5,  "commodities": 0, "sampleNames": "Intuitive Surgical" },
+    { "sector": "space", "tier": 5, "stage": "Components",           "criticality": "medium",   "public": 11, "private": 2,  "commodities": 0, "sampleNames": "" },
+    { "sector": "space", "tier": 6, "stage": "Prime Contractors",    "criticality": "high",     "public": 7,  "private": 1,  "commodities": 0, "sampleNames": "Lockheed Martin · Northrop Grumman" },
+    { "sector": "space", "tier": 7, "stage": "Launch",               "criticality": "high",     "public": 6,  "private": 4,  "commodities": 0, "sampleNames": "Rocket Lab · Firefly" },
+    { "sector": "space", "tier": 8, "stage": "Satellite Svcs",       "criticality": "medium",   "public": 7,  "private": 6,  "commodities": 0, "sampleNames": "AST SpaceMobile · Planet" },
+    { "sector": "materials", "tier": 1, "stage": "Rare earths · wafers · gases", "criticality": "high", "public": 18, "private": 2, "commodities": 16, "sampleNames": "MP Materials · Lynas · ◆ neon · ◆ NdFeB" },
+    { "sector": "materials", "tier": 5, "stage": "Substrates",       "criticality": "medium",   "public": 4,  "private": 1,  "commodities": 2,  "sampleNames": "Unimicron · Ibiden" }
+  ],
+
+  "dependencyEdges": {
+    "materials": { "semi": 0.9, "robotics": 0.5, "space": 0.5 },
+    "semi":      { "space": 0.8, "robotics": 0.85 },
+    "robotics":  { "semi": 0.4 },
+    "space":     {}
+  },
+
+  "ledgerLayers": [
+    { "key": "identity",       "name": "Identity",       "access": "free", "blurb": "Name, ticker, domicile, listing." },
+    { "key": "classification", "name": "Classification", "access": "free", "blurb": "Sector, value-chain tier, stage." },
+    { "key": "bottleneck",     "name": "Bottleneck",     "access": "free", "blurb": "Criticality rating and rationale." },
+    { "key": "dependency",     "name": "Dependency",     "access": "free", "blurb": "Upstream and downstream edges." },
+    { "key": "market",         "name": "Market",         "access": "free", "blurb": "Price, market cap, index weight." },
+    { "key": "capital",        "name": "Capital",        "access": "paid", "blurb": "Funding history, cap table signal." },
+    { "key": "policy",         "name": "Policy",         "access": "paid", "blurb": "Export controls, subsidies, sanctions." },
+    { "key": "geography",      "name": "Geography",      "access": "paid", "blurb": "Facilities, jurisdiction concentration." },
+    { "key": "editorial",      "name": "Editorial",      "access": "paid", "blurb": "Robotnik analyst take." }
+  ],
+
+  "articles": [
+    { "id": "lithography", "title": "The lithography chokepoint", "summary": "EUV is a single-supplier dependency — every leading-edge fab runs through one firm in Veldhoven. We rate it the most critical node in the public universe.", "cells": [["semi", 3], ["semi", 4]], "url": "/research/lithography" },
+    { "id": "magnets", "title": "Rare earths & the magnet bottleneck", "summary": "NdFeB magnets sit upstream of both servo motors and reaction wheels — a materials chokepoint that propagates into robotics and space alike.", "cells": [["materials", 1], ["robotics", 5], ["space", 5]], "url": "/research/magnets" },
+    { "id": "humanoid", "title": "Humanoid robotics: the private farm team", "summary": "The most consequential robotics names are still private. We track the pre-IPO cohort, rated and ready to enter the index on day one.", "cells": [["robotics", 6]], "url": "/research/humanoid" },
+    { "id": "on-orbit", "title": "On-orbit compute", "summary": "Direct-to-device satellites depend on terrestrial semiconductors. We map where the semis layer feeds the space layer.", "cells": [["semi", 2], ["space", 8]], "url": "/research/on-orbit" }
+  ],
+
+  "signals": {
+    "status": "soon",
+    "name": "Frontier Signals",
+    "blurb": "A −100 / +100 conditions index for the frontier stack — a single read on whether the macro backdrop is a tailwind or a headwind across semiconductors, robotics, space and materials.",
+    "note": "Diffusion model in calibration. No reading is published until it clears backtest."
+  },
+
+  "references": [
+    { "id": "value-chain",  "kind": "Classification", "name": "The eight-tier value chain", "blurb": "How every asset is placed on the stack — upstream materials through software & services.", "url": "/reference/value-chain" },
+    { "id": "criticality",  "kind": "Scoring",        "name": "The bottleneck-criticality rating", "blurb": "Low → critical. How we score a node's leverage over the rest of the stack.", "url": "/reference/criticality" },
+    { "id": "membership",   "kind": "Standard",       "name": "The membership standard", "blurb": "What qualifies an entity for the universe, public or private.", "url": "/reference/membership" },
+    { "id": "cornerstone",  "kind": "Report",         "name": "1Q26 · State of the Frontier Stack", "blurb": "The cornerstone report. The framework, the universe and the first index print.", "url": "report-1Q26.html" }
+  ]
+}

@@ -8,6 +8,7 @@
     { href: 'portfolio.html', page: 'portfolio', label: 'Portfolio', online: false },
     { href: 'signals.html', page: 'signals', label: 'Frontier Signals', online: false },
     { href: 'commodities.html', page: 'commodities', label: 'Commodities', online: false },
+    { href: 'research.html', page: 'research', label: 'Research', online: true },
     { href: 'recreation.html', page: 'recreation', label: 'Recreation Bay', online: true },
   ];
 

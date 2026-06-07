@@ -1,0 +1,306 @@
+/* ============================================================
+   THE FRONTIER STACK — graph module styles
+   A single object with two morphing modes (Stack ⇄ Flat).
+   Pure CSS 3D (no WebGL). Driven by js/frontier-stack.js + data.
+   Honest morph: dots keep identical tier-x positions in both modes;
+   only the layer planes transform.
+   ============================================================ */
+
+.frontier-stack-mount { position: relative; }
+
+.fs-graph {
+  /* layout constants shared with the JS (dots use %, so they are
+     resolution-independent; these drive the plane transforms) */
+  --layer-h: 76px;
+  --flat-gap: 30px;
+  --stack-step: 62px;
+  --stack-zstep: 46px;
+  --stack-rot: 52deg;
+  --stack-scale: .94;
+  --head-h: 30px;
+
+  position: relative;
+  height: 484px;
+  perspective: 1600px;
+  perspective-origin: 50% 42%;
+  user-select: none;
+}
+
+/* The morphing scene that holds the four planes */
+.fs-scene {
+  position: absolute;
+  left: 56px; right: 14px;
+  top: calc(var(--head-h) + 8px);
+  height: calc(var(--layer-h) * 4 + var(--flat-gap) * 3);
+  transform-style: preserve-3d;
+  transition: transform .75s cubic-bezier(.55,.1,.3,1);
+}
+.fs-graph.is-stack .fs-scene {
+  transform: translateY(-4px) rotateX(var(--stack-rot)) scale(var(--stack-scale));
+}
+.fs-graph.is-flat .fs-scene {
+  transform: none;
+}
+
+/* ---------- A layer plane ---------- */
+.fs-layer {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: var(--layer-h);
+  transform-style: preserve-3d;
+  transition: transform .75s cubic-bezier(.55,.1,.3,1);
+}
+/* Flat: planes lie down into stacked rows (materials bottom → space top) */
+.fs-graph.is-flat .fs-layer {
+  transform: translateY(calc((3 - var(--i)) * (var(--layer-h) + var(--flat-gap))));
+}
+/* Stack: planes float at depth, higher sector = higher + nearer */
+.fs-graph.is-stack .fs-layer {
+  transform:
+    translateY(calc((3 - var(--i)) * var(--stack-step)))
+    translateZ(calc(var(--i) * var(--stack-zstep)));
+}
+
+.fs-layer-plane {
+  position: absolute; inset: 0;
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--hue) 14%, transparent), color-mix(in srgb, var(--hue) 4%, transparent));
+  border: 1px solid color-mix(in srgb, var(--hue) 34%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--hue) 18%, transparent);
+  overflow: hidden;
+}
+/* faint tier gridlines on each plane */
+.fs-layer-plane::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent calc(100% / 8 - 1px),
+    rgba(240,236,224,.06) calc(100% / 8 - 1px),
+    rgba(240,236,224,.06) calc(100% / 8)
+  );
+  pointer-events: none;
+}
+.fs-graph.is-stack .fs-layer-plane {
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--hue) 18%, transparent),
+    0 22px 36px rgba(0,0,0,.42);
+}
+
+/* ---------- Sector index panel (rides the plane; macro view) ---------- */
+.fs-layer-panel {
+  position: absolute;
+  left: 8px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 2px;
+  padding: .35rem .55rem;
+  background: rgba(8,9,12,.52);
+  border: 1px solid rgba(240,236,224,.10);
+  border-left: 2px solid var(--hue);
+  border-radius: 7px;
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  z-index: 4;
+  transition: opacity .45s;
+}
+/* macro view (stack): panels lead. micro view (flat): dots lead, panels recede. */
+.fs-graph.is-flat .fs-layer-panel { opacity: .3; }
+.fs-panel-line, .fs-panel-line2 { display: flex; align-items: baseline; gap: .4rem; }
+.fs-panel-name { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--hue); }
+.fs-panel-val  { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #EDE9DF; font-variant-numeric: tabular-nums; }
+.fs-panel-chg  { font-family: 'Space Grotesk', sans-serif; font-size: 10.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.fs-panel-chg.up { color: #3FB68F; } .fs-panel-chg.down { color: #E8675C; }
+.fs-panel-count { font-family: 'Space Grotesk', sans-serif; font-size: 9px; color: #9C978E; letter-spacing: .02em; }
+.fs-panel-spark { width: 40px; height: 14px; }
+.fs-panel-spark svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+/* ---------- Dots ---------- */
+.fs-dots { position: absolute; inset: 0; z-index: 3; }
+.fs-dot {
+  position: absolute;
+  width: var(--d, 7px); height: var(--d, 7px);
+  margin: calc(var(--d, 7px) / -2) 0 0 calc(var(--d, 7px) / -2);
+  border-radius: 50%;
+  background: var(--cc);
+  box-shadow: 0 0 var(--glow, 4px) var(--cc);
+  border: none; padding: 0;
+  cursor: pointer;
+  transition: opacity .35s, transform .15s, box-shadow .15s;
+}
+.fs-dot:hover { transform: scale(1.55); box-shadow: 0 0 12px var(--cc); z-index: 6; }
+
+/* tier-lens highlight (hovering a flat tier header) */
+.fs-graph.is-lensing .fs-dot { opacity: .14; }
+.fs-graph.is-lensing .fs-dot.fs-lit { opacity: 1; transform: scale(1.25); }
+
+/* research highlight (article → cells) */
+.fs-graph.is-highlighting .fs-dot { opacity: .1; }
+.fs-graph.is-highlighting .fs-dot.fs-hit { opacity: 1; transform: scale(1.3); box-shadow: 0 0 12px var(--cc); }
+.fs-graph.is-highlighting .fs-layer-plane { opacity: .5; }
+.fs-graph.is-highlighting .fs-layer.fs-hit-layer .fs-layer-plane { opacity: 1; border-color: color-mix(in srgb, var(--hue) 70%, transparent); }
+
+/* selected dot (doorway open) */
+.fs-dot.fs-selected { transform: scale(1.7); box-shadow: 0 0 0 3px rgba(245,217,33,.85), 0 0 14px var(--cc); z-index: 7; }
+
+/* ---------- Disruption overlay ---------- */
+.fs-layer-overlay {
+  position: absolute; inset: 0;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  background: radial-gradient(120% 140% at 50% 100%, rgba(220,74,74,.9), rgba(224,112,61,.35) 60%, transparent 80%);
+  transition: opacity .5s ease;
+}
+.fs-graph.is-disrupting .fs-layer-overlay { opacity: var(--sev, 0); }
+
+/* origin pulse ring */
+@keyframes fsBurst { 0% { opacity:.9; transform: scale(.2);} 100% { opacity:0; transform: scale(2.4);} }
+.fs-burst {
+  position: absolute; width: 28px; height: 28px; margin: -14px 0 0 -14px;
+  border-radius: 50%; border: 2px solid var(--c-crit, #DC4A4A);
+  z-index: 8; pointer-events: none;
+  animation: fsBurst .9s ease-out forwards;
+}
+
+/* ---------- Flat-mode chrome: tier headers + Y axis + flow ---------- */
+.fs-tier-headers {
+  position: absolute;
+  left: 56px; right: 14px; top: 0;
+  height: var(--head-h);
+  display: grid; grid-template-columns: repeat(8, 1fr);
+  opacity: 0; transition: opacity .45s; pointer-events: none;
+}
+.fs-graph.is-flat .fs-tier-headers { opacity: 1; pointer-events: auto; }
+.fs-tier-header {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 8.5px; font-weight: 600; letter-spacing: .03em;
+  color: #5F5B53; text-transform: uppercase;
+  text-align: center; line-height: 1.1;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 2px; cursor: default;
+  border-bottom: 1px solid transparent;
+  transition: color .15s, border-color .15s;
+}
+.fs-tier-header:hover { color: #F5D921; border-bottom-color: #F5D921; }
+.fs-tier-num { display: none; }
+
+.fs-yaxis {
+  position: absolute; left: 0; top: var(--head-h); bottom: 0; width: 50px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .45s; pointer-events: none;
+}
+.fs-graph.is-flat .fs-yaxis { opacity: 1; }
+.fs-yaxis-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: #5F5B53; white-space: nowrap;
+  transform: rotate(-90deg);
+}
+
+/* Rising "value flow" core (macro view) */
+.fs-flow {
+  position: absolute;
+  left: 50%; top: 8%; bottom: 8%; width: 4px;
+  margin-left: -2px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #E8675C, #5B8DEF 40%, #3FB68F 70%, #A98BEA);
+  opacity: 0; transition: opacity .5s;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.fs-graph.is-stack .fs-flow { opacity: .55; }
+.fs-flow::after {
+  content: '';
+  position: absolute; left: 0; right: 0; height: 40%;
+  background: linear-gradient(180deg, transparent, rgba(245,217,33,.9), transparent);
+  animation: fsRise 3.2s linear infinite;
+}
+@keyframes fsRise { 0% { top: 100%; } 100% { top: -40%; } }
+
+/* ============================================================
+   DOORWAY PANEL — right slide-in
+   ============================================================ */
+.fs-doorway {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 380px; max-width: 92vw;
+  background: #0F1115;
+  border-left: 1px solid rgba(240,236,224,.18);
+  box-shadow: -24px 0 60px rgba(0,0,0,.55);
+  z-index: 1100;
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+  display: flex; flex-direction: column;
+  font-family: 'Mulish', sans-serif;
+}
+.fs-doorway.is-open { transform: translateX(0); }
+.fs-doorway-scroll { overflow-y: auto; padding: 1.25rem 1.35rem 2rem; }
+.fs-dw-close {
+  position: absolute; top: 12px; right: 14px;
+  background: none; border: none; color: #9C978E; font-size: 20px; cursor: pointer; line-height: 1; z-index: 2;
+}
+.fs-dw-close:hover { color: #EDE9DF; }
+.fs-dw-eyebrow { font-family: 'Space Grotesk', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+.fs-dw-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: #EDE9DF; margin: .35rem 0 0; line-height: 1.15; }
+.fs-dw-meta { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
+.fs-dw-chip { font-family: 'Space Grotesk', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 5px; border: 1px solid rgba(240,236,224,.18); color: #9C978E; }
+.fs-dw-chip.crit { color: #0A0A0F; }
+.fs-dw-section-label { font-family: 'Space Grotesk', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #5F5B53; margin: 1.3rem 0 .55rem; }
+.fs-dw-samples { font-family: 'Mulish', sans-serif; font-size: 12.5px; color: #EDE9DF; line-height: 1.5; }
+
+/* nine ledger layers */
+.fs-dw-ledger { display: flex; flex-direction: column; gap: 4px; }
+.fs-ledger-row { display: flex; align-items: center; gap: .55rem; padding: .5rem .6rem; border-radius: 7px; background: #15171C; border: 1px solid rgba(240,236,224,.08); }
+.fs-ledger-row.paid { opacity: .72; }
+.fs-ledger-name { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; color: #EDE9DF; }
+.fs-ledger-blurb { font-family: 'Mulish', sans-serif; font-size: 10.5px; color: #9C978E; }
+.fs-ledger-lock { margin-left: auto; font-family: 'Space Grotesk', sans-serif; font-size: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; }
+.fs-ledger-lock.free { color: #3FB68F; border: 1px solid rgba(63,182,143,.4); }
+.fs-ledger-lock.paid { color: #5F5B53; border: 1px solid rgba(240,236,224,.18); }
+
+.fs-dw-actions { display: flex; flex-direction: column; gap: .55rem; margin-top: 1.3rem; }
+.fs-dw-btn { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; text-align: center; padding: .65rem; border-radius: 7px; cursor: pointer; border: none; text-decoration: none; }
+.fs-dw-btn.primary { background: #F5D921; color: #0A0A0F; }
+.fs-dw-btn.primary:hover { background: #FFE74A; }
+.fs-dw-btn.ghost { background: transparent; border: 1px solid rgba(240,236,224,.18); color: #EDE9DF; }
+.fs-dw-btn.ghost:hover { border-color: #DC4A4A; color: #DC4A4A; }
+
+/* per-layer severity readout */
+.fs-dw-cascade { margin-top: 1.1rem; display: none; }
+.fs-dw-cascade.is-shown { display: block; }
+.fs-cascade-row { display: grid; grid-template-columns: 84px 1fr 38px; align-items: center; gap: .5rem; margin-bottom: .4rem; }
+.fs-cascade-name { font-family: 'Space Grotesk', sans-serif; font-size: 10.5px; color: #EDE9DF; }
+.fs-cascade-bar { height: 7px; border-radius: 4px; background: #15171C; overflow: hidden; }
+.fs-cascade-fill { height: 100%; border-radius: 4px; transition: width .6s ease; }
+.fs-cascade-pct { font-family: 'Space Grotesk', sans-serif; font-size: 10px; color: #9C978E; text-align: right; font-variant-numeric: tabular-nums; }
+
+.fs-doorway-backdrop {
+  position: fixed; inset: 0; background: rgba(0,0,0,.35);
+  z-index: 1099; opacity: 0; pointer-events: none; transition: opacity .35s;
+}
+.fs-doorway-backdrop.is-open { opacity: 1; pointer-events: auto; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 1024px) {
+  .fs-graph { height: 440px; --layer-h: 66px; --flat-gap: 26px; }
+}
+@media (max-width: 640px) {
+  .fs-graph { height: 400px; --layer-h: 58px; --flat-gap: 20px; --stack-scale: .82; }
+  .fs-scene { left: 40px; }
+  .fs-tier-headers { left: 40px; }
+  .fs-tier-header { font-size: 7px; }
+}
+
+/* ============================================================
+   prefers-reduced-motion — disable morph transition, rising core
+   sweep, breathing/burst animations (brief §3 / §9).
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .fs-scene, .fs-layer, .fs-dot, .fs-doorway, .fs-cascade-fill,
+  .fs-layer-overlay { transition: none !important; }
+  .fs-flow::after { animation: none !important; }
+  .fs-burst { animation: none !important; display: none; }
+}

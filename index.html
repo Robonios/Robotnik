@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robotnik — The Frontier Technology Stack Index</title>
-<meta name="description" content="Live tracking of 253 public companies across semiconductors, robotics, space, and critical materials. Market-cap weighted index, sub-indices, daily intelligence.">
+<title>Robotnik — The Frontier Stack, Mapped</title>
+<meta name="description" content="The intelligence layer for the frontier technology stack. 197 entities across semiconductors, robotics, space and critical materials, placed on an eight-tier value chain and rated by bottleneck criticality. A research preview.">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://robotnik.world/">
-<meta property="og:title" content="Robotnik — The Frontier Technology Stack Index">
-<meta property="og:description" content="Live tracking of 253 public companies across semiconductors, robotics, space, and critical materials. Market-cap weighted index, sub-indices, daily intelligence.">
+<meta property="og:title" content="Robotnik — The Frontier Stack, Mapped">
+<meta property="og:description" content="Semiconductors, robotics, space and critical materials as one dependency map. Eight value-chain tiers, four interlocking sectors, rated by bottleneck criticality.">
 <meta property="og:image" content="https://robotnik.world/og/home.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Robotnik">
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Robotnik — The Frontier Technology Stack Index">
-<meta name="twitter:description" content="Live tracking of 253 public companies across semiconductors, robotics, space, and critical materials. Market-cap weighted index, sub-indices, daily intelligence.">
+<meta name="twitter:title" content="Robotnik — The Frontier Stack, Mapped">
+<meta name="twitter:description" content="Semiconductors, robotics, space and critical materials as one dependency map. Eight value-chain tiers, four interlocking sectors, rated by bottleneck criticality.">
 <meta name="twitter:image" content="https://robotnik.world/og/home.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -56,6 +56,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css?v=20260514m4"><link rel="stylesheet" href="css/typography.css?v=20260421e">
+<link rel="stylesheet" href="css/frontier-stack.css?v=20260607b"><link rel="stylesheet" href="css/home.css?v=20260607b">
 <!-- GoatCounter analytics (privacy-friendly, no cookies) -->
 <script data-goatcounter="https://robotnik.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -66,264 +67,111 @@
 <div id="nav-container"></div>
 
 <div class="main-content">
+  <div class="home">
 
-<!-- Launch banner: 1Q26 inaugural report -->
-<div id="report-banner" style="display:none;background:rgba(245,217,33,0.06);border:1px solid rgba(245,217,33,0.25);border-radius:6px;padding:0.75rem 1rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:'Mulish',sans-serif;">
-  <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;">
-    <span style="background:#F5D921;color:#0A0A0F;font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.1em;padding:3px 8px;border-radius:3px;">NEW</span>
-    <span style="font-size:12px;color:#e6e8ed;">The inaugural <strong>1Q26 State of the Frontier Stack</strong> report is now available.</span>
-  </div>
-  <div style="display:flex;align-items:center;gap:0.5rem;">
-    <a href="report-1Q26.html" style="color:#F5D921;text-decoration:none;font-size:12px;font-weight:600;">Read it &rarr;</a>
-    <button onclick="document.getElementById('report-banner').style.display='none';try{localStorage.setItem('robotnik_banner_1q26_dismissed','1');}catch(e){}" aria-label="Dismiss" style="background:none;border:none;color:#8B92A5;cursor:pointer;font-size:16px;padding:0 0.25rem;line-height:1;">&times;</button>
-  </div>
-</div>
-<script>
-  (function(){
-    try {
-      if (!localStorage.getItem('robotnik_banner_1q26_dismissed')) {
-        document.getElementById('report-banner').style.display = 'flex';
-      }
-    } catch(e) {
-      document.getElementById('report-banner').style.display = 'flex';
-    }
-  })();
-</script>
-
-<!-- Hero block relocated to the left-rail sidebar tagline. The 1Q26
-     banner above + dashboard grid below are the first content
-     elements in the main column. -->
-
-<div class="dash-layout">
-
-  <!-- ===== LEFT COLUMN ===== -->
-  <div class="dash-main">
-
-    <!-- B. Composite Index Widget -->
-    <div class="dash-widget">
-      <div class="index-hero">
-        <span class="index-name">Robotnik Index</span>
-        <span class="index-value">1,000.00</span>
-        <span class="index-change v-green">+0.00%</span>
-      </div>
-      <div class="sub-indices" id="sub-indices">
-        <div class="sub-index-card" data-sub="semiconductor">
-          <div class="sub-index-name">Semi</div>
-          <div class="sub-index-val">--</div>
-          <div class="sub-index-chg">&mdash;</div>
-          <div class="sub-index-meta"></div>
-        </div>
-        <div class="sub-index-card" data-sub="robotics">
-          <div class="sub-index-name">Robotics</div>
-          <div class="sub-index-val">--</div>
-          <div class="sub-index-chg">&mdash;</div>
-          <div class="sub-index-meta"></div>
-        </div>
-        <div class="sub-index-card" data-sub="space">
-          <div class="sub-index-name">Space</div>
-          <div class="sub-index-val">--</div>
-          <div class="sub-index-chg">&mdash;</div>
-          <div class="sub-index-meta"></div>
-        </div>
-        <div class="sub-index-card" data-sub="materials">
-          <div class="sub-index-name">Materials</div>
-          <div class="sub-index-val">--</div>
-          <div class="sub-index-chg">&mdash;</div>
-          <div class="sub-index-meta"></div>
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-head">
+        <span class="kicker">Frontier intelligence · research preview</span>
+        <h1 class="hero-title" id="hero-title">The frontier stack, mapped.</h1>
+        <p class="hero-lede">
+          Semiconductors, robotics, space and critical materials &mdash; <strong>197 entities</strong>
+          placed across an eight-tier value chain and four interlocking sectors, each rated by
+          <strong>bottleneck criticality</strong>. The framework is the moat. The index is what the map prints.
+        </p>
+        <div class="hero-proof" id="hero-proof" aria-live="polite">
+          <div class="proof-skeleton">Calibrating, tovarishch&hellip;</div>
         </div>
       </div>
+
+      <div class="hero-grid">
+        <!-- The Frontier Stack graph (centrepiece) -->
+        <div class="hero-graph-col">
+          <div class="fs-graph-head">
+            <div class="fs-graph-titles">
+              <span class="fs-eyebrow">The framework</span>
+              <h2 class="fs-title">The Frontier Stack</h2>
+            </div>
+            <div class="fs-mode-toggle" id="fs-mode-toggle" role="group" aria-label="Graph view mode">
+              <button class="fs-mode-btn is-active" data-mode="stack" type="button">Stack</button>
+              <span class="fs-mode-sep" aria-hidden="true">&rlarr;</span>
+              <button class="fs-mode-btn" data-mode="flat" type="button">Flat</button>
+            </div>
+          </div>
+          <div id="frontier-stack" class="frontier-stack-mount"></div>
+          <div class="fs-legend" id="fs-legend"></div>
+        </div>
+
+        <!-- Research rail -->
+        <aside class="research-rail" aria-label="Research">
+          <div class="rail-head">
+            <span class="rail-eyebrow">Research</span>
+            <span class="rail-hint">Tap to read &amp; light the map</span>
+          </div>
+          <div class="rail-list" id="rail-list">
+            <div class="rail-skeleton">Loading research&hellip;</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ======================= INDEX FAMILY ======================= -->
+    <section class="home-section" aria-labelledby="index-family-title">
+      <div class="section-head">
+        <span class="section-eyebrow">Index family</span>
+        <h2 class="section-title" id="index-family-title">Five reads on one universe</h2>
+        <p class="section-sub">One taxonomy, several lenses. Composite and Public Equities construction is being finalised &mdash; values shown are placeholder.</p>
+      </div>
+      <div class="index-family-grid" id="index-family"></div>
+    </section>
+
+    <!-- ===================== SECTOR PERFORMANCE ===================== -->
+    <section class="home-section" aria-labelledby="sector-title">
+      <div class="section-head">
+        <span class="section-eyebrow">Sector performance</span>
+        <h2 class="section-title" id="sector-title">Four layers, four indices</h2>
+      </div>
+      <div class="sector-grid" id="sector-cards"></div>
+    </section>
+
+    <!-- ====================== FRONTIER SIGNALS ====================== -->
+    <section class="home-section" aria-labelledby="signals-title">
+      <div class="section-head">
+        <span class="section-eyebrow">Frontier signals</span>
+        <h2 class="section-title" id="signals-title">Conditions index</h2>
+      </div>
+      <div id="signals-block"></div>
+    </section>
+
+    <!-- ======================= PRODUCT PREVIEW ====================== -->
+    <section class="home-section" aria-labelledby="product-title">
+      <div class="section-head">
+        <span class="section-eyebrow">Product</span>
+        <h2 class="section-title" id="product-title">Robotnik Companion</h2>
+      </div>
+      <div id="product-block"></div>
+    </section>
+
+    <!-- ===================== REFERENCE LIBRARY ====================== -->
+    <section class="home-section" aria-labelledby="reference-title">
+      <div class="section-head">
+        <span class="section-eyebrow">Reference library</span>
+        <h2 class="section-title" id="reference-title">The standards everything cites</h2>
+      </div>
+      <div class="reference-grid" id="reference-library"></div>
+    </section>
+
+    <!-- ======================== PREVIEW NOTE ======================== -->
+    <div class="preview-footnote">
+      <span class="preview-dot" aria-hidden="true"></span>
+      Research preview &middot; index data behind <a href="#" id="footnote-access">request access</a>. Values on this page are placeholder.
     </div>
 
-    <!-- B2. Index Chart -->
-    <div class="dash-widget">
-      <div class="chart-widget-header">
-        <span class="chart-widget-title" id="chart-title">Robotnik Index</span>
-      </div>
-      <div class="chart-controls">
-        <div class="chart-mode-tabs" id="chart-mode-tabs">
-          <button class="chart-mode-tab" data-mode="pct" onclick="setChartMode(this)">% Change</button>
-          <button class="chart-mode-tab active" data-mode="price" onclick="setChartMode(this)">Points</button>
-          <button class="chart-mode-tab disabled" data-mode="volume" title="Coming soon">Vol</button>
-          <button class="chart-mode-tab disabled" data-mode="mcap" title="Coming soon">MCap</button>
-        </div>
-        <div class="chart-range-group">
-          <button class="chart-range-btn" data-range="1" onclick="setIndexRange(this)">1D</button>
-          <button class="chart-range-btn" data-range="7" onclick="setIndexRange(this)">1W</button>
-          <button class="chart-range-btn" data-range="30" onclick="setIndexRange(this)">1M</button>
-          <button class="chart-range-btn" data-range="90" onclick="setIndexRange(this)">3M</button>
-          <button class="chart-range-btn" data-range="ytd" onclick="setIndexRange(this)">YTD</button>
-          <button class="chart-range-btn active" data-range="365" onclick="setIndexRange(this)">1Y</button>
-          <button class="chart-range-btn" data-range="1095" onclick="setIndexRange(this)">3Y</button>
-          <button class="chart-range-btn" data-range="1825" onclick="setIndexRange(this)">5Y</button>
-        </div>
-        <div class="chart-index-group">
-          <button class="chart-index-btn active" data-idx="composite" onclick="setIndexSeries(this)">Composite</button>
-          <button class="chart-index-btn" data-idx="semi" onclick="setIndexSeries(this)">Semi</button>
-          <button class="chart-index-btn" data-idx="robotics" onclick="setIndexSeries(this)">Robotics</button>
-          <button class="chart-index-btn" data-idx="space" onclick="setIndexSeries(this)">Space</button>
-          <button class="chart-index-btn" data-idx="materials" onclick="setIndexSeries(this)">Materials</button>
-          <button class="chart-compare-btn" onclick="toggleCompareInput()">+ Compare</button>
-        </div>
-      </div>
-      <div id="compare-input-row" style="display:none;padding:0.25rem 0;">
-        <div id="benchmark-buttons" class="benchmark-quick-btns">
-          <span style="font-size:10px;color:var(--text-muted);margin-right:0.3rem;">Benchmarks:</span>
-          <button class="benchmark-btn" onclick="addBenchmark('SPY')">S&P 500</button>
-          <button class="benchmark-btn" onclick="addBenchmark('QQQ')">NASDAQ</button>
-          <button class="benchmark-btn" onclick="addBenchmark('SOXX')">SOX</button>
-          <button class="benchmark-btn" onclick="addBenchmark('ROBO')">ROBO</button>
-        </div>
-        <input type="text" id="compare-search" class="compare-search-input" placeholder="Or type a ticker (e.g. NVDA)..." oninput="filterCompareResults()" />
-        <div id="compare-results" class="compare-results"></div>
-      </div>
-      <div id="compare-pills" class="compare-pills"></div>
-      <div id="index-chart-container">
-        <div class="chart-placeholder" id="chart-placeholder">INDEX CHART: AWAITING DATA. Price pipeline calibrating, tovarishch.</div>
-      </div>
-      <div class="chart-last-updated" id="chart-last-updated"></div>
-    </div>
-
-    <!-- C. Market Table -->
-    <div class="dash-widget" style="padding:0.5rem 0;">
-      <div style="padding:0 1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
-        <div class="market-tabs" id="market-tabs">
-          <button class="market-tab active" data-sector="all" onclick="filterMarketTable(this)">All</button>
-          <button class="market-tab" data-sector="semi" onclick="filterMarketTable(this)">Semi</button>
-          <button class="market-tab" data-sector="robo" onclick="filterMarketTable(this)">Robotics</button>
-          <button class="market-tab" data-sector="space" onclick="filterMarketTable(this)">Space</button>
-          <button class="market-tab" data-sector="materials" onclick="filterMarketTable(this)">Materials</button>
-        </div>
-        <div style="display:flex;gap:0.5rem;align-items:center;">
-          <input type="text" class="market-search-input" id="mkt-search" placeholder="Search tickers, companies..." oninput="renderMarketTable()" />
-          <!-- TODO: When enterprise auth is implemented, check user.plan
-               If enterprise: trigger CSV download of current table view
-               If free: show clearance required modal -->
-          <button class="export-btn" onclick="openEarlyAccess();return false;">Export ↓</button>
-        </div>
-      </div>
-      <div class="markets-table-wrap">
-      <table class="market-table" id="market-table">
-        <thead>
-          <tr>
-            <th style="width:30px;cursor:pointer" onclick="sortMarketTable('#')"># <span id="sort-arrow-#"></span></th>
-            <th style="cursor:pointer" onclick="sortMarketTable('ticker')">Ticker <span id="sort-arrow-ticker"></span></th>
-            <th style="cursor:pointer" onclick="sortMarketTable('company')">Company <span id="sort-arrow-company"></span></th>
-            <th style="cursor:pointer" onclick="sortMarketTable('sector')">Sector <span id="sort-arrow-sector"></span></th>
-            <th class="r" style="cursor:pointer" onclick="sortMarketTable('price')">Price <span id="sort-arrow-price"></span></th>
-            <th style="width:55px;text-align:center">30d</th>
-            <th class="r" style="cursor:pointer" onclick="sortMarketTable('change')">24h % <span id="sort-arrow-change"></span></th>
-            <th class="r" style="cursor:pointer" onclick="sortMarketTable('mcap')">Mkt Cap ▼ <span id="sort-arrow-mcap"></span></th>
-          </tr>
-        </thead>
-        <tbody id="mkt-tbody"></tbody>
-      </table>
-      </div>
-      <a href="assets.html" class="view-all-link" id="mkt-view-all">View all assets &rarr;</a>
-    </div>
-
-  </div>
-
-  <!-- ===== RIGHT COLUMN ===== -->
-  <div class="dash-sidebar-widgets">
-
-    <!-- D. Market Overview -->
-    <div class="dash-widget" id="market-overview">
-      <div class="dash-widget-title">Market Overview</div>
-      <div class="overview-row">
-        <span class="overview-label">Total Market Cap</span>
-        <span class="overview-val" id="ov-mcap">--</span>
-      </div>
-      <div class="overview-row">
-        <span class="overview-label">24h Change</span>
-        <span class="overview-val" id="ov-24h">--</span>
-      </div>
-      <div class="overview-row">
-        <span class="overview-label">Universe</span>
-        <span class="overview-val" id="ov-universe">253</span>
-      </div>
-      <div class="overview-row">
-        <span class="overview-label">Live Data</span>
-        <span class="overview-val" id="ov-count">--</span>
-      </div>
-      <div class="overview-row">
-        <span class="overview-label">Largest Asset</span>
-        <span class="overview-val" id="ov-largest">--</span>
-      </div>
-      <div class="overview-row">
-        <span class="overview-label">Top Gainer</span>
-        <span class="overview-val" id="ov-gainer">--</span>
-      </div>
-      <div class="overview-row">
-        <span class="overview-label">Top Loser</span>
-        <span class="overview-val" id="ov-loser">--</span>
-      </div>
-      <div class="overview-row" style="margin-top:0.5rem;border-top:1px solid #1E2330;padding-top:0.4rem;">
-        <span class="overview-label">Last Updated</span>
-        <span class="overview-val" id="ov-updated" style="font-size:9px;">&mdash;</span>
-      </div>
-    </div>
-
-    <!-- D2. Robotnik Index Explainer -->
-    <div class="dash-widget">
-      <div class="dash-widget-title">Robotnik Index</div>
-      <div style="font-size:11px;color:#8B92A5;line-height:1.6;">
-        Tracks <span id="explainer-count">253</span> frontier technology equities across semiconductors, robotics, space, and materials. Market-cap-weighted combination of the four sub-indices, each capped at 5% single-entity within its own sector.
-        <div style="margin-top:0.4rem;" id="explainer-base">Base: 1,000.00 on 2025-03-31</div>
-      </div>
-    </div>
-
-    <!-- D3. Funding Ops Widget -->
-    <div class="dash-widget">
-      <div class="dash-widget-title">Funding Ops</div>
-      <div id="funding-widget" style="font-size:10px;color:#5A6178;">Loading<span class="animated-dots"></span></div>
-      <a href="funding.html" class="view-all-link">View funding overview &rarr;</a>
-    </div>
-
-    <!-- E. Mission Directive -->
-    <div class="dash-widget">
-      <div class="dash-widget-title">Mission Directive</div>
-      <div style="font-size:11px;color:#e6e8ed;line-height:1.7;">
-        <p style="margin:0;">Build the analytical infrastructure for frontier-tech investing. One dataset. One taxonomy. One source of truth across semiconductors, robotics, space, and critical materials.</p>
-      </div>
-    </div>
-
-  </div>
-
-  </div>
-
-</div>
+  </div><!-- .home -->
 </div><!-- .main-content -->
 
-<!-- Export Modal removed in v1.1.3 polish: the Export button now routes
-     directly to the early-access capture form via openEarlyAccess() rather
-     than swapping in an intermediate gate surface. -->
-
-<script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
-<script src="js/nav.js?v=20260514m3"></script>
-<script src="js/main.js?v=20260514a"></script>
-<script>
-// Load funding summary for widget
-(async function() {
-  try {
-    var resp = await fetch('data/funding/summary.json?v=' + Date.now());
-    var data = await resp.json();
-    var q1 = data.periods.Q1_2026;
-    var capB = (q1.total_capital_m / 1000).toFixed(1);
-    var largest = q1.largest_round;
-    var sectorPills = {'Semiconductors':'sp-semi','Robotics':'sp-robo','Space':'sp-space','Cross-Stack':'sp-cross','Materials':'sp-mat'};
-    var pill = largest ? '<span style="display:inline-block;font-size:8px;padding:1px 5px;border-radius:2px;font-weight:600;background:rgba(59,130,246,0.2);color:#3B82F6;margin-left:4px">' + largest.sector + '</span>' : '';
-    document.getElementById('funding-widget').innerHTML =
-      '<div style="color:#F5D921;font-size:9px;font-weight:700;letter-spacing:0.06em;margin-bottom:0.5rem;">Q1 2026</div>' +
-      '<div style="color:#8B92A5;line-height:1.8;">' +
-        '<span style="color:#e6e8ed;font-weight:600;">$' + capB + 'B</span> across <span style="color:#e6e8ed;">' + q1.num_rounds + ' rounds</span><br>' +
-        'Top sector: <span style="color:#e6e8ed;">' + q1.most_active_sector + '</span> (' + q1.sector_breakdown[q1.most_active_sector].rounds + ' rounds)<br>' +
-        'Top investor: <span style="color:#e6e8ed;">NVIDIA (NVentures)</span>' +
-      '</div>' +
-      '<a href="funding.html" style="display:inline-block;margin-top:0.5rem;font-size:9px;color:#F5D921;text-decoration:none;">View Funding Ops &rarr;</a>';
-  } catch(e) {
-    document.getElementById('funding-widget').innerHTML = '<div style="font-size:10px;color:#5A6178;">Funding data connecting<span class="animated-dots"></span></div>';
-  }
-})();
-</script>
+<script src="js/nav.js?v=20260607a"></script>
+<script src="js/frontier-stack.js?v=20260607b"></script>
+<script src="js/home.js?v=20260607b"></script>
 </body>
 </html>
