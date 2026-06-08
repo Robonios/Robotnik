@@ -9881,45 +9881,16 @@
       "low": 19.858166,
       "close": 20.344885,
       "volume": 1424380
+    },
+    {
+      "date": "2026-06-08",
+      "open": 18.816,
+      "high": 19.470469,
+      "low": 17.997913,
+      "close": 18.194254,
+      "volume": 1680766
     }
   ],
-  "last_fetched": "2026-06-07T08:28:47.900861Z",
-  "source": "Yahoo (override, USD via daily FX)",
-  "_gapfill": {
-    "filled_bars": 38,
-    "source": "yahoo (ECB FX, edge-anchored)",
-    "windows": [
-      {
-        "window": [
-          "2025-05-02",
-          "2025-05-16"
-        ],
-        "days": 14,
-        "n_fill": 7,
-        "edge_scale": 1.0,
-        "scale_consistent": 1.0
-      },
-      {
-        "window": [
-          "2025-06-09",
-          "2025-06-17"
-        ],
-        "days": 8,
-        "n_fill": 5,
-        "edge_scale": 1.00352,
-        "scale_consistent": 1.0031
-      },
-      {
-        "window": [
-          "2025-06-20",
-          "2025-07-29"
-        ],
-        "days": 39,
-        "n_fill": 26,
-        "edge_scale": 1.00268,
-        "scale_consistent": 0.9947
-      }
-    ],
-    "at": "#64"
-  }
+  "last_fetched": "2026-06-08T23:13:41.012030Z",
+  "source": "Yahoo (override, USD via daily FX)"
 }
