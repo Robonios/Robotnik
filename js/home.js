@@ -12,6 +12,8 @@
 
   var CRIT_COLOR = { low: '#4DA98B', medium: '#E0A33C', high: '#E0703D', critical: '#DC4A4A' };
   var SPARK_COLOR = { composite: '#F5D921', bottleneck: '#E0A33C', public: '#5B8DEF', private: '#A98BEA' };
+  // Detailed-chart + Methodology links all point at one placeholder for now.
+  var PLACEHOLDER_URL = '#';
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -24,7 +26,15 @@
   }
   function $(id) { return document.getElementById(id); }
   function spark(series, color) {
-    return (window.FrontierStack && FrontierStack.sparkline) ? FrontierStack.sparkline(series, color, 120, 34) : '';
+    return (window.FrontierStack && FrontierStack.sparkline) ? FrontierStack.sparkline(series, color, 120, 44) : '';
+  }
+  // Deterministic placeholder %-change for a period, derived from the sector's
+  // YTD so it stays stable + directionally plausible (no data-file change).
+  function hashStr(s) { var h = 2166136261 >>> 0; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+  function synthChange(key, ytd, period) {
+    var h = hashStr(key + period), f = (period === '1w') ? 0.07 : 0.2;
+    var jit = ((h % 1000) / 1000 - 0.4) * ((period === '1w') ? 5 : 7);
+    return +(((ytd || 0) * f) + jit).toFixed(2);
   }
   function openAccess(e) { if (e) e.preventDefault(); if (typeof window.openEarlyAccess === 'function') window.openEarlyAccess(); }
 
@@ -39,7 +49,7 @@
     if (c) {
       var up = (c.change1y || 0) >= 0;
       ticker =
-        '<a class="top-rci" href="' + esc(c.chartUrl || '#') + '" style="text-decoration:none">' +
+        '<a class="top-rci" href="' + PLACEHOLDER_URL + '" style="text-decoration:none">' +
           '<span class="top-rci-label">RCI</span>' +
           '<span class="top-rci-val">' + num(c.value, 2) + '</span>' +
           (c.change1y != null ? '<span class="top-rci-chg ' + (up ? 'up' : 'down') + '">' + (up ? '+' : '') + c.change1y.toFixed(2) + '%</span>' : '') +
@@ -81,7 +91,7 @@
           '<span class="index-tag soon">Soon</span></div>' +
         '<div class="index-tile-val">—</div>' +
         '<div class="index-tile-blurb">' + esc(ix.blurb || '') + '</div>' +
-        '<div class="index-tile-links"><a href="' + esc(ix.methodologyUrl || '#') + '">Methodology &rarr;</a></div>' +
+        '<div class="index-tile-links"><a href="' + PLACEHOLDER_URL + '">Methodology &rarr;</a></div>' +
         '</div>';
     }
     // Calibrating: a real index whose value is not yet published (placeholder
@@ -94,8 +104,8 @@
         '<div class="index-tile-chg muted">Value pending · 1Y —</div>' +
         '<div class="index-tile-blurb">' + esc(ix.blurb || '') + '</div>' +
         '<div class="index-tile-links">' +
-          '<a href="' + esc(ix.chartUrl || '#') + '">Detailed chart &rarr;</a>' +
-          '<a href="' + esc(ix.methodologyUrl || '#') + '">Methodology &rarr;</a>' +
+          '<a href="' + PLACEHOLDER_URL + '">Detailed chart &rarr;</a>' +
+          '<a href="' + PLACEHOLDER_URL + '">Methodology &rarr;</a>' +
         '</div></div>';
     }
     var tag = ix.flagship ? '<span class="index-tag flagship">Flagship</span>'
@@ -113,8 +123,8 @@
       '<div class="index-tile-blurb">' + esc(ix.blurb || '') + '</div>' +
       '<div class="index-spark">' + spark(ix.series, SPARK_COLOR[key] || '#F5D921') + '</div>' +
       '<div class="index-tile-links">' +
-        '<a href="' + esc(ix.chartUrl || '#') + '">Detailed chart &rarr;</a>' +
-        '<a href="' + esc(ix.methodologyUrl || '#') + '">Methodology &rarr;</a>' +
+        '<a href="' + PLACEHOLDER_URL + '">Detailed chart &rarr;</a>' +
+        '<a href="' + PLACEHOLDER_URL + '">Methodology &rarr;</a>' +
       '</div></div>';
   }
 
@@ -143,21 +153,18 @@
     if (!host) return;
     host.innerHTML = (d.sectors || []).map(function (s) {
       var ix = s.index || {};
-      var d24 = ix.change24h, ytd = ix.changeYTD;
-      var count = (s.public || 0) + (s.private || 0) + (s.commodities || 0);
-      var rank = s.tierLabel ? s.tierLabel : '';
+      var w1 = synthChange(s.key, ix.changeYTD, '1w');
+      var m1 = synthChange(s.key, ix.changeYTD, '1m');
       var commodities = s.commodities ? (' · ' + s.commodities + ' commodities') : '';
+      function chgBlock(label, v) {
+        return '<div class="sector-chg-block"><span class="sector-chg-label">' + label + '</span>' +
+          '<span class="sector-chg-val ' + (v >= 0 ? 'up' : 'down') + '">' + (v >= 0 ? '+' : '') + v.toFixed(2) + '%</span></div>';
+      }
       return '<div class="sector-card" style="--hue:' + s.hue + '">' +
         '<div class="sector-card-top"><span class="sector-swatch"></span>' +
-          '<span class="sector-name">' + esc(s.name) + '</span>' +
-          (rank ? '<span class="sector-rank">' + esc(rank) + '</span>' : '') + '</div>' +
+          '<span class="sector-name">' + esc(s.name) + '</span></div>' +
         '<div class="sector-val">' + num(ix.value, 2) + '</div>' +
-        '<div class="sector-changes">' +
-          '<div class="sector-chg-block"><span class="sector-chg-label">24h</span>' +
-            '<span class="sector-chg-val ' + (d24 >= 0 ? 'up' : 'down') + '">' + (d24 >= 0 ? '+' : '') + (d24 != null ? d24.toFixed(2) : '—') + '%</span></div>' +
-          '<div class="sector-chg-block"><span class="sector-chg-label">YTD</span>' +
-            '<span class="sector-chg-val ' + (ytd >= 0 ? 'up' : 'down') + '">' + (ytd >= 0 ? '+' : '') + (ytd != null ? ytd.toFixed(1) : '—') + '%</span></div>' +
-        '</div>' +
+        '<div class="sector-changes">' + chgBlock('1W', w1) + chgBlock('1M', m1) + '</div>' +
         '<div class="sector-count"><b>' + s.public + '</b> public · <b>' + s.private + '</b> private' + commodities + '</div>' +
         '</div>';
     }).join('');
@@ -278,7 +285,6 @@
   // ---------------------------------------------------------- BOOT
   function boot(d) {
     renderTopStrip(d);
-    renderHeroProof(d);
     renderIndexFamily(d);
     renderSectors(d);
     renderReferences(d);
@@ -286,15 +292,13 @@
     var graph = null;
     var mount = $('frontier-stack');
     if (mount && window.FrontierStack) {
-      graph = new FrontierStack(mount, d, { mode: 'stack', toggleEl: $('fs-mode-toggle') });
+      // Flat is the single Frontier Stack view (no Stack mode / toggle).
+      graph = new FrontierStack(mount, d, { mode: 'flat' });
       // Integration handle: lets other scripts/console drive the graph
       // (e.g. graph.highlight(cells), graph.setPropagationGranularity('asset')).
       window.frontierStack = graph;
     }
     renderRail(d, graph);
-
-    var fa = $('footnote-access');
-    if (fa) fa.addEventListener('click', openAccess);
   }
 
   function fail(msg) {

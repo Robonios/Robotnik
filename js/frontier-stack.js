@@ -66,20 +66,19 @@
 
   // ---- sparkline (shared with home.js via FrontierStack.sparkline) ----
   function sparkline(series, color, w, h) {
-    w = w || 100; h = h || 28;
+    w = w || 100; h = h || 32;
     if (!series || series.length < 2) return '';
     var min = Math.min.apply(null, series), max = Math.max.apply(null, series);
-    var span = (max - min) || 1, n = series.length;
-    var pts = series.map(function (v, i) {
-      var x = (i / (n - 1)) * w;
-      var y = h - ((v - min) / span) * (h - 2) - 1;
-      return x.toFixed(1) + ',' + y.toFixed(1);
-    }).join(' ');
-    var lastX = w, lastY = h - ((series[n - 1] - min) / span) * (h - 2) - 1;
+    var span = (max - min) || 1, n = series.length, pad = 3;
+    function X(i) { return (i / (n - 1)) * w; }
+    function Y(v) { return h - pad - ((v - min) / span) * (h - pad * 2); }
+    var line = series.map(function (v, i) { return X(i).toFixed(1) + ',' + Y(v).toFixed(1); }).join(' ');
+    var area = '0,' + h + ' ' + line + ' ' + w + ',' + h;
     return '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" aria-hidden="true">' +
-      '<polyline points="' + pts + '" fill="none" stroke="' + color + '" stroke-width="1.5" ' +
+      '<polygon points="' + area + '" fill="' + color + '" fill-opacity="0.13" stroke="none"/>' +
+      '<polyline points="' + line + '" fill="none" stroke="' + color + '" stroke-width="1.6" ' +
       'stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>' +
-      '<circle cx="' + lastX.toFixed(1) + '" cy="' + lastY.toFixed(1) + '" r="1.8" fill="' + color + '"/>' +
+      '<circle cx="' + w.toFixed(1) + '" cy="' + Y(series[n - 1]).toFixed(1) + '" r="1.9" fill="' + color + '"/>' +
       '</svg>';
   }
 
@@ -88,7 +87,7 @@
     this.mount = typeof mount === 'string' ? document.getElementById(mount) : mount;
     this.data = data || {};
     this.opts = opts || {};
-    this.mode = this.opts.mode || 'stack';
+    this.mode = this.opts.mode || 'flat';
     this.granularity = 'sector';
     this.layers = {};      // sector key → { el, overlay, dotsEl, dots:[] }
     this.dotEls = [];      // all dot elements
@@ -151,8 +150,9 @@
     graph.setAttribute('aria-label', 'The Frontier Stack — interactive value-chain map');
     this.graph = graph;
 
-    // Y axis (flat view)
-    var yax = el('div', 'fs-yaxis', '<span class="fs-yaxis-label">Market cap &uarr;</span>');
+    // Value-flow axis (Materials → Space): a single upward arrow spanning the
+    // stack. Within-layer vertical position is NOT a quantitative axis here.
+    var yax = el('div', 'fs-yaxis', '<span class="fs-yaxis-arrow" aria-hidden="true"></span><span class="fs-yaxis-cap">value</span>');
     graph.appendChild(yax);
 
     // tier column headers (flat view)
@@ -168,9 +168,6 @@
 
     // scene + four planes
     var scene = el('div', 'fs-scene');
-    // rising value-flow core lives inside the scene so it tilts with the
-    // planes and stays contained to the stack's vertical span
-    scene.appendChild(el('div', 'fs-flow'));
     var dots = this._buildDots();
 
     SECTOR_ORDER.forEach(function (skey, i) {
@@ -184,22 +181,12 @@
       var overlay = el('div', 'fs-layer-overlay');
       layer.appendChild(overlay);
 
-      // sector index panel (value · change · sparkline · count)
-      var ix = meta.index || {};
-      var chg = (ix.changeYTD != null) ? ix.changeYTD : (ix.change24h || 0);
+      // sector label — name + asset count only (no value / %-change / sparkline)
       var count = (meta.public || 0) + (meta.private || 0) + (meta.commodities || 0);
-      var sseries = self._synthSeries(skey, chg);
       var panel = el('div', 'fs-layer-panel');
       panel.innerHTML =
         '<span class="fs-panel-name">' + esc(meta.name) + '</span>' +
-        '<div class="fs-panel-line">' +
-          '<span class="fs-panel-val">' + (ix.value != null ? Number(ix.value).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '—') + '</span>' +
-          '<span class="fs-panel-chg ' + (chg >= 0 ? 'up' : 'down') + '">' + (chg >= 0 ? '+' : '') + chg.toFixed(1) + '%</span>' +
-        '</div>' +
-        '<div class="fs-panel-line2">' +
-          '<span class="fs-panel-spark">' + sparkline(sseries, meta.hue, 40, 14) + '</span>' +
-          '<span class="fs-panel-count">' + count + ' assets</span>' +
-        '</div>';
+        '<span class="fs-panel-count">' + count + ' assets</span>';
       layer.appendChild(panel);
 
       // dots for this layer — y = log market cap normalised within the layer

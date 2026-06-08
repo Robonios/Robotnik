@@ -44,8 +44,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tagline" style="font-size:11px;letter-spacing:0.02em;">
           <div style="color:var(--yellow);font-size:11px;letter-spacing:0.06em;font-weight:700;">ROBOTNIK</div>
-          <div style="color:var(--text);margin-top:0.15rem;">Live: private market data.</div>
-          <div style="margin-top:0.55rem;color:var(--text);font-size:12px;line-height:1.5;letter-spacing:0;">Frontier-tech intelligence for investors. Public and private market data, supply-chain mapping, and analytical takes across semiconductors, robotics, space, and critical materials.</div>
+          <div style="margin-top:0.4rem;color:var(--text);font-size:12px;line-height:1.5;letter-spacing:0;">Frontier-tech intelligence: Public assets, commodities, and private market data, supply-chain mapping, and bottleneck risk analysis across semiconductors, robotics, space, and critical materials.</div>
         </div>
       </div>
     </aside>
@@ -91,8 +90,7 @@
         </nav>
         <div class="mobile-nav-tagline">
           <div style="color:var(--yellow);font-weight:700;letter-spacing:0.06em;">ROBOTNIK</div>
-          <div style="color:var(--text);margin-top:0.15rem;">Live: private market data.</div>
-          <div style="margin-top:0.55rem;color:var(--text);font-size:12px;line-height:1.5;letter-spacing:0;">Frontier-tech intelligence for investors. Public and private market data, supply-chain mapping, and analytical takes across semiconductors, robotics, space, and critical materials.</div>
+          <div style="margin-top:0.4rem;color:var(--text);font-size:12px;line-height:1.5;letter-spacing:0;">Frontier-tech intelligence: Public assets, commodities, and private market data, supply-chain mapping, and bottleneck risk analysis across semiconductors, robotics, space, and critical materials.</div>
         </div>
       </div>
     </div>
