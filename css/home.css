@@ -8,6 +8,25 @@
    Fonts: Space Grotesk (headings / labels / numerals), Mulish (prose).
    ============================================================ */
 
+/* Local @font-face — guarantees Space Grotesk / Mulish load even if the
+   Google Fonts CDN is blocked or slow (the repo ships the files in
+   assets/fonts/). Variable fonts cover weights 300–700. */
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/SpaceGrotesk-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 300 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Mulish';
+  src: url('../assets/fonts/Mulish-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 300 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Mulish';
+  src: url('../assets/fonts/Mulish-Italic-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 300 700; font-style: italic; font-display: swap;
+}
+
 :root {
   /* surfaces */
   --bg: #0A0B0E;        --bg-2: #0F1115;
@@ -50,7 +69,9 @@ body[data-page="home"] { background: var(--bg); }
 }
 .home-section { margin-top: 3.25rem; }
 
-.section-head { margin-bottom: 1.1rem; }
+/* Standardised section header: one large, left-aligned Space Grotesk title
+   for Index Family / Sector Performance / Reference Library. */
+.section-head { margin-bottom: 1.25rem; }
 .section-eyebrow {
   display: inline-block;
   font-family: var(--sans);
@@ -61,7 +82,9 @@ body[data-page="home"] { background: var(--bg); }
 }
 .section-title {
   font-family: var(--sans);
-  font-size: 1.55rem; font-weight: 600; line-height: 1.15;
+  font-size: 1.85rem; font-weight: 700; line-height: 1.08;
+  letter-spacing: -.015em;
+  text-align: left;
   color: var(--ink); margin: 0;
 }
 .section-sub {
@@ -195,6 +218,9 @@ body[data-page="home"] { background: var(--bg); }
 .fs-legend-label { font-family: var(--sans); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
 .fs-legend-item { display: inline-flex; align-items: center; gap: .35rem; font-family: var(--prose); font-size: 11px; color: var(--ink-dim); }
 .fs-legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+/* sector swatch: bordered outline (matches the layer-plane borders), so it
+   reads as a layer hue — not a filled criticality dot */
+.fs-legend-swatch { width: 11px; height: 11px; border-radius: 3px; border: 1.5px solid; background: transparent; flex-shrink: 0; }
 
 /* ============================================================
    RESEARCH RAIL

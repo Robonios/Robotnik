@@ -11,18 +11,19 @@
 .fs-graph {
   /* layout constants shared with the JS (dots use %, so they are
      resolution-independent; these drive the plane transforms) */
-  --layer-h: 76px;
-  --flat-gap: 30px;
-  --stack-step: 62px;
-  --stack-zstep: 46px;
-  --stack-rot: 52deg;
-  --stack-scale: .94;
+  --layer-h: 98px;
+  --flat-gap: 46px;
+  --stack-step: 128px;
+  --stack-zstep: 50px;
+  --stack-rot: 50deg;
+  --stack-scale: .93;
   --head-h: 30px;
+  --gutter: 120px;   /* dedicated left lane for the sector label */
 
   position: relative;
-  height: 484px;
-  perspective: 1600px;
-  perspective-origin: 50% 42%;
+  height: 612px;
+  perspective: 1700px;
+  perspective-origin: 50% 44%;
   user-select: none;
 }
 
@@ -36,7 +37,7 @@
   transition: transform .75s cubic-bezier(.55,.1,.3,1);
 }
 .fs-graph.is-stack .fs-scene {
-  transform: translateY(-4px) rotateX(var(--stack-rot)) scale(var(--stack-scale));
+  transform: translateY(62px) rotateX(var(--stack-rot)) scale(var(--stack-scale));
 }
 .fs-graph.is-flat .fs-scene {
   transform: none;
@@ -70,17 +71,24 @@
   box-shadow: inset 0 1px 0 color-mix(in srgb, var(--hue) 18%, transparent);
   overflow: hidden;
 }
-/* faint tier gridlines on each plane */
+/* faint tier gridlines — only across the plot area (right of the gutter) */
 .fs-layer-plane::before {
   content: '';
-  position: absolute; inset: 0;
+  position: absolute; left: var(--gutter); right: 0; top: 0; bottom: 0;
   background-image: repeating-linear-gradient(
     90deg,
     transparent 0,
     transparent calc(100% / 8 - 1px),
-    rgba(240,236,224,.06) calc(100% / 8 - 1px),
-    rgba(240,236,224,.06) calc(100% / 8)
+    rgba(240,236,224,.07) calc(100% / 8 - 1px),
+    rgba(240,236,224,.07) calc(100% / 8)
   );
+  pointer-events: none;
+}
+/* divider between the label gutter and the plot grid */
+.fs-layer-plane::after {
+  content: '';
+  position: absolute; left: var(--gutter); top: 8%; bottom: 8%; width: 1px;
+  background: color-mix(in srgb, var(--hue) 26%, transparent);
   pointer-events: none;
 }
 .fs-graph.is-stack .fs-layer-plane {
@@ -89,35 +97,33 @@
     0 22px 36px rgba(0,0,0,.42);
 }
 
-/* ---------- Sector index panel (rides the plane; macro view) ---------- */
+/* ---------- Sector index label (lives in the dedicated left gutter) ---------- */
 .fs-layer-panel {
   position: absolute;
-  left: 8px; top: 50%;
+  left: 7px; top: 50%;
+  width: calc(var(--gutter) - 14px);
   transform: translateY(-50%);
-  display: flex; flex-direction: column; gap: 2px;
-  padding: .35rem .55rem;
-  background: rgba(8,9,12,.52);
-  border: 1px solid rgba(240,236,224,.10);
+  display: flex; flex-direction: column; gap: 3px;
+  padding: .4rem .55rem;
+  background: rgba(8,9,12,.62);
+  border: 1px solid rgba(240,236,224,.12);
   border-left: 2px solid var(--hue);
   border-radius: 7px;
   backdrop-filter: blur(2px);
   pointer-events: none;
   z-index: 4;
-  transition: opacity .45s;
 }
-/* macro view (stack): panels lead. micro view (flat): dots lead, panels recede. */
-.fs-graph.is-flat .fs-layer-panel { opacity: .3; }
 .fs-panel-line, .fs-panel-line2 { display: flex; align-items: baseline; gap: .4rem; }
-.fs-panel-name { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--hue); }
-.fs-panel-val  { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #EDE9DF; font-variant-numeric: tabular-nums; }
-.fs-panel-chg  { font-family: 'Space Grotesk', sans-serif; font-size: 10.5px; font-weight: 600; font-variant-numeric: tabular-nums; }
-.fs-panel-chg.up { color: #3FB68F; } .fs-panel-chg.down { color: #E8675C; }
-.fs-panel-count { font-family: 'Space Grotesk', sans-serif; font-size: 9px; color: #9C978E; letter-spacing: .02em; }
-.fs-panel-spark { width: 40px; height: 14px; }
+.fs-panel-name { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--hue); }
+.fs-panel-val  { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700; color: #F3EFE6; font-variant-numeric: tabular-nums; }
+.fs-panel-chg  { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.fs-panel-chg.up { color: #5BD0A6; } .fs-panel-chg.down { color: #F0857A; }
+.fs-panel-count { font-family: 'Space Grotesk', sans-serif; font-size: 9.5px; color: #B4AFA4; letter-spacing: .02em; }
+.fs-panel-spark { width: 42px; height: 14px; }
 .fs-panel-spark svg { display: block; width: 100%; height: 100%; overflow: visible; }
 
-/* ---------- Dots ---------- */
-.fs-dots { position: absolute; inset: 0; z-index: 3; }
+/* ---------- Dots (plotted in the tier-column area, right of the gutter) ---------- */
+.fs-dots { position: absolute; left: var(--gutter); right: 0; top: 0; bottom: 0; z-index: 3; }
 .fs-dot {
   position: absolute;
   width: var(--d, 7px); height: var(--d, 7px);
@@ -168,7 +174,7 @@
 /* ---------- Flat-mode chrome: tier headers + Y axis + flow ---------- */
 .fs-tier-headers {
   position: absolute;
-  left: 56px; right: 14px; top: 0;
+  left: calc(56px + var(--gutter)); right: 14px; top: 0;
   height: var(--head-h);
   display: grid; grid-template-columns: repeat(8, 1fr);
   opacity: 0; transition: opacity .45s; pointer-events: none;
@@ -176,8 +182,8 @@
 .fs-graph.is-flat .fs-tier-headers { opacity: 1; pointer-events: auto; }
 .fs-tier-header {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 8.5px; font-weight: 600; letter-spacing: .03em;
-  color: #5F5B53; text-transform: uppercase;
+  font-size: 9px; font-weight: 600; letter-spacing: .03em;
+  color: #B7B1A6; text-transform: uppercase;
   text-align: center; line-height: 1.1;
   display: flex; align-items: center; justify-content: center;
   padding: 0 2px; cursor: default;
@@ -188,38 +194,43 @@
 .fs-tier-num { display: none; }
 
 .fs-yaxis {
-  position: absolute; left: 0; top: var(--head-h); bottom: 0; width: 50px;
+  position: absolute; left: 0; top: var(--head-h); bottom: 0; width: 52px;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; transition: opacity .45s; pointer-events: none;
 }
 .fs-graph.is-flat .fs-yaxis { opacity: 1; }
 .fs-yaxis-label {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
-  color: #5F5B53; white-space: nowrap;
+  font-size: 9.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: #B7B1A6; white-space: nowrap;
   transform: rotate(-90deg);
 }
 
-/* Rising "value flow" core (macro view) */
+/* Rising "value flow" core (macro view) — a thin, subtly-glowing spine.
+   Lives inside .fs-scene so it tilts with the planes and is contained to
+   the stack's vertical span (top plane → bottom plane); never extends
+   past the Materials layer. */
 .fs-flow {
   position: absolute;
-  left: 50%; top: 8%; bottom: 8%; width: 4px;
-  margin-left: -2px;
-  border-radius: 3px;
-  background: linear-gradient(180deg, #E8675C, #5B8DEF 40%, #3FB68F 70%, #A98BEA);
+  top: 0; height: calc(3 * var(--stack-step) + var(--layer-h));
+  left: calc(50% + var(--gutter) / 2); margin-left: -1px;
+  width: 2px; border-radius: 2px;
+  background: linear-gradient(180deg,
+    rgba(232,103,92,.42), rgba(91,141,239,.42) 40%, rgba(63,182,143,.42) 70%, rgba(169,139,234,.42));
+  box-shadow: 0 0 6px rgba(245,217,33,.22);
   opacity: 0; transition: opacity .5s;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
 }
-.fs-graph.is-stack .fs-flow { opacity: .55; }
+.fs-graph.is-stack .fs-flow { opacity: .6; }
 .fs-flow::after {
   content: '';
-  position: absolute; left: 0; right: 0; height: 40%;
-  background: linear-gradient(180deg, transparent, rgba(245,217,33,.9), transparent);
-  animation: fsRise 3.2s linear infinite;
+  position: absolute; left: 0; right: 0; height: 34%;
+  background: linear-gradient(180deg, transparent, rgba(245,217,33,.7), transparent);
+  animation: fsRise 3.6s linear infinite;
 }
-@keyframes fsRise { 0% { top: 100%; } 100% { top: -40%; } }
+@keyframes fsRise { 0% { top: 100%; } 100% { top: -34%; } }
 
 /* ============================================================
    DOORWAY PANEL — right slide-in
@@ -285,13 +296,14 @@
 
 /* ---------- responsive ---------- */
 @media (max-width: 1024px) {
-  .fs-graph { height: 440px; --layer-h: 66px; --flat-gap: 26px; }
+  .fs-graph { height: 560px; --layer-h: 88px; --flat-gap: 40px; --stack-step: 72px; --gutter: 108px; }
 }
 @media (max-width: 640px) {
-  .fs-graph { height: 400px; --layer-h: 58px; --flat-gap: 20px; --stack-scale: .82; }
+  .fs-graph { height: 480px; --layer-h: 74px; --flat-gap: 30px; --stack-step: 60px; --stack-scale: .76; --gutter: 88px; }
   .fs-scene { left: 40px; }
-  .fs-tier-headers { left: 40px; }
-  .fs-tier-header { font-size: 7px; }
+  .fs-tier-headers { left: calc(40px + var(--gutter)); }
+  .fs-tier-header { font-size: 7.5px; }
+  .fs-yaxis { width: 38px; }
 }
 
 /* ============================================================

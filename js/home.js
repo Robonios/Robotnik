@@ -281,8 +281,6 @@
     renderHeroProof(d);
     renderIndexFamily(d);
     renderSectors(d);
-    renderSignals(d);
-    renderProduct(d);
     renderReferences(d);
 
     var graph = null;

@@ -151,9 +151,6 @@
     graph.setAttribute('aria-label', 'The Frontier Stack — interactive value-chain map');
     this.graph = graph;
 
-    // rising value-flow core (macro view)
-    graph.appendChild(el('div', 'fs-flow'));
-
     // Y axis (flat view)
     var yax = el('div', 'fs-yaxis', '<span class="fs-yaxis-label">Market cap &uarr;</span>');
     graph.appendChild(yax);
@@ -171,6 +168,9 @@
 
     // scene + four planes
     var scene = el('div', 'fs-scene');
+    // rising value-flow core lives inside the scene so it tilts with the
+    // planes and stays contained to the stack's vertical span
+    scene.appendChild(el('div', 'fs-flow'));
     var dots = this._buildDots();
 
     SECTOR_ORDER.forEach(function (skey, i) {
@@ -266,7 +266,7 @@
     var host = document.getElementById('fs-legend');
     if (!host) return;
     var sectors = (this.data.sectors || []).map(function (s) {
-      return '<span class="fs-legend-item"><span class="fs-legend-dot" style="background:' + s.hue + '"></span>' + esc(s.name) + '</span>';
+      return '<span class="fs-legend-item"><span class="fs-legend-swatch" style="border-color:' + s.hue + '"></span>' + esc(s.name) + '</span>';
     }).join('');
     var crit = [['low', 'Low'], ['medium', 'Med'], ['high', 'High'], ['critical', 'Critical']].map(function (c) {
       return '<span class="fs-legend-item"><span class="fs-legend-dot" style="background:' + CRIT_COLOR[c[0]] + '"></span>' + c[1] + '</span>';
