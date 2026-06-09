@@ -142,6 +142,9 @@ jobs:
       - name: Calculate public markets metrics
         run: python scripts/calculate_metrics.py
 
+      - name: Build home-page index summary (final build step — reads the published series only)
+        run: python scripts/build_index_summary.py
+
       - name: Install dependencies for news
         run: pip install feedparser
 
