@@ -7968,11 +7968,59 @@
     },
     {
       "date": "2025-06-09",
-      "open": 21.507933,
-      "high": 21.743219,
-      "low": 21.300328,
-      "close": 21.41105,
-      "volume": 1385000.0
+      "open": 21.521,
+      "high": 21.984934,
+      "low": 21.313269,
+      "close": 21.901841,
+      "volume": 3462400,
+      "_source": "yahoo-gapfill",
+      "_overwrite": true,
+      "_orig_ms_close": 21.41105
+    },
+    {
+      "date": "2025-06-10",
+      "open": 22.424776,
+      "high": 23.061528,
+      "low": 22.272509,
+      "close": 22.750073,
+      "volume": 3331900,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-11",
+      "open": 23.11121,
+      "high": 23.476088,
+      "low": 22.91156,
+      "close": 23.221362,
+      "volume": 2929400,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-12",
+      "open": 23.370562,
+      "high": 23.40537,
+      "low": 22.674387,
+      "close": 22.80666,
+      "volume": 2166000,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-13",
+      "open": 22.733943,
+      "high": 22.88666,
+      "low": 22.150843,
+      "close": 22.30356,
+      "volume": 2063300,
+      "_source": "yahoo-gapfill"
+    },
+    {
+      "date": "2025-06-16",
+      "open": 22.649941,
+      "high": 22.726274,
+      "low": 22.219703,
+      "close": 22.45564,
+      "volume": 1523500,
+      "_source": "yahoo-gapfill"
     },
     {
       "date": "2025-06-17",
@@ -9785,5 +9833,27 @@
     }
   ],
   "last_fetched": "2026-06-08T23:12:56.850126Z",
-  "source": "MarketStack (USD via daily FX)"
+  "source": "MarketStack (USD via daily FX)",
+  "_gapfill": {
+    "filled_bars": 6,
+    "inserts": 5,
+    "overwrites": 1,
+    "source": "yahoo (ECB FX, edge-anchored; convergence-anchor handback)",
+    "windows": [
+      {
+        "window": [
+          "2025-06-06",
+          "2025-06-17"
+        ],
+        "days": 8,
+        "n_fill": 5,
+        "n_overwrite": 1,
+        "handback": null,
+        "entry_anchor": "2025-06-06",
+        "edge_scale": 1.00061,
+        "scale_consistent": 0.9988
+      }
+    ],
+    "at": "#64+conv"
+  }
 }

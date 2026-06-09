@@ -45,8 +45,15 @@ import currency_convert as cc
 HISTORY = ROOT / "data" / "prices" / "history"
 WEIGHTS = ROOT / "data" / "index" / "weights.json"
 GAP_DAYS = 7          # a span > this between consecutive bars = a candidate hole
-EDGE_TOL = 0.015      # |scale_before/scale_after − 1| over this ⇒ inconsistent ⇒ surface, don't fill
+EDGE_TOL = 0.015      # |scale_before/scale_after − 1| over this ⇒ inconsistent ⇒ try convergence-anchor, else surface
+CONV_TOL = 0.01       # convergence-anchor: an after-edge MS bar with |MS/Yahoo − 1| < this is "convergent"
+CONV_MAX_BARS = 8     #   ...search this many MS bars forward from the resume bar for re-convergence
 START = "2021-06-01"  # only consider holes within the Yahoo-reachable window
+MATERIAL_WT = 0.05    # a surfaced/errored (UNFILLABLE) hole at >= this weight % is "material"
+                      # — never let a material constituent's hole be silently left behind (#64 follow-up)
+PERSIST_DAYS = 14     # only a material hole STILL OPEN > this many days after its resume date
+                      # halts the run (exit 3). A fresh gap (may self-heal next run) is persisted +
+                      # reported but does NOT halt the pipeline.
 
 
 def fn(t):
@@ -83,6 +90,36 @@ def find_gaps(dates, gap_days=GAP_DAYS):
         if _dd(dates[i], dates[i - 1]) > gap_days:
             out.append((dates[i - 1], dates[i], _dd(dates[i], dates[i - 1])))
     return out
+
+
+def _converge_after(series, yusd, d_after, conv_tol=CONV_TOL, max_bars=CONV_MAX_BARS):
+    """Convergence-anchor (#64 follow-up): when a gap's AFTER edge is off because the post-void
+    MS RESUME bar(s) are noisy — not a persistent level shift — walk forward over the first
+    `max_bars` MS bars from the resume date and return (conv_date, sa) at the first bar where
+    MS/Yahoo RE-CONVERGES (|MS/Yahoo − 1| < conv_tol). Returns None if it never converges →
+    a GENUINE persistent level disagreement (possible un-captured corp action) → caller must
+    REFUSE (surface). At the handback the Yahoo fill is extended THROUGH the noisy resume bar(s)
+    and control returns to MS at conv_date (dry-run-validated: 3037 TT/3436 JP/ARU AU)."""
+    for d in sorted(d for d in series if d >= d_after)[:max_bars]:
+        yv = yusd.get(d)
+        if yv and abs(series[d]["close"] / yv - 1.0) < conv_tol:
+            return d, series[d]["close"] / yv
+    return None
+
+
+def _converge_before(series, yusd, d_before, conv_tol=CONV_TOL, max_bars=CONV_MAX_BARS):
+    """Mirror of `_converge_after` for a noisy ENTRY bar: walk BACKWARD over the first
+    `max_bars` MS bars ending at d_before and return (conv_date, sb) at the first bar
+    (closest to the gap, walking back) where MS/Yahoo re-converges (|MS/Yahoo − 1| <
+    conv_tol). Returns None if it never converges → a GENUINE entry-level shift → caller
+    must REFUSE (surface). At the handback the noisy entry bar(s) in (conv_date, d_after)
+    are overwritten by the Yahoo fill, anchoring the before edge at conv_date — the
+    symmetric counterpart of the resume-bar overwrite (dry-run-validated: 6506 JP)."""
+    for d in sorted((d for d in series if d <= d_before), reverse=True)[:max_bars]:
+        yv = yusd.get(d)
+        if yv and abs(series[d]["close"] / yv - 1.0) < conv_tol:
+            return d, series[d]["close"] / yv
+    return None
 
 
 def process(ticker, weight):
@@ -131,22 +168,58 @@ def process(ticker, weight):
         ab, aa = near(d_before, -1), near(d_after, +1)
         sb = (series[d_before]["close"] / yusd[ab]) if (ab and yusd.get(ab)) else None
         sa = (series[d_after]["close"] / yusd[aa]) if (aa and yusd.get(aa)) else None
+        d_anchor_before, d_anchor_after = d_before, d_after
         if sb and sa and abs(sb / sa - 1.0) > EDGE_TOL:
-            surfaced.append({"window": [d_before, d_after], "days": gd,
-                             "reason": "edge-scale mismatch sb={:.4f} sa={:.4f} "
-                                       "(corp action in gap?)".format(sb, sa)})
-            continue
+            # Both edges present but inconsistent. Resolve whichever EDGE bar is the noisy one
+            # via a convergence walk — AFTER-edge resume-bar noise forward (the 3 summer holes),
+            # BEFORE-edge entry-bar noise backward (6506 JP). An edge already ~1.0 anchors as-is;
+            # a noisy edge's bar(s) are overwritten by the Yahoo fill. If a noisy edge never
+            # re-converges it is a GENUINE level disagreement (possible un-captured corp action)
+            # → REFUSE (surface). Symmetric so neither entry- nor exit-edge noise is left behind.
+            if abs(sa - 1.0) > CONV_TOL:
+                conv = _converge_after(series, yusd, d_after)
+                if conv is None:
+                    surfaced.append({"window": [d_before, d_after], "days": gd,
+                        "reason": "after-edge sa={:.4f} — PERSISTENT (no fwd convergence within "
+                                  "{} bars; corp action / level shift?)".format(sa, CONV_MAX_BARS)})
+                    continue
+                d_anchor_after, sa = conv
+            if abs(sb - 1.0) > CONV_TOL:
+                conv = _converge_before(series, yusd, d_before)
+                if conv is None:
+                    surfaced.append({"window": [d_before, d_after], "days": gd,
+                        "reason": "before-edge sb={:.4f} — PERSISTENT (no bwd convergence within "
+                                  "{} bars; corp action / level shift?)".format(sb, CONV_MAX_BARS)})
+                    continue
+                d_anchor_before, sb = conv
+            if abs(sb / sa - 1.0) > EDGE_TOL:   # edges still disagree after convergence
+                surfaced.append({"window": [d_before, d_after], "days": gd,
+                    "reason": "edge-scale persists after convergence sb@{}={:.4f} sa@{}={:.4f}"
+                              .format(d_anchor_before, sb, d_anchor_after, sa)})
+                continue
+            # Fill ALL Yahoo dates between the (possibly re-anchored) edges: gap-interior INSERTS
+            # + noisy edge-bar OVERWRITES, audited via _overwrite / _orig_ms_close.
+            interior = [d for d in ydates if d_anchor_before < d < d_anchor_after]
+        d_handback = d_anchor_after
         scale = math.sqrt(sb * sa) if (sb and sa) else (sb or sa or 1.0)
         for d in interior:
             bar = ynat[d]
             def cv(k):
                 v = bar.get(k)
                 return round(cc.to_usd(v, nccy, d) * scale, 6) if v else None
-            fills.append({"date": d, "open": cv("open"), "high": cv("high"),
-                          "low": cv("low"), "close": round(yusd[d] * scale, 6),
-                          "volume": bar.get("volume"), "_source": "yahoo-gapfill"})
-        fill_windows.append({"window": [d_before, d_after], "days": gd,
-                             "n_fill": len(interior), "edge_scale": round(scale, 5),
+            fb = {"date": d, "open": cv("open"), "high": cv("high"),
+                  "low": cv("low"), "close": round(yusd[d] * scale, 6),
+                  "volume": bar.get("volume"), "_source": "yahoo-gapfill"}
+            if d in series:   # convergence-anchor overwrite of a noisy resume bar (audited)
+                fb["_overwrite"] = True
+                fb["_orig_ms_close"] = series[d].get("close")
+            fills.append(fb)
+        n_ins = sum(1 for d in interior if d not in series)
+        fill_windows.append({"window": [d_anchor_before, d_handback], "days": gd,
+                             "n_fill": n_ins, "n_overwrite": len(interior) - n_ins,
+                             "handback": (d_handback if d_handback != d_after else None),
+                             "entry_anchor": (d_anchor_before if d_anchor_before != d_before else None),
+                             "edge_scale": round(scale, 5),
                              "scale_consistent": (None if not (sb and sa) else round(sb / sa, 4))})
     return {"ticker": ticker, "weight": weight, "ysym": ysym, "native_ccy": nccy,
             "n_gaps": len(gaps), "fills": fills, "fill_windows": fill_windows,
@@ -220,11 +293,17 @@ def main():
             h = json.loads(hpath.read_text())
             by_date = {b["date"]: b for b in h.get("series", [])}
             for fb in r["fills"]:
-                if fb["date"] not in by_date:   # never overwrite an existing MS bar
+                # Insert new bars; overwrite an existing MS bar ONLY when explicitly tagged
+                # (a convergence-anchor noisy-resume overwrite — the orig MS close is retained
+                # in fb["_orig_ms_close"] for audit). Plain interior fills never overwrite.
+                if fb["date"] not in by_date or fb.get("_overwrite"):
                     by_date[fb["date"]] = fb
             h["series"] = [by_date[d] for d in sorted(by_date)]
-            h["_gapfill"] = {"filled_bars": len(r["fills"]), "source": "yahoo (ECB FX, edge-anchored)",
-                             "windows": r["fill_windows"], "at": "#64"}
+            n_ovr = sum(1 for fb in r["fills"] if fb.get("_overwrite"))
+            h["_gapfill"] = {"filled_bars": len(r["fills"]), "inserts": len(r["fills"]) - n_ovr,
+                             "overwrites": n_ovr,
+                             "source": "yahoo (ECB FX, edge-anchored; convergence-anchor handback)",
+                             "windows": r["fill_windows"], "at": "#64+conv"}
             hpath.write_text(json.dumps(h, indent=2))
             n += 1
         print("\nAPPLIED: filled {} names. NEXT: calculate_index + verify_index_reconstruction (Δ=0) + §12.6.".format(n))
@@ -258,6 +337,81 @@ def main():
         except Exception as exc:
             print("  recurrence registry update skipped ({})".format(str(exc)[:60]))
         print("\nDRY — nothing written to history. Checkpoint this scope, then --apply.")
+
+    # ── LOUD UNFILLED-HOLE SURFACE (#64 follow-up) ───────────────────────────
+    # A SURFACED (edge-scale mismatch) or ERRORED (no symbol/ccy, Yahoo fail) hole
+    # is a constituent we could NOT fill. #64 printed these to stdout in --apply and
+    # they were then LOST: 3037 TT / 3436 JP / ARU AU rode an unfilled 39d hole (a
+    # +43% carry-forward blip) on the PUBLISHED track for a year, uncaught. Persist
+    # the unfillable set durably (BOTH modes) and ERROR LOUDLY (exit 3) on any one at
+    # >= MATERIAL_WT, so a material constituent's hole can never again be silently
+    # left behind. (Filling them is a deliberate out-of-band step — anchor to the
+    # clean edge + reconcile the off-edge resume bar — NOT an auto-fill here.)
+    from datetime import datetime, timezone
+    unfilled = []
+    for r in surfaced:
+        for s in r.get("surfaced", []):
+            unfilled.append({"ticker": r["ticker"], "weight_pct": r.get("weight"),
+                             "kind": "surfaced", "window": s.get("window"),
+                             "reason": s.get("reason")})
+    for r in errored:
+        unfilled.append({"ticker": r["ticker"], "weight_pct": r.get("weight"),
+                         "kind": "errored", "reason": r.get("error")})
+    # Classify each unfillable hole: material (weight) AND persistent (still open > PERSIST_DAYS
+    # after its resume date). The two gates are separate on purpose — a FRESH multi-day gap at
+    # the tail (resume within PERSIST_DAYS) may self-heal on the next run, so it must not halt
+    # the pipeline; an OLD one (the 3037/3436/ARU class) must. Errored = no window = hard fail,
+    # always persistent. ALL unfilled holes are persisted regardless of either gate.
+    today = datetime.now(timezone.utc).date()
+    def _hole_age(u):
+        w = u.get("window")
+        if not w:
+            return None  # errored: no resume date
+        try:
+            return (today - datetime.strptime(w[1], "%Y-%m-%d").date()).days
+        except Exception:
+            return None
+    for u in unfilled:
+        u["hole_age_days"] = _hole_age(u)
+        u["material"] = (u.get("weight_pct") or 0) >= MATERIAL_WT
+        u["persistent"] = (u["kind"] == "errored") or (
+            u["hole_age_days"] is not None and u["hole_age_days"] > PERSIST_DAYS)
+    UNFILLED_PATH = ROOT / "data" / "markets" / "ms_gap_unfilled.json"
+    try:
+        UNFILLED_PATH.write_text(json.dumps({
+            "_meta": {"updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                      "mode": "apply" if args.apply else "dry",
+                      "material_wt_threshold_pct": MATERIAL_WT, "persist_days": PERSIST_DAYS,
+                      "note": "Every hole that could NOT be filled (surfaced edge-mismatch / "
+                              "errored symbol|ccy|yahoo) is persisted here so none is ever "
+                              "silently skipped. The run exits non-zero ONLY on a hole that is "
+                              "BOTH material (>= threshold wt) AND persistent (open > persist_days "
+                              "/ errored) — fresh gaps may self-heal and do not halt."},
+            "unfilled": sorted(unfilled, key=lambda u: -(u.get("weight_pct") or 0)),
+        }, indent=2))
+    except Exception as exc:
+        print("  WARN: could not persist ms_gap_unfilled.json ({})".format(str(exc)[:60]))
+    material = [u for u in unfilled if u["material"]]
+    halting = [u for u in material if u["persistent"]]
+    fresh_material = [u for u in material if not u["persistent"]]
+    if unfilled:
+        print("\nUNFILLED HOLES (persisted to data/markets/ms_gap_unfilled.json): {} total, "
+              "{} material, {} material+persistent".format(len(unfilled), len(material), len(halting)))
+    if fresh_material:
+        print("  {} material but FRESH hole(s) — reported, NOT halting (may self-heal next run): {}"
+              .format(len(fresh_material), ", ".join(u["ticker"] for u in fresh_material)))
+    if halting:
+        print("!" * 76)
+        print("MATERIAL + PERSISTENT UNFILLED HOLE(S) — {} constituent(s) >= {}% weight, open > {}d, "
+              "could NOT be filled:".format(len(halting), MATERIAL_WT, PERSIST_DAYS))
+        for u in sorted(halting, key=lambda u: -(u.get("weight_pct") or 0)):
+            age = u.get("hole_age_days")
+            print("  {:11} w={:>6.3f}  {:8} age={:>5}  {}".format(
+                u["ticker"], u.get("weight_pct") or 0, u["kind"],
+                ("{}d".format(age) if age is not None else "n/a"), (u.get("reason") or "")[:50]))
+        print("Resolve out-of-band (anchor-to-clean-edge + resume-bar convergence), then re-run.")
+        print("!" * 76)
+        sys.exit(3)
 
 
 if __name__ == "__main__":

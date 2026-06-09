@@ -1505,6 +1505,84 @@ become candidates for daily Yahoo-routing, like the corporate-action route — m
 decide). The recurring MS multi-week international gap is logged as a concrete #48 provider
 data-reliability requirement (alongside shares-outstanding and bonus/scrip).
 
+### 12.8 #64 follow-up — convergence-anchor fill of 3 surfaced-but-unfilled holes (2026-06-08)
+
+#64 (§12.7) *surfaced but did not fill* three constituents whose 2025-06-20→07-29 hole failed
+the both-edge continuity check: **Unimicron (3037 TT), SUMCO (3436 JP), Arafura (ARU AU)** —
+~**0.70% combined weight**. The filler refused correctly (the MS **resume bar at 07-29 sat
+2–3% off Yahoo**), but the surfaced set was printed-not-persisted, so they rode an unfilled
+39-day hole — a **+43% carry-forward blip** for Unimicron on 07-29 — on the published track
+for ~10 months.
+
+The 2–3% resume gap is **one-off MS resume-bar noise after the void** (no Yahoo split in the
+gap — positively confirmed), re-converging to MS/Yahoo ≈ 1.0 within 1–3 bars. Fix = a
+**convergence-anchor**: extend the Yahoo fill THROUGH the noisy resume bar(s) and hand back to
+MS at the first re-convergent bar (|MS/Yahoo − 1| < 1%) — handbacks **07-31 / 07-30 / 08-01**;
+both gap edges then anchor ∈ [0.99, 1.01]. The noisy resume bars are **overwritten** (audited —
+`_orig_ms_close` retained), distinct from the no-overwrite interior fills of §12.7. ECB FX
+(§12.5); **market-complete** convention (keeps the 2025-07-04 US-holiday/Asia-open bar, matching
+47/48 non-holed TW/JP/AU peers). Scope: **inserts 26/25/26 + overwrites 2/1/3 = 83 bars**.
+
+**Re-derived on the daily-refreshed base** (2026-06-08, after a concurrent daily-CI update — see
+§12.10). Index impact (fill only, isolated via a same-day unfilled baseline, both 1253-date):
+pre-gap residual 0; the carry-forward blip resolves to the real gradual path (mid-window
+correction up to ~+0.04%); Δ=0 reconstruction MATCH. On the daily-moved base (**tail 3064.77**)
+the net effect at the current level rounds to the base — the restatement is **base-dependent**:
+the −0.0085% measured on the prior 3056.12 base nets to ~0 at the 3064.77 tail, surfacing instead
+as a distributed ≈−0.01% path-offset across post-window dates. The level effect is ~¼ of a naive
+*global*-weight estimate because the composite is `weighted_average_of_sub_indices`: Unimicron's
+**effective** composite weight (within-Materials 5% cap × ~1.8% Materials sector share) is far
+below its ~0.55% global cap weight.
+
+*Not part of the restatement:* the series sits at **1253 dates** — the routine **rolling 5-year
+sub-index window** (`sub_base = today − 1825d`) advancing with the calendar, trimming pre-anchor
+2021 start points. It has **zero effect on post-2025-03-31 levels** and tracks the daily run.
+
+**Guard hardened** (`gap_fill_from_yahoo.py`): surfaced/errored holes now **persist** to
+`data/markets/ms_gap_unfilled.json` (never printed-then-lost again); the run exits non-zero only
+on a hole that is BOTH **material** (≥ 0.05% wt) AND **persistent** (open > 14d, or errored) — a
+fresh gap that may self-heal does not halt the pipeline.
+
+### 12.9 #64 follow-up — symmetric (entry-edge) convergence-anchor: 6506 JP (2026-06-08)
+
+The §12.8 hardened guard immediately surfaced a 4th material hole the persist-not-print fix
+would previously have lost: **Yaskawa Electric (6506 JP), Robotics, 0.136% wt** — an 8-day hole
+**2025-06-09→06-17** whose **ENTRY** bar (06-09) ran 2.18% noisy vs Yahoo (the *mirror* of the
+§12.8 resume-bar noise, which is exit-side). The §12.8 anchor only walked the exit edge, so it
+correctly *refused* (before-edge mismatch persists).
+
+Gated like the 3: **(i)** backward convergence — 06-09 is one-off (bars back through 06-06
+re-converge to MS/Yahoo ≈ 1.0), not a persistent level shift; **(ii)** no Yahoo dividend or split
+in the window — the −2.18% is a *same-date* MS/Yahoo discrepancy (an ex-div hits both sources on
+the ex-date), so not a CA / ex-div-timing artifact. Fix = extend the convergence-anchor to be
+**symmetric** (`_converge_before` — backward-walk the entry edge): overwrite the noisy 06-09 bar
+(MS 21.411 → Yahoo 21.902, +2.29%), anchor the before edge at the convergent **06-06**; the exit
+edge (06-17) was already clean. 5 inserts + 1 overwrite; both edges ∈ [0.99, 1.01]; ECB FX.
+
+**Index impact: net tail effect ~0 (daily base 3064.77).** The hole's endpoints (06-06, 06-17)
+are preserved, so the fill is **pure path correctness** (corrects the noisy entry bar + the 8-day
+flat carry-forward), not a level move. On the fresh base it leaves a small window correction
+(max ≈+0.06% @ 2025-06-13) and a tiny persistent Robotics-sub-index offset that crosses the
+rounding tick on a handful of dates — the reverse-split-neutralization flips (constant-absolute
+Robotics-level steps, e.g. 2025-09-23 / 2025-12-02), the −8.06-pt class confirmed on the prior
+base, now landing on fresh-data dates — netting to ~0 at the tail. Δ=0 reconstruction MATCH;
+`calculate_index` confirmed bit-deterministic (re-run on identical history → 0 differing points).
+The symmetric anchor now handles entry- *and* exit-edge resume noise; a genuine persistent level
+disagreement at either edge still refuses (surfaces).
+
+### 12.10 Re-derivation on the daily base (concurrent-CI merge recovery, 2026-06-08)
+
+The §12.8/§12.9 fills were first applied on the 3056.12 base, then the **daily-CI pipeline pushed a
+fresh price/index update** (origin/main `83884f23`, tail 3064.77) that diverged from the local
+restatement commits — a `git merge` of the two left **conflict markers** in the index family
+(the e4232597 class). Recovery, per protocol: **abort the merge** (no marker ever committed/pushed
+— the pre-commit hook + on-push CI marker-check are the backstop), then **re-derive rather than
+text-merge** — adopt `83884f23` as the base, re-apply the convergence-anchor + symmetric `gap_fill`
+code, re-run the 4-name `--apply` → `calculate_index` → bottleneck → metrics deterministically.
+This is why the restatement's absolute level is the daily-moved 3064.77 and the deltas are
+base-dependent (above). The lesson logged: out-of-band index commits race the daily cron; pause it
+or rebase-not-merge.
+
 ---
 
 ## 13. Return basis — price-return, self-computed split adjustment

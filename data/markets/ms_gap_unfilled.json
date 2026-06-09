@@ -1,0 +1,10 @@
+{
+  "_meta": {
+    "updated_at": "2026-06-09T08:16:16Z",
+    "mode": "dry",
+    "material_wt_threshold_pct": 0.05,
+    "persist_days": 14,
+    "note": "Every hole that could NOT be filled (surfaced edge-mismatch / errored symbol|ccy|yahoo) is persisted here so none is ever silently skipped. The run exits non-zero ONLY on a hole that is BOTH material (>= threshold wt) AND persistent (open > persist_days / errored) \u2014 fresh gaps may self-heal and do not halt."
+  },
+  "unfilled": []
+}
