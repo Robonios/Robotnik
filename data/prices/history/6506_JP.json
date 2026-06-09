@@ -9830,30 +9830,16 @@
       "low": 41.64828,
       "close": 42.924377,
       "volume": 3216000.0
+    },
+    {
+      "date": "2026-06-08",
+      "open": 39.14598,
+      "high": 40.71507,
+      "low": 38.970943,
+      "close": 40.164951,
+      "volume": 5556000.0
     }
   ],
-  "last_fetched": "2026-06-08T23:12:56.850126Z",
-  "source": "MarketStack (USD via daily FX)",
-  "_gapfill": {
-    "filled_bars": 6,
-    "inserts": 5,
-    "overwrites": 1,
-    "source": "yahoo (ECB FX, edge-anchored; convergence-anchor handback)",
-    "windows": [
-      {
-        "window": [
-          "2025-06-06",
-          "2025-06-17"
-        ],
-        "days": 8,
-        "n_fill": 5,
-        "n_overwrite": 1,
-        "handback": null,
-        "entry_anchor": "2025-06-06",
-        "edge_scale": 1.00061,
-        "scale_consistent": 0.9988
-      }
-    ],
-    "at": "#64+conv"
-  }
+  "last_fetched": "2026-06-09T23:18:27.314887Z",
+  "source": "MarketStack (USD via daily FX)"
 }
