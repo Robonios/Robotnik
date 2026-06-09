@@ -1559,14 +1559,22 @@ the ex-date), so not a CA / ex-div-timing artifact. Fix = extend the convergence
 (MS 21.411 → Yahoo 21.902, +2.29%), anchor the before edge at the convergent **06-06**; the exit
 edge (06-17) was already clean. 5 inserts + 1 overwrite; both edges ∈ [0.99, 1.01]; ECB FX.
 
-**Index impact: net tail effect ~0 (daily base 3064.77).** The hole's endpoints (06-06, 06-17)
-are preserved, so the fill is **pure path correctness** (corrects the noisy entry bar + the 8-day
-flat carry-forward), not a level move. On the fresh base it leaves a small window correction
-(max ≈+0.06% @ 2025-06-13) and a tiny persistent Robotics-sub-index offset that crosses the
-rounding tick on a handful of dates — the reverse-split-neutralization flips (constant-absolute
-Robotics-level steps, e.g. 2025-09-23 / 2025-12-02), the −8.06-pt class confirmed on the prior
-base, now landing on fresh-data dates — netting to ~0 at the tail. Δ=0 reconstruction MATCH;
-`calculate_index` confirmed bit-deterministic (re-run on identical history → 0 differing points).
+**Index impact: net tail effect ~0 (daily base 3064.77).** Endpoints (06-06, 06-17) preserved →
+**pure path correction**, not a level move; window correction max ≈+0.06% @ 2025-06-13. Δ=0
+reconstruction MATCH; `calculate_index` bit-deterministic (re-run on identical history → 0 diffs).
+
+The fill seeds a sub-0.01% multiplicative offset (κ≈1.0001) in the sub-index chains (Materials
+from the 3 names, Robotics from 6506) which surfaces on scattered dates as **discrete steps —
+propagation + rounding, NOT neutralization**. Cause: `backfill_index_chained` rounds the *raw*
+chain to 2 decimals *before* normalising, so each sub-index is quantised to ≈(normalisation-scale
+× 0.01) — **≈8.0 pts Robotics, ≈14.5 pts Materials** (verified: the sub-index values are exact
+multiples of those quanta). When the tiny offset tips the raw 2-decimal rounding on a given date
+the sub-index jumps one quantum; the composite shows that × sector share — e.g. 7.74% × 8 ≈ 0.6 pt
+(2025-09-23, Robotics) and 1.64% × 14.5 ≈ 0.24 pt (Materials), ≤ ~0.04% per date, ~0 at the tail.
+This reconciles κ with the observed composite steps. The reverse-split-neutralisation rule is
+**not** involved — it fires only twice in all of Robotics (OUST, 2023-04, a genuine one-day bad
+print; neither on a flip date). The raw-chain coarse quantisation is a pre-existing precision nit
+(immaterial to levels; queued for a precision pass).
 The symmetric anchor now handles entry- *and* exit-edge resume noise; a genuine persistent level
 disagreement at either edge still refuses (surfaces).
 
