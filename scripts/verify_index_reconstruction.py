@@ -17,10 +17,13 @@ If two independent implementations of the same methodology agree to <0.01 on
 every point of the composite and all four sub-indices, the production code is
 corroborated. Any divergence is a bug in one of them and is reported loudly.
 
-It re-derives EVERY transform from the methodology spec rather than importing
-production helpers — the only shared inputs are the on-disk data files (the
-USD/split-adjusted history, market caps, registry), which are the fetch-layer
-artifacts both the production index and this check must consume.
+It re-derives the index MATH (chain-link, normalisation, composite weighting)
+from the methodology spec rather than importing production helpers. The DATE-AXIS
+rules (trading-day quorum, fixed floor, injection guard) are shared from
+index_dates so the family has ONE definition of them; this check drives that
+shared rule from an INDEPENDENT data representation (per-ticker {date: close}
+series + dense ffill arrays, vs production's date-keyed price_matrix), so a
+math or representation bug still surfaces here.
 
 Usage:  python scripts/verify_index_reconstruction.py
 Exit 0 = reconstruction matches production within tolerance; non-zero = drift.
@@ -28,6 +31,9 @@ Exit 0 = reconstruction matches production within tolerance; non-zero = drift.
 import json, sys
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from index_dates import trading_days, sub_index_base  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 IDX  = ROOT / "data" / "index"
@@ -39,9 +45,9 @@ CAP             = 0.05
 MAX_LOAD_USD    = 10_000
 NORMALISE_DATE  = "2025-03-31"
 BASE_VALUE      = 1000.0
-TRADING_COVER   = 0.50          # trading-day filter (eligible coverage)
-SUB_COVER       = 0.30          # base-date coverage threshold
-LOOKBACK_DAYS   = 1825          # ~5y for the raw sub-index base
+# Date-axis constants + rules (>=50% trading quorum, fixed floor 2021-05-07,
+# injection guard) are SHARED from index_dates (imported above) — defined once
+# for the family. This check still re-derives the index MATH independently.
 REORG_EVENTS    = {"WOLF": "2025-09-29"}   # bankruptcy/wipeout reorgs == production
 COMPOSITE_SECTORS = ["semiconductor", "robotics", "space", "materials"]
 SECTOR_MAP = {
@@ -51,6 +57,8 @@ SECTOR_MAP = {
     "Materials":"Materials","Materials & Inputs":"Materials",
     "Token":"Token","Tokens":"Token",
 }
+# Sub-index routing is PURE-registry (== production); no override layer (KTOS/WOLF
+# corrected in the registry itself).
 
 def load(p): return json.loads(Path(p).read_text())
 
@@ -109,6 +117,15 @@ def main():
     elig_tk = {e["ticker"] for e in elig}
     N = len(elig)
 
+    # Route sub-index membership by REGISTRY sector (== production, pure-registry).
+    # The market_caps sector set above drove the eligible/token gate.
+    for e in elig:
+        tk = e["ticker"]
+        rv = reg.get(_eid(tk))
+        rs = rv.get("sector") if isinstance(rv, dict) else None
+        if rs:
+            e["sector"] = SECTOR_MAP.get(rs, rs)
+
     # ── per-ticker USD close series (independent representation) ──────────
     series = {}  # tk -> {date: close}
     for f in HIST.glob("*.json"):
@@ -124,14 +141,11 @@ def main():
 
     all_dates = sorted({dt for s in series.values() for dt in s})
 
-    # ── trading-day filter: >=50% eligible real-bar coverage ─────────────
-    def cover(dt):
-        m = 0
-        for tk in elig_tk:
-            if tk in series and dt in series[tk]: m += 1
-        return m
-    need = max(1, int(N * TRADING_COVER))
-    trading = [dt for dt in all_dates if cover(dt) >= need]
+    # ── trading-day filter (shared index_dates rule): >=50% eligible coverage ─
+    # Drive the shared rule from this check's INDEPENDENT representation (per-
+    # ticker series) via a `traded` predicate, vs production's price_matrix.
+    _traded = lambda tk, dt: dt in series.get(tk, {})
+    trading = trading_days(all_dates, elig_tk, _traded)
 
     # ── dense forward-filled price ararray per ticker over trading axis ──
     ffill = {}  # tk -> list aligned to `trading`
@@ -143,13 +157,8 @@ def main():
         ffill[tk] = arr
     didx = {dt: i for i, dt in enumerate(trading)}
 
-    # ── raw sub-index base date: first trading day >= today-1825d with
-    #    >=30% eligible coverage (production uses full-eligible coverage) ──
-    target5 = (datetime.strptime(today, "%Y-%m-%d") - timedelta(days=LOOKBACK_DAYS)).strftime("%Y-%m-%d")
-    sub_base = trading[0]
-    for dt in trading:
-        if dt >= target5 and cover(dt) >= N * SUB_COVER:   # float compare, == production
-            sub_base = dt; break
+    # ── raw sub-index base date (shared fixed floor == production) ──
+    sub_base = sub_index_base(trading, elig_tk, _traded)
     bi = didx[sub_base]
 
     # ── build one sub-index (independent backfill) ───────────────────────

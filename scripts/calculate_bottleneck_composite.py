@@ -98,6 +98,8 @@ SECTOR_MAP = {
 # composites are methodologically identical — the divergence is then tilt-only.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from calculate_index import backfill_index_chained, REORG_EVENTS  # noqa: E402
+from index_dates import (SUB_INDEX_FLOOR, trading_days, snapshot_data_date,  # noqa: E402
+                         extend_axis_for_snapshot, sub_index_base)
 
 
 def _selfcheck_chain(entities, weights, price_matrix, all_dates, base_date_str, prod_series):
@@ -345,6 +347,15 @@ def main():
                 and e["ticker"] not in token_tickers
                 and e.get("sector") != "Token"]
 
+    # Route sector by REGISTRY (== index, pure-registry): cosmetic here (the bottleneck
+    # basket is a single chain, not sub-index-routed) but keeps the family labels aligned.
+    for e in eligible:
+        tk = e["ticker"]
+        rv = registry.get(tk)
+        rs = rv.get("sector") if isinstance(rv, dict) else None
+        if rs:
+            e["sector"] = SECTOR_MAP.get(rs, rs)
+
     print("  Eligible universe: {}".format(len(eligible)))
 
     # ── apply bottleneck multipliers ──
@@ -372,37 +383,29 @@ def main():
     weights = compute_capped_weights(raw_weights)                       # bottleneck-tilted
     mcap_weights = compute_capped_weights({e["ticker"]: e["market_cap_usd"] for e in eligible})
 
-    # ── load history + trading-day filter (== standard index) ──
+    # ── load history + shared date-axis (index_dates: == standard index) ──
     price_matrix, ticker_meta, all_dates = load_all_history()
     elig_tk = {e["ticker"] for e in eligible}
-    _need_td = max(1, int(len(eligible) * 0.5))
-    all_dates = [d for d in all_dates
-                 if sum(1 for t in elig_tk if t in price_matrix.get(d, {})) >= _need_td]
+    _traded = lambda t, d: t in price_matrix.get(d, {})
+    all_dates = trading_days(all_dates, elig_tk, _traded)
 
-    # ── injection gating: a real trading day only, never the wall clock ──
-    from collections import Counter as _C
-    _dc = _C(str(p.get("date"))[:10] for p in prices_data["prices"]
-             if p.get("price") is not None and p.get("date")
-             and str(p.get("date"))[:10] <= today_str and p.get("ticker") in elig_tk)
-    _q = max(10, int(len(eligible) * 0.05))
-    _td = sorted(d for d, c in _dc.items() if c >= _q)
-    data_date = _td[-1] if _td else None
-    last_hist = all_dates[-1] if all_dates else None
-    if data_date and (last_hist is None or data_date > last_hist):
-        price_matrix.setdefault(data_date, {})
-        if data_date not in all_dates:
-            all_dates.append(data_date); all_dates.sort()
+    # ── injection gating (shared guard): a snapshot date joins the axis only if
+    #    genuinely new — a quorum-filtered thin/partial session stays gated. This
+    #    is exactly where the bottleneck used to diverge (its `data_date not in
+    #    all_dates` re-admitted the thin 2026-06-08 session); it now inherits the
+    #    index's correct `not in price_matrix` guard by sharing the module. ──
+    data_date = snapshot_data_date(
+        ((p.get("ticker"), str(p.get("date"))[:10]) for p in prices_data["prices"]
+         if p.get("price") is not None and p.get("date")),
+        elig_tk, today_str)
+    inject_date = extend_axis_for_snapshot(all_dates, price_matrix, data_date)
+    if inject_date:
         for t, p in prices_by_ticker.items():
             if p is not None and 0 < p <= 5000:
-                price_matrix[data_date][t] = p
+                price_matrix[inject_date][t] = p
 
-    # ── base date (== standard) ──
-    target_5y = (datetime.strptime(today_str, "%Y-%m-%d") - timedelta(days=1825)).strftime("%Y-%m-%d")
-    base_date_str = all_dates[0]
-    for d in all_dates:
-        if d >= target_5y and sum(1 for t in elig_tk if t in price_matrix.get(d, {})) >= len(eligible) * 0.3:
-            base_date_str = d
-            break
+    # ── base date (shared fixed floor == standard) ──
+    base_date_str = sub_index_base(all_dates, elig_tk, _traded)
     print("  Base date: {} | trading days: {}".format(base_date_str, len(all_dates)))
 
     # ── chain-linked backfill (== standard), emit from base, normalise ──

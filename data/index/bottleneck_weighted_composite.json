@@ -4,8 +4,8 @@
   "status": "preliminary \u2014 directional signal only, not headline-publishable",
   "base_date": "2025-03-31",
   "base_value": 1000.0,
-  "current_value": 3242.42,
-  "current_date": "2026-06-08",
+  "current_value": 3236.36,
+  "current_date": "2026-06-05",
   "entity_count": 197,
   "rated_entity_count": 179,
   "rating_coverage_pct": 90.9,
@@ -157,7 +157,7 @@
     {
       "ticker": "8035 JP",
       "name": "Tokyo Electron",
-      "sector": "Robotics",
+      "sector": "Semiconductor",
       "market_cap_usd": 156923243290,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
@@ -184,7 +184,7 @@
     {
       "ticker": "6857 JP",
       "name": "Advantest Corp",
-      "sector": "Robotics",
+      "sector": "Semiconductor",
       "market_cap_usd": 114286982685,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
@@ -211,7 +211,7 @@
     {
       "ticker": "IFX GR",
       "name": "Infineon Technologies",
-      "sector": "Robotics",
+      "sector": "Semiconductor",
       "market_cap_usd": 117296782835,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
@@ -256,7 +256,7 @@
     {
       "ticker": "600111",
       "name": "China Northern Rare Earth",
-      "sector": "Robotics",
+      "sector": "Materials",
       "market_cap_usd": 25039554083,
       "bottleneck_risk": "CRITICAL",
       "multiplier": 4.0,
@@ -292,7 +292,7 @@
     {
       "ticker": "6920 JP",
       "name": "Lasertec Corp",
-      "sector": "Robotics",
+      "sector": "Semiconductor",
       "market_cap_usd": 21880521896,
       "bottleneck_risk": "CRITICAL",
       "multiplier": 4.0,
@@ -337,7 +337,7 @@
     {
       "ticker": "6723",
       "name": "Renesas Electronics",
-      "sector": "Robotics",
+      "sector": "Semiconductor",
       "market_cap_usd": 46884310040,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
@@ -364,7 +364,7 @@
     {
       "ticker": "ENTG",
       "name": "Entegris",
-      "sector": "Semiconductor",
+      "sector": "Materials",
       "market_cap_usd": 20211734528,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
@@ -472,6 +472,98 @@
   ],
   "weight_count_total": 197,
   "series": [
+    {
+      "date": "2021-05-07",
+      "value": 606.06
+    },
+    {
+      "date": "2021-05-10",
+      "value": 581.82
+    },
+    {
+      "date": "2021-05-11",
+      "value": 581.82
+    },
+    {
+      "date": "2021-05-12",
+      "value": 557.58
+    },
+    {
+      "date": "2021-05-13",
+      "value": 563.64
+    },
+    {
+      "date": "2021-05-14",
+      "value": 575.76
+    },
+    {
+      "date": "2021-05-17",
+      "value": 569.7
+    },
+    {
+      "date": "2021-05-18",
+      "value": 569.7
+    },
+    {
+      "date": "2021-05-19",
+      "value": 575.76
+    },
+    {
+      "date": "2021-05-20",
+      "value": 593.94
+    },
+    {
+      "date": "2021-05-21",
+      "value": 587.88
+    },
+    {
+      "date": "2021-05-24",
+      "value": 600.0
+    },
+    {
+      "date": "2021-05-25",
+      "value": 606.06
+    },
+    {
+      "date": "2021-05-26",
+      "value": 606.06
+    },
+    {
+      "date": "2021-05-27",
+      "value": 606.06
+    },
+    {
+      "date": "2021-05-28",
+      "value": 612.12
+    },
+    {
+      "date": "2021-06-01",
+      "value": 618.18
+    },
+    {
+      "date": "2021-06-02",
+      "value": 618.18
+    },
+    {
+      "date": "2021-06-03",
+      "value": 612.12
+    },
+    {
+      "date": "2021-06-04",
+      "value": 624.24
+    },
+    {
+      "date": "2021-06-07",
+      "value": 624.24
+    },
+    {
+      "date": "2021-06-08",
+      "value": 618.18
+    },
+    {
+      "date": "2021-06-09",
+      "value": 618.18
+    },
     {
       "date": "2021-06-10",
       "value": 624.24
@@ -5483,16 +5575,18 @@
     {
       "date": "2026-06-05",
       "value": 3236.36
-    },
-    {
-      "date": "2026-06-08",
-      "value": 3242.42
     }
   ],
   "divergence_vs_mcap_composite": {
     "monthly_flag_threshold_pct": 5.0,
     "months_flagged": 0,
     "per_day_sample": [
+      {
+        "date": "2026-04-24",
+        "bw": 2763.64,
+        "mcap": 2708.07,
+        "divergence_pct": 2.052
+      },
       {
         "date": "2026-04-27",
         "bw": 2757.58,
@@ -5666,14 +5760,8 @@
         "bw": 3236.36,
         "mcap": 3186.34,
         "divergence_pct": 1.57
-      },
-      {
-        "date": "2026-06-08",
-        "bw": 3242.42,
-        "mcap": 3186.34,
-        "divergence_pct": 1.76
       }
     ]
   },
-  "calculated_at": "2026-06-09T08:14:37.463833+00:00Z"
+  "calculated_at": "2026-06-09T13:38:45.658006+00:00Z"
 }

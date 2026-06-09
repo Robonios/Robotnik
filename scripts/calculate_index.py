@@ -21,17 +21,26 @@ from collections import defaultdict
 # ── paths ────────────────────────────────────────────────────────────────
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR   = os.path.dirname(SCRIPT_DIR)
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
+from index_dates import (SUB_INDEX_FLOOR, TRADING_COVERAGE,  # noqa: E402
+                         trading_days, snapshot_data_date,
+                         extend_axis_for_snapshot, sub_index_base)
 INDEX_DIR  = os.path.join(ROOT_DIR, "data", "index")
 HISTORY_DIR = os.path.join(ROOT_DIR, "data", "prices", "history")
+# Output dir for the index family. Defaults to INDEX_DIR; a dry-run/staging run
+# sets ROBOTNIK_INDEX_OUT to write the restated family elsewhere while the INPUTS
+# (market_caps, all_prices, registry, history) are still read from the live tree.
+OUT_DIR = os.environ.get("ROBOTNIK_INDEX_OUT") or INDEX_DIR
 
 MCAP_PATH    = os.path.join(INDEX_DIR, "market_caps.json")
 PRICES_PATH  = os.path.join(ROOT_DIR, "data", "prices", "all_prices.json")
 
-WEIGHTS_PATH   = os.path.join(INDEX_DIR, "weights.json")
-INDEX_PATH     = os.path.join(INDEX_DIR, "robotnik_index.json")
-SUB_IDX_PATH   = os.path.join(INDEX_DIR, "sub_indices.json")
-BASE_DATE_PATH = os.path.join(INDEX_DIR, "base_date.json")
-SUMMARY_PATH   = os.path.join(INDEX_DIR, "summary.json")
+WEIGHTS_PATH   = os.path.join(OUT_DIR, "weights.json")
+INDEX_PATH     = os.path.join(OUT_DIR, "robotnik_index.json")
+SUB_IDX_PATH   = os.path.join(OUT_DIR, "sub_indices.json")
+BASE_DATE_PATH = os.path.join(OUT_DIR, "base_date.json")
+SUMMARY_PATH   = os.path.join(OUT_DIR, "summary.json")
 
 BASE_VALUE = 1000.0
 NORMALISE_DATE = "2025-03-31"  # All indices normalised to BASE_VALUE on this date
@@ -57,6 +66,20 @@ COMPOSITE_DIVERGENCE_TOL = 0.05
 # Implausibly large close price in USD — above this, we treat the point
 # as a unit-mismatch (e.g. raw KRW leaking in) and skip it at load time.
 MAX_LOAD_USD = 10_000
+
+# ── Sub-index routing (registry sector = single source of truth) ─────────
+# Sub-index membership is routed PURELY by the REGISTRY sector, NOT the
+# descriptive market_caps sector — the two diverged for 12 eligible names
+# (~6.5% wt), misfiling flagship semiconductors (Tokyo Electron, Advantest,
+# Infineon, Renesas, Lasertec, Onto, Melexis) as "Robotics" and rare-earth
+# miners (MP, China Northern Rare Earth) as Robotics rather than Materials.
+# The two cross-stack edge cases (KTOS→Space, WOLF→Materials) were corrected
+# IN the registry rather than patched here, so there is NO override layer
+# (ENTG already agrees with the registry). Registry is the only source.
+
+# Date-axis rules (the ≥50% trading-day quorum, the fixed sub-index floor
+# 2021-05-07, and the snapshot injection guard) are defined ONCE in
+# index_dates.py and imported above — shared by all three index-family scripts.
 
 # sector mapping for sub-indices (Cross-Stack eliminated — entities reclassified)
 SECTOR_MAP = {
@@ -492,6 +515,7 @@ def main():
         _lifecycle = {k: v.get("lifecycle_status") for k, v in _reg.items()
                       if isinstance(v, dict)}
     except Exception:
+        _reg = {}
         token_tickers = set()
         registry_excluded = set()
         _pubtkr2eid = {}
@@ -585,6 +609,27 @@ def main():
             "Double-count violation — {} entity_id(s) in BOTH the active-private set and the "
             "public index: {}".format(len(_double), sorted(_double)[:20]))
 
+    # ── Route sub-index membership by REGISTRY sector (source of truth) ──
+    # market_caps sector is descriptive only and diverged for 12 names; the
+    # registry is the curated single source of truth (same principle as the
+    # status/lifecycle gates above). Overwrite each eligible entity's sector
+    # with its registry sector (or an explicit cross-stack override). A missing
+    # registry sector is a publish-blocking STOP — never silently default/drop.
+    _missing_sector = []
+    for e in eligible:
+        tkr = e["ticker"]
+        _rv = _reg.get(_eid(tkr))
+        _rsec = _rv.get("sector") if isinstance(_rv, dict) else None
+        if not _rsec:
+            _missing_sector.append(tkr)
+            continue
+        e["sector"] = SECTOR_MAP.get(_rsec, _rsec)
+    if _missing_sector:
+        raise IndexGuardrailError(
+            "Sector-routing STOP — {} eligible constituent(s) lack a registry "
+            "sector (no silent default/drop): {}".format(
+                len(_missing_sector), sorted(_missing_sector)[:20]))
+
     excluded_micro = [e for e in entities
                       if 0 < e["market_cap_usd"] < MIN_MARKET_CAP and e["ticker"] in prices_by_ticker]
 
@@ -600,6 +645,24 @@ def main():
     # ── load price history ───────────────────────────────────────────
     price_matrix, ticker_meta, all_dates = load_all_history()
 
+    # ── Guard: every eligible constituent must have a matching history key ──
+    # load_all_history keys price_matrix on each file's internal ticker. If an
+    # eligible name's ticker has no bar on ANY date, its price history is
+    # orphaned (e.g. a stale duplicate file keyed to a legacy symbol form) and
+    # the name would sit in the index as inert weight contributing no return.
+    # Surface loud + publish-block rather than let it pass silently.
+    _hist_keys = set().union(*price_matrix.values()) if price_matrix else set()
+    _unkeyed = sorted(e["ticker"] for e in eligible if e["ticker"] not in _hist_keys)
+    save_json(os.path.join(OUT_DIR, "unkeyed_constituents.json"),
+              {"checked_at": datetime.now(timezone.utc).isoformat() + "Z",
+               "count": len(_unkeyed), "tickers": _unkeyed})
+    if _unkeyed:
+        print("  UNKEYED CONSTITUENTS (eligible, no history bar): {}".format(_unkeyed))
+        raise IndexGuardrailError(
+            "History-key STOP — {} eligible constituent(s) have NO matching "
+            "history key (orphaned / legacy-keyed file?): {}. Re-key or backfill "
+            "the history, or document the gap.".format(len(_unkeyed), _unkeyed[:20]))
+
     # ── Restrict the date axis to genuine TRADING days ────────────────
     # Token history is 7-day (crypto) and deep international history trades
     # on US market holidays — both inject dates on which the US-anchored
@@ -612,10 +675,7 @@ def main():
     # actually traded. The 50% line sits in the wide empty gap between
     # holiday sessions (≤35%, international-only) and real sessions (≥79%).
     _elig_set = {e["ticker"] for e in eligible}
-    TRADING_COVERAGE = 0.50
-    _need = max(1, int(len(eligible) * TRADING_COVERAGE))
-    _trading = [d for d in all_dates
-                if sum(1 for t in _elig_set if t in price_matrix.get(d, {})) >= _need]
+    _trading = trading_days(all_dates, _elig_set, lambda t, d: t in price_matrix.get(d, {}))
     _dropped = len(all_dates) - len(_trading)
     if _trading:
         print(f"  Trading-day filter: kept {len(_trading)}/{len(all_dates)} dates "
@@ -631,33 +691,19 @@ def main():
     # point is created. A thin lone session (e.g. a couple of Sunday-only
     # TASE listings) fails the quorum and is likewise ignored — the
     # composite only steps forward when the broad market actually traded.
-    from collections import Counter as _Counter
     _eligible_tickers = {e["ticker"] for e in eligible}
-    _date_counts = _Counter(
-        str(p.get("date"))[:10] for p in prices_data["prices"]
-        if p.get("price") is not None and p.get("date")
-        and str(p.get("date"))[:10] <= today_str
-        and p.get("ticker") in _eligible_tickers
-    )
-    TRADING_DAY_QUORUM = max(10, int(len(eligible) * 0.05))
-    _trading_dates = sorted(d for d, c in _date_counts.items()
-                            if c >= TRADING_DAY_QUORUM)
-    data_date = _trading_dates[-1] if _trading_dates else None
+    data_date = snapshot_data_date(
+        ((p.get("ticker"), str(p.get("date"))[:10]) for p in prices_data["prices"]
+         if p.get("price") is not None and p.get("date")),
+        _eligible_tickers, today_str)
     last_hist_date = all_dates[-1] if all_dates else None
 
     # Inject a fresh point ONLY when the snapshot is genuinely ahead of the
-    # on-disk history (e.g. EOD history not yet refreshed for the latest
-    # session). When history already covers the latest trading date — which
-    # includes every weekend, where data_date stays pinned to Friday — we
-    # trust the split/FX-adjusted EOD history and add nothing. This is the
-    # "drop non-trading days" standard applied at the injection boundary.
-    inject_date = None
-    if data_date and (last_hist_date is None or data_date > last_hist_date):
-        inject_date = data_date
-        if inject_date not in price_matrix:
-            price_matrix[inject_date] = {}
-            all_dates.append(inject_date)
-            all_dates.sort()
+    # on-disk history. A snapshot date already present in history but dropped by
+    # the quorum filter (a thin/partial session) stays GATED — see
+    # index_dates.extend_axis_for_snapshot. inject_date is returned even when
+    # gated so the Layer-2 validation below can still vet price_matrix[inject_date].
+    inject_date = extend_axis_for_snapshot(all_dates, price_matrix, data_date)
 
     # ── Layer 2: Index-side price validation (only when injecting) ────
     index_quarantine = set()
@@ -698,7 +744,7 @@ def main():
               f"non-trading day '{today_str}' NOT added (drop-non-trading-days)")
 
     # Persist index-side quarantine log
-    quarantine_log_path = os.path.join(INDEX_DIR, "quarantine.json")
+    quarantine_log_path = os.path.join(OUT_DIR, "quarantine.json")
     quarantine_today = [{"ticker": t, "reason": "index-side validation"} for t in index_quarantine]
     quarantine_history = []
     if os.path.exists(quarantine_log_path):
@@ -755,18 +801,11 @@ def main():
     # We anchor every sub-index to the earliest date with >= 30%
     # constituent coverage, give or take ~5 years back, then normalise
     # each series to 1000 on NORMALISE_DATE (2025-03-31).
-    from datetime import timedelta
-    sub_base_str = all_dates[0] if all_dates else today_str
-    if all_dates:
-        target_5y = (datetime.strptime(today_str, "%Y-%m-%d") - timedelta(days=1825)).strftime("%Y-%m-%d")
-        min_coverage_sub = len(eligible) * 0.3
-        for d in all_dates:
-            if d >= target_5y:
-                day_cov = sum(1 for t in weights if t in price_matrix.get(d, {}))
-                if day_cov >= min_coverage_sub:
-                    sub_base_str = d
-                    break
-    print(f"  Sub-index base date: {sub_base_str}")
+    # FIXED data floor (index_dates.SUB_INDEX_FLOOR), not a rolling today−1825d
+    # window — pinned to the data so the head no longer advances with wall-clock.
+    sub_base_str = sub_index_base(all_dates, weights,
+                                  lambda t, d: t in price_matrix.get(d, {})) or today_str
+    print(f"  Sub-index base date (fixed floor {SUB_INDEX_FLOOR}): {sub_base_str}")
 
     # ── Compute sub-indices first ───────────────────────────────────
     # Per Option A (2026-04-22 methodology revision), the Composite is

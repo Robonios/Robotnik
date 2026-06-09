@@ -1593,6 +1593,77 @@ or rebase-not-merge.
 
 ---
 
+### 12.11 Sector-routing classification correction + fixed sub-index floor (2026-06-09)
+
+A provenance audit of the pre-base chain (verifying it was on the hardened pipeline, not an EODHD
+remnant — it is: the whole 5Y chain is recomputed from the v2/Yahoo history every run) found the
+index routed **sub-index membership by the descriptive `market_caps` sector**, which diverged from
+the **registry** (the source of truth for status/lifecycle/tokens since §14/#43) for **12 eligible
+names (6.53% wt)** — most visibly a cluster of flagship semiconductors filed as "Robotics." Routing
+is now **purely by registry sector** (overwrites the `market_caps` sector for eligible constituents;
+a missing registry sector is a publish-blocking STOP, never a silent default) — **no override layer**.
+The two cross-stack edge cases were corrected **in the registry itself** (`KTOS` Robotics→Space —
+satellite role; `WOLF` Semiconductors→Materials — silicon-carbide materials) rather than patched in
+code; `ENTG` already agreed with the registry (Materials). The index sub-index and the public-markets
+display therefore read the same single source. (`SECTOR_ROUTE_OVERRIDE` removed from all three scripts;
+pure-registry == override routing was confirmed **Δ=0** before the override was retired.)
+
+**Per-name moves (10 names, 6.371% wt):**
+- Robotics → Semiconductor: 8035 JP Tokyo Electron (1.89%), IFX GR Infineon (1.41%), 6857 JP
+  Advantest (1.37%), 6723 Renesas (0.56%), 6920 JP Lasertec (0.26%), ONTO Onto (0.16%), MELE Melexis (0.04%)
+- Robotics → Materials: 600111 China Northern Rare Earth (0.30%), MP MP Materials (0.12%)
+- Semiconductor → Materials: ENTG Entegris (0.24%)
+- `KTOS` (→Space) and `WOLF` (→Materials) are **registry-corrected, not overridden**; placement
+  unchanged from the override version (Δ=0 verified: pure-registry routing == override routing).
+
+**Fixed floor.** The rolling `today−1825d` sub-index base (which trimmed the series head daily, so 5Y
+perpetually sat one day short and shrank with the clock) is replaced by a **fixed data floor
+`SUB_INDEX_FLOOR = 2021-05-07`** — the first trading day the universe clears the ≥50% (98/197) quorum,
+wall-clock-independent. Series extends 2021-06-10 → **2021-05-07** (+23 head pts, 1253→1276). 3Y/5Y now
+compute with margin that grows, not shrinks: **3Y +300.78%, 5Y +357.50%**.
+
+**Restatement (full-span; base held exactly 1000.0 @ 2025-03-31, no seam at the base or the new head).**
+Composite **3064.77 → 3168.86 (+3.40%)** — the old level was biased low because the misfiled semis
+dragged the (laggard) Robotics sub-index and the mcap-share weighting carried that down into the
+composite. Per-sub-index: **Robotics 2136.00 → 1844.26 (−13.66%)** (loses its semi winners → purer
+robotics), **Semiconductor 3131.25 → 3228.40 (+3.10%)**, **Materials 3550.72 → 3500.00 (−1.43%)**,
+**Space 3396.45 (0.00%, unchanged)** — the control proving only the reroute moved, not the mechanics.
+Full-span composite |Δ|: mean 1.51%, max 3.46%.
+
+**Guards & hygiene.** The independent reconstruction (`verify_index_reconstruction.py`) and the
+bottleneck composite (`calculate_bottleneck_composite.py`) were updated **in lockstep** (same registry
+routing + fixed floor); reconstruction **MATCH ✓ (worst |Δ|=0.0000)**; bottleneck self-check MATCH,
+value unchanged (sector-independent single basket; +23 head pts only). A new **history-key guard**
+(`data/index/unkeyed_constituents.json`, publish-blocking) surfaces any eligible constituent whose
+ticker has no matching history bar; currently **0**. Two **inert orphan duplicate files** (`6723 JP`,
+`600111 C1` — legacy suffixed keys, unreferenced, the live names served by `6723.json`/`600111.json`)
+were **deleted — confirmed Δ=0**.
+
+**Resolved (display↔routing).** With KTOS/WOLF corrected in the registry, the public-markets display
+now matches the index routing for all 12 moved names; the public-markets sector distribution
+(Semi 68 / Robotics 73 / Space 31 / Materials 25) equals the index sub-index counts exactly.
+
+**Resolved (freshness + shared date-axis module).** A read-only family-freshness audit found the
+composite + 4 sub-indices **legitimately current at 2026-06-05** (the last full session, 172/197
+eligible); 2026-06-06/07 are the weekend and **2026-06-08 was a thin partial Monday** (21-25 eligible,
+~12% — below the 50% / 98-name quorum) that the index correctly gates. The bottleneck composite had
+been tailing 06-08 because its injection guard tested `data_date not in all_dates` (re-admitting that
+quorum-filtered thin session) where the index correctly tested `inject_date not in price_matrix`.
+Rather than patch the bottleneck, the **date-axis rules were extracted into one shared module**
+(`scripts/index_dates.py`: the ≥50% trading-day quorum, the fixed floor 2021-05-07, and the snapshot
+injection guard — constants defined once), and all three scripts (`calculate_index`,
+`calculate_bottleneck_composite`, `verify_index_reconstruction`) were repointed to it — so the
+bottleneck inherits the correct guard **as a consequence of sharing, not a separate patch.** The
+module is representation-agnostic (a `traded(ticker,date)` predicate), so the reconstruction still
+drives the rule from its own independent representation (per-ticker series) and re-derives the index
+MATH independently. The extraction is **behaviour-neutral — verified Δ=0**: composite + 4 sub-indices
+byte-identical, bottleneck identical for 06-05-and-prior with ONLY the spurious 06-08 row dropped.
+Family `as_of` is now uniform at **2026-06-05** (composite, 4 sub-indices, bottleneck). Public-markets
+is a per-name snapshot carrying each name's own `price_date` (06-05 ×172, 06-08 ×21, 06-03 ×4); RPCI
+(`private_capital_index.json`) is monthly and tails month-end by design.
+
+---
+
 ## 13. Return basis — price-return, self-computed split adjustment
 
 **Decided:** 2026-05-30, during the MarketStack cutover split-adjustment work.
