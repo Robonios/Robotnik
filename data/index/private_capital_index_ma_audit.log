@@ -1,12 +1,12 @@
 Robotnik Private Capital Index — M&A conditional-inclusion audit
-Generated: 2026-05-22T16:14:06.967237+00:00
+Generated: 2026-06-12T10:06:34.053435+00:00
 Rule: include the M&A row in RPCI iff the acquirer is a private company in
       the Robotnik universe. Public-universe acquirers and out-of-universe
       acquirers are both excluded. Private in-universe = (acquirer appears
       as a non-M&A round target in rounds.json) OR (acquirer is in the
       PRIVATE_ACQUIRER_ALLOWLIST in scripts/calculate_private_index.py).
 
-Total M&A rows: 16 (3 included, 13 excluded)
+Total M&A rows: 18 (3 included, 15 excluded)
 
 DATE         TARGET                               ACQUIRER                      AMOUNT         DECISION
 -----------  -----------------------------------  ----------------------------  -------------  ------------------------------------------------
@@ -26,6 +26,8 @@ DATE         TARGET                               ACQUIRER                      
 2026-04-02  Phantom Space / Thermal Management   Phantom Space                 $undisclosed   INCLUDE: private in-universe acquirer (fundraised-in-universe)
 2026-04-14  Rocket Lab / Mynaric                 Rocket Lab                    $155M          EXCLUDE: public acquirer (RKLB)
 2026-04-14  Amazon / Globalstar                  Amazon                        $11570M        EXCLUDE: public acquirer (AMZN)
+2026-05-19  Empower Semiconductor                Analog Devices                $1500M         EXCLUDE: public acquirer (ADI)
+2026-05-26  Motiv Space Systems                  Rocket Lab                    $undisclosed   EXCLUDE: public acquirer (RKLB)
 
 Review note: any row marked "EXCLUDE: acquirer not in Robotnik universe"
 is a candidate for the PRIVATE_ACQUIRER_ALLOWLIST. Periodic review keeps

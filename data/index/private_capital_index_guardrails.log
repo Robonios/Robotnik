@@ -1,25 +1,25 @@
 Robotnik Private Capital Index — guardrail log
-Generated: 2026-05-22T16:14:06.911993+00:00
+Generated: 2026-06-12T10:06:33.997221+00:00
 Source: data/funding/rounds.json
 
 
 [GUARDRAIL 3] Stage-label classification:
-  Total rows scanned: 1244
-  In RPCI (mapped + included M&A): 1014
-  Excluded:                       230
-    - Strategic: 73
+  Total rows scanned: 1287
+  In RPCI (mapped + included M&A): 1046
+  Excluded:                       241
+    - Strategic: 77
     - Other: 32
     - Government investment: 32
-    - Debt Financing: 21
-    - Undisclosed: 19
-    - IPO: 13
-    - M&A (excluded by conditional rule): 13
+    - Debt Financing: 22
+    - Undisclosed: 20
+    - IPO: 16
+    - M&A (excluded by conditional rule): 15
     - Grant: 9
     - Bridge: 9
     - IPO (filed): 7
     - Government: 2
 
-[FILTER: IPO] 20 IPO + IPO (filed) row(s) excluded across the dataset
+[FILTER: IPO] 23 IPO + IPO (filed) row(s) excluded across the dataset
   Per-month breakdown (in-RPCI scope only, i.e. months 2024-01 onward):
     2024-03: 1 IPO row(s) filtered out
     2024-06: 1 IPO row(s) filtered out
@@ -31,8 +31,9 @@ Source: data/funding/rounds.json
     2025-12: 1 IPO row(s) filtered out
     2026-03: 2 IPO row(s) filtered out
     2026-04: 4 IPO row(s) filtered out
+    2026-05: 3 IPO row(s) filtered out
 
-[FILTER: M&A] 16 M&A row(s) classified: 3 included, 13 excluded (full decision table in private_capital_index_ma_audit.log)
+[FILTER: M&A] 18 M&A row(s) classified: 3 included, 15 excluded (full decision table in private_capital_index_ma_audit.log)
 
 [GUARDRAIL 1] 3 round(s) flagged in 2023-04:
   [GUARDRAIL 1] month=2023-04 Yarbo 2023-04-15 stage=Pre-seed / Seed amount=$14M trailing-99th=$2M (5.8x); CAPPED at $2M
