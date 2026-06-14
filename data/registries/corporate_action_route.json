@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "updated_at": "2026-06-07T08:29:45.811683+00:00Z",
-    "count": 20,
+    "updated_at": "2026-06-14T08:47:49.169602+00:00Z",
+    "count": 21,
     "purpose": "v2 split_factor misses bonus/scrip/rights; these names' HISTORY routes to Yahoo"
   },
   "tickers": {
@@ -187,6 +187,18 @@
       ],
       "detected_by": "sweep_v2_vs_yahoo",
       "recorded_at": "2026-06-07T08:29:45.811668+00:00Z"
+    },
+    "KLAC": {
+      "reason": "corporate_action_miss \u2014 v2 under-adjusts vs Yahoo (sustained-ratio sweep)",
+      "yahoo_symbol": "KLAC",
+      "evidence": [
+        {
+          "old_ratio": 10.0,
+          "recent_ratio": 1.0
+        }
+      ],
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-06-14T08:47:49.169582+00:00Z"
     }
   }
 }
