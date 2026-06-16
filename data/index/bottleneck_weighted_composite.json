@@ -4,8 +4,8 @@
   "status": "preliminary \u2014 directional signal only, not headline-publishable",
   "base_date": "2025-03-31",
   "base_value": 1000.0,
-  "current_value": 3689.02,
-  "current_date": "2026-06-15",
+  "current_value": 3560.98,
+  "current_date": "2026-06-16",
   "entity_count": 197,
   "rated_entity_count": 179,
   "rating_coverage_pct": 90.9,
@@ -23,7 +23,7 @@
       "ticker": "NVDA",
       "name": "NVIDIA",
       "sector": "Semiconductor",
-      "market_cap_usd": 5145751453696,
+      "market_cap_usd": 5023677808640,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
       "weight_pct": 5.0
@@ -32,7 +32,7 @@
       "ticker": "TSM",
       "name": "TSMC ADR",
       "sector": "Semiconductor",
-      "market_cap_usd": 2289309581312,
+      "market_cap_usd": 2208556122112,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
       "weight_pct": 5.0
@@ -41,7 +41,7 @@
       "ticker": "AVGO",
       "name": "Broadcom",
       "sector": "Semiconductor",
-      "market_cap_usd": 1874201149440,
+      "market_cap_usd": 1792228065280,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
       "weight_pct": 5.0
@@ -50,7 +50,7 @@
       "ticker": "MU",
       "name": "Micron Technology",
       "sector": "Semiconductor",
-      "market_cap_usd": 1226963288064,
+      "market_cap_usd": 1151145738240,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
       "weight_pct": 5.0
@@ -59,7 +59,7 @@
       "ticker": "AMD",
       "name": "Advanced Micro Devices",
       "sector": "Semiconductor",
-      "market_cap_usd": 892362489856,
+      "market_cap_usd": 827187396608,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
       "weight_pct": 5.0
@@ -68,25 +68,16 @@
       "ticker": "ASML",
       "name": "ASML Holding ADR",
       "sector": "Semiconductor",
-      "market_cap_usd": 729464635392,
+      "market_cap_usd": 695251107840,
       "bottleneck_risk": "CRITICAL",
       "multiplier": 4.0,
-      "weight_pct": 5.0
-    },
-    {
-      "ticker": "INTC",
-      "name": "Intel",
-      "sector": "Semiconductor",
-      "market_cap_usd": 642624323584,
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
       "weight_pct": 5.0
     },
     {
       "ticker": "LRCX",
       "name": "Lam Research",
       "sector": "Semiconductor",
-      "market_cap_usd": 486372081664,
+      "market_cap_usd": 461885898752,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
       "weight_pct": 5.0
@@ -95,7 +86,7 @@
       "ticker": "AMAT",
       "name": "Applied Materials",
       "sector": "Semiconductor",
-      "market_cap_usd": 465085562880,
+      "market_cap_usd": 451151560704,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
       "weight_pct": 5.0
@@ -104,370 +95,379 @@
       "ticker": "ARM",
       "name": "ARM Holdings ADR",
       "sector": "Semiconductor",
-      "market_cap_usd": 440635883520,
+      "market_cap_usd": 423322353664,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
       "weight_pct": 5.0
     },
     {
+      "ticker": "INTC",
+      "name": "Intel",
+      "sector": "Semiconductor",
+      "market_cap_usd": 588293275648,
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 4.7984
+    },
+    {
       "ticker": "KLAC",
       "name": "KLA Corp",
       "sector": "Semiconductor",
-      "market_cap_usd": 334955118592,
+      "market_cap_usd": 310018310144,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 3.9561
+      "weight_pct": 3.793
     },
     {
       "ticker": "QCOM",
       "name": "Qualcomm",
       "sector": "Semiconductor",
-      "market_cap_usd": 232733736960,
+      "market_cap_usd": 225629782016,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 2.7488
+      "weight_pct": 2.7605
     },
     {
       "ticker": "8035 JP",
       "name": "Tokyo Electron",
       "sector": "Semiconductor",
-      "market_cap_usd": 206509737732,
+      "market_cap_usd": 200940299238,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 2.439
+      "weight_pct": 2.4585
     },
     {
       "ticker": "TXN",
       "name": "Texas Instruments",
       "sector": "Semiconductor",
-      "market_cap_usd": 285168467968,
+      "market_cap_usd": 278224470016,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 2.2454
+      "weight_pct": 2.2694
     },
     {
       "ticker": "CDNS",
       "name": "Cadence Design Systems",
       "sector": "Semiconductor",
-      "market_cap_usd": 108809412608,
+      "market_cap_usd": 106975240192,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 2.1419
+      "weight_pct": 2.1814
     },
     {
       "ticker": "MRVL",
       "name": "Marvell Technology",
       "sector": "Semiconductor",
-      "market_cap_usd": 270208221184,
+      "market_cap_usd": 243990413312,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 2.1276
+      "weight_pct": 1.9901
     },
     {
       "ticker": "SNPS",
       "name": "Synopsys",
       "sector": "Semiconductor",
-      "market_cap_usd": 87004381184,
+      "market_cap_usd": 85855502336,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 1.7127
-    },
-    {
-      "ticker": "ADI",
-      "name": "Analog Devices",
-      "sector": "Semiconductor",
-      "market_cap_usd": 208268673024,
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 1.6399
+      "weight_pct": 1.7507
     },
     {
       "ticker": "6857 JP",
       "name": "Advantest Corp",
       "sector": "Semiconductor",
-      "market_cap_usd": 133163971922,
+      "market_cap_usd": 137099183128,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 1.5728
+      "weight_pct": 1.6774
+    },
+    {
+      "ticker": "ADI",
+      "name": "Analog Devices",
+      "sector": "Semiconductor",
+      "market_cap_usd": 202628202496,
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 1.6527
     },
     {
       "ticker": "ISRG",
       "name": "Intuitive Surgical",
       "sector": "Robotics",
-      "market_cap_usd": 147526533120,
+      "market_cap_usd": 147710705664,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 1.1616
+      "weight_pct": 1.2048
     },
     {
       "ticker": "4063 JP",
       "name": "Shin-Etsu Chemical",
       "sector": "Materials",
-      "market_cap_usd": 87767546373,
+      "market_cap_usd": 86415148680,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 1.0366
-    },
-    {
-      "ticker": "ASX",
-      "name": "ASE Technology Holding ADR",
-      "sector": "Semiconductor",
-      "market_cap_usd": 84466917376,
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.9976
-    },
-    {
-      "ticker": "IFX GR",
-      "name": "Infineon Technologies",
-      "sector": "Semiconductor",
-      "market_cap_usd": 121691517134,
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 0.9582
+      "weight_pct": 1.0573
     },
     {
       "ticker": "3037 TT",
       "name": "Unimicron",
       "sector": "Materials",
-      "market_cap_usd": 47946570059,
+      "market_cap_usd": 48931745804,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.9438
+      "weight_pct": 0.9978
+    },
+    {
+      "ticker": "ASX",
+      "name": "ASE Technology Holding ADR",
+      "sector": "Semiconductor",
+      "market_cap_usd": 80824967168,
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.9889
+    },
+    {
+      "ticker": "IFX GR",
+      "name": "Infineon Technologies",
+      "sector": "Semiconductor",
+      "market_cap_usd": 119684395359,
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 0.9762
     },
     {
       "ticker": "6861 JP",
       "name": "Keyence Corp",
       "sector": "Robotics",
-      "market_cap_usd": 114482882913,
+      "market_cap_usd": 114155438317,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 0.9014
-    },
-    {
-      "ticker": "6920 JP",
-      "name": "Lasertec Corp",
-      "sector": "Semiconductor",
-      "market_cap_usd": 27013362179,
-      "bottleneck_risk": "CRITICAL",
-      "multiplier": 4.0,
-      "weight_pct": 0.8508
+      "weight_pct": 0.9311
     },
     {
       "ticker": "600111",
       "name": "China Northern Rare Earth",
       "sector": "Materials",
-      "market_cap_usd": 27003979012,
+      "market_cap_usd": 27815195706,
       "bottleneck_risk": "CRITICAL",
       "multiplier": 4.0,
-      "weight_pct": 0.8505
+      "weight_pct": 0.9075
+    },
+    {
+      "ticker": "6920 JP",
+      "name": "Lasertec Corp",
+      "sector": "Semiconductor",
+      "market_cap_usd": 26022905841,
+      "bottleneck_risk": "CRITICAL",
+      "multiplier": 4.0,
+      "weight_pct": 0.849
     },
     {
       "ticker": "RKLB",
       "name": "Rocket Lab USA",
       "sector": "Space",
-      "market_cap_usd": 68261449728,
+      "market_cap_usd": 65374785536,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 0.8062
+      "weight_pct": 0.7998
     },
     {
       "ticker": "TER",
       "name": "Teradyne",
       "sector": "Semiconductor",
-      "market_cap_usd": 67690397696,
+      "market_cap_usd": 64080535552,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 0.7995
+      "weight_pct": 0.784
     },
     {
       "ticker": "ALAB",
       "name": "Astera Labs",
       "sector": "Semiconductor",
-      "market_cap_usd": 66711969792,
+      "market_cap_usd": 61999964160,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 0.7879
+      "weight_pct": 0.7586
     },
     {
       "ticker": "TSEM",
       "name": "Tower Semiconductor",
       "sector": "Semiconductor",
-      "market_cap_usd": 34133190656,
+      "market_cap_usd": 31952121856,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.6719
+      "weight_pct": 0.6515
     },
     {
       "ticker": "ASTS",
       "name": "AST SpaceMobile",
       "sector": "Space",
-      "market_cap_usd": 33988069376,
+      "market_cap_usd": 31923247104,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.669
-    },
-    {
-      "ticker": "MPWR",
-      "name": "Monolithic Power Systems",
-      "sector": "Semiconductor",
-      "market_cap_usd": 81177010176,
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 0.6392
+      "weight_pct": 0.651
     },
     {
       "ticker": "NXPI",
       "name": "NXP Semiconductors",
       "sector": "Semiconductor",
-      "market_cap_usd": 79750561792,
+      "market_cap_usd": 76470968320,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 0.6279
+      "weight_pct": 0.6237
     },
     {
       "ticker": "6723",
       "name": "Renesas Electronics",
       "sector": "Semiconductor",
-      "market_cap_usd": 50808405356,
+      "market_cap_usd": 50718495382,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 0.6001
+      "weight_pct": 0.6205
+    },
+    {
+      "ticker": "MPWR",
+      "name": "Monolithic Power Systems",
+      "sector": "Semiconductor",
+      "market_cap_usd": 73634570240,
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 0.6006
     },
     {
       "ticker": "CBRS",
       "name": "Cerebras Systems",
       "sector": "Semiconductor",
-      "market_cap_usd": 47881646080,
+      "market_cap_usd": 46612295680,
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 0.5655
-    },
-    {
-      "ticker": "CRDO",
-      "name": "Credo Technology Group",
-      "sector": "Semiconductor",
-      "market_cap_usd": 47848157184,
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.5651
+      "weight_pct": 0.5703
     },
     {
       "ticker": "STMPA",
       "name": "STMicroelectronics NV",
       "sector": "Robotics",
-      "market_cap_usd": 70170296320,
+      "market_cap_usd": 66259603456,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 0.5525
+      "weight_pct": 0.5404
+    },
+    {
+      "ticker": "CRDO",
+      "name": "Credo Technology Group",
+      "sector": "Semiconductor",
+      "market_cap_usd": 44116733952,
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.5398
     },
     {
       "ticker": "ENTG",
       "name": "Entegris",
       "sector": "Materials",
-      "market_cap_usd": 24808146944,
+      "market_cap_usd": 23090202624,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.4883
+      "weight_pct": 0.4708
     },
     {
       "ticker": "UMC",
       "name": "United Microelectronics ADR",
       "sector": "Semiconductor",
-      "market_cap_usd": 57914335232,
+      "market_cap_usd": 54250778624,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 0.456
-    },
-    {
-      "ticker": "MCHP",
-      "name": "Microchip Technology",
-      "sector": "Semiconductor",
-      "market_cap_usd": 54381395968,
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 0.4282
+      "weight_pct": 0.4425
     },
     {
       "ticker": "ROK",
       "name": "Rockwell Automation",
       "sector": "Robotics",
-      "market_cap_usd": 51583266816,
+      "market_cap_usd": 51888156672,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 0.4062
+      "weight_pct": 0.4232
+    },
+    {
+      "ticker": "MCHP",
+      "name": "Microchip Technology",
+      "sector": "Semiconductor",
+      "market_cap_usd": 51839041536,
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 0.4228
     },
     {
       "ticker": "ON",
       "name": "ON Semiconductor",
       "sector": "Semiconductor",
-      "market_cap_usd": 48950325248,
+      "market_cap_usd": 45975977984,
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 0.3854
+      "weight_pct": 0.375
     },
     {
       "ticker": "LYC AU",
       "name": "Lynas Rare Earths",
       "sector": "Materials",
-      "market_cap_usd": 17996271616,
+      "market_cap_usd": 18096922624,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.3543
-    },
-    {
-      "ticker": "MTSI",
-      "name": "MACOM Technology Solutions",
-      "sector": "Semiconductor",
-      "market_cap_usd": 29356324864,
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.3467
-    },
-    {
-      "ticker": "6954 JP",
-      "name": "Fanuc Corp",
-      "sector": "Robotics",
-      "market_cap_usd": 42762481899,
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 0.3367
-    },
-    {
-      "ticker": "002050",
-      "name": "Zhejiang Sanhua Intelligent",
-      "sector": "Robotics",
-      "market_cap_usd": 28493546971,
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.3365
-    },
-    {
-      "ticker": "300124 C2",
-      "name": "Shenzhen Inovance Technology",
-      "sector": "Robotics",
-      "market_cap_usd": 27771326912,
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.328
-    },
-    {
-      "ticker": "6273 JP",
-      "name": "SMC Corp",
-      "sector": "Robotics",
-      "market_cap_usd": 27629742458,
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.3263
+      "weight_pct": 0.369
     },
     {
       "ticker": "5706 JP",
       "name": "Mitsui Mining",
       "sector": "Materials",
-      "market_cap_usd": 15954186144,
+      "market_cap_usd": 17299123708,
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.3141
+      "weight_pct": 0.3528
+    },
+    {
+      "ticker": "6954 JP",
+      "name": "Fanuc Corp",
+      "sector": "Robotics",
+      "market_cap_usd": 43050677891,
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 0.3511
+    },
+    {
+      "ticker": "300124 C2",
+      "name": "Shenzhen Inovance Technology",
+      "sector": "Robotics",
+      "market_cap_usd": 28151351803,
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.3444
+    },
+    {
+      "ticker": "002050",
+      "name": "Zhejiang Sanhua Intelligent",
+      "sector": "Robotics",
+      "market_cap_usd": 28104499148,
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.3439
+    },
+    {
+      "ticker": "MTSI",
+      "name": "MACOM Technology Solutions",
+      "sector": "Semiconductor",
+      "market_cap_usd": 28101261312,
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.3438
+    },
+    {
+      "ticker": "6273 JP",
+      "name": "SMC Corp",
+      "sector": "Robotics",
+      "market_cap_usd": 27140781187,
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.3321
     }
   ],
   "weight_count_total": 197,
@@ -606,7 +606,7 @@
     },
     {
       "date": "2021-06-24",
-      "value": 640.24
+      "value": 634.15
     },
     {
       "date": "2021-06-25",
@@ -826,7 +826,7 @@
     },
     {
       "date": "2021-09-13",
-      "value": 707.32
+      "value": 713.41
     },
     {
       "date": "2021-09-14",
@@ -1122,7 +1122,7 @@
     },
     {
       "date": "2021-12-28",
-      "value": 810.98
+      "value": 804.88
     },
     {
       "date": "2021-12-29",
@@ -1642,7 +1642,7 @@
     },
     {
       "date": "2022-07-06",
-      "value": 512.2
+      "value": 518.29
     },
     {
       "date": "2022-07-07",
@@ -1682,7 +1682,7 @@
     },
     {
       "date": "2022-07-20",
-      "value": 585.37
+      "value": 579.27
     },
     {
       "date": "2022-07-21",
@@ -1906,7 +1906,7 @@
     },
     {
       "date": "2022-10-07",
-      "value": 481.71
+      "value": 487.8
     },
     {
       "date": "2022-10-10",
@@ -1934,7 +1934,7 @@
     },
     {
       "date": "2022-10-18",
-      "value": 457.32
+      "value": 463.41
     },
     {
       "date": "2022-10-19",
@@ -2010,7 +2010,7 @@
     },
     {
       "date": "2022-11-14",
-      "value": 573.17
+      "value": 579.27
     },
     {
       "date": "2022-11-15",
@@ -2130,7 +2130,7 @@
     },
     {
       "date": "2022-12-28",
-      "value": 518.29
+      "value": 524.39
     },
     {
       "date": "2022-12-29",
@@ -2142,7 +2142,7 @@
     },
     {
       "date": "2023-01-03",
-      "value": 530.49
+      "value": 536.59
     },
     {
       "date": "2023-01-04",
@@ -2170,7 +2170,7 @@
     },
     {
       "date": "2023-01-12",
-      "value": 591.46
+      "value": 597.56
     },
     {
       "date": "2023-01-13",
@@ -2202,7 +2202,7 @@
     },
     {
       "date": "2023-01-25",
-      "value": 621.95
+      "value": 628.05
     },
     {
       "date": "2023-01-26",
@@ -2242,7 +2242,7 @@
     },
     {
       "date": "2023-02-08",
-      "value": 640.24
+      "value": 646.34
     },
     {
       "date": "2023-02-09",
@@ -2274,7 +2274,7 @@
     },
     {
       "date": "2023-02-21",
-      "value": 609.76
+      "value": 615.85
     },
     {
       "date": "2023-02-22",
@@ -2286,7 +2286,7 @@
     },
     {
       "date": "2023-02-24",
-      "value": 615.85
+      "value": 621.95
     },
     {
       "date": "2023-02-27",
@@ -2334,7 +2334,7 @@
     },
     {
       "date": "2023-03-14",
-      "value": 628.05
+      "value": 634.15
     },
     {
       "date": "2023-03-15",
@@ -2406,11 +2406,11 @@
     },
     {
       "date": "2023-04-10",
-      "value": 652.44
+      "value": 658.54
     },
     {
       "date": "2023-04-11",
-      "value": 652.44
+      "value": 658.54
     },
     {
       "date": "2023-04-12",
@@ -2446,7 +2446,7 @@
     },
     {
       "date": "2023-04-24",
-      "value": 634.15
+      "value": 640.24
     },
     {
       "date": "2023-04-25",
@@ -2494,7 +2494,7 @@
     },
     {
       "date": "2023-05-10",
-      "value": 640.24
+      "value": 646.34
     },
     {
       "date": "2023-05-11",
@@ -2506,7 +2506,7 @@
     },
     {
       "date": "2023-05-15",
-      "value": 652.44
+      "value": 658.54
     },
     {
       "date": "2023-05-16",
@@ -2522,7 +2522,7 @@
     },
     {
       "date": "2023-05-19",
-      "value": 689.02
+      "value": 695.12
     },
     {
       "date": "2023-05-22",
@@ -2538,7 +2538,7 @@
     },
     {
       "date": "2023-05-25",
-      "value": 713.41
+      "value": 719.51
     },
     {
       "date": "2023-05-26",
@@ -2610,11 +2610,11 @@
     },
     {
       "date": "2023-06-22",
-      "value": 762.2
+      "value": 768.29
     },
     {
       "date": "2023-06-23",
-      "value": 750.0
+      "value": 756.1
     },
     {
       "date": "2023-06-26",
@@ -2694,7 +2694,7 @@
     },
     {
       "date": "2023-07-24",
-      "value": 774.39
+      "value": 780.49
     },
     {
       "date": "2023-07-25",
@@ -2706,7 +2706,7 @@
     },
     {
       "date": "2023-07-27",
-      "value": 792.68
+      "value": 798.78
     },
     {
       "date": "2023-07-28",
@@ -2738,7 +2738,7 @@
     },
     {
       "date": "2023-08-08",
-      "value": 774.39
+      "value": 780.49
     },
     {
       "date": "2023-08-09",
@@ -2758,7 +2758,7 @@
     },
     {
       "date": "2023-08-15",
-      "value": 750.0
+      "value": 756.1
     },
     {
       "date": "2023-08-16",
@@ -2894,7 +2894,7 @@
     },
     {
       "date": "2023-10-03",
-      "value": 707.32
+      "value": 713.41
     },
     {
       "date": "2023-10-04",
@@ -2966,7 +2966,7 @@
     },
     {
       "date": "2023-10-27",
-      "value": 682.93
+      "value": 689.02
     },
     {
       "date": "2023-10-30",
@@ -3106,7 +3106,7 @@
     },
     {
       "date": "2023-12-18",
-      "value": 878.05
+      "value": 871.95
     },
     {
       "date": "2023-12-19",
@@ -3198,7 +3198,7 @@
     },
     {
       "date": "2024-01-23",
-      "value": 939.02
+      "value": 932.93
     },
     {
       "date": "2024-01-24",
@@ -3302,11 +3302,11 @@
     },
     {
       "date": "2024-02-29",
-      "value": 1048.78
+      "value": 1042.68
     },
     {
       "date": "2024-03-01",
-      "value": 1085.37
+      "value": 1079.27
     },
     {
       "date": "2024-03-04",
@@ -3390,7 +3390,7 @@
     },
     {
       "date": "2024-04-02",
-      "value": 1079.27
+      "value": 1073.17
     },
     {
       "date": "2024-04-03",
@@ -3414,7 +3414,7 @@
     },
     {
       "date": "2024-04-10",
-      "value": 1060.98
+      "value": 1067.07
     },
     {
       "date": "2024-04-11",
@@ -3502,7 +3502,7 @@
     },
     {
       "date": "2024-05-10",
-      "value": 1042.68
+      "value": 1048.78
     },
     {
       "date": "2024-05-13",
@@ -3534,7 +3534,7 @@
     },
     {
       "date": "2024-05-22",
-      "value": 1103.66
+      "value": 1097.56
     },
     {
       "date": "2024-05-23",
@@ -3626,7 +3626,7 @@
     },
     {
       "date": "2024-06-26",
-      "value": 1176.83
+      "value": 1170.73
     },
     {
       "date": "2024-06-27",
@@ -3642,7 +3642,7 @@
     },
     {
       "date": "2024-07-02",
-      "value": 1189.02
+      "value": 1182.93
     },
     {
       "date": "2024-07-03",
@@ -3690,7 +3690,7 @@
     },
     {
       "date": "2024-07-19",
-      "value": 1134.15
+      "value": 1128.05
     },
     {
       "date": "2024-07-22",
@@ -3718,7 +3718,7 @@
     },
     {
       "date": "2024-07-30",
-      "value": 1054.88
+      "value": 1048.78
     },
     {
       "date": "2024-07-31",
@@ -3730,7 +3730,7 @@
     },
     {
       "date": "2024-08-02",
-      "value": 981.71
+      "value": 987.8
     },
     {
       "date": "2024-08-05",
@@ -3762,7 +3762,7 @@
     },
     {
       "date": "2024-08-14",
-      "value": 1048.78
+      "value": 1054.88
     },
     {
       "date": "2024-08-15",
@@ -4018,7 +4018,7 @@
     },
     {
       "date": "2024-11-13",
-      "value": 1109.76
+      "value": 1115.85
     },
     {
       "date": "2024-11-14",
@@ -4058,7 +4058,7 @@
     },
     {
       "date": "2024-11-27",
-      "value": 1085.37
+      "value": 1091.46
     },
     {
       "date": "2024-11-29",
@@ -4110,7 +4110,7 @@
     },
     {
       "date": "2024-12-17",
-      "value": 1146.34
+      "value": 1140.24
     },
     {
       "date": "2024-12-18",
@@ -4146,7 +4146,7 @@
     },
     {
       "date": "2024-12-31",
-      "value": 1097.56
+      "value": 1091.46
     },
     {
       "date": "2025-01-02",
@@ -4198,11 +4198,11 @@
     },
     {
       "date": "2025-01-22",
-      "value": 1237.8
+      "value": 1231.71
     },
     {
       "date": "2025-01-23",
-      "value": 1225.61
+      "value": 1219.51
     },
     {
       "date": "2025-01-24",
@@ -4222,7 +4222,7 @@
     },
     {
       "date": "2025-01-30",
-      "value": 1152.44
+      "value": 1146.34
     },
     {
       "date": "2025-01-31",
@@ -4238,7 +4238,7 @@
     },
     {
       "date": "2025-02-05",
-      "value": 1170.73
+      "value": 1164.63
     },
     {
       "date": "2025-02-06",
@@ -4554,7 +4554,7 @@
     },
     {
       "date": "2025-05-30",
-      "value": 1121.95
+      "value": 1128.05
     },
     {
       "date": "2025-06-02",
@@ -4610,7 +4610,7 @@
     },
     {
       "date": "2025-06-20",
-      "value": 1237.8
+      "value": 1231.71
     },
     {
       "date": "2025-06-23",
@@ -4738,7 +4738,7 @@
     },
     {
       "date": "2025-08-06",
-      "value": 1323.17
+      "value": 1329.27
     },
     {
       "date": "2025-08-07",
@@ -4798,11 +4798,11 @@
     },
     {
       "date": "2025-08-27",
-      "value": 1402.44
+      "value": 1408.54
     },
     {
       "date": "2025-08-28",
-      "value": 1414.63
+      "value": 1420.73
     },
     {
       "date": "2025-08-29",
@@ -4830,7 +4830,7 @@
     },
     {
       "date": "2025-09-09",
-      "value": 1420.73
+      "value": 1426.83
     },
     {
       "date": "2025-09-10",
@@ -4894,7 +4894,7 @@
     },
     {
       "date": "2025-10-01",
-      "value": 1634.15
+      "value": 1628.05
     },
     {
       "date": "2025-10-02",
@@ -4950,7 +4950,7 @@
     },
     {
       "date": "2025-10-21",
-      "value": 1743.9
+      "value": 1737.8
     },
     {
       "date": "2025-10-22",
@@ -4982,7 +4982,7 @@
     },
     {
       "date": "2025-10-31",
-      "value": 1835.37
+      "value": 1829.27
     },
     {
       "date": "2025-11-03",
@@ -4990,7 +4990,7 @@
     },
     {
       "date": "2025-11-04",
-      "value": 1780.49
+      "value": 1774.39
     },
     {
       "date": "2025-11-05",
@@ -5002,7 +5002,7 @@
     },
     {
       "date": "2025-11-07",
-      "value": 1762.2
+      "value": 1756.1
     },
     {
       "date": "2025-11-10",
@@ -5070,7 +5070,7 @@
     },
     {
       "date": "2025-12-03",
-      "value": 1841.46
+      "value": 1835.37
     },
     {
       "date": "2025-12-04",
@@ -5082,7 +5082,7 @@
     },
     {
       "date": "2025-12-08",
-      "value": 1871.95
+      "value": 1865.85
     },
     {
       "date": "2025-12-09",
@@ -5154,7 +5154,7 @@
     },
     {
       "date": "2026-01-05",
-      "value": 1939.02
+      "value": 1932.93
     },
     {
       "date": "2026-01-06",
@@ -5206,7 +5206,7 @@
     },
     {
       "date": "2026-01-23",
-      "value": 2115.85
+      "value": 2109.76
     },
     {
       "date": "2026-01-26",
@@ -5222,7 +5222,7 @@
     },
     {
       "date": "2026-01-29",
-      "value": 2182.93
+      "value": 2176.83
     },
     {
       "date": "2026-01-30",
@@ -5298,7 +5298,7 @@
     },
     {
       "date": "2026-02-26",
-      "value": 2213.41
+      "value": 2219.51
     },
     {
       "date": "2026-02-27",
@@ -5354,7 +5354,7 @@
     },
     {
       "date": "2026-03-18",
-      "value": 2128.05
+      "value": 2134.15
     },
     {
       "date": "2026-03-19",
@@ -5374,7 +5374,7 @@
     },
     {
       "date": "2026-03-25",
-      "value": 2182.93
+      "value": 2176.83
     },
     {
       "date": "2026-03-26",
@@ -5406,11 +5406,11 @@
     },
     {
       "date": "2026-04-07",
-      "value": 2176.83
+      "value": 2170.73
     },
     {
       "date": "2026-04-08",
-      "value": 2317.07
+      "value": 2310.98
     },
     {
       "date": "2026-04-09",
@@ -5418,7 +5418,7 @@
     },
     {
       "date": "2026-04-10",
-      "value": 2390.24
+      "value": 2384.15
     },
     {
       "date": "2026-04-13",
@@ -5426,15 +5426,15 @@
     },
     {
       "date": "2026-04-14",
-      "value": 2481.71
+      "value": 2475.61
     },
     {
       "date": "2026-04-15",
-      "value": 2481.71
+      "value": 2475.61
     },
     {
       "date": "2026-04-16",
-      "value": 2512.2
+      "value": 2506.1
     },
     {
       "date": "2026-04-17",
@@ -5446,7 +5446,7 @@
     },
     {
       "date": "2026-04-21",
-      "value": 2573.17
+      "value": 2567.07
     },
     {
       "date": "2026-04-22",
@@ -5454,147 +5454,151 @@
     },
     {
       "date": "2026-04-23",
-      "value": 2652.44
+      "value": 2646.34
     },
     {
       "date": "2026-04-24",
-      "value": 2792.68
+      "value": 2786.59
     },
     {
       "date": "2026-04-27",
-      "value": 2780.49
+      "value": 2774.39
     },
     {
       "date": "2026-04-28",
-      "value": 2689.02
+      "value": 2682.93
     },
     {
       "date": "2026-04-29",
-      "value": 2731.71
+      "value": 2725.61
     },
     {
       "date": "2026-04-30",
-      "value": 2798.78
+      "value": 2792.68
     },
     {
       "date": "2026-05-01",
-      "value": 2823.17
+      "value": 2817.07
     },
     {
       "date": "2026-05-04",
-      "value": 2810.98
+      "value": 2804.88
     },
     {
       "date": "2026-05-05",
-      "value": 2902.44
+      "value": 2890.24
     },
     {
       "date": "2026-05-06",
-      "value": 3036.59
+      "value": 3030.49
     },
     {
       "date": "2026-05-07",
-      "value": 3000.0
-    },
-    {
-      "date": "2026-05-08",
-      "value": 3134.15
-    },
-    {
-      "date": "2026-05-11",
-      "value": 3182.93
-    },
-    {
-      "date": "2026-05-12",
-      "value": 3103.66
-    },
-    {
-      "date": "2026-05-13",
-      "value": 3164.63
-    },
-    {
-      "date": "2026-05-14",
-      "value": 3189.02
-    },
-    {
-      "date": "2026-05-15",
-      "value": 3060.98
-    },
-    {
-      "date": "2026-05-18",
-      "value": 3012.2
-    },
-    {
-      "date": "2026-05-19",
       "value": 2993.9
     },
     {
+      "date": "2026-05-08",
+      "value": 3128.05
+    },
+    {
+      "date": "2026-05-11",
+      "value": 3170.73
+    },
+    {
+      "date": "2026-05-12",
+      "value": 3097.56
+    },
+    {
+      "date": "2026-05-13",
+      "value": 3158.54
+    },
+    {
+      "date": "2026-05-14",
+      "value": 3176.83
+    },
+    {
+      "date": "2026-05-15",
+      "value": 3054.88
+    },
+    {
+      "date": "2026-05-18",
+      "value": 3006.1
+    },
+    {
+      "date": "2026-05-19",
+      "value": 2987.8
+    },
+    {
       "date": "2026-05-20",
-      "value": 3121.95
+      "value": 3109.76
     },
     {
       "date": "2026-05-21",
-      "value": 3189.02
+      "value": 3176.83
     },
     {
       "date": "2026-05-22",
-      "value": 3262.2
+      "value": 3256.1
     },
     {
       "date": "2026-05-26",
-      "value": 3414.63
+      "value": 3402.44
     },
     {
       "date": "2026-05-27",
-      "value": 3378.05
+      "value": 3365.85
     },
     {
       "date": "2026-05-28",
-      "value": 3408.54
+      "value": 3396.34
     },
     {
       "date": "2026-05-29",
-      "value": 3408.54
+      "value": 3396.34
     },
     {
       "date": "2026-06-01",
-      "value": 3445.12
+      "value": 3432.93
     },
     {
       "date": "2026-06-02",
-      "value": 3567.07
+      "value": 3548.78
     },
     {
       "date": "2026-06-03",
-      "value": 3615.85
+      "value": 3603.66
     },
     {
       "date": "2026-06-04",
-      "value": 3573.17
+      "value": 3560.98
     },
     {
       "date": "2026-06-05",
-      "value": 3268.29
+      "value": 3256.1
     },
     {
       "date": "2026-06-08",
-      "value": 3384.15
+      "value": 3371.95
     },
     {
       "date": "2026-06-10",
-      "value": 3262.2
+      "value": 3250.0
     },
     {
       "date": "2026-06-11",
-      "value": 3475.61
+      "value": 3457.32
     },
     {
       "date": "2026-06-12",
-      "value": 3554.88
+      "value": 3536.59
     },
     {
       "date": "2026-06-15",
-      "value": 3689.02
+      "value": 3701.22
+    },
+    {
+      "date": "2026-06-16",
+      "value": 3560.98
     }
   ],
   "divergence_vs_mcap_composite": {
@@ -5602,186 +5606,186 @@
     "months_flagged": 0,
     "per_day_sample": [
       {
-        "date": "2026-05-01",
-        "bw": 2823.17,
-        "mcap": 2763.98,
-        "divergence_pct": 2.141
-      },
-      {
         "date": "2026-05-04",
-        "bw": 2810.98,
-        "mcap": 2751.55,
-        "divergence_pct": 2.16
+        "bw": 2804.88,
+        "mcap": 2739.13,
+        "divergence_pct": 2.4
       },
       {
         "date": "2026-05-05",
-        "bw": 2902.44,
-        "mcap": 2844.72,
-        "divergence_pct": 2.029
+        "bw": 2890.24,
+        "mcap": 2832.3,
+        "divergence_pct": 2.046
       },
       {
         "date": "2026-05-06",
-        "bw": 3036.59,
-        "mcap": 2975.16,
-        "divergence_pct": 2.065
+        "bw": 3030.49,
+        "mcap": 2962.73,
+        "divergence_pct": 2.287
       },
       {
         "date": "2026-05-07",
-        "bw": 3000.0,
-        "mcap": 2937.89,
-        "divergence_pct": 2.114
+        "bw": 2993.9,
+        "mcap": 2925.47,
+        "divergence_pct": 2.339
       },
       {
         "date": "2026-05-08",
-        "bw": 3134.15,
-        "mcap": 3068.32,
-        "divergence_pct": 2.145
+        "bw": 3128.05,
+        "mcap": 3055.9,
+        "divergence_pct": 2.361
       },
       {
         "date": "2026-05-11",
-        "bw": 3182.93,
-        "mcap": 3111.8,
-        "divergence_pct": 2.286
+        "bw": 3170.73,
+        "mcap": 3099.38,
+        "divergence_pct": 2.302
       },
       {
         "date": "2026-05-12",
-        "bw": 3103.66,
-        "mcap": 3037.27,
-        "divergence_pct": 2.186
+        "bw": 3097.56,
+        "mcap": 3024.84,
+        "divergence_pct": 2.404
       },
       {
         "date": "2026-05-13",
-        "bw": 3164.63,
-        "mcap": 3105.59,
-        "divergence_pct": 1.901
+        "bw": 3158.54,
+        "mcap": 3093.17,
+        "divergence_pct": 2.113
       },
       {
         "date": "2026-05-14",
-        "bw": 3189.02,
-        "mcap": 3130.43,
-        "divergence_pct": 1.872
+        "bw": 3176.83,
+        "mcap": 3118.01,
+        "divergence_pct": 1.886
       },
       {
         "date": "2026-05-15",
-        "bw": 3060.98,
-        "mcap": 3006.21,
-        "divergence_pct": 1.822
+        "bw": 3054.88,
+        "mcap": 2993.79,
+        "divergence_pct": 2.041
       },
       {
         "date": "2026-05-18",
-        "bw": 3012.2,
-        "mcap": 2962.73,
-        "divergence_pct": 1.67
+        "bw": 3006.1,
+        "mcap": 2950.31,
+        "divergence_pct": 1.891
       },
       {
         "date": "2026-05-19",
-        "bw": 2993.9,
-        "mcap": 2944.1,
-        "divergence_pct": 1.692
+        "bw": 2987.8,
+        "mcap": 2931.68,
+        "divergence_pct": 1.914
       },
       {
         "date": "2026-05-20",
-        "bw": 3121.95,
-        "mcap": 3068.32,
-        "divergence_pct": 1.748
+        "bw": 3109.76,
+        "mcap": 3049.69,
+        "divergence_pct": 1.97
       },
       {
         "date": "2026-05-21",
-        "bw": 3189.02,
-        "mcap": 3130.43,
-        "divergence_pct": 1.872
+        "bw": 3176.83,
+        "mcap": 3118.01,
+        "divergence_pct": 1.886
       },
       {
         "date": "2026-05-22",
-        "bw": 3262.2,
-        "mcap": 3198.76,
-        "divergence_pct": 1.983
+        "bw": 3256.1,
+        "mcap": 3186.34,
+        "divergence_pct": 2.189
       },
       {
         "date": "2026-05-26",
-        "bw": 3414.63,
-        "mcap": 3347.83,
-        "divergence_pct": 1.995
+        "bw": 3402.44,
+        "mcap": 3329.19,
+        "divergence_pct": 2.2
       },
       {
         "date": "2026-05-27",
-        "bw": 3378.05,
-        "mcap": 3316.77,
-        "divergence_pct": 1.848
+        "bw": 3365.85,
+        "mcap": 3298.14,
+        "divergence_pct": 2.053
       },
       {
         "date": "2026-05-28",
-        "bw": 3408.54,
-        "mcap": 3341.61,
-        "divergence_pct": 2.003
+        "bw": 3396.34,
+        "mcap": 3329.19,
+        "divergence_pct": 2.017
       },
       {
         "date": "2026-05-29",
-        "bw": 3408.54,
-        "mcap": 3347.83,
-        "divergence_pct": 1.813
+        "bw": 3396.34,
+        "mcap": 3329.19,
+        "divergence_pct": 2.017
       },
       {
         "date": "2026-06-01",
-        "bw": 3445.12,
-        "mcap": 3378.88,
-        "divergence_pct": 1.96
+        "bw": 3432.93,
+        "mcap": 3366.46,
+        "divergence_pct": 1.974
       },
       {
         "date": "2026-06-02",
-        "bw": 3567.07,
-        "mcap": 3509.32,
-        "divergence_pct": 1.646
+        "bw": 3548.78,
+        "mcap": 3484.47,
+        "divergence_pct": 1.846
       },
       {
         "date": "2026-06-03",
-        "bw": 3615.85,
-        "mcap": 3559.01,
-        "divergence_pct": 1.597
+        "bw": 3603.66,
+        "mcap": 3540.37,
+        "divergence_pct": 1.788
       },
       {
         "date": "2026-06-04",
-        "bw": 3573.17,
-        "mcap": 3521.74,
-        "divergence_pct": 1.46
+        "bw": 3560.98,
+        "mcap": 3496.89,
+        "divergence_pct": 1.833
       },
       {
         "date": "2026-06-05",
-        "bw": 3268.29,
-        "mcap": 3217.39,
-        "divergence_pct": 1.582
+        "bw": 3256.1,
+        "mcap": 3198.76,
+        "divergence_pct": 1.793
       },
       {
         "date": "2026-06-08",
-        "bw": 3384.15,
-        "mcap": 3329.19,
-        "divergence_pct": 1.651
+        "bw": 3371.95,
+        "mcap": 3310.56,
+        "divergence_pct": 1.854
       },
       {
         "date": "2026-06-10",
-        "bw": 3262.2,
-        "mcap": 3204.97,
-        "divergence_pct": 1.786
+        "bw": 3250.0,
+        "mcap": 3186.34,
+        "divergence_pct": 1.998
       },
       {
         "date": "2026-06-11",
-        "bw": 3475.61,
-        "mcap": 3422.36,
-        "divergence_pct": 1.556
+        "bw": 3457.32,
+        "mcap": 3397.52,
+        "divergence_pct": 1.76
       },
       {
         "date": "2026-06-12",
-        "bw": 3554.88,
-        "mcap": 3496.89,
-        "divergence_pct": 1.658
+        "bw": 3536.59,
+        "mcap": 3472.05,
+        "divergence_pct": 1.859
       },
       {
         "date": "2026-06-15",
-        "bw": 3689.02,
+        "bw": 3701.22,
         "mcap": 3633.54,
-        "divergence_pct": 1.527
+        "divergence_pct": 1.863
+      },
+      {
+        "date": "2026-06-16",
+        "bw": 3560.98,
+        "mcap": 3490.68,
+        "divergence_pct": 2.014
       }
     ]
   },
-  "calculated_at": "2026-06-15T23:46:35.520069+00:00Z"
+  "calculated_at": "2026-06-16T23:24:18.357318+00:00Z"
 }

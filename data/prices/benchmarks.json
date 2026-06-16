@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-06-15T23:46:25.701339Z",
+  "fetched_at": "2026-06-16T23:24:04.826717Z",
   "source": "MarketStack (split-adjusted close, price-return)",
   "base_date": "2025-03-31",
   "base_value": 1000,
@@ -9,9 +9,9 @@
       "name": "S&P 500 (SPY ETF)",
       "color": "#7B8794",
       "role": "broad",
-      "days": 1370,
+      "days": 1371,
       "from": "2021-01-04",
-      "to": "2026-06-15",
+      "to": "2026-06-16",
       "series": [
         {
           "date": "2021-01-04",
@@ -6860,8 +6860,13 @@
         },
         {
           "date": "2026-06-15",
-          "close": 754.83,
+          "close": null,
           "volume": 45098048.0
+        },
+        {
+          "date": "2026-06-16",
+          "close": 750.33,
+          "volume": 61314537.0
         }
       ]
     },
@@ -6870,9 +6875,9 @@
       "name": "NASDAQ Composite Index",
       "color": "#5B9BD5",
       "role": "broad",
-      "days": 1339,
+      "days": 1340,
       "from": "2021-01-04",
-      "to": "2026-06-15",
+      "to": "2026-06-16",
       "series": [
         {
           "date": "2021-01-04",
@@ -13568,6 +13573,11 @@
           "date": "2026-06-15",
           "close": 26683.9414,
           "volume": 9592155000.0
+        },
+        {
+          "date": "2026-06-16",
+          "close": 26376.3438,
+          "volume": 10252253000.0
         }
       ]
     },
@@ -13576,9 +13586,9 @@
       "name": "iShares MSCI World ETF",
       "color": "#9C7BD5",
       "role": "broad",
-      "days": 1368,
+      "days": 1369,
       "from": "2021-01-04",
-      "to": "2026-06-15",
+      "to": "2026-06-16",
       "series": [
         {
           "date": "2021-01-04",
@@ -20413,12 +20423,17 @@
         {
           "date": "2026-06-12",
           "close": 202.32,
-          "volume": 397007.0
+          "volume": 397000.0
         },
         {
           "date": "2026-06-15",
-          "close": 203.63,
+          "close": null,
           "volume": 944020.0
+        },
+        {
+          "date": "2026-06-16",
+          "close": 203.1,
+          "volume": 1651563.0
         }
       ]
     },
@@ -20427,9 +20442,9 @@
       "name": "NASDAQ-100 (QQQ ETF, top 100 non-financials)",
       "color": "#7BB3D5",
       "role": "sector",
-      "days": 1368,
+      "days": 1369,
       "from": "2021-01-04",
-      "to": "2026-06-15",
+      "to": "2026-06-16",
       "series": [
         {
           "date": "2021-01-04",
@@ -27263,13 +27278,18 @@
         },
         {
           "date": "2026-06-12",
-          "close": 721.34,
-          "volume": 51168400.0
+          "close": 721.57,
+          "volume": 0.0
         },
         {
           "date": "2026-06-15",
-          "close": 744.0,
-          "volume": 45976556.0
+          "close": 743.71,
+          "volume": 0.0
+        },
+        {
+          "date": "2026-06-16",
+          "close": 729.86,
+          "volume": 44708319.0
         }
       ]
     },
@@ -27278,9 +27298,9 @@
       "name": "PHLX Semiconductor Index (SOXX ETF)",
       "color": "#E97451",
       "role": "sector",
-      "days": 1368,
+      "days": 1369,
       "from": "2021-01-04",
-      "to": "2026-06-15",
+      "to": "2026-06-16",
       "series": [
         {
           "date": "2021-01-04",
@@ -34119,8 +34139,13 @@
         },
         {
           "date": "2026-06-15",
-          "close": 628.45,
+          "close": null,
           "volume": 7944563.0
+        },
+        {
+          "date": "2026-06-16",
+          "close": 591.24,
+          "volume": 11113094.0
         }
       ]
     },
@@ -34129,9 +34154,9 @@
       "name": "ROBO Global Robotics & Automation ETF",
       "color": "#70AD47",
       "role": "sector",
-      "days": 1369,
+      "days": 1370,
       "from": "2021-01-04",
-      "to": "2026-06-15",
+      "to": "2026-06-16",
       "series": [
         {
           "date": "2021-01-04",
@@ -40976,7 +41001,12 @@
         {
           "date": "2026-06-15",
           "close": 85.21,
-          "volume": 199524.0
+          "volume": 200600.0
+        },
+        {
+          "date": "2026-06-16",
+          "close": 84.13,
+          "volume": 192296.0
         }
       ]
     }
