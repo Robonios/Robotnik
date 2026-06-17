@@ -128,6 +128,10 @@
       (this.data.cells || []).forEach(function (cell, ci) {
         var n = (cell.public || 0) + (cell.private || 0) + (cell.commodities || 0);
         var rng = mulberry32(hashSeed(cell.sector + '-' + cell.tier + '-' + ci));
+        // entity names come from the cell's sampleNames (placeholder): the first
+        // names label individual dots in the focused view; the rest stay
+        // unlabelled texture. Real assets[] (name/ticker) supersede this.
+        var names = String(cell.sampleNames || '').split('·').map(function (s) { return s.trim(); }).filter(Boolean);
         for (var k = 0; k < n; k++) {
           // synthetic log-normal market cap, deterministic per dot
           var mcap = Math.exp(gauss(rng) * 1.05 + CRIT_RANK[cell.criticality] * 0.18);
@@ -135,6 +139,7 @@
           bySector[cell.sector].push({
             sector: cell.sector, tier: cell.tier, criticality: cell.criticality,
             mcap: mcap, stage: cell.stage, sampleNames: cell.sampleNames || '',
+            name: (k < names.length ? names[k] : null),
             jitter: (rng() - 0.5)
           });
         }
@@ -189,6 +194,20 @@
         '<span class="fs-panel-count">' + count + ' assets</span>';
       layer.appendChild(panel);
 
+      // Level 0: the sector BAND is the click target → drill into the sector.
+      layer.setAttribute('role', 'button');
+      layer.setAttribute('tabindex', '0');
+      layer.setAttribute('aria-label', 'Explore ' + meta.name + ' — ' + count + ' assets');
+      layer.appendChild(el('div', 'fs-band-explore', 'Explore &rarr;'));
+      layer.addEventListener('click', function () {
+        if (!self.graph.classList.contains('is-focused')) self.focusSector(skey);
+      });
+      layer.addEventListener('keydown', function (ev) {
+        if ((ev.key === 'Enter' || ev.key === ' ') && !self.graph.classList.contains('is-focused')) {
+          ev.preventDefault(); self.focusSector(skey);
+        }
+      });
+
       // dots for this layer — y = log market cap normalised within the layer
       var dotsEl = el('div', 'fs-dots');
       var list = dots[skey] || [];
@@ -218,11 +237,12 @@
         b.style.left = (xFrac * 100).toFixed(2) + '%';
         b.style.top = (yFrac * 100).toFixed(2) + '%';
 
-        b.setAttribute('aria-label',
-          meta.name + ' · ' + (self.data.tiers[d.tier - 1] || ('tier ' + d.tier)) +
-          ' · ' + d.criticality + ' criticality');
+        // Level 0: dots are density/criticality texture — not individually
+        // clickable or focusable (the band is the target). They still drive the
+        // research highlight, tier-lens and cascade via class toggles.
+        b.setAttribute('aria-hidden', 'true');
+        b.tabIndex = -1;
         b._d = d;
-        b.addEventListener('click', function (ev) { ev.stopPropagation(); self._openDoorway(d, b); });
         dotsEl.appendChild(b);
         self.dotEls.push(b);
       });
@@ -238,6 +258,7 @@
 
     this._buildDoorway();
     this._buildLegend();
+    this._buildFocus();
   };
 
   // synthesize a short sparkline trend for a sector panel (placeholder)
@@ -297,6 +318,8 @@
   // ---------- research highlight (article → cells) ----------
   FrontierStack.prototype.highlight = function (cells) {
     if (!cells || !cells.length) { this.clearHighlight(); return; }
+    // the research → cell highlight is an overview reading
+    if (this.graph.classList.contains('is-focused')) this.exitFocus(false);
     var keys = {};
     cells.forEach(function (c) { keys[c[0] + '|' + c[1]] = true; });
     var hitSectors = {};
@@ -355,6 +378,9 @@
 
   FrontierStack.prototype.runDisruption = function (originSector, originCrit, originDotEl) {
     var self = this;
+    // a cascade is a cross-sector reading — show it on the overview (the origin
+    // dot lives in the now-hidden focus view, so don't burst from it)
+    if (this.graph.classList.contains('is-focused')) { this.exitFocus(false); originDotEl = null; }
     var sev = this._propagate(originSector, originCrit);
     this.clearDisruption(true);
     // force a reflow so each overlay's opacity transition starts from 0
@@ -500,7 +526,220 @@
     this._doorway.setAttribute('aria-hidden', 'true');
     this._backdrop.classList.remove('is-open');
     this.clearDisruption();
-    if (this.selected) { this.selected.classList.remove('fs-selected'); this.selected.focus(); this.selected = null; }
+    if (this.selected) {
+      var s = this.selected; this.selected = null;
+      s.classList.remove('fs-selected');
+      // refocus the originating dot if it's still visible; else the return band
+      if (s.isConnected && s.offsetParent !== null) s.focus();
+      else if (this._returnFocusEl && this._returnFocusEl.focus) this._returnFocusEl.focus();
+    }
+  };
+
+  // ============================================================
+  //  DRILL-DOWN — Level 0 (overview) ⇄ Level 1 (focused sector)
+  //  The graph footprint is fixed throughout; the focus overlay fills it.
+  // ============================================================
+  FrontierStack.prototype._buildFocus = function () {
+    var self = this;
+    var focus = el('div', 'fs-focus');
+    focus.setAttribute('aria-label', 'Focused sector view');
+    focus.setAttribute('aria-hidden', 'true');
+
+    // top bar — slim four-sector switcher (lateral switch without returning)
+    var order = SECTOR_ORDER.slice().reverse();   // space → materials (top → bottom)
+    this._focusChips = {};
+    var sw = el('div', 'fs-focus-switch');
+    sw.setAttribute('role', 'tablist');
+    sw.setAttribute('aria-label', 'Switch sector');
+    order.forEach(function (skey) {
+      var meta = self.sectorMeta(skey);
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'fs-focus-chip';
+      chip.dataset.sector = skey;
+      chip.setAttribute('role', 'tab');
+      chip.style.setProperty('--hue', meta.hue || '#888');
+      chip.innerHTML = '<span class="fs-chip-sw" aria-hidden="true"></span>' + esc(meta.name);
+      chip.addEventListener('click', function () { self.switchFocus(skey); });
+      chip.addEventListener('keydown', function (e) { self._chipKeydown(e, skey, order); });
+      sw.appendChild(chip);
+      self._focusChips[skey] = chip;
+    });
+    var bar = el('div', 'fs-focus-bar');
+    bar.appendChild(sw);
+    focus.appendChild(bar);
+
+    // body — left gutter (return + sector name + review link) and the tier plot
+    var gutter = el('div', 'fs-focus-gutter');
+    gutter.innerHTML =
+      '<button class="fs-focus-return" type="button">&larr; Overview</button>' +
+      '<div class="fs-focus-name"></div>' +
+      '<div class="fs-focus-count"></div>' +
+      '<a class="fs-focus-review" href="#">Read the review &rarr;</a>';
+    gutter.querySelector('.fs-focus-return').addEventListener('click', function () { self.exitFocus(true); });
+    this._focusReturnBtn = gutter.querySelector('.fs-focus-return');
+
+    var plot = el('div', 'fs-focus-plot');
+    this._fcols = [];
+    for (var t = 1; t <= TIER_COUNT; t++) {
+      var col = el('div', 'fs-fcol');
+      col.dataset.tier = String(t);
+      col.appendChild(el('div', 'fs-fcol-head'));
+      col.appendChild(el('div', 'fs-fcol-body'));
+      plot.appendChild(col);
+      this._fcols.push(col);
+    }
+    var body = el('div', 'fs-focus-body');
+    body.appendChild(gutter);
+    body.appendChild(plot);
+    focus.appendChild(body);
+
+    this.graph.appendChild(focus);
+    this._focusEl = focus;
+
+    // Esc returns to the overview (unless the doorway is the thing that's open)
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' &&
+          self.graph.classList.contains('is-focused') &&
+          !(self._doorway && self._doorway.classList.contains('is-open'))) {
+        self.exitFocus(true);
+      }
+    });
+  };
+
+  FrontierStack.prototype._chipKeydown = function (e, skey, order) {
+    var idx = order.indexOf(skey);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault(); this._focusChips[order[(idx + 1) % order.length]].focus();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault(); this._focusChips[order[(idx - 1 + order.length) % order.length]].focus();
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault(); this.switchFocus(skey);
+    }
+  };
+
+  FrontierStack.prototype.focusSector = function (skey) {
+    if (!this.layers[skey] || !this._focusEl) return;
+    var self = this;
+    this.clearHighlight();   // overview-only lenses clear on drill-in
+    this._lensClear();
+    this.clearDisruption();
+    this._returnFocusEl = this.layers[skey].el;   // band to restore focus to on exit
+    this.focusedSector = skey;
+    this._renderFocusPlot(skey);
+    SECTOR_ORDER.forEach(function (s) { if (self.layers[s]) self.layers[s].el.setAttribute('tabindex', '-1'); });
+    this.graph.classList.add('is-focused');
+    this.graph.dataset.focus = skey;
+    this._focusEl.setAttribute('aria-hidden', 'false');
+    if (this._focusReturnBtn) this._focusReturnBtn.focus();
+  };
+
+  FrontierStack.prototype.switchFocus = function (skey) {
+    if (!this.layers[skey] || skey === this.focusedSector) return;
+    this.focusedSector = skey;
+    this.graph.dataset.focus = skey;
+    this._returnFocusEl = this.layers[skey].el;   // return to the last-viewed band
+    this._renderFocusPlot(skey);
+  };
+
+  FrontierStack.prototype.exitFocus = function (restoreFocus) {
+    if (!this.graph.classList.contains('is-focused')) return;
+    var self = this, prev = this.focusedSector;
+    this.graph.classList.remove('is-focused');
+    this.graph.removeAttribute('data-focus');
+    if (this._focusEl) this._focusEl.setAttribute('aria-hidden', 'true');
+    this.focusedSector = null;
+    SECTOR_ORDER.forEach(function (s) { if (self.layers[s]) self.layers[s].el.setAttribute('tabindex', '0'); });
+    if (restoreFocus) {
+      var elx = this._returnFocusEl || (this.layers[prev] && this.layers[prev].el);
+      if (elx && elx.focus) elx.focus();
+    }
+  };
+
+  FrontierStack.prototype._renderFocusPlot = function (skey) {
+    var self = this;
+    var meta = this.sectorMeta(skey);
+    var dots = (this.layers[skey] && this.layers[skey].dots) || [];
+    this._focusEl.style.setProperty('--hue', meta.hue || '#888');
+    this._focusEl.querySelector('.fs-focus-name').textContent = meta.name;
+    var parts = [];
+    if (meta.public) parts.push(meta.public + ' public');
+    if (meta.private) parts.push(meta.private + ' private');
+    if (meta.commodities) parts.push(meta.commodities + ' commodities');
+    this._focusEl.querySelector('.fs-focus-count').textContent = parts.join(' · ');
+    var rev = this._focusEl.querySelector('.fs-focus-review');
+    rev.textContent = 'Read the ' + meta.name + ' review →';
+    rev.setAttribute('href', '#');   // shared placeholder for now
+    for (var s in this._focusChips) {
+      var on = (s === skey);
+      this._focusChips[s].classList.toggle('is-active', on);
+      this._focusChips[s].setAttribute('aria-selected', on ? 'true' : 'false');
+    }
+    // group this sector's dots by tier
+    var byTier = {};
+    dots.forEach(function (d) { (byTier[d.tier] = byTier[d.tier] || []).push(d); });
+    // all eight tier columns stay present + in order: occupied wide (equal),
+    // empty thin slivers. Column widths are driven by a transitioned CSS grid
+    // template (all-fr tracks interpolate smoothly, unlike flex-grow).
+    var tracks = [];
+    this._fcols.forEach(function (col) {
+      var t = +col.dataset.tier;
+      var tierLabel = (self.data.tiers && self.data.tiers[t - 1]) || ('Tier ' + t);
+      var list = byTier[t] || [];
+      var occupied = list.length > 0;
+      tracks.push(occupied ? '1fr' : '0.16fr');
+      col.classList.toggle('occupied', occupied);
+      col.classList.toggle('empty', !occupied);
+      var head = col.querySelector('.fs-fcol-head');
+      var bodyC = col.querySelector('.fs-fcol-body');
+      if (occupied) {
+        var stage = list[0].stage || '';
+        head.innerHTML =
+          '<span class="fs-fcol-tier">' + esc(tierLabel) + '</span>' +
+          (stage ? '<span class="fs-fcol-stage">' + esc(stage) + '</span>' : '') +
+          '<span class="fs-fcol-n">' + list.length + '</span>';
+        self._renderFocusColumn(bodyC, list, meta, tierLabel);
+      } else {
+        head.innerHTML = '<span class="fs-fcol-tier">' + esc(tierLabel) + '</span>';
+        bodyC.innerHTML = '';
+      }
+    });
+    this._focusEl.querySelector('.fs-focus-plot').style.gridTemplateColumns = tracks.join(' ');
+  };
+
+  // entities spread within their tier column; named/notable ones label up
+  // (non-overlapping), the rest stay as dots and reveal a label on hover/focus.
+  FrontierStack.prototype._renderFocusColumn = function (bodyC, list, meta, tierLabel) {
+    var self = this;
+    bodyC.innerHTML = '';
+    var ents = list.slice().sort(function (a, b) { return (b.mcap || 0) - (a.mcap || 0); });
+    var N = ents.length, padT = 7, padB = 7, placed = [];
+    ents.forEach(function (d, i) {
+      var rng = mulberry32(hashSeed((d.sector || '') + '|' + (d.tier || '') + '|' + i + '|' + (d.name || '')));
+      var yPct = padT + ((N > 1) ? (i / (N - 1)) : 0.5) * (100 - padT - padB);
+      var xPct = 50 + (rng() - 0.5) * 42;
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'fs-fdot';
+      dot.dataset.tier = String(d.tier);
+      dot.dataset.sector = d.sector;
+      dot.style.setProperty('--d', (CRIT_SIZE[d.criticality] || 6) + 'px');
+      dot.style.setProperty('--cc', CRIT_COLOR[d.criticality] || '#888');
+      dot.style.left = xPct.toFixed(1) + '%';
+      dot.style.top = yPct.toFixed(1) + '%';
+      dot.dataset.label = d.name || ((d.stage || tierLabel) + ' · ' + d.criticality);
+      if (xPct > 54) dot.classList.add('lab-left');
+      dot.setAttribute('aria-label',
+        (d.name ? d.name + ' — ' : '') + meta.name + ' · ' + tierLabel + ' · ' + d.criticality + ' criticality');
+      // persistent label for named, non-overlapping entities; others reveal on hover
+      if (d.name && !placed.some(function (py) { return Math.abs(py - yPct) < 6.5; })) {
+        placed.push(yPct); dot.classList.add('has-label');
+      } else {
+        dot.classList.add('has-hover-label');
+      }
+      dot.addEventListener('click', function (ev) { ev.stopPropagation(); self._openDoorway(d, dot); });
+      bodyC.appendChild(dot);
+    });
   };
 
   global.FrontierStack = FrontierStack;

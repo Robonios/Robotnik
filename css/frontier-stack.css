@@ -242,9 +242,144 @@
 }
 .fs-doorway-backdrop.is-open { opacity: 1; pointer-events: auto; }
 
+/* ============================================================
+   DRILL-DOWN — Level 0 band affordance + Level 1 focused view
+   (the graph footprint is fixed throughout)
+   ============================================================ */
+
+/* ---- Level 0: the sector band is the click target ---- */
+.fs-graph:not(.is-focused) .fs-layer { cursor: pointer; }
+.fs-graph:not(.is-focused) .fs-dot { pointer-events: none; }   /* dots = texture */
+.fs-layer-plane { transition: border-color .18s, background .18s, box-shadow .18s, opacity .3s; }
+.fs-graph:not(.is-focused) .fs-layer:hover .fs-layer-plane,
+.fs-graph:not(.is-focused) .fs-layer:focus-visible .fs-layer-plane {
+  border-color: color-mix(in srgb, var(--hue) 62%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hue) 30%, transparent),
+              0 0 26px color-mix(in srgb, var(--hue) 20%, transparent);
+}
+.fs-layer:focus-visible { outline: none; }
+.fs-layer:focus-visible .fs-layer-plane { outline: 2px solid var(--brand, #F5D921); outline-offset: 2px; }
+
+/* "Explore →" affordance, top-right of each band */
+.fs-band-explore {
+  position: absolute; top: 8px; right: 12px; z-index: 6;
+  font-family: 'Space Grotesk', sans-serif; font-size: 9.5px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--hue); background: rgba(8,9,12,.62);
+  border: 1px solid color-mix(in srgb, var(--hue) 42%, transparent);
+  border-radius: 5px; padding: 3px 8px;
+  opacity: 0; transform: translateX(4px); transition: opacity .18s, transform .18s;
+  pointer-events: none;
+}
+.fs-graph:not(.is-focused) .fs-layer:hover .fs-band-explore,
+.fs-graph:not(.is-focused) .fs-layer:focus-visible .fs-band-explore { opacity: 1; transform: translateX(0); }
+.fs-graph.is-focused .fs-band-explore { display: none; }
+
+/* scene / axis / headers fade out when a sector is focused */
+.fs-scene { transition: opacity .3s; }
+.fs-graph.is-focused .fs-scene,
+.fs-graph.is-focused .fs-yaxis,
+.fs-graph.is-focused .fs-tier-headers { opacity: 0; pointer-events: none; }
+
+/* ---- Level 1: focused-sector overlay (fills the fixed footprint) ---- */
+.fs-focus {
+  position: absolute; inset: 0; z-index: 7;
+  display: flex; flex-direction: column;
+  opacity: 0; transform: scale(.985); pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.fs-graph.is-focused .fs-focus { opacity: 1; transform: none; pointer-events: auto; }
+
+/* top bar — four-sector switcher */
+.fs-focus-bar { display: flex; align-items: center; gap: .6rem; padding: 2px 6px 8px; }
+.fs-focus-switch { display: inline-flex; flex-wrap: wrap; gap: 4px; background: #15171C; border: 1px solid rgba(240,236,224,.10); border-radius: 9px; padding: 3px; }
+.fs-focus-chip {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600;
+  color: #9C978E; background: transparent; border: none; border-radius: 7px;
+  padding: .32rem .62rem; cursor: pointer; transition: background .15s, color .15s;
+}
+.fs-chip-sw { width: 8px; height: 8px; border-radius: 2px; border: 1.5px solid var(--hue); flex-shrink: 0; }
+.fs-focus-chip:hover { color: #EDE9DF; }
+.fs-focus-chip.is-active { color: #0A0A0F; background: var(--hue); }
+.fs-focus-chip.is-active .fs-chip-sw { border-color: rgba(0,0,0,.5); background: rgba(0,0,0,.22); }
+.fs-focus-chip:focus-visible { outline: 2px solid var(--brand, #F5D921); outline-offset: 2px; }
+
+/* body — gutter + plot */
+.fs-focus-body { flex: 1; display: flex; min-height: 0; }
+.fs-focus-gutter { width: 150px; flex-shrink: 0; display: flex; flex-direction: column; padding: 2px 14px 6px 2px; }
+.fs-focus-return {
+  align-self: flex-start;
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600;
+  color: #9C978E; background: transparent; border: 1px solid rgba(240,236,224,.16);
+  border-radius: 6px; padding: .3rem .6rem; cursor: pointer; transition: color .15s, border-color .15s;
+}
+.fs-focus-return:hover { color: #EDE9DF; border-color: rgba(240,236,224,.3); }
+.fs-focus-return:focus-visible { outline: 2px solid var(--brand, #F5D921); outline-offset: 2px; }
+.fs-focus-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; line-height: 1.08; color: var(--hue); margin-top: 1rem; }
+.fs-focus-count { font-family: 'Mulish', sans-serif; font-size: 11px; color: #9C978E; margin-top: .35rem; line-height: 1.4; }
+.fs-focus-review { margin-top: auto; font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600; color: var(--brand, #F5D921); text-decoration: none; }
+.fs-focus-review:hover { text-decoration: underline; }
+.fs-focus-review:focus-visible { outline: 2px solid var(--brand, #F5D921); outline-offset: 2px; border-radius: 3px; }
+
+/* plot — eight tier columns: occupied wide (equal), empty thin slivers.
+   Widths come from a transitioned grid template (all-fr tracks interpolate
+   smoothly; the JS sets the per-sector pattern in .fs-focus-plot). */
+.fs-focus-plot {
+  flex: 1; display: grid; gap: 6px; min-width: 0; padding-right: 4px;
+  grid-template-columns: repeat(8, 1fr);
+  transition: grid-template-columns .42s cubic-bezier(.55,.1,.3,1);
+}
+.fs-fcol {
+  display: flex; flex-direction: column; min-width: 0;
+  border: 1px solid rgba(240,236,224,.07); border-radius: 8px;
+  transition: background .3s, border-color .3s;
+}
+.fs-fcol.occupied { background: color-mix(in srgb, var(--hue) 5%, transparent); border-color: color-mix(in srgb, var(--hue) 22%, transparent); }
+.fs-fcol-head { padding: 6px 7px 5px; border-bottom: 1px solid rgba(240,236,224,.07); min-height: 36px; }
+.fs-fcol-tier { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 8.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #B7B1A6; line-height: 1.15; }
+.fs-fcol-stage { display: block; font-family: 'Mulish', sans-serif; font-size: 9.5px; color: #EDE9DF; margin-top: 2px; }
+.fs-fcol-n { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 9px; color: var(--hue); margin-top: 2px; }
+/* slivers: thin, with a rotated tier label, no body */
+.fs-fcol.empty .fs-fcol-head { writing-mode: vertical-rl; transform: rotate(180deg); border-bottom: none; flex: 1; display: flex; align-items: center; justify-content: center; min-height: 0; padding: 8px 0; }
+.fs-fcol.empty .fs-fcol-tier { font-size: 8px; color: #6B665D; white-space: nowrap; }
+.fs-fcol.empty .fs-fcol-body { display: none; }
+
+/* focused-view dots + labels */
+.fs-fcol-body { position: relative; flex: 1; min-height: 0; }
+.fs-fdot {
+  position: absolute; width: var(--d, 7px); height: var(--d, 7px);
+  margin: calc(var(--d, 7px) / -2) 0 0 calc(var(--d, 7px) / -2);
+  border-radius: 50%; background: var(--cc); border: none; padding: 0;
+  box-shadow: 0 0 5px var(--cc); cursor: pointer;
+  transition: transform .12s, box-shadow .12s;
+}
+.fs-fdot:hover, .fs-fdot:focus-visible { transform: scale(1.5); box-shadow: 0 0 12px var(--cc); z-index: 5; }
+.fs-fdot:focus-visible { outline: 2px solid var(--brand, #F5D921); outline-offset: 2px; }
+.fs-fdot.fs-selected { transform: scale(1.7); box-shadow: 0 0 0 3px rgba(245,217,33,.85), 0 0 14px var(--cc); z-index: 6; }
+
+/* labels via data-label: persistent for named/notable, on hover for the rest */
+.fs-fdot.has-label::after,
+.fs-fdot.has-hover-label:hover::after,
+.fs-fdot.has-hover-label:focus-visible::after {
+  content: attr(data-label);
+  position: absolute; left: calc(50% + var(--d,7px) * .6); top: 50%; transform: translateY(-50%);
+  font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 500;
+  color: #EDE9DF; white-space: nowrap;
+  background: rgba(8,9,12,.85); padding: 1px 5px; border-radius: 4px;
+  border: 1px solid rgba(240,236,224,.10);
+  pointer-events: none; z-index: 7;
+}
+.fs-fdot.lab-left.has-label::after,
+.fs-fdot.lab-left.has-hover-label:hover::after,
+.fs-fdot.lab-left.has-hover-label:focus-visible::after { left: auto; right: calc(50% + var(--d,7px) * .6); }
+.fs-fdot.has-label::after { color: #D8D3C8; }
+.fs-fdot.has-hover-label:hover::after, .fs-fdot.has-hover-label:focus-visible::after { z-index: 9; color: #EDE9DF; }
+
 /* ---------- responsive ---------- */
 @media (max-width: 1024px) {
   .fs-graph { height: 532px; --layer-h: 88px; --flat-gap: 34px; --gutter: 92px; }
+  .fs-focus-gutter { width: 128px; }
 }
 @media (max-width: 640px) {
   .fs-graph { height: 452px; --layer-h: 74px; --flat-gap: 26px; --gutter: 76px; }
@@ -254,12 +389,23 @@
   .fs-yaxis { width: 40px; }
   .fs-yaxis-arrow { left: 26px; }
   .fs-yaxis-cap { left: 11px; }
+  /* focused view: stack the gutter above the plot so 8 columns aren't crushed */
+  .fs-focus-body { flex-direction: column; }
+  .fs-focus-gutter { width: auto; flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: .5rem; padding: 0 4px 6px; }
+  .fs-focus-name { font-size: 1.05rem; margin-top: 0; }
+  .fs-focus-count { margin-top: 0; }
+  .fs-focus-review { margin-top: 0; margin-left: auto; }
+  .fs-fcol-stage { display: none; }
+  .fs-focus-chip { font-size: 10px; padding: .28rem .5rem; }
 }
 
 /* ============================================================
-   prefers-reduced-motion — disable cascade fade + burst (brief §3 / §9).
+   prefers-reduced-motion — disable cascade fade, burst, focus
+   expand/collapse + sliver transitions (brief §3 / §9 / D).
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .fs-dot, .fs-doorway, .fs-cascade-fill, .fs-layer-overlay { transition: none !important; }
+  .fs-dot, .fs-doorway, .fs-cascade-fill, .fs-layer-overlay,
+  .fs-focus, .fs-focus-plot, .fs-fcol, .fs-fdot, .fs-band-explore, .fs-scene { transition: none !important; }
+  .fs-focus { transform: none !important; }
   .fs-burst { animation: none !important; display: none; }
 }

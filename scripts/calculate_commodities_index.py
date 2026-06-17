@@ -2,18 +2,32 @@
 """
 Robotnik Commodities Index — forward-only launch / base-date snapshot
 =====================================================================
-Builds the Commodities Index per `commodities_index_methodology v.2` §6.1
-("Live index weights — forward-only launch").
+Builds the Commodities Index per `commodities_index_methodology v.3` §6.1 / §8
+("Live index weights — forward-only launch"; v.3 price-basis routing).
 
-Constituents
-------------
-  * 20 PRICED:
-      - 16 via MarketStack v2 /commodities  (spot; mixed USD- and CNY-quoted)
-      - 4  via strategicmetalsinvest         (spot; USD/kg) — Antimony,
-           Praseodymium, Dysprosium, Terbium
+Constituents (20 priced) — routed by the §8 price-basis rule
+------------------------------------------------------------
+  * 12 via MarketStack v2 /commodities:
+      - exchange-traded global benchmarks: Copper, Nickel, Tin, Cobalt, Gold,
+        Silver, Platinum, Palladium, Aluminium ("aluminum" on MS)
+      - China-domestic-quoted (CNY, FX-converted), no free Western reference:
+        Silicon (metallurgical), Titanium (sponge), Phosphorus (phosphate rock)
+  * 8 via strategicmetalsinvest (USD/kg, METAL basis):
+      - China-controlled chokepoints on the WESTERN/ex-China quote (where
+        export-control stress shows up): Gallium, Germanium, Indium, Neodymium
+      - other priced rare earths / minor metals: Praseodymium, Dysprosium,
+        Terbium, Antimony
   * 9 PRICE-PENDING (disclosed, excluded until a source is secured):
       Tungsten, Tantalum, Arsenic, Cerium, Lanthanum, Erbium, Yttrium,
       Scandium, Boron.
+
+Price-basis rule (§8): for the China-controlled chokepoint metals where a free
+Western/ex-China reference exists (Ga, Ge, In, Nd) use the WESTERN quote — a
+China-domestic basis would blind the index to the export-control shocks it
+exists to register (gallium rose several-fold in the West on the 2023 controls
+while the China-domestic price barely moved). Exchange-traded metals use their
+global benchmark; China-domestic is used (and flagged) only where nothing else
+is free (Si, Ti, P). Rare earths tracked on METAL basis (the free SMI form).
 
 Weighting (§6.1 live weights)
 -----------------------------
@@ -40,9 +54,9 @@ Usage
 -----
     python scripts/calculate_commodities_index.py
         Live pull: MarketStack /v2/commodities is rate-limited to ~1 call per
-        minute, so a full live pull of the 16 MarketStack names takes ~16 min
-        (the script throttles 63s between calls). strategicmetalsinvest is a
-        single scrape.
+        minute, so a full live pull of the 12 MarketStack names takes ~12 min
+        (the script throttles 63s between calls, with rate-limit retry).
+        strategicmetalsinvest is a single scrape (8 names).
 
     COMMODITIES_MS_CACHE=/path/spot.json python scripts/calculate_commodities_index.py
         Read MarketStack spot from a pre-fetched cache instead of live-pulling
@@ -71,7 +85,10 @@ from marketstack_client import get_api_key          # noqa: E402  (API key resol
 import currency_convert as cc                        # noqa: E402
 from fetch_fx import fetch_fx_daily                  # noqa: E402  (ECB-primary FX)
 
-OUT_PATH = ROOT / "data" / "index" / "commodities_index.json"
+# Output dir for the base record. Defaults to the live index tree; a dry-run
+# sets COMMODITIES_INDEX_OUT to write elsewhere (mirrors ROBOTNIK_INDEX_OUT).
+OUT_PATH = Path(os.environ.get("COMMODITIES_INDEX_OUT")
+                or (ROOT / "data" / "index" / "commodities_index.json"))
 
 BASE_VALUE       = 1000.0
 SINGLE_NAME_CAP  = 0.12                  # §6.1 live single-name cap
@@ -87,27 +104,30 @@ FX_STALE_WARN_DAYS = 7
 #   reference_weight_pct : §6 reference weight (full 29-name statement)
 #   source               : "marketstack" | "smi"
 #   fetch_key            : MarketStack commodity_name (lowercase) OR SMI label
+# v.3 routing (§8): chokepoints Ga/Ge/In/Nd → strategicmetalsinvest (Western,
+# USD/kg, metal). Exchange-traded → MarketStack benchmark. China-domestic
+# (CNY, flagged) only where no free Western reference exists: Si, Ti, P.
 PRICED = [
-    ("Gallium",      16.37, "marketstack", "metal, China spot (CNY/kg)",          "gallium"),
-    ("Silicon",       9.21, "marketstack", "metallurgical, China (CNY/t)",        "silicon"),
-    ("Titanium",      8.18, "marketstack", "sponge, China (CNY/kg)",              "titanium"),
-    ("Dysprosium",    8.18, "smi",         "USD/kg (oxide-vs-metal form unstated)", "Dysprosium"),
-    ("Germanium",     4.60, "marketstack", "metal, China (CNY/kg)",               "germanium"),
-    ("Copper",        4.60, "marketstack", "Grade A (USD/lb)",                    "copper"),
-    ("Nickel",        4.60, "marketstack", "(USD/t)",                             "nickel"),
-    ("Tin",           4.60, "marketstack", "(USD/t)",                             "tin"),
-    ("Neodymium",     4.60, "marketstack", "China (CNY/t)",                       "neodymium"),
-    ("Terbium",       4.60, "smi",         "USD/kg (oxide-vs-metal form unstated)", "Terbium"),
-    ("Cobalt",        4.09, "marketstack", "metal (USD/t)",                       "cobalt"),
-    ("Silver",        2.30, "marketstack", "(USD/t.oz)",                          "silver"),
-    ("Antimony",      2.30, "smi",         "metal (USD/kg)",                      "Antimony"),
-    ("Praseodymium",  2.30, "smi",         "USD/kg (oxide-vs-metal form unstated)", "Praseodymium"),
-    ("Indium",        1.53, "marketstack", "China (CNY/kg)",                      "indium"),
-    ("Aluminium",     0.77, "marketstack", "(USD/t)",                             "aluminum"),  # US spelling on MS
-    ("Platinum",      0.77, "marketstack", "(USD/t.oz)",                          "platinum"),
-    ("Phosphorus",    0.77, "marketstack", "phosphate-rock proxy, China (CNY/t)", "phosphorus"),
-    ("Gold",          0.38, "marketstack", "(USD/t.oz)",                          "gold"),
-    ("Palladium",     0.38, "marketstack", "(USD/t.oz)",                          "palladium"),
+    ("Gallium",      16.37, "smi",         "metal, Western/ex-China (USD/kg)",      "Gallium"),
+    ("Silicon",       9.21, "marketstack", "metallurgical, China-domestic (CNY/t)", "silicon"),
+    ("Titanium",      8.18, "marketstack", "sponge, China-domestic (CNY/kg)",       "titanium"),
+    ("Dysprosium",    8.18, "smi",         "metal (USD/kg)",                        "Dysprosium"),
+    ("Germanium",     4.60, "smi",         "metal, Western/ex-China (USD/kg)",      "Germanium"),
+    ("Copper",        4.60, "marketstack", "Grade A benchmark (USD/lb)",            "copper"),
+    ("Nickel",        4.60, "marketstack", "benchmark (USD/t)",                     "nickel"),
+    ("Tin",           4.60, "marketstack", "benchmark (USD/t)",                     "tin"),
+    ("Neodymium",     4.60, "smi",         "metal, Western/ex-China (USD/kg)",      "Neodymium"),
+    ("Terbium",       4.60, "smi",         "metal (USD/kg)",                        "Terbium"),
+    ("Cobalt",        4.09, "marketstack", "metal benchmark (USD/t)",               "cobalt"),
+    ("Silver",        2.30, "marketstack", "benchmark (USD/t.oz)",                  "silver"),
+    ("Antimony",      2.30, "smi",         "metal (USD/kg)",                        "Antimony"),
+    ("Praseodymium",  2.30, "smi",         "metal (USD/kg)",                        "Praseodymium"),
+    ("Indium",        1.53, "smi",         "metal, Western/ex-China (USD/kg)",      "Indium"),
+    ("Aluminium",     0.77, "marketstack", "benchmark (USD/t)",                     "aluminum"),  # US spelling on MS
+    ("Platinum",      0.77, "marketstack", "benchmark (USD/t.oz)",                  "platinum"),
+    ("Phosphorus",    0.77, "marketstack", "phosphate-rock proxy, China-domestic (CNY/t)", "phosphorus"),
+    ("Gold",          0.38, "marketstack", "benchmark (USD/t.oz)",                  "gold"),
+    ("Palladium",     0.38, "marketstack", "benchmark (USD/t.oz)",                  "palladium"),
 ]
 
 # (commodity, reference_weight_pct, reason) — disclosed, excluded until priced
@@ -167,21 +187,24 @@ def fetch_marketstack(fetch_keys):
     for i, name in enumerate(fetch_keys):
         if i:
             time.sleep(MS_RATE_SLEEP)               # respect ~1 call/min
-        data = _ms_get(name, key)
-        rows = data.get("data") if isinstance(data, dict) else None
-        if rows:
-            out[name] = rows[0]
-        else:
-            out[name] = None
-            err = data.get("error") if isinstance(data, dict) else None
+        row = None
+        for attempt in range(3):                    # rate-limit retry (65s backoff)
+            data = _ms_get(name, key)
+            rows = data.get("data") if isinstance(data, dict) else None
+            if rows:
+                row = rows[0]
+                break
+            err = (data.get("error") or {}) if isinstance(data, dict) else {}
+            code = (err.get("code") or "").lower() if isinstance(err, dict) else ""
+            if ("rate" in code or "limit" in code) and attempt < 2:
+                sys.stderr.write("[commodities] rate-limit on {} — backoff 65s "
+                                 "(attempt {}/2)\n".format(name, attempt + 1))
+                time.sleep(65)
+                continue
             sys.stderr.write("[commodities] MarketStack MISS {}: {}\n".format(name, err))
+            break
+        out[name] = row
     return out, "live"
-
-
-# MarketStack China-priced minor metals that ALSO appear on the SMI table —
-# pulled purely for a cross-source sanity check (the index still uses the
-# MarketStack quote for these per the source plan).
-SMI_CROSS_LABELS = ["Gallium", "Germanium", "Indium", "Neodymium"]
 
 
 def _smi_scan(region, label):
@@ -191,12 +214,10 @@ def _smi_scan(region, label):
 
 # ── strategicmetalsinvest (USD/kg table scrape) ─────────────────────────────
 def fetch_smi(labels):
-    """Scrape the current-prices table → (prices, cross_prices, last_updated, note).
+    """Scrape the current-prices table → (prices, last_updated, note).
 
     Anchors on the 'Current Price (USD/kg)' header and requires the '$' so we
     match the price table, never the metal names in the page's meta-description.
-    `cross_prices` are the SMI quotes for the China-priced minor metals, kept
-    only for a MarketStack-vs-SMI divergence check.
     """
     req = urllib.request.Request(SMI_URL, headers={"User-Agent": SMI_UA})
     html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
@@ -211,9 +232,7 @@ def fetch_smi(labels):
     region = text[hdr: hdr + 4000] if hdr >= 0 else text
     prices = {label: _smi_scan(region, label) for label in labels}
     prices = {k: v for k, v in prices.items() if v is not None}
-    cross = {label: _smi_scan(region, label) for label in SMI_CROSS_LABELS}
-    cross = {k: v for k, v in cross.items() if v is not None}
-    return prices, cross, last_updated, ("USD/kg header" if hdr >= 0 else "no header anchor")
+    return prices, last_updated, ("USD/kg header" if hdr >= 0 else "no header anchor")
 
 
 # ── §6.1 live weights: renormalise across priced, then 12% cap ──────────────
@@ -259,7 +278,7 @@ def main():
     ms_rows, ms_provenance = fetch_marketstack(ms_keys)
     print("  source: {}".format(ms_provenance))
     print("Scraping strategicmetalsinvest ({} names) ...".format(len(smi_keys)))
-    smi_prices, smi_cross, smi_updated, smi_note = fetch_smi(smi_keys)
+    smi_prices, smi_updated, smi_note = fetch_smi(smi_keys)
     print("  last updated: {} ({}); resolved {}/{}".format(
         smi_updated, smi_note, len(smi_prices), len(smi_keys)))
 
@@ -356,33 +375,6 @@ def main():
         for name, src, why in missing:
             flags.append("MISSING: {} ({}) — {}".format(name, src, why))
 
-    # 6a. Cross-source divergence on the China-priced minor metals that ALSO
-    #     appear on the SMI table. The index uses the MarketStack quote for these
-    #     (per the source plan); SMI is a Western/ex-China reference. A wide gap
-    #     is the documented China-domestic-vs-Western two-tier split, NOT a bug —
-    #     surfaced because it lands on big weights (gallium is the capped top name).
-    by_name = {c["commodity"]: c for c in constituents}
-    cross_source_check = []
-    for commodity, smi_usd_kg in sorted(smi_cross.items()):
-        c = by_name.get(commodity)
-        if not c:
-            continue
-        ms_per_kg = c["usd_price"] / 1000.0 if c["native_unit"] == "t" else c["usd_price"]
-        ratio = (smi_usd_kg / ms_per_kg) if ms_per_kg else None
-        cross_source_check.append({
-            "commodity": commodity,
-            "index_uses": "MarketStack (per source plan)",
-            "marketstack_usd_per_kg": round(ms_per_kg, 4),
-            "strategicmetalsinvest_usd_per_kg": round(smi_usd_kg, 4),
-            "ratio_smi_over_ms": round(ratio, 3) if ratio else None,
-        })
-        if ratio and (ratio > 1.5 or ratio < 0.667):
-            flags.append(
-                "CROSS-SOURCE DIVERGENCE: {} — MarketStack ${:,.2f}/kg vs "
-                "strategicmetalsinvest ${:,.2f}/kg ({:.1f}x). China-domestic vs "
-                "Western two-tier; index uses MarketStack per source plan.".format(
-                    commodity, ms_per_kg, smi_usd_kg, ratio))
-
     # 6b. Stale-fixing flag: a MarketStack name flat over BOTH week and month is
     #     an illiquid/stale fixing (e.g. LME cobalt) — its base price is a stale
     #     print. Informational. (Only fires when percentage fields are present.)
@@ -398,11 +390,16 @@ def main():
     # ── 7. Assemble base record ─────────────────────────────────────────────
     record = {
         "name": "Robotnik Commodities Index",
-        "version": "1.0 — forward-only launch (genesis base)",
-        "methodology": "commodities_index_methodology v.2",
+        "version": "1.1 — forward-only launch (genesis base); v.3 price-basis routing",
+        "methodology": "commodities_index_methodology v.3",
         "method": ("fixed-weight index of USD price relatives; §6.1 live weights "
                    "(reference weights renormalised across priced constituents, then "
                    "12% single-name cap with pro-rata redistribution); forward-only, no backfill"),
+        "price_basis_routing": (
+            "§8: chokepoints Ga/Ge/In/Nd priced from strategicmetalsinvest (Western/ex-China, "
+            "USD/kg, metal) so the index registers export-control stress; exchange-traded metals "
+            "from MarketStack benchmarks; China-domestic (MarketStack CNY, flagged) only where no "
+            "free Western reference exists — Silicon, Titanium, Phosphorus; rare earths on metal basis"),
         "frequency": "weekly",
         "base_date": today,
         "base_value": BASE_VALUE,
@@ -433,7 +430,6 @@ def main():
         "constituents": constituents,
         "price_pending": [{"commodity": n, "reference_weight_pct": w, "reason": r}
                           for (n, w, r) in PENDING],
-        "cross_source_check": cross_source_check,
         "flags": flags,
         "series": [{"date": today, "value": index_value}],
         "calculated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "") + "Z",
@@ -468,7 +464,11 @@ def main():
             print("  ! {}".format(fl))
     print("\nPrice-pending (9, disclosed/excluded): {}".format(
         ", ".join(n for n, _, _ in PENDING)))
-    print("\nWrote -> {}".format(OUT_PATH.relative_to(ROOT)))
+    try:
+        _shown = OUT_PATH.relative_to(ROOT)
+    except ValueError:
+        _shown = OUT_PATH      # dry-run path outside the repo (COMMODITIES_INDEX_OUT)
+    print("\nWrote -> {}".format(_shown))
     print("=" * 64)
 
 
