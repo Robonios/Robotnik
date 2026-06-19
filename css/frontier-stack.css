@@ -11,13 +11,13 @@
 .fs-graph {
   /* layout constants shared with the JS (dots use %, so they are
      resolution-independent). Flat is the single view — no Stack / 3D / morph. */
-  --layer-h: 98px;
-  --flat-gap: 38px;
+  --layer-h: 84px;
+  --flat-gap: 30px;
   --head-h: 30px;
   --gutter: 98px;   /* dedicated left lane for the sector label (name + count) */
 
   position: relative;
-  height: 576px;
+  height: 500px;    /* graph + legend fit a ~1440×900 desktop viewport without scroll */
   user-select: none;
 }
 
@@ -378,7 +378,7 @@
 
 /* ---------- responsive ---------- */
 @media (max-width: 1024px) {
-  .fs-graph { height: 532px; --layer-h: 88px; --flat-gap: 34px; --gutter: 92px; }
+  .fs-graph { height: 476px; --layer-h: 80px; --flat-gap: 30px; --gutter: 92px; }
   .fs-focus-gutter { width: 128px; }
 }
 @media (max-width: 640px) {
