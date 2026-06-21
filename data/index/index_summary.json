@@ -1,10 +1,12 @@
 {
   "_meta": {
-    "generated_at": "2026-06-18T23:45:33.651309Z",
+    "generated_at": "2026-06-19T12:03:34.390741Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
-      "public/composite": "data/index/robotnik_index.json",
+      "public": "data/index/robotnik_index.json",
+      "composite": "data/index/composite_index.json",
+      "commodities": "data/index/commodities_index.json",
       "bottleneck": "data/index/bottleneck_weighted_composite.json",
       "sectors": "data/index/sub_indices.json",
       "private": "data/index/private_capital_index.json"
@@ -26,15 +28,55 @@
   "indexes": {
     "composite": {
       "name": "Robotnik Composite Index",
-      "status": "calibrating",
-      "value": null,
-      "as_of": null,
-      "fresh_through": null,
-      "returns": {},
-      "series": [],
+      "status": "live",
+      "cadence": "weekly",
+      "value": 1000.0,
+      "as_of": "2026-06-17",
+      "fresh_through": "2026-06-17",
+      "base": {
+        "value": 1000.0,
+        "date": "2026-06-17"
+      },
+      "span": {
+        "start": "2026-06-17",
+        "end": "2026-06-17",
+        "points": 1,
+        "floor": "2026-06-17"
+      },
+      "returns": {
+        "1W": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "1M": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "3M": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "1Y": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "3Y": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "5Y": {
+          "null": true,
+          "reason": "insufficient_history"
+        }
+      },
+      "series": [
+        {
+          "date": "2026-06-17",
+          "value": 1000.0
+        }
+      ],
       "code": "RCI",
-      "cadence": "daily",
-      "methodology_note": "Equities + commodities. The equities-only book is published as Public Equities; the Composite becomes distinct and live when the Commodities index folds in."
+      "methodology_note": "75% Public Equities + 25% Commodities, periodically rebalanced (weights reset 75/25 each period). Forward-only from the 2026-06-17 commodities launch \u2014 no pre-launch series."
     },
     "public": {
       "name": "Public Equities",
@@ -2104,12 +2146,54 @@
     },
     "commodities": {
       "name": "Commodities",
-      "status": "soon",
-      "value": null,
-      "as_of": null,
-      "fresh_through": null,
-      "returns": {},
-      "series": []
+      "status": "live",
+      "cadence": "weekly",
+      "value": 1000.0,
+      "as_of": "2026-06-17",
+      "fresh_through": "2026-06-17",
+      "base": {
+        "value": 1000.0,
+        "date": "2026-06-17"
+      },
+      "span": {
+        "start": "2026-06-17",
+        "end": "2026-06-17",
+        "points": 1,
+        "floor": "2026-06-17"
+      },
+      "returns": {
+        "1W": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "1M": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "3M": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "1Y": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "3Y": {
+          "null": true,
+          "reason": "insufficient_history"
+        },
+        "5Y": {
+          "null": true,
+          "reason": "insufficient_history"
+        }
+      },
+      "series": [
+        {
+          "date": "2026-06-17",
+          "value": 1000.0
+        }
+      ],
+      "methodology_note": "Forward-only weekly index of frontier-input price relatives (\u00a76.1 live weights, 12% single-name cap). Launched 2026-06-17."
     },
     "private": {
       "name": "Robotnik Private Capital Index",

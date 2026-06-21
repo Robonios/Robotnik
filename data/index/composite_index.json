@@ -1,0 +1,40 @@
+{
+  "name": "Robotnik Composite Index",
+  "code": "RCI",
+  "version": "1.0 \u2014 forward-only launch (genesis base)",
+  "methodology": "Composite Index methodology \u2014 75/25 public-equities / commodities blend",
+  "method": "Composite_t = Composite_{t-1} * (1 + 0.75*r_equities + 0.25*r_commodities); 75/25 weights reset each period (periodic rebalancing); weekly EOW marks from the commodities leg; daily equity leg sampled nearest-prior; forward-only from the commodities launch (no pre-launch equity history blended)",
+  "frequency": "weekly",
+  "rebalancing": "periodic \u2014 weights reset to 75/25 each period",
+  "weights": {
+    "equities": 0.75,
+    "commodities": 0.25
+  },
+  "legs": {
+    "equities": {
+      "name": "Public Equities",
+      "source": "data/index/robotnik_index.json",
+      "leg_current_value": 3748.44,
+      "leg_current_date": "2026-06-18"
+    },
+    "commodities": {
+      "name": "Robotnik Commodities Index",
+      "source": "data/index/commodities_index.json",
+      "leg_current_value": 1000.0,
+      "leg_current_date": "2026-06-17"
+    }
+  },
+  "base_date": "2026-06-17",
+  "base_value": 1000.0,
+  "current_value": 1000.0,
+  "current_date": "2026-06-17",
+  "points": 1,
+  "forward_only": true,
+  "series": [
+    {
+      "date": "2026-06-17",
+      "value": 1000.0
+    }
+  ],
+  "calculated_at": "2026-06-19T12:01:37.902049Z"
+}

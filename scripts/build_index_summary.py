@@ -14,6 +14,8 @@ the index:
 
 Sources (the only inputs):
   data/index/robotnik_index.json              -> Public Equities (equities-only, live)
+  data/index/composite_index.json             -> Composite 75/25 blend (weekly, live)
+  data/index/commodities_index.json           -> Commodities (weekly, forward-only, live)
   data/index/bottleneck_weighted_composite.json -> Bottleneck-Weighted (live)
   data/index/sub_indices.json                 -> Space/Robotics/Semiconductors/Materials (live)
   data/index/private_capital_index.json       -> RPCI (monthly, live; 2023 calibration excluded)
@@ -39,10 +41,12 @@ if SCRIPT_DIR not in sys.path:
 from index_dates import SUB_INDEX_FLOOR  # noqa: E402
 
 OUT_PATH        = os.path.join(INDEX_DIR, "index_summary.json")
-COMPOSITE_PATH  = os.path.join(INDEX_DIR, "robotnik_index.json")
+COMPOSITE_PATH  = os.path.join(INDEX_DIR, "robotnik_index.json")        # equities book -> Public Equities
 BOTTLENECK_PATH = os.path.join(INDEX_DIR, "bottleneck_weighted_composite.json")
 SUB_PATH        = os.path.join(INDEX_DIR, "sub_indices.json")
 RPCI_PATH       = os.path.join(INDEX_DIR, "private_capital_index.json")
+COMMODITIES_PATH     = os.path.join(INDEX_DIR, "commodities_index.json")   # Commodities (weekly) -> live
+COMPOSITE_BLEND_PATH = os.path.join(INDEX_DIR, "composite_index.json")     # Composite 75/25 blend (weekly) -> live
 
 RETURN_CONVENTION = ("nearest-prior-trading-day; per period P the anchor is the latest "
                      "published series date <= (as_of - P); return = (value/anchor - 1) * 100, "
@@ -134,6 +138,33 @@ def daily_entry(name, value, series, base, status="live", entity_count=None, cod
     return e
 
 
+def weekly_entry(name, src, code=None, note=None):
+    """Live WEEKLY index entry (Commodities, Composite) — reader-only.
+
+    value / base / series are taken verbatim from the published file; `returns`
+    are nearest-prior-anchored on the series' OWN (weekly) dates via the same
+    generic helper used for daily series, so a single genesis point yields every
+    horizon {null, insufficient_history}. Forward-only: span.floor is the launch
+    (base) date, not the equity SUB_INDEX_FLOOR.
+    """
+    series = [{"date": p["date"], "value": p["value"]} for p in src["series"]]
+    as_of = series[-1]["date"]
+    e = {
+        "name": name, "status": "live", "cadence": "weekly",
+        "value": src.get("current_value"), "as_of": as_of, "fresh_through": as_of,
+        "base": {"value": src.get("base_value"), "date": src.get("base_date")},
+        "span": {"start": series[0]["date"], "end": series[-1]["date"],
+                 "points": len(series), "floor": src.get("base_date")},
+        "returns": daily_returns(series),
+        "series": series,
+    }
+    if code:
+        e["code"] = code
+    if note:
+        e["methodology_note"] = note
+    return e
+
+
 def placeholder_entry(name, status, cadence=None, note=None, code=None):
     e = {"name": name, "status": status, "value": None, "as_of": None,
          "fresh_through": None, "returns": {}, "series": []}
@@ -176,23 +207,29 @@ def main():
     bn = load(BOTTLENECK_PATH)
     sub = load(SUB_PATH)
     rpci = load(RPCI_PATH)
+    commod = load(COMMODITIES_PATH)      # Commodities (weekly, forward-only) -> live
+    blend = load(COMPOSITE_BLEND_PATH)   # Composite 75/25 blend (weekly) -> live
 
     base = {"value": comp.get("base_value"), "date": comp.get("base_date")}
 
     indexes = {
-        # The published equities book is the live Public Equities index. The full
-        # Composite (equities + commodities) is calibrating until Commodities folds in.
-        "composite": placeholder_entry(
-            "Robotnik Composite Index", "calibrating", cadence="daily", code="RCI",
-            note=("Equities + commodities. The equities-only book is published as Public "
-                  "Equities; the Composite becomes distinct and live when the Commodities "
-                  "index folds in.")),
+        # The published equities book is the live Public Equities index. The headline
+        # Composite is now the live 75/25 public-equities/commodities blend
+        # (composite_index.json), distinct from Public Equities.
+        "composite": weekly_entry(
+            "Robotnik Composite Index", blend, code="RCI",
+            note=("75% Public Equities + 25% Commodities, periodically rebalanced "
+                  "(weights reset 75/25 each period). Forward-only from the 2026-06-17 "
+                  "commodities launch — no pre-launch series.")),
         "public": daily_entry("Public Equities", comp["current_value"], comp["series"], base,
                               code="RPEI"),
         "bottleneck": daily_entry("Bottleneck-Weighted", bn["current_value"], bn["series"],
                                   {"value": bn.get("base_value"), "date": bn.get("base_date")},
                                   code="RBWC"),
-        "commodities": placeholder_entry("Commodities", "soon"),
+        "commodities": weekly_entry(
+            "Commodities", commod,
+            note=("Forward-only weekly index of frontier-input price relatives "
+                  "(§6.1 live weights, 12% single-name cap). Launched 2026-06-17.")),
         "private": rpci_entry(rpci),
     }
 
@@ -212,7 +249,9 @@ def main():
             "purpose": "read-only contract for the home-page Index Family + Sector Performance; "
                        "single writer = this script, single reader = the site (site reads, never computes)",
             "sources": {
-                "public/composite": "data/index/robotnik_index.json",
+                "public": "data/index/robotnik_index.json",
+                "composite": "data/index/composite_index.json",
+                "commodities": "data/index/commodities_index.json",
                 "bottleneck": "data/index/bottleneck_weighted_composite.json",
                 "sectors": "data/index/sub_indices.json",
                 "private": "data/index/private_capital_index.json",
