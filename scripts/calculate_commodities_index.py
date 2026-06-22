@@ -239,6 +239,26 @@ def compute_capped_weights(ref_by_name, cap=SINGLE_NAME_CAP):
     return w
 
 
+def normalize_weights(weight_by, cap=SINGLE_NAME_CAP):
+    """Force Σ weights = exactly 1.0 at full precision. Pin any capped name at `cap`
+    and absorb the residual UNIFORMLY across the uncapped names — a ~0.0001% scale-up
+    of the uncapped set, NOT a redistribution (a capped name stays pinned at 12.00%).
+
+    Root cause of the 99.9999% sum: compute_capped_weights already returns full-precision
+    weights summing to 1.0, but they are STORED rounded to 4dp (live_weight_pct), so the
+    weekly path reads a set summing to 0.999999 — which left the formula at 999.999 at
+    parity. Re-normalising the computed/loaded weights here makes the LIVE weight sum
+    exactly 1.0 in both the genesis and weekly paths.
+    """
+    capped = {k for k, v in weight_by.items() if v >= cap - 1e-9}
+    uncapped_sum = sum(v for k, v in weight_by.items() if k not in capped)
+    target = 1.0 - cap * len(capped)
+    if uncapped_sum <= 0 or target <= 0:
+        return dict(weight_by)
+    scale = target / uncapped_sum
+    return {k: (cap if k in capped else v * scale) for k, v in weight_by.items()}
+
+
 # ── per-constituent current snapshot (shared by genesis + weekly) ───────────
 def build_snapshot(source, key, ms_rows, smi_prices, smi_updated, today):
     """Return (snapshot|None, fx_stale_flag|None, miss_reason|None)."""
@@ -303,8 +323,12 @@ def append_or_update(series, mark, value, base_date):
         series.append({"date": mark, "value": value})
         return "appended (empty series)"
     last = series[-1]
-    same_week = (last["date"] == mark) or (_iso_week(last["date"]) == _iso_week(mark))
-    if last["date"] != base_date and same_week:
+    # base guard INLINE (matches composite advance() :117): the base point is never
+    # updated in place, even when the mark shares its ISO week. Behaviour-equivalent to
+    # the prior `last["date"] != base_date and same_week` that was consumed in the if.
+    last_in_week = (last["date"] != base_date) and (
+        (last["date"] == mark) or (_iso_week(last["date"]) == _iso_week(mark)))
+    if last_in_week:
         series[-1] = {"date": mark, "value": value}
         return "updated-in-place (current week re-run)"
     series.append({"date": mark, "value": value})
@@ -369,18 +393,20 @@ def main():
         ref_by = {c: w for c, w in priced}
         priced_ref_sum = sum(ref_by.values())
         live = compute_capped_weights(ref_by)                 # {commodity: fraction}
-        weight_by = {c: live[c] for c in ref_by}
+        weight_by = normalize_weights({c: live[c] for c in ref_by})   # Σ → exactly 1.0
         base_by = {c: snaps[c]["usd_price"] for c in ref_by}
         base_date = today
     else:
         base_date = prior["base_date"]
-        weight_by = {c["commodity"]: c["live_weight_pct"] / 100.0 for c in prior["constituents"]}
+        weight_by = normalize_weights(
+            {c["commodity"]: c["live_weight_pct"] / 100.0 for c in prior["constituents"]})  # un-round stored 4dp → Σ exactly 1.0
         base_by = {c["commodity"]: c["base_price_usd"] for c in prior["constituents"]}
         priced_ref_sum = prior.get("priced_reference_weight_pct", 0.0)
 
     # ── 4. Build constituent records + index = 1000 * Σ(w * cur/base) ────────
     prior_by = {c["commodity"]: c for c in (prior["constituents"] if not genesis else [])}
     constituents = []
+    idx_sum = 0.0    # full-precision Σ(weight × relative) — the index basis (no intermediate rounding)
     for commodity, ref_w, source, basis, key in PRICED:
         if commodity not in weight_by:        # not in the priced set (genesis miss)
             continue
@@ -399,6 +425,8 @@ def main():
                                            "price_unit_usd", "quote_date", "source_timestamp")}
             flags.append("CARRIED: {} held last observation (no fresh price this run).".format(commodity))
         rel = snap["usd_price"] / base_usd if base_usd else 1.0
+        contrib_fp = weight_by[commodity] * rel        # full precision (the index basis)
+        idx_sum += contrib_fp
         c = {
             "commodity": commodity,
             "source": SOURCE_LABEL[source],
@@ -409,9 +437,9 @@ def main():
             "usd_price": round(snap["usd_price"], 6), "price_unit_usd": snap["price_unit_usd"],
             "base_price_usd": round(base_usd, 6),                # immutable launch base
             "relative_to_base": round(rel, 6),
-            "live_weight_pct": round(weight_by[commodity] * 100.0, 4),
+            "live_weight_pct": round(weight_by[commodity] * 100.0, 6),
             "reference_weight_pct": ref_w,
-            "weight_contribution": round(weight_by[commodity] * rel, 8),
+            "weight_contribution": round(contrib_fp, 8),
             "quote_date": snap["quote_date"], "source_timestamp": snap["source_timestamp"],
             "carried_last_observation": carried,
         }
@@ -425,8 +453,8 @@ def main():
         constituents.append(c)
 
     constituents.sort(key=lambda x: x["live_weight_pct"], reverse=True)
-    index_value = round(BASE_VALUE * sum(c["weight_contribution"] for c in constituents), 2)
-    weight_sum = round(sum(c["live_weight_pct"] for c in constituents), 4)
+    index_value = round(BASE_VALUE * idx_sum, 2)        # full-precision basis → exactly 1000.0 at genesis
+    weight_sum = round(sum(weight_by[c["commodity"]] for c in constituents) * 100.0, 6)  # normalized → 100.0
     gallium_w = next((c["live_weight_pct"] for c in constituents if c["commodity"] == "Gallium"), None)
     max_w = max((c["live_weight_pct"] for c in constituents), default=0.0)
     if missing:

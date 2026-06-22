@@ -47,6 +47,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEX_DIR = ROOT / "data" / "index"
+sys.path.insert(0, str(ROOT / "scripts"))
+from currency_convert import PRIOR_FILL_WARN_DAYS  # noqa: E402 — reuse the FX staleness threshold (7d); don't invent a new one
 EQUITIES_PATH    = Path(os.environ.get("COMPOSITE_EQUITIES_PATH")
                         or (INDEX_DIR / "robotnik_index.json"))        # Public Equities leg
 COMMODITIES_PATH = Path(os.environ.get("COMPOSITE_COMMODITIES_PATH")
@@ -132,6 +134,18 @@ def advance(prior, eq, comm):
         anchor["comm_leg"] = a_comm                                                       # freeze
 
     n_eq = sample_prior(eq_dates, eq_map, new_mark)
+    # Equity-leg staleness warning (mirror commodities FX PRIOR_FILL_WARN_DAYS): the
+    # new-mark sample carries forward the nearest-prior equity date; warn — never raise,
+    # continuity is preserved — if that date is stale beyond the threshold. The anchor
+    # reads the stored eq_leg, so only the NEW-mark sample needs this check.
+    _ni = bisect.bisect_right(eq_dates, new_mark)
+    if _ni > 0:
+        _eq_date = eq_dates[_ni - 1]
+        _gap = (date.fromisoformat(new_mark) - date.fromisoformat(_eq_date)).days
+        if _gap > PRIOR_FILL_WARN_DAYS:
+            sys.stderr.write("[composite] WARN: equity leg stale — sampled {} for mark {} "
+                             "({}d gap > {}d); appending as normal\n".format(
+                                 _eq_date, new_mark, _gap, PRIOR_FILL_WARN_DAYS))
     n_comm = comm_map.get(new_mark) or sample_prior(comm_dates, comm_map, new_mark)
     r_eq = (n_eq / a_eq - 1.0) if (n_eq and a_eq) else 0.0
     r_comm = (n_comm / a_comm - 1.0) if (n_comm and a_comm) else 0.0

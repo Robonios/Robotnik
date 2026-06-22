@@ -72,11 +72,12 @@ jobs:
             exit 0
           fi
           git commit -m "data: weekly commodities + composite update $(date -u +%Y-%m-%d)"
+          MAX=5
           n=0
           until git push; do
             n=$((n + 1))
-            if [ "$n" -gt 3 ]; then echo "push failed after $n attempts" >&2; exit 1; fi
-            echo "push rejected — rebase onto origin/main + regenerate summary (attempt $n)"
+            if [ "$n" -gt "$MAX" ]; then echo "push failed after $MAX attempts — aborting" >&2; exit 1; fi
+            echo "push rejected — rebase onto origin/main + regenerate summary (attempt $n/$MAX)"
             git fetch origin
             if ! git rebase origin/main; then
               # The ONLY file both jobs touch is index_summary.json (commodities_index.json /
@@ -85,7 +86,13 @@ jobs:
               # The blob resolved here is intentionally irrelevant: build_index_summary.py regenerates index_summary.json on post-rebase data immediately after — this checkout exists only to satisfy `git rebase --continue`.
               git checkout --theirs -- data/index/index_summary.json 2>/dev/null || true
               git add data/index/index_summary.json
-              GIT_EDITOR=true git rebase --continue || git rebase --abort
+              if ! GIT_EDITOR=true git rebase --continue; then
+                # rebase --continue failed → a conflict on a path OTHER than index_summary.json.
+                # Do NOT respin into a guaranteed-failing push; abort and fail loudly.
+                git rebase --abort
+                echo "unexpected conflict on a path other than index_summary.json — manual resolution required" >&2
+                exit 1
+              fi
             fi
             python scripts/build_index_summary.py
             git add data/index/index_summary.json
