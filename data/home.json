@@ -5,46 +5,30 @@
   "indexes": {
     "composite": {
       "name": "Robotnik Composite Index",
-      "value": 3433.56,
-      "change1y": 197.85,
-      "flagship": true,
-      "blurb": "The flagship. Market-cap weighted across the full public frontier universe.",
-      "series": [1150, 1180, 1240, 1210, 1300, 1380, 1450, 1420, 1520, 1610, 1700, 1680, 1790, 1900, 2050, 2010, 2180, 2320, 2500, 2460, 2650, 2820, 3010, 2980, 3210, 3433.56],
+      "blurb": "The 75/25 strategic blend of the Public Equities and Commodities indices — forward-only since 17 Jun 2026.",
       "methodologyUrl": "/methodology/composite",
       "chartUrl": "/index/composite"
     },
     "bottleneck": {
       "name": "Bottleneck-Weighted",
-      "value": 3641.0,
-      "change1y": null,
       "blurb": "Re-weights the universe by bottleneck criticality — chokepoints carry more.",
-      "series": [1200, 1250, 1320, 1290, 1390, 1480, 1560, 1530, 1650, 1760, 1880, 1850, 1990, 2140, 2300, 2260, 2450, 2620, 2820, 2780, 3000, 3200, 3410, 3380, 3560, 3641.0],
       "methodologyUrl": "/methodology/bottleneck",
       "chartUrl": "/index/bottleneck"
     },
     "public": {
       "name": "Public Equities",
-      "value": null,
-      "change1y": null,
-      "calibrating": true,
       "blurb": "Listed names only — the investable public surface of the stack.",
-      "series": [],
       "methodologyUrl": "/methodology/public",
       "chartUrl": "/index/public"
     },
     "commodities": {
       "name": "Commodities",
-      "status": "soon",
       "blurb": "Rare earths, wafers, gases — the material inputs beneath the stack.",
       "methodologyUrl": "/methodology/commodities"
     },
     "private": {
       "name": "Private Market (RPCI)",
-      "value": 1540.0,
-      "cadence": "monthly",
-      "change1y": null,
       "blurb": "Robotnik Private Capital Index — the pre-IPO farm team, marked monthly.",
-      "series": [1000, 1040, 1075, 1110, 1095, 1160, 1210, 1255, 1240, 1320, 1380, 1420, 1465, 1505, 1540.0],
       "methodologyUrl": "/methodology/rpci",
       "chartUrl": "/index/rpci"
     }
@@ -70,10 +54,10 @@
   "tiers": ["Upstream Materials", "IP & Design", "Capital Equip.", "Fabrication", "Components", "System Integ.", "Deployment", "Software & Svcs"],
 
   "sectors": [
-    { "key": "space",     "name": "Space",              "hue": "#E8675C", "tierLabel": "top",  "index": { "value": 4125.00, "change24h": -4.81, "changeYTD": 79.5 },  "public": 31, "private": 13, "commodities": 0 },
-    { "key": "robotics",  "name": "Robotics",           "hue": "#3FB68F",                       "index": { "value": 2213.68, "change24h": 1.57,  "changeYTD": 41.5 },  "public": 82, "private": 20, "commodities": 0 },
-    { "key": "semi",      "name": "Semiconductors",     "hue": "#5B8DEF",                       "index": { "value": 3524.69, "change24h": 1.42,  "changeYTD": 97.6 },  "public": 62, "private": 11, "commodities": 0 },
-    { "key": "materials", "name": "Materials & Inputs", "hue": "#A98BEA", "tierLabel": "base", "index": { "value": 3736.11, "change24h": 1.13,  "changeYTD": 116.9 }, "public": 22, "private": 3,  "commodities": 18 }
+    { "key": "space",     "name": "Space",              "hue": "#E8675C", "tierLabel": "top",  "public": 31, "private": 13, "commodities": 0 },
+    { "key": "robotics",  "name": "Robotics",           "hue": "#3FB68F",                       "public": 82, "private": 20, "commodities": 0 },
+    { "key": "semi",      "name": "Semiconductors",     "hue": "#5B8DEF",                       "public": 62, "private": 11, "commodities": 0 },
+    { "key": "materials", "name": "Materials & Inputs", "hue": "#A98BEA", "tierLabel": "base", "public": 22, "private": 3,  "commodities": 18 }
   ],
 
   "cells": [
