@@ -1,0 +1,45 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="'Mulish','Inter',system-ui,sans-serif">
+  <rect x="0" y="0" width="900" height="600" fill="#161A26"/>
+  <text x="40" y="48" font-family="'Space Grotesk','Inter',sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#E8EBF1">CONTROL POINTS</text>
+  <text x="40" y="72" font-size="13" fill="#868FA2">A narrow source, a wide blast radius — disruption at one point cascades across the stack.</text>
+  <line x1="40" y1="84" x2="116" y2="84" stroke="#F5D921" stroke-width="2.5"/>
+
+  <!-- control point -->
+  <rect x="50" y="256" width="215" height="92" rx="12" fill="#1E2330" stroke="#F5D921" stroke-opacity="0.9" stroke-width="1.6"/>
+  <text x="64" y="288" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#F5D921">Heavy rare-earth</text>
+  <text x="64" y="308" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#F5D921">processing</text>
+  <text x="64" y="330" font-size="11" fill="#9AA3B5">one country · effectively all of it</text>
+
+  <!-- cascade: trunk, riser, horizontal teeth -->
+  <line x1="265" y1="302" x2="632" y2="302" stroke="#F5D921" stroke-width="2" stroke-opacity="0.9"/>
+  <line x1="430" y1="163" x2="430" y2="439" stroke="#F5D921" stroke-width="1.6" stroke-opacity="0.85"/>
+  <line x1="430" y1="163" x2="632" y2="163" stroke="#F5D921" stroke-width="1.6" stroke-opacity="0.85"/>
+  <line x1="430" y1="439" x2="632" y2="439" stroke="#F5D921" stroke-width="1.6" stroke-opacity="0.85"/>
+  <circle cx="430" cy="302" r="4" fill="#F5D921"/>
+  <text x="276" y="292" font-size="11.5" fill="#B0B8C8">magnet supply tightens</text>
+  <polygon points="639,163 629,158 629,168" fill="#F5D921"/>
+  <polygon points="639,302 629,297 629,307" fill="#F5D921"/>
+  <polygon points="639,439 629,434 629,444" fill="#F5D921"/>
+
+  <!-- affected sectors -->
+  <rect x="640" y="132" width="185" height="62" rx="10" fill="#46B49A" fill-opacity="0.14" stroke="#46B49A" stroke-opacity="0.55" stroke-width="1.3"/>
+  <text x="658" y="162" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#46B49A">Robotics</text>
+  <text x="658" y="181" font-size="11" fill="#9AA3B5">servo-motor costs rise</text>
+
+  <rect x="640" y="270" width="185" height="62" rx="10" fill="#E8765C" fill-opacity="0.14" stroke="#E8765C" stroke-opacity="0.55" stroke-width="1.3"/>
+  <text x="658" y="300" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#E8765C">Space</text>
+  <text x="658" y="319" font-size="11" fill="#9AA3B5">reaction-wheel costs rise</text>
+
+  <rect x="640" y="408" width="185" height="62" rx="10" fill="#5B8DD6" fill-opacity="0.14" stroke="#5B8DD6" stroke-opacity="0.55" stroke-width="1.3"/>
+  <text x="658" y="438" font-family="'Space Grotesk','Inter',sans-serif" font-size="14" font-weight="700" fill="#5B8DD6">Semiconductors</text>
+  <text x="658" y="457" font-size="11" fill="#9AA3B5">polishing (CMP) costs rise</text>
+
+  <!-- blast radius bracket -->
+  <line x1="840" y1="150" x2="840" y2="452" stroke="#F5D921" stroke-opacity="0.4" stroke-width="1.5"/>
+  <line x1="840" y1="150" x2="832" y2="150" stroke="#F5D921" stroke-opacity="0.4" stroke-width="1.5"/>
+  <line x1="840" y1="452" x2="832" y2="452" stroke="#F5D921" stroke-opacity="0.4" stroke-width="1.5"/>
+  <text x="860" y="301" font-size="11" fill="#F5D921" fill-opacity="0.75" text-anchor="middle" transform="rotate(90 860 301)">blast radius</text>
+
+  <!-- footer -->
+  <text x="50" y="560" font-size="11.5" fill="#868FA2">EUV lithography and ABF substrate film behave the same way — single sources the whole stack depends on.</text>
+</svg>

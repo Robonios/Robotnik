@@ -42,7 +42,7 @@
   // E · reference & methodology (open / free), three groups
   var REFERENCE = [
     { group: 'Front-door narrative', items: [
-      { id: 'R1', title: 'Robotnik thesis', sub: 'Frontier tech as a coherent investable asset class, read through its control points' },
+      { id: 'R1', title: 'Robotnik thesis', sub: 'Frontier tech as a coherent investable asset class, read through its control points', url: '/research/frontier-stack-thesis', live: true },
       { id: 'R8', title: 'Product overview / showcase', sub: 'What the platform is and does' }
     ] },
     { group: 'Foundations', items: [
@@ -115,12 +115,18 @@
   function renderReference() {
     $('reference-groups').innerHTML = REFERENCE.map(function (g) {
       var cards = g.items.map(function (it) {
-        return '<article class="rh-ref-card">' +
+        var inner =
           '<div class="rh-ref-top"><span class="rh-ref-id">' + esc(it.id) + '</span>' +
             '<span class="rh-ref-badges"><span class="rh-tier free">Free</span><span class="rh-tier reference">Reference</span></span></div>' +
           '<h3 class="rh-ref-title">' + esc(it.title) + '</h3>' +
-          (it.sub ? '<p class="rh-ref-sub">' + esc(it.sub) + '</p>' : '') +
-          '</article>';
+          (it.sub ? '<p class="rh-ref-sub">' + esc(it.sub) + '</p>' : '');
+        // Published reference pages render as a real link; the rest stay as
+        // non-clickable "coming soon" stubs until their article goes live.
+        if (it.live && it.url) {
+          return '<a class="rh-ref-card rh-ref-card--live" href="' + esc(it.url) + '">' +
+            inner + '<span class="rh-ref-readout">Read &rarr;</span></a>';
+        }
+        return '<article class="rh-ref-card">' + inner + '</article>';
       }).join('');
       return '<div class="rh-ref-group"><div class="rh-ref-group-title">' + esc(g.group) + '</div><div class="rh-ref-grid">' + cards + '</div></div>';
     }).join('');

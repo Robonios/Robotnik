@@ -176,6 +176,10 @@ body[data-page="research"] { background: var(--bg); }
 .rh-ref-badges { margin-left: auto; display: flex; gap: .35rem; }
 .rh-ref-title { font-family: var(--sans); font-size: 13px; font-weight: 600; line-height: 1.25; color: var(--ink); margin-top: .55rem; }
 .rh-ref-sub { font-family: var(--prose); font-size: 11px; line-height: 1.45; color: var(--ink-dim); margin-top: .35rem; }
+/* live reference card — a published article; renders as a link with a brand accent */
+a.rh-ref-card--live { text-decoration: none; color: inherit; border-color: rgba(245,217,33,.34); }
+a.rh-ref-card--live:hover { border-color: var(--brand); background: rgba(25,28,34,.85); transform: translateY(-2px); text-decoration: none; }
+.rh-ref-readout { margin-top: .7rem; font-family: var(--sans); font-size: 9.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); }
 
 /* ============================================================ RESPONSIVE */
 @media (max-width: 1024px) {

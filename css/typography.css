@@ -215,10 +215,10 @@ footer p {
 /* NOTE: .search-dropdown__row and .search-dropdown__try-example are
    excluded so the search results don't inherit the default yellow link
    colour — they set their own colours in the scoped dropdown block. */
-a:not(.nav-item):not(.btn-y):not(.cta-enterprise):not(.view-all-link):not(.feed-read-more):not(.search-dropdown__row):not(.search-dropdown__try-example) {
+a:not(.nav-item):not(.btn-y):not(.cta-enterprise):not(.view-all-link):not(.feed-read-more):not(.search-dropdown__row):not(.search-dropdown__try-example):not(.rh-ref-card--live) {
   color: #F5D921;
   text-decoration: none;
 }
-a:not(.nav-item):not(.btn-y):not(.cta-enterprise):not(.view-all-link):not(.feed-read-more):not(.search-dropdown__row):not(.search-dropdown__try-example):hover {
+a:not(.nav-item):not(.btn-y):not(.cta-enterprise):not(.view-all-link):not(.feed-read-more):not(.search-dropdown__row):not(.search-dropdown__try-example):not(.rh-ref-card--live):hover {
   text-decoration: underline;
 }
