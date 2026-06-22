@@ -1,72 +1,47 @@
 #!/usr/bin/env python3
 """
-Robotnik Commodities Index — forward-only launch / base-date snapshot
-=====================================================================
-Builds the Commodities Index per `commodities_index_methodology v.3` §6.1 / §8
-("Live index weights — forward-only launch"; v.3 price-basis routing).
+Robotnik Commodities Index — forward-only launch + weekly forward-append
+========================================================================
+Builds / advances the Commodities Index per `commodities_index_methodology v.3`
+(§6.1 live weights; §8 price-basis routing).
 
-Constituents (20 priced) — routed by the §8 price-basis rule
-------------------------------------------------------------
-  * 12 via MarketStack v2 /commodities:
-      - exchange-traded global benchmarks: Copper, Nickel, Tin, Cobalt, Gold,
-        Silver, Platinum, Palladium, Aluminium ("aluminum" on MS)
-      - China-domestic-quoted (CNY, FX-converted), no free Western reference:
-        Silicon (metallurgical), Titanium (sponge), Phosphorus (phosphate rock)
-  * 8 via strategicmetalsinvest (USD/kg, METAL basis):
-      - China-controlled chokepoints on the WESTERN/ex-China quote (where
-        export-control stress shows up): Gallium, Germanium, Indium, Neodymium
-      - other priced rare earths / minor metals: Praseodymium, Dysprosium,
-        Terbium, Antimony
-  * 9 PRICE-PENDING (disclosed, excluded until a source is secured):
-      Tungsten, Tantalum, Arsenic, Cerium, Lanthanum, Erbium, Yttrium,
-      Scandium, Boron.
+Two modes (auto-detected from the existing record):
+  * GENESIS  (no record / empty series, or COMMODITIES_GENESIS=1 to re-baseline):
+      pull current prices, compute the §6.1 live weights (reference renormalised
+      across priced constituents, 12% single-name cap), set each constituent's
+      base price = its current USD price, and emit a single point at 1000.00.
+  * WEEKLY   (record with constituents + series present):
+      pull current prices, and using the STORED base prices + STORED fixed live
+      weights (never recomputed; price-pending names never auto-added — weights
+      change only at a review), compute
+          index = 1000 * Σ_i [ live_weight_i * (usd_price_i,current / base_i) ]
+      and forward-APPEND the new weekly point. Prior points are never recomputed.
 
-Price-basis rule (§8): for the China-controlled chokepoint metals where a free
-Western/ex-China reference exists (Ga, Ge, In, Nd) use the WESTERN quote — a
-China-domestic basis would blind the index to the export-control shocks it
-exists to register (gallium rose several-fold in the West on the 2023 controls
-while the China-domestic price barely moved). Exchange-traded metals use their
-global benchmark; China-domestic is used (and flagged) only where nothing else
-is free (Si, Ti, P). Rare earths tracked on METAL basis (the free SMI form).
+Idempotency: a re-run in the same ISO week updates that week's point in place;
+it never double-appends, and the genesis/base point is immutable. A constituent
+with no fresh price this run holds its last observation (§8) and is flagged.
 
-Weighting (§6.1 live weights)
------------------------------
-  * Start from the §6 REFERENCE weights (the full 29-name frontier-intensity
-    statement).
-  * RENORMALISE across the priced constituents (drop the price-pending share,
-    redistributed pro-rata — the honest-gap discipline).
-  * Apply a 12% SINGLE-NAME CAP with pro-rata redistribution of the excess.
-    Identical cap algorithm to calculate_index.py /
-    calculate_bottleneck_composite.py — divergence is weighting only.
+Constituents (20 priced) — §8 routing
+  * 12 via MarketStack v2 /commodities (exchange benchmarks + China-domestic
+    CNY for Silicon/Titanium/Phosphorus, FX-converted)
+  * 8  via strategicmetalsinvest (USD/kg, metal): the China-controlled
+    chokepoints Ga/Ge/In/Nd (Western quote) + Pr/Dy/Tb/Antimony
+  * 9 PRICE-PENDING — disclosed, excluded until a source is secured.
 
-Pricing / FX
-------------
-  * Every native price is converted to USD via the project's per-date FX path
-    (scripts/currency_convert.to_usd), so future weekly relatives stay
-    currency-consistent. BOTH native and USD base prices are stored.
-  * The index is a FIXED-WEIGHT index of USD price relatives, based at
-    1000.00 on the launch date. At base date every relative == 1.0, so the
-    index == 1000.00 by construction. FORWARD-ONLY: no backfill.
+Output: data/index/commodities_index.json   (this script does NOT git-commit)
 
-Output:  data/index/commodities_index.json   (this script does NOT git-commit)
-
-Usage
------
+Usage / env affordances
     python scripts/calculate_commodities_index.py
-        Live pull: MarketStack /v2/commodities is rate-limited to ~1 call per
-        minute, so a full live pull of the 12 MarketStack names takes ~12 min
-        (the script throttles 63s between calls, with rate-limit retry).
-        strategicmetalsinvest is a single scrape (8 names).
-
-    COMMODITIES_MS_CACHE=/path/spot.json python scripts/calculate_commodities_index.py
-        Read MarketStack spot from a pre-fetched cache instead of live-pulling
-        (used for the genesis base-date snapshot and for re-runs, to avoid
-        re-spending the rate-limited budget). Cache schema:
-            { "<commodity_name>": { "commodity_price": "..",
-                                    "commodity_unit": "usd/t.oz",
-                                    "datetime": "2026-06-17T..." }, ... }
+        Live: MarketStack /v2/commodities is ~1 call/min, so a 12-name pull is
+        ~12 min (63s throttle, rate-limit retry). SMI is one scrape.
+    COMMODITIES_MS_CACHE=<json>     read MarketStack spot from a cache (skip pull)
+    COMMODITIES_SMI_CACHE=<json>    read SMI prices {label: usd_per_kg} from a cache
+    COMMODITIES_INDEX_OUT=<path>    read-and-write this record elsewhere (dry-run)
+    COMMODITIES_MARK_DATE=<YYYY-MM-DD>  pin the weekly mark (sim/test)
+    COMMODITIES_GENESIS=1           force a genesis re-baseline (weights review)
 """
 
+import bisect
 import json
 import os
 import re
@@ -75,7 +50,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -85,8 +60,7 @@ from marketstack_client import get_api_key          # noqa: E402  (API key resol
 import currency_convert as cc                        # noqa: E402
 from fetch_fx import fetch_fx_daily                  # noqa: E402  (ECB-primary FX)
 
-# Output dir for the base record. Defaults to the live index tree; a dry-run
-# sets COMMODITIES_INDEX_OUT to write elsewhere (mirrors ROBOTNIK_INDEX_OUT).
+# Output / load path; a dry-run redirects via COMMODITIES_INDEX_OUT (read+write).
 OUT_PATH = Path(os.environ.get("COMMODITIES_INDEX_OUT")
                 or (ROOT / "data" / "index" / "commodities_index.json"))
 
@@ -99,11 +73,11 @@ SMI_UA           = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
                     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36")
 FX_STALE_WARN_DAYS = 7
 
+MARK_DATE_OVERRIDE = os.environ.get("COMMODITIES_MARK_DATE")   # sim/test: pin the mark
+FORCE_GENESIS      = os.environ.get("COMMODITIES_GENESIS") == "1"
+
 # ── Constituents ───────────────────────────────────────────────────────────
 # (commodity, reference_weight_pct, source, basis, fetch_key)
-#   reference_weight_pct : §6 reference weight (full 29-name statement)
-#   source               : "marketstack" | "smi"
-#   fetch_key            : MarketStack commodity_name (lowercase) OR SMI label
 # v.3 routing (§8): chokepoints Ga/Ge/In/Nd → strategicmetalsinvest (Western,
 # USD/kg, metal). Exchange-traded → MarketStack benchmark. China-domestic
 # (CNY, flagged) only where no free Western reference exists: Si, Ti, P.
@@ -143,6 +117,8 @@ PENDING = [
     ("Boron",      0.77, "no public spot market"),
 ]
 
+SOURCE_LABEL = {"marketstack": "MarketStack v2 /commodities", "smi": "strategicmetalsinvest"}
+
 
 def parse_currency_unit(unit):
     """'usd/t.oz' -> ('USD','t.oz'); 'cny/kg' -> ('CNY','kg')."""
@@ -172,7 +148,8 @@ def fetch_marketstack(fetch_keys):
     """Return {fetch_key: row|None}, plus a provenance string.
 
     Reads a pre-fetched cache when COMMODITIES_MS_CACHE is set (avoids the
-    ~1-call/min live pull); otherwise live-pulls each name with a 63s throttle.
+    ~1-call/min live pull); otherwise live-pulls each name with a 63s throttle
+    and rate-limit retry.
     """
     cache_path = os.environ.get("COMMODITIES_MS_CACHE")
     if cache_path:
@@ -212,22 +189,25 @@ def _smi_scan(region, label):
     return float(m.group(1).replace(",", "")) if m else None
 
 
-# ── strategicmetalsinvest (USD/kg table scrape) ─────────────────────────────
 def fetch_smi(labels):
     """Scrape the current-prices table → (prices, last_updated, note).
 
-    Anchors on the 'Current Price (USD/kg)' header and requires the '$' so we
-    match the price table, never the metal names in the page's meta-description.
+    Honours COMMODITIES_SMI_CACHE ({label: usd_per_kg}) for sim/test, else
+    scrapes live. Anchors on the 'Current Price (USD/kg)' header and requires
+    the '$' so we match the price table, never the page's meta-description.
     """
+    cache_path = os.environ.get("COMMODITIES_SMI_CACHE")
+    if cache_path:
+        raw = json.loads(Path(cache_path).read_text())
+        return ({k: float(raw[k]) for k in labels if k in raw},
+                raw.get("_last_updated", "cache"), "cache:{}".format(cache_path))
+
     req = urllib.request.Request(SMI_URL, headers={"User-Agent": SMI_UA})
     html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
     text = re.sub(r"<[^>]+>", " ", html)
     text = re.sub(r"\s+", " ", text)
-
-    # Page wording is "updated Jun 16 2026" (lowercase, abbreviated month, no comma).
     upd = re.search(r"[Uu]pdated\s+([A-Z][a-z]{2,}\.?\s+\d{1,2},?\s+\d{4})", text)
     last_updated = upd.group(1).strip() if upd else None
-
     hdr = text.find("Current Price (USD/kg)")
     region = text[hdr: hdr + 4000] if hdr >= 0 else text
     prices = {label: _smi_scan(region, label) for label in labels}
@@ -235,7 +215,7 @@ def fetch_smi(labels):
     return prices, last_updated, ("USD/kg header" if hdr >= 0 else "no header anchor")
 
 
-# ── §6.1 live weights: renormalise across priced, then 12% cap ──────────────
+# ── §6.1 live weights (genesis only): renormalise across priced, then 12% cap ─
 def compute_capped_weights(ref_by_name, cap=SINGLE_NAME_CAP):
     """Renormalise reference weights to 1.0, then iterative single-name cap with
     pro-rata redistribution (pattern lifted from calculate_index.py)."""
@@ -259,19 +239,120 @@ def compute_capped_weights(ref_by_name, cap=SINGLE_NAME_CAP):
     return w
 
 
+def normalize_weights(weight_by, cap=SINGLE_NAME_CAP):
+    """Force Σ weights = exactly 1.0 at full precision. Pin any capped name at `cap`
+    and absorb the residual UNIFORMLY across the uncapped names — a ~0.0001% scale-up
+    of the uncapped set, NOT a redistribution (a capped name stays pinned at 12.00%).
+
+    Root cause of the 99.9999% sum: compute_capped_weights already returns full-precision
+    weights summing to 1.0, but they are STORED rounded to 4dp (live_weight_pct), so the
+    weekly path reads a set summing to 0.999999 — which left the formula at 999.999 at
+    parity. Re-normalising the computed/loaded weights here makes the LIVE weight sum
+    exactly 1.0 in both the genesis and weekly paths.
+    """
+    capped = {k for k, v in weight_by.items() if v >= cap - 1e-9}
+    uncapped_sum = sum(v for k, v in weight_by.items() if k not in capped)
+    target = 1.0 - cap * len(capped)
+    if uncapped_sum <= 0 or target <= 0:
+        return dict(weight_by)
+    scale = target / uncapped_sum
+    return {k: (cap if k in capped else v * scale) for k, v in weight_by.items()}
+
+
+# ── per-constituent current snapshot (shared by genesis + weekly) ───────────
+def build_snapshot(source, key, ms_rows, smi_prices, smi_updated, today):
+    """Return (snapshot|None, fx_stale_flag|None, miss_reason|None)."""
+    if source == "marketstack":
+        row = ms_rows.get(key)
+        if not row or row.get("commodity_price") in (None, ""):
+            return None, None, "no row/price for '{}'".format(key)
+        try:
+            native_price = float(str(row["commodity_price"]).replace(",", ""))
+        except (ValueError, KeyError):
+            return None, None, "unparseable price"
+        native_ccy, native_unit = parse_currency_unit(row.get("commodity_unit", ""))
+        src_ts = row.get("datetime")
+        quote_date = str(src_ts)[:10] if src_ts else today
+    else:  # smi
+        if key not in smi_prices:
+            return None, None, "not found in table"
+        native_price = smi_prices[key]
+        native_ccy, native_unit = "USD", "kg"
+        src_ts = smi_updated
+        quote_date = today
+
+    try:
+        usd_price = cc.to_usd(native_price, native_ccy, quote_date)
+    except cc.CurrencyError as ce:
+        return None, None, "currency:{}".format(str(ce)[:80])
+    fx_used = 1.0 if native_ccy == "USD" else cc.fx_rate(native_ccy, quote_date)
+
+    fx_date, fx_flag = None, None
+    if native_ccy != "USD":
+        entry = cc._FX_CACHE.get(native_ccy if native_ccy not in ("GBp", "GBX") else "GBP")
+        if entry and entry["dates"]:
+            i = bisect.bisect_right(entry["dates"], quote_date)
+            fx_date = entry["dates"][i - 1] if i > 0 else entry["dates"][0]
+            gap = (datetime.strptime(quote_date, "%Y-%m-%d")
+                   - datetime.strptime(fx_date, "%Y-%m-%d")).days
+            if gap > FX_STALE_WARN_DAYS:
+                fx_flag = ("FX STALE: {} converted with {} FX dated {} ({}d old vs quote {})"
+                           .format(key, native_ccy, fx_date, gap, quote_date))
+    snap = {
+        "native_price": native_price, "native_unit": native_unit, "native_currency": native_ccy,
+        "fx_rate_to_usd": round(fx_used, 8), "fx_date_used": fx_date,
+        "usd_price": round(usd_price, 6),
+        "price_unit_usd": "USD/{}".format(native_unit) if native_unit else "USD",
+        "quote_date": quote_date, "source_timestamp": src_ts,
+    }
+    return snap, fx_flag, None
+
+
+# ── idempotent forward-append (ISO-week keyed; base point immutable) ─────────
+def _iso_week(d):
+    y, m, dd = map(int, str(d)[:10].split("-"))
+    return date(y, m, dd).isocalendar()[:2]
+
+
+def append_or_update(series, mark, value, base_date):
+    """Forward-append {mark, value}. The base point (date == base_date) is
+    immutable. If the LAST point is a NON-base point in the same ISO week as
+    `mark` (a re-run within the week), update it in place; otherwise append.
+    Prior weeks are never recomputed. Returns the action taken (for logging)."""
+    if not series:
+        series.append({"date": mark, "value": value})
+        return "appended (empty series)"
+    last = series[-1]
+    # base guard INLINE (matches composite advance() :117): the base point is never
+    # updated in place, even when the mark shares its ISO week. Behaviour-equivalent to
+    # the prior `last["date"] != base_date and same_week` that was consumed in the if.
+    last_in_week = (last["date"] != base_date) and (
+        (last["date"] == mark) or (_iso_week(last["date"]) == _iso_week(mark)))
+    if last_in_week:
+        series[-1] = {"date": mark, "value": value}
+        return "updated-in-place (current week re-run)"
+    series.append({"date": mark, "value": value})
+    return "appended"
+
+
+def load_existing(path):
+    try:
+        return json.loads(Path(path).read_text())
+    except Exception:
+        return None
+
+
 def main():
     print("=" * 64)
-    print("ROBOTNIK COMMODITIES INDEX — base-date snapshot (forward-only)")
+    print("ROBOTNIK COMMODITIES INDEX")
     print("=" * 64)
 
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today = MARK_DATE_OVERRIDE or datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    now_iso = datetime.now(timezone.utc).isoformat().replace("+00:00", "") + "Z"
 
-    # ── 1. Refresh the FX currencies we will need (USD is a no-op) ──────────
-    needed_ccy = {"CNY"}    # the only non-USD quote currency in the priced set
-    for ccy in sorted(needed_ccy):
+    # ── 1. Refresh FX, fetch current spot ───────────────────────────────────
+    for ccy in ("CNY",):                 # only non-USD quote currency in the set
         cc.ensure_fx(ccy, fetcher=fetch_fx_daily)
-
-    # ── 2. Fetch spot ───────────────────────────────────────────────────────
     ms_keys = [c[4] for c in PRICED if c[2] == "marketstack"]
     smi_keys = [c[4] for c in PRICED if c[2] == "smi"]
     print("\nFetching MarketStack ({} names) ...".format(len(ms_keys)))
@@ -282,102 +363,18 @@ def main():
     print("  last updated: {} ({}); resolved {}/{}".format(
         smi_updated, smi_note, len(smi_prices), len(smi_keys)))
 
-    # ── 3. Build constituent records (native + USD via per-date FX) ─────────
-    constituents = []
-    missing = []
-    flags = []
+    # ── 2. Current snapshot per constituent ─────────────────────────────────
+    snaps, missing, flags = {}, [], []
     for commodity, ref_w, source, basis, key in PRICED:
-        native_price = native_unit = native_ccy = quote_date = src_ts = None
-        if source == "marketstack":
-            row = ms_rows.get(key)
-            if not row or row.get("commodity_price") in (None, ""):
-                missing.append((commodity, "marketstack", "no row/price for '{}'".format(key)))
-                continue
-            try:
-                native_price = float(str(row["commodity_price"]).replace(",", ""))
-            except (ValueError, KeyError):
-                missing.append((commodity, "marketstack", "unparseable price"))
-                continue
-            native_ccy, native_unit = parse_currency_unit(row.get("commodity_unit", ""))
-            src_ts = row.get("datetime")
-            quote_date = str(src_ts)[:10] if src_ts else today
-        else:  # smi
-            if key not in smi_prices:
-                missing.append((commodity, "smi", "not found in table"))
-                continue
-            native_price = smi_prices[key]
-            native_ccy, native_unit = "USD", "kg"
-            src_ts = smi_updated
-            quote_date = today    # FX is a no-op for USD; date kept for record
-
-        # Convert to USD via the project per-date FX path.
-        try:
-            usd_price = cc.to_usd(native_price, native_ccy, quote_date)
-        except cc.CurrencyError as ce:
-            missing.append((commodity, source, "currency:{}".format(str(ce)[:80])))
+        snap, fx_flag, miss = build_snapshot(source, key, ms_rows, smi_prices, smi_updated, today)
+        if miss:
+            missing.append((commodity, source, miss))
             continue
-        fx_used = 1.0 if native_ccy == "USD" else cc.fx_rate(native_ccy, quote_date)
+        if fx_flag:
+            flags.append(fx_flag.replace(key, commodity, 1))
+        snaps[commodity] = snap
 
-        # FX staleness flag (CNY series can lag; data/prices/fx is gitignored).
-        fx_date = None
-        if native_ccy != "USD":
-            entry = cc._FX_CACHE.get(native_ccy if native_ccy not in ("GBp", "GBX") else "GBP")
-            if entry and entry["dates"]:
-                import bisect
-                idx = bisect.bisect_right(entry["dates"], quote_date)
-                fx_date = entry["dates"][idx - 1] if idx > 0 else entry["dates"][0]
-                gap = (datetime.strptime(quote_date, "%Y-%m-%d")
-                       - datetime.strptime(fx_date, "%Y-%m-%d")).days
-                if gap > FX_STALE_WARN_DAYS:
-                    flags.append("FX STALE: {} converted with {} FX dated {} ({}d old vs quote {})".format(
-                        commodity, native_ccy, fx_date, gap, quote_date))
-
-        constituents.append({
-            "commodity": commodity,
-            "source": "MarketStack v2 /commodities" if source == "marketstack" else "strategicmetalsinvest",
-            "basis": basis,
-            "native_price": native_price,
-            "native_unit": native_unit,
-            "native_currency": native_ccy,
-            "fx_rate_to_usd": round(fx_used, 8),
-            "fx_date_used": fx_date,
-            "usd_price": round(usd_price, 6),
-            "price_unit_usd": "USD/{}".format(native_unit) if native_unit else "USD",
-            "base_price_usd": round(usd_price, 6),     # the immutable launch base price
-            "quote_date": quote_date,
-            "source_timestamp": src_ts,
-            "reference_weight_pct": ref_w,
-        })
-
-    # ── 4. §6.1 live weights over the ACTUALLY-priced set ───────────────────
-    priced_names = [c["commodity"] for c in constituents]
-    ref_by_name = {c["commodity"]: c["reference_weight_pct"] for c in constituents}
-    priced_ref_sum = sum(ref_by_name.values())
-    live = compute_capped_weights(ref_by_name)
-
-    for c in constituents:
-        renorm = c["reference_weight_pct"] / priced_ref_sum * 100.0
-        c["renormalised_weight_pct"] = round(renorm, 4)
-        c["live_weight_pct"] = round(live[c["commodity"]] * 100.0, 4)
-        c["capped"] = abs(live[c["commodity"]] - SINGLE_NAME_CAP) < 1e-9
-    constituents.sort(key=lambda x: x["live_weight_pct"], reverse=True)
-
-    weight_sum = round(sum(c["live_weight_pct"] for c in constituents), 4)
-    gallium_w = next((c["live_weight_pct"] for c in constituents if c["commodity"] == "Gallium"), None)
-    max_w = max((c["live_weight_pct"] for c in constituents), default=0.0)
-
-    # ── 5. Index value: fixed-weight USD price relatives, base 1000.00 ──────
-    # At base date every relative == 1.0, so value == BASE_VALUE structurally.
-    index_value = round(sum((live[c["commodity"]]) * 1.0 for c in constituents) * BASE_VALUE, 2)
-
-    # ── 6. Curated anomaly flags for review (do not block) ──────────────────
-    if missing:
-        for name, src, why in missing:
-            flags.append("MISSING: {} ({}) — {}".format(name, src, why))
-
-    # 6b. Stale-fixing flag: a MarketStack name flat over BOTH week and month is
-    #     an illiquid/stale fixing (e.g. LME cobalt) — its base price is a stale
-    #     print. Informational. (Only fires when percentage fields are present.)
+    # Stale-fixing flag (MarketStack flat over week & month) — informational.
     for commodity, ref_w, source, basis, key in PRICED:
         if source != "marketstack":
             continue
@@ -385,89 +382,165 @@ def main():
         flat = ("0.00%", "0%", "0", 0, 0.0)
         if row.get("percentage_week") in flat and row.get("percentage_month") in flat:
             flags.append("STALE FIXING: {} flat 0.00% over week & month "
-                         "(illiquid/stale fixing — base price is a stale print).".format(commodity))
+                         "(illiquid/stale fixing).".format(commodity))
 
-    # ── 7. Assemble base record ─────────────────────────────────────────────
-    record = {
-        "name": "Robotnik Commodities Index",
-        "version": "1.1 — forward-only launch (genesis base); v.3 price-basis routing",
-        "methodology": "commodities_index_methodology v.3",
-        "method": ("fixed-weight index of USD price relatives; §6.1 live weights "
-                   "(reference weights renormalised across priced constituents, then "
-                   "12% single-name cap with pro-rata redistribution); forward-only, no backfill"),
-        "price_basis_routing": (
-            "§8: chokepoints Ga/Ge/In/Nd priced from strategicmetalsinvest (Western/ex-China, "
-            "USD/kg, metal) so the index registers export-control stress; exchange-traded metals "
-            "from MarketStack benchmarks; China-domestic (MarketStack CNY, flagged) only where no "
-            "free Western reference exists — Silicon, Titanium, Phosphorus; rare earths on metal basis"),
-        "frequency": "weekly",
-        "base_date": today,
-        "base_value": BASE_VALUE,
-        "current_value": index_value,
-        "current_date": today,
-        "priced_count": len(constituents),
-        "price_pending_count": len(PENDING),
-        "priced_reference_weight_pct": round(priced_ref_sum, 2),
-        "excluded_reference_weight_pct": round(100.0 - priced_ref_sum, 2),
-        "single_name_cap_pct": SINGLE_NAME_CAP * 100.0,
-        "weights_check": {
-            "sum_live_weight_pct": weight_sum,
-            "gallium_live_weight_pct": gallium_w,
-            "max_weight_pct": round(max_w, 4),
-            "cap_binds_on": [c["commodity"] for c in constituents if c["capped"]],
-        },
-        "fx": {
-            "path": "scripts/currency_convert.to_usd (project per-date FX; ECB-primary)",
-            "non_usd_currencies": sorted({c["native_currency"] for c in constituents
-                                          if c["native_currency"] != "USD"}),
-        },
-        "sources": {
-            "marketstack": {"endpoint": "v2/commodities", "provenance": ms_provenance,
-                            "names": len(ms_keys)},
-            "strategicmetalsinvest": {"url": SMI_URL, "last_updated": smi_updated,
-                                      "names": len(smi_keys)},
-        },
-        "constituents": constituents,
-        "price_pending": [{"commodity": n, "reference_weight_pct": w, "reason": r}
-                          for (n, w, r) in PENDING],
-        "flags": flags,
-        "series": [{"date": today, "value": index_value}],
-        "calculated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "") + "Z",
+    prior = None if FORCE_GENESIS else load_existing(OUT_PATH)
+    genesis = not (prior and prior.get("constituents") and prior.get("series"))
+
+    # ── 3. Resolve base prices + fixed live weights ─────────────────────────
+    if genesis:
+        priced = [(c, w) for (c, w, s, b, k) in PRICED if c in snaps]
+        ref_by = {c: w for c, w in priced}
+        priced_ref_sum = sum(ref_by.values())
+        live = compute_capped_weights(ref_by)                 # {commodity: fraction}
+        weight_by = normalize_weights({c: live[c] for c in ref_by})   # Σ → exactly 1.0
+        base_by = {c: snaps[c]["usd_price"] for c in ref_by}
+        base_date = today
+    else:
+        base_date = prior["base_date"]
+        weight_by = normalize_weights(
+            {c["commodity"]: c["live_weight_pct"] / 100.0 for c in prior["constituents"]})  # un-round stored 4dp → Σ exactly 1.0
+        base_by = {c["commodity"]: c["base_price_usd"] for c in prior["constituents"]}
+        priced_ref_sum = prior.get("priced_reference_weight_pct", 0.0)
+
+    # ── 4. Build constituent records + index = 1000 * Σ(w * cur/base) ────────
+    prior_by = {c["commodity"]: c for c in (prior["constituents"] if not genesis else [])}
+    constituents = []
+    idx_sum = 0.0    # full-precision Σ(weight × relative) — the index basis (no intermediate rounding)
+    for commodity, ref_w, source, basis, key in PRICED:
+        if commodity not in weight_by:        # not in the priced set (genesis miss)
+            continue
+        base_usd = base_by[commodity]
+        snap = snaps.get(commodity)
+        carried = False
+        if snap is None:
+            # No fresh price — hold last observation (§8) from the prior record.
+            pc = prior_by.get(commodity)
+            if not pc:
+                missing.append((commodity, source, "no fresh price and no prior to carry"))
+                continue
+            carried = True
+            snap = {k: pc.get(k) for k in ("native_price", "native_unit", "native_currency",
+                                           "fx_rate_to_usd", "fx_date_used", "usd_price",
+                                           "price_unit_usd", "quote_date", "source_timestamp")}
+            flags.append("CARRIED: {} held last observation (no fresh price this run).".format(commodity))
+        rel = snap["usd_price"] / base_usd if base_usd else 1.0
+        contrib_fp = weight_by[commodity] * rel        # full precision (the index basis)
+        idx_sum += contrib_fp
+        c = {
+            "commodity": commodity,
+            "source": SOURCE_LABEL[source],
+            "basis": basis,
+            "native_price": snap["native_price"], "native_unit": snap["native_unit"],
+            "native_currency": snap["native_currency"],
+            "fx_rate_to_usd": snap["fx_rate_to_usd"], "fx_date_used": snap["fx_date_used"],
+            "usd_price": round(snap["usd_price"], 6), "price_unit_usd": snap["price_unit_usd"],
+            "base_price_usd": round(base_usd, 6),                # immutable launch base
+            "relative_to_base": round(rel, 6),
+            "live_weight_pct": round(weight_by[commodity] * 100.0, 6),
+            "reference_weight_pct": ref_w,
+            "weight_contribution": round(contrib_fp, 8),
+            "quote_date": snap["quote_date"], "source_timestamp": snap["source_timestamp"],
+            "carried_last_observation": carried,
+        }
+        if genesis:
+            c["renormalised_weight_pct"] = round(ref_w / priced_ref_sum * 100.0, 4)
+            c["capped"] = abs(weight_by[commodity] - SINGLE_NAME_CAP) < 1e-9
+        else:
+            pc = prior_by.get(commodity, {})
+            c["renormalised_weight_pct"] = pc.get("renormalised_weight_pct")
+            c["capped"] = pc.get("capped", False)
+        constituents.append(c)
+
+    constituents.sort(key=lambda x: x["live_weight_pct"], reverse=True)
+    index_value = round(BASE_VALUE * idx_sum, 2)        # full-precision basis → exactly 1000.0 at genesis
+    weight_sum = round(sum(weight_by[c["commodity"]] for c in constituents) * 100.0, 6)  # normalized → 100.0
+    gallium_w = next((c["live_weight_pct"] for c in constituents if c["commodity"] == "Gallium"), None)
+    max_w = max((c["live_weight_pct"] for c in constituents), default=0.0)
+    if missing:
+        for name, src, why in missing:
+            flags.append("MISSING: {} ({}) — {}".format(name, src, why))
+
+    # ── 5. Series (genesis = single base point; weekly = idempotent append) ──
+    if genesis:
+        series = [{"date": base_date, "value": index_value}]
+        action = "genesis"
+    else:
+        series = [dict(p) for p in prior["series"]]
+        action = append_or_update(series, today, index_value, base_date)
+
+    # ── 6. Assemble record ──────────────────────────────────────────────────
+    sources = {
+        "marketstack": {"endpoint": "v2/commodities", "provenance": ms_provenance, "names": len(ms_keys)},
+        "strategicmetalsinvest": {"url": SMI_URL, "last_updated": smi_updated, "names": len(smi_keys)},
     }
+    if genesis:
+        record = {
+            "name": "Robotnik Commodities Index",
+            "version": "1.1 — forward-only launch (genesis base); v.3 price-basis routing",
+            "methodology": "commodities_index_methodology v.3",
+            "method": ("fixed-weight index of USD price relatives; index = 1000 * Σ(live_weight_i * "
+                       "usd_price_i/base_i); §6.1 live weights (reference renormalised across priced "
+                       "constituents, 12% single-name cap); forward-only, no backfill"),
+            "price_basis_routing": (
+                "§8: chokepoints Ga/Ge/In/Nd from strategicmetalsinvest (Western/ex-China, USD/kg, "
+                "metal); exchange-traded from MarketStack benchmarks; China-domestic (MarketStack CNY, "
+                "flagged) only where no free Western reference exists — Silicon, Titanium, Phosphorus; "
+                "rare earths on metal basis"),
+            "frequency": "weekly",
+            "base_date": base_date, "base_value": BASE_VALUE,
+            "priced_count": len(constituents), "price_pending_count": len(PENDING),
+            "priced_reference_weight_pct": round(priced_ref_sum, 2),
+            "excluded_reference_weight_pct": round(100.0 - priced_ref_sum, 2),
+            "single_name_cap_pct": SINGLE_NAME_CAP * 100.0,
+            "weights_check": {"sum_live_weight_pct": weight_sum, "gallium_live_weight_pct": gallium_w,
+                              "max_weight_pct": round(max_w, 4),
+                              "cap_binds_on": [c["commodity"] for c in constituents if c["capped"]]},
+            "fx": {"path": "scripts/currency_convert.to_usd (project per-date FX; ECB-primary)",
+                   "non_usd_currencies": sorted({c["native_currency"] for c in constituents
+                                                 if c["native_currency"] != "USD"})},
+            "price_pending": [{"commodity": n, "reference_weight_pct": w, "reason": r}
+                              for (n, w, r) in PENDING],
+        }
+    else:
+        record = dict(prior)             # carry all genesis-fixed fields
+    record["current_value"] = series[-1]["value"]    # always the latest published point
+    record["current_date"] = series[-1]["date"]
+    record["constituents"] = constituents
+    record["sources"] = sources
+    record["flags"] = flags
+    record["series"] = series
+    record["last_update"] = {"action": action, "mark": today, "value": index_value, "at": now_iso}
+    record["calculated_at"] = now_iso
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT_PATH, "w") as f:
         json.dump(record, f, indent=2)
 
-    # ── 8. Surface ───────────────────────────────────────────────────────────
-    print("\n{:14s} {:>14s} {:>6s} {:>16s}  {:>7s} {:>7s} {:>7s}".format(
-        "COMMODITY", "NATIVE", "CCY", "USD (base)", "REF%", "RENRM%", "LIVE%"))
-    print("-" * 80)
+    # ── 7. Surface ──────────────────────────────────────────────────────────
+    print("\nMODE: {}   base {} = {:.2f}".format("GENESIS" if genesis else "WEEKLY", base_date, BASE_VALUE))
+    print("{:14s} {:>14s} {:>5s} {:>15s} {:>15s} {:>9s} {:>7s}".format(
+        "COMMODITY", "NATIVE", "CCY", "USD now", "USD base", "REL", "LIVE%"))
+    print("-" * 84)
     for c in constituents:
-        print("{:14s} {:>14.4f} {:>6s} {:>16.4f}  {:>6.2f}% {:>6.2f}% {:>6.2f}%{}".format(
+        print("{:14s} {:>14.4f} {:>5s} {:>15.4f} {:>15.4f} {:>9.5f} {:>6.2f}%{}".format(
             c["commodity"], c["native_price"], c["native_currency"], c["usd_price"],
-            c["reference_weight_pct"], c["renormalised_weight_pct"], c["live_weight_pct"],
-            "  <cap>" if c["capped"] else ""))
-    print("-" * 80)
-    print("Priced: {}/{}   priced ref-weight: {:.2f}%   excluded (9 pending): {:.2f}%".format(
-        len(constituents), len(PRICED), priced_ref_sum, 100.0 - priced_ref_sum))
-    print("Weights check  ->  sum: {:.4f}%   Gallium: {}%   max: {:.4f}%".format(
-        weight_sum, gallium_w, max_w))
-    print("INDEX VALUE (base {}):  {:.2f}".format(today, index_value))
-    if missing:
-        print("\nMISSING / UNPRICED (would shrink the priced set):")
-        for name, src, why in missing:
-            print("  - {} ({}): {}".format(name, src, why))
+            c["base_price_usd"], c["relative_to_base"], c["live_weight_pct"],
+            "  <cap>" if c["capped"] else ("  carry" if c["carried_last_observation"] else "")))
+    print("-" * 84)
+    print("Priced: {}/{}   weights sum: {:.4f}%   Gallium: {}%   max: {:.4f}%".format(
+        len(constituents), len(PRICED), weight_sum, gallium_w, max_w))
+    print("INDEX VALUE: {:.2f}   ({:+.2f} vs base 1000.00)   series action: {}".format(
+        index_value, index_value - BASE_VALUE, action))
+    print("series points: {} ({} → {})".format(len(series), series[0]["date"], series[-1]["date"]))
     if flags:
         print("\nFLAGS ({}):".format(len(flags)))
         for fl in flags:
             print("  ! {}".format(fl))
-    print("\nPrice-pending (9, disclosed/excluded): {}".format(
-        ", ".join(n for n, _, _ in PENDING)))
     try:
         _shown = OUT_PATH.relative_to(ROOT)
     except ValueError:
-        _shown = OUT_PATH      # dry-run path outside the repo (COMMODITIES_INDEX_OUT)
+        _shown = OUT_PATH
     print("\nWrote -> {}".format(_shown))
     print("=" * 64)
 
