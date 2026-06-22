@@ -1,45 +1,112 @@
 <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="'Mulish','Inter',system-ui,sans-serif">
-  <rect x="0" y="0" width="900" height="600" fill="#161A26"/>
-  <text x="40" y="48" font-family="'Space Grotesk','Inter',sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#E8EBF1">CONTROL POINTS</text>
-  <text x="40" y="72" font-size="13" fill="#868FA2">A narrow source, a wide blast radius — disruption at one point cascades across the stack.</text>
-  <line x1="40" y1="84" x2="116" y2="84" stroke="#F5D921" stroke-width="2.5"/>
+  <defs>
+    <radialGradient id="bg" cx="47%" cy="44%" r="80%">
+      <stop offset="0%" stop-color="#1C2233"/>
+      <stop offset="58%" stop-color="#161A26"/>
+      <stop offset="100%" stop-color="#10131C"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34415F" stop-opacity="0.38"/>
+      <stop offset="70%" stop-color="#2A3145" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#2A3145" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pillBase" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1F2331"/>
+      <stop offset="100%" stop-color="#14171F"/>
+    </linearGradient>
+    <linearGradient id="fControl" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5D921" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#F5D921" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="fRobotics" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#46B49A" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#46B49A" stop-opacity="0.10"/>
+    </linearGradient>
+    <linearGradient id="fSpace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8765C" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#E8765C" stop-opacity="0.10"/>
+    </linearGradient>
+    <linearGradient id="fSemi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5B8DD6" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#5B8DD6" stop-opacity="0.10"/>
+    </linearGradient>
+    <filter id="nodeGlow" x="-60%" y="-110%" width="220%" height="320%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="edgeGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.6"/>
+    </filter>
+  </defs>
 
-  <!-- control point -->
-  <rect x="50" y="256" width="215" height="92" rx="12" fill="#1E2330" stroke="#F5D921" stroke-opacity="0.9" stroke-width="1.6"/>
-  <text x="64" y="288" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#F5D921">Heavy rare-earth</text>
-  <text x="64" y="308" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#F5D921">processing</text>
-  <text x="64" y="330" font-size="11" fill="#9AA3B5">one country · effectively all of it</text>
+  <rect width="900" height="600" fill="url(#bg)"/>
+  <ellipse cx="445" cy="302" rx="400" ry="220" fill="url(#halo)"/>
 
-  <!-- cascade: trunk, riser, horizontal teeth -->
-  <line x1="265" y1="302" x2="632" y2="302" stroke="#F5D921" stroke-width="2" stroke-opacity="0.9"/>
-  <line x1="430" y1="163" x2="430" y2="439" stroke="#F5D921" stroke-width="1.6" stroke-opacity="0.85"/>
-  <line x1="430" y1="163" x2="632" y2="163" stroke="#F5D921" stroke-width="1.6" stroke-opacity="0.85"/>
-  <line x1="430" y1="439" x2="632" y2="439" stroke="#F5D921" stroke-width="1.6" stroke-opacity="0.85"/>
-  <circle cx="430" cy="302" r="4" fill="#F5D921"/>
-  <text x="276" y="292" font-size="11.5" fill="#B0B8C8">magnet supply tightens</text>
-  <polygon points="639,163 629,158 629,168" fill="#F5D921"/>
-  <polygon points="639,302 629,297 629,307" fill="#F5D921"/>
-  <polygon points="639,439 629,434 629,444" fill="#F5D921"/>
+  <text x="40" y="48" font-family="'Space Grotesk','Inter',sans-serif" font-size="18" font-weight="700" letter-spacing="2.5" fill="#EDEFF5">CONTROL POINTS</text>
+  <text x="40" y="73" font-size="13.5" fill="#8A93A6">A narrow source, a wide blast radius. Disruption at one point cascades across the stack.</text>
+  <line x1="40" y1="86" x2="120" y2="86" stroke="#F5D921" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- cascade: luminous glow underlay, crisp on top -->
+  <g filter="url(#edgeGlow)" stroke="#F5D921" stroke-linecap="round" fill="none">
+    <line x1="265" y1="302" x2="632" y2="302" stroke-width="3.5" stroke-opacity="0.32"/>
+    <line x1="430" y1="163" x2="430" y2="439" stroke-width="3" stroke-opacity="0.30"/>
+    <line x1="430" y1="163" x2="632" y2="163" stroke-width="3" stroke-opacity="0.30"/>
+    <line x1="430" y1="439" x2="632" y2="439" stroke-width="3" stroke-opacity="0.30"/>
+  </g>
+  <g stroke="#F5D921" stroke-linecap="round" fill="none">
+    <line x1="265" y1="302" x2="632" y2="302" stroke-width="2" stroke-opacity="0.92"/>
+    <line x1="430" y1="163" x2="430" y2="439" stroke-width="1.7" stroke-opacity="0.88"/>
+    <line x1="430" y1="163" x2="632" y2="163" stroke-width="1.7" stroke-opacity="0.88"/>
+    <line x1="430" y1="439" x2="632" y2="439" stroke-width="1.7" stroke-opacity="0.88"/>
+  </g>
+  <circle cx="430" cy="302" r="9" fill="#F5D921" fill-opacity="0.28" filter="url(#edgeGlow)"/>
+  <circle cx="430" cy="302" r="4.5" fill="#F5D921"/>
+  <text x="276" y="291" font-size="11.5" fill="#C0C8D6">magnet supply tightens</text>
+  <g fill="#F5D921">
+    <polygon points="640,163 628,157.5 628,168.5"/>
+    <polygon points="640,302 628,296.5 628,307.5"/>
+    <polygon points="640,439 628,433.5 628,444.5"/>
+  </g>
+
+  <!-- control point: the concentrated, glowing source -->
+  <g>
+    <rect x="50" y="256" width="215" height="92" rx="14" fill="#F5D921" fill-opacity="0.30" filter="url(#nodeGlow)"/>
+    <rect x="50" y="256" width="215" height="92" rx="14" fill="url(#pillBase)"/>
+    <rect x="50" y="256" width="215" height="92" rx="14" fill="url(#fControl)" stroke="#F5D921" stroke-width="1.7"/>
+    <text x="66" y="289" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#F5D921">Heavy rare-earth</text>
+    <text x="66" y="309" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#F5D921">processing</text>
+    <text x="66" y="331" font-size="11" fill="#BCAD52">one country · effectively all of it</text>
+  </g>
 
   <!-- affected sectors -->
-  <rect x="640" y="132" width="185" height="62" rx="10" fill="#46B49A" fill-opacity="0.14" stroke="#46B49A" stroke-opacity="0.55" stroke-width="1.3"/>
-  <text x="658" y="162" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#46B49A">Robotics</text>
-  <text x="658" y="181" font-size="11" fill="#9AA3B5">servo-motor costs rise</text>
-
-  <rect x="640" y="270" width="185" height="62" rx="10" fill="#E8765C" fill-opacity="0.14" stroke="#E8765C" stroke-opacity="0.55" stroke-width="1.3"/>
-  <text x="658" y="300" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#E8765C">Space</text>
-  <text x="658" y="319" font-size="11" fill="#9AA3B5">reaction-wheel costs rise</text>
-
-  <rect x="640" y="408" width="185" height="62" rx="10" fill="#5B8DD6" fill-opacity="0.14" stroke="#5B8DD6" stroke-opacity="0.55" stroke-width="1.3"/>
-  <text x="658" y="438" font-family="'Space Grotesk','Inter',sans-serif" font-size="14" font-weight="700" fill="#5B8DD6">Semiconductors</text>
-  <text x="658" y="457" font-size="11" fill="#9AA3B5">polishing (CMP) costs rise</text>
+  <g>
+    <rect x="640" y="132" width="185" height="62" rx="12" fill="#46B49A" fill-opacity="0.34" filter="url(#nodeGlow)"/>
+    <rect x="640" y="132" width="185" height="62" rx="12" fill="url(#pillBase)"/>
+    <rect x="640" y="132" width="185" height="62" rx="12" fill="url(#fRobotics)" stroke="#46B49A" stroke-width="1.4"/>
+    <text x="658" y="162" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#82D6C0">Robotics</text>
+    <text x="658" y="181" font-size="11" fill="#9AA3B5">servo-motor costs rise</text>
+  </g>
+  <g>
+    <rect x="640" y="270" width="185" height="62" rx="12" fill="#E8765C" fill-opacity="0.34" filter="url(#nodeGlow)"/>
+    <rect x="640" y="270" width="185" height="62" rx="12" fill="url(#pillBase)"/>
+    <rect x="640" y="270" width="185" height="62" rx="12" fill="url(#fSpace)" stroke="#E8765C" stroke-width="1.4"/>
+    <text x="658" y="300" font-family="'Space Grotesk','Inter',sans-serif" font-size="15" font-weight="700" fill="#F4A892">Space</text>
+    <text x="658" y="319" font-size="11" fill="#9AA3B5">reaction-wheel costs rise</text>
+  </g>
+  <g>
+    <rect x="640" y="408" width="185" height="62" rx="12" fill="#5B8DD6" fill-opacity="0.34" filter="url(#nodeGlow)"/>
+    <rect x="640" y="408" width="185" height="62" rx="12" fill="url(#pillBase)"/>
+    <rect x="640" y="408" width="185" height="62" rx="12" fill="url(#fSemi)" stroke="#5B8DD6" stroke-width="1.4"/>
+    <text x="658" y="438" font-family="'Space Grotesk','Inter',sans-serif" font-size="14" font-weight="700" fill="#97B9EA">Semiconductors</text>
+    <text x="658" y="457" font-size="11" fill="#9AA3B5">polishing (CMP) costs rise</text>
+  </g>
 
   <!-- blast radius bracket -->
-  <line x1="840" y1="150" x2="840" y2="452" stroke="#F5D921" stroke-opacity="0.4" stroke-width="1.5"/>
-  <line x1="840" y1="150" x2="832" y2="150" stroke="#F5D921" stroke-opacity="0.4" stroke-width="1.5"/>
-  <line x1="840" y1="452" x2="832" y2="452" stroke="#F5D921" stroke-opacity="0.4" stroke-width="1.5"/>
-  <text x="860" y="301" font-size="11" fill="#F5D921" fill-opacity="0.75" text-anchor="middle" transform="rotate(90 860 301)">blast radius</text>
+  <g stroke="#F5D921" stroke-opacity="0.4" stroke-width="1.5" fill="none" stroke-linecap="round">
+    <line x1="840" y1="150" x2="840" y2="452"/>
+    <line x1="840" y1="150" x2="832" y2="150"/>
+    <line x1="840" y1="452" x2="832" y2="452"/>
+  </g>
+  <text x="861" y="301" font-size="11" fill="#F5D921" fill-opacity="0.7" text-anchor="middle" transform="rotate(90 861 301)">blast radius</text>
 
-  <!-- footer -->
-  <text x="50" y="560" font-size="11.5" fill="#868FA2">EUV lithography and ABF substrate film behave the same way — single sources the whole stack depends on.</text>
+  <text x="50" y="560" font-size="11.5" fill="#8A93A6">EUV lithography and ABF substrate film behave the same way: single sources the whole stack depends on.</text>
 </svg>
