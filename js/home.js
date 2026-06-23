@@ -28,31 +28,48 @@
   function spark(series, color) {
     return (window.FrontierStack && FrontierStack.sparkline) ? FrontierStack.sparkline(series, color, 120, 44) : '';
   }
-  // Deterministic placeholder %-change for a period, derived from the sector's
-  // YTD so it stays stable + directionally plausible (no data-file change).
-  function hashStr(s) { var h = 2166136261 >>> 0; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
-  function synthChange(key, ytd, period) {
-    var h = hashStr(key + period), f = (period === '1w') ? 0.07 : 0.2;
-    var jit = ((h % 1000) / 1000 - 0.4) * ((period === '1w') ? 5 : 7);
-    return +(((ytd || 0) * f) + jit).toFixed(2);
+  // ---- index_summary.json read helpers. Every number the page shows is gated
+  // on real presence here — nothing synthetic, nothing hardcoded. ----
+  function isNum(x) { return typeof x === 'number' && isFinite(x); }
+  function ret1y(s) { return s && s.returns ? s.returns['1Y'] : null; }
+  function hasHorizon(s) {                 // any numeric return horizon present?
+    if (!s || !s.returns) return false;
+    for (var k in s.returns) { if (isNum(s.returns[k])) return true; }
+    return false;
+  }
+  function isFresh(s) { return !!s && s.status === 'live' && s.fresh_through === s.as_of; }
+  function seriesVals(s) { return (s && s.series ? s.series : []).map(function (p) { return p.value; }); }
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function fmtDate(s) {                     // "2026-06-17"->"17 Jun 2026"; "2026-05"->"May 2026"
+    if (!s) return '';
+    var p = String(s).split('-');
+    if (p.length >= 3) return parseInt(p[2], 10) + ' ' + MON[+p[1] - 1] + ' ' + p[0];
+    if (p.length === 2) return MON[+p[1] - 1] + ' ' + p[0];
+    return String(s);
+  }
+  // Flagship is derived, not stored: Composite reclaims it the day it carries a
+  // real 1Y; until then Public Equities (the one with the track record) headlines.
+  function flagshipKey(sum) {
+    var c = sum && sum.indexes && sum.indexes.composite;
+    return (c && isNum(ret1y(c))) ? 'composite' : 'public';
   }
   function openAccess(e) { if (e) e.preventDefault(); if (typeof window.openEarlyAccess === 'function') window.openEarlyAccess(); }
 
   // ---------------------------------------------------------- TOP STRIP
-  function renderTopStrip(d) {
+  function renderTopStrip(sum) {
     var bar = document.querySelector('.top-bar');
     if (!bar || document.querySelector('.top-strip-extra')) return;
-    var c = d.indexes && d.indexes.composite;
+    var c = sum && sum.indexes && sum.indexes.composite;
     var wrap = document.createElement('div');
     wrap.className = 'top-strip-extra';
     var ticker = '';
-    if (c) {
-      var up = (c.change1y || 0) >= 0;
+    if (c && isFresh(c)) {
+      var oneY = ret1y(c), hasY = isNum(oneY), up = hasY && oneY >= 0;
       ticker =
         '<a class="top-rci" href="' + PLACEHOLDER_URL + '" style="text-decoration:none">' +
-          '<span class="top-rci-label">RCI</span>' +
+          '<span class="top-rci-label">' + esc(c.code || 'RCI') + '</span>' +
           '<span class="top-rci-val">' + num(c.value, 2) + '</span>' +
-          (c.change1y != null ? '<span class="top-rci-chg ' + (up ? 'up' : 'down') + '">' + (up ? '+' : '') + c.change1y.toFixed(2) + '%</span>' : '') +
+          (hasY ? '<span class="top-rci-chg ' + (up ? 'up' : 'down') + '">' + (up ? '+' : '') + oneY.toFixed(2) + '%</span>' : '') +
         '</a>';
     }
     wrap.innerHTML = ticker + '<button class="btn-access" type="button">Request access</button>';
@@ -61,80 +78,91 @@
   }
 
   // ---------------------------------------------------------- HERO PROOF
-  function renderHeroProof(d) {
+  // NOTE: dead code today — index.html has no #hero-proof element and boot()
+  // does not call this. Rebound to the summary (derived flagship) for hygiene so
+  // no placeholder read remains; inert until a #hero-proof element is wired.
+  function renderHeroProof(d, sum) {
     var host = $('hero-proof');
     if (!host) return;
-    var c = d.indexes && d.indexes.composite;
+    var s = sum && sum.indexes && sum.indexes[flagshipKey(sum)];
+    var ed = (d.indexes || {})[flagshipKey(sum)] || {};
     var m = d.meta || {};
-    if (!c) { host.innerHTML = '<div class="proof-empty">Composite awaiting calibration.</div>'; return; }
-    var up = (c.change1y || 0) >= 0;
+    if (!s || !isFresh(s)) { host.innerHTML = '<div class="proof-empty">Index awaiting calibration.</div>'; return; }
+    var oneY = ret1y(s), hasY = isNum(oneY), up = hasY && oneY >= 0;
+    var chg = hasY
+      ? '<span class="proof-change ' + (up ? 'up' : 'down') + '">' + (up ? '+' : '') + oneY.toFixed(2) + '% · 1Y</span>'
+      : (!hasHorizon(s) ? '<span class="proof-change muted">since inception · ' + esc(fmtDate(s.base && s.base.date)) + '</span>' : '');
     host.innerHTML =
       '<div class="proof-main">' +
-        '<span class="proof-name">' + esc(c.name) + '</span>' +
-        '<span class="proof-value">' + num(c.value, 2) + '</span>' +
-        (c.change1y != null ? '<span class="proof-change ' + (up ? 'up' : 'down') + '">' + (up ? '+' : '') + c.change1y.toFixed(2) + '% · 1Y</span>' : '') +
+        '<span class="proof-name">' + esc(ed.name || s.name) + '</span>' +
+        '<span class="proof-value">' + num(s.value, 2) + '</span>' + chg +
       '</div>' +
       '<div class="proof-divider"></div>' +
       '<div class="proof-meta">' +
-        '<span class="proof-meta-row">Base <b>' + num(m.base, 2) + '</b> on <b>' + esc(m.baseDate) + '</b></span>' +
+        '<span class="proof-meta-row">Base <b>' + num(s.base && s.base.value, 2) + '</b> on <b>' + esc(fmtDate(s.base && s.base.date)) + '</b></span>' +
         '<span class="proof-meta-row">Universe <b>' + esc(m.universe) + '</b> entities · market-cap weighted</span>' +
-        '<a href="' + esc(c.methodologyUrl || '#') + '">Methodology &rarr;</a>' +
+        '<a href="' + esc(ed.methodologyUrl || '#') + '">Methodology &rarr;</a>' +
       '</div>';
   }
 
   // ---------------------------------------------------------- INDEX FAMILY
-  function indexTile(key, ix) {
-    if (!ix) return '';
-    if (ix.status === 'soon') {
-      return '<div class="index-tile is-soon">' +
-        '<div class="index-tile-top"><span class="index-tile-name">' + esc(ix.name) + '</span>' +
-          '<span class="index-tag soon">Soon</span></div>' +
-        '<div class="index-tile-val">—</div>' +
-        '<div class="index-tile-blurb">' + esc(ix.blurb || '') + '</div>' +
-        '<div class="index-tile-links"><a href="' + PLACEHOLDER_URL + '">Methodology &rarr;</a></div>' +
-        '</div>';
-    }
-    // Calibrating: a real index whose value is not yet published (placeholder
-    // collision guard — don't print a number that duplicates the flagship).
-    if (ix.calibrating) {
-      return '<div class="index-tile is-calibrating">' +
-        '<div class="index-tile-top"><span class="index-tile-name">' + esc(ix.name) + '</span>' +
-          '<span class="index-tag calibrating">Calibrating</span></div>' +
-        '<div class="index-tile-val pending">&mdash; calibrating</div>' +
-        '<div class="index-tile-chg muted">Value pending · 1Y —</div>' +
-        '<div class="index-tile-blurb">' + esc(ix.blurb || '') + '</div>' +
-        '<div class="index-tile-links">' +
-          '<a href="' + PLACEHOLDER_URL + '">Detailed chart &rarr;</a>' +
-          '<a href="' + PLACEHOLDER_URL + '">Methodology &rarr;</a>' +
-        '</div></div>';
-    }
-    var tag = ix.flagship ? '<span class="index-tag flagship">Flagship</span>'
-            : ix.cadence ? '<span class="index-tag cadence">' + esc(ix.cadence) + '</span>' : '';
-    var chg;
-    if (ix.change1y != null) {
-      var up = ix.change1y >= 0;
-      chg = '<div class="index-tile-chg ' + (up ? 'up' : 'down') + '">' + (up ? '+' : '') + ix.change1y.toFixed(2) + '% · 1Y</div>';
-    } else {
-      chg = '<div class="index-tile-chg muted">' + (ix.cadence ? esc(ix.cadence) + ' mark' : '1Y —') + '</div>';
-    }
-    return '<div class="index-tile' + (ix.flagship ? ' is-flagship' : '') + '">' +
-      '<div class="index-tile-top"><span class="index-tile-name">' + esc(ix.name) + '</span>' + tag + '</div>' +
-      '<div class="index-tile-val">' + num(ix.value, 2) + '</div>' + chg +
-      '<div class="index-tile-blurb">' + esc(ix.blurb || '') + '</div>' +
-      '<div class="index-spark">' + spark(ix.series, SPARK_COLOR[key] || '#F5D921') + '</div>' +
+  // s = index_summary.json entry (numbers/status/series); ed = home.json editorial
+  // (display name, blurb, links). isFlag = derived flagship for this key.
+  function indexTile(key, s, ed, isFlag) {
+    ed = ed || {};
+    if (!s) return '';
+    var name = esc(ed.name || s.name);
+    var fullLinks =
       '<div class="index-tile-links">' +
         '<a href="' + PLACEHOLDER_URL + '">Detailed chart &rarr;</a>' +
         '<a href="' + PLACEHOLDER_URL + '">Methodology &rarr;</a>' +
-      '</div></div>';
+      '</div>';
+    // Not-yet-live: only a genuine soon status reads "Soon" (none today).
+    if (s.status === 'soon') {
+      return '<div class="index-tile is-soon">' +
+        '<div class="index-tile-top"><span class="index-tile-name">' + name + '</span>' +
+          '<span class="index-tag soon">Soon</span></div>' +
+        '<div class="index-tile-val">—</div>' +
+        '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' +
+        '<div class="index-tile-links"><a href="' + PLACEHOLDER_URL + '">Methodology &rarr;</a></div>' +
+        '</div>';
+    }
+    // Calibrating, or live-but-stale (fresh_through != as_of): no current value.
+    if (s.status === 'calibrating' || !isFresh(s)) {
+      return '<div class="index-tile is-calibrating">' +
+        '<div class="index-tile-top"><span class="index-tile-name">' + name + '</span>' +
+          '<span class="index-tag calibrating">Calibrating</span></div>' +
+        '<div class="index-tile-val pending">&mdash; calibrating</div>' +
+        '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' + fullLinks + '</div>';
+    }
+    // Live.
+    var tag = isFlag ? '<span class="index-tag flagship">Flagship</span>'
+            : s.cadence ? '<span class="index-tag cadence">' + esc(s.cadence) + '</span>' : '';
+    var oneY = ret1y(s), chg = '';
+    if (isNum(oneY)) {
+      var up = oneY >= 0;
+      chg = '<div class="index-tile-chg ' + (up ? 'up' : 'down') + '">' + (up ? '+' : '') + oneY.toFixed(2) + '% · 1Y</div>';
+    } else if (!hasHorizon(s)) {            // forward-only: since inception, no horizon button
+      chg = '<div class="index-tile-chg muted">since inception · ' + esc(fmtDate(s.base && s.base.date)) + '</div>';
+    }                                        // else: real index missing 1Y but with other horizons -> no 1Y line
+    var vals = seriesVals(s);
+    var sparkHtml = vals.length >= 2 ? spark(vals, SPARK_COLOR[key] || '#F5D921') : '';
+    return '<div class="index-tile' + (isFlag ? ' is-flagship' : '') + '">' +
+      '<div class="index-tile-top"><span class="index-tile-name">' + name + '</span>' + tag + '</div>' +
+      '<div class="index-tile-val">' + num(s.value, 2) + '</div>' + chg +
+      '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' +
+      '<div class="index-spark">' + sparkHtml + '</div>' + fullLinks + '</div>';
   }
 
-  function renderIndexFamily(d) {
+  function renderIndexFamily(d, sum) {
     var host = $('index-family');
     if (!host) return;
-    var ix = d.indexes || {};
+    var ix = (sum && sum.indexes) || {};
+    var ed = d.indexes || {};
+    var flagKey = flagshipKey(sum);
     var order = ['composite', 'bottleneck', 'public', 'commodities', 'private'];
-    var html = order.map(function (k) { return indexTile(k, ix[k]); }).join('');
-    // product tile
+    var html = order.map(function (k) { return indexTile(k, ix[k], ed[k], k === flagKey); }).join('');
+    // product tile (editorial; unchanged)
     var p = d.product;
     if (p) {
       html += '<div class="product-tile">' +
@@ -148,23 +176,26 @@
   }
 
   // ---------------------------------------------------------- SECTOR CARDS
-  function renderSectors(d) {
+  var SECTOR_KEY_MAP = { semi: 'semiconductors' };   // _meta: home keys 'semi', summary keys 'semiconductors'
+  function renderSectors(d, sum) {
     var host = $('sector-cards');
     if (!host) return;
+    var ss = (sum && sum.sectors) || {};
     host.innerHTML = (d.sectors || []).map(function (s) {
-      var ix = s.index || {};
-      var w1 = synthChange(s.key, ix.changeYTD, '1w');
-      var m1 = synthChange(s.key, ix.changeYTD, '1m');
+      var sm = ss[SECTOR_KEY_MAP[s.key] || s.key] || {};
+      var r = sm.returns || {};
       var commodities = s.commodities ? (' · ' + s.commodities + ' commodities') : '';
+      // presence-gated: a return block renders only if the summary carries a number
       function chgBlock(label, v) {
+        if (!isNum(v)) return '';
         return '<div class="sector-chg-block"><span class="sector-chg-label">' + label + '</span>' +
           '<span class="sector-chg-val ' + (v >= 0 ? 'up' : 'down') + '">' + (v >= 0 ? '+' : '') + v.toFixed(2) + '%</span></div>';
       }
       return '<div class="sector-card" style="--hue:' + s.hue + '">' +
         '<div class="sector-card-top"><span class="sector-swatch"></span>' +
           '<span class="sector-name">' + esc(s.name) + '</span></div>' +
-        '<div class="sector-val">' + num(ix.value, 2) + '</div>' +
-        '<div class="sector-changes">' + chgBlock('1W', w1) + chgBlock('1M', m1) + '</div>' +
+        '<div class="sector-val">' + num(sm.value, 2) + '</div>' +
+        '<div class="sector-changes">' + chgBlock('1W', r['1W']) + chgBlock('1M', r['1M']) + '</div>' +
         '<div class="sector-count"><b>' + s.public + '</b> public · <b>' + s.private + '</b> private' + commodities + '</div>' +
         '</div>';
     }).join('');
@@ -283,10 +314,10 @@
   }
 
   // ---------------------------------------------------------- BOOT
-  function boot(d) {
-    renderTopStrip(d);
-    renderIndexFamily(d);
-    renderSectors(d);
+  function boot(d, sum) {
+    renderTopStrip(sum);
+    renderIndexFamily(d, sum);
+    renderSectors(d, sum);
     renderReferences(d);
 
     var graph = null;
@@ -309,9 +340,13 @@
   }
 
   function start() {
-    fetch('data/home.json?v=' + Date.now())
-      .then(function (r) { if (!r.ok) throw new Error('home.json ' + r.status); return r.json(); })
-      .then(boot)
+    function okJson(label) {
+      return function (r) { if (!r.ok) throw new Error(label + ' ' + r.status); return r.json(); };
+    }
+    Promise.all([
+      fetch('data/home.json?v=' + Date.now()).then(okJson('home.json')),
+      fetch('data/index/index_summary.json?v=' + Date.now()).then(okJson('index_summary.json'))
+    ]).then(function (res) { boot(res[0], res[1]); })
       .catch(function (e) { fail('Data feed offline — calibrating, tovarishch.'); if (window.console) console.warn('[home]', e); });
   }
 

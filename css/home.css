@@ -269,6 +269,60 @@ body[data-page="home"] { background: var(--bg); }
 .rail-cell-chip { font-family: var(--sans); font-size: 9px; letter-spacing: .04em; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; border: 1px solid var(--line-2); color: var(--ink-dim); }
 
 /* ============================================================
+   CONTROL POINTS — interpretive band (static, semantic HTML).
+   Three chokepoint reads, each carrying a quiet criticality
+   accent (left border + tag dot) on the home.css criticality
+   scale. Reuses the shared .section-head / .section-title /
+   .section-sub header rhythm; cards echo the .index-tile /
+   .ref-card panel pattern.
+   ============================================================ */
+.control-points-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .85rem;
+}
+.control-card {
+  display: flex; flex-direction: column;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--cp-accent, var(--line-2));
+  border-radius: var(--radius);
+  padding: 1.05rem 1.15rem 1.15rem;
+  min-height: 152px;
+}
+.control-card--crit { --cp-accent: var(--c-crit); }
+.control-card--high { --cp-accent: var(--c-high); }
+.control-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.control-read {
+  font-family: var(--prose);
+  font-size: 13px; line-height: 1.55;
+  color: var(--ink);
+  margin: .55rem 0 .9rem;
+}
+.control-tag {
+  display: inline-flex; align-items: center; gap: .4rem;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 4px 9px;
+  border: 1px solid var(--line-2);
+  border-radius: 6px;
+  font-family: var(--sans);
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.control-tag-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--cp-accent, var(--ink-faint));
+  flex-shrink: 0;
+}
+
+/* ============================================================
    INDEX FAMILY
    ============================================================ */
 .index-family-grid {
@@ -484,7 +538,7 @@ body[data-page="home"] { background: var(--bg); }
 }
 @media (max-width: 640px) {
   .home { padding: 1rem 1rem 3rem; }
-  .index-family-grid, .sector-grid, .reference-grid { grid-template-columns: 1fr; }
+  .index-family-grid, .sector-grid, .reference-grid, .control-points-grid { grid-template-columns: 1fr; }
   .hero-proof { gap: 1rem; }
 }
 

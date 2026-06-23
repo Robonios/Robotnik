@@ -339,12 +339,18 @@
     dropdown.style.display = 'none';
     searchHost.appendChild(dropdown);
 
-    // Hardcoded for now — the only published research is the 1Q26 report.
+    // Hardcoded research index for client-side search — published pieces only.
     var RESEARCH = [{
       title: '1Q26 State of the Frontier Stack',
       desc: 'Inaugural quarterly report — semiconductors, robotics, space, critical materials',
       tags: ['1q26', 'report', 'quarterly', 'frontier stack', 'state of the frontier', 'nvidia', 'waymo', 'rare earth', 'rare earths'],
       url: 'report-1Q26.html',
+    }, {
+      title: 'The Frontier Stack: Why Semiconductors, Robotics, Space, and Critical Materials Are a Single Asset Class',
+      desc: 'Reference · the foundational thesis — frontier tech as one investable asset class',
+      tags: ['r1', 'thesis', 'frontier stack', 'reference', 'asset class', 'control point', 'control points', 'bottleneck', 'pure play', 'pure-play', 'semiconductors', 'robotics', 'space', 'critical materials'],
+      type: 'reference',
+      url: '/research/frontier-stack-thesis',
     }];
 
     var _datasets = null;
