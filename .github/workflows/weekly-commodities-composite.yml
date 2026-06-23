@@ -1,0 +1,101 @@
+name: Robotnik Weekly Commodities + Composite
+
+# Forward-only weekly indices self-update: Commodities (forward-append a weekly
+# point from live MarketStack /v2/commodities + strategicmetalsinvest + ECB FX,
+# using the STORED base prices and FIXED §6.1 weights) → Composite (75/25
+# public-equities/commodities blend, forward-append) → home-page index summary.
+# The daily equity pipeline (fetch-data.yml) is UNCHANGED — this job only reads
+# the equity book it produces.
+#
+# Schedule is deconflicted from the daily pipeline: that runs weekdays 22:00 UTC
+# and Sunday 05:00/23:00 UTC; this runs SATURDAY, when nothing else does. Both
+# regenerate index_summary.json, so the push is rebase-before-push and the
+# summary is REBUILT after any rebase — it is a pure function of the data files,
+# so a rebase reconciles cleanly with no hand-merge of generated JSON.
+
+on:
+  schedule:
+    - cron: '0 8 * * 6'      # Saturday 08:00 UTC — after the trading week closes
+  workflow_dispatch: {}
+
+jobs:
+  weekly-indices:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30        # MarketStack /v2/commodities is ~1 call/min → 12 names ≈ 12-13 min
+    permissions:
+      contents: write
+    env:
+      # MarketStack key for the 12 commodity pulls. strategicmetalsinvest + ECB FX
+      # need no auth. Canonical secret name (do NOT repoint — see fetch-data.yml note).
+      MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      # Calculators are stdlib-only (currency_convert / fetch_fx / marketstack_client),
+      # so no `pip install` is needed for this job.
+
+      - name: Reject conflict markers (#55 CI backstop)
+        run: python scripts/check_conflict_markers.py
+
+      # Commodities: forward-append one weekly point. Loads the stored base prices
+      # + fixed live weights (never recomputed; price-pending names never auto-added),
+      # pulls live spot (MS 12 + SMI 8 + ECB FX refresh), computes
+      #   index = 1000 * Σ(live_weight_i * usd_price_i/base_i)
+      # and appends (idempotent: a same-week re-run updates in place).
+      - name: Calculate Commodities Index (weekly forward-append)
+        run: python scripts/calculate_commodities_index.py
+
+      # Composite: forward-append the 75/25 blend point from the prior mark's frozen
+      # leg samples (equities = robotnik_index.json nearest-prior; commodities leg =
+      # the point just appended above). Forward-only; prior points never recomputed.
+      - name: Calculate Composite Index (75/25 weekly forward-append)
+        run: python scripts/calculate_composite_index.py
+
+      - name: Build home-page index summary (reads the published series only)
+        run: python scripts/build_index_summary.py
+
+      - name: Commit & push (rebase-before-push, regenerate summary after rebase)
+        run: |
+          git config user.name "Robotnik Pipeline"
+          git config user.email "data@robotniks.com"
+          git add data/index/commodities_index.json data/index/composite_index.json data/index/index_summary.json
+          if git diff --cached --quiet; then
+            echo "No weekly index changes — skipping commit"
+            exit 0
+          fi
+          git commit -m "data: weekly commodities + composite update $(date -u +%Y-%m-%d)"
+          MAX=5
+          n=0
+          until git push; do
+            n=$((n + 1))
+            if [ "$n" -gt "$MAX" ]; then echo "push failed after $MAX attempts — aborting" >&2; exit 1; fi
+            echo "push rejected — rebase onto origin/main + regenerate summary (attempt $n/$MAX)"
+            git fetch origin
+            if ! git rebase origin/main; then
+              # The ONLY file both jobs touch is index_summary.json (commodities_index.json /
+              # composite_index.json are weekly-only). Take either side to clear the rebase;
+              # the regenerate below is the authoritative reconcile (summary = f(data files)).
+              # The blob resolved here is intentionally irrelevant: build_index_summary.py regenerates index_summary.json on post-rebase data immediately after — this checkout exists only to satisfy `git rebase --continue`.
+              git checkout --theirs -- data/index/index_summary.json 2>/dev/null || true
+              git add data/index/index_summary.json
+              if ! GIT_EDITOR=true git rebase --continue; then
+                # rebase --continue failed → a conflict on a path OTHER than index_summary.json.
+                # Do NOT respin into a guaranteed-failing push; abort and fail loudly.
+                git rebase --abort
+                echo "unexpected conflict on a path other than index_summary.json — manual resolution required" >&2
+                exit 1
+              fi
+            fi
+            python scripts/build_index_summary.py
+            git add data/index/index_summary.json
+            git commit --amend --no-edit
+          done
+          echo "pushed"

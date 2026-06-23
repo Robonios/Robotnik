@@ -1,0 +1,59 @@
+{
+  "_comment": "Phase 1 registry expansion. Every addition is marked status='excluded', exclude_reason='supply_chain_node', enrichment='pending' so it resolves dependency edges but is INERT to the index (the reverse-parity guard requires non-excluded public names to be in the index; these are excluded, so exempt). Listing status verified via web (subsidiary/private/delisted flagged). No fabricated enrichment. apply_registry_phase1.py expands each compact record to the full registry structure and auto-detects alias-fixes.",
+  "additions": [
+    {"id": "7731 JP", "name": "NIKON CORP", "type": "public", "sector": "Semiconductors", "country": "Japan", "lifecycle_status": "public", "aliases": ["Nikon", "NIKON CORP"], "status_note": "public 7731/Tokyo"},
+    {"id": "7741 JP", "name": "HOYA CORP", "type": "public", "sector": "Semiconductors", "country": "Japan", "lifecycle_status": "public", "aliases": ["Hoya", "HOYA CORP"], "status_note": "public 7741/Tokyo; EUV mask blanks"},
+    {"id": "7912 JP", "name": "DAI NIPPON PRINTING CO", "type": "public", "sector": "Semiconductors", "country": "Japan", "lifecycle_status": "public", "aliases": ["DNP", "Dai Nippon Printing", "DAI NIPPON PRINTING CO"], "status_note": "public 7912/Tokyo; photomask/substrate"},
+    {"id": "7911 JP", "name": "TOPPAN HOLDINGS INC", "type": "public", "sector": "Semiconductors", "country": "Japan", "lifecycle_status": "public", "aliases": ["Toppan", "TOPPAN HOLDINGS INC"], "status_note": "public 7911/Tokyo (renamed from Toppan Inc 2023)"},
+    {"id": "8046 TT", "name": "NAN YA PRINTED CIRCUIT BOARD", "type": "public", "sector": "Semiconductors", "country": "Taiwan", "lifecycle_status": "public", "aliases": ["Nan Ya PCB", "Nan Ya Printed Circuit Board"], "status_note": "public 8046/Taiwan; ABF substrate"},
+    {"id": "ATS AV", "name": "AT&S AUSTRIA TECH & SYSTEMTECHNIK", "type": "public", "sector": "Semiconductors", "country": "Austria", "lifecycle_status": "public", "aliases": ["AT&S", "AT&S Austria Technologie & Systemtechnik"], "status_note": "public ATS/Vienna; ABF substrate"},
+    {"id": "600584", "name": "JCET GROUP CO", "type": "public", "sector": "Semiconductors", "country": "China", "lifecycle_status": "public", "aliases": ["JCET", "JCET Group"], "status_note": "public 600584/Shanghai; OSAT"},
+    {"id": "CC", "name": "THE CHEMOURS COMPANY", "type": "public", "sector": "Materials", "country": "United States", "lifecycle_status": "public", "aliases": ["Chemours", "THE CHEMOURS COMPANY"], "status_note": "public CC/NYSE"},
+    {"id": "TROX", "name": "TRONOX HOLDINGS PLC", "type": "public", "sector": "Materials", "country": "United States", "lifecycle_status": "public", "aliases": ["Tronox", "TRONOX HOLDINGS PLC"], "status_note": "public TROX/NYSE"},
+    {"id": "PPG", "name": "PPG INDUSTRIES INC", "type": "public", "sector": "Materials", "country": "United States", "lifecycle_status": "public", "aliases": ["PPG Industries", "PPG"], "status_note": "public PPG/NYSE"},
+    {"id": "6367 JP", "name": "DAIKIN INDUSTRIES LTD", "type": "public", "sector": "Materials", "country": "Japan", "lifecycle_status": "public", "aliases": ["Daikin", "DAIKIN INDUSTRIES LTD"], "status_note": "public 6367/Tokyo; fluorochemicals/etch gases"},
+    {"id": "2768 JP", "name": "SOJITZ CORP", "type": "public", "sector": "Materials", "country": "Japan", "lifecycle_status": "public", "aliases": ["Sojitz", "SOJITZ CORP"], "status_note": "public 2768/Tokyo; minerals/REE trading"},
+    {"id": "6471 JP", "name": "NSK LTD", "type": "public", "sector": "Robotics", "country": "Japan", "lifecycle_status": "public", "aliases": ["NSK", "NSK Ltd"], "status_note": "public 6471/Tokyo; bearings/motion"},
+    {"id": "SKFB SS", "name": "AB SKF", "type": "public", "sector": "Robotics", "country": "Sweden", "lifecycle_status": "public", "aliases": ["SKF", "AB SKF"], "status_note": "public SKF B/Stockholm; bearings"},
+    {"id": "BYS SW", "name": "BYSTRONIC AG", "type": "public", "sector": "Robotics", "country": "Switzerland", "lifecycle_status": "public", "aliases": ["Bystronic", "BYSTRONIC AG"], "status_note": "public BYS/SIX (ex-Conzzeta)"},
+    {"id": "600366", "name": "NINGBO YUNSHENG CO", "type": "public", "sector": "Materials", "country": "China", "lifecycle_status": "public", "aliases": ["Ningbo Yunsheng", "NINGBO YUNSHENG CO"], "status_note": "public 600366/Shanghai; REE magnets"},
+    {"id": "000970", "name": "BEIJING ZHONG KE SAN HUAN HI-TECH", "type": "public", "sector": "Materials", "country": "China", "lifecycle_status": "public", "aliases": ["Zhongke Sanhuan", "Beijing Zhong Ke San Huan"], "status_note": "public 000970/Shenzhen; REE magnets"},
+    {"id": "000660 KS", "name": "SK HYNIX INC", "type": "public", "sector": "Semiconductors", "country": "South Korea", "lifecycle_status": "public", "aliases": ["SK Hynix", "SK hynix", "SK HYNIX INC"], "status_note": "public 000660/Korea KRX; memory/HBM", "universe_review": "pending"},
+    {"id": "TXN", "name": "TEXAS INSTRUMENTS INC", "type": "public", "sector": "Semiconductors", "country": "United States", "lifecycle_status": "public", "aliases": ["Texas Instruments", "TXN"], "status_note": "public TXN/NASDAQ; analog (already a registry/index member — alias-merge only)"},
+    {"id": "2454 TT", "name": "MEDIATEK INC", "type": "public", "sector": "Semiconductors", "country": "Taiwan", "lifecycle_status": "public", "aliases": ["MediaTek", "MTK", "MEDIATEK INC"], "status_note": "public 2454/Taiwan; fabless", "universe_review": "pending"},
+    {"id": "GFS", "name": "GLOBALFOUNDRIES INC", "type": "public", "sector": "Semiconductors", "country": "United States", "lifecycle_status": "public", "aliases": ["GlobalFoundries", "GLOBALFOUNDRIES INC"], "status_note": "public GFS/NASDAQ; foundry", "universe_review": "pending"},
+
+    {"id": "2317 TT", "name": "HON HAI PRECISION INDUSTRY", "type": "public", "sector": "Semiconductors", "country": "Taiwan", "lifecycle_status": "public", "aliases": ["Foxconn", "Hon Hai", "HON HAI PRECISION INDUSTRY"], "status_note": "public 2317/Taiwan; EMS/assembly (added: referenced in edges)"},
+    {"id": "2382 TT", "name": "QUANTA COMPUTER INC", "type": "public", "sector": "Semiconductors", "country": "Taiwan", "lifecycle_status": "public", "aliases": ["Quanta Computer", "Quanta", "QUANTA COMPUTER INC"], "status_note": "public 2382/Taiwan; EMS/assembly (added: referenced in edges)"},
+    {"id": "4938 TT", "name": "PEGATRON CORP", "type": "public", "sector": "Semiconductors", "country": "Taiwan", "lifecycle_status": "public", "aliases": ["Pegatron", "PEGATRON CORP"], "status_note": "public 4938/Taiwan; EMS/assembly (added: referenced in edges)"},
+    {"id": "002475", "name": "LUXSHARE PRECISION INDUSTRY", "type": "public", "sector": "Semiconductors", "country": "China", "lifecycle_status": "public", "aliases": ["Luxshare", "LUXSHARE PRECISION INDUSTRY"], "status_note": "public 002475/Shenzhen; EMS/assembly (added: referenced in edges)"},
+    {"id": "603296", "name": "HUAQIN TECHNOLOGY CO", "type": "public", "sector": "Semiconductors", "country": "China", "lifecycle_status": "public", "aliases": ["Huaqin", "HUAQIN TECHNOLOGY CO"], "status_note": "public 603296/Shanghai; EMS/ODM (added: referenced in edges)"},
+    {"id": "FLEX", "name": "FLEX LTD", "type": "public", "sector": "Semiconductors", "country": "Singapore", "lifecycle_status": "public", "aliases": ["Flex", "FLEX LTD"], "status_note": "public FLEX/NASDAQ; EMS/assembly (added: referenced in edges)"},
+
+    {"id": "carl-zeiss-smt", "name": "Carl Zeiss SMT", "type": "private", "sector": "Semiconductors", "country": "Germany", "lifecycle_status": "private", "aliases": ["Carl Zeiss", "Carl Zeiss SMT"], "status_note": "private (Carl Zeiss AG; ASML 24.9% in SMT); EUV optics"},
+    {"id": "vdl-groep", "name": "VDL Groep", "type": "private", "sector": "Semiconductors", "country": "Netherlands", "lifecycle_status": "private", "aliases": ["VDL", "VDL Groep", "VDL ETG"], "status_note": "private (Van der Leegte family); ASML assembly"},
+    {"id": "hemlock-semiconductor", "name": "Hemlock Semiconductor", "type": "private", "sector": "Materials", "country": "United States", "lifecycle_status": "private", "aliases": ["Hemlock", "Hemlock Semiconductor"], "status_note": "private (Corning ~80.5% + Shin-Etsu JV); polysilicon"},
+    {"id": "schott", "name": "SCHOTT AG", "type": "private", "sector": "Materials", "country": "Germany", "lifecycle_status": "private", "aliases": ["Schott", "SCHOTT AG"], "status_note": "private (Carl Zeiss Foundation); specialty glass"},
+    {"id": "traxys", "name": "Traxys", "type": "private", "sector": "Materials", "country": "Luxembourg", "lifecycle_status": "private", "aliases": ["Traxys"], "status_note": "private; metals/minerals trading"},
+    {"id": "maxon", "name": "maxon motor", "type": "private", "sector": "Robotics", "country": "Switzerland", "lifecycle_status": "private", "aliases": ["maxon", "Maxon", "maxon motor"], "status_note": "private (Braun family); precision motors"},
+    {"id": "trumpf", "name": "TRUMPF SE", "type": "private", "sector": "Semiconductors", "country": "Germany", "lifecycle_status": "private", "aliases": ["TRUMPF", "Trumpf"], "status_note": "private (Leibinger family); EUV CO2 laser source"},
+    {"id": "arianegroup", "name": "ArianeGroup", "type": "private", "sector": "Space", "country": "France", "lifecycle_status": "private", "aliases": ["ArianeGroup"], "status_note": "private JV (Airbus + Safran); launch"},
+    {"id": "thales-alenia-space", "name": "Thales Alenia Space", "type": "private", "sector": "Space", "country": "France", "lifecycle_status": "private", "aliases": ["Thales Alenia Space"], "status_note": "private JV (Thales 67% + Leonardo 33%); satellites"},
+    {"id": "ula", "name": "United Launch Alliance", "type": "private", "sector": "Space", "country": "United States", "lifecycle_status": "private", "aliases": ["ULA", "United Launch Alliance"], "status_note": "private JV (Boeing + Lockheed); launch"},
+    {"id": "shinko-electric", "name": "Shinko Electric Industries", "type": "private", "sector": "Semiconductors", "country": "Japan", "lifecycle_status": "private", "aliases": ["Shinko", "Shinko Electric Industries"], "status_note": "DELISTED 2025-06 (JIC consortium); ABF substrate"},
+    {"id": "kuka", "name": "KUKA AG", "type": "private", "sector": "Robotics", "country": "Germany", "lifecycle_status": "private", "aliases": ["KUKA", "Kuka", "KUKA AG"], "status_note": "DELISTED 2022 (Midea 100%); industrial robots"},
+    {"id": "proterial", "name": "Proterial Ltd", "type": "private", "sector": "Materials", "country": "Japan", "lifecycle_status": "private", "aliases": ["Proterial", "Hitachi Metals", "Proterial Ltd"], "status_note": "DELISTED 2022, renamed from Hitachi Metals (Bain consortium); magnets/specialty metals"},
+    {"id": "maxar", "name": "Maxar Technologies", "type": "private", "sector": "Space", "country": "United States", "lifecycle_status": "private", "aliases": ["Maxar", "Maxar Technologies"], "status_note": "DELISTED 2023 (Advent take-private); EO/satellites"}
+  ],
+  "manual_aliases": [
+    {"entity_id": "LHX", "add_aliases": ["Aerojet Rocketdyne"], "reason": "subsidiary of L3Harris (acquired 2023)"},
+    {"entity_id": "BA", "add_aliases": ["Aurora Flight Sciences", "Spectrolab"], "reason": "Boeing subsidiaries"},
+    {"entity_id": "eutelsat", "add_aliases": ["OneWeb", "Eutelsat OneWeb"], "reason": "merged into Eutelsat 2023"}
+  ],
+  "keep_external_parent_absent": [
+    {"name": "Snecma", "parent": "Safran (not in registry)"},
+    {"name": "Intelsat", "parent": "SES (not in registry; acquisition closed Jul 2025)"},
+    {"name": "Azur Space", "parent": "5N Plus (not in registry)"},
+    {"name": "LeoStella", "parent": "BlackSky (not in registry)"}
+  ]
+}
