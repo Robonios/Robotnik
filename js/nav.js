@@ -351,6 +351,12 @@
       tags: ['r1', 'thesis', 'frontier stack', 'reference', 'asset class', 'control point', 'control points', 'bottleneck', 'pure play', 'pure-play', 'semiconductors', 'robotics', 'space', 'critical materials'],
       type: 'reference',
       url: '/research/frontier-stack-thesis',
+    }, {
+      title: 'The Frontier Stack Universe: How Robotnik Decides Which Companies Belong',
+      desc: 'Reference · the universe membership rule — the core-business test for what is in and out',
+      tags: ['r2', 'universe', 'membership', 'reference', 'core business', 'core-business test', 'inclusion', 'pure play', 'pure-play', 'sectors', 'frontier stack', 'which companies belong'],
+      type: 'reference',
+      url: '/research/universe-membership',
     }];
 
     var _datasets = null;

@@ -22,6 +22,10 @@ PAGES = [
     ("",                                                        "1.0",    "daily"),    # homepage (index.html)
     ("news.html",                                               "0.8",    "daily"),
     ("research.html",                                           "0.8",    "monthly"),
+    # Reference library articles: extensionless canonical URL served by GitHub
+    # Pages; lastmod is read from the .html file via the optional 4th element.
+    ("research/frontier-stack-thesis",                          "0.9",    "monthly", "research/frontier-stack-thesis.html"),
+    ("research/universe-membership",                            "0.8",    "monthly", "research/universe-membership.html"),
     ("report-1Q26.html",                                        "0.9",    "weekly"),
     ("reports/1Q26-State-of-the-Frontier-Stack.pdf",            "0.8",    "monthly"),
     ("assets.html",                                             "0.8",    "weekly"),
@@ -58,14 +62,18 @@ def build_sitemap() -> str:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for path, priority, changefreq in PAGES:
+    for entry in PAGES:
+        path, priority, changefreq = entry[0], entry[1], entry[2]
+        # Optional 4th element: source file to read lastmod from, used when the
+        # public URL is extensionless and so does not match a file on disk.
+        src = entry[3] if len(entry) > 3 else path
         url = f"{BASE_URL}/{path}".rstrip("/") if path == "" else f"{BASE_URL}/{path}"
         # Canonical homepage = trailing-slash form
         if path == "":
             url = f"{BASE_URL}/"
         lines.append("  <url>")
         lines.append(f"    <loc>{url}</loc>")
-        lines.append(f"    <lastmod>{last_commit_date(path)}</lastmod>")
+        lines.append(f"    <lastmod>{last_commit_date(src)}</lastmod>")
         lines.append(f"    <changefreq>{changefreq}</changefreq>")
         lines.append(f"    <priority>{priority}</priority>")
         lines.append("  </url>")

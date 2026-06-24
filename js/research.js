@@ -46,7 +46,7 @@
       { id: 'R8', title: 'Product overview / showcase', sub: 'What the platform is and does' }
     ] },
     { group: 'Foundations', items: [
-      { id: 'R2', title: 'Universe membership methodology', sub: 'What qualifies as a Robotnik entity, and when it enters / leaves' },
+      { id: 'R2', title: 'Universe membership methodology', sub: 'What qualifies as a Robotnik entity, and when it enters / leaves', url: '/research/universe-membership', live: true },
       { id: 'R9', title: 'The 8-tier value chain', sub: 'The positional taxonomy locating every entity' },
       { id: 'R10', title: 'The 9 layers of structured context', sub: 'The schema describing each entity' },
       { id: 'R12', title: 'Data & sources methodology', sub: 'Sources, FX, corrections, the anti-fabrication / UNRATED standard' }
