@@ -110,9 +110,9 @@
   },
 
   "references": [
-    { "id": "value-chain",  "kind": "Classification", "name": "The eight-tier value chain", "blurb": "How every asset is placed on the stack — upstream materials through software & services.", "url": "/reference/value-chain" },
-    { "id": "criticality",  "kind": "Scoring",        "name": "The bottleneck-criticality rating", "blurb": "Low → critical. How we score a node's leverage over the rest of the stack.", "url": "/reference/criticality" },
-    { "id": "membership",   "kind": "Standard",       "name": "The membership standard", "blurb": "What qualifies an entity for the universe, public or private.", "url": "/reference/membership" },
-    { "id": "cornerstone",  "kind": "Report",         "name": "1Q26 · State of the Frontier Stack", "blurb": "The cornerstone report. The framework, the universe and the first index print.", "url": "report-1Q26.html" }
+    { "id": "value-chain",  "kind": "Foundations",  "name": "The 8-tier value chain", "blurb": "The positional taxonomy locating every entity." },
+    { "id": "criticality",  "kind": "Index family", "name": "Bottleneck criticality methodology", "blurb": "Low → critical — how we score a node's leverage over the rest of the stack." },
+    { "id": "membership",   "kind": "Foundations",  "name": "Universe membership methodology", "blurb": "What qualifies as a Robotnik entity, and when it enters / leaves.", "url": "research/universe-membership", "live": true },
+    { "id": "data-sources", "kind": "Foundations",  "name": "Data & sources methodology", "blurb": "Sources, FX, corrections, the anti-fabrication / UNRATED standard." }
   ]
 }

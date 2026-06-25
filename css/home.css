@@ -133,8 +133,11 @@ body[data-page="home"] { background: var(--bg); }
 /* ============================================================
    HERO
    ============================================================ */
-.hero { padding-top: .5rem; }
-.hero-head { max-width: 60rem; margin-bottom: 1.5rem; }
+.hero { padding-top: .25rem; }
+/* Un-boxed hero: the headline spans the full content width and the lede sits
+   beneath it at a ~72ch reading measure (≈ two lines instead of five). The
+   footprint is trimmed so the Frontier Stack map rises toward the fold. */
+.hero-head { max-width: none; margin-bottom: 1rem; }
 .kicker {
   display: inline-block;
   font-family: var(--sans);
@@ -144,17 +147,17 @@ body[data-page="home"] { background: var(--bg); }
 }
 .hero-title {
   font-family: var(--sans);
-  font-size: clamp(2rem, 4.4vw, 3.1rem);
-  font-weight: 700; line-height: 1.04;
+  font-size: clamp(1.9rem, 3.7vw, 2.85rem);
+  font-weight: 700; line-height: 1.05;
   letter-spacing: -.01em;
   color: var(--ink);
-  margin: .6rem 0 0;
+  margin: .25rem 0 0;
 }
 .hero-lede {
   font-family: var(--prose);
   font-size: 15px; line-height: 1.6;
   color: var(--ink-dim);
-  margin: .9rem 0 0; max-width: 56ch;
+  margin: .6rem 0 0; max-width: none;
 }
 .hero-lede strong { color: var(--ink); font-weight: 700; }
 
@@ -187,7 +190,7 @@ body[data-page="home"] { background: var(--bg); }
   display: grid;
   grid-template-columns: minmax(0, 1fr) 300px;
   gap: 1.25rem;
-  margin-top: 1.5rem;
+  margin-top: 1.1rem;
   align-items: start;
 }
 
@@ -327,9 +330,35 @@ body[data-page="home"] { background: var(--bg); }
    ============================================================ */
 .index-family-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: .85rem;
 }
+/* Lead tile (positional emphasis — Public Equities): spans the full row above
+   the 2×2 of the other four, carries the subtle yellow accent with NO label,
+   and pairs the headline read (left) with a larger trend (right). No empty
+   hole at any width. */
+.index-tile.is-lead {
+  grid-column: 1 / -1;
+  border-color: rgba(245,217,33,.32);
+  background: linear-gradient(180deg, rgba(245,217,33,.05), var(--panel));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  grid-template-areas:
+    "top   spark"
+    "val   spark"
+    "chg   spark"
+    "blurb spark"
+    "link  spark";
+  grid-template-rows: auto auto auto 1fr auto;
+  column-gap: 1.75rem;
+}
+.index-tile.is-lead .index-tile-top   { grid-area: top; }
+.index-tile.is-lead .index-tile-val   { grid-area: val; }
+.index-tile.is-lead .index-tile-chg   { grid-area: chg; }
+.index-tile.is-lead .index-tile-blurb { grid-area: blurb; max-width: 46ch; }
+.index-tile.is-lead .index-spark      { grid-area: spark; align-self: center; margin-top: 0; padding-top: 0; }
+.index-tile.is-lead .index-spark svg  { height: 92px; }
+.index-tile.is-lead .index-tile-links { grid-area: link; }
 .index-tile {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -340,7 +369,7 @@ body[data-page="home"] { background: var(--bg); }
   transition: border-color .15s, transform .15s;
 }
 .index-tile:hover { border-color: var(--line-2); transform: translateY(-2px); }
-.index-tile.is-flagship { border-color: rgba(245,217,33,.3); background: linear-gradient(180deg, rgba(245,217,33,.04), var(--panel)); }
+/* (flagship accent retired — lead emphasis now lives on .index-tile.is-lead) */
 .index-tile.is-soon { opacity: .72; }
 .index-tile-top { display: flex; align-items: flex-start; justify-content: space-between; gap: .5rem; }
 .index-tile-name { font-family: var(--sans); font-size: 12.5px; font-weight: 600; color: var(--ink); line-height: 1.25; }
@@ -361,6 +390,9 @@ body[data-page="home"] { background: var(--bg); }
 .index-tile-links { display: flex; gap: 1rem; margin-top: .7rem; padding-top: .65rem; border-top: 1px solid var(--line); }
 .index-tile-links a { font-family: var(--sans); font-size: 10.5px; font-weight: 600; color: var(--ink-dim); text-decoration: none; transition: color .15s; }
 .index-tile-links a:hover { color: var(--brand); }
+/* Quiet "coming soon" state for the detail link until a per-index page ships. */
+.index-tile-soon { font-family: var(--sans); font-size: 10.5px; font-weight: 600; color: var(--ink-faint); cursor: default; display: inline-flex; align-items: center; gap: .45rem; }
+.index-tile-soon::after { content: 'soon'; font-size: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); border: 1px solid var(--line-2); border-radius: 4px; padding: 1px 5px; }
 
 /* Product tile (sits in the index-family grid) */
 .product-tile {
@@ -511,6 +543,12 @@ body[data-page="home"] { background: var(--bg); }
 .ref-blurb { font-family: var(--prose); font-size: 11.5px; line-height: 1.5; color: var(--ink-dim); margin-top: .5rem; }
 .ref-arrow { margin-top: auto; padding-top: .7rem; font-family: var(--sans); font-size: 11px; font-weight: 600; color: var(--ink-faint); transition: color .15s; }
 .ref-card:hover .ref-arrow { color: var(--brand); }
+/* Coming-soon reference (page not yet published): quiet, non-interactive. */
+.ref-card.is-soon { cursor: default; }
+.ref-card.is-soon:hover { border-color: var(--line); transform: none; background: var(--panel); }
+/* Link from the curated home subset to the full library on the research page. */
+.reference-more { display: inline-flex; align-items: center; gap: .4rem; margin-top: 1.1rem; font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--brand); text-decoration: none; }
+.reference-more:hover { text-decoration: underline; }
 
 /* ============================================================
    PREVIEW FOOTNOTE
@@ -539,6 +577,8 @@ body[data-page="home"] { background: var(--bg); }
 @media (max-width: 640px) {
   .home { padding: 1rem 1rem 3rem; }
   .index-family-grid, .sector-grid, .reference-grid, .control-points-grid { grid-template-columns: 1fr; }
+  .index-tile.is-lead { grid-template-columns: 1fr; grid-template-areas: "top" "val" "chg" "blurb" "spark" "link"; }
+  .index-tile.is-lead .index-spark svg { height: 56px; }
   .hero-proof { gap: 1rem; }
 }
 

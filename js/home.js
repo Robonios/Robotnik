@@ -107,25 +107,24 @@
 
   // ---------------------------------------------------------- INDEX FAMILY
   // s = index_summary.json entry (numbers/status/series); ed = home.json editorial
-  // (display name, blurb, links). isFlag = derived flagship for this key.
-  function indexTile(key, s, ed, isFlag) {
+  // (display name, blurb, links). isLead = positional lead tile (visual only).
+  function indexTile(key, s, ed, isLead) {
     ed = ed || {};
     if (!s) return '';
     var name = esc(ed.name || s.name);
-    var fullLinks =
-      '<div class="index-tile-links">' +
-        '<a href="' + PLACEHOLDER_URL + '">Detailed chart &rarr;</a>' +
-        '<a href="' + PLACEHOLDER_URL + '">Methodology &rarr;</a>' +
-      '</div>';
+    // One "Examine in detail" affordance per tile. No per-index detail /
+    // methodology page is published yet, so this renders as a quiet "coming
+    // soon" state rather than a dead link; when a page ships, set ed.detailUrl.
+    var detail = (ed.detailUrl)
+      ? '<div class="index-tile-links"><a href="' + esc(ed.detailUrl) + '">Examine in detail &rarr;</a></div>'
+      : '<div class="index-tile-links"><span class="index-tile-soon" aria-disabled="true">Examine in detail</span></div>';
     // Not-yet-live: only a genuine soon status reads "Soon" (none today).
     if (s.status === 'soon') {
       return '<div class="index-tile is-soon">' +
         '<div class="index-tile-top"><span class="index-tile-name">' + name + '</span>' +
           '<span class="index-tag soon">Soon</span></div>' +
         '<div class="index-tile-val">—</div>' +
-        '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' +
-        '<div class="index-tile-links"><a href="' + PLACEHOLDER_URL + '">Methodology &rarr;</a></div>' +
-        '</div>';
+        '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' + detail + '</div>';
     }
     // Calibrating, or live-but-stale (fresh_through != as_of): no current value.
     if (s.status === 'calibrating' || !isFresh(s)) {
@@ -133,11 +132,10 @@
         '<div class="index-tile-top"><span class="index-tile-name">' + name + '</span>' +
           '<span class="index-tag calibrating">Calibrating</span></div>' +
         '<div class="index-tile-val pending">&mdash; calibrating</div>' +
-        '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' + fullLinks + '</div>';
+        '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' + detail + '</div>';
     }
-    // Live.
-    var tag = isFlag ? '<span class="index-tag flagship">Flagship</span>'
-            : s.cadence ? '<span class="index-tag cadence">' + esc(s.cadence) + '</span>' : '';
+    // Live. Cadence badge only — no flagship label (lead is positional/visual).
+    var tag = s.cadence ? '<span class="index-tag cadence">' + esc(s.cadence) + '</span>' : '';
     var oneY = ret1y(s), chg = '';
     if (isNum(oneY)) {
       var up = oneY >= 0;
@@ -147,11 +145,11 @@
     }                                        // else: real index missing 1Y but with other horizons -> no 1Y line
     var vals = seriesVals(s);
     var sparkHtml = vals.length >= 2 ? spark(vals, SPARK_COLOR[key] || '#F5D921') : '';
-    return '<div class="index-tile' + (isFlag ? ' is-flagship' : '') + '">' +
+    return '<div class="index-tile' + (isLead ? ' is-lead' : '') + '">' +
       '<div class="index-tile-top"><span class="index-tile-name">' + name + '</span>' + tag + '</div>' +
       '<div class="index-tile-val">' + num(s.value, 2) + '</div>' + chg +
       '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' +
-      '<div class="index-spark">' + sparkHtml + '</div>' + fullLinks + '</div>';
+      '<div class="index-spark">' + sparkHtml + '</div>' + detail + '</div>';
   }
 
   function renderIndexFamily(d, sum) {
@@ -159,20 +157,13 @@
     if (!host) return;
     var ix = (sum && sum.indexes) || {};
     var ed = d.indexes || {};
-    var flagKey = flagshipKey(sum);
-    var order = ['composite', 'bottleneck', 'public', 'commodities', 'private'];
-    var html = order.map(function (k) { return indexTile(k, ix[k], ed[k], k === flagKey); }).join('');
-    // product tile (editorial; unchanged)
-    var p = d.product;
-    if (p) {
-      html += '<div class="product-tile">' +
-        '<div class="index-tile-top"><span class="index-tile-name">' + esc(p.name) + '</span>' +
-          '<span class="index-tag cadence">Product</span></div>' +
-        '<div class="product-mini"><img class="product-mini-bot" src="robotlogo.png" alt=""></div>' +
-        '<a class="product-tile-link" href="' + esc(p.url || '#') + '">Product showcase &rarr;</a>' +
-        '</div>';
-    }
-    host.innerHTML = html;
+    // Order: the two mature daily indices, then the monthly private index, then
+    // the two forward-only weekly indices last (RCI ready to lead once it
+    // carries history). Public Equities leads — positional emphasis, no label.
+    var order = ['public', 'bottleneck', 'private', 'composite', 'commodities'];
+    host.innerHTML = order.map(function (k, i) {
+      return indexTile(k, ix[k], ed[k], i === 0);
+    }).join('');
   }
 
   // ---------------------------------------------------------- SECTOR CARDS
@@ -262,13 +253,25 @@
     var host = $('reference-library');
     if (!host) return;
     host.innerHTML = (d.references || []).map(function (r) {
-      return '<a class="ref-card" href="' + esc(r.url || '#') + '">' +
+      var inner =
         '<span class="ref-kind">' + esc(r.kind) + '</span>' +
         '<span class="ref-name">' + esc(r.name) + '</span>' +
-        '<span class="ref-blurb">' + esc(r.blurb || '') + '</span>' +
-        '<span class="ref-arrow">Open &rarr;</span>' +
-        '</a>';
+        '<span class="ref-blurb">' + esc(r.blurb || '') + '</span>';
+      // Published reference pages render as a real link; the rest stay quiet
+      // "coming soon" stubs (matches research.html's reference treatment).
+      if (r.live && r.url) {
+        return '<a class="ref-card" href="' + esc(r.url) + '">' + inner +
+          '<span class="ref-arrow">Open &rarr;</span></a>';
+      }
+      return '<div class="ref-card is-soon">' + inner +
+        '<span class="ref-arrow">Coming soon</span></div>';
     }).join('');
+    // The home library is a curated subset — point to the full set on the
+    // research page (Reference & methodology section).
+    var more = '<a class="reference-more" href="research.html#rh-ref-title">Full reference library &rarr;</a>';
+    if (host.parentNode && !host.parentNode.querySelector('.reference-more')) {
+      host.insertAdjacentHTML('afterend', more);
+    }
   }
 
   // ---------------------------------------------------------- RESEARCH RAIL

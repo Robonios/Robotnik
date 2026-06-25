@@ -74,11 +74,18 @@
     function Y(v) { return h - pad - ((v - min) / span) * (h - pad * 2); }
     var line = series.map(function (v, i) { return X(i).toFixed(1) + ',' + Y(v).toFixed(1); }).join(' ');
     var area = '0,' + h + ' ' + line + ' ' + w + ',' + h;
+    // last point, for the end-marker (drawn in screen pixels below)
+    var lx = X(n - 1).toFixed(1), ly = Y(series[n - 1]).toFixed(1);
     return '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" aria-hidden="true">' +
       '<polygon points="' + area + '" fill="' + color + '" fill-opacity="0.13" stroke="none"/>' +
       '<polyline points="' + line + '" fill="none" stroke="' + color + '" stroke-width="1.6" ' +
       'stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>' +
-      '<circle cx="' + w.toFixed(1) + '" cy="' + Y(series[n - 1]).toFixed(1) + '" r="1.9" fill="' + color + '"/>' +
+      // End marker: a zero-length round-cap stroke. With vector-effect
+      // "non-scaling-stroke" the cap is sized in screen pixels, so it stays a
+      // clean circular dot even though the SVG is stretched non-uniformly
+      // (preserveAspectRatio="none" stretches x but not y). A scaled <circle>
+      // here renders as a horizontally-stretched ellipse — the old bug.
+      '<path d="M' + lx + ',' + ly + ' ' + lx + ',' + ly + '" stroke="' + color + '" stroke-width="3.2" stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke"/>' +
       '</svg>';
   }
 

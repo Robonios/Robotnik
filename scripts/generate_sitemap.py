@@ -15,19 +15,20 @@ SITEMAP_PATH = ROOT / "sitemap.xml"
 BASE_URL = "https://robotnik.world"
 
 # Canonical public pages (must match js/nav.js + what we actually want indexed).
-# Orphan pages (intelligence.html, thesis.html, tetris.html) are intentionally
-# excluded — they're not in the nav and shouldn't be advertised.
+# Orphan pages (intelligence.html, tetris.html) are intentionally excluded —
+# they're not in the nav and shouldn't be advertised.
+# Retired surfaces (report-1Q26.html, thesis.html, the 1Q26 PDF) are hard-excluded
+# via the RETIRED set below — never emitted, even if an entry lingers in PAGES.
 PAGES = [
     # (path,                                                   priority, changefreq)
     ("",                                                        "1.0",    "daily"),    # homepage (index.html)
+    ("about",                                                   "0.6",    "monthly", "about.html"),  # /about (extensionless), lastmod from about.html
     ("news.html",                                               "0.8",    "daily"),
     ("research.html",                                           "0.8",    "monthly"),
     # Reference library articles: extensionless canonical URL served by GitHub
     # Pages; lastmod is read from the .html file via the optional 4th element.
     ("research/frontier-stack-thesis",                          "0.9",    "monthly", "research/frontier-stack-thesis.html"),
     ("research/universe-membership",                            "0.8",    "monthly", "research/universe-membership.html"),
-    ("report-1Q26.html",                                        "0.9",    "weekly"),
-    ("reports/1Q26-State-of-the-Frontier-Stack.pdf",            "0.8",    "monthly"),
     ("assets.html",                                             "0.8",    "weekly"),
     ("funding.html",                                            "0.8",    "weekly"),
     ("portfolio.html",                                          "0.5",    "yearly"),
@@ -58,12 +59,24 @@ def last_commit_date(relpath: str) -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
+# Retired surfaces — the HTML pages are served as noindex redirect stubs, the PDF
+# is simply withdrawn; never advertise any of them in the sitemap. Durable:
+# skipped even if an entry is still present in / re-added to PAGES above.
+RETIRED = {
+    "report-1Q26.html",
+    "thesis.html",
+    "reports/1Q26-State-of-the-Frontier-Stack.pdf",
+}
+
+
 def build_sitemap() -> str:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for entry in PAGES:
         path, priority, changefreq = entry[0], entry[1], entry[2]
+        if path in RETIRED:
+            continue
         # Optional 4th element: source file to read lastmod from, used when the
         # public URL is extensionless and so does not match a file on disk.
         src = entry[3] if len(entry) > 3 else path
