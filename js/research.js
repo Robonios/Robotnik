@@ -53,7 +53,7 @@
       { id: 'R12', title: 'Data & sources methodology', sub: 'Sources, FX, corrections, the anti-fabrication / UNRATED standard' }
     ] },
     { group: 'Index family', items: [
-      { id: 'R4', title: 'Bottleneck criticality methodology' },
+      { id: 'R4', title: 'Bottleneck-weighted index', sub: 'How the universe is weighted by supply risk, and how each company is rated', url: '/research/bottleneck-weighted-index', live: true },
       { id: 'R5', title: 'Public equities methodology' },
       { id: 'R6', title: 'Private market shadow index (RPCI) methodology' },
       { id: 'R7', title: 'Commodities index methodology' },

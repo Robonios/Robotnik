@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/bottleneck-weighted-index.html; GitHub Pages also
+     serves it extensionless at /research/bottleneck-weighted-index (the canonical).
+     The shared nav.js injects RELATIVE links (index.html, robotlogo.png), so
+     <base href="/"> makes them resolve to the site root from this subdirectory.
+     All of this page's own asset references are root-absolute and unaffected. -->
+<base href="/">
+<title>The Bottleneck-Weighted Index: Weighting by Supply Risk</title>
+<meta name="description" content="How the bottleneck-weighted index tilts Robotnik's frontier-stack universe towards the companies most exposed to a supply-chain shock, and how each is rated.">
+<link rel="canonical" href="https://robotnik.world/research/bottleneck-weighted-index">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/bottleneck-weighted-index">
+<meta property="og:title" content="The Bottleneck-Weighted Index: Weighting by Supply Risk">
+<meta property="og:description" content="How the bottleneck-weighted index tilts Robotnik's frontier-stack universe towards the companies most exposed to a supply-chain shock, and how each is rated.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-06-26">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Bottleneck-Weighted Index: Weighting by Supply Risk">
+<meta name="twitter:description" content="How the bottleneck-weighted index tilts Robotnik's frontier-stack universe towards the companies most exposed to a supply-chain shock, and how each is rated.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage); author/publisher resolve to the canonical Organization entity (#organization). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The Bottleneck-Weighted Index: Weighting the Frontier Stack by Supply Risk",
+      "description": "How the bottleneck-weighted index tilts Robotnik's frontier-stack universe towards the companies most exposed to a supply-chain shock, and how each is rated.",
+      "url": "https://robotnik.world/research/bottleneck-weighted-index",
+      "datePublished": "2026-06-26",
+      "dateModified": "2026-06-26",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Frontier stack bottleneck-weighted index",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/bottleneck-weighted-index#bottleneck-weighted-index",
+          "name": "Bottleneck-weighted index",
+          "description": "An equity index that weights the frontier-stack universe by supply risk, multiplying each company's market-value weight by a factor set by its supply-risk rating, so the index tilts towards the companies most exposed to a supply-chain chokepoint."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/bottleneck-weighted-index#bottleneck-rating",
+          "name": "Bottleneck rating",
+          "description": "A categorical judgment of a company's supply-risk exposure on a four-level scale (critical, high, medium, low), based on how concentrated its position is and how hard it would be to substitute, recorded with its reasoning and a confidence level."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does the bottleneck-weighted index measure?", "acceptedAnswer": { "@type": "Answer", "text": "It measures the frontier-stack equity universe weighted by supply risk. It takes the same companies as the composite index and tilts their weights towards those most exposed to a supply-chain chokepoint, so the index leans towards the points where a disruption would do the most damage." } },
+        { "@type": "Question", "name": "How is it different from the composite index?", "acceptedAnswer": { "@type": "Answer", "text": "It holds the same companies as the composite, on the same eligibility rules. The composite weights by market value; the bottleneck index multiplies each weight by a factor set by the company's supply-risk rating. Against a market-value weighting of the same universe, the supply-risk tilt is the only difference. The published composite is also aggregated from its four sub-indices rather than held as one basket, so the clean comparison is to that plain market-value weighting." } },
+        { "@type": "Question", "name": "How does a company get its bottleneck rating?", "acceptedAnswer": { "@type": "Answer", "text": "By judgment, not formula. Each company is rated critical, high, medium, or low on how concentrated its position is and how hard it would be to substitute, with the reasoning and a confidence level recorded. Critical is a sole-source monopoly; low is a commodity position in a competitive field." } },
+        { "@type": "Question", "name": "Is the bottleneck rating taken from the control-point map?", "acceptedAnswer": { "@type": "Answer", "text": "No, though they share a scale and a method. The control-point methodology rates concentration at the level of materials; the bottleneck rating rates it at the level of companies. A company's rating is the analyst's own judgment of its exposure, reasoned the same way, not a figure computed from the material map. The two are aligned in method and maintained separately." } },
+        { "@type": "Question", "name": "Why are the multipliers set where they are?", "acceptedAnswer": { "@type": "Answer", "text": "The multipliers, four for critical down to one for low, express a judgment that more concentrated, less substitutable positions should weigh more, and roughly by how much. They are an analytical choice, not an empirically measured quantity, which is why the index is read as a directional signal rather than a precise number." } },
+        { "@type": "Question", "name": "Why is the index called a directional signal and not a headline number?", "acceptedAnswer": { "@type": "Answer", "text": "The multipliers are a chosen scale. The index shows reliably where supply risk concentrates and which way the weighting leans, but the size of the tilt rests on chosen factors, so the magnitude should be read as indicative." } },
+        { "@type": "Question", "name": "Does a critical company dominate the index?", "acceptedAnswer": { "@type": "Answer", "text": "No. A single-name cap of five per cent limits how far any one amplified company can pull the weighting, so even the largest holding is held to that ceiling. The realised tilt away from a market-value index is modest and contained." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R4 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  /* ---- live index chart (RBWC) — dark-theme index visual language ---- */
+  .rbwc-figure { margin: 0 0 2.75rem; }
+  .rbwc-card {
+    border: 1px solid var(--border); border-radius: 14px;
+    background: rgba(255,255,255,0.015);
+    padding: 1.05rem 1.2rem 0.85rem;
+  }
+  .rbwc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .rbwc-eyebrow { display: block; font-family: 'Space Grotesk', var(--font); font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em; color: var(--text); }
+  .rbwc-code { font-family: 'Space Grotesk', var(--font); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); }
+  .rbwc-stat { text-align: right; white-space: nowrap; }
+  .rbwc-val { display: block; font-family: 'Space Grotesk', var(--font); font-size: 1.55rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); line-height: 1.05; }
+  .rbwc-chg { font-family: 'Space Grotesk', var(--font); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text-dim); }
+  .rbwc-chg.up { color: #46d39a; }
+  .rbwc-chg.down { color: #ef6a6a; }
+  .rbwc-plot { height: 240px; margin: 0.5rem 0 0.25rem; }
+  .rbwc-svg { width: 100%; height: 100%; display: block; }
+  .rbwc-loading { height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-family: 'Mulish', var(--font); font-size: 0.9rem; }
+  .rbwc-axis { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; font-family: 'Space Grotesk', var(--font); font-size: 11px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+  .rbwc-ax-base { opacity: 0.85; }
+  .rbwc-card[data-state="error"] .rbwc-axis { display: none; }
+  .rbwc-cap { font-family: 'Mulish', var(--font); font-style: italic; font-size: 0.85rem; line-height: 1.55; color: var(--text-dim); margin: 0.85rem 0.1rem 0; }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+  .article-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(245,217,33,0.35); }
+  .article-body a:hover { border-bottom-color: var(--yellow); }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+    .rbwc-plot { height: 200px; }
+    .rbwc-val { font-size: 1.32rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    .rbwc-card { break-inside: avoid; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek, .rbwc-cap { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">The Bottleneck-Weighted Index: Weighting the Frontier Stack by Supply Risk</h1>
+    <p class="article-dek"><em>How Robotnik tilts the frontier-stack equity universe towards the companies most exposed to a supply-chain chokepoint, and how each company's exposure is rated.</em></p>
+  </header>
+
+  <!-- Live index chart. Reads index_summary.json -> /indexes/bottleneck (sourced
+       from bottleneck_weighted_composite.json by the daily job), exactly as the
+       homepage index grid does. The chart renders the live series; no static
+       fallback figure is committed. -->
+  <figure class="rbwc-figure" aria-labelledby="rbwc-cap">
+    <div class="rbwc-card" id="rbwc-chart" data-state="loading">
+      <div class="rbwc-head">
+        <div class="rbwc-id">
+          <span class="rbwc-eyebrow">Robotnik Bottleneck-Weighted Index</span>
+          <span class="rbwc-code">RBWC</span>
+        </div>
+        <div class="rbwc-stat">
+          <span class="rbwc-val" id="rbwc-val">&mdash;</span>
+          <span class="rbwc-chg" id="rbwc-chg"></span>
+        </div>
+      </div>
+      <div class="rbwc-plot" id="rbwc-plot"><div class="rbwc-loading">Loading live series&hellip;</div></div>
+      <div class="rbwc-axis" id="rbwc-axis"></div>
+    </div>
+    <figcaption class="rbwc-cap" id="rbwc-cap">The live Bottleneck-Weighted Index, based at 1,000 on 31 March 2025 and updated daily. A directional signal: it shows where supply risk concentrates and which way the weighting leans, not a precise headline level.</figcaption>
+  </figure>
+
+  <div class="article-body">
+
+    <p>The frontier stack can be weighted three ways, and Robotnik runs all three. The composite index weights it by market value, which answers what the stack is worth. The commodities index weights it by material dependence, which answers what it leans on. The bottleneck-weighted index weights it by supply risk, which answers where it is most exposed to a shock. This piece documents the third.</p>
+
+    <p>It is an equity index. It takes the frontier-stack universe, the same companies the composite holds, and tilts their weights by how exposed each one is to a supply-chain chokepoint. A company sitting on a genuine monopoly weighs more than its market value alone would give it; a company in a substitutable, competitive position weighs exactly what its market value says. The <a href="/research/control-points">control-point methodology</a> maps where those chokepoints sit in the supply chain. This index expresses the same exposure at the level of the companies that own or depend on them.</p>
+
+    <h2>What it weights, and why</h2>
+
+    <p>The lens is supply risk, and it is deliberately separate from the other two. Market value tells you the size of a company; material dependence tells you what a technology consumes; neither tells you what happens to a holding if a critical supplier is cut off. The bottleneck-weighted index is built to answer that one question. It amplifies the companies whose position is concentrated and hard to replace, and leaves the rest at their market weight, so the index leans towards the points where a disruption would do the most damage.</p>
+
+    <h2>How a company is rated</h2>
+
+    <p>Each company in the universe is given a supply-risk rating on a four-level scale: critical, high, medium, or low. The rating is a judgment, made from the same evidence the control-point work uses, how concentrated the company's position is, and how hard it would be to substitute.</p>
+
+    <p>The scale runs as follows. Critical is a genuine monopoly or sole-source position with no viable substitute; ASML's effective monopoly on extreme-ultraviolet lithography is the archetype. High is a category-dominant position where switching away is a multi-year, multi-billion undertaking: a leading-edge foundry, or the two firms that between them hold electronic-design automation. Medium is a position where a substitute exists but would need requalification or a redesign cycle to adopt. Low is a commodity position in a competitive field, where supply can be sourced elsewhere without much penalty. Each rating is recorded with the reasoning behind it and a confidence level, the same discipline the universe rulings follow.</p>
+
+    <p>There is no formula behind the rating. It is a categorical judgment, argued per company and open to challenge, not the output of an equation. The rigour is in the rubric and the recorded reasoning, which is what makes one analyst's critical the same as another's.</p>
+
+    <p>This is the same logic the control-point methodology applies, on the same four-level scale, but aimed at a different object. The control-point work rates concentration at the level of materials and process steps; the bottleneck rating rates it at the level of companies. The two are aligned in method and kept apart in practice: a company's rating is the analyst's own read of that company's exposure, reasoned the same way, not a figure computed from the material map. They share a scale and a way of thinking, not a data pipeline.</p>
+
+    <h2>How the weighting works</h2>
+
+    <p>A company's weight is its market value multiplied by a factor set by its rating. The factors are four for critical, two and a half for high, one and a half for medium, and one for low. A company with no rating is multiplied by one, so it carries its plain market weight and the index never penalises a name for being unrated. The weighted figures are then normalised to sum to the whole, and a single-name cap of five per cent is applied so that no one amplified mega-cap can dominate the result. The index is based at 1,000 on 31 March 2025.</p>
+
+    <p>The universe and the eligibility rules are identical to the composite index, by design. Measured against a market-value weighting of that same universe, the difference is the supply-risk tilt and nothing else, which is what lets the tilt be read on its own. (The published composite is aggregated from its four sub-indices rather than held as a single basket, so the clean comparison is to that plain market-value weighting, not to the headline composite level.)</p>
+
+    <h2>What the tilt actually does</h2>
+
+    <p>A four-times multiplier sounds as though it would let the most critical names overwhelm the index. The cap is there precisely to stop that. It limits how far any single amplified name can pull the weighting, so the realised tilt away from a market-value index is modest: the index leans towards the exposed names without being swung by the largest of them. The effect is a steady, contained tilt, not a dramatic reweighting, which is the intended behaviour for a signal meant to register where risk concentrates instead of chasing it.</p>
+
+    <h2>Where it is weakest</h2>
+
+    <p>The honest limits matter, because they set how the index should be read.</p>
+
+    <p>The multipliers are a chosen scale, not an empirical one. Four for critical and two and a half for high express a defensible judgment, that critical exposure should weigh more, and by roughly this much, but the exact numbers are an analytical choice, not a measured quantity. This is the main reason the index is a directional signal and not a precise number: it shows reliably where supply risk concentrates and which way the weighting leans, but the magnitude of the tilt rests on a chosen scale and should be read as indicative.</p>
+
+    <p>The ratings are categorical judgments, and they inherit the control-point discipline of separating what is established from what is still contested. A rating built on a well-documented monopoly is firmer than one on a position a reasonable analyst could read either way, and the confidence levels record the difference.</p>
+
+    <p>Coverage is broad but not complete. Most of the universe now carries a rating; the names not yet rated ride at no tilt, so they neither distort the index nor benefit from it. As more of the universe is rated, the unrated residual shrinks.</p>
+
+    <p>The construction projects current weights back across the history. The series is built from today's weights carried back over the whole period, the same method the composite uses, so it shows the shape of the current tilt over time, not a periodically rebalanced index. It is a picture of how the present supply-risk weighting would have moved, not a record of a weighting that was rebalanced month by month.</p>
+
+    <h2>How it fits the other lenses</h2>
+
+    <p>The three indices are built to be orthogonal. Value, material dependence, and supply risk are different questions, and weighting by each in turn keeps them separable. Taken together, they say what the stack is worth, what it consumes, and where it is exposed. Re-expressing one inside another would blur all three.</p>
+
+    <!-- Internal links (pending): "public-equities" -> R5 public equities methodology; "composite" -> R8 composite index methodology. Left as plain text until R5/R8 publish, then make live, as with R1-R3. The control-point methodology link is already live. -->
+    <p>This index is the company-level companion to the <a href="/research/control-points">control-point methodology</a>, which maps the same supply risk across materials and the supply chain. It also sits beside the public-equities and composite indices, which weight an overlapping universe by size; the construction here borrows their eligibility rules and their cap, and changes only the weighting. The mechanics of those indices are documented in their own methodologies.</p>
+
+    <p>One point of vocabulary. The bottleneck-weighted index is a reweighting of equities. The control-point map is a separate object that rates materials and chokepoints on the same critical-to-low scale. They share the scale and the reasoning, and they are different things: one tilts a stock index, the other maps a supply chain.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What does the bottleneck-weighted index measure?</h3>
+    <p>It measures the frontier-stack equity universe weighted by supply risk. It takes the same companies as the composite index and tilts their weights towards those most exposed to a supply-chain chokepoint, so the index leans towards the points where a disruption would do the most damage.</p>
+
+    <h3>How is it different from the composite index?</h3>
+    <p>It holds the same companies as the composite, on the same eligibility rules. The composite weights by market value; the bottleneck index multiplies each weight by a factor set by the company's supply-risk rating. Against a market-value weighting of the same universe, the supply-risk tilt is the only difference. The published composite is also aggregated from its four sub-indices rather than held as one basket, so the clean comparison is to that plain market-value weighting.</p>
+
+    <h3>How does a company get its bottleneck rating?</h3>
+    <p>By judgment, not formula. Each company is rated critical, high, medium, or low on how concentrated its position is and how hard it would be to substitute, with the reasoning and a confidence level recorded. Critical is a sole-source monopoly; low is a commodity position in a competitive field.</p>
+
+    <h3>Is the bottleneck rating taken from the control-point map?</h3>
+    <p>No, though they share a scale and a method. The control-point methodology rates concentration at the level of materials; the bottleneck rating rates it at the level of companies. A company's rating is the analyst's own judgment of its exposure, reasoned the same way, not a figure computed from the material map. The two are aligned in method and maintained separately.</p>
+
+    <h3>Why are the multipliers set where they are?</h3>
+    <p>The multipliers, four for critical down to one for low, express a judgment that more concentrated, less substitutable positions should weigh more, and roughly by how much. They are an analytical choice, not an empirically measured quantity, which is why the index is read as a directional signal rather than a precise number.</p>
+
+    <h3>Why is the index called a directional signal and not a headline number?</h3>
+    <p>The multipliers are a chosen scale. The index shows reliably where supply risk concentrates and which way the weighting leans, but the size of the tilt rests on chosen factors, so the magnitude should be read as indicative.</p>
+
+    <h3>Does a critical company dominate the index?</h3>
+    <p>No. A single-name cap of five per cent limits how far any one amplified company can pull the weighting, so even the largest holding is held to that ceiling. The realised tilt away from a market-value index is modest and contained.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<!-- RBWC live chart renderer: self-contained, reads the same feed the homepage
+     index grid uses. Accent #E0A33C matches the bottleneck series colour on the
+     home index family. preserveAspectRatio="none" + non-scaling strokes mirror
+     the site's sparkline visual language. -->
+<script>
+(function () {
+  var card = document.getElementById('rbwc-chart');
+  if (!card) return;
+  var ACCENT = '#E0A33C';
+
+  function fmt(n) {
+    if (n == null || isNaN(n)) return '—';
+    return Number(n).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  function fmtDate(s) {
+    if (!s) return '';
+    var d = new Date(s + 'T00:00:00Z');
+    if (isNaN(d.getTime())) return s;
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  }
+  function fail() {
+    card.setAttribute('data-state', 'error');
+    var p = document.getElementById('rbwc-plot');
+    if (p) p.innerHTML = '<div class="rbwc-loading">Live series unavailable just now.</div>';
+  }
+
+  fetch('/data/index/index_summary.json?v=' + Date.now())
+    .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+    .then(function (j) {
+      var b = j && j.indexes && j.indexes.bottleneck;
+      if (!b || !b.series || b.series.length < 2) throw new Error('no series');
+      render(b);
+    })
+    .catch(fail);
+
+  function render(b) {
+    var series = b.series.map(function (p) { return p.value; });
+    var dates  = b.series.map(function (p) { return p.date; });
+    var n = series.length;
+
+    document.getElementById('rbwc-val').textContent = fmt(b.value);
+    var oneY = b.returns && b.returns['1Y'];
+    if (oneY != null && !isNaN(oneY)) {
+      var up = oneY >= 0, chg = document.getElementById('rbwc-chg');
+      chg.textContent = (up ? '+' : '') + Number(oneY).toFixed(2) + '% · 1Y';
+      chg.className = 'rbwc-chg ' + (up ? 'up' : 'down');
+    }
+
+    var W = 720, H = 260, padT = 14, padB = 10;
+    var min = Math.min.apply(null, series), max = Math.max.apply(null, series);
+    var span = (max - min) || 1;
+    function X(i) { return (i / (n - 1)) * W; }
+    function Y(v) { return padT + (1 - (v - min) / span) * (H - padT - padB); }
+    var line = series.map(function (v, i) { return X(i).toFixed(1) + ',' + Y(v).toFixed(1); }).join(' ');
+    var area = '0,' + H + ' ' + line + ' ' + W + ',' + H;
+    var lx = X(n - 1).toFixed(1), ly = Y(series[n - 1]).toFixed(1);
+
+    var svg =
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" class="rbwc-svg" role="img" ' +
+        'aria-label="Line chart of the Robotnik Bottleneck-Weighted Index over the past year, ending at ' +
+        fmt(b.value) + ' on ' + fmtDate(b.as_of) + '.">' +
+        '<defs><linearGradient id="rbwc-grad" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0%" stop-color="' + ACCENT + '" stop-opacity="0.22"/>' +
+          '<stop offset="100%" stop-color="' + ACCENT + '" stop-opacity="0"/>' +
+        '</linearGradient></defs>' +
+        '<polygon points="' + area + '" fill="url(#rbwc-grad)" stroke="none"/>' +
+        '<polyline points="' + line + '" fill="none" stroke="' + ACCENT + '" stroke-width="2" ' +
+          'stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>' +
+        '<path d="M' + lx + ',' + ly + ' ' + lx + ',' + ly + '" stroke="' + ACCENT + '" stroke-width="6" ' +
+          'stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke"/>' +
+      '</svg>';
+    document.getElementById('rbwc-plot').innerHTML = svg;
+
+    document.getElementById('rbwc-axis').innerHTML =
+      '<span class="rbwc-ax-l">' + fmtDate(dates[0]) + '</span>' +
+      '<span class="rbwc-ax-base">Base 1,000 · 31 Mar 2025</span>' +
+      '<span class="rbwc-ax-r">' + fmtDate(dates[n - 1]) + '</span>';
+
+    card.setAttribute('data-state', 'ready');
+  }
+})();
+</script>
+<script src="/js/nav.js?v=20260626c"></script>
+</body>
+</html>

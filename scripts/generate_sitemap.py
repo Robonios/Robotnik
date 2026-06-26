@@ -30,6 +30,7 @@ PAGES = [
     ("research/frontier-stack-thesis",                          "0.9",    "monthly", "research/frontier-stack-thesis.html"),
     ("research/universe-membership",                            "0.8",    "monthly", "research/universe-membership.html"),
     ("research/control-points",                                 "0.8",    "monthly", "research/control-points.html"),
+    ("research/bottleneck-weighted-index",                      "0.8",    "monthly", "research/bottleneck-weighted-index.html"),
     ("assets.html",                                             "0.8",    "weekly"),
     ("funding.html",                                            "0.8",    "weekly"),
     ("portfolio.html",                                          "0.5",    "yearly"),

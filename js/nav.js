@@ -337,6 +337,12 @@
       tags: ['r3', 'control points', 'control point', 'chokepoint', 'choke point', 'bottleneck', 'dependency', 'dependencies', 'supply chain', 'gallium', 'reference', 'concentration', 'material node', 'blast radius'],
       type: 'reference',
       url: '/research/control-points',
+    }, {
+      title: 'The Bottleneck-Weighted Index: Weighting the Frontier Stack by Supply Risk',
+      desc: 'Reference · weighting the equity universe by supply risk, and how each company is rated',
+      tags: ['r4', 'bottleneck', 'bottleneck-weighted', 'bottleneck weighted index', 'supply risk', 'supply-risk', 'index', 'weighting', 'multiplier', 'tilt', 'critical', 'rating', 'rbwc', 'reference', 'chokepoint'],
+      type: 'reference',
+      url: '/research/bottleneck-weighted-index',
     }];
 
     var _datasets = null;
