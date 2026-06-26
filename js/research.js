@@ -43,20 +43,21 @@
   var REFERENCE = [
     { group: 'Front-door narrative', items: [
       { id: 'R1', title: 'Robotnik thesis', sub: 'Frontier tech as a coherent investable asset class, read through its control points', url: '/research/frontier-stack-thesis', live: true },
-      { id: 'R8', title: 'Product overview / showcase', sub: 'What the platform is and does' }
+      { title: 'Product overview / showcase', sub: 'What the platform is and does' }
     ] },
     { group: 'Foundations', items: [
       { id: 'R2', title: 'Universe membership methodology', sub: 'What qualifies as a Robotnik entity, and when it enters / leaves', url: '/research/universe-membership', live: true },
+      { id: 'R3', title: 'Control points', sub: 'How control points are found and the dependency map built', url: '/research/control-points', live: true },
       { id: 'R9', title: 'The 8-tier value chain', sub: 'The positional taxonomy locating every entity' },
       { id: 'R10', title: 'The 9 layers of structured context', sub: 'The schema describing each entity' },
       { id: 'R12', title: 'Data & sources methodology', sub: 'Sources, FX, corrections, the anti-fabrication / UNRATED standard' }
     ] },
     { group: 'Index family', items: [
-      { id: 'R3', title: 'Composite index methodology' },
       { id: 'R4', title: 'Bottleneck criticality methodology' },
       { id: 'R5', title: 'Public equities methodology' },
       { id: 'R6', title: 'Private market shadow index (RPCI) methodology' },
       { id: 'R7', title: 'Commodities index methodology' },
+      { id: 'R8', title: 'Composite index methodology' },
       { id: 'R11', title: 'Frontier Conditions', sub: 'The −100 / +100 diffusion index, planned' }
     ] }
   ];
@@ -116,7 +117,7 @@
     $('reference-groups').innerHTML = REFERENCE.map(function (g) {
       var cards = g.items.map(function (it) {
         var inner =
-          '<div class="rh-ref-top"><span class="rh-ref-id">' + esc(it.id) + '</span>' +
+          '<div class="rh-ref-top">' + (it.id ? '<span class="rh-ref-id">' + esc(it.id) + '</span>' : '') +
             '<span class="rh-ref-badges"><span class="rh-tier free">Free</span><span class="rh-tier reference">Reference</span></span></div>' +
           '<h3 class="rh-ref-title">' + esc(it.title) + '</h3>' +
           (it.sub ? '<p class="rh-ref-sub">' + esc(it.sub) + '</p>' : '');

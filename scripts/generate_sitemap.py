@@ -29,6 +29,7 @@ PAGES = [
     # Pages; lastmod is read from the .html file via the optional 4th element.
     ("research/frontier-stack-thesis",                          "0.9",    "monthly", "research/frontier-stack-thesis.html"),
     ("research/universe-membership",                            "0.8",    "monthly", "research/universe-membership.html"),
+    ("research/control-points",                                 "0.8",    "monthly", "research/control-points.html"),
     ("assets.html",                                             "0.8",    "weekly"),
     ("funding.html",                                            "0.8",    "weekly"),
     ("portfolio.html",                                          "0.5",    "yearly"),

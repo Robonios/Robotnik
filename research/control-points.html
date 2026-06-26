@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/control-points.html; GitHub Pages also serves it
+     extensionless at /research/control-points (the canonical). The shared nav.js
+     injects RELATIVE links (index.html, robotlogo.png), so <base href="/"> makes
+     them resolve to the site root from this subdirectory. All of this page's own
+     asset references are root-absolute and unaffected by the base. -->
+<base href="/">
+<title>Control Points: Mapping Frontier-Stack Dependencies</title>
+<meta name="description" content="How Robotnik finds control points in the frontier stack, the concentrated supply-chain points where value and risk gather, and maps the dependencies that connect them.">
+<link rel="canonical" href="https://robotnik.world/research/control-points">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/control-points">
+<meta property="og:title" content="Control Points: Mapping Frontier-Stack Dependencies">
+<meta property="og:description" content="How Robotnik finds control points in the frontier stack, the concentrated supply-chain points where value and risk gather, and maps the dependencies that connect them.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-06-26">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Control Points: Mapping Frontier-Stack Dependencies">
+<meta name="twitter:description" content="How Robotnik finds control points in the frontier stack, the concentrated supply-chain points where value and risk gather, and maps the dependencies that connect them.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage); author/publisher resolve to the canonical Organization entity (#organization). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Control Points: How Robotnik Maps the Frontier Stack's Dependencies",
+      "description": "How Robotnik finds control points in the frontier stack, the concentrated supply-chain points where value and risk gather, and maps the dependencies that connect them.",
+      "url": "https://robotnik.world/research/control-points",
+      "datePublished": "2026-06-26",
+      "dateModified": "2026-06-26",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Frontier stack control points",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/control-points#control-point",
+          "name": "Control point",
+          "description": "A place in the frontier stack's supply chain where a critical input is concentrated in a single source, a country, a company, or a process, such that a disruption there propagates through the sectors that depend on it. Concentration, criticality, and dependence must all hold."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/control-points#blast-radius",
+          "name": "Blast radius",
+          "description": "The full set of sectors and companies affected when a control point is disrupted, traced along supply-chain dependencies outward from the point of concentration."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is a control point?", "acceptedAnswer": { "@type": "Answer", "text": "A control point is a place in the frontier stack's supply chain where a critical input is concentrated in a single source, a country, a company, or a process step, so tightly that a disruption there propagates through every sector that depends on it. Concentration, criticality, and dependence all have to hold together." } },
+        { "@type": "Question", "name": "How is a control point different from an important input?", "acceptedAnswer": { "@type": "Answer", "text": "The stack depends on thousands of inputs. One becomes a control point only when its supply is concentrated enough to be choked, hard enough to substitute that the dependence cannot be routed around, and consumed in volumes that matter. Most critical inputs fail at least one of these tests and are not control points." } },
+        { "@type": "Question", "name": "How does Robotnik measure concentration?", "acceptedAnswer": { "@type": "Answer", "text": "Concentration is the share of supply held by the single largest source, a country, a firm, or a process, and it is recorded on the material itself. Some figures are verified to a standard; others are tracked but not yet confirmed, and are labelled as such rather than presented as settled." } },
+        { "@type": "Question", "name": "Does a supplier link in the dependency map mean a company is the only source?", "acceptedAnswer": { "@type": "Answer", "text": "No. An edge in the map records that a dependency exists, not how much flows through it or how exclusive it is. Concentration is established on the material node and never inferred from a single relationship. Robotnik does not read a sole-source claim off an edge." } },
+        { "@type": "Question", "name": "Is this a real-time monitoring tool?", "acceptedAnswer": { "@type": "Answer", "text": "No. The dependency map is curated intelligence, assembled and reviewed, not a live feed. It maps a structure that changes slowly, and it is built to make that structure legible, not to track it minute by minute." } },
+        { "@type": "Question", "name": "How does this relate to the companies in Robotnik's universe?", "acceptedAnswer": { "@type": "Answer", "text": "They answer different questions. The universe is the set of companies whose core business is the frontier stack. A control point can be held by a company whose frontier work is a minority of what it does, which keeps it out of the universe while still making it central to where the stack is exposed." } },
+        { "@type": "Question", "name": "What is a dependency analysis?", "acceptedAnswer": { "@type": "Answer", "text": "A dependency analysis applies this method to one case: it takes a named control point and traces what a disruption there would cascade into across the stack. The methodology here defines how that is done; each analysis is a specific application of it." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R3 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">Control Points: How Robotnik Maps the Frontier Stack's Dependencies</h1>
+    <p class="article-dek"><em>How Robotnik identifies the points where the frontier stack's supply chains concentrate, and maps the dependencies that carry a shock from one sector to the next.</em></p>
+  </header>
+
+  <div class="article-body">
+
+    <p>The frontier stack thesis makes one structural claim: semiconductors, robotics, space, and critical materials are a single system, because the same inputs run through all of them. The consequence is that a disruption in one place does not stay there. It travels along the dependencies the sectors share and surfaces as cost and risk somewhere that looks unconnected. This piece sets out how Robotnik finds the places where those dependencies concentrate, the control points, and how it maps the relationships that carry a shock from one to the next. The case for treating the four sectors as one is made in <a href="/research/frontier-stack-thesis">the frontier stack thesis</a>; this is the method that follows from it.</p>
+
+    <p>A control point is not simply an important input. The stack depends on thousands of materials and components. What sets a handful of them apart is that the supply is concentrated, in one country, one firm, or one process step, tightly enough that losing access to that single point disrupts everything downstream. The method below is how Robotnik separates those few from the many, and records what depends on them.</p>
+
+    <h2>What a control point is</h2>
+
+    <p>A control point is a place in the frontier stack's supply chain where a critical input is concentrated in a single source, a country, a company, or a process, such that a disruption there propagates through the sectors that depend on it.</p>
+
+    <p>Three properties have to hold at once. The input must be critical, meaning the stack cannot easily do without it or swap it for something else. It must be concentrated, meaning the supply sits with one country, firm, or process step instead of being spread widely. And the stack must depend on it, meaning real downstream production consumes it. An input that is critical but abundant is not a control point, because the supply cannot be choked. One that is concentrated but easily substituted is not one either, because the dependence can be routed around. The control points are the inputs where criticality, concentration, and dependence are all true together, and they are where value and risk gather.</p>
+
+    <h2>How Robotnik identifies one</h2>
+
+    <p>Each candidate is assessed on those three properties, using the structured fields Robotnik records for every material it tracks: where the supply is concentrated, what the substitution path looks like, and the policy context around it.</p>
+
+    <p>Concentration is the share of supply held by the single largest source. Gallium is roughly 98 per cent refined in China. Advanced photoresist is roughly 90 per cent made in Japan. A figure that high, on an input the stack cannot replace at scale, is the signature of a control point. Criticality is the substitution question: if the input were cut, could its function be met another way, and at what cost in performance, time, and money. The harder and slower the substitution, the more critical the input. Dependence is whether the stack consumes it in volumes that matter, which is what separates a control point from a laboratory curiosity.</p>
+
+    <p>The figures behind these calls are held to a standard, and not every node has cleared it. Some are verified. Others are tracked but still being confirmed, and Robotnik labels them that way instead of presenting them as settled. A concentration figure that has not been verified is marked tracked, not stated as fact. The map says plainly what it knows and what it is still checking, on the principle that a number which looks confirmed and is not does more damage than an acknowledged gap.</p>
+
+    <h2>The dependency map</h2>
+
+    <p>Identifying control points shows where the stack is concentrated. Mapping the dependencies shows what is connected to what. Robotnik records the supply chain as a graph: suppliers and consumers are the nodes, and a relationship between them, supplier to consumer, is an edge.</p>
+
+    <p>An edge records that a dependency exists. On its own it does not say how much flows through it or how exclusive it is, and that limit is deliberate. Concentration is a property of the material, established on the node and held to the standard above. It is never inferred from an edge. A single supplier relationship in the graph is not evidence that the supplier is the only source, and Robotnik does not read a sole-source claim off an edge. The quantified, load-bearing statements live on the nodes; the edges carry the structure, which company depends on which input, not the magnitudes. Holding the two apart is what keeps the map from manufacturing a precision it does not have.</p>
+
+    <h2>From a control point to a cascade</h2>
+
+    <p>The purpose of the map is to trace what a disruption does. When a control point is hit, the effect does not stop at the firms that buy from it directly. It runs along the edges, into their customers and their customers' customers, and because the four sectors share inputs, it crosses between them. One concentrated material can raise costs and stall production in robotics, space, and semiconductors at the same time, in sectors a conventional analyst would treat as unrelated. That spread is the blast radius, and making it visible is the entire reason for holding the stack as one system.</p>
+
+    <p>This piece defines the mechanism. Tracing a specific case, what actually breaks across the stack if a named control point is cut, is the work of Robotnik's dependency analyses. Each one applies this method to a single instance and links back to it.</p>
+
+    <h2>Worked examples</h2>
+
+    <p>Gallium is the cleanest case. Roughly 98 per cent of refining sits in China, there is no effective substitute for its use in high-performance compound semiconductors, and the stack's demand for it is concentrated in exactly those chips. Criticality, concentration, and dependence all hold, which is why one country's export policy on it registers as a frontier-stack event rather than a commodity footnote. Advanced photoresist is much the same: roughly 90 per cent of supply is Japanese, the chemistry is exacting and slow to qualify anywhere new, and no advanced chip is made without it. Neon, the gas used in lithography, is a third case: its supply has been concentrated in a small number of producers, which made it a documented point of fragility when that supply was interrupted.</p>
+
+    <p>Other choke points are named in the map but carried more carefully. CoWoS advanced packaging, ABF substrate film, and high-purity quartz are all tracked as control points, but their concentration figures are still being verified to the standard above, so they are recorded as tracked, not asserted here. They are named because the method has flagged them, not because the numbers are yet settled.</p>
+
+    <h2>Where this is weakest</h2>
+
+    <p>The limits matter, because the method's value depends on not overstating what it has.</p>
+
+    <p>Verification is incomplete. Several nodes, including some of the most-cited choke points, are tracked but not yet confirmed, and are labelled so. The edges are relationships, not measured flows; the graph records that a dependency exists, not its size or exclusivity, and it should not be read as if it did. The company-level associations in the graph are a starting point, not a finding: some are firm, others are provisional leads drawn from imperfect sources, and any specific claim about a named company is checked before it is published, not taken from the graph as given. And the whole thing is curated intelligence, assembled and reviewed, not a live feed. It maps a structure that moves slowly; it does not watch it in real time. The judgments about what counts as critical, and how concentrated counts as concentrated, are judgments, made on the stated tests and open to challenge.</p>
+
+    <h2>How it fits the other lenses</h2>
+
+    <p>A control point is not the same thing as a company in the universe. The <a href="/research/universe-membership">universe methodology</a> admits a company only when the frontier stack is its core business. A control point can be held by a firm whose frontier work is a minority of what it does, and which is therefore not a member. The two answer different questions: which companies are the stack, and where the stack is exposed. A name can be central to the second without belonging to the first.</p>
+
+    <!-- Internal link (pending): "the bottleneck-weighted index" -> R4 Bottleneck criticality methodology, when live. -->
+    <p>The control points identified here also feed the bottleneck-weighted index, which starts from market value and tilts it toward where supply risk concentrates. That construction is documented in its own methodology. This piece stops at finding control points and mapping the dependencies between them; turning that into an index weight is a separate step.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What is a control point?</h3>
+    <p>A control point is a place in the frontier stack's supply chain where a critical input is concentrated in a single source, a country, a company, or a process step, so tightly that a disruption there propagates through every sector that depends on it. Concentration, criticality, and dependence all have to hold together.</p>
+
+    <h3>How is a control point different from an important input?</h3>
+    <p>The stack depends on thousands of inputs. One becomes a control point only when its supply is concentrated enough to be choked, hard enough to substitute that the dependence cannot be routed around, and consumed in volumes that matter. Most critical inputs fail at least one of these tests and are not control points.</p>
+
+    <h3>How does Robotnik measure concentration?</h3>
+    <p>Concentration is the share of supply held by the single largest source, a country, a firm, or a process, and it is recorded on the material itself. Some figures are verified to a standard; others are tracked but not yet confirmed, and are labelled as such rather than presented as settled.</p>
+
+    <h3>Does a supplier link in the dependency map mean a company is the only source?</h3>
+    <p>No. An edge in the map records that a dependency exists, not how much flows through it or how exclusive it is. Concentration is established on the material node and never inferred from a single relationship. Robotnik does not read a sole-source claim off an edge.</p>
+
+    <h3>Is this a real-time monitoring tool?</h3>
+    <p>No. The dependency map is curated intelligence, assembled and reviewed, not a live feed. It maps a structure that changes slowly, and it is built to make that structure legible, not to track it minute by minute.</p>
+
+    <h3>How does this relate to the companies in Robotnik's universe?</h3>
+    <p>They answer different questions. The universe is the set of companies whose core business is the frontier stack. A control point can be held by a company whose frontier work is a minority of what it does, which keeps it out of the universe while still making it central to where the stack is exposed.</p>
+
+    <h3>What is a dependency analysis?</h3>
+    <p>A dependency analysis applies this method to one case: it takes a named control point and traces what a disruption there would cascade into across the stack. The methodology here defines how that is done; each analysis is a specific application of it.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<script src="/js/nav.js?v=20260626a"></script>
+</body>
+</html>

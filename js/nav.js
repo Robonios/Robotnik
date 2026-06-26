@@ -129,21 +129,14 @@
   });
 
   // ─────────────────────────────────────────────────────────────────
-  // Persistent footer (LinkedIn). Single source of truth for all live
+  // Persistent footer. Single source of truth for all live
   // pages. Inline footers in assets/commodities/portfolio/signals/
   // recreation were removed in this pass.
   // ─────────────────────────────────────────────────────────────────
   var footerEl = document.createElement('footer');
   footerEl.className = 'site-footer-global';
-  var LINKEDIN_URL = 'https://www.linkedin.com/in/robertlosborne/';
   footerEl.innerHTML = '' +
     '<div class="site-footer-row">' +
-      '<a class="site-footer-linkedin" href="' + LINKEDIN_URL + '" target="_blank" rel="noopener" aria-label="Connect with Robert Osborne on LinkedIn">' +
-        '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
-          '<path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.86-3.04-1.86 0-2.15 1.45-2.15 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.86 3.37-1.86 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>' +
-        '</svg>' +
-        '<span class="site-footer-linkedin-label">Connect with Robert Osborne to learn more</span>' +
-      '</a>' +
       '<div class="site-footer-copyright"><a href="/about" style="color:var(--text-dim);text-decoration:none;margin-right:0.9rem;">About</a>&copy; Robotnik 2026</div>' +
     '</div>';
   document.body.appendChild(footerEl);
@@ -190,7 +183,7 @@
 
   // Early Access modal (shared across all pages)
   // Submissions POST to a Google Apps Script web app bound to a
-  // private Sheet in Robert's Workspace. See scripts/apps-script.gs
+  // private Sheet in the Robotnik Google Workspace. See scripts/apps-script.gs
   // for the server side. The URL below is set after deployment.
   var EARLY_ACCESS_URL = 'https://script.google.com/macros/s/AKfycbwwfRNzBJ-Nv607kbjhadO7g68x5jO2typxdP5tQ7lluZYTaB9CZ43HZbc2F6SXctRD5w/exec';
   var modalDiv = document.createElement('div');
@@ -202,9 +195,9 @@
   modalDiv.innerHTML = '' +
     '<div style="background:#0A0A0F;border:1px solid #333;border-radius:8px;padding:1.75rem 2rem 1.5rem;max-width:520px;width:100%;position:relative;font-family:\'Mulish\',sans-serif;margin:auto;">' +
       '<button type="button" id="ea-close-btn" aria-label="Close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:18px;cursor:pointer;line-height:1;">&#10005;</button>' +
-      '<h3 style="color:#F5D921;font-size:12px;letter-spacing:0.1em;margin:0 0 0.5rem;font-family:\'Space Grotesk\',sans-serif;">REQUEST EARLY ACCESS</h3>' +
+      '<h3 style="color:#F5D921;font-size:12px;letter-spacing:0.1em;margin:0 0 0.5rem;font-family:\'Space Grotesk\',sans-serif;">Start the conversation</h3>' +
       '<p style="color:#8B92A5;font-size:11px;line-height:1.55;margin:0 0 1.25rem;">' +
-        'Join the Robotnik early access programme. Enterprise operatives receive the full Intelligence data layer, funding database, news archive, data export, and priority access to Portfolio Intelligence, Frontier Signals, and Commodities as they launch.' +
+        'Tell us what you\'re working on and we\'ll be in touch.' +
       '</p>' +
       '<form id="early-access-form" novalidate style="display:flex;flex-direction:column;gap:0.9rem;">' +
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">' +
@@ -214,33 +207,21 @@
             '<input type="email" id="ea-email" name="email" required autocomplete="email" style="' + inputStyle + '"></div>' +
           '<div><label style="' + labelStyle + '" for="ea-org">Organisation' + reqDot + '</label>' +
             '<input type="text" id="ea-org" name="organisation" required autocomplete="organization" placeholder="Company, firm, or institution" style="' + inputStyle + '"></div>' +
-          '<div><label style="' + labelStyle + '" for="ea-role">Role' + reqDot + '</label>' +
-            '<input type="text" id="ea-role" name="role" required autocomplete="organization-title" placeholder="Your job title" style="' + inputStyle + '"></div>' +
+          '<div><label style="' + labelStyle + '" for="ea-role">Role</label>' +
+            '<input type="text" id="ea-role" name="role" autocomplete="organization-title" placeholder="Your job title" style="' + inputStyle + '"></div>' +
         '</div>' +
-        '<div><label style="' + labelStyle + '" for="ea-linkedin">LinkedIn profile' + reqDot + '</label>' +
-          '<input type="url" id="ea-linkedin" name="linkedin" required placeholder="https://linkedin.com/in/yourname" style="' + inputStyle + '"></div>' +
-        '<div><label style="' + labelStyle + '" for="ea-usecase">What would you use Robotnik for?' + reqDot + '</label>' +
-          '<textarea id="ea-usecase" name="use_case" required rows="4" placeholder="Briefly describe how Robotnik would support your work. What sectors are you most interested in? What types of analysis do you need?" style="' + inputStyle + 'resize:vertical;min-height:84px;line-height:1.5;"></textarea></div>' +
-        '<div><label style="' + labelStyle + '" for="ea-heard">How did you hear about Robotnik?' + reqDot + '</label>' +
-          '<select id="ea-heard" name="how_did_you_hear" required style="' + inputStyle + 'appearance:none;">' +
-            '<option value="" disabled selected hidden>Select one</option>' +
-            '<option value="LinkedIn">LinkedIn</option>' +
-            '<option value="Twitter/X">Twitter / X</option>' +
-            '<option value="Referral">Referral</option>' +
-            '<option value="Search">Search</option>' +
-            '<option value="News article">News article</option>' +
-            '<option value="Other">Other</option>' +
-          '</select></div>' +
+        '<div><label style="' + labelStyle + '" for="ea-usecase">Message' + reqDot + '</label>' +
+          '<textarea id="ea-usecase" name="use_case" required rows="4" placeholder="Request access, a demo, or an introduction, or tell us what you need." style="' + inputStyle + 'resize:vertical;min-height:84px;line-height:1.5;"></textarea></div>' +
         '<input type="hidden" name="source_page" id="ea-source-page">' +
         '<div id="ea-error" role="alert" style="display:none;color:#ef4444;font-size:11px;line-height:1.4;"></div>' +
-        '<button type="submit" id="ea-submit-btn" style="margin-top:0.25rem;padding:0.7rem;background:#F5D921;color:#0A0A0F;font-family:\'Space Grotesk\',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;border:none;border-radius:3px;cursor:pointer;text-transform:uppercase;">Request Early Access</button>' +
+        '<button type="submit" id="ea-submit-btn" style="margin-top:0.25rem;padding:0.7rem;background:#F5D921;color:#0A0A0F;font-family:\'Space Grotesk\',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;border:none;border-radius:3px;cursor:pointer;text-transform:uppercase;">Submit your request</button>' +
       '</form>' +
       '<div id="ea-success" style="display:none;padding:1rem 0 0.25rem;">' +
         '<p style="color:#22c55e;font-size:13px;font-weight:600;margin:0 0 0.5rem;">Thank you for your interest.</p>' +
-        '<p style="color:#8B92A5;font-size:11px;line-height:1.5;margin:0;">Robert will be in touch shortly.</p>' +
+        '<p style="color:#8B92A5;font-size:11px;line-height:1.5;margin:0;">We\'ll be in touch shortly.</p>' +
       '</div>' +
       '<p style="color:#5A6178;font-size:9px;line-height:1.5;margin:1rem 0 0;">' +
-        'Submissions are stored in Robert\'s Google Workspace solely to respond to your enquiry. No IP address or cookies are logged.' +
+        'Submissions are stored in Robotnik\'s Google Workspace solely to respond to your enquiry. No IP address or cookies are logged.' +
       '</p>' +
     '</div>';
   document.body.appendChild(modalDiv);
@@ -269,9 +250,7 @@
       email:            document.getElementById('ea-email').value.trim(),
       organisation:     document.getElementById('ea-org').value.trim(),
       role:             document.getElementById('ea-role').value.trim(),
-      linkedin:         document.getElementById('ea-linkedin').value.trim(),
       use_case:         document.getElementById('ea-usecase').value.trim(),
-      how_did_you_hear: document.getElementById('ea-heard').value,
       source_page:      window.location.pathname || '/',
       user_agent:       (navigator && navigator.userAgent) || '',
     };
@@ -352,6 +331,12 @@
       tags: ['r2', 'universe', 'membership', 'reference', 'core business', 'core-business test', 'inclusion', 'pure play', 'pure-play', 'sectors', 'frontier stack', 'which companies belong'],
       type: 'reference',
       url: '/research/universe-membership',
+    }, {
+      title: 'Control Points: How Robotnik Maps the Frontier Stack\'s Dependencies',
+      desc: 'Reference · finding control points and mapping the dependency graph',
+      tags: ['r3', 'control points', 'control point', 'chokepoint', 'choke point', 'bottleneck', 'dependency', 'dependencies', 'supply chain', 'gallium', 'reference', 'concentration', 'material node', 'blast radius'],
+      type: 'reference',
+      url: '/research/control-points',
     }];
 
     var _datasets = null;
