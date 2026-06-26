@@ -104,27 +104,10 @@
     color: var(--text-dim); margin: 0; max-width: 60ch;
   }
 
-  /* ---- live index chart (RBWC) — dark-theme index visual language ---- */
+  /* ---- index chart figure wrapper. The chart itself is the reusable
+         IndexChart component (/js/index-chart.js), which injects its own
+         styles; only the figure + caption are page-level. ---- */
   .rbwc-figure { margin: 0 0 2.75rem; }
-  .rbwc-card {
-    border: 1px solid var(--border); border-radius: 14px;
-    background: rgba(255,255,255,0.015);
-    padding: 1.05rem 1.2rem 0.85rem;
-  }
-  .rbwc-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-  .rbwc-eyebrow { display: block; font-family: 'Space Grotesk', var(--font); font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em; color: var(--text); }
-  .rbwc-code { font-family: 'Space Grotesk', var(--font); font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); }
-  .rbwc-stat { text-align: right; white-space: nowrap; }
-  .rbwc-val { display: block; font-family: 'Space Grotesk', var(--font); font-size: 1.55rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); line-height: 1.05; }
-  .rbwc-chg { font-family: 'Space Grotesk', var(--font); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text-dim); }
-  .rbwc-chg.up { color: #46d39a; }
-  .rbwc-chg.down { color: #ef6a6a; }
-  .rbwc-plot { height: 240px; margin: 0.5rem 0 0.25rem; }
-  .rbwc-svg { width: 100%; height: 100%; display: block; }
-  .rbwc-loading { height: 100%; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-family: 'Mulish', var(--font); font-size: 0.9rem; }
-  .rbwc-axis { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; font-family: 'Space Grotesk', var(--font); font-size: 11px; color: var(--text-dim); font-variant-numeric: tabular-nums; }
-  .rbwc-ax-base { opacity: 0.85; }
-  .rbwc-card[data-state="error"] .rbwc-axis { display: none; }
   .rbwc-cap { font-family: 'Mulish', var(--font); font-style: italic; font-size: 0.85rem; line-height: 1.55; color: var(--text-dim); margin: 0.85rem 0.1rem 0; }
 
   .article-body { font-family: 'Mulish', var(--font); }
@@ -148,15 +131,12 @@
   @media (max-width: 640px) {
     .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
     .article-body p { font-size: 0.98rem; }
-    .rbwc-plot { height: 200px; }
-    .rbwc-val { font-size: 1.32rem; }
   }
 
   @media print {
     .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
     .main-content { margin: 0 !important; padding: 0 !important; }
     .article-page { max-width: 100% !important; }
-    .rbwc-card { break-inside: avoid; }
     body { background: #fff !important; }
     .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
     .article-body p, .article-dek, .rbwc-cap { color: #222 !important; }
@@ -182,25 +162,13 @@
     <p class="article-dek"><em>How Robotnik tilts the frontier-stack equity universe towards the companies most exposed to a supply-chain chokepoint, and how each company's exposure is rated.</em></p>
   </header>
 
-  <!-- Live index chart. Reads index_summary.json -> /indexes/bottleneck (sourced
-       from bottleneck_weighted_composite.json by the daily job), exactly as the
-       homepage index grid does. The chart renders the live series; no static
-       fallback figure is committed. -->
+  <!-- Live, interactive index chart. The reusable IndexChart component
+       (/js/index-chart.js) mounts here and reads index_summary.json ->
+       /indexes/bottleneck (sourced from bottleneck_weighted_composite.json by the
+       daily job), exactly as the homepage index grid reads the live feed. A
+       pointer/touch crosshair reads back the value and date along the series. -->
   <figure class="rbwc-figure" aria-labelledby="rbwc-cap">
-    <div class="rbwc-card" id="rbwc-chart" data-state="loading">
-      <div class="rbwc-head">
-        <div class="rbwc-id">
-          <span class="rbwc-eyebrow">Robotnik Bottleneck-Weighted Index</span>
-          <span class="rbwc-code">RBWC</span>
-        </div>
-        <div class="rbwc-stat">
-          <span class="rbwc-val" id="rbwc-val">&mdash;</span>
-          <span class="rbwc-chg" id="rbwc-chg"></span>
-        </div>
-      </div>
-      <div class="rbwc-plot" id="rbwc-plot"><div class="rbwc-loading">Loading live series&hellip;</div></div>
-      <div class="rbwc-axis" id="rbwc-axis"></div>
-    </div>
+    <div id="rbwc-chart"></div>
     <figcaption class="rbwc-cap" id="rbwc-cap">The live Bottleneck-Weighted Index, based at 1,000 on 31 March 2025 and updated daily. A directional signal: it shows where supply risk concentrates and which way the weighting leans, not a precise headline level.</figcaption>
   </figure>
 
@@ -283,87 +251,18 @@
 </article>
 </div><!-- .main-content -->
 
-<!-- RBWC live chart renderer: self-contained, reads the same feed the homepage
-     index grid uses. Accent #E0A33C matches the bottleneck series colour on the
-     home index family. preserveAspectRatio="none" + non-scaling strokes mirror
-     the site's sparkline visual language. -->
+<!-- Live index chart: the reusable IndexChart component, keyed by series + accent.
+     R4 is the first consumer; R5–R8 and the index detail pages pass their own
+     seriesKey + accent into the same component. -->
+<script src="/js/index-chart.js?v=20260626c"></script>
 <script>
-(function () {
-  var card = document.getElementById('rbwc-chart');
-  if (!card) return;
-  var ACCENT = '#E0A33C';
-
-  function fmt(n) {
-    if (n == null || isNaN(n)) return '—';
-    return Number(n).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  }
-  function fmtDate(s) {
-    if (!s) return '';
-    var d = new Date(s + 'T00:00:00Z');
-    if (isNaN(d.getTime())) return s;
-    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
-  }
-  function fail() {
-    card.setAttribute('data-state', 'error');
-    var p = document.getElementById('rbwc-plot');
-    if (p) p.innerHTML = '<div class="rbwc-loading">Live series unavailable just now.</div>';
-  }
-
-  fetch('/data/index/index_summary.json?v=' + Date.now())
-    .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
-    .then(function (j) {
-      var b = j && j.indexes && j.indexes.bottleneck;
-      if (!b || !b.series || b.series.length < 2) throw new Error('no series');
-      render(b);
-    })
-    .catch(fail);
-
-  function render(b) {
-    var series = b.series.map(function (p) { return p.value; });
-    var dates  = b.series.map(function (p) { return p.date; });
-    var n = series.length;
-
-    document.getElementById('rbwc-val').textContent = fmt(b.value);
-    var oneY = b.returns && b.returns['1Y'];
-    if (oneY != null && !isNaN(oneY)) {
-      var up = oneY >= 0, chg = document.getElementById('rbwc-chg');
-      chg.textContent = (up ? '+' : '') + Number(oneY).toFixed(2) + '% · 1Y';
-      chg.className = 'rbwc-chg ' + (up ? 'up' : 'down');
-    }
-
-    var W = 720, H = 260, padT = 14, padB = 10;
-    var min = Math.min.apply(null, series), max = Math.max.apply(null, series);
-    var span = (max - min) || 1;
-    function X(i) { return (i / (n - 1)) * W; }
-    function Y(v) { return padT + (1 - (v - min) / span) * (H - padT - padB); }
-    var line = series.map(function (v, i) { return X(i).toFixed(1) + ',' + Y(v).toFixed(1); }).join(' ');
-    var area = '0,' + H + ' ' + line + ' ' + W + ',' + H;
-    var lx = X(n - 1).toFixed(1), ly = Y(series[n - 1]).toFixed(1);
-
-    var svg =
-      '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" class="rbwc-svg" role="img" ' +
-        'aria-label="Line chart of the Robotnik Bottleneck-Weighted Index over the past year, ending at ' +
-        fmt(b.value) + ' on ' + fmtDate(b.as_of) + '.">' +
-        '<defs><linearGradient id="rbwc-grad" x1="0" y1="0" x2="0" y2="1">' +
-          '<stop offset="0%" stop-color="' + ACCENT + '" stop-opacity="0.22"/>' +
-          '<stop offset="100%" stop-color="' + ACCENT + '" stop-opacity="0"/>' +
-        '</linearGradient></defs>' +
-        '<polygon points="' + area + '" fill="url(#rbwc-grad)" stroke="none"/>' +
-        '<polyline points="' + line + '" fill="none" stroke="' + ACCENT + '" stroke-width="2" ' +
-          'stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>' +
-        '<path d="M' + lx + ',' + ly + ' ' + lx + ',' + ly + '" stroke="' + ACCENT + '" stroke-width="6" ' +
-          'stroke-linecap="round" fill="none" vector-effect="non-scaling-stroke"/>' +
-      '</svg>';
-    document.getElementById('rbwc-plot').innerHTML = svg;
-
-    document.getElementById('rbwc-axis').innerHTML =
-      '<span class="rbwc-ax-l">' + fmtDate(dates[0]) + '</span>' +
-      '<span class="rbwc-ax-base">Base 1,000 · 31 Mar 2025</span>' +
-      '<span class="rbwc-ax-r">' + fmtDate(dates[n - 1]) + '</span>';
-
-    card.setAttribute('data-state', 'ready');
-  }
-})();
+  new IndexChart('rbwc-chart', {
+    seriesKey: 'bottleneck',
+    accent: '#E0A33C',
+    name: 'Robotnik Bottleneck-Weighted Index',
+    code: 'RBWC',
+    source: '/data/index/index_summary.json'
+  });
 </script>
 <script src="/js/nav.js?v=20260626c"></script>
 </body>
