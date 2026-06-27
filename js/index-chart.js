@@ -45,7 +45,7 @@
   var DEFAULT_SOURCE = '/data/index/index_summary.json';
   var STYLE_ID = 'index-chart-styles';
   var RANGES = [
-    { d: 30,   l: '1M' }, { d: 90,   l: '3M' }, { d: 180,  l: '6M' },
+    { d: 7,    l: '1W' }, { d: 30,   l: '1M' }, { d: 90,   l: '3M' }, { d: 180,  l: '6M' },
     { d: 365,  l: '1Y' }, { d: 1095, l: '3Y' }, { d: 1825, l: '5Y' }
   ];
   var DEFAULT_RANGE = 365;       // 1Y
