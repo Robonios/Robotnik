@@ -221,8 +221,8 @@
 
     <h2>How it fits the other lenses</h2>
 
-    <!-- Internal links (pending): "composite" -> R8 composite index methodology; "commodities" -> R7 commodities index methodology. Left as plain text until R7/R8 publish, then make live, as with R1-R4. The membership and bottleneck-weighted index links above are live. -->
-    <p>The public-equities index is the base the other two equity lenses are defined against. The bottleneck-weighted index covers the same universe on the same eligibility rules and tilts it towards supply risk; mechanically it tilts a single market-value basket of those names, so it is measured against that basket, not against this published, sub-index-blended series. The composite is a downstream blend, three-quarters this index and one-quarter the commodities index, so the public-equities index is the equity leg of the composite, not a different aggregation of it.</p>
+    <!-- Internal link (pending): "composite" -> R8 composite index methodology. Plain text until R8 publishes. The commodities index link below is now live; the membership and bottleneck-weighted index links above are live. -->
+    <p>The public-equities index is the base the other two equity lenses are defined against. The bottleneck-weighted index covers the same universe on the same eligibility rules and tilts it towards supply risk; mechanically it tilts a single market-value basket of those names, so it is measured against that basket, not against this published, sub-index-blended series. The composite is a downstream blend, three-quarters this index and one-quarter <a href="/research/commodities-index">the commodities index</a>, so the public-equities index is the equity leg of the composite, not a different aggregation of it.</p>
 
     <p>Below the headline, the four sector sub-indices are the published sector cards, so a reader can move from the whole listed stack down to any one sector and back, on the same construction throughout.</p>
 
@@ -257,7 +257,7 @@
 <!-- Live index chart: the reusable IndexChart component, keyed by series + accent.
      Public-equities series (feed key 'public', code RPEI); accent = the homepage
      Public Equities blue. Same component R4 (bottleneck) uses. -->
-<script src="/js/index-chart.js?v=20260627a"></script>
+<script src="/js/index-chart.js?v=20260627b"></script>
 <script>
   new IndexChart('rpei-chart', {
     seriesKey: 'public',
@@ -267,6 +267,6 @@
     source: '/data/index/index_summary.json'
   });
 </script>
-<script src="/js/nav.js?v=20260627a"></script>
+<script src="/js/nav.js?v=20260627b"></script>
 </body>
 </html>

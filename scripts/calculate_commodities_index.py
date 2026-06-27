@@ -477,6 +477,7 @@ def main():
     if genesis:
         record = {
             "name": "Robotnik Commodities Index",
+            "code": "RCMI",
             "version": "1.1 — forward-only launch (genesis base); v.3 price-basis routing",
             "methodology": "commodities_index_methodology v.3",
             "method": ("fixed-weight index of USD price relatives; index = 1000 * Σ(live_weight_i * "

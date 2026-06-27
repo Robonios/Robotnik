@@ -227,7 +227,7 @@ def main():
                                   {"value": bn.get("base_value"), "date": bn.get("base_date")},
                                   code="RBWC"),
         "commodities": weekly_entry(
-            "Commodities", commod,
+            "Commodities", commod, code="RCMI",
             note=("Forward-only weekly index of frontier-input price relatives "
                   "(§6.1 live weights, 12% single-name cap). Launched 2026-06-17.")),
         "private": rpci_entry(rpci),

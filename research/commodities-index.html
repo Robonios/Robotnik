@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/commodities-index.html; GitHub Pages also
+     serves it extensionless at /research/commodities-index (the canonical).
+     The shared nav.js injects RELATIVE links (index.html, robotlogo.png), so
+     <base href="/"> makes them resolve to the site root from this subdirectory.
+     All of this page's own asset references are root-absolute and unaffected. -->
+<base href="/">
+<title>The Commodities Index: Weighting by Material Dependence</title>
+<meta name="description" content="How Robotnik's commodities index weights raw materials by how central each is to frontier-technology manufacturing, not by tonnage and not by supply risk.">
+<link rel="canonical" href="https://robotnik.world/research/commodities-index">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/commodities-index">
+<meta property="og:title" content="The Commodities Index: Weighting by Material Dependence">
+<meta property="og:description" content="How Robotnik's commodities index weights raw materials by how central each is to frontier-technology manufacturing, not by tonnage and not by supply risk.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-06-27">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Commodities Index: Weighting by Material Dependence">
+<meta name="twitter:description" content="How Robotnik's commodities index weights raw materials by how central each is to frontier-technology manufacturing, not by tonnage and not by supply risk.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage); author/publisher resolve to the canonical Organization entity (#organization). The Article carries its citation array (IEA Copper, USITC, the curated-basis note). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The Commodities Index: Weighting the Frontier Stack by Material Dependence",
+      "description": "How Robotnik's commodities index weights raw materials by how central each is to frontier-technology manufacturing, not by tonnage and not by supply risk.",
+      "url": "https://robotnik.world/research/commodities-index",
+      "datePublished": "2026-06-27",
+      "dateModified": "2026-06-27",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" },
+      "citation": [
+        "IEA, Copper, https://www.iea.org/reports/copper, CC BY 4.0 (clean-energy share of copper demand, 24.4% in 2023)",
+        "US International Trade Commission, gallium export-control price briefing (public domain): Western gallium price more than doubled in the year after the 2023 export controls",
+        "Demand-share placements are curated Robotnik interpretation, banded against public research (USGS Mineral Commodity Summaries; IEA critical-minerals data; US DOE Critical Materials Assessment), not sourced point figures"
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Frontier stack commodities index",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/commodities-index#commodities-index",
+          "name": "Commodities index",
+          "description": "An index that weights raw materials by their dependence intensity within the frontier-technology stack, as the product of two demand-only axes (frontier-demand volume and functional centrality), excluding supply risk by design."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/commodities-index#functional-centrality",
+          "name": "Functional centrality",
+          "description": "How irreplaceable a commodity is in its specific frontier function, scored on a four-level geometric scale from readily substitutable to effectively irreplaceable, and one of the two axes that set its weight in the commodities index."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does the commodities index measure?", "acceptedAnswer": { "@type": "Answer", "text": "It measures the frontier-technology stack's dependence on its raw-material inputs, weighting each commodity by how central it is to frontier manufacturing rather than by tonnage or by supply risk. A low-tonnage but irreplaceable input can outweigh a high-tonnage but substitutable one." } },
+        { "@type": "Question", "name": "How is it different from a normal commodities index?", "acceptedAnswer": { "@type": "Answer", "text": "A conventional index is dominated by mass, so the heavy-tonnage metals lead it. This one weights by frontier-demand intensity and functional centrality, so a material that is small by volume but irreplaceable in a frontier function carries more weight than a large-volume material that is easily substituted." } },
+        { "@type": "Question", "name": "How is each commodity weighted?", "acceptedAnswer": { "@type": "Answer", "text": "By two demand-only axes multiplied together: the share of the commodity's total demand that the frontier stack accounts for, banded into low, medium, and high, and how irreplaceable it is in its frontier function, on a four-level scale. The scale values are a chosen analytical scale, and the demand-share placements are Robotnik's curated interpretation, banded against public research rather than sourced to a precise figure." } },
+        { "@type": "Question", "name": "Does it include supply risk or scarcity?", "acceptedAnswer": { "@type": "Answer", "text": "No, by design. The index is demand-only. Supply scarcity and geographic concentration are tracked separately, in each commodity's bottleneck rating and in the bottleneck-weighted equity index, so the demand lens and the supply-risk lens stay distinct." } },
+        { "@type": "Question", "name": "Does the demand scope match the equity universe?", "acceptedAnswer": { "@type": "Answer", "text": "No, it is deliberately broader. The equity membership test turns on a company's core business, so pure solar and electric-vehicle names are outside the equity universe, but the commodities index counts the material those industries consume, because demand attribution follows where a material is used, not whether its end-user is a company Robotnik would hold." } },
+        { "@type": "Question", "name": "Why does the live index hold only some of the basket?", "acceptedAnswer": { "@type": "Answer", "text": "Because it launched forward-only with incomplete price coverage. Only six constituents have deep enough price history to backfill, so the index is built forward from its launch rather than reconstructed; and of the twenty-nine, twenty are currently priceable at spot while nine have no free price and are excluded and renormalised out until a source is secured. A twelve-per-cent single-name cap, applied only to the live computation, keeps the thinnest spot prices from dominating." } },
+        { "@type": "Question", "name": "Why are the chokepoint metals priced on a Western basis?", "acceptedAnswer": { "@type": "Answer", "text": "Because that is where frontier-input stress shows up. For the China-controlled metals such as gallium, the index uses the Western quote, since the 2023 export controls more than doubled the Western price in the year that followed while the China-domestic price moved far less. A China-domestic basis would leave the index blind to exactly the supply shocks it exists to register." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R7 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  /* ---- index chart figure wrapper. The chart itself is the reusable
+         IndexChart component (/js/index-chart.js), which injects its own
+         styles; only the figure + caption are page-level. ---- */
+  .idx-figure { margin: 0 0 2.75rem; }
+  .idx-cap { font-family: 'Mulish', var(--font); font-style: italic; font-size: 0.85rem; line-height: 1.55; color: var(--text-dim); margin: 0.85rem 0.1rem 0; }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+  .article-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(245,217,33,0.35); }
+  .article-body a:hover { border-bottom-color: var(--yellow); }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek, .idx-cap { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">The Commodities Index: Weighting the Frontier Stack by Material Dependence</h1>
+    <p class="article-dek"><em>How Robotnik weights raw materials by how central each is to frontier manufacturing, so a low-tonnage, irreplaceable input outweighs a high-tonnage, substitutable one.</em></p>
+  </header>
+
+  <!-- Live, interactive index chart. The reusable IndexChart component
+       (/js/index-chart.js) mounts here on the commodities series and reads
+       index_summary.json -> indexes.commodities. The commodities index is
+       forward-only and newly launched, so the component renders its
+       since-inception mode: the whole series in one window, horizon tabs
+       suppressed, value/% toggle + crosshair + y-axis + base-1,000 mark kept. -->
+  <figure class="idx-figure" aria-labelledby="rcmi-cap">
+    <div id="rcmi-chart"></div>
+    <figcaption class="idx-cap" id="rcmi-cap">The live Robotnik Commodities Index (RCMI), based at 1,000 on 17 June 2026 and observed weekly &mdash; the frontier stack's raw-material inputs weighted by demand intensity, not by tonnage and not by supply risk. Forward-only since inception, so it is shown since launch rather than across fixed horizons.</figcaption>
+  </figure>
+
+  <div class="article-body">
+
+    <p>The frontier stack can be weighted three ways, and Robotnik runs all three. <a href="/research/public-equities-index">The public-equities index</a> weights it by market value, which answers what the stack is worth. <a href="/research/bottleneck-weighted-index">The bottleneck-weighted index</a> weights it by supply risk, which answers where it is most exposed to a shock. The commodities index weights it by material dependence, which answers what raw materials the stack most leans on. This piece documents the third. The composite, a separate index, blends the first of these with this one, three-quarters to one-quarter.</p>
+
+    <p>What the commodities index measures is the frontier-technology stack's intensity of dependence on its raw-material inputs. The distinction from a conventional commodities benchmark is the whole point.</p>
+
+    <h2>What it measures, and why it is not a metals index</h2>
+
+    <p>A conventional industrial-metals index is dominated by tonnage: copper, aluminium, and silicon by mass. The commodities index asks a different question, how central each material is to frontier-technology manufacturing, so that a low-tonnage but irreplaceable input like gallium or dysprosium can outweigh a high-tonnage but substitutable one like aluminium. That inversion is what separates it from a generic basket.</p>
+
+    <p>Supply scarcity and geographic concentration are deliberately excluded from this index. They are the supply-risk question, and they are answered elsewhere, in each commodity's bottleneck rating and in the bottleneck-weighted equity index. Re-expressing them here would double-count and blur what each lens says, so the three are kept clean and separable.</p>
+
+    <h2>How it weights: two demand-only axes</h2>
+
+    <p>Each commodity's weight is the product of two axes, normalised across the basket. No supply or scarcity term enters.</p>
+
+    <p>The first axis is frontier-demand volume: the share of a commodity's total global demand that the frontier stack accounts for. This is banded rather than carried as a precise number, into low (under a fifth of demand), medium, and high (above 55 per cent), because the research behind it supports placement in a band, not a decimal. As one anchor, copper's clean-energy share of demand runs to roughly a quarter (IEA), which places it in the medium band; a metal like gallium, almost entirely a frontier input, sits in the high band.</p>
+
+    <p>The second axis is functional centrality, meaning how irreplaceable the commodity is in its frontier function specifically. The question is whether the function could be performed by a substitute and at what cost. It is scored on a four-level geometric scale, from readily substitutable up to effectively irreplaceable, with the top tier reserved for documented irreplaceability. Where a commodity serves several frontier functions, centrality is scored on the dominant one by volume, which stops a tiny but irreplaceable niche use from inflating a barely-used material.</p>
+
+    <p>The two are multiplied and normalised to give each commodity's weight. The scale values on both axes, the band weights and the centrality steps, are a chosen analytical scale, not an empirically measured quantity. They express a defensible judgment, that a more central material should weigh more and roughly by how much, but the exact numbers are an analytical choice, the same honesty the bottleneck index's multipliers carry. The demand-share placements that drive the first axis are Robotnik's curated interpretation, banded and evidence-anchored against public research, not sourced point figures.</p>
+
+    <h2>What &ldquo;frontier demand&rdquo; counts, and how it relates to the equity universe</h2>
+
+    <p>The demand boundary is wider than the equity index's. For demand attribution, the frontier stack is semiconductors, robotics, space, and the energy transition: battery storage, solar, wind, grid, and the battery materials in electric vehicles.</p>
+
+    <p>This is broader than the company universe <a href="/research/universe-membership">the membership methodology</a> defines, and the difference is deliberate. The equity membership test turns on a company's core business, so a pure solar manufacturer or an EV maker is out of the equity universe. But the commodities index counts the material those industries consume, because demand attribution follows where a material is used, not whether its end-user is a company Robotnik would hold. A material can be central to the frontier stack through an industry the equity index excludes. Cobalt, the magnet rare earths, copper, nickel, silver, and a share of silicon carry the weight they do precisely because the energy transition draws on them; strip that demand out and the basket would collapse.</p>
+
+    <p>One honest qualification. The index counts energy-transition demand where it touches the metals it tracks, but it is not itself a battery-materials basket: lithium, graphite, and manganese, the signature battery raw materials, are not among its constituents. It registers battery demand through cobalt, nickel, and copper, not through the cathode materials themselves.</p>
+
+    <h2>The basket, and what leads it</h2>
+
+    <p>The basket holds twenty-nine commodities across four groups: base metals, precious metals, dopants, and rare earths. Europium is held on a watch-list rather than included, because its only uses fall outside the frontier scope, leaving it no quantifiable in-scope demand under the current boundary.</p>
+
+    <p>The weighting puts the most frontier-central materials at the top. Gallium leads, followed by silicon, titanium, and dysprosium, the four carrying the largest share between them. The magnet rare earths, neodymium, praseodymium, dysprosium, and terbium, together carry a substantial block, reflecting their centrality to robotics, electric-vehicle, and wind-turbine motors. Gold and palladium sit at the floor, both displaced in their frontier functions by cheaper substitutes. The full twenty-nine-constituent weighting is the complete statement of frontier-material dependence; the index that is actually computed and published is a subset of it, for the reasons the next section sets out.</p>
+
+    <h2>The live index: a forward-only launch</h2>
+
+    <p>The published series differs from the full reference weighting in two documented ways, because it launched forward-only with incomplete price coverage.</p>
+
+    <p>Three numbers matter here, and they should not be run together. Only six of the twenty-nine constituents have a retrievable price <em>history</em> deep enough to backfill a series. Because of that, the index is launched forward-only: based at 1,000 on 17 June 2026 and built forward from weekly observations, rather than reconstructed backwards. A full historical series awaits a paid data feed. Separately, twenty of the twenty-nine are currently priceable at <em>spot</em>, week to week; the remaining nine have no freely retrievable price and are carried as tracked but price-pending. Those nine are excluded from the live computation and their weight redistributed pro-rata across the priced constituents, with the excluded share disclosed, the same honest-gap discipline the equity index's quorum rule follows.</p>
+
+    <p>A single-name cap of twelve per cent is applied within the live index, with the excess redistributed pro-rata. This is a robustness measure, not a revision of the thesis. Renormalising the price-pending names out lifts the largest weight, gallium, past the cap, and gallium in particular is a thin, illiquid, policy-driven spot price whose swings would otherwise dominate the index. The cap limits any single noisy input's grip, and it is self-relaxing: it binds hardest now, at low coverage, and does less as price-pending names are secured and added. The reference weights are untouched; the cap operates only on the live computation.</p>
+
+    <p>The index is observed weekly. Slow-moving constituents hold their last observation between source updates while the liquid metals carry the week's movement, and stale or illiquid fixings are flagged. It is newly launched, so the published series is still short and accruing.</p>
+
+    <h2>Prices, and why the basis is Western</h2>
+
+    <p>Prices are drawn from two free references, routed deliberately per metal. The exchange-traded benchmarks, the base and precious metals that trade on global exchanges, take their global benchmark price. The strategic and minor metals, including the rare earths, take a dealer-indicative price quoted in the West.</p>
+
+    <p>The routing follows a price-basis rule that matters for what the index can see. For the China-controlled chokepoint metals where a Western reference exists, gallium, germanium, indium, and neodymium, the index uses the Western quote, because that is where frontier-input stress actually shows up. Gallium more than doubled in the West in the year after the 2023 export controls (USITC) while the China-domestic price moved far less; an index built on the China-domestic basis would have been blind to exactly the supply shock it exists to register. The other strategic metals are quoted by the same Western dealer, so the whole strategic-metals leg is on a Western, dealer-indicative basis. China-domestic prices are used, and flagged, only where nothing else is freely available, for silicon, titanium, and phosphorus, which is tolerable because those trade more globally than the export-controlled chokepoints. Non-dollar quotes are converted to US dollars at daily reference rates. The rare earths are tracked as metal rather than oxide, the form the free source carries, and the two are tightly enough correlated that the relative-movement signal is preserved.</p>
+
+    <h2>Supply risk is somewhere else by design</h2>
+
+    <p>It is worth stating plainly that this index says nothing about supply risk. It is demand-only. A commodity's scarcity, the concentration of its production, the fragility of its supply, all of that is real and all of it is tracked, but in a separate layer: each commodity carries its own bottleneck rating, on the same critical-to-low logic <a href="/research/control-points">the control-point methodology</a> applies to materials, and supply risk drives the bottleneck-weighted equity index. Keeping supply risk out of the commodities index is what lets the demand lens and the supply-risk lens stay readable as distinct things rather than collapsing into one blurred score.</p>
+
+    <h2>Where it is weakest</h2>
+
+    <p>The honest limits set how the index should be read.</p>
+
+    <p>It is indicative, not transactional. It is built to be indicative of frontier-input price movement, not to be traded against, and it rests on dealer-indicative Western quotes observed weekly, with last-observation carry for the slow movers and flags on stale fixings. Being newly launched, the series is short.</p>
+
+    <p>The weighting rests on judgment, not measured precision. The band and centrality scales are chosen analytical scales, and the demand-share placements behind them are curated interpretation, banded against public research rather than sourced to a decimal. The supporting research supports placing each commodity in a band, not defending an exact figure, and the bands are reviewed and re-versioned annually as the stack's demand shifts.</p>
+
+    <p>The live index is a subset. What is computed and published tracks the twenty priced constituents, renormalised; the full twenty-nine-constituent reference weighting, and any breakdown of it by category, describes the complete dependence statement, not the live basket. The two should not be read as the same object.</p>
+
+    <p>Two basis choices are worth naming. Titanium is tracked on a metal basis, the genuine aerospace input with a traded price, rather than on a combined basis that pigment-grade titanium dioxide would dominate and that would collapse its frontier share. Platinum and palladium are stated on a net electronics basis. Both are documented choices, not oversights.</p>
+
+    <h2>How it fits the other lenses</h2>
+
+    <p>The three indices are built to be orthogonal. The public-equities index weights the stack by value, the commodities index by material dependence, and the bottleneck-weighted index by supply risk. Read together they say what the stack is worth, what it consumes, and where it is exposed; re-expressing any one inside another would blur all three.</p>
+
+    <!-- Internal link (pending): "composite" -> R8 composite index methodology. Plain text until R8 publishes. The public-equities, bottleneck-weighted, control-point and membership methodology links are live. -->
+    <p>The commodities index also feeds the composite, where it is the one-quarter commodities leg blended with the three-quarters public-equities leg. So it sits in the family twice over: as a lens in its own right, and as the material-dependence component of the headline blend. The mechanics of the composite are documented in its own methodology.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What does the commodities index measure?</h3>
+    <p>It measures the frontier-technology stack's dependence on its raw-material inputs, weighting each commodity by how central it is to frontier manufacturing rather than by tonnage or by supply risk. A low-tonnage but irreplaceable input can outweigh a high-tonnage but substitutable one.</p>
+
+    <h3>How is it different from a normal commodities index?</h3>
+    <p>A conventional index is dominated by mass, so the heavy-tonnage metals lead it. This one weights by frontier-demand intensity and functional centrality, so a material that is small by volume but irreplaceable in a frontier function carries more weight than a large-volume material that is easily substituted.</p>
+
+    <h3>How is each commodity weighted?</h3>
+    <p>By two demand-only axes multiplied together: the share of the commodity's total demand that the frontier stack accounts for, banded into low, medium, and high, and how irreplaceable it is in its frontier function, on a four-level scale. The scale values are a chosen analytical scale, and the demand-share placements are Robotnik's curated interpretation, banded against public research rather than sourced to a precise figure.</p>
+
+    <h3>Does it include supply risk or scarcity?</h3>
+    <p>No, by design. The index is demand-only. Supply scarcity and geographic concentration are tracked separately, in each commodity's bottleneck rating and in the bottleneck-weighted equity index, so the demand lens and the supply-risk lens stay distinct.</p>
+
+    <h3>Does the demand scope match the equity universe?</h3>
+    <p>No, it is deliberately broader. The equity membership test turns on a company's core business, so pure solar and electric-vehicle names are outside the equity universe, but the commodities index counts the material those industries consume, because demand attribution follows where a material is used, not whether its end-user is a company Robotnik would hold.</p>
+
+    <h3>Why does the live index hold only some of the basket?</h3>
+    <p>Because it launched forward-only with incomplete price coverage. Only six constituents have deep enough price history to backfill, so the index is built forward from its launch rather than reconstructed; and of the twenty-nine, twenty are currently priceable at spot while nine have no free price and are excluded and renormalised out until a source is secured. A twelve-per-cent single-name cap, applied only to the live computation, keeps the thinnest spot prices from dominating.</p>
+
+    <h3>Why are the chokepoint metals priced on a Western basis?</h3>
+    <p>Because that is where frontier-input stress shows up. For the China-controlled metals such as gallium, the index uses the Western quote, since the 2023 export controls more than doubled the Western price in the year that followed (USITC) while the China-domestic price moved far less. A China-domestic basis would leave the index blind to exactly the supply shocks it exists to register.</p>
+
+    <h2>Sources and provenance</h2>
+
+    <p>The weighting of this index is curated interpretation, and it is marked as such. The demand-share placements behind the volume axis are Robotnik's banded judgments, anchored against public research rather than sourced to point figures: the USGS Mineral Commodity Summaries, the IEA's critical-minerals data, the US Department of Energy's Critical Materials Assessment, and material-specific public literature. The functional-centrality scores, and the scale values on both axes, are an analytical choice rather than a measured quantity.</p>
+
+    <p>Two external figures are stated and sourced. Copper's clean-energy share of demand, roughly a quarter, is from the IEA's Copper analysis (CC BY 4.0). The Western gallium price, which more than doubled in the year after the 2023 export controls, is from the US International Trade Commission (public domain).</p>
+
+    <p>Prices are dealer-indicative Western quotes for the strategic metals and global benchmarks for the exchange-traded ones, observed weekly. The index is indicative of frontier-input price movement, not a tradeable benchmark.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<!-- Live index chart: the reusable IndexChart component, keyed by series + accent.
+     Commodities series (feed key 'commodities', code RCMI); accent = the homepage
+     commodities hue (--com). forwardOnly:true renders the since-inception mode for
+     this newly-launched, forward-only weekly index. Same component R4/R5 use. -->
+<script src="/js/index-chart.js?v=20260627b"></script>
+<script>
+  new IndexChart('rcmi-chart', {
+    seriesKey: 'commodities',
+    accent: '#C9A24B',
+    name: 'Robotnik Commodities Index',
+    code: 'RCMI',
+    source: '/data/index/index_summary.json',
+    forwardOnly: true
+  });
+</script>
+<script src="/js/nav.js?v=20260627b"></script>
+</body>
+</html>

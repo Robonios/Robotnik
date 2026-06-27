@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-27T10:15:35.471158Z",
+    "generated_at": "2026-06-27T14:08:39.838511Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -2195,6 +2195,7 @@
           "value": 976.42
         }
       ],
+      "code": "RCMI",
       "methodology_note": "Forward-only weekly index of frontier-input price relatives (\u00a76.1 live weights, 12% single-name cap). Launched 2026-06-17."
     },
     "private": {

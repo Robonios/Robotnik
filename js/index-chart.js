@@ -49,6 +49,7 @@
     { d: 365,  l: '1Y' }, { d: 1095, l: '3Y' }, { d: 1825, l: '5Y' }
   ];
   var DEFAULT_RANGE = 365;       // 1Y
+  var FORWARD_ONLY_MAX_SPAN = 30; // a series shorter than this (days) collapses to since-inception mode (forward-only indices)
   var VB_W = 1000, VB_H = 300;   // SVG viewBox (line drawn here, stretched to fill)
 
   function el(tag, cls, html) {
@@ -124,6 +125,9 @@
       ".ic-range-btn,.ic-mode-btn{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.02em;color:var(--text-dim,#8a909c);background:transparent;border:0;padding:4px 9px;border-radius:6px;cursor:pointer;}",
       ".ic-range-btn:hover,.ic-mode-btn:hover{color:var(--text,#e6e9ef);}",
       ".ic-range-btn.is-active,.ic-mode-btn.is-active{background:color-mix(in srgb, var(--ic-accent,#E0A33C) 18%, transparent);color:var(--text,#e6e9ef);}",
+      ".ic-span{display:none;align-items:center;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.04em;color:var(--text-dim,#8a909c);padding:4px 2px;}",
+      ".ic-card.is-forward .ic-ranges{display:none;}",
+      ".ic-card.is-forward .ic-span{display:inline-flex;}",
       ".ic-plotwrap{position:relative;height:300px;}",
       ".ic-yaxis{position:absolute;left:0;top:8px;bottom:24px;width:46px;pointer-events:none;}",
       ".ic-ylabel{position:absolute;right:6px;transform:translateY(-50%);font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:500;color:var(--text-dim,#8a909c);font-variant-numeric:tabular-nums;white-space:nowrap;}",
@@ -184,6 +188,7 @@
       return '<button type="button" class="ic-range-btn" data-d="' + r.d + '">' + r.l + '</button>';
     }).join('');
     card.appendChild(el('div', 'ic-controls',
+      '<span class="ic-span"></span>' +
       '<div class="ic-ranges" role="group" aria-label="Time range">' + ranges + '</div>' +
       '<div class="ic-modes" role="group" aria-label="Value or percentage">' +
         '<button type="button" class="ic-mode-btn" data-mode="value">Value</button>' +
@@ -221,6 +226,7 @@
     this._msg = wrap.querySelector('.ic-msg');
     this._valueEl = card.querySelector('.ic-value');
     this._changeEl = card.querySelector('.ic-change');
+    this._span = card.querySelector('.ic-span');
   };
 
   IndexChart.prototype._fail = function () {
@@ -260,6 +266,17 @@
                     .filter(function (p) { return !isNaN(p.value); })
                     .sort(function (a, b) { return a.o - b.o; });
     if (this.full.length < 2) { this._fail(); return; }
+    // Forward-only / too-short series (newly-launched indices: commodities, composite):
+    // collapse the horizon toggle and show the whole series since inception. Also
+    // triggerable explicitly via opts.forwardOnly. R4/R5 (multi-year) never trip this.
+    var spanDays = this.full[this.full.length - 1].o - this.full[0].o;
+    this.forwardOnly = this.opts.forwardOnly === true || spanDays < FORWARD_ONLY_MAX_SPAN;
+    if (this.forwardOnly) {
+      this.range = 1e9;                                  // one window over the whole series
+      this._card.classList.add('is-forward');
+      var _bd = (this.base && this.base.date) || this.full[0].date;
+      this._span.textContent = 'since inception · ' + fmtDate(_bd);
+    }
     this._wire();
     this._dot.style.display = '';
     this._card.setAttribute('data-state', 'ready');
@@ -280,6 +297,8 @@
     var vis = this._window();
     var n = vis.length, self = this, pct = this.mode === 'pct';
     var v0 = vis[0].value || 1;
+    var rangeLabel = this.forwardOnly ? 'since inception'
+      : (RANGES.filter(function (r) { return r.d === self.range; })[0] || { l: '' }).l;
 
     // plotted points: y is value or rebased %
     this.pts = vis.map(function (p) {
@@ -303,8 +322,7 @@
     var gid = 'ic-grad-' + this.seriesKey;
     this._svgMount.innerHTML =
       '<svg class="ic-svg" viewBox="0 0 ' + VB_W + ' ' + VB_H + '" preserveAspectRatio="none" role="img" ' +
-        'aria-label="' + esc((this.opts.name || this.seriesKey) + ', ' +
-          (RANGES.filter(function (r) { return r.d === self.range; })[0] || { l: '' }).l +
+        'aria-label="' + esc((this.opts.name || this.seriesKey) + ', ' + rangeLabel +
           ', ' + (pct ? 'percentage change' : 'index value') + '.') + '">' +
         '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1">' +
           '<stop offset="0%" stop-color="' + this.accent + '" stop-opacity="0.22"/>' +
@@ -339,13 +357,16 @@
     this._yaxis.innerHTML = ylab;
 
     // ---- x-axis date labels (~4 across) ----
+    // In forward-only mode this.range is a sentinel (1e9); label by the visible
+    // span so a days-long series reads as "17 Jun" not "Jun '26".
+    var labelRange = this.forwardOnly ? (vis[vis.length - 1].o - vis[0].o) : this.range;
     var xn = Math.min(4, n), xlab = '';
     for (var xi = 0; xi < xn; xi++) {
       var idx = Math.round(xi / (xn - 1) * (n - 1));
       var f2 = (idx / (n - 1)) * 100;
       xlab += '<div class="ic-xlabel" style="left:' + f2.toFixed(2) + '%;transform:translateX(' +
         (xi === 0 ? '0' : xi === xn - 1 ? '-100%' : '-50%') + ')">' +
-        fmtDateShort(this.pts[idx].date, this.range) + '</div>';
+        fmtDateShort(this.pts[idx].date, labelRange) + '</div>';
     }
     this._xaxis.innerHTML = xlab;
 
@@ -353,9 +374,8 @@
     var lastP = this.pts[n - 1], first = this.pts[0];
     this._valueEl.textContent = fmtNum(this.live ? this.live.value : lastP.value);
     var ret = (lastP.value - first.value) / first.value * 100;
-    var rl = (RANGES.filter(function (r) { return r.d === self.range; })[0] || { l: '' }).l;
     var up = ret >= 0;
-    this._changeEl.textContent = (up ? '+' : '') + ret.toFixed(2) + '% · ' + rl;
+    this._changeEl.textContent = (up ? '+' : '') + ret.toFixed(2) + '% · ' + rangeLabel;
     this._changeEl.className = 'ic-change ' + (up ? 'up' : 'down');
 
     this._pos(n - 1);   // park marker on the latest visible point
@@ -393,17 +413,19 @@
 
   IndexChart.prototype._wire = function () {
     var self = this;
-    // range tabs
-    this._card.querySelectorAll('.ic-range-btn').forEach(function (b) {
-      b.classList.toggle('is-active', +b.dataset.d === self.range);
-      b.addEventListener('click', function () {
-        self.range = +b.dataset.d;
-        self._card.querySelectorAll('.ic-range-btn').forEach(function (x) {
-          x.classList.toggle('is-active', x === b);
+    // range tabs (suppressed in forward-only mode — the horizons would be empty)
+    if (!this.forwardOnly) {
+      this._card.querySelectorAll('.ic-range-btn').forEach(function (b) {
+        b.classList.toggle('is-active', +b.dataset.d === self.range);
+        b.addEventListener('click', function () {
+          self.range = +b.dataset.d;
+          self._card.querySelectorAll('.ic-range-btn').forEach(function (x) {
+            x.classList.toggle('is-active', x === b);
+          });
+          self._draw();
         });
-        self._draw();
       });
-    });
+    }
     // value / % toggle
     this._card.querySelectorAll('.ic-mode-btn').forEach(function (b) {
       b.classList.toggle('is-active', b.dataset.mode === self.mode);

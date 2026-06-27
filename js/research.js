@@ -56,7 +56,7 @@
       { id: 'R4', title: 'Bottleneck-weighted index', sub: 'How the universe is weighted by supply risk, and how each company is rated', url: '/research/bottleneck-weighted-index', live: true },
       { id: 'R5', title: 'Public equities index', sub: 'The base index: the listed frontier stack at market value, built as a sector blend', url: '/research/public-equities-index', live: true },
       { id: 'R6', title: 'Private market shadow index (RPCI) methodology' },
-      { id: 'R7', title: 'Commodities index methodology' },
+      { id: 'R7', title: 'Commodities index', sub: 'How raw materials are weighted by frontier-demand intensity, not by tonnage or supply risk', url: '/research/commodities-index', live: true },
       { id: 'R8', title: 'Composite index methodology' },
       { id: 'R11', title: 'Frontier Conditions', sub: 'The −100 / +100 diffusion index, planned' }
     ] }

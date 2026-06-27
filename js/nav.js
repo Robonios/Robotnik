@@ -349,6 +349,12 @@
       tags: ['r5', 'public equities', 'public-equities', 'public equities index', 'rpei', 'index', 'market cap', 'market-cap', 'sector blend', 'sub-indices', 'sub-index', 'base index', 'equities', 'reference', 'sector cards'],
       type: 'reference',
       url: '/research/public-equities-index',
+    }, {
+      title: 'The Commodities Index: Weighting the Frontier Stack by Material Dependence',
+      desc: 'Reference · weighting raw materials by frontier-demand intensity, not by tonnage or supply risk',
+      tags: ['r7', 'commodities', 'commodities index', 'rcmi', 'material dependence', 'raw materials', 'rare earths', 'gallium', 'critical minerals', 'demand', 'frontier demand', 'index', 'reference'],
+      type: 'reference',
+      url: '/research/commodities-index',
     }];
 
     var _datasets = null;
