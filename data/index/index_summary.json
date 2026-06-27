@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-06-26T23:04:38.298090Z",
+    "generated_at": "2026-06-27T10:15:35.471158Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -30,24 +30,21 @@
       "name": "Robotnik Composite Index",
       "status": "live",
       "cadence": "weekly",
-      "value": 1000.0,
-      "as_of": "2026-06-17",
-      "fresh_through": "2026-06-17",
+      "value": 985.99,
+      "as_of": "2026-06-27",
+      "fresh_through": "2026-06-27",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-06-17",
-        "points": 1,
+        "end": "2026-06-27",
+        "points": 2,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": {
-          "null": true,
-          "reason": "insufficient_history"
-        },
+        "1W": -1.4,
         "1M": {
           "null": true,
           "reason": "insufficient_history"
@@ -73,6 +70,10 @@
         {
           "date": "2026-06-17",
           "value": 1000.0
+        },
+        {
+          "date": "2026-06-27",
+          "value": 985.99
         }
       ],
       "code": "RCI",
@@ -2148,24 +2149,21 @@
       "name": "Commodities",
       "status": "live",
       "cadence": "weekly",
-      "value": 1000.0,
-      "as_of": "2026-06-17",
-      "fresh_through": "2026-06-17",
+      "value": 976.42,
+      "as_of": "2026-06-27",
+      "fresh_through": "2026-06-27",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-06-17",
-        "points": 1,
+        "end": "2026-06-27",
+        "points": 2,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": {
-          "null": true,
-          "reason": "insufficient_history"
-        },
+        "1W": -2.36,
         "1M": {
           "null": true,
           "reason": "insufficient_history"
@@ -2191,6 +2189,10 @@
         {
           "date": "2026-06-17",
           "value": 1000.0
+        },
+        {
+          "date": "2026-06-27",
+          "value": 976.42
         }
       ],
       "methodology_note": "Forward-only weekly index of frontier-input price relatives (\u00a76.1 live weights, 12% single-name cap). Launched 2026-06-17."
