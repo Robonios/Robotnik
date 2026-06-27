@@ -45,10 +45,15 @@
       "description": "How Robotnik finds control points in the frontier stack, the concentrated supply-chain points where value and risk gather, and maps what depends on them.",
       "url": "https://robotnik.world/research/control-points",
       "datePublished": "2026-06-26",
-      "dateModified": "2026-06-26",
+      "dateModified": "2026-06-27",
       "image": "https://robotnik.world/og/default.png",
       "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
-      "publisher": { "@id": "https://robotnik.world/#organization" }
+      "publisher": { "@id": "https://robotnik.world/#organization" },
+      "citation": [
+        { "@type": "CreativeWork", "name": "USGS Mineral Commodity Summaries — Gallium", "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-gallium.pdf", "publisher": "U.S. Geological Survey" },
+        { "@type": "CreativeWork", "name": "USGS Mineral Commodity Summaries — Quartz (high-purity and industrial cultured crystal)", "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-quartz.pdf", "publisher": "U.S. Geological Survey" },
+        { "@type": "CreativeWork", "name": "Building Resilient Supply Chains, Revitalizing American Manufacturing, and Fostering Broad-Based Growth: 100-Day Reviews under Executive Order 14017", "url": "https://bidenwhitehouse.archives.gov/wp-content/uploads/2021/06/100-day-supply-chain-review-report.pdf", "datePublished": "2021-06" }
+      ]
     },
     {
       "@type": "DefinedTermSet",
@@ -170,7 +175,7 @@
 
     <p>Each candidate is assessed on those three properties, using the structured fields Robotnik records for every material it tracks: where the supply is concentrated, what the substitution path looks like, and the policy context around it.</p>
 
-    <p>Concentration is the share of supply held by the single largest source. Gallium is roughly 98 per cent refined in China. Advanced photoresist is roughly 90 per cent made in Japan. A figure that high, on an input the stack cannot replace at scale, is the signature of a control point. Criticality is the substitution question: if the input were cut, could its function be met another way, and at what cost in performance, time, and money. The harder and slower the substitution, the more critical the input. Dependence is whether the stack consumes it in volumes that matter, which is what separates a control point from a laboratory curiosity.</p>
+    <p>Concentration is the share of supply held by the single largest source. China produces about 99 per cent of the world's raw, low-purity gallium (USGS), the feedstock that high-purity refiners everywhere must import. Advanced photoresist is roughly 90 per cent made in Japan (White House review, 2021). A figure that high, on an input the stack cannot replace at scale, is the signature of a control point. Criticality is the substitution question: if the input were cut, could its function be met another way, and at what cost in performance, time, and money. The harder and slower the substitution, the more critical the input. Dependence is whether the stack consumes it in volumes that matter, which is what separates a control point from a laboratory curiosity.</p>
 
     <p>The figures behind these calls are held to a standard, and not every node has cleared it. Some are verified. Others are tracked but still being confirmed, and Robotnik labels them that way instead of presenting them as settled. A concentration figure that has not been verified is marked tracked, not stated as fact. The map says plainly what it knows and what it is still checking, on the principle that a number which looks confirmed and is not does more damage than an acknowledged gap.</p>
 
@@ -188,9 +193,9 @@
 
     <h2>Worked examples</h2>
 
-    <p>Gallium is the cleanest case. Roughly 98 per cent of refining sits in China, there is no effective substitute for its use in high-performance compound semiconductors, and the stack's demand for it is concentrated in exactly those chips. Criticality, concentration, and dependence all hold, which is why one country's export policy on it registers as a frontier-stack event rather than a commodity footnote. Advanced photoresist is much the same: roughly 90 per cent of supply is Japanese, the chemistry is exacting and slow to qualify anywhere new, and no advanced chip is made without it. Neon, the gas used in lithography, is a third case: its supply has been concentrated in a small number of producers, which made it a documented point of fragility when that supply was interrupted.</p>
+    <p>Gallium is the cleanest case. China produces about 99 per cent of the world's raw, low-purity gallium (USGS), the feedstock even refiners elsewhere must import, there is no effective substitute for its use in high-performance compound semiconductors, and the stack's demand for it is concentrated in exactly those chips. Criticality, concentration, and dependence all hold, which is why one country's export policy on it registers as a frontier-stack event rather than a commodity footnote. Advanced photoresist is much the same: roughly 90 per cent of supply is Japanese (White House review, 2021), the chemistry is exacting and slow to qualify anywhere new, and no advanced chip is made without it. Neon, the gas used in lithography, is a third case: its supply has been concentrated in a small number of producers, which made it a documented point of fragility when that supply was interrupted.</p>
 
-    <p>Other choke points are named in the map but carried more carefully. CoWoS advanced packaging, ABF substrate film, and high-purity quartz are all tracked as control points, but their concentration figures are still being verified to the standard above, so they are recorded as tracked, not asserted here. They are named because the method has flagged them, not because the numbers are yet settled.</p>
+    <p>Other choke points are named in the map but carried more carefully. CoWoS advanced packaging, ABF substrate film, and high-purity quartz are all tracked as control points, but their concentration figures are still being verified to the standard above, so they are recorded as tracked, not asserted here. They are named because the method has flagged them, not because the numbers are yet settled. For high-purity quartz the gap is itself on the public record: the USGS publishes the commodity and names its use in the fused-quartz crucibles that grow semiconductor silicon, yet withholds and rounds production to avoid disclosing company data and cannot separate the trade in the tariff codes, so a clean concentration figure is structurally unobtainable from open data (USGS). The absence is part of the record, not a number to invent.</p>
 
     <h2>Where this is weakest</h2>
 
@@ -226,6 +231,12 @@
 
     <h3>What is a dependency analysis?</h3>
     <p>A dependency analysis applies this method to one case: it takes a named control point and traces what a disruption there would cascade into across the stack. The methodology here defines how that is done; each analysis is a specific application of it.</p>
+
+    <h2>Sources and provenance</h2>
+
+    <p>The concentration figures here are sourced where a public dataset carries them, and marked as Robotnik's own where none does. Gallium is from the USGS Mineral Commodity Summaries (public domain): China produces about 99 per cent of the world's raw, low-purity gallium, the feedstock high-purity refiners elsewhere must import, so the chokepoint sits at the raw-production stage &mdash; which is what the 2023 export controls hit &mdash; rather than in refining, which USGS records as more distributed. The advanced-photoresist figure is from the United States' 2021 supply-chain review, <em>Building Resilient Supply Chains</em> (the 100-day review under Executive Order 14017, public domain), which records Japanese firms at an estimated 90 per cent of the photoresist market. Neon's concentration is described qualitatively, not as a figure.</p>
+
+    <p>The three chokepoint nodes &mdash; CoWoS advanced packaging, ABF substrate film, and high-purity quartz &mdash; carry no sourced concentration figure, by design: no open public dataset states one. For high-purity quartz the USGS record (public domain) documents the gap directly, publishing the commodity and its semiconductor crucible end use while withholding and rounding production and noting the trade cannot be isolated in the tariff codes. Where Robotnik tracks these as control points that is curated interpretation, marked as such and verification-pending, never presented as a sourced number. The absence is evidence, and it is cited rather than hidden.</p>
 
   </div><!-- .article-body -->
 

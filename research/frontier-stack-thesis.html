@@ -48,9 +48,15 @@
       "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
       "publisher": { "@id": "https://robotnik.world/#organization" },
       "datePublished": "2026-06-21",
-      "dateModified": "2026-06-26",
+      "dateModified": "2026-06-27",
       "image": "https://robotnik.world/og/r1-frontier-stack.png",
-      "mainEntityOfPage": "https://robotnik.world/research/frontier-stack-thesis"
+      "mainEntityOfPage": "https://robotnik.world/research/frontier-stack-thesis",
+      "citation": [
+        { "@type": "CreativeWork", "name": "USGS Mineral Commodity Summaries — Rare Earths", "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf", "publisher": "U.S. Geological Survey" },
+        { "@type": "CreativeWork", "name": "USGS Mineral Commodity Summaries — Rare Earths (Heavy)", "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths-heavy.pdf", "publisher": "U.S. Geological Survey" },
+        { "@type": "CreativeWork", "name": "International Energy Agency (IEA), Rare Earth Elements — China's share of global refined output", "url": "https://www.iea.org/reports/rare-earth-elements", "publisher": "International Energy Agency", "license": "https://creativecommons.org/licenses/by/4.0/" },
+        { "@type": "CreativeWork", "name": "Alphabet Inc., Annual Report on Form 10-K (fiscal year 2024), filed with the U.S. Securities and Exchange Commission via EDGAR", "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=10-K" }
+      ]
     },
     {
       "@type": "DefinedTermSet",
@@ -66,7 +72,7 @@
         { "@type": "Question", "name": "What is the frontier stack?", "acceptedAnswer": { "@type": "Answer", "text": "The frontier stack is semiconductors, robotics, space, and critical materials treated as one investable asset class rather than four separate sectors. They share inputs, customers, and constraints closely enough that a change in one moves measurably through the others, a pattern visible only when the four are read together." } },
         { "@type": "Question", "name": "Why are semiconductors, robotics, space, and critical materials a single asset class?", "acceptedAnswer": { "@type": "Answer", "text": "Because they depend on the same inputs. The same advanced chips run robots and satellites; the same rare-earth magnets drive servo motors and reaction wheels. A shock to a shared input such as magnets, chips, or lithography propagates across all four sectors at once, so they behave as one system rather than four independent markets." } },
         { "@type": "Question", "name": "What is a control point in the frontier stack?", "acceptedAnswer": { "@type": "Answer", "text": "A control point, or bottleneck, is a position where supply sits in few hands, the function is hard to substitute, and disruption cascades downstream. Examples include EUV lithography (one supplier), heavy rare-earth processing (one country), and ABF substrate film (one firm). Value and risk concentrate at these points." } },
-        { "@type": "Question", "name": "Why does pure-play exposure matter?", "acceptedAnswer": { "@type": "Answer", "text": "Large technology firms touch the frontier, but it is a small fraction of a diversified business, so their share price reflects the conglomerate rather than the stack. A pure play, a company whose business is the frontier, gives an undistorted reading. Alphabet's frontier work, for instance, is under one per cent of revenue." } },
+        { "@type": "Question", "name": "Why does pure-play exposure matter?", "acceptedAnswer": { "@type": "Answer", "text": "Large technology firms touch the frontier, but it is a small fraction of a diversified business, so their share price reflects the conglomerate rather than the stack. A pure play, a company whose business is the frontier, gives an undistorted reading. Alphabet's frontier work, for instance, is under one per cent of revenue (Alphabet 10-K)." } },
         { "@type": "Question", "name": "How does Robotnik measure the frontier stack?", "acceptedAnswer": { "@type": "Answer", "text": "Robotnik defines the universe by an explicit membership rule, tracks it with a family of indices benchmarked against their own published history, and maps dependencies at the level of the individual entity rather than the sector. The methodology is published, and the framework is tested against new data each quarter." } },
         { "@type": "Question", "name": "Who is Robotnik for?", "acceptedAnswer": { "@type": "Answer", "text": "Robotnik is for investors and analysts who treat frontier technology as something to allocate to rather than just read about. That spans retail and professional investors who want the structure behind the headlines, and institutional allocators who need dependency and supply-chain analysis at the entity level. It is a research platform, not a data terminal." } }
       ]
@@ -200,7 +206,7 @@
       <figcaption>Figure 2. One concentrated control point and the cascade it sets off across sectors. EUV lithography and ABF substrate film behave the same way.</figcaption>
     </figure>
 
-    <p>Three examples show how concentrated this gets, and how unalike the chokepoints can be. ASML builds every extreme-ultraviolet lithography system on Earth, the machines that pattern the most advanced chip layers; neither Nikon nor Canon ships one, and the next-generation High-NA tools are ASML's alone. China separates roughly 90 per cent of the world's rare earths and effectively all of the heavy ones, while the United States has no commercial-scale processing for the heavy elements, dysprosium and terbium, that high-temperature magnets need, and buys them almost entirely from China. And nearly every advanced chip package is built on a film made by one company, Japan's Ajinomoto, whose own executives put its share near 95 per cent. A machine, a processing step, a consumable material: three unlike chokepoints, each sitting where its failure would reach the whole stack downstream.</p>
+    <p>Three examples show how concentrated this gets, and how unalike the chokepoints can be. ASML builds every extreme-ultraviolet lithography system on Earth, the machines that pattern the most advanced chip layers; neither Nikon nor Canon ships one, and the next-generation High-NA tools are ASML's alone. China mines roughly 70 per cent of the world's rare earths (USGS) and separates closer to 91 per cent of them (IEA), effectively all of the heavy ones; the United States has no commercial-scale processing for the heavy elements, dysprosium and terbium, that high-temperature magnets need, and imports them almost entirely from China (USGS). And nearly every advanced chip package is built on a film made by effectively one company, Japan's Ajinomoto. A machine, a processing step, a consumable material: three unlike chokepoints, each sitting where its failure would reach the whole stack downstream.</p>
 
     <p>The control point is rarely the company everyone watches. More often it is a specialised supplier several steps upstream, which is exactly why its importance is easy to miss and easy to misprice.</p>
 
@@ -213,7 +219,7 @@
 
     <p>To see the stack clearly, the worst instrument is the set of companies most investors already own. The largest technology firms all touch the frontier, but for each of them it is a sliver of a diversified business, and the share price moves on everything except that sliver. Buy one of them and you have bought a conglomerate that does a little frontier work.</p>
 
-    <p>Alphabet is the plain example. Advertising is roughly three-quarters of its revenue. Its entire autonomy-and-robotics effort, Waymo, sits inside the "Other Bets" line and runs well under one per cent, a share that shrinks as the rest of the company grows. Buy Alphabet to own the frontier and you have, in the main, bought an advertising company.</p>
+    <p>Alphabet is the plain example. Advertising is roughly three-quarters of its revenue, and its entire autonomy-and-robotics effort, Waymo, sits inside the "Other Bets" line and runs well under one per cent, a share that shrinks as the rest of the company grows (Alphabet 10-K). Buy Alphabet to own the frontier and you have, in the main, bought an advertising company.</p>
 
     <figure class="article-figure">
       <img src="/assets/r1-fig3-pure-play.svg" alt="Bar chart: a diversified mega-cap's revenue is almost entirely outside the frontier, an under-1% sliver of frontier exposure, against a pure play that is roughly 100 per cent frontier exposure." width="900" height="470" loading="lazy">
@@ -251,13 +257,19 @@
     <p>A control point, or bottleneck, is a position where supply sits in few hands, the function is hard to substitute, and disruption cascades downstream. Examples include EUV lithography (one supplier), heavy rare-earth processing (one country), and ABF substrate film (one firm). Value and risk concentrate at these points.</p>
 
     <h3>Why does pure-play exposure matter?</h3>
-    <p>Large technology firms touch the frontier, but it is a small fraction of a diversified business, so their share price reflects the conglomerate rather than the stack. A pure play, a company whose business is the frontier, gives an undistorted reading. Alphabet's frontier work, for instance, is under one per cent of revenue.</p>
+    <p>Large technology firms touch the frontier, but it is a small fraction of a diversified business, so their share price reflects the conglomerate rather than the stack. A pure play, a company whose business is the frontier, gives an undistorted reading. Alphabet's frontier work, for instance, is under one per cent of revenue (Alphabet 10-K).</p>
 
     <h3>How does Robotnik measure the frontier stack?</h3>
     <p>Robotnik defines the universe by an explicit membership rule, tracks it with a family of indices benchmarked against their own published history, and maps dependencies at the level of the individual entity rather than the sector. The methodology is published, and the framework is tested against new data each quarter.</p>
 
     <h3>Who is Robotnik for?</h3>
     <p>Robotnik is for investors and analysts who treat frontier technology as something to allocate to rather than just read about. That spans retail and professional investors who want the structure behind the headlines, and institutional allocators who need dependency and supply-chain analysis at the entity level. It is a research platform, not a data terminal.</p>
+
+    <h2>Sources and provenance</h2>
+
+    <p>The external figures here are sourced where a public dataset carries them, and held back where none does. China's rare-earth dominance runs across two stages: mining is from the USGS Mineral Commodity Summaries (public domain), which put China at roughly 70 per cent of world mine production, while the downstream separation share — the actual chokepoint — is from the International Energy Agency, which puts China at about 91 per cent of global refined output (source: IEA, <em>Rare Earth Elements</em>; used under the Creative Commons CC BY 4.0 licence). The USGS heavy-rare-earths record (public domain) records United States imports of terbium and the other heavy elements as effectively all Chinese. Alphabet's revenue composition is from its latest Annual Report on Form 10-K, filed with the SEC and in the public domain. ASML's standing as the sole maker of extreme-ultraviolet lithography systems is a market-structure fact, stated qualitatively rather than as a figure.</p>
+
+    <p>One number has been withheld rather than sourced. ABF substrate film, the packaging consumable named above, is one of three chokepoint nodes &mdash; with CoWoS packaging and high-purity quartz &mdash; for which no open public dataset carries a clean concentration figure. Robotnik tracks them as control points but holds their shares as curated, verification-pending interpretation, never as sourced numbers, so the dominance is stated qualitatively and the percentage is not published until it can be sourced. The <a href="/research/control-points">control-point methodology</a> sets out how these are handled.</p>
 
   </div><!-- .article-body -->
 
