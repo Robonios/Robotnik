@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/public-equities-index.html; GitHub Pages also
+     serves it extensionless at /research/public-equities-index (the canonical).
+     The shared nav.js injects RELATIVE links (index.html, robotlogo.png), so
+     <base href="/"> makes them resolve to the site root from this subdirectory.
+     All of this page's own asset references are root-absolute and unaffected. -->
+<base href="/">
+<title>The Public Equities Index: The Listed Frontier Stack</title>
+<meta name="description" content="How Robotnik's public-equities index weights the listed frontier stack by market value, built as a live blend of its four sector sub-indices.">
+<link rel="canonical" href="https://robotnik.world/research/public-equities-index">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/public-equities-index">
+<meta property="og:title" content="The Public Equities Index: The Listed Frontier Stack">
+<meta property="og:description" content="How Robotnik's public-equities index weights the listed frontier stack by market value, built as a live blend of its four sector sub-indices.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-06-27">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Public Equities Index: The Listed Frontier Stack">
+<meta name="twitter:description" content="How Robotnik's public-equities index weights the listed frontier stack by market value, built as a live blend of its four sector sub-indices.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage); author/publisher resolve to the canonical Organization entity (#organization). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The Public Equities Index: The Investable Public Surface of the Frontier Stack",
+      "description": "How Robotnik's public-equities index weights the listed frontier stack by market value, built as a live blend of its four sector sub-indices.",
+      "url": "https://robotnik.world/research/public-equities-index",
+      "datePublished": "2026-06-27",
+      "dateModified": "2026-06-27",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Frontier stack public-equities index",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/public-equities-index#public-equities-index",
+          "name": "Public-equities index",
+          "description": "The base index of Robotnik's family: a market-capitalisation-weighted index of the listed frontier-stack companies, built as a live blend of four sector sub-indices (semiconductors, robotics, space, materials) combined by each sector's share of total market value."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/public-equities-index#sector-sub-index",
+          "name": "Sector sub-index",
+          "description": "One of the four equity sub-indices (semiconductors, robotics, space, materials) that compose the public-equities index, each a market-cap-weighted, five-per-cent-capped basket of its sector's listed names, also published as a homepage sector card."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does the public-equities index measure?", "acceptedAnswer": { "@type": "Answer", "text": "It measures the investable public surface of the frontier stack: the listed companies whose core business is the frontier-stack value chain, weighted by market value. It is the base index of the family, the plain market valuation of the public stack before any supply-risk tilt or commodity blend." } },
+        { "@type": "Question", "name": "Is it a single basket of all the listed names?", "acceptedAnswer": { "@type": "Answer", "text": "No. It is a blend of four sector sub-indices, semiconductors, robotics, space, and materials. Each is its own market-cap-weighted, five-per-cent-capped basket, and the four are combined by each sector's live share of total market value. Those four sub-indices are the sector cards on the homepage." } },
+        { "@type": "Question", "name": "How are the four sectors combined?", "acceptedAnswer": { "@type": "Answer", "text": "By their live market-cap share. Each day, a sector contributes to the headline index in proportion to its share of the four sectors' total market value, so the larger sectors carry more weight and the shares move as relative valuations shift." } },
+        { "@type": "Question", "name": "Does the index include dividends?", "acceptedAnswer": { "@type": "Answer", "text": "No, it is a price index and dividends are not reinvested, so a total-return view would be higher. That gap is the index's own dividend yield, which is low: the stack is weighted towards growth names that pay little, with what yield there is concentrated in the mature semiconductor and materials companies." } },
+        { "@type": "Question", "name": "How far back does the series go?", "acceptedAnswer": { "@type": "Answer", "text": "To 2021, about five years, on the listed names' price history. The series is a backward projection of today's membership and weights, so it shows how today's stack would have moved over that period." } },
+        { "@type": "Question", "name": "How is it different from the bottleneck and composite indices?", "acceptedAnswer": { "@type": "Answer", "text": "The public-equities index and the bottleneck-weighted index share the same equity universe, weighted two ways: this index by market value, the bottleneck index tilted towards supply risk. The composite is a step removed, blending this index with commodities, three-quarters to one-quarter. The public-equities index is the base the other two build on." } },
+        { "@type": "Question", "name": "What happens on a day when some of the names do not trade?", "acceptedAnswer": { "@type": "Answer", "text": "The index carries the missing names flat for that day, with no contribution to the move. A day counts as a session only if at least half the eligible names traded; if too many are missing, the day fails the threshold and the index publishes nothing rather than print a figure distorted by stale prices." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R5 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  /* ---- index chart figure wrapper. The chart itself is the reusable
+         IndexChart component (/js/index-chart.js), which injects its own
+         styles; only the figure + caption are page-level. ---- */
+  .idx-figure { margin: 0 0 2.75rem; }
+  .idx-cap { font-family: 'Mulish', var(--font); font-style: italic; font-size: 0.85rem; line-height: 1.55; color: var(--text-dim); margin: 0.85rem 0.1rem 0; }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+  .article-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(245,217,33,0.35); }
+  .article-body a:hover { border-bottom-color: var(--yellow); }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek, .idx-cap { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">The Public Equities Index: The Investable Public Surface of the Frontier Stack</h1>
+    <p class="article-dek"><em>How Robotnik measures the listed frontier stack at market value, built as a live blend of its four equity sectors.</em></p>
+  </header>
+
+  <!-- Live, interactive index chart. The reusable IndexChart component
+       (/js/index-chart.js) mounts here on the public-equities series and reads
+       index_summary.json -> indexes.public (full ~5Y history from
+       robotnik_index.json, the file the feed references), exactly as the homepage
+       index grid reads the live feed. Same component R4 uses, keyed by series +
+       accent. A pointer/touch crosshair reads back value and date along the series. -->
+  <figure class="idx-figure" aria-labelledby="rpei-cap">
+    <div id="rpei-chart"></div>
+    <figcaption class="idx-cap" id="rpei-cap">The live Public Equities Index, based at 1,000 on 31 March 2025 and updated daily &mdash; the listed frontier stack at market value, its four sector sub-indices blended by market-cap share.</figcaption>
+  </figure>
+
+  <div class="article-body">
+
+    <p>The public-equities index is the base of the family. It measures the investable public surface of the frontier stack: the listed companies whose core business is the physical frontier-stack value chain, weighted by market value. It is the index the homepage leads with, and the one the others are defined against. The <a href="/research/bottleneck-weighted-index">bottleneck-weighted index</a> tilts this same universe towards supply risk; the composite blends it with commodities. This piece documents how it is built.</p>
+
+    <p>The universe is the one <a href="/research/universe-membership">the membership methodology</a> defines, narrowed to the names an investor can actually hold: public, listed, and priced.</p>
+
+    <h2>What it measures</h2>
+
+    <p>The index measures the market's valuation of the listed frontier stack, and how that valuation moves over time. Weighting by market capitalisation means the larger companies and sectors carry more of the index, so it moves with the most valuable parts of the listed stack. This is the base case the rest of the family is built on, the plain value of the public stack, before the supply-risk tilt or the commodity blend that the other indices layer on.</p>
+
+    <h2>How it is built: the sector blend</h2>
+
+    <p>The index is not a single basket of every listed name. It is a blend of four sector sub-indices, semiconductors, robotics, space, and materials, each built and weighted in its own right and then combined.</p>
+
+    <p>Each sub-index is a market-cap-weighted basket of its sector's listed names, with a single-name cap of five per cent applied within the sector, so no one company can dominate its sector basket. The four are then combined by each sector's live share of total market value: the sector that is collectively larger carries more of the headline index, and those shares move from day to day as relative valuations shift. The headline index is, in the most literal sense, the sum of its sectors weighted by their size.</p>
+
+    <p>These four sub-indices are the sector cards shown on the homepage. The semiconductor, robotics, space, and materials cards are not summaries of the index, they are its components, and the public-equities index is those four cards blended by market-cap share.</p>
+
+    <p>One consequence is worth stating, because it corrects a natural assumption. The five-per-cent cap is applied within each sector, not across the whole index. A company is held to five per cent of its sector basket and then enters the headline index at its sector's blend share, so its effective weight in the whole index is not a flat five per cent. A reader picturing a single basket of all the names capped at five per cent has the cap's level wrong.</p>
+
+    <p>The index is denominated in US dollars, and listings priced in other currencies are converted at daily reference rates. It is based at 1,000 on 31 March 2025 and recomputed daily.</p>
+
+    <h2>How the series runs back</h2>
+
+    <p>The historical series is a backward projection of today's index. Today's membership and today's weights are carried back across the whole period, the construction the bottleneck and composite indices also use. Point-in-time share counts are not held for every company across five years, so current share counts stand in for historical ones, an explicit proxy and not a measured weight.</p>
+
+    <p>New listings are handled honestly. A company that floated after the base date, several of the space names among them, enters the series when it is first priced and contributes no step on its entry day, so a later listing does not appear as a spurious jump.</p>
+
+    <p>The series runs back to 2021 on the listed names' own price history, so the chart's five-year range is real history, not a synthetic extension. The longer ranges show how today's stack would have moved over that period, which is the honest reading of a backward projection.</p>
+
+    <h2>Sessions and the quorum rule</h2>
+
+    <p>The index steps forward only on a genuine trading session. A day counts as a session only if at least half of the eligible names actually traded; weekends, holidays, and thin partial days are dropped, not published. On a normal session, a name with a missing price simply does not move the index that day. If too many prices are missing, the day fails the threshold and prints nothing.</p>
+
+    <p>This is the honest-gap discipline the membership methodology refers to. The index will not put out a number built on a partial, unrepresentative day; publishing nothing is better than publishing a figure a handful of stale prices would distort.</p>
+
+    <h2>Where it is weakest</h2>
+
+    <p>The honest limits set how the index should be read.</p>
+
+    <p>It is a price index. It tracks price movement, and dividends are not reinvested, so the total return to an investor who reinvested would be higher. That gap, between this price index and a total-return view, is the index's own dividend yield, which is low: the stack is weighted towards growth names that pay little or no dividend, and what yield there is concentrates in the mature semiconductor and materials companies.</p>
+
+    <p>The cap is applied per sector, not per index, as the construction section sets out, so the largest names carry more of the whole index than a single five-per-cent cap would imply.</p>
+
+    <p>The series is a backward projection of today's weights, with current share counts standing in for historical ones. It shows how today's stack would have moved, which is the right way to read it, and not a record of how the index stood on each past day.</p>
+
+    <h2>How it fits the other lenses</h2>
+
+    <!-- Internal links (pending): "composite" -> R8 composite index methodology; "commodities" -> R7 commodities index methodology. Left as plain text until R7/R8 publish, then make live, as with R1-R4. The membership and bottleneck-weighted index links above are live. -->
+    <p>The public-equities index is the base the other two equity lenses are defined against. The bottleneck-weighted index covers the same universe on the same eligibility rules and tilts it towards supply risk; mechanically it tilts a single market-value basket of those names, so it is measured against that basket, not against this published, sub-index-blended series. The composite is a downstream blend, three-quarters this index and one-quarter the commodities index, so the public-equities index is the equity leg of the composite, not a different aggregation of it.</p>
+
+    <p>Below the headline, the four sector sub-indices are the published sector cards, so a reader can move from the whole listed stack down to any one sector and back, on the same construction throughout.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What does the public-equities index measure?</h3>
+    <p>It measures the investable public surface of the frontier stack: the listed companies whose core business is the frontier-stack value chain, weighted by market value. It is the base index of the family, the plain market valuation of the public stack before any supply-risk tilt or commodity blend.</p>
+
+    <h3>Is it a single basket of all the listed names?</h3>
+    <p>No. It is a blend of four sector sub-indices, semiconductors, robotics, space, and materials. Each is its own market-cap-weighted, five-per-cent-capped basket, and the four are combined by each sector's live share of total market value. Those four sub-indices are the sector cards on the homepage.</p>
+
+    <h3>How are the four sectors combined?</h3>
+    <p>By their live market-cap share. Each day, a sector contributes to the headline index in proportion to its share of the four sectors' total market value, so the larger sectors carry more weight and the shares move as relative valuations shift.</p>
+
+    <h3>Does the index include dividends?</h3>
+    <p>No, it is a price index and dividends are not reinvested, so a total-return view would be higher. That gap is the index's own dividend yield, which is low: the stack is weighted towards growth names that pay little, with what yield there is concentrated in the mature semiconductor and materials companies.</p>
+
+    <h3>How far back does the series go?</h3>
+    <p>To 2021, about five years, on the listed names' price history. The series is a backward projection of today's membership and weights, so it shows how today's stack would have moved over that period.</p>
+
+    <h3>How is it different from the bottleneck and composite indices?</h3>
+    <p>The public-equities index and the bottleneck-weighted index share the same equity universe, weighted two ways: this index by market value, the bottleneck index tilted towards supply risk. The composite is a step removed, blending this index with commodities, three-quarters to one-quarter. The public-equities index is the base the other two build on.</p>
+
+    <h3>What happens on a day when some of the names do not trade?</h3>
+    <p>The index carries the missing names flat for that day, with no contribution to the move. A day counts as a session only if at least half the eligible names traded; if too many are missing, the day fails the threshold and the index publishes nothing rather than print a figure distorted by stale prices.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<!-- Live index chart: the reusable IndexChart component, keyed by series + accent.
+     Public-equities series (feed key 'public', code RPEI); accent = the homepage
+     Public Equities blue. Same component R4 (bottleneck) uses. -->
+<script src="/js/index-chart.js?v=20260627a"></script>
+<script>
+  new IndexChart('rpei-chart', {
+    seriesKey: 'public',
+    accent: '#5B8DEF',
+    name: 'Robotnik Public Equities Index',
+    code: 'RPEI',
+    source: '/data/index/index_summary.json'
+  });
+</script>
+<script src="/js/nav.js?v=20260627a"></script>
+</body>
+</html>

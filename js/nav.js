@@ -343,6 +343,12 @@
       tags: ['r4', 'bottleneck', 'bottleneck-weighted', 'bottleneck weighted index', 'supply risk', 'supply-risk', 'index', 'weighting', 'multiplier', 'tilt', 'critical', 'rating', 'rbwc', 'reference', 'chokepoint'],
       type: 'reference',
       url: '/research/bottleneck-weighted-index',
+    }, {
+      title: 'The Public Equities Index: The Investable Public Surface of the Frontier Stack',
+      desc: 'Reference · the base index — the listed frontier stack at market value, as a sector blend',
+      tags: ['r5', 'public equities', 'public-equities', 'public equities index', 'rpei', 'index', 'market cap', 'market-cap', 'sector blend', 'sub-indices', 'sub-index', 'base index', 'equities', 'reference', 'sector cards'],
+      type: 'reference',
+      url: '/research/public-equities-index',
     }];
 
     var _datasets = null;

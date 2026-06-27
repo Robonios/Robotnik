@@ -54,7 +54,7 @@
     ] },
     { group: 'Index family', items: [
       { id: 'R4', title: 'Bottleneck-weighted index', sub: 'How the universe is weighted by supply risk, and how each company is rated', url: '/research/bottleneck-weighted-index', live: true },
-      { id: 'R5', title: 'Public equities methodology' },
+      { id: 'R5', title: 'Public equities index', sub: 'The base index: the listed frontier stack at market value, built as a sector blend', url: '/research/public-equities-index', live: true },
       { id: 'R6', title: 'Private market shadow index (RPCI) methodology' },
       { id: 'R7', title: 'Commodities index methodology' },
       { id: 'R8', title: 'Composite index methodology' },
