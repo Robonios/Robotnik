@@ -14,21 +14,21 @@
     "equities": {
       "name": "Public Equities",
       "source": "data/index/robotnik_index.json",
-      "leg_current_value": 3748.44,
-      "leg_current_date": "2026-06-18"
+      "leg_current_value": 3529.33,
+      "leg_current_date": "2026-06-26"
     },
     "commodities": {
       "name": "Robotnik Commodities Index",
       "source": "data/index/commodities_index.json",
-      "leg_current_value": 1000.0,
-      "leg_current_date": "2026-06-17"
+      "leg_current_value": 976.42,
+      "leg_current_date": "2026-06-27"
     }
   },
   "base_date": "2026-06-17",
   "base_value": 1000.0,
-  "current_value": 1000.0,
-  "current_date": "2026-06-17",
-  "points": 1,
+  "current_value": 985.99,
+  "current_date": "2026-06-27",
+  "points": 2,
   "forward_only": true,
   "series": [
     {
@@ -36,7 +36,25 @@
       "value": 1000.0,
       "eq_leg": 3567.94,
       "comm_leg": 1000.0
+    },
+    {
+      "date": "2026-06-27",
+      "value": 985.99,
+      "eq_leg": 3529.33,
+      "comm_leg": 976.42
     }
   ],
-  "calculated_at": "2026-06-19T12:01:37.902049Z"
+  "calculated_at": "2026-06-27T10:15:35.406997Z",
+  "last_update": {
+    "action": "appended",
+    "at": "2026-06-27T10:15:35.406997Z",
+    "anchor_date": "2026-06-17",
+    "mark": "2026-06-27",
+    "r_eq_pct": -1.0821,
+    "r_comm_pct": -2.358,
+    "eq_anchor": 3567.94,
+    "eq_now": 3529.33,
+    "comm_anchor": 1000.0,
+    "comm_now": 976.42
+  }
 }
