@@ -43,3 +43,42 @@ data/exports/entity_registry_for_review.csv
 # repomix packed output — regenerated on demand (npx repomix@1.15.0); not committed.
 # See docs/REPOMIX_AND_TOOLING.md.
 repomix-output.xml
+
+# ── Public-repo data-exposure removal (2026-06-29) ───────────────────────────
+# Inert internal data moved to ~/Robotnik-private-archive/ (HEAD-removed; still
+# in git history pending the purge — see docs/DATA_EXPOSURE_REMOVAL.md and
+# docs/HISTORY_PURGE_PLAN.md). These patterns stop the CI `git add data/` from
+# re-introducing them. The CI-coupled substrate (price history, entity_registry,
+# index machinery, rounds.json, …) is NOT here — it stays tracked, deferred to
+# the gate-build (docs/DEFERRED_DATA_PIPELINE.md).
+data/rag/
+data/sweeps/
+data/patterns/
+data/predictions/
+data/research/
+data/_reports/
+data/entities/
+data/exports/
+data/funding/*.md
+data/funding/investor_name_map.csv
+data/registries/dependency_edges.json
+data/registries/phase1_registry_patch.json
+data/registries/investor_registry.csv
+data/markets/material_nodes.json
+data/markets/phase0_dependency_coverage.md
+data/markets/phase1_chokepoint_nodes.json
+data/markets/phase1_coverage_report.md
+data/markets/proposed_*
+data/markets/oss_resource_scouting_digest.md
+data/markets/b1_displayed_artifact_inventory.md
+data/markets/classification_change_log.md
+data/markets/index_transform_inventory.md
+data/markets/marketstack_cutover_plan.md
+data/markets/cutover_constituent_manifest.json
+data/markets/eodhd_dependency_audit.md
+data/markets/data_licensing_review.md
+data/markets/token_isolation_policy.md
+data/markets/robotnik_public_markets.csv
+data/manifest.json
+data/prices.json
+data/task2a_reports.json
