@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/composite-index.html; GitHub Pages also
+     serves it extensionless at /research/composite-index (the canonical).
+     The shared nav.js injects RELATIVE links (index.html, robotlogo.png), so
+     <base href="/"> makes them resolve to the site root from this subdirectory.
+     All of this page's own asset references are root-absolute and unaffected. -->
+<base href="/">
+<title>The Composite Index: The Frontier Stack's Headline Blend</title>
+<meta name="description" content="How Robotnik's composite index blends the listed frontier stack's market value with its raw-material dependence, three-quarters to one-quarter, into a single headline.">
+<link rel="canonical" href="https://robotnik.world/research/composite-index">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/composite-index">
+<meta property="og:title" content="The Composite Index: The Frontier Stack's Headline Blend">
+<meta property="og:description" content="How Robotnik's composite index blends the listed frontier stack's market value with its raw-material dependence, three-quarters to one-quarter, into a single headline.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-06-27">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Composite Index: The Frontier Stack's Headline Blend">
+<meta name="twitter:description" content="How Robotnik's composite index blends the listed frontier stack's market value with its raw-material dependence, three-quarters to one-quarter, into a single headline.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage); author/publisher resolve to the canonical Organization entity (#organization). No citation array, by design: R8 makes no external quantitative claims (it blends two published Robotnik indices), like R4 and R5. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The Composite Index: The Frontier Stack's Headline Blend",
+      "description": "How Robotnik's composite index blends the listed frontier stack's market value with its raw-material dependence, three-quarters to one-quarter, into a single headline.",
+      "url": "https://robotnik.world/research/composite-index",
+      "datePublished": "2026-06-27",
+      "dateModified": "2026-06-27",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Frontier stack composite index",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/composite-index#composite-index",
+          "name": "Composite index",
+          "description": "Robotnik's headline index: a strategic blend of the public-equities index (three-quarters) and the commodities index (one-quarter), combining the frontier stack's market value with its raw-material dependence. A return blend, forward-only from June 2026, that excludes the supply-risk lens by design."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/composite-index#periodic-rebalancing",
+          "name": "Periodic rebalancing",
+          "description": "Resetting the composite's 75/25 weights to target each period and applying them to the legs' returns, so the allocation never drifts as the legs move, rather than holding a fixed number of units that would drift."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does the composite index measure?", "acceptedAnswer": { "@type": "Answer", "text": "It is Robotnik's headline index, a single figure blending the frontier stack's market value with its raw-material dependence, three-quarters the public-equities index and one-quarter the commodities index." } },
+        { "@type": "Question", "name": "Is it weighted by market value?", "acceptedAnswer": { "@type": "Answer", "text": "No. The equity leg inside it is market-cap weighted, but the composite's own three-quarters-to-one-quarter split is a chosen strategic allocation between the two legs, not a market-cap weighting of them. Equities are the primary exposure, commodities a material-dependence overlay." } },
+        { "@type": "Question", "name": "How is the blend calculated?", "acceptedAnswer": { "@type": "Answer", "text": "On returns, not levels. Each period the composite moves by three-quarters of the equity leg's return plus one-quarter of the commodity leg's return, compounded onto the prior level. The split is reset every period, so it never drifts from 75/25, and the composite level cannot be reconstructed from the two leg levels." } },
+        { "@type": "Question", "name": "Why does it not go back as far as the public-equities index?", "acceptedAnswer": { "@type": "Answer", "text": "A blend cannot exist before both its legs do. The commodities leg is forward-only and launched in June 2026, so the composite starts then too, even though the equity leg runs back to 2021. It is days old and building forward." } },
+        { "@type": "Question", "name": "Is it a daily index?", "acceptedAnswer": { "@type": "Answer", "text": "No, it is weekly. It advances on the commodities leg's weekly mark, with the equity leg taken at its nearest-prior value, so even though the equity side updates daily, the composite is a weekly read." } },
+        { "@type": "Question", "name": "Does it include supply risk?", "acceptedAnswer": { "@type": "Answer", "text": "No. It blends two of the three lenses, value and material dependence. Supply risk is expressed separately, in the bottleneck-weighted index, so the composite does not fold it in." } },
+        { "@type": "Question", "name": "Will it become the headline index?", "acceptedAnswer": { "@type": "Answer", "text": "It is built to be. A headline needs a track record, so until the composite has a full year of history the public-equities index leads; the composite takes the headline position once it has earned a year." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R8 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  /* ---- index chart figure wrapper. The chart itself is the reusable
+         IndexChart component (/js/index-chart.js), which injects its own
+         styles; only the figure + caption are page-level. ---- */
+  .idx-figure { margin: 0 0 2.75rem; }
+  .idx-cap { font-family: 'Mulish', var(--font); font-style: italic; font-size: 0.85rem; line-height: 1.55; color: var(--text-dim); margin: 0.85rem 0.1rem 0; }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+  .article-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(245,217,33,0.35); }
+  .article-body a:hover { border-bottom-color: var(--yellow); }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek, .idx-cap { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">The Composite Index: The Frontier Stack's Headline Blend</h1>
+    <p class="article-dek"><em>How Robotnik blends the listed stack's value with its raw-material dependence, three-quarters to one-quarter, into the family's single headline figure.</em></p>
+  </header>
+
+  <!-- Live, interactive index chart. The reusable IndexChart component
+       (/js/index-chart.js) mounts here on the composite series and reads
+       index_summary.json -> indexes.composite. The composite is forward-only
+       and newly launched, so the component renders its since-inception mode:
+       the whole series in one window, horizon tabs suppressed, value/% toggle +
+       crosshair + y-axis + base-1,000 mark kept. Same component R4/R5/R7 use. -->
+  <figure class="idx-figure" aria-labelledby="rci-cap">
+    <div id="rci-chart"></div>
+    <figcaption class="idx-cap" id="rci-cap">The live Robotnik Composite Index (RCI), based at 1,000 on 17 June 2026 and observed weekly &mdash; three-quarters the public-equities index, one-quarter the commodities index. Forward-only since inception, so it is shown since launch rather than across fixed horizons.</figcaption>
+  </figure>
+
+  <div class="article-body">
+
+    <p>The composite index is the family's headline: one figure that blends what the frontier stack is worth with what it depends on. It is three-quarters <a href="/research/public-equities-index">the public-equities index</a> and one-quarter <a href="/research/commodities-index">the commodities index</a>. Of the three lenses Robotnik runs, the composite blends two, value and material dependence, and leaves the third, supply risk, to stand on its own. This piece documents how the blend is built.</p>
+
+    <p>The two indices it blends are documented in their own methodologies. What the composite adds is the rule for combining them, and the discipline for doing so honestly when the two run on different clocks and one is far younger than the other.</p>
+
+    <h2>What it is</h2>
+
+    <p>The composite is a strategic blend, not a market-cap flagship and not a sum of everything the family tracks. It carries two legs and only two: the public-equities index at three-quarters, the commodities index at one-quarter. <a href="/research/bottleneck-weighted-index">The bottleneck-weighted index</a> is not in it, nor the private index, nor the sector sub-indices. It is the single number for how the listed frontier stack is doing, weighted towards what it is worth, with a quarter-weight tilt towards the raw materials it leans on.</p>
+
+    <p>The three-quarters-to-one-quarter split is a chosen allocation, not a derived optimum. Equities are the primary exposure, the investable surface of the stack, and the commodities leg is a material-dependence overlay, the raw-material lean that the equity prices alone do not fully carry. Most of the index is the stack you can hold, with the material lens as a deliberate quarter-weight tilt.</p>
+
+    <h2>How the blend works</h2>
+
+    <p>The composite is a blend of returns, not of levels. Each period, it moves by three-quarters of the equity leg's return plus one-quarter of the commodity leg's return, compounded onto the previous composite level. The 75/25 is reset every period rather than held as a fixed number of units, so the split never drifts away from three-quarters and one-quarter as the legs move; each step re-strikes it.</p>
+
+    <p>One consequence is worth stating, because it stops a natural error. The blend works on returns, so the composite's level is not any arithmetic of the two leg levels. You cannot reconstruct it by taking three-quarters of the equity index value and a quarter of the commodity index value; the composite is its own compounded series, rebased to 1,000 at its start, and the leg levels are shown only as context.</p>
+
+    <p>The composite applies no cap of its own. The constraints that keep any one name from dominating sit inside the two legs: the public-equities index caps single names within each sector, and the commodities index caps single names in its live computation. The composite blends leg returns that are already capped, and adds nothing further.</p>
+
+    <h2>Why it is young</h2>
+
+    <p>The composite is forward-only, based at 1,000 on 17 June 2026 and built forward week by week. It does not reach back over the history of its legs, and the reason is worth stating plainly, because a reader expects a blend to be as deep as its deepest leg and this one is not.</p>
+
+    <p>A blend cannot exist before both its legs do. The public-equities leg runs back to 2021, but the commodities leg is forward-only and launched only in June 2026, so the commodities leg sets the floor: there is no period before that date on which both legs can be blended. The composite therefore has no history before its launch and makes no attempt to manufacture any. It is as shallow as its youngest leg, days old, and the published series is still short and accruing.</p>
+
+    <h2>How the legs are sampled and frozen</h2>
+
+    <p>The two legs run on different cadences. The equity index updates daily; the commodities index updates weekly. The composite is weekly, and it advances on the commodities mark, taking the equity leg at its nearest-prior value on that date. So the composite is paced by its smaller leg, not its larger one: a reader might assume the daily equity leg makes the composite daily, but the weekly commodities leg sets the clock.</p>
+
+    <p>Each published composite point stores the two leg samples it was struck from, and the next period's return is taken from those frozen samples, never by re-sampling the underlying history. This is the same no-recompute discipline the rest of the family follows, and here it has a specific payoff: if the equity index is later restated, a corrected past value cannot move a composite point that has already published. The series is append-only and reproducible, each point fixed by the leg samples frozen into it.</p>
+
+    <h2>The headline, and when it leads</h2>
+
+    <p>The composite is built to be the family's headline, the single figure that answers how the frontier stack is doing. It does not yet lead the family's homepage, and the reason is a deliberate rule: a headline should have a track record. Until the composite has a full year of history, the public-equities index, which does have one, takes the lead position. The composite reclaims it once it has earned a year, in mid-2027. For now it runs alongside the equity index, published and tracked, waiting on its own history.</p>
+
+    <h2>Where it is weakest</h2>
+
+    <p>The honest limits set how the index should be read.</p>
+
+    <p>It is young. Forward-only and days old, it has no inherited history and a short series, so it cannot yet show how the blend behaves over a cycle. That comes with time.</p>
+
+    <p>It is weekly, paced by the commodities leg. The composite moves on the commodities mark, not on the daily equity close, so it is a weekly read of a stack whose equity side moves every day.</p>
+
+    <p>It blends two lenses, not three. Value and material dependence are in it; supply risk is not, by design, because the bottleneck-weighted index expresses that lens separately and folding it in would blur the two. The composite is a blend of value and dependence, not a single score for everything.</p>
+
+    <p>It inherits its legs' caveats. The commodity leg rests on dealer-indicative weekly quotes, and the equity leg is a price-return index with dividends not reinvested; the composite carries both, and the 75/25 split is a chosen allocation, not a measured one.</p>
+
+    <h2>How it fits the family</h2>
+
+    <!-- Internal link (pending): "private capital index" -> R6 private market shadow index methodology. Plain text until R6 publishes. The public-equities, commodities and bottleneck-weighted index links above are live. -->
+    <p>The composite sits at the top of the family as its headline, but it is one of several lenses, not a replacement for them. Robotnik runs three single-lens indices, the public-equities index for value, the commodities index for material dependence, and the bottleneck-weighted index for supply risk, and the composite blends the first two of those into one figure. The private capital index tracks the pre-listing stack alongside them.</p>
+
+    <p>Read together, the family says what the listed stack is worth, what it consumes, where it is exposed, and what is coming towards it from private markets; the composite is the headline that carries the first two of those in a single number. The mechanics of the other indices are documented in their own methodologies.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What does the composite index measure?</h3>
+    <p>It is Robotnik's headline index, a single figure blending the frontier stack's market value with its raw-material dependence, three-quarters the public-equities index and one-quarter the commodities index.</p>
+
+    <h3>Is it weighted by market value?</h3>
+    <p>No. The equity leg inside it is market-cap weighted, but the composite's own three-quarters-to-one-quarter split is a chosen strategic allocation between the two legs, not a market-cap weighting of them. Equities are the primary exposure, commodities a material-dependence overlay.</p>
+
+    <h3>How is the blend calculated?</h3>
+    <p>On returns, not levels. Each period the composite moves by three-quarters of the equity leg's return plus one-quarter of the commodity leg's return, compounded onto the prior level. The split is reset every period, so it never drifts from 75/25, and the composite level cannot be reconstructed from the two leg levels.</p>
+
+    <h3>Why does it not go back as far as the public-equities index?</h3>
+    <p>A blend cannot exist before both its legs do. The commodities leg is forward-only and launched in June 2026, so the composite starts then too, even though the equity leg runs back to 2021. It is days old and building forward.</p>
+
+    <h3>Is it a daily index?</h3>
+    <p>No, it is weekly. It advances on the commodities leg's weekly mark, with the equity leg taken at its nearest-prior value, so even though the equity side updates daily, the composite is a weekly read.</p>
+
+    <h3>Does it include supply risk?</h3>
+    <p>No. It blends two of the three lenses, value and material dependence. Supply risk is expressed separately, in the bottleneck-weighted index, so the composite does not fold it in.</p>
+
+    <h3>Will it become the headline index?</h3>
+    <p>It is built to be. A headline needs a track record, so until the composite has a full year of history the public-equities index leads; the composite takes the headline position once it has earned a year.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<!-- Live index chart: the reusable IndexChart component, keyed by series + accent.
+     Composite series (feed key 'composite', code RCI); accent = the homepage
+     composite hue (#F5D921, SPARK_COLOR.composite). forwardOnly:true renders the
+     since-inception mode for this newly-launched, forward-only weekly index. Same
+     component R4/R5/R7 use; the component is unchanged this pass. -->
+<script src="/js/index-chart.js?v=20260627b"></script>
+<script>
+  new IndexChart('rci-chart', {
+    seriesKey: 'composite',
+    accent: '#F5D921',
+    name: 'Robotnik Composite Index',
+    code: 'RCI',
+    source: '/data/index/index_summary.json',
+    forwardOnly: true
+  });
+</script>
+<script src="/js/nav.js?v=20260627c"></script>
+</body>
+</html>

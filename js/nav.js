@@ -355,6 +355,12 @@
       tags: ['r7', 'commodities', 'commodities index', 'rcmi', 'material dependence', 'raw materials', 'rare earths', 'gallium', 'critical minerals', 'demand', 'frontier demand', 'index', 'reference'],
       type: 'reference',
       url: '/research/commodities-index',
+    }, {
+      title: 'The Composite Index: The Frontier Stack\'s Headline Blend',
+      desc: 'Reference · the headline blend, three-quarters public equities and one-quarter commodities',
+      tags: ['r8', 'composite', 'composite index', 'rci', 'blend', 'headline', '75/25', 'flagship', 'public equities', 'commodities', 'index', 'reference'],
+      type: 'reference',
+      url: '/research/composite-index',
     }];
 
     var _datasets = null;
