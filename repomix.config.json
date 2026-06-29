@@ -1,0 +1,34 @@
+{
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml"
+  },
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "repomix-output.xml",
+      "data/prices/**",
+      "data/funding/rounds.json",
+      "data/entities/**",
+      "data/markets/enriched_equities.json",
+      "data/markets/marketstack_coverage_report.json",
+      "data/index/_before_currency_fix/**",
+      "data/_reports/**",
+      "data/exports/**",
+      "data/news.json",
+      "data/news/**",
+      "data/research/**",
+      "data/reports.json",
+      "data/filings.json",
+      "data/task2a_reports.json",
+      "**/*.csv",
+      "**/*.xlsx",
+      "**/*.pdf",
+      "**/*.png"
+    ]
+  },
+  "security": {
+    "enableSecurityCheck": true
+  }
+}
