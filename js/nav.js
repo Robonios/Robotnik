@@ -361,6 +361,12 @@
       tags: ['r8', 'composite', 'composite index', 'rci', 'blend', 'headline', '75/25', 'flagship', 'public equities', 'commodities', 'index', 'reference'],
       type: 'reference',
       url: '/research/composite-index',
+    }, {
+      title: 'The Private Capital Index: Frontier Funding Activity, Not Valuation',
+      desc: 'Reference · the intensity of private frontier funding activity and conviction, not private-company valuation',
+      tags: ['r6', 'private capital', 'private-capital', 'private capital index', 'rpci', 'private market', 'funding', 'venture', 'rounds', 'deal count', 'investor', 'activity', 'index', 'reference'],
+      type: 'reference',
+      url: '/research/private-capital-index',
     }];
 
     var _datasets = null;

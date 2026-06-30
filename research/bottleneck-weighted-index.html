@@ -174,7 +174,7 @@
 
   <div class="article-body">
 
-    <p>The frontier stack can be weighted three ways, and Robotnik runs all three. The composite index weights it by market value, which answers what the stack is worth. The commodities index weights it by material dependence, which answers what it leans on. The bottleneck-weighted index weights it by supply risk, which answers where it is most exposed to a shock. This piece documents the third.</p>
+    <p>The frontier stack can be weighted three ways, and Robotnik runs all three. The public-equities index weights it by market value, which answers what the stack is worth. The commodities index weights it by material dependence, which answers what it leans on. The bottleneck-weighted index weights it by supply risk, which answers where it is most exposed to a shock. This piece documents the third.</p>
 
     <p>It is an equity index. It takes the frontier-stack universe, the same companies the public-equities index holds, and tilts their weights by how exposed each one is to a supply-chain chokepoint. A company sitting on a genuine monopoly weighs more than its market value alone would give it; a company in a substitutable, competitive position weighs exactly what its market value says. The <a href="/research/control-points">control-point methodology</a> maps where those chokepoints sit in the supply chain. This index expresses the same exposure at the level of the companies that own or depend on them.</p>
 
@@ -253,7 +253,7 @@
 <!-- Live index chart: the reusable IndexChart component, keyed by series + accent.
      R4 is the first consumer; R5–R8 and the index detail pages pass their own
      seriesKey + accent into the same component. -->
-<script src="/js/index-chart.js?v=20260627b"></script>
+<script src="/js/index-chart.js?v=20260627c"></script>
 <script>
   new IndexChart('rbwc-chart', {
     seriesKey: 'bottleneck',
@@ -263,6 +263,6 @@
     source: '/data/index/index_summary.json'
   });
 </script>
-<script src="/js/nav.js?v=20260627c"></script>
+<script src="/js/nav.js?v=20260627d"></script>
 </body>
 </html>

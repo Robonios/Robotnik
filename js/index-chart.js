@@ -6,11 +6,13 @@
    page (R4 first, R5–R8 next) mounts its own without forking it.
 
    Features:
-     - Time-range toggle: 1M / 3M / 6M / 1Y / 3Y / 5Y (default 1Y),
-       each window rescaled to its own data.
+     - Cadence-aware time-range toggle: daily series get 1W–5Y (default
+       1Y); monthly series (feed cadence 'monthly') get month-scale ranges
+       (6M / 1Y / 3Y / 5Y / All), rendering only horizons the history can
+       fill; forward-only series collapse to a since-inception view. Each
+       window rescaled to its own data.
      - Value / % toggle. % mode rebases to 0 at the LEFT EDGE of the
-       visible window — the convention from the earlier dashboard
-       chart (js/main.js: (v - v0) / v0 * 100).
+       visible window.
      - Labelled y-axis with gridlines (index values in value mode,
        percentages in % mode) and a labelled 1,000 base line in value
        mode whenever the base is within the visible price range.
@@ -74,9 +76,9 @@
     if (n == null || isNaN(n)) return '—';
     return (n >= 0 ? '+' : '') + Number(n).toFixed(2) + '%';
   }
-  function ord(dateStr) {            // y-m-d -> day number (UTC, no clock)
+  function ord(dateStr) {            // y-m-d (or y-m, for monthly series) -> day number (UTC, no clock)
     var p = String(dateStr).split('-');
-    return Date.UTC(+p[0], +p[1] - 1, +p[2]) / 86400000;
+    return Date.UTC(+p[0], +p[1] - 1, p.length >= 3 ? +p[2] : 1) / 86400000;
   }
   function fmtDate(s) {
     if (!s) return '';
@@ -90,6 +92,21 @@
     if (isNaN(d.getTime())) return s;
     if (rangeDays > 365) return d.toLocaleDateString('en-GB', { month: 'short', year: '2-digit', timeZone: 'UTC' }).replace(' ', " '");
     return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+  }
+  // monthly-series labels: a YYYY-MM key has no meaningful day, so render month + year
+  function fmtMonth(s) {              // "2026-05" -> "May 2026" (crosshair readout)
+    if (!s) return '';
+    var p = String(s).split('-');
+    var d = new Date(Date.UTC(+p[0], (+p[1] || 1) - 1, 1));
+    if (isNaN(d.getTime())) return s;
+    return d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+  }
+  function fmtMonthShort(s) {         // "2026-05" -> "May '26" (x-axis)
+    if (!s) return '';
+    var p = String(s).split('-');
+    var d = new Date(Date.UTC(+p[0], (+p[1] || 1) - 1, 1));
+    if (isNaN(d.getTime())) return s;
+    return d.toLocaleDateString('en-GB', { month: 'short', year: '2-digit', timeZone: 'UTC' }).replace(' ', " '");
   }
   // "nice" axis ticks: round step + rounded bounds, ~count divisions
   function niceTicks(min, max, count) {
@@ -245,6 +262,7 @@
         if (!live || !live.series || !live.series.length) throw new Error('no series');
         self.live = live;
         self.base = live.base || null;
+        self.monthly = live.cadence === 'monthly';   // cadence-aware ranges + month labels
         var srcPath = self.opts.fullSource ||
           (j._meta && j._meta.sources && j._meta.sources[self.seriesKey]);
         if (!srcPath) { self._ready(live.series); return; }
@@ -261,26 +279,50 @@
   };
 
   IndexChart.prototype._ready = function (full) {
-    // normalise to {date, value, o:ordinal}; sort defensively
-    this.full = full.map(function (p) { return { date: p.date, value: +p.value, o: ord(p.date) }; })
-                    .filter(function (p) { return !isNaN(p.value); })
-                    .sort(function (a, b) { return a.o - b.o; });
+    // normalise to {date, value, o:ordinal}; monthly indices key rows by 'month'
+    // (YYYY-MM), and calibration-flagged rows are dropped from the chart.
+    this.full = full.map(function (p) {
+      var dk = p.date || p.month;
+      return { date: dk, value: +p.value, o: ord(dk), calib: p.calibration === true };
+    })
+      .filter(function (p) { return !isNaN(p.value) && !isNaN(p.o) && !p.calib; })
+      .sort(function (a, b) { return a.o - b.o; });
     if (this.full.length < 2) { this._fail(); return; }
-    // Forward-only / too-short series (newly-launched indices: commodities, composite):
-    // collapse the horizon toggle and show the whole series since inception. Also
-    // triggerable explicitly via opts.forwardOnly. R4/R5 (multi-year) never trip this.
     var spanDays = this.full[this.full.length - 1].o - this.full[0].o;
-    this.forwardOnly = this.opts.forwardOnly === true || spanDays < FORWARD_ONLY_MAX_SPAN;
+    // Forward-only / too-short series (newly-launched indices: commodities, composite):
+    // collapse the horizon toggle and show the whole series since inception. Explicit
+    // opts.forwardOnly always wins; a monthly series is never auto-collapsed.
+    this.forwardOnly = this.opts.forwardOnly === true || (!this.monthly && spanDays < FORWARD_ONLY_MAX_SPAN);
     if (this.forwardOnly) {
       this.range = 1e9;                                  // one window over the whole series
       this._card.classList.add('is-forward');
       var _bd = (this.base && this.base.date) || this.full[0].date;
       this._span.textContent = 'since inception · ' + fmtDate(_bd);
+    } else if (this.monthly) {
+      this._setupMonthlyRanges(spanDays);                // month-scale horizons, default 1Y
     }
     this._wire();
     this._dot.style.display = '';
     this._card.setAttribute('data-state', 'ready');
     this._draw();
+  };
+
+  // ---- monthly cadence: replace the daily horizon tabs with month-scale ranges ----
+  IndexChart.prototype._setupMonthlyRanges = function (spanDays) {
+    // Drop the sub-monthly 1W/1M tabs; render a fixed range only if the series
+    // spans at least the next-shorter range, so a horizon longer than the
+    // available history (e.g. 5Y on two years of data) shows no empty tab.
+    // 'All' (whole series) is always offered.
+    var CAND = [{ d: 180, l: '6M' }, { d: 365, l: '1Y' }, { d: 1095, l: '3Y' }, { d: 1825, l: '5Y' }];
+    var ranges = CAND.filter(function (r, i) { return i === 0 || spanDays >= CAND[i - 1].d; });
+    ranges.push({ d: Infinity, l: 'All' });
+    this._ranges = ranges;
+    this.range = ranges.some(function (r) { return r.d === DEFAULT_RANGE; })
+      ? DEFAULT_RANGE                                            // default 1Y when available
+      : (ranges.length > 1 ? ranges[ranges.length - 2].d : Infinity);
+    this._card.querySelector('.ic-ranges').innerHTML = ranges.map(function (r) {
+      return '<button type="button" class="ic-range-btn" data-d="' + r.d + '">' + r.l + '</button>';
+    }).join('');
   };
 
   // ---- windowing ----
@@ -297,8 +339,9 @@
     var vis = this._window();
     var n = vis.length, self = this, pct = this.mode === 'pct';
     var v0 = vis[0].value || 1;
+    var activeRanges = this._ranges || RANGES;
     var rangeLabel = this.forwardOnly ? 'since inception'
-      : (RANGES.filter(function (r) { return r.d === self.range; })[0] || { l: '' }).l;
+      : (activeRanges.filter(function (r) { return r.d === self.range; })[0] || { l: '' }).l;
 
     // plotted points: y is value or rebased %
     this.pts = vis.map(function (p) {
@@ -366,7 +409,7 @@
       var f2 = (idx / (n - 1)) * 100;
       xlab += '<div class="ic-xlabel" style="left:' + f2.toFixed(2) + '%;transform:translateX(' +
         (xi === 0 ? '0' : xi === xn - 1 ? '-100%' : '-50%') + ')">' +
-        fmtDateShort(this.pts[idx].date, labelRange) + '</div>';
+        (self.monthly ? fmtMonthShort(this.pts[idx].date) : fmtDateShort(this.pts[idx].date, labelRange)) + '</div>';
     }
     this._xaxis.innerHTML = xlab;
 
@@ -389,8 +432,9 @@
     this._crosshair.style.left = xFrac + '%';
     this._dot.style.left = xFrac + '%';
     this._dot.style.top = yFrac + '%';
+    var dlabel = this.monthly ? fmtMonth(p.date) : fmtDate(p.date);
     this._tipVal.textContent = pct ? fmtPct(p.pct) : fmtNum(p.value);
-    this._tipDate.textContent = pct ? (fmtDate(p.date) + ' · ' + fmtNum(p.value)) : fmtDate(p.date);
+    this._tipDate.textContent = pct ? (dlabel + ' · ' + fmtNum(p.value)) : dlabel;
     this._tip.classList.toggle('ic-tip--below', yFrac < 24);
     this._tip.style.top = yFrac + '%';
     var pw = this._canvas.clientWidth || 1;
