@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/private-capital-index.html; GitHub Pages also
+     serves it extensionless at /research/private-capital-index (the canonical).
+     The shared nav.js injects RELATIVE links (index.html, robotlogo.png), so
+     <base href="/"> makes them resolve to the site root from this subdirectory.
+     All of this page's own asset references are root-absolute and unaffected. -->
+<base href="/">
+<title>The Private Capital Index: Frontier Funding Activity</title>
+<meta name="description" content="How Robotnik's private capital index measures the intensity of private frontier funding activity and conviction, not the valuation of private companies.">
+<link rel="canonical" href="https://robotnik.world/research/private-capital-index">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/private-capital-index">
+<meta property="og:title" content="The Private Capital Index: Frontier Funding Activity">
+<meta property="og:description" content="How Robotnik's private capital index measures the intensity of private frontier funding activity and conviction, not the valuation of private companies.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-06-27">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Private Capital Index: Frontier Funding Activity">
+<meta name="twitter:description" content="How Robotnik's private capital index measures the intensity of private frontier funding activity and conviction, not the valuation of private companies.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage); author/publisher resolve to the canonical Organization entity (#organization). The Article carries a single citation-array note describing the dataset provenance (no external third-party works). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The Private Capital Index: Frontier Funding Activity, Not Valuation",
+      "description": "How Robotnik's private capital index measures the intensity of private frontier funding activity and conviction, not the valuation of private companies.",
+      "url": "https://robotnik.world/research/private-capital-index",
+      "datePublished": "2026-06-27",
+      "dateModified": "2026-06-27",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" },
+      "citation": [
+        "Computed from Robotnik's curated dataset of publicly-announced frontier funding rounds, each round sourced to its public announcement (company press releases, trade press) and verification-flagged, with non-dollar raises converted at announcement-date reference rates; not a licensed vendor feed"
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Frontier stack private capital index",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/private-capital-index#private-capital-index",
+          "name": "Private capital index",
+          "description": "An index of the intensity of private-market funding activity in the frontier-technology stack, built from five flow components (capital deployed, deal count, stage-weighted activity, round size against a trailing median, and investor breadth) over a rolling three-month window of funding rounds. It measures funding activity and conviction, not the valuation of private companies."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/private-capital-index#stage-weighted-activity",
+          "name": "Stage-weighted activity",
+          "description": "A measure that counts funding rounds weighted by their stage, from pre-seed up to growth and pre-IPO, so that later, higher-conviction rounds count for more; one of the five components of the private capital index, encoding the maturity of private-market conviction rather than its volume alone."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does the private capital index measure?", "acceptedAnswer": { "@type": "Answer", "text": "It measures the intensity of private-market funding activity in the frontier stack: how much capital is being raised, in how many deals, at what stages, how large against history, and by how many investors. It does not measure the valuation of private companies." } },
+        { "@type": "Question", "name": "Is it a valuation of private frontier companies?", "acceptedAnswer": { "@type": "Answer", "text": "No. Private valuations are opaque and stale between financing events, so the index reads funding activity, which is observable in announced rounds, rather than marking private companies to a worth. A high reading means heavy, convinced funding, not a high aggregate valuation." } },
+        { "@type": "Question", "name": "What are the five components?", "acceptedAnswer": { "@type": "Answer", "text": "Capital deployed (the disclosed sum raised, thirty per cent), deal count (the number of rounds, twenty), stage-weighted activity (rounds weighted by stage, twenty-five), round size against a trailing median (fifteen), and investor breadth (unique active investors, ten). Each is indexed to its March 2025 value and the five are weighted-summed." } },
+        { "@type": "Question", "name": "How does it stop one huge round from distorting it?", "acceptedAnswer": { "@type": "Answer", "text": "Each round's contribution to the capital-deployed component is capped at the ninety-fifth percentile of the prior year's rounds at its stage, with that reference taken from the prior twelve months exclusive of the current window, so a single mega-round registers as elevated activity without dominating the index." } },
+        { "@type": "Question", "name": "Does it count acquisitions and IPOs?", "acceptedAnswer": { "@type": "Answer", "text": "Private-to-private acquisitions count, as late-stage capital deployed, because the combined company stays private. Acquisitions by public or out-of-universe buyers do not, and IPOs are excluded entirely, because those are exits from the private market that the public-equities index picks up instead." } },
+        { "@type": "Question", "name": "Why does the chart start in 2024 when the data goes back to 2023?", "acceptedAnswer": { "@type": "Answer", "text": "Because the index's trailing references need a year of history to compute, and the dataset starts in January 2023. The 2023 months run on a reduced scheme and establish those baselines, so they are kept as a flagged calibration period and not charted, while the full-confidence series runs from January 2024." } },
+        { "@type": "Question", "name": "Where does the data come from?", "acceptedAnswer": { "@type": "Answer", "text": "From Robotnik's own curated dataset of publicly-announced frontier funding rounds, each sourced to its public announcement and verification-flagged, with non-dollar raises converted at announcement-date reference rates. It is not a licensed vendor feed, and rounds without a verifiable source are flagged rather than invented." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R6 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  /* ---- index chart figure wrapper. The chart itself is the reusable
+         IndexChart component (/js/index-chart.js), which injects its own
+         styles; only the figure + caption are page-level. ---- */
+  .idx-figure { margin: 0 0 2.75rem; }
+  .idx-cap { font-family: 'Mulish', var(--font); font-style: italic; font-size: 0.85rem; line-height: 1.55; color: var(--text-dim); margin: 0.85rem 0.1rem 0; }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+  .article-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(245,217,33,0.35); }
+  .article-body a:hover { border-bottom-color: var(--yellow); }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek, .idx-cap { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">The Private Capital Index: Frontier Funding Activity, Not Valuation</h1>
+    <p class="article-dek"><em>How Robotnik reads the intensity of private-market funding in the frontier stack, how much is raised, how often, at what stage, and by whom, rather than the valuation of private companies.</em></p>
+  </header>
+
+  <!-- Live, interactive index chart. The reusable IndexChart component
+       (/js/index-chart.js) mounts here on the private series and reads
+       index_summary.json -> indexes.private (full history from
+       private_capital_index.json, calibration rows dropped). The private
+       index is MONTHLY: the component detects cadence 'monthly' from the
+       feed and renders month-scale ranges (6M / 1Y / 3Y / All, default 1Y,
+       no sub-monthly 1W/1M), full historical mode — not the forward-only
+       since-inception mode the commodities and composite charts use. -->
+  <figure class="idx-figure" aria-labelledby="rpci-cap">
+    <div id="rpci-chart"></div>
+    <figcaption class="idx-cap" id="rpci-cap">The live Robotnik Private Capital Index (RPCI), based at 1,000 in March 2025 and recomputed monthly &mdash; the intensity of private frontier funding activity, charted from January 2024 (the 2023 calibration period is held in the data but not shown). A reading is a multiple of base-month activity, not a price.</figcaption>
+  </figure>
+
+  <div class="article-body">
+
+    <p>The private capital index is the family's window onto the part of the frontier stack that has not yet listed. It tracks how active and how convinced private funding of the stack is: the capital flowing in, the number of deals, the stages they are at, how large they run against history, and how many investors are backing them. What it does not track is what private frontier companies are worth. That distinction is the first thing to state, because the name invites the opposite assumption.</p>
+
+    <h2>Activity, not valuation</h2>
+
+    <p>A reader meeting a "private capital index" will reasonably expect a mark-to-market of private frontier companies, the privately-held equivalent of a stock index, rising and falling with the worth of the unicorns inside it. This index is not that, and deliberately so. Private valuations are opaque, set at irregular financing events, and stale between them; an index built on them would be marking to figures that are months out of date and rarely comparable.</p>
+
+    <p>So the index reads the flow instead of the stock. Funding rounds are observable public events: a company announces a raise, of a stated size, at a stated stage, led by named investors. The index aggregates those events into a measure of how intense and how convinced private frontier funding is at a given time. It answers how hot the private market is and how far up the maturity ladder its conviction sits, not what any private company is worth.</p>
+
+    <h2>The five components</h2>
+
+    <p>The index is built from five components, each computed over a rolling three-month window of funding rounds, and each capturing a different facet of private-market activity.</p>
+
+    <p>Capital deployed, at thirty per cent, is the sum of disclosed round sizes in the window, the headline measure of how much money is going in. Deal count, at twenty per cent, is the number of rounds in the window, disclosed or not, a measure of breadth of activity rather than size. Stage-weighted activity, at twenty-five per cent, counts the rounds but weights each by its stage, so the measure rises when funding concentrates at the later, higher-conviction end. Round size against a trailing median, at fifteen per cent, compares each round to the prior year's median at the same stage, reading whether rounds are running large or small for their stage. Investor breadth, at ten per cent, counts the unique investors active in the window, with investors new to the frontier stack in the prior two years counted slightly heavier, reading how wide the backer base is and whether fresh capital is arriving.</p>
+
+    <p>The stage weights encode conviction. A pre-seed or seed round counts least, a Series A is the reference, and the weight climbs through Series B and C to growth and pre-IPO rounds, which count most. The logic is that committed late-stage capital is a stronger signal of conviction in the stack than an early, speculative bet, so the index leans towards it.</p>
+
+    <h2>The three-month window and the mega-round cap</h2>
+
+    <p>Every monthly reading aggregates a rolling quarter of deal flow, not a single month's. Private-market data is lumpy, a handful of deals in a month, the occasional enormous round, so a three-month window is the primary control on that noise; the published value is that window reading, and additional three- and six-month moving averages of the series are computed as smoother comparison lines.</p>
+
+    <p>The capital-deployed component carries one further control. A single mega-round, a multi-billion-dollar raise by one company, would otherwise spike the whole index on one headline. So each round's contribution to capital deployed is capped at the ninety-fifth percentile of the prior twelve months' rounds at its stage. The reference window is the prior twelve months and excludes the current one, deliberately, because a mega-round counted in its own reference distribution would pull the percentile up towards itself and slip the cap. The effect is that the index registers a surge of large rounds as elevated activity without letting one company's raise dominate the reading.</p>
+
+    <h2>How the components combine</h2>
+
+    <p>The five components measure different things in different units, a sum of dollars, a count, a ratio, so they cannot be added as they stand. Each is first indexed to its own value in the base month, March 2025, and scaled to 1,000, so every component reads 1,000 at the base regardless of its native unit. The index is then the weighted sum of those indexed components, at thirty, twenty, twenty-five, fifteen, and ten per cent. By construction the whole index reads exactly 1,000 in March 2025.</p>
+
+    <p>This is base-period indexing, not statistical standardisation. Each component is measured against where it stood at the base date, so the index reads as a multiple of base-month activity rather than as a deviation from an average. A reading well above 1,000 means private-market activity, weighted across the five facets, is running well above its March 2025 level.</p>
+
+    <h2>What counts: acquisitions in, exits out</h2>
+
+    <p>The index counts capital deployed into and within the private frontier stack, which sets a clear rule for the two events at its edges. A private-to-private acquisition, where a privately-held frontier company in the universe acquires another and the combined entity stays private, counts as late-stage capital deployment, mapped to the growth and pre-IPO tier. An acquisition by a public company, or one where the acquirer sits outside the frontier universe, does not, because that capital is leaving the private frontier stack rather than moving within it.</p>
+
+    <p>Initial public offerings are excluded entirely, whether filed or completed. An IPO is a transition out of the private market, the precise event the private index stops tracking and <a href="/research/public-equities-index">the public-equities index</a> begins to; counting it here would double-count the company across the two indices and misread an exit as private activity. The rule keeps the private index measuring what it is for, capital at work inside the private stack.</p>
+
+    <h2>History, and the calibration year</h2>
+
+    <p>The index is based at 1,000 on 31 March 2025 and is monthly. Its chart begins in January 2024, and it carries real monthly history back to that date, not a forward-only launch.</p>
+
+    <p>The underlying data reaches back further, to January 2023, but those twelve months are held as a calibration period: retained in the data, flagged, and kept off the chart. The reason is structural. Several of the index's measures lean on a trailing reference, the prior-twelve-month cap, the trailing median, the two-year new-investor test, and the dataset itself begins in January 2023, so for that first year there is no trailing history to lean on. The 2023 readings run on a reduced scheme without the references that cannot yet be computed, and their job is to establish the trailing baselines that the full method then uses from January 2024 onward. Treating them as calibration rather than headline history is the honest handling of a period the index cannot yet read at full confidence.</p>
+
+    <p>A wave of large frontier rounds in 2026 carried the index well above its base, restrained but not erased by the cap. Its level is best read as a multiple of base-month activity rather than as a price, and it can move sharply month to month as private funding cycles.</p>
+
+    <h2>Where it is weakest</h2>
+
+    <p>The honest limits set how the index should be read.</p>
+
+    <p>It is activity, not valuation, and reading it as the worth of private frontier companies would be a category error. A high reading means heavy, convinced funding, not a high aggregate valuation.</p>
+
+    <p>It rests on disclosed and announced rounds. Undisclosed-amount rounds count in the deal-count, stage, and breadth components but not in capital deployed, and rounds that are never announced are not captured at all; the index reads the visible private market, which is most but not all of it.</p>
+
+    <p>It is monthly, and updated by hand. Private funding is not a daily price feed; the index is recomputed once a month as new rounds are researched and added, so its cadence is the market's, not a screen's.</p>
+
+    <p>It depends on the coverage of its dataset. The reading is only as complete as the rounds compiled into it, and while the dataset is maintained against public announcements with a verification discipline, coverage of the private market is inherently partial.</p>
+
+    <h2>How it fits the family</h2>
+
+    <p><a href="/research/public-equities-index">The public-equities index</a> tracks the listed frontier stack by value; the private capital index tracks the stack that has not yet listed, by activity. Together they span the frontier stack across the line between public and private, what is already trading and what is still being funded privately.</p>
+
+    <p>The private index stands on its own as that pre-listing lens. It is not a leg of <a href="/research/composite-index">the composite</a>, which blends the public-equities and <a href="/research/commodities-index">commodities</a> indices; the private market is too different in cadence and in what it measures to fold into the headline blend. It is the family's read on what is coming towards the public stack from private markets, and it is documented here as a lens in its own right. The mechanics of the other indices are documented in their own methodologies.</p>
+
+    <h2>Sources and provenance</h2>
+
+    <p>The index is computed from a single dataset: Robotnik's own curated record of frontier-technology funding rounds, compiled from public announcements. It is not a licensed vendor feed. Each round is sourced individually to its public announcement, a company press release or trade-press report such as TechCrunch, SpaceNews, or The Robot Report, and carries a verification status; rounds raised in other currencies record the native amount and the announcement-date reference rate used to convert them to US dollars.</p>
+
+    <p>The dataset is maintained under an anti-fabrication discipline: a round's source must be a real, verifiable public announcement, and a round whose source cannot be verified is flagged pending rather than given an invented citation. The provenance is therefore the public record of what was announced, assembled and checked round by round, rather than a proprietary or modelled figure.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What does the private capital index measure?</h3>
+    <p>It measures the intensity of private-market funding activity in the frontier stack, how much capital is being raised, in how many deals, at what stages, how large against history, and by how many investors. It does not measure the valuation of private companies.</p>
+
+    <h3>Is it a valuation of private frontier companies?</h3>
+    <p>No. Private valuations are opaque and stale between financing events, so the index reads funding activity, which is observable in announced rounds, rather than marking private companies to a worth. A high reading means heavy, convinced funding, not a high aggregate valuation.</p>
+
+    <h3>What are the five components?</h3>
+    <p>Capital deployed (the disclosed sum raised, thirty per cent), deal count (the number of rounds, twenty), stage-weighted activity (rounds weighted by stage, twenty-five), round size against a trailing median (fifteen), and investor breadth (unique active investors, ten). Each is indexed to its March 2025 value and the five are weighted-summed.</p>
+
+    <h3>How does it stop one huge round from distorting it?</h3>
+    <p>Each round's contribution to the capital-deployed component is capped at the ninety-fifth percentile of the prior year's rounds at its stage, with that reference taken from the prior twelve months exclusive of the current window, so a single mega-round registers as elevated activity without dominating the index.</p>
+
+    <h3>Does it count acquisitions and IPOs?</h3>
+    <p>Private-to-private acquisitions count, as late-stage capital deployed, because the combined company stays private. Acquisitions by public or out-of-universe buyers do not, and IPOs are excluded entirely, because those are exits from the private market that the public-equities index picks up instead.</p>
+
+    <h3>Why does the chart start in 2024 when the data goes back to 2023?</h3>
+    <p>Because the index's trailing references need a year of history to compute, and the dataset starts in January 2023. The 2023 months run on a reduced scheme and establish those baselines, so they are kept as a flagged calibration period and not charted, while the full-confidence series runs from January 2024.</p>
+
+    <h3>Where does the data come from?</h3>
+    <p>From Robotnik's own curated dataset of publicly-announced frontier funding rounds, each sourced to its public announcement and verification-flagged, with non-dollar raises converted at announcement-date reference rates. It is not a licensed vendor feed, and rounds without a verifiable source are flagged rather than invented.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<!-- Live index chart: the reusable IndexChart component, keyed by series + accent.
+     Private series (feed key 'private', code RPCI); accent = the homepage private
+     hue (#A98BEA, SPARK_COLOR.private). MONTHLY cadence: the component reads
+     cadence 'monthly' from the feed and renders month-scale ranges in full
+     historical mode (no forwardOnly flag). Same component R4/R5/R7/R8 use. -->
+<script src="/js/index-chart.js?v=20260627c"></script>
+<script>
+  new IndexChart('rpci-chart', {
+    seriesKey: 'private',
+    accent: '#A98BEA',
+    name: 'Robotnik Private Capital Index',
+    code: 'RPCI',
+    source: '/data/index/index_summary.json'
+  });
+</script>
+<script src="/js/nav.js?v=20260627d"></script>
+</body>
+</html>
