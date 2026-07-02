@@ -1,0 +1,47 @@
+{
+  "index_name": "Robotnik Frontier Conditions Index",
+  "index_code": "RFCI",
+  "cadence": "monthly",
+  "scale": {
+    "min": -100,
+    "max": 100,
+    "neutral": 0,
+    "meaning": "positive = conditions broadly improving; negative = broadly deteriorating; zero = neutral"
+  },
+  "method": "Total is the equal-weighted average of the four component scores, each mapped onto the -100..+100 diffusion scale.",
+  "components": {
+    "equity_breadth": {
+      "reads": ["data/index/weights.json", "data/prices/history/<ticker>.json"],
+      "formula": "(share of the public-equity constituents above their own 12-month moving average - 0.5) * 200"
+    },
+    "sector_breadth": {
+      "reads": ["data/index/sub_indices.json"],
+      "formula": "(count of the 4 plain cap-weighted sector indices above their own 12-month moving average / 4 - 0.5) * 200"
+    },
+    "private_capital": {
+      "reads": ["data/index/private_capital_index.json"],
+      "formula": "month-on-month trend of the private-capital index * private_capital_k, clamped to -100..100"
+    },
+    "commodity_stress": {
+      "reads": ["data/index/commodities_index.json"],
+      "formula": "-1 * month-on-month direction of the commodities index * commodity_stress_k, clamped to -100..100 (inverted: rising input cost = deteriorating)"
+    }
+  },
+  "calibration": {
+    "note": "One scaling constant per trend component, fitted to each series' historical monthly volatility so a typical monthly move lands mid-scale rather than pinning the ends. Construction parameters, not external claims; null until the calculator fits them.",
+    "private_capital_k": null,
+    "commodity_stress_k": null
+  },
+  "reading_schema": {
+    "month": "string, YYYY-MM (one row per calendar month)",
+    "total": "number, -100..100 — equal-weighted mean of the four component scores",
+    "equity_breadth": "number, -100..100",
+    "sector_breadth": "number, -100..100",
+    "private_capital": "number, -100..100",
+    "commodity_stress": "number, -100..100"
+  },
+  "base_month": null,
+  "current_month": null,
+  "current_total": null,
+  "readings": []
+}

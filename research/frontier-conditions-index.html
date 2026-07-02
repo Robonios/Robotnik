@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/frontier-conditions-index.html; GitHub Pages also
+     serves it extensionless at /research/frontier-conditions-index (the canonical).
+     The shared nav.js injects RELATIVE links (index.html, robotlogo.png), so
+     <base href="/"> makes them resolve to the site root from this subdirectory.
+     All of this page's own asset references are root-absolute and unaffected.
+     UNPUBLISHED: not in nav search, sitemap, or llms.txt — the data-bound
+     component below has no first reading yet (data/frontier_conditions.json is
+     an empty-but-valid structure), so the page renders a "first reading pending"
+     state until the Frontier Conditions calculator writes month one. -->
+<base href="/">
+<title>The Frontier Conditions Index</title>
+<meta name="description" content="How Robotnik's Frontier Conditions Index reads the direction and breadth of the frontier stack on a diffusion scale from -100 to +100, measuring whether conditions are improving and how broadly, not what the stack is worth.">
+<link rel="canonical" href="https://robotnik.world/research/frontier-conditions-index">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/frontier-conditions-index">
+<meta property="og:title" content="The Frontier Conditions Index">
+<meta property="og:description" content="How Robotnik's Frontier Conditions Index reads the direction and breadth of the frontier stack on a diffusion scale from -100 to +100, measuring whether conditions are improving and how broadly, not what the stack is worth.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-07-02">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Frontier Conditions Index">
+<meta name="twitter:description" content="How Robotnik's Frontier Conditions Index reads the direction and breadth of the frontier stack on a diffusion scale from -100 to +100, measuring whether conditions are improving and how broadly, not what the stack is worth.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage); author/publisher resolve to the canonical Organization entity (#organization). No citation array, by design: R11 asserts no external quantitative claims — the conditions index is a curated construction from Robotnik's own indices (the R4/R5/R8 treatment). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The Frontier Conditions Index: Reading the Direction of the Stack",
+      "description": "How Robotnik's Frontier Conditions Index reads the direction and breadth of the frontier stack on a diffusion scale from -100 to +100, measuring whether conditions are improving and how broadly, not what the stack is worth.",
+      "url": "https://robotnik.world/research/frontier-conditions-index",
+      "datePublished": "2026-07-02",
+      "dateModified": "2026-07-02",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Robotnik Frontier Conditions Index",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/frontier-conditions-index#frontier-conditions-index",
+          "name": "Frontier Conditions Index",
+          "description": "A monthly diffusion index on a scale from -100 to +100 that reads the direction and breadth of the frontier stack's condition rather than its level, as the equal-weighted average of four components: equity breadth, sector breadth, private-capital direction, and commodity input stress inverted."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/frontier-conditions-index#diffusion-index",
+          "name": "Diffusion index",
+          "description": "An index that measures how broadly a change is shared rather than how large it is. Zero is neutral, a positive reading means the measured condition is improving across most of the set, and a negative reading that it is deteriorating across most of the set."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does the Frontier Conditions Index measure?", "acceptedAnswer": { "@type": "Answer", "text": "The direction and breadth of the frontier stack's condition, on a diffusion scale from -100 to +100. Zero is neutral, a positive reading means conditions are broadly improving, and a negative one that they are broadly deteriorating. It reads whether the stack is getting better or worse across the board, not what it is worth." } },
+        { "@type": "Question", "name": "How is it different from the price indices?", "acceptedAnswer": { "@type": "Answer", "text": "The price indices measure the stack's level, which can rise on a single large name even while most of the stack is flat. This index measures how many parts of the stack are improving at once, which is breadth rather than price, so a single giant's move counts for one constituent rather than moving the whole gauge." } },
+        { "@type": "Question", "name": "What are the four components?", "acceptedAnswer": { "@type": "Answer", "text": "Equity breadth (the share of the public constituents above their twelve-month average), sector breadth (how many of the four sector indices are above theirs), private-capital direction (the trend in the private-capital index), and commodity input stress (the commodities index direction, inverted, since rising input costs worsen conditions). They are equal-weighted." } },
+        { "@type": "Question", "name": "Why is the commodities component inverted?", "acceptedAnswer": { "@type": "Answer", "text": "Because commodities are an input cost to the stack, not an output of it. When input prices rise, conditions for the companies that consume those inputs worsen, so a rising commodities reading lowers this component rather than raising it." } },
+        { "@type": "Question", "name": "Why is it monthly rather than weekly?", "acceptedAnswer": { "@type": "Answer", "text": "Because it is a conditions gauge, and its slowest input, private capital, moves monthly. Read weekly it would report noise as signal. A monthly cadence matches the pace of what it measures, in the spirit of a purchasing-managers' index." } },
+        { "@type": "Question", "name": "Does equity carry too much weight?", "acceptedAnswer": { "@type": "Answer", "text": "Two of the four components are drawn from equity prices, so equity conditions are about half the signal. This is deliberate, since public equities are the core of the stack, and the two equity components are not duplicates: one measures participation name by name, the other dispersion across sectors." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R11 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+  .article-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(245,217,33,0.35); }
+  .article-body a:hover { border-bottom-color: var(--yellow); }
+
+  /* ---- Frontier Conditions data-bound component (js/frontier-conditions.js).
+         Not an IndexChart, not a static SVG: it reads data/frontier_conditions.json
+         and renders four component boxes, a -100/+100 diffusion thermometer, and a
+         history table, or a graceful "first reading pending" state when empty.
+         All colours are hardcoded hexes (reference pages load only style.css +
+         typography.css, not home.css). fc- prefixed to stay collision-safe. ---- */
+  .fc-component { margin: 0 auto 2.75rem; }
+  .fc-wrap { margin: 0 auto; max-width: 640px; }
+
+  .fc-boxes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.55rem; margin: 0 0 1.5rem; }
+  .fc-box { background: #161b24; border: 1px solid #2d3344; border-radius: 8px; padding: 0.7rem 0.5rem; text-align: center; }
+  .fc-box-label { font-family: 'Mulish', var(--font); font-size: 0.72rem; color: #9aa0ae; line-height: 1.3; margin-bottom: 0.4rem; }
+  .fc-box-score { font-family: 'Space Grotesk', var(--font); font-size: 1.35rem; font-weight: 600; color: #f4f1ec; font-variant-numeric: tabular-nums; line-height: 1; }
+
+  .fc-thermo { margin: 0 0 1.25rem; }
+  .fc-thermo-track {
+    position: relative; height: 14px; border-radius: 7px;
+    background: linear-gradient(90deg, #bf5a52 0%, #363b47 50%, #4c9e73 100%);
+    border: 1px solid #2d3344;
+  }
+  .fc-thermo-marker {
+    position: absolute; top: -5px; bottom: -5px; width: 2px;
+    background: #F5D921; transform: translateX(-1px);
+    box-shadow: 0 0 0 1px rgba(17, 19, 24, 0.65);
+  }
+  .fc-thermo-marker::before {
+    content: ''; position: absolute; top: -7px; left: 50%; transform: translateX(-50%);
+    border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #F5D921;
+  }
+  .fc-thermo-scale {
+    display: flex; justify-content: space-between; margin-top: 0.5rem;
+    font-family: 'Mulish', var(--font); font-size: 0.72rem; color: #7d8496;
+  }
+
+  .fc-total-line { font-family: 'Mulish', var(--font); font-size: 0.95rem; color: #c9cfdb; margin: 0 0 1.5rem; }
+  .fc-total-line strong { font-family: 'Space Grotesk', var(--font); color: #f4f1ec; font-variant-numeric: tabular-nums; }
+  .fc-total-sub { color: #7d8496; font-size: 0.85rem; }
+
+  .fc-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .fc-table { width: 100%; border-collapse: collapse; font-family: 'Mulish', var(--font); font-size: 0.85rem; min-width: 460px; }
+  .fc-table thead th {
+    text-align: right; font-family: 'Space Grotesk', var(--font); font-weight: 600; font-size: 0.72rem;
+    color: var(--text); border-bottom: 1px solid #2d3344; padding: 0.5rem 0.55rem;
+  }
+  .fc-table thead th:first-child { text-align: left; }
+  .fc-table tbody td {
+    text-align: right; color: #c9cfdb; border-bottom: 1px solid #252a36; padding: 0.5rem 0.55rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .fc-table tbody td:first-child { text-align: left; }
+  .fc-table tbody tr:last-child td { border-bottom: none; }
+  .fc-td-total { color: #f4f1ec; font-weight: 600; }
+
+  /* empty "first reading pending" state */
+  .fc-empty { text-align: center; padding: 0.5rem 1rem 0.25rem; }
+  .fc-empty-badge {
+    display: inline-block; font-family: 'Space Grotesk', var(--font); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--yellow);
+    border: 1px solid rgba(245, 217, 33, 0.35); border-radius: 6px; padding: 0.35rem 0.7rem; margin-bottom: 0.9rem;
+  }
+  .fc-empty-note {
+    font-family: 'Mulish', var(--font); font-size: 0.9rem; color: #9aa0ae; line-height: 1.6;
+    max-width: 46ch; margin: 0 auto 1.5rem;
+  }
+
+  @media (max-width: 520px) {
+    .fc-boxes { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+  }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">The Frontier Conditions Index: Reading the Direction of the Stack</h1>
+    <p class="article-dek"><em>A monthly diffusion index on a scale from -100 to +100 that reads whether the frontier stack's condition is improving or deteriorating, and how broadly, rather than what the stack is worth.</em></p>
+  </header>
+
+  <!-- Data-bound diagram-and-table component. js/frontier-conditions.js reads
+       data/frontier_conditions.json and renders the four component boxes, the
+       -100/+100 thermometer, and the history table — or a graceful "first
+       reading pending" state while the readings array is empty. -->
+  <div class="fc-component"><div id="fc-root"></div></div>
+
+  <div class="article-body">
+
+    <p>The rest of the index family reads the stack's level and its exposure. The price indices say what it is worth; the bottleneck-weighted index says where it is most exposed to a supply shock. The Frontier Conditions Index reads something others do not: the direction of the stack's condition, and how broad-based that direction is. It answers whether things are getting better or worse across the stack as a whole, on a diffusion scale from -100 to +100, where zero is neutral, a positive reading means conditions are broadly improving, and a negative one that they are broadly deteriorating. It is a conditions gauge, closer in spirit to a purchasing-managers' index than to a price.</p>
+
+    <h2>Why breadth, and not level</h2>
+
+    <p>A price index can rise on the strength of a single name. One mega-cap climbing carries the whole index with it, even while most of the stack is flat or falling, so a rising level does not tell you the improvement is broad. The conditions index asks the different question: how many parts of the stack are improving at once. That is breadth, and it is participation rather than price.</p>
+
+    <p>The distinction matters because a single giant carries its own weather. A dominant chipmaker can rise or fall on forces particular to it, forces that say little about the condition of robotics, space, or materials. Measured by breadth, that idiosyncratic move counts for one constituent among many rather than moving the whole gauge, so the index registers a genuine change in the stack's condition rather than the fortunes of its largest member.</p>
+
+    <h2>The four components</h2>
+
+    <p>The index is the equal-weighted average of four component scores, each mapped onto the same -100 to +100 scale.</p>
+
+    <p>Equity breadth is the share of <a href="/research/public-equities-index">the roughly 197 public constituents</a> trading above their own twelve-month moving average. Half of them above the line reads as zero, all of them as +100, none as -100. It is company-level participation: how much of the stack, name by name, is in an uptrend.</p>
+
+    <p>Sector breadth is how many of <a href="/research/public-equities-index">the four sector indices</a>, semiconductors, robotics, space, and materials, sit above their own twelve-month average. Two of four reads as zero, four as +100, none as -100. These use the plain cap-weighted sector indices rather than <a href="/research/bottleneck-weighted-index">the bottleneck-adjusted ones</a>, so that this gauge stays independent of the supply-risk lens and measures dispersion across the stack, not exposure within it.</p>
+
+    <p>Private-capital direction is the trend in <a href="/research/private-capital-index">the private-capital index</a>, the month-on-month movement in private-market fundraising and conviction.</p>
+
+    <p>Commodity input stress is the direction of <a href="/research/commodities-index">the commodities index</a>, inverted. Rising input costs are a deteriorating condition for the stack that consumes them, so a rising commodities reading pulls this component down.</p>
+
+    <h2>The two trend components, and the one calibration</h2>
+
+    <p>The two breadth components map onto the scale by construction, straight from the share above a moving average. The two trend components do not: a month's movement in private capital or in commodities is an unbounded percentage, not a share, so it needs a scaling constant to sit on the same -100 to +100 range as the others.</p>
+
+    <p>That constant is set so that a typical monthly move lands in the middle of the scale rather than pinning its ends, calibrated against the historical monthly volatility of each series. It is the one deliberate calibration in the index, a construction parameter rather than a claim about the world, and it is chosen so that the trend components speak at the same volume as the breadth components rather than drowning them or being drowned.</p>
+
+    <h2>The equity tilt</h2>
+
+    <p>Two of the four components, equity breadth and sector breadth, are drawn from the same public-equity prices, so equity conditions carry about half of the signal. This is deliberate: public equities are the core of the stack, and the two are not duplicates. Equity breadth measures participation name by name; sector breadth measures dispersion across sectors, whether the strength is broad or concentrated in one corner. A leaner three-pillar version, equity, private capital, and commodities at a third each, was considered and set aside in favour of keeping the four and accepting the tilt, because dispersion across sectors is worth reading in its own right.</p>
+
+    <h2>Cadence, and how to read it</h2>
+
+    <p>The index is monthly. Its slowest input, private capital, moves monthly, and a conditions gauge read weekly would report noise as signal. A purchasing-managers' index is the right analogy for the pace as well as the shape.</p>
+
+    <p>Read the sign first and the magnitude second. The sign gives the direction, whether the stack's condition is on balance improving or deteriorating; the magnitude gives the breadth, how widely shared that direction is. A reading near zero is a stack pulling in different directions at once; a reading near either extreme is one moving together.</p>
+
+    <h2>How it fits the family</h2>
+
+    <p>The family now reads the stack three ways. The price indices give its level, the bottleneck-weighted index its supply exposure, and this index the direction and breadth of its condition. The three answer different questions and are meant to be read together: what the stack is worth, where it is fragile, and which way it is moving. This index is also the one that draws on the others, since its components are the public-equities and sector indices, the private-capital index, and the commodities index, each read for direction rather than level.</p>
+
+    <h2>What to bear in mind</h2>
+
+    <p>Breadth is bought at the cost of magnitude. By counting how many things are improving rather than by how much, the index deliberately mutes a narrow but violent move, which is the point when that move is one mega-cap's own story, but a limit when the concentrated move is the signal. The gauge tells you how broad a shift is, not how large.</p>
+
+    <p>The equity tilt is real. About half the signal comes from public-equity prices, so a month in which equities and the private and commodity components disagree will lean towards the equity reading.</p>
+
+    <p>The trend components rest on a calibration. The scaling constant that fits private-capital and commodity movement onto the scale is a chosen parameter, reviewed against the series' volatility rather than derived from a law, and a different choice would shift those two components' contribution.</p>
+
+    <p>And it is monthly and young. It moves slowly by design, and its published series is short, so its readings are best understood as they accumulate into a track rather than one at a time.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What does the Frontier Conditions Index measure?</h3>
+    <p>The direction and breadth of the frontier stack's condition, on a diffusion scale from -100 to +100. Zero is neutral, a positive reading means conditions are broadly improving, and a negative one that they are broadly deteriorating. It reads whether the stack is getting better or worse across the board, not what it is worth.</p>
+
+    <h3>How is it different from the price indices?</h3>
+    <p>The price indices measure the stack's level, which can rise on a single large name even while most of the stack is flat. This index measures how many parts of the stack are improving at once, which is breadth rather than price, so a single giant's move counts for one constituent rather than moving the whole gauge.</p>
+
+    <h3>What are the four components?</h3>
+    <p>Equity breadth (the share of the public constituents above their twelve-month average), sector breadth (how many of the four sector indices are above theirs), private-capital direction (the trend in the private-capital index), and commodity input stress (the commodities index direction, inverted, since rising input costs worsen conditions). They are equal-weighted.</p>
+
+    <h3>Why is the commodities component inverted?</h3>
+    <p>Because commodities are an input cost to the stack, not an output of it. When input prices rise, conditions for the companies that consume those inputs worsen, so a rising commodities reading lowers this component rather than raising it.</p>
+
+    <h3>Why is it monthly rather than weekly?</h3>
+    <p>Because it is a conditions gauge, and its slowest input, private capital, moves monthly. Read weekly it would report noise as signal. A monthly cadence matches the pace of what it measures, in the spirit of a purchasing-managers' index.</p>
+
+    <h3>Does equity carry too much weight?</h3>
+    <p>Two of the four components are drawn from equity prices, so equity conditions are about half the signal. This is deliberate, since public equities are the core of the stack, and the two equity components are not duplicates: one measures participation name by name, the other dispersion across sectors.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<script src="/js/frontier-conditions.js?v=20260702a"></script>
+<script src="/js/nav.js?v=20260627g"></script>
+</body>
+</html>
