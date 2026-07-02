@@ -37,6 +37,7 @@ PAGES = [
     ("research/private-capital-index",                          "0.8",    "monthly", "research/private-capital-index.html"),
     ("research/value-chain-taxonomy",                           "0.8",    "monthly", "research/value-chain-taxonomy.html"),
     ("research/structured-context",                             "0.8",    "monthly", "research/structured-context.html"),
+    ("research/sources-and-provenance",                         "0.8",    "monthly", "research/sources-and-provenance.html"),
     ("assets.html",                                             "0.8",    "weekly"),
     ("funding.html",                                            "0.8",    "weekly"),
     ("portfolio.html",                                          "0.5",    "yearly"),

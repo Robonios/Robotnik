@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/sources-and-provenance.html; GitHub Pages also
+     serves it extensionless at /research/sources-and-provenance (the canonical).
+     The shared nav.js injects RELATIVE links (index.html, robotlogo.png), so
+     <base href="/"> makes them resolve to the site root from this subdirectory.
+     All of this page's own asset references are root-absolute and unaffected. -->
+<base href="/">
+<title>Sources and Provenance</title>
+<meta name="description" content="How Robotnik grounds every claim about the world: named public references where the data exists, and marked curated interpretation where it does not.">
+<link rel="canonical" href="https://robotnik.world/research/sources-and-provenance">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/sources-and-provenance">
+<meta property="og:title" content="Sources and Provenance">
+<meta property="og:description" content="How Robotnik grounds every claim about the world: named public references where the data exists, and marked curated interpretation where it does not.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-07-02">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sources and Provenance">
+<meta name="twitter:description" content="How Robotnik grounds every claim about the world: named public references where the data exists, and marked curated interpretation where it does not.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage) with a citation array; author/publisher resolve to the canonical Organization entity (#organization). Unlike the pure-framework pieces, R12 makes one sourced external claim (USGS high-purity quartz) and names the IEA data under CC BY 4.0, so it carries both a visible "Sources and provenance" section and this citation array. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Sources and Provenance: How Robotnik Grounds Its Claims",
+      "description": "How Robotnik grounds every claim about the world: named public references where the data exists, and marked curated interpretation where it does not.",
+      "url": "https://robotnik.world/research/sources-and-provenance",
+      "datePublished": "2026-07-02",
+      "dateModified": "2026-07-02",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" },
+      "citation": [
+        "US Geological Survey, Mineral Commodity Summaries, February 2026, Quartz (High-Purity and Industrial Cultured Crystal), https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-quartz.pdf (public domain): world mine production reported as not available; US output rounded to avoid disclosing company data; trade not separable in the tariff codes",
+        "IEA critical-minerals data and topic reports, https://www.iea.org, CC BY 4.0 (named as a source the methodology draws on for energy-transition mineral demand and supply)"
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Robotnik sources and provenance",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/sources-and-provenance#provenance-rule",
+          "name": "Provenance rule",
+          "description": "Robotnik's rule that every quantitative claim about the world is either sourced to a named public reference or marked as curated interpretation, with no unattributed numbers, and with construction constants of an index treated as method parameters that carry no external source."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/sources-and-provenance#curated-interpretation",
+          "name": "Curated interpretation",
+          "description": "A Robotnik analytical estimate, anchored against public research but not lifted from a single citable figure, marked explicitly as such with its basis named, and never presented as though it were a sourced figure. Used where a claim cannot be sourced from open data."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is Robotnik's provenance rule?", "acceptedAnswer": { "@type": "Answer", "text": "Every quantitative claim about the world is either sourced to a named public reference that a reader can check, or marked as Robotnik's own curated interpretation with its basis named. There is no third category and there are no unattributed numbers." } },
+        { "@type": "Question", "name": "What is the difference between a sourced claim and curated interpretation?", "acceptedAnswer": { "@type": "Answer", "text": "A sourced claim rests on a named public source and is cited to it. Curated interpretation is Robotnik's own analytical reading, anchored against public research but not lifted from a single citable figure, and it is marked as such rather than presented as though it were sourced." } },
+        { "@type": "Question", "name": "What public sources does Robotnik use?", "acceptedAnswer": { "@type": "Answer", "text": "A small set, each within its scope: the USGS Mineral Commodity Summaries for mineral concentration, UN Comtrade with the WTO-ADB critical-minerals dataset for trade flows, the IEA Critical Minerals Dataset for energy-transition demand and supply, GLEIF for entity identity, the OFAC and BIS lists via the trade.gov screening list for policy exposure, SEC filings via EDGAR for company financials, and the US International Trade Commission for trade-policy price evidence." } },
+        { "@type": "Question", "name": "Why are some figures curated rather than sourced?", "acceptedAnswer": { "@type": "Answer", "text": "Because some numbers are not available in open, structured data at all. The concentration of advanced-packaging capacity is one example; high-purity quartz production, which the USGS itself reports as not available, is another. Where a figure cannot be sourced, Robotnik marks it as curated interpretation rather than inventing one that looks sourced." } },
+        { "@type": "Question", "name": "Do the numbers inside an index need a source?", "acceptedAnswer": { "@type": "Answer", "text": "No. An index's base value, caps, weights, and constituent counts are parameters of the method, not claims about the world. They are set by Robotnik and documented in that index's own methodology, which is their provenance; they carry no external source." } },
+        { "@type": "Question", "name": "Why do some methodology pages have no sources section?", "acceptedAnswer": { "@type": "Answer", "text": "Because they make no external claim to source. A page whose numbers are all construction constants, or a framework that is Robotnik's own scheme, has nothing about the outside world to cite. The absence of a sources section is the rule working, not a gap in it." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R12 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  /* ---- provenance diagram: a static inline SVG (not an IndexChart, not the
+         home grid). Responsive: the SVG keeps its 720×372 viewBox aspect and
+         scales to the figure width, so it shrinks whole on mobile rather than
+         reflowing. Colours are hardcoded hexes (Robotnik's palette) because the
+         reference pages load only style.css + typography.css, not home.css, so a
+         home.css var referenced here would not resolve. All diagram ids/classes
+         are prov- prefixed so they cannot collide with the rest of the page. ---- */
+  .prov-figure { margin: 0 auto 2.75rem; max-width: 680px; }
+  .prov-svg { width: 100%; height: auto; display: block; }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+  .article-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(245,217,33,0.35); }
+  .article-body a:hover { border-bottom-color: var(--yellow); }
+
+  /* ---- source-registry table. Scrolls horizontally inside its own wrapper on
+         narrow screens rather than forcing the page to scroll. ---- */
+  .prov-table-wrap { overflow-x: auto; margin: 0 0 1.5rem; -webkit-overflow-scrolling: touch; }
+  .prov-table { width: 100%; border-collapse: collapse; font-family: 'Mulish', var(--font); font-size: 0.92rem; min-width: 540px; }
+  .prov-table thead th {
+    text-align: left; font-family: 'Space Grotesk', var(--font); font-weight: 600;
+    font-size: 0.82rem; letter-spacing: 0.02em; color: var(--text);
+    border-bottom: 1px solid var(--border-light); padding: 0.55rem 0.7rem;
+  }
+  .prov-table tbody td { color: #c9cfdb; border-bottom: 1px solid var(--border); padding: 0.62rem 0.7rem; vertical-align: top; line-height: 1.5; }
+  .prov-table tbody tr:last-child td { border-bottom: none; }
+  .prov-table td:last-child, .prov-table th:last-child { white-space: nowrap; }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+    .prov-table { font-size: 0.85rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    .prov-table tbody td { color: #222 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">Sources and Provenance: How Robotnik Grounds Its Claims</h1>
+    <p class="article-dek"><em>Every quantitative claim Robotnik makes about the world is either sourced to a named public reference or marked as its own curated interpretation. This is where those sources are named, and where that rule is set out.</em></p>
+  </header>
+
+  <div class="article-body">
+
+    <p>Every methodology in this library rests on data, and a reader is entitled to know where it comes from. The rule that governs it is one line: every quantitative claim about the world carries its provenance. Either it is sourced, backed by a named public reference a reader can check, or it is curated interpretation, a Robotnik estimate marked plainly as such with its basis named. There is no third category and there are no unattributed numbers. Which of the two a figure is matters as much as the figure, so it is stated rather than left for the reader to guess.</p>
+
+  </div><!-- .article-body (intro) -->
+
+  <!-- Static provenance diagram (inline SVG). The two-tier sourced / curated
+       split: a claim about the world resolves to either "sourced" (blue, a named
+       public reference, cited) or "curated interpretation" (yellow, Robotnik's
+       marked reading), the two resolving into a single clarity line; a
+       construction constant is set apart at the base as not a world-claim.
+       Fully static, no interactivity. Colours are hardcoded hexes (no home.css
+       here). prov- prefixed ids/classes to avoid any collision with the page. -->
+  <figure class="prov-figure">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 372" class="prov-svg" role="img" aria-labelledby="prov-diagram-title prov-diagram-desc">
+      <title id="prov-diagram-title">Robotnik's provenance rule: every claim about the world is sourced or curated interpretation, so a reader can see what is grounded and what is judged</title>
+      <desc id="prov-diagram-desc">Every claim Robotnik makes about the world is either sourced, backed by a named public reference and cited, or curated interpretation, Robotnik's own reading marked as such with its basis named. Sourced claims include concentration by mining stage, bilateral trade flows, company segment revenue, and trade-policy price moves. Curated interpretation includes demand-share bands, functional-centrality tiers, index weighting judgments, and chokepoint estimates. The two resolve into a single point: a reader can see exactly what is grounded and what is judged. Set apart at the base, a construction constant, an index's base values, caps, and weights, is a parameter of the method rather than a measurement, so it needs no source.</desc>
+      <defs>
+        <style>
+          .prov-intro { font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; fill: #c3c8d4; }
+          .prov-h { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 16px; font-weight: 600; fill: #8fb3e8; }
+          .prov-hy { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 16px; font-weight: 600; fill: #F5D921; }
+          .prov-sub { font-family: 'Mulish', system-ui, sans-serif; font-size: 12.5px; fill: #d2cfd9; }
+          .prov-eglabel { font-family: 'Mulish', system-ui, sans-serif; font-size: 10.5px; fill: #7d8496; letter-spacing: 0.06em; }
+          .prov-eg { font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; fill: #b8bdc9; }
+          .prov-or { font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-style: italic; fill: #6a7180; }
+          .prov-out { font-family: 'Mulish', system-ui, sans-serif; font-size: 13px; fill: #d8dbe2; }
+          .prov-flabel { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #b5b2c0; }
+          .prov-foot { font-family: 'Mulish', system-ui, sans-serif; font-size: 11px; fill: #9aa0ae; }
+        </style>
+      </defs>
+      <text class="prov-intro" x="360" y="28" text-anchor="middle">Every claim about the world is either sourced or curated interpretation.</text>
+      <!-- sourced tier -->
+      <rect x="40" y="52" width="308" height="182" rx="10" fill="#161b24" stroke="#2d3344" stroke-width="1"/>
+      <circle cx="66" cy="84" r="5" fill="#5B8DEF"/>
+      <text class="prov-h" x="82" y="89">Sourced</text>
+      <text class="prov-sub" x="66" y="115">a named public reference, cited</text>
+      <text class="prov-eglabel" x="66" y="143">INCLUDING</text>
+      <circle cx="70" cy="158" r="2" fill="#5B8DEF"/><text class="prov-eg" x="80" y="162">concentration by mining stage</text>
+      <circle cx="70" cy="176" r="2" fill="#5B8DEF"/><text class="prov-eg" x="80" y="180">bilateral trade flows</text>
+      <circle cx="70" cy="194" r="2" fill="#5B8DEF"/><text class="prov-eg" x="80" y="198">company segment revenue</text>
+      <circle cx="70" cy="212" r="2" fill="#5B8DEF"/><text class="prov-eg" x="80" y="216">trade-policy price moves</text>
+      <!-- or -->
+      <text class="prov-or" x="360" y="147" text-anchor="middle">or</text>
+      <!-- curated tier -->
+      <rect x="372" y="52" width="308" height="182" rx="10" fill="#161b24" stroke="#2d3344" stroke-width="1"/>
+      <circle cx="398" cy="84" r="5" fill="#F5D921"/>
+      <text class="prov-hy" x="414" y="89">Curated interpretation</text>
+      <text class="prov-sub" x="398" y="115">Robotnik&#39;s reading, marked, basis named</text>
+      <text class="prov-eglabel" x="398" y="143">INCLUDING</text>
+      <circle cx="402" cy="158" r="2" fill="#F5D921"/><text class="prov-eg" x="412" y="162">demand-share bands</text>
+      <circle cx="402" cy="176" r="2" fill="#F5D921"/><text class="prov-eg" x="412" y="180">functional-centrality tiers</text>
+      <circle cx="402" cy="194" r="2" fill="#F5D921"/><text class="prov-eg" x="412" y="198">index weighting judgments</text>
+      <circle cx="402" cy="212" r="2" fill="#F5D921"/><text class="prov-eg" x="412" y="216">chokepoint estimates</text>
+      <!-- resolve to the point -->
+      <path d="M353 242 L360 249 L367 242" fill="none" stroke="#8a91a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="prov-out" x="360" y="266" text-anchor="middle">A reader can then see exactly what is grounded, and what is judged.</text>
+      <!-- construction constant (set apart) -->
+      <rect x="40" y="284" width="640" height="72" rx="8" fill="#14171e" stroke="#252a36" stroke-width="1"/>
+      <text class="prov-flabel" x="64" y="310">Not a claim about the world</text>
+      <text class="prov-foot" x="64" y="330">An index&#39;s base values, caps, and weights are parameters of the method, not measurements:</text>
+      <text class="prov-foot" x="64" y="346">documented there, they need no source.</text>
+    </svg>
+  </figure>
+
+  <div class="article-body">
+
+    <h2>The two kinds of claim</h2>
+
+    <p>A sourced claim rests on a named public source, cited so it can be followed back. A concentration figure by mining stage, a trade flow, a company's segment revenue: where a credible public reference carries it, the claim is sourced to that reference.</p>
+
+    <p>Curated interpretation is Robotnik's own reading, and it is never dressed as a sourced figure. A demand-share band, a criticality tier, a weighting judgment: these are analytical choices, anchored against public research (the USGS summaries, the IEA data, the US Department of Energy's Critical Materials Assessment, and material-specific literature) but not lifted from a single citable number. They are marked as curated, with the research they rest on named, so that a reader knows exactly what kind of claim is being made.</p>
+
+    <p>Keeping the two apart is the discipline. A curated estimate presented as though it were sourced would borrow a certainty it has not earned; a sourced figure buried among estimates would lose the weight it has. The line between them is drawn on the page, so that a reader sees exactly what is grounded and what is Robotnik's own judgment.</p>
+
+    <h2>The sources</h2>
+
+    <p>Where a claim is sourced, it draws on one of a small set of public references, each used for what it is authoritative on.</p>
+
+    <div class="prov-table-wrap">
+      <table class="prov-table">
+        <thead>
+          <tr><th scope="col">Source</th><th scope="col">What it grounds</th><th scope="col">Terms</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>USGS Mineral Commodity Summaries</td><td>Mineral production and processing concentration, by stage</td><td>Public domain</td></tr>
+          <tr><td>UN Comtrade, with the WTO&ndash;ADB Trade in Critical Minerals dataset</td><td>Bilateral trade-flow and dependency evidence</td><td>Per their terms</td></tr>
+          <tr><td>IEA critical-minerals data and topic reports</td><td>Clean-energy-technology mineral demand and supply outlooks</td><td>CC BY 4.0, attributed</td></tr>
+          <tr><td>GLEIF</td><td>Entity identity and corporate-ownership normalisation</td><td>CC0</td></tr>
+          <tr><td>OFAC SDN list and the US BIS Entity List, via the trade.gov Consolidated Screening List</td><td>Export-control and policy-exposure context</td><td>Public domain</td></tr>
+          <tr><td>SEC filings, via EDGAR</td><td>Company financials: revenue composition and segment shares</td><td>Public domain</td></tr>
+          <tr><td>US International Trade Commission</td><td>Trade-policy price and tariff-impact evidence</td><td>Public domain</td></tr>
+          <tr><td>White House 100-Day Supply-Chain Review (EO 14017, 2021)</td><td>Government supply-chain assessment figures, e.g. advanced-photoresist concentration</td><td>Public domain</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Each is used only within its scope. The IEA data covers the energy-transition minerals and is not applied to the semiconductor stack; SEC filings ground company financials and not minerals, trade, or policy; the screening lists ground policy exposure and nothing else. A source is not stretched beyond what it actually measures.</p>
+
+    <h2>Drawing the line on licences</h2>
+
+    <p>A public source is only usable if its licence permits the use. Robotnik draws only on references whose terms allow it, and attributes each as those terms require: the IEA data under CC BY 4.0, the rest public domain or CC0, and the two trade datasets per their own terms. A source whose data licence forbids commercial use is not cited, however useful its numbers might be. Getting this right is part of the same discipline as getting the numbers right.</p>
+
+    <h2>Where open data runs out</h2>
+
+    <p>Some figures are simply not available in open, structured data, and the honest response is to say so rather than to invent a number that looks sourced.</p>
+
+    <p>The concentration of advanced-packaging capacity, and of the specialist substrates that feed it, is the clearest case: the figures are either held behind analyst paywalls or asserted in prose without a citation. High-purity quartz is the documented example. The USGS publishes it and names its use in the fused-quartz crucibles that grow the silicon wafers semiconductor manufacturing depends on, but reports world mine production as not available; its US output figures are rounded to the nearest hundred thousand tonnes to avoid disclosing company data, and the trade is mixed with other sand and quartz in the customs codes, so no reliable figure can be isolated. The concentration metric is, in other words, structurally unobtainable from open data.</p>
+
+    <p>Where that is the case, Robotnik does not manufacture a sourced-looking figure. It marks the point as curated interpretation, names what the reading rests on, and, where the absence is itself on the public record, cites that absence. A documented gap is evidence too.</p>
+
+    <h2>The verification-pending mark</h2>
+
+    <p>Some curated estimates carry a further mark: verification pending. These are figures Robotnik tracks and uses but has not yet confirmed to its own standard, and they are never presented as sourced or as settled. The estimates at the chokepoints, where open data runs out, are the main case, and the reference pages that touch them name them as tracked rather than asserted.</p>
+
+    <h2>What needs a source, and what does not</h2>
+
+    <p>Not every number is a claim about the world. The base values, caps, weights, and constituent counts inside an index are parameters of the method: set by Robotnik, and documented in that index's own methodology. They describe how the index is built, not a fact about the outside world, so they carry no external source. The methodology page is their provenance, and that is the right place for them.</p>
+
+    <p>This is why the distinction is worth drawing carefully. An index level of 1,000 at a base date is not a measurement that could be right or wrong against the world; a statement that one country refines most of the world's supply of a given metal is. The first is documented in the method; the second is sourced or marked curated. Treating them the same would blur exactly the thing this rule exists to keep clear.</p>
+
+    <h2>How it fits the library</h2>
+
+    <p>This is the discipline behind the "Sources and provenance" note that the sourced pieces carry, and behind every figure marked as curated interpretation across the library. <a href="/research/frontier-stack-thesis">The thesis</a>, <a href="/research/control-points">the control-points methodology</a>, and <a href="/research/commodities-index">the commodities index</a> carry the most external figures and apply the rule most visibly; the other pieces apply it too, in proportion to the claims they make.</p>
+
+    <p>It also explains a pattern a reader will notice. Some methodology pages carry a sources section and some do not. A page whose numbers are all construction constants, or a framework that is Robotnik's own analytical scheme, makes no external claim to source, so it carries no sources section. That is not an omission. It is the same rule working: provenance is attached where there is a claim about the world to attach it to, and nowhere else.</p>
+
+    <h2>Sources and provenance</h2>
+
+    <p>This piece follows the rule it sets out. Its one sourced claim, that the USGS reports high-purity quartz world mine production as not available, is drawn from the US Geological Survey, Mineral Commodity Summaries, February 2026, "Quartz (High-Purity and Industrial Cultured Crystal)" (public domain). The IEA data named in the registry is used under CC BY 4.0, attributed to the IEA. The other references are named with their terms in the table above; describing a source is not itself a claim that needs its own citation. Everything else here is a description of Robotnik's method, which is its own provenance.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What is Robotnik's provenance rule?</h3>
+    <p>Every quantitative claim about the world is either sourced to a named public reference that a reader can check, or marked as Robotnik's own curated interpretation with its basis named. There is no third category and there are no unattributed numbers.</p>
+
+    <h3>What is the difference between a sourced claim and curated interpretation?</h3>
+    <p>A sourced claim rests on a named public source and is cited to it. Curated interpretation is Robotnik's own analytical reading, anchored against public research but not lifted from a single citable figure, and it is marked as such rather than presented as though it were sourced.</p>
+
+    <h3>What public sources does Robotnik use?</h3>
+    <p>A small set, each within its scope: the USGS Mineral Commodity Summaries for mineral concentration, UN Comtrade with the WTO&ndash;ADB critical-minerals dataset for trade flows, the IEA Critical Minerals Dataset for energy-transition demand and supply, GLEIF for entity identity, the OFAC and BIS lists via the trade.gov screening list for policy exposure, SEC filings via EDGAR for company financials, and the US International Trade Commission for trade-policy price evidence. Each is used only for what it authoritatively measures.</p>
+
+    <h3>Why are some figures curated rather than sourced?</h3>
+    <p>Because some numbers are not available in open, structured data at all. The concentration of advanced-packaging capacity is one example; high-purity quartz production, which the USGS itself reports as not available, is another. Where a figure cannot be sourced, Robotnik marks it as curated interpretation rather than inventing one that looks sourced.</p>
+
+    <h3>Do the numbers inside an index need a source?</h3>
+    <p>No. An index's base value, caps, weights, and constituent counts are parameters of the method, not claims about the world. They are set by Robotnik and documented in that index's own methodology, which is their provenance; they carry no external source.</p>
+
+    <h3>Why do some methodology pages have no sources section?</h3>
+    <p>Because they make no external claim to source. A page whose numbers are all construction constants, or a framework that is Robotnik's own scheme, has nothing about the outside world to cite. The absence of a sources section is the rule working, not a gap in it.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<script src="/js/nav.js?v=20260627g"></script>
+</body>
+</html>

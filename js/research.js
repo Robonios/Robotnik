@@ -50,7 +50,7 @@
       { id: 'R3', title: 'Control points', sub: 'How control points are found and the dependency map built', url: '/research/control-points', live: true },
       { id: 'R9', title: 'Value-chain taxonomy', sub: 'The 8-tier positional axis locating every company in the stack', url: '/research/value-chain-taxonomy', live: true },
       { id: 'R10', title: 'Structured context', sub: 'The nine-layer schema for reading a single frontier entity', url: '/research/structured-context', live: true },
-      { id: 'R12', title: 'Data & sources methodology', sub: 'Sources, FX, corrections, the anti-fabrication / UNRATED standard' }
+      { id: 'R12', title: 'Sources and provenance', sub: 'How every claim about the world is sourced or marked curated interpretation', url: '/research/sources-and-provenance', live: true }
     ] },
     { group: 'Index family', items: [
       { id: 'R4', title: 'Bottleneck-weighted index', sub: 'How the universe is weighted by supply risk, and how each company is rated', url: '/research/bottleneck-weighted-index', live: true },

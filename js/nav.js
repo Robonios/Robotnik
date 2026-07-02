@@ -379,6 +379,12 @@
       tags: ['r10', 'structured context', 'nine layers', '9 layers', 'layers', 'schema', 'per-entity', 'per entity', 'identity', 'classification', 'bottleneck', 'dependency', 'editorial', 'robotnik take', 'reference'],
       type: 'reference',
       url: '/research/structured-context',
+    }, {
+      title: 'Sources and Provenance: How Robotnik Grounds Its Claims',
+      desc: 'Reference · every world-claim sourced to a named public reference or marked curated interpretation',
+      tags: ['r12', 'sources', 'provenance', 'sources and provenance', 'curated interpretation', 'sourced', 'citation', 'citations', 'usgs', 'iea', 'sec', 'edgar', 'attribution', 'data standard', 'verification pending', 'reference'],
+      type: 'reference',
+      url: '/research/sources-and-provenance',
     }];
 
     var _datasets = null;
