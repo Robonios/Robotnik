@@ -373,6 +373,12 @@
       tags: ['r9', 'value chain', 'value-chain', 'value-chain taxonomy', 'tier', '8-tier', 'eight-tier', 'positional', 'stack', 'upstream materials', 'fabrication', 'system integration', 'taxonomy', 'reference'],
       type: 'reference',
       url: '/research/value-chain-taxonomy',
+    }, {
+      title: 'The Nine Layers of Structured Context',
+      desc: 'Reference · the nine-layer schema for reading a single frontier entity, from identity to editorial',
+      tags: ['r10', 'structured context', 'nine layers', '9 layers', 'layers', 'schema', 'per-entity', 'per entity', 'identity', 'classification', 'bottleneck', 'dependency', 'editorial', 'robotnik take', 'reference'],
+      type: 'reference',
+      url: '/research/structured-context',
     }];
 
     var _datasets = null;

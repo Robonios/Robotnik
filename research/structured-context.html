@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/structured-context.html; GitHub Pages also
+     serves it extensionless at /research/structured-context (the canonical).
+     The shared nav.js injects RELATIVE links (index.html, robotlogo.png), so
+     <base href="/"> makes them resolve to the site root from this subdirectory.
+     All of this page's own asset references are root-absolute and unaffected. -->
+<base href="/">
+<title>The Nine Layers of Structured Context</title>
+<meta name="description" content="How Robotnik structures the intelligence around a single frontier entity in nine layers, from what it is at the surface to the judgment that ties it together.">
+<link rel="canonical" href="https://robotnik.world/research/structured-context">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/structured-context">
+<meta property="og:title" content="The Nine Layers of Structured Context">
+<meta property="og:description" content="How Robotnik structures the intelligence around a single frontier entity in nine layers, from what it is at the surface to the judgment that ties it together.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-06-27">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Nine Layers of Structured Context">
+<meta name="twitter:description" content="How Robotnik structures the intelligence around a single frontier entity in nine layers, from what it is at the surface to the judgment that ties it together.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage); author/publisher resolve to the canonical Organization entity (#organization). No citation array, by design: R10 makes no external quantitative claims — the nine-layer framework is a curated analytical model (the R4/R5/R8/R9 treatment). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The Nine Layers of Structured Context",
+      "description": "How Robotnik structures the intelligence around a single frontier entity in nine layers, from what it is at the surface to the judgment that ties it together.",
+      "url": "https://robotnik.world/research/structured-context",
+      "datePublished": "2026-06-27",
+      "dateModified": "2026-06-27",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Robotnik structured context",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/structured-context#structured-context",
+          "name": "Structured context",
+          "description": "Robotnik's model for reading a single frontier entity, in nine ordered layers from recognition to judgment: identity, classification, bottleneck, dependency, market context, capital, policy, geographic, and editorial. The first two place the entity, the next six explain why it matters, and the last is the analytical view that ties them together."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/structured-context#editorial-layer",
+          "name": "Editorial layer",
+          "description": "The ninth and final layer of Robotnik's structured context: Robotnik's Take, the analytical judgment that reads the eight structural layers below it and ties them into a view. It is explicitly a judgment rather than a measurement, anchored to the structure the other layers supply."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What are the nine layers of structured context?", "acceptedAnswer": { "@type": "Answer", "text": "In order: identity (what the entity is), classification (where it sits in the stack), bottleneck (how irreplaceable it is), dependency (what it relies on and what relies on it), market context (how it trades), capital (how it is funded), policy (its exposure to export controls, subsidies, and sanctions), geographic (where it physically sits), and editorial (Robotnik's judgment on the rest)." } },
+        { "@type": "Question", "name": "Why are they ordered from recognition to judgment?", "acceptedAnswer": { "@type": "Answer", "text": "Because each layer rests on the ones before it. The first two place the entity, the next six explain why it matters, and the last is the view that ties them together. Reading them in order moves from what the entity is, through why it matters, to what Robotnik makes of it." } },
+        { "@type": "Question", "name": "Which layer is the most differentiated?", "acceptedAnswer": { "@type": "Answer", "text": "The dependency layer. Who an entity relies on upstream, who relies on it downstream, and the hidden concentration a per-company view misses are relational knowledge that does not exist in any single-company record, which is why it is the layer hardest to get elsewhere." } },
+        { "@type": "Question", "name": "What is the editorial layer, and is it objective?", "acceptedAnswer": { "@type": "Answer", "text": "It is Robotnik's Take, the analytical judgment that reads the eight structural layers and ties them into a view. It is explicitly a judgment rather than a measurement, offered as a read; the eight layers beneath it exist so that the read is anchored to structure." } },
+        { "@type": "Question", "name": "Does every entity have all nine layers?", "acceptedAnswer": { "@type": "Answer", "text": "Every entity is read through the same nine, but not all come back full. A private name has no market-context layer in the index sense; a public one's capital layer is comparables rather than its own rounds; a material is placed through the commodities basket rather than the value-chain tier and carries no capital or public-market layer; and some entities carry little policy or geographic exposure. The layers are the questions asked; some answers are thin." } },
+        { "@type": "Question", "name": "How does this relate to the rest of Robotnik's methodology?", "acceptedAnswer": { "@type": "Answer", "text": "It is where the rest converges. The classification layer applies the universe and value-chain methodologies to one name, the bottleneck and dependency layers apply the control-point methodology, the market layer the index methodologies, and the capital layer the private-capital index. The stack-level pieces describe the whole stack; the nine layers bring them to bear on a single entity." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R10 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  /* ---- nine-layer diagram: a static inline SVG (not an IndexChart, not the
+         home grid). Responsive: the SVG keeps its 720×520 viewBox aspect and
+         scales to the figure width, so it shrinks whole on mobile rather than
+         reflowing. Colours are hardcoded hexes (Robotnik's palette) because the
+         reference pages load only style.css + typography.css, not home.css, so a
+         home.css var referenced here would not resolve. All diagram ids/classes
+         are l9- prefixed so they cannot collide with the rest of the page. ---- */
+  .l9-figure { margin: 0 auto 2.75rem; max-width: 680px; }
+  .l9-svg { width: 100%; height: auto; display: block; }
+  .l9-cap { font-family: 'Mulish', var(--font); font-style: italic; font-size: 0.85rem; line-height: 1.55; color: var(--text-dim); margin: 0.85rem 0.1rem 0; text-align: center; }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+  .article-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(245,217,33,0.35); }
+  .article-body a:hover { border-bottom-color: var(--yellow); }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek, .l9-cap { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">The Nine Layers of Structured Context</h1>
+    <p class="article-dek"><em>How Robotnik structures the intelligence around a single frontier entity, nine layers deep, from what it is at the surface to the judgment that ties it together.</em></p>
+  </header>
+
+  <!-- Static nine-layer diagram (inline SVG). The nine layers as a numbered
+       vertical stack: 01 Identity at the top down to 09 Editorial at the base,
+       each row carrying its number and name on the left and a one-line reading
+       on the right, grouped into three phase brackets (Recognition 1–2, Depth
+       3–8, Judgment 9). Recognition and depth in two weights of Robotnik blue;
+       the editorial layer in Robotnik yellow to mark it a judgment, not a fact.
+       Fully static, no interactivity. Colours are hardcoded hexes (no home.css
+       here). l9- prefixed ids/classes to avoid any collision with the page. -->
+  <figure class="l9-figure">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" class="l9-svg" role="img" aria-labelledby="l9-diagram-title l9-diagram-desc">
+      <title id="l9-diagram-title">The nine layers of structured context, each with what it captures, from identity at the surface to the editorial judgment at the base</title>
+      <desc id="l9-diagram-desc">A numbered vertical stack of nine layers, grouped into three phases. Each row gives the layer number and name and a short reading of what it captures. Recognition: 01 Identity, what it does, where, and since when; 02 Classification, sector, subsector, value-chain tier. Depth: 03 Bottleneck, how critical and the choke point; 04 Dependency, what it relies on and the hidden concentration; 05 Market context, index position and benchmark; 06 Capital, funding and investors, or comparables; 07 Policy, export controls, subsidies, sanctions; 08 Geographic, location and choke-point exposure. Judgment: 09 Editorial, the judgment tying the eight together. Recognition and depth are shown in two weights of Robotnik blue; the editorial layer is shown in Robotnik yellow to mark it as a judgment rather than a fact.</desc>
+      <defs>
+        <style>
+          .l9-num { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 15px; font-weight: 600; fill: #9fb3d0; }
+          .l9-num9 { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 15px; font-weight: 600; fill: #F5D921; }
+          .l9-name { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: #f4f1ec; }
+          .l9-desc { font-family: 'Mulish', system-ui, sans-serif; font-size: 11.5px; fill: #c3c8d4; }
+          .l9-ph { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #cfccd8; letter-spacing: 0.03em; }
+          .l9-phs { font-family: 'Mulish', system-ui, sans-serif; font-size: 10.5px; fill: #948f9e; }
+        </style>
+      </defs>
+      <!-- phase brackets + glosses (left) -->
+      <g fill="none" stroke="#7c8393" stroke-width="1">
+        <path d="M167 34 L157 34 L157 124 L167 124"/>
+        <path d="M167 138 L157 138 L157 436 L167 436"/>
+        <path d="M167 450 L157 450 L157 488 L167 488"/>
+      </g>
+      <text class="l9-ph" x="145" y="75" text-anchor="end">Recognition</text>
+      <text class="l9-phs" x="145" y="90" text-anchor="end">what and where</text>
+      <text class="l9-ph" x="145" y="283" text-anchor="end">Depth</text>
+      <text class="l9-phs" x="145" y="298" text-anchor="end">why it matters</text>
+      <text class="l9-ph" x="145" y="465" text-anchor="end">Judgment</text>
+      <text class="l9-phs" x="145" y="480" text-anchor="end">the view</text>
+      <!-- layers -->
+      <g><rect x="175" y="30" width="490" height="46" rx="8" fill="#31548c" stroke="#4d74ad" stroke-width="0.75"/><text class="l9-num" x="192" y="58">01</text><text class="l9-name" x="222" y="58">Identity</text><line x1="352" y1="41" x2="352" y2="65" stroke="#ffffff" stroke-opacity="0.14"/><text class="l9-desc" x="366" y="58">what it does, where, and since when</text></g>
+      <g><rect x="175" y="82" width="490" height="46" rx="8" fill="#31548c" stroke="#4d74ad" stroke-width="0.75"/><text class="l9-num" x="192" y="110">02</text><text class="l9-name" x="222" y="110">Classification</text><line x1="352" y1="93" x2="352" y2="117" stroke="#ffffff" stroke-opacity="0.14"/><text class="l9-desc" x="366" y="110">sector, subsector, value-chain tier</text></g>
+      <g><rect x="175" y="134" width="490" height="46" rx="8" fill="#1f3556" stroke="#385a86" stroke-width="0.75"/><text class="l9-num" x="192" y="162">03</text><text class="l9-name" x="222" y="162">Bottleneck</text><line x1="352" y1="145" x2="352" y2="169" stroke="#ffffff" stroke-opacity="0.14"/><text class="l9-desc" x="366" y="162">how critical, and the choke point</text></g>
+      <g><rect x="175" y="186" width="490" height="46" rx="8" fill="#1f3556" stroke="#385a86" stroke-width="0.75"/><text class="l9-num" x="192" y="214">04</text><text class="l9-name" x="222" y="214">Dependency</text><line x1="352" y1="197" x2="352" y2="221" stroke="#ffffff" stroke-opacity="0.14"/><text class="l9-desc" x="366" y="214">what it relies on, hidden concentration</text></g>
+      <g><rect x="175" y="238" width="490" height="46" rx="8" fill="#1f3556" stroke="#385a86" stroke-width="0.75"/><text class="l9-num" x="192" y="266">05</text><text class="l9-name" x="222" y="266">Market context</text><line x1="352" y1="249" x2="352" y2="273" stroke="#ffffff" stroke-opacity="0.14"/><text class="l9-desc" x="366" y="266">index position and benchmark</text></g>
+      <g><rect x="175" y="290" width="490" height="46" rx="8" fill="#1f3556" stroke="#385a86" stroke-width="0.75"/><text class="l9-num" x="192" y="318">06</text><text class="l9-name" x="222" y="318">Capital</text><line x1="352" y1="301" x2="352" y2="325" stroke="#ffffff" stroke-opacity="0.14"/><text class="l9-desc" x="366" y="318">funding and investors, or comparables</text></g>
+      <g><rect x="175" y="342" width="490" height="46" rx="8" fill="#1f3556" stroke="#385a86" stroke-width="0.75"/><text class="l9-num" x="192" y="370">07</text><text class="l9-name" x="222" y="370">Policy</text><line x1="352" y1="353" x2="352" y2="377" stroke="#ffffff" stroke-opacity="0.14"/><text class="l9-desc" x="366" y="370">export controls, subsidies, sanctions</text></g>
+      <g><rect x="175" y="394" width="490" height="46" rx="8" fill="#1f3556" stroke="#385a86" stroke-width="0.75"/><text class="l9-num" x="192" y="422">08</text><text class="l9-name" x="222" y="422">Geographic</text><line x1="352" y1="405" x2="352" y2="429" stroke="#ffffff" stroke-opacity="0.14"/><text class="l9-desc" x="366" y="422">location and choke-point exposure</text></g>
+      <g><rect x="175" y="446" width="490" height="46" rx="8" fill="#24262f" stroke="#F5D921" stroke-width="1.25"/><text class="l9-num9" x="192" y="474">09</text><text class="l9-name" x="222" y="474">Editorial</text><line x1="352" y1="457" x2="352" y2="481" stroke="#ffffff" stroke-opacity="0.14"/><text class="l9-desc" x="366" y="474">the judgment tying the eight together</text></g>
+    </svg>
+    <figcaption class="l9-cap">The nine layers of structured context, from identity at the surface to the editorial judgment at the base.</figcaption>
+  </figure>
+
+  <div class="article-body">
+
+    <p>The rest of Robotnik's methodology works at the level of the whole stack: who belongs in the universe, where each company sits in the value chain, what the stack depends on, how its value and its funding move. This piece is the move in the opposite direction. It is how all of that converges on a single entity. When Robotnik looks at a single frontier entity, a company (public or private), a material, or a token, it builds the picture in nine layers, from what the entity is at the surface to the judgment that ties the rest together. Those nine layers are what this piece documents.</p>
+
+    <p>The layers run in one direction, from recognition to judgment. The first two place the entity. The next six explain why it matters. The last is the view. Each is a different question, and each rests on the ones before it.</p>
+
+    <h2>Recognition: what it is, and where it sits</h2>
+
+    <p>The first two layers are recognition. They answer the questions anyone asks first, and they place the entity in the frontier stack before any analysis begins.</p>
+
+    <p>Identity is what the entity is: the company, material, or token, what it does, and the plain facts, where it is based, when it was founded, its status. It is the layer that says this is a frontier-stack entity and here is what it is.</p>
+
+    <p>Classification is where it sits: its sector and subsector, and its tier on <a href="/research/value-chain-taxonomy">the value-chain axis</a>, from upstream materials to software. This places the entity, already admitted by <a href="/research/universe-membership">the universe methodology</a>, in the structure of the stack, so that everything above it is read in the light of its position.</p>
+
+    <p>Together the two are recognition: enough to know what the entity is and where it fits, but not yet why it matters.</p>
+
+    <h2>Depth: why it matters</h2>
+
+    <p>The next six layers are where the context deepens, and where most of the value sits, because they are the layers a per-company database does not hold.</p>
+
+    <p>Bottleneck is irreplaceability: how critical the entity is to the stack, and what the choke point is. It is the criticality reading that says whether this is a name the stack cannot easily do without, on the critical-to-low scale <a href="/research/control-points">the control-point method</a> defines and <a href="/research/bottleneck-weighted-index">the bottleneck-weighted index</a> applies to companies.</p>
+
+    <p>Dependency is what the entity relies on, and what relies on it: the upstream and downstream relationships, and the concentration a per-company view misses, the case where several of a company's suppliers all trace back to one node, so its apparent diversification is not real. This is relational knowledge, and it is the most differentiated layer, because it does not exist in any single-company record.</p>
+
+    <p>Market context is how a public name trades: its position and weight in <a href="/research/public-equities-index">the public-equities index</a>, and the benchmark that reads it against its own sub-index and the whole frontier universe. It is also where the divergence flag sits, the name that looks safe on standard risk measures but carries a critical bottleneck, so the two readings disagree.</p>
+
+    <p>Capital is how the entity is funded: for a private name, its funding history, its investors, and the trajectory of its rounds, the activity <a href="/research/private-capital-index">the private-capital index</a> aggregates; for a public one, the private comparables in the same value-chain tier, the names being funded that feed or compete with it.</p>
+
+    <p>Policy is its exposure to the state: to export controls, subsidies, and sanctions. Frontier technology is shaped by policy more than almost any sector, so this is a layer in its own right.</p>
+
+    <p>Geographic is where the entity physically sits, and the physical choke points it is exposed to: the ports, refineries, fabs, and launch sites, and the shipping and rail the supply chain actually runs through.</p>
+
+    <h2>Judgment: the view</h2>
+
+    <p>The ninth layer is editorial: Robotnik's Take. It is the analytical judgment that reads the eight layers below it and ties them into a view, the sentence or two that says what the structured context adds up to. It is the one layer that is explicitly a judgment rather than a fact, and it is the point of the other eight: they gather the structure so that the view rests on something.</p>
+
+    <h2>How the layers build</h2>
+
+    <p>The nine are ordered, and the order is the argument. Recognition is the layer anyone can reach, since what a company is and roughly where it sits are matters of public record. The depth layers are where the work is, and the dependency and bottleneck layers in particular are relational and structural knowledge that no single-company source holds. The editorial layer is the synthesis. So the value is not spread evenly across the nine; it concentrates in the middle, where the structure is, and at the end, where the judgment is.</p>
+
+    <p>This layered structure is Robotnik's model for reading any one entity. The per-asset profile pages that will present all nine layers for a given name are on the roadmap; the framework itself is how the platform's per-entity intelligence is organised, and the layers already draw on the methodologies documented across the rest of this library.</p>
+
+    <h2>Limitations of the model</h2>
+
+    <p>The nine layers are a frame, and the frame's limits should be read alongside it.</p>
+
+    <p>Not every layer is full for every entity. A private company has no market-context layer in the index sense; a public one's capital layer is comparables rather than its own rounds; a material is placed through <a href="/research/commodities-index">the commodities basket</a> rather than the value-chain tier, and carries neither a capital nor a public-market layer; and some entities carry little policy or geographic exposure to speak of. The layers are the questions Robotnik asks of an entity, and for any given name some come back thin or empty.</p>
+
+    <p>Each layer is only as strong as the methodology behind it. The bottleneck layer rests on the control-point analysis, the market layer on the index construction, the capital layer on the private-capital methodology; a layer inherits both the strengths and the caveats of the method that feeds it.</p>
+
+    <p>And the editorial layer is a judgment, not a measurement. It is offered as a read, and the eight layers beneath it are there precisely so that the read is anchored to structure rather than floated free of it.</p>
+
+    <h2>How it fits the family</h2>
+
+    <p>The rest of the library works outward, across the whole stack; the nine layers work inward, onto a single entity, and they are where the other methodologies meet. The classification layer is the universe and value-chain methodologies applied to one name; the bottleneck and dependency layers are the control-point methodology applied to it; the market layer is the index methodologies; the capital layer is the private-capital index. So this piece is less a separate method than the point where the others converge, the whole library brought to bear on one entity, and then read.</p>
+
+    <p>The stack-level methodologies say what the frontier stack is and how it behaves. The nine layers say what any one piece of it is, why it matters, and what Robotnik makes of it. The other methodologies are documented in their own pieces.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What are the nine layers of structured context?</h3>
+    <p>In order: identity (what the entity is), classification (where it sits in the stack), bottleneck (how irreplaceable it is), dependency (what it relies on and what relies on it), market context (how it trades), capital (how it is funded), policy (its exposure to export controls, subsidies, and sanctions), geographic (where it physically sits), and editorial (Robotnik's judgment on the rest).</p>
+
+    <h3>Why are they ordered from recognition to judgment?</h3>
+    <p>Because each layer rests on the ones before it. The first two place the entity, the next six explain why it matters, and the last is the view that ties them together. Reading them in order moves from what the entity is, through why it matters, to what Robotnik makes of it.</p>
+
+    <h3>Which layer is the most differentiated?</h3>
+    <p>The dependency layer. Who an entity relies on upstream, who relies on it downstream, and the hidden concentration a per-company view misses are relational knowledge that does not exist in any single-company record, which is why it is the layer hardest to get elsewhere.</p>
+
+    <h3>What is the editorial layer, and is it objective?</h3>
+    <p>It is Robotnik's Take, the analytical judgment that reads the eight structural layers and ties them into a view. It is explicitly a judgment rather than a measurement, offered as a read; the eight layers beneath it exist so that the read is anchored to structure.</p>
+
+    <h3>Does every entity have all nine layers?</h3>
+    <p>Every entity is read through the same nine, but not all come back full. A private name has no market-context layer in the index sense; a public one's capital layer is comparables rather than its own rounds; a material is placed through the commodities basket rather than the value-chain tier and carries no capital or public-market layer; and some entities carry little policy or geographic exposure. The layers are the questions asked; some answers are thin.</p>
+
+    <h3>How does this relate to the rest of Robotnik's methodology?</h3>
+    <p>It is where the rest converges. The classification layer applies the universe and value-chain methodologies to one name, the bottleneck and dependency layers apply the control-point methodology, the market layer the index methodologies, and the capital layer the private-capital index. The stack-level pieces describe the whole stack; the nine layers bring them to bear on a single entity.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<script src="/js/nav.js?v=20260627f"></script>
+</body>
+</html>
