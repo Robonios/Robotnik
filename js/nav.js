@@ -367,6 +367,12 @@
       tags: ['r6', 'private capital', 'private-capital', 'private capital index', 'rpci', 'private market', 'funding', 'venture', 'rounds', 'deal count', 'investor', 'activity', 'index', 'reference'],
       type: 'reference',
       url: '/research/private-capital-index',
+    }, {
+      title: 'The Value-Chain Taxonomy: Where Each Company Sits in the Frontier Stack',
+      desc: 'Reference · the 8-tier positional axis placing every company from upstream materials to software',
+      tags: ['r9', 'value chain', 'value-chain', 'value-chain taxonomy', 'tier', '8-tier', 'eight-tier', 'positional', 'stack', 'upstream materials', 'fabrication', 'system integration', 'taxonomy', 'reference'],
+      type: 'reference',
+      url: '/research/value-chain-taxonomy',
     }];
 
     var _datasets = null;

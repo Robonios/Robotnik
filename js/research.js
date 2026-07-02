@@ -48,7 +48,7 @@
     { group: 'Foundations', items: [
       { id: 'R2', title: 'Universe membership methodology', sub: 'What qualifies as a Robotnik entity, and when it enters / leaves', url: '/research/universe-membership', live: true },
       { id: 'R3', title: 'Control points', sub: 'How control points are found and the dependency map built', url: '/research/control-points', live: true },
-      { id: 'R9', title: 'The 8-tier value chain', sub: 'The positional taxonomy locating every entity' },
+      { id: 'R9', title: 'Value-chain taxonomy', sub: 'The 8-tier positional axis locating every company in the stack', url: '/research/value-chain-taxonomy', live: true },
       { id: 'R10', title: 'The 9 layers of structured context', sub: 'The schema describing each entity' },
       { id: 'R12', title: 'Data & sources methodology', sub: 'Sources, FX, corrections, the anti-fabrication / UNRATED standard' }
     ] },

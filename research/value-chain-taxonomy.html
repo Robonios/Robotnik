@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Page lives at /research/value-chain-taxonomy.html; GitHub Pages also
+     serves it extensionless at /research/value-chain-taxonomy (the canonical).
+     The shared nav.js injects RELATIVE links (index.html, robotlogo.png), so
+     <base href="/"> makes them resolve to the site root from this subdirectory.
+     All of this page's own asset references are root-absolute and unaffected. -->
+<base href="/">
+<title>The Value-Chain Taxonomy: Positioning the Stack</title>
+<meta name="description" content="How Robotnik places every company in its universe on an eight-tier value-chain axis from upstream materials to software, reading the frontier stack by position.">
+<link rel="canonical" href="https://robotnik.world/research/value-chain-taxonomy">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://robotnik.world/research/value-chain-taxonomy">
+<meta property="og:title" content="The Value-Chain Taxonomy: Positioning the Stack">
+<meta property="og:description" content="How Robotnik places every company in its universe on an eight-tier value-chain axis from upstream materials to software, reading the frontier stack by position.">
+<meta property="og:image" content="https://robotnik.world/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Robotnik">
+<meta property="article:published_time" content="2026-06-27">
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Value-Chain Taxonomy: Positioning the Stack">
+<meta name="twitter:description" content="How Robotnik places every company in its universe on an eight-tier value-chain axis from upstream materials to software, reading the frontier stack by position.">
+<meta name="twitter:image" content="https://robotnik.world/og/default.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F5D921">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css?v=20260514m4"><link rel="stylesheet" href="/css/typography.css?v=20260622a">
+<!-- Structured data (Article + DefinedTermSet + FAQPage); author/publisher resolve to the canonical Organization entity (#organization). No citation array, by design: R9 makes no external quantitative claims — the value-chain taxonomy is a curated classification (the R4/R5/R8 treatment). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The Value-Chain Taxonomy: Where Each Company Sits in the Frontier Stack",
+      "description": "How Robotnik places every company in its universe on an eight-tier value-chain axis from upstream materials to software, reading the frontier stack by position.",
+      "url": "https://robotnik.world/research/value-chain-taxonomy",
+      "datePublished": "2026-06-27",
+      "dateModified": "2026-06-27",
+      "image": "https://robotnik.world/og/default.png",
+      "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
+      "publisher": { "@id": "https://robotnik.world/#organization" }
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "Frontier stack value-chain taxonomy",
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/value-chain-taxonomy#value-chain-taxonomy",
+          "name": "Value-chain taxonomy",
+          "description": "A scheme that places every company in the frontier-stack universe on a single ordered axis of eight tiers, from upstream materials through fabrication and system integration to software and services, classifying each company by where it sits in the production chain rather than by what domain it works in or what it depends on."
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://robotnik.world/research/value-chain-taxonomy#centre-of-gravity-placement",
+          "name": "Centre-of-gravity placement",
+          "description": "The rule for assigning a company to a single value-chain tier: starting from a default set by its sector and subsector, the company is placed at the tier where the bulk of its business sits, rather than split across the tiers it touches, with the reasoning recorded for any placement that departs from the sector default."
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is the value-chain taxonomy?", "acceptedAnswer": { "@type": "Answer", "text": "It is the scheme by which Robotnik places every company in its universe on a single ordered axis from the most upstream inputs to the most downstream software, so the frontier stack can be read by position rather than as a flat list of names." } },
+        { "@type": "Question", "name": "What are the eight tiers?", "acceptedAnswer": { "@type": "Answer", "text": "From upstream to downstream: upstream materials, IP and design, capital equipment, fabrication and manufacturing, components and subsystems, system integration, deployment and operation, and software and services. The first four are the supply side of the stack and the next four the system side, with software and services running alongside the physical stack." } },
+        { "@type": "Question", "name": "How is a company placed on the axis?", "acceptedAnswer": { "@type": "Answer", "text": "It starts from a default set by the company's sector and subsector, then is placed at its centre of gravity, the tier where the bulk of its business sits. A company that spans tiers is assigned to its dominant activity rather than split, with the reasoning recorded for any placement that departs from its sector default." } },
+        { "@type": "Question", "name": "How is this different from the sector classification?", "acceptedAnswer": { "@type": "Answer", "text": "The sector classification says what domain a company works in; the value-chain tier says where in the production chain it sits. They are independent: companies in different sectors can share a tier, and companies in the same sector can sit tiers apart." } },
+        { "@type": "Question", "name": "Does it map supply-chain dependencies or chokepoints?", "acceptedAnswer": { "@type": "Answer", "text": "No. The taxonomy positions companies along the chain; it does not trace which company depends on which, or where a supplier could choke the stack. That dependency and control-point mapping is a separate methodology that works on materials and their supply relationships." } },
+        { "@type": "Question", "name": "Does every company in the universe have a tier?", "acceptedAnswer": { "@type": "Answer", "text": "Nearly every one does. A small number sit unclassified or awkwardly across the scheme, so the taxonomy is a strong ordering of the universe rather than a perfect partition of it." } },
+        { "@type": "Question", "name": "Why place a company at one tier if it spans several?", "acceptedAnswer": { "@type": "Answer", "text": "To keep the axis readable, each company is placed at its centre of gravity, the tier where most of its business sits. Splitting vertically integrated companies across tiers would blur the positional signal the taxonomy exists to give; the dominant-activity rule keeps one company at one tier, with the trade-off noted." } }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  /* ---- R9 reference article — scoped layout on the shared dark theme ---- */
+  .article-page { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .article-head { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2.5rem; }
+  .article-eyebrow {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 1.1rem;
+  }
+  .article-title {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(2rem, 4.6vw, 3rem); font-weight: 700; line-height: 1.12;
+    letter-spacing: -0.01em; color: var(--text); margin: 0 0 1.25rem;
+  }
+  .article-dek {
+    font-family: 'Mulish', var(--font);
+    font-style: italic; font-size: clamp(1.05rem, 2vw, 1.2rem); line-height: 1.55;
+    color: var(--text-dim); margin: 0; max-width: 60ch;
+  }
+
+  /* ---- tier diagram: a static inline SVG (not an IndexChart, not the home
+         grid). Responsive: the SVG keeps its 680×560 viewBox aspect and scales
+         to the figure width, so it shrinks whole on mobile rather than reflowing.
+         All diagram ids/classes are vc- prefixed so they cannot collide. ---- */
+  .vc-figure { margin: 0 auto 2.75rem; max-width: 600px; }
+  .vc-svg { width: 100%; height: auto; display: block; }
+  .vc-cap { font-family: 'Mulish', var(--font); font-style: italic; font-size: 0.85rem; line-height: 1.55; color: var(--text-dim); margin: 0.85rem 0.1rem 0; text-align: center; }
+
+  .article-body { font-family: 'Mulish', var(--font); }
+  .article-body h2 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); margin: 2.75rem 0 1rem;
+  }
+  .article-body h3 {
+    font-family: 'Space Grotesk', var(--font);
+    font-size: 1.05rem; font-weight: 600; color: var(--text); margin: 1.85rem 0 0.55rem;
+  }
+  .article-body p {
+    font-family: 'Mulish', var(--font);
+    font-size: 1rem; line-height: 1.75; color: #c9cfdb; margin: 0 0 1.25rem;
+  }
+  .article-body em { color: var(--text); font-style: italic; }
+  .article-body a { color: var(--yellow); text-decoration: none; border-bottom: 1px solid rgba(245,217,33,0.35); }
+  .article-body a:hover { border-bottom-color: var(--yellow); }
+
+  @media (max-width: 640px) {
+    .article-head { padding: 2rem 0 1.5rem; margin-bottom: 2rem; }
+    .article-body p { font-size: 0.98rem; }
+  }
+
+  @media print {
+    .bg-layer, #nav-container, .top-bar, .sidebar, .site-footer-global { display: none !important; }
+    .main-content { margin: 0 !important; padding: 0 !important; }
+    .article-page { max-width: 100% !important; }
+    body { background: #fff !important; }
+    .article-title, .article-body h2, .article-body h3 { color: #000 !important; }
+    .article-body p, .article-dek, .vc-cap { color: #222 !important; }
+    .article-body em { color: #000 !important; }
+    a { color: #000 !important; text-decoration: none !important; }
+  }
+</style>
+<!-- GoatCounter analytics (privacy-friendly, no cookies) -->
+<script data-goatcounter="https://robotnik.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</head>
+<body data-page="research">
+
+<div class="bg-layer"></div>
+<div id="nav-container"></div>
+
+<div class="main-content">
+<article class="article-page">
+
+  <header class="article-head">
+    <div class="article-eyebrow">Reference</div>
+    <h1 class="article-title">The Value-Chain Taxonomy: Where Each Company Sits in the Frontier Stack</h1>
+    <p class="article-dek"><em>How Robotnik places every company in the universe on an eight-tier axis from raw materials to software, so the frontier stack can be read as layers, not a flat list.</em></p>
+  </header>
+
+  <!-- Static value-chain tier diagram (inline SVG). The eight tiers as a vertical
+       stack: upstream materials at the base, software & services at the apex,
+       coloured green→purple up the stack; arrow up the left marks upstream→
+       downstream; a light divider + side labels split the supply side (lower
+       four) from the system side (upper four). Fully static, no interactivity.
+       vc- prefixed ids/classes to avoid any collision with the rest of the page. -->
+  <figure class="vc-figure">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 560" class="vc-svg" role="img" aria-labelledby="vc-diagram-title vc-diagram-desc">
+      <title id="vc-diagram-title">The frontier-stack value chain: eight tiers, upstream materials at the base to software and services at the apex, coloured green to purple up the stack</title>
+      <desc id="vc-diagram-desc">A vertical stack of eight tiers, coloured as a gradation from green at the base to purple at the apex. From bottom to top: upstream materials, IP and design, capital equipment, fabrication and manufacturing (the supply side), then components and subsystems, system integration, deployment and operation, software and services (the system side). An arrow on the left marks the direction from upstream at the base to downstream at the top.</desc>
+      <defs>
+        <marker id="vc-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#9c9a92" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+        <style>
+          .vc-name { font-family: 'Space Grotesk', system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: #f4f1ec; }
+          .vc-gloss { font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; font-weight: 400; fill: #d2cfd9; }
+          .vc-dir { font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; fill: #9c9a92; }
+          .vc-grp { font-family: 'Mulish', system-ui, sans-serif; font-size: 12px; fill: #b5b2c0; letter-spacing: 0.04em; }
+        </style>
+      </defs>
+      <line x1="100" y1="508" x2="100" y2="62" stroke="#9c9a92" stroke-width="1" marker-end="url(#vc-arrow)"/>
+      <text class="vc-dir" x="100" y="46" text-anchor="middle">downstream</text>
+      <text class="vc-dir" x="100" y="528" text-anchor="middle">upstream</text>
+      <g><rect x="160" y="50" width="360" height="52" rx="8" fill="#574a99" stroke="#8a7fd0" stroke-width="0.75"/><text class="vc-name" x="340" y="78" text-anchor="middle">Software &amp; Services</text><text class="vc-gloss" x="340" y="95" text-anchor="middle">software, simulation, middleware</text></g>
+      <g><rect x="160" y="108" width="360" height="52" rx="8" fill="#464590" stroke="#7a78c5" stroke-width="0.75"/><text class="vc-name" x="340" y="136" text-anchor="middle">Deployment &amp; Operation</text><text class="vc-gloss" x="340" y="153" text-anchor="middle">operators of deployed hardware</text></g>
+      <g><rect x="160" y="166" width="360" height="52" rx="8" fill="#384789" stroke="#6a78bd" stroke-width="0.75"/><text class="vc-name" x="340" y="194" text-anchor="middle">System Integration</text><text class="vc-gloss" x="340" y="211" text-anchor="middle">robots, rockets, satellites, vehicles</text></g>
+      <g><rect x="160" y="224" width="360" height="52" rx="8" fill="#2c4f80" stroke="#5a82b5" stroke-width="0.75"/><text class="vc-name" x="340" y="252" text-anchor="middle">Components &amp; Subsystems</text><text class="vc-gloss" x="340" y="269" text-anchor="middle">sensors, motors, batteries, power</text></g>
+      <line x1="160" y1="282" x2="520" y2="282" stroke="#e0dee8" stroke-width="1" stroke-dasharray="4 4"/>
+      <g><rect x="160" y="288" width="360" height="52" rx="8" fill="#1f5c79" stroke="#4a93a8" stroke-width="0.75"/><text class="vc-name" x="340" y="316" text-anchor="middle">Fabrication &amp; Manufacturing</text><text class="vc-gloss" x="340" y="333" text-anchor="middle">chips and wafers at scale</text></g>
+      <g><rect x="160" y="346" width="360" height="52" rx="8" fill="#16686d" stroke="#3fa093" stroke-width="0.75"/><text class="vc-name" x="340" y="374" text-anchor="middle">Capital Equipment</text><text class="vc-gloss" x="340" y="391" text-anchor="middle">the machines that build them</text></g>
+      <g><rect x="160" y="404" width="360" height="52" rx="8" fill="#16705e" stroke="#3fa882" stroke-width="0.75"/><text class="vc-name" x="340" y="432" text-anchor="middle">IP &amp; Design</text><text class="vc-gloss" x="340" y="449" text-anchor="middle">chip designers, EDA, IP licensors</text></g>
+      <g><rect x="160" y="462" width="360" height="52" rx="8" fill="#1d7350" stroke="#4aac6f" stroke-width="0.75"/><text class="vc-name" x="340" y="490" text-anchor="middle">Upstream Materials</text><text class="vc-gloss" x="340" y="507" text-anchor="middle">raw and refined inputs</text></g>
+      <text class="vc-grp" x="536" y="167" text-anchor="start">system side</text>
+      <text class="vc-grp" x="536" y="405" text-anchor="start">supply side</text>
+    </svg>
+    <figcaption class="vc-cap">The frontier-stack value chain as eight tiers, from upstream materials at the base to software and services at the apex.</figcaption>
+  </figure>
+
+  <div class="article-body">
+
+    <p>The universe is a list of companies. The value-chain taxonomy turns that list into a stack. It places every company on a single ordered axis, from the most upstream inputs to the most downstream software, so the frontier stack can be read by position: where in the production chain each company sits, and how the stack's weight distributes across it. It is one dimension, not a grab-bag of categories, and it answers a question the membership and sector classifications do not.</p>
+
+    <p>It is a separate question from two other things Robotnik tracks. Whether a company belongs in the frontier stack is the membership question, answered in <a href="/research/universe-membership">the universe methodology</a>. What a company depends on, and where the stack is most exposed, is the control-point question, answered separately. The value-chain taxonomy asks only where along the chain each company sits.</p>
+
+    <h2>The eight tiers</h2>
+
+    <p>The axis runs in eight tiers, from the most upstream inputs to the most downstream software, and the first four are the supply side of the stack. Upstream materials come first: the raw and refined inputs, the metals, compounds, and feedstocks that feed everything above them. IP and design sits next: the fabless chip designers, the design-software houses, and the IP licensors who specify what gets built without building it themselves. Capital equipment follows: the makers of the machines that fabs and manufacturers run, the tools that produce the hardware rather than the hardware itself. Then fabrication and manufacturing: the physical production of chips, wafers, and finished silicon at scale, the foundries and fabs where designs become objects.</p>
+
+    <p>The next four are the system side. Components and subsystems are the finished building blocks, the sensors, actuators, power and analog parts, motors, and batteries that assemble into larger machines. System integration is the building of whole systems from those blocks, the robots, rockets, satellites, and vehicles. Deployment and operation covers those who run deployed hardware rather than make it, the satellite operators, the compute providers, the fleet and launch operators. And software and services sits alongside the physical stack: the pure-play software, simulation, and middleware that the hardware runs on and is managed by.</p>
+
+    <h2>How a company is placed</h2>
+
+    <p>Placing a company on this axis starts from its sector and subsector: a foundry defaults to fabrication, a materials producer to upstream materials, and so on down the list. But the default is only a starting point, because many companies span more than one tier, and where a company nominally sits by sector is not always where its weight actually lies. So the assignment is curated, with each company placed at its centre of gravity, the tier where the bulk of its business sits, rather than split across every tier it touches.</p>
+
+    <p>The judgment matters most for companies that integrate vertically. A chip company that both designs and fabricates is placed by which activity dominates it: a fabless designer sits in IP and design, an integrated manufacturer whose fabs define it sits in fabrication, even though each does some of the other. A company that builds systems and also operates them is placed by where its centre of gravity sits, integration or operation, not both. The rule is consistent: one company, one tier, chosen by weight, with the reasoning recorded against each placement that departs from its sector default.</p>
+
+    <h2>Reading the stack by position</h2>
+
+    <p>The positional view runs independently of the sector view. The sector classification says what domain a company works in, semiconductors, robotics, space, or materials; the value-chain tier says where in the production chain it sits. The two do not track each other. A semiconductor company and a robotics company can occupy the same tier, both system integrators, and two semiconductor companies can sit tiers apart, one a designer and one a fabricator. Asking where a company sits in the chain is a different question from asking what it does, and the taxonomy answers the first.</p>
+
+    <p>What the positional view shows is the shape of the stack. Laid out by tier, the universe is not evenly spread: it is heavy with system integrators and designers and thin with fabricators, which is the frontier stack's actual structure, many companies building and specifying systems, few owning the capital-intensive fabrication at the base. Those thin tiers sit upstream, at materials and fabrication; whether thinness there also means the stack is most exposed is the control-point layer's question, not the taxonomy's. <a href="/#frontier-stack">The interactive frontier-stack map on the home page</a> lays the stack out along this axis; reading it as layers makes these features legible in a way a flat list or a sector breakdown does not.</p>
+
+    <h2>Where the taxonomy ends and control points begin</h2>
+
+    <p>The taxonomy positions companies; it does not map what depends on what. Knowing that a foundry sits in fabrication and a designer in IP and design does not, by itself, say that the designer depends on that foundry, or where a single supplier could choke the stack. That dependency mapping, tracing the links between tiers and locating the control points where the stack is most exposed, is a separate methodology, working on materials and their supply relationships rather than on company position. The value-chain taxonomy gives the axis along which the stack is laid out; the control-point analysis reads the dependencies that run across it. They are complementary layers, and this piece documents the first.</p>
+
+    <h2>Limitations of the model</h2>
+
+    <p>The taxonomy is a positional judgment, and its limits follow from that.</p>
+
+    <p>It places each company at a single tier, which simplifies those that span the chain. A designer that also fabricates, or an integrator that also operates, does more than its one tier records. That is deliberate: the axis assigns each company a single place on purpose, and the fuller detail of a company's activity across the chain belongs in its own profile, at the level of the individual company, rather than in the taxonomy. The simplification is the stack-level view, and the company-level detail sits alongside it.</p>
+
+    <p>It is a curated scheme, not a measured one. The tier boundaries and the placements are analytical judgments, and a borderline company could reasonably be placed a tier either way; the reasoning is recorded, but it is reasoning, not a fact read off the company.</p>
+
+    <p>Its coverage is near-complete but not perfect. Nearly every company in the universe carries a tier, with a small number sitting unclassified or awkwardly across the scheme; the taxonomy is a strong ordering of the universe, not a flawless partition of it.</p>
+
+    <h2>How it fits the family</h2>
+
+    <p>The value-chain taxonomy is an attribute on the universe, the positional dimension layered onto the companies the membership methodology defines. Membership says which companies are in the frontier stack; the sector classification says what domain each works in; the value-chain tier says where in the chain each sits. Together they let the universe be read three ways at once: by inclusion, by domain, and by position. The tier is a populated attribute on each company, which is what lets the universe be laid out as a value-chain map rather than read as a flat roster.</p>
+
+    <p>Read alongside <a href="/research/control-points">the control-point methodology</a>, which maps the dependencies running across the chain, the taxonomy supplies the axis and the dependencies supply the links. The two turn the universe from a list of companies into a structured picture of the stack. The other methodologies are documented in their own pieces.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What is the value-chain taxonomy?</h3>
+    <p>It is the scheme by which Robotnik places every company in its universe on a single ordered axis from the most upstream inputs to the most downstream software, so the frontier stack can be read by position rather than as a flat list of names.</p>
+
+    <h3>What are the eight tiers?</h3>
+    <p>From upstream to downstream: upstream materials, IP and design, capital equipment, fabrication and manufacturing, components and subsystems, system integration, deployment and operation, and software and services. The first four are the supply side of the stack and the next four the system side, with software and services running alongside the physical stack.</p>
+
+    <h3>How is a company placed on the axis?</h3>
+    <p>It starts from a default set by the company's sector and subsector, then is placed at its centre of gravity, the tier where the bulk of its business sits. A company that spans tiers is assigned to its dominant activity rather than split, with the reasoning recorded for any placement that departs from its sector default.</p>
+
+    <h3>How is this different from the sector classification?</h3>
+    <p>The sector classification says what domain a company works in; the value-chain tier says where in the production chain it sits. They are independent: companies in different sectors can share a tier, and companies in the same sector can sit tiers apart.</p>
+
+    <h3>Does it map supply-chain dependencies or chokepoints?</h3>
+    <p>No. The taxonomy positions companies along the chain; it does not trace which company depends on which, or where a supplier could choke the stack. That dependency and control-point mapping is a separate methodology that works on materials and their supply relationships.</p>
+
+    <h3>Does every company in the universe have a tier?</h3>
+    <p>Nearly every one does. A small number sit unclassified or awkwardly across the scheme, so the taxonomy is a strong ordering of the universe rather than a perfect partition of it.</p>
+
+    <h3>Why place a company at one tier if it spans several?</h3>
+    <p>To keep the axis readable, each company is placed at its centre of gravity, the tier where most of its business sits. Splitting vertically integrated companies across tiers would blur the positional signal the taxonomy exists to give; the dominant-activity rule keeps one company at one tier, with the trade-off noted.</p>
+
+  </div><!-- .article-body -->
+
+</article>
+</div><!-- .main-content -->
+
+<script src="/js/nav.js?v=20260627e"></script>
+</body>
+</html>
