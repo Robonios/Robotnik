@@ -289,7 +289,7 @@
         '<div class="rail-tile-body"><div class="rail-tile-body-inner">' +
           '<p class="rail-tile-summary">' + esc(a.summary) + '</p>' +
           '<div class="rail-tile-cells">' + cells + '</div>' +
-          '<a class="rail-tile-link" href="' + esc(a.url || '#') + '">Read full article &rarr;</a>' +
+          (a.url ? '<a class="rail-tile-link" href="' + esc(a.url) + '">Read full article &rarr;</a>' : '') +
         '</div></div>' +
         '</div>';
     }).join('');
