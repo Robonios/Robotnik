@@ -6,30 +6,35 @@
     "composite": {
       "name": "Robotnik Composite Index",
       "blurb": "The 75/25 strategic blend of the Public Equities and Commodities indices — forward-only since 17 Jun 2026.",
-      "methodologyUrl": "/methodology/composite",
+      "methodologyUrl": "/research/composite-index",
+      "detailUrl": "research/composite-index",
       "chartUrl": "/index/composite"
     },
     "bottleneck": {
       "name": "Bottleneck-Weighted",
       "blurb": "Re-weights the universe by bottleneck criticality — chokepoints carry more.",
-      "methodologyUrl": "/methodology/bottleneck",
+      "methodologyUrl": "/research/bottleneck-weighted-index",
+      "detailUrl": "research/bottleneck-weighted-index",
       "chartUrl": "/index/bottleneck"
     },
     "public": {
       "name": "Public Equities",
       "blurb": "Listed names only — the investable public surface of the stack.",
-      "methodologyUrl": "/methodology/public",
+      "methodologyUrl": "/research/public-equities-index",
+      "detailUrl": "research/public-equities-index",
       "chartUrl": "/index/public"
     },
     "commodities": {
       "name": "Commodities",
       "blurb": "Rare earths, wafers, gases — the material inputs beneath the stack.",
-      "methodologyUrl": "/methodology/commodities"
+      "methodologyUrl": "/research/commodities-index",
+      "detailUrl": "research/commodities-index"
     },
     "private": {
       "name": "Private Market (RPCI)",
       "blurb": "Robotnik Private Capital Index — the pre-IPO farm team, marked monthly.",
-      "methodologyUrl": "/methodology/rpci",
+      "methodologyUrl": "/research/private-capital-index",
+      "detailUrl": "research/private-capital-index",
       "chartUrl": "/index/rpci"
     }
   },
@@ -110,9 +115,9 @@
   },
 
   "references": [
-    { "id": "value-chain",  "kind": "Foundations",  "name": "The 8-tier value chain", "blurb": "The positional taxonomy locating every entity." },
-    { "id": "criticality",  "kind": "Index family", "name": "Bottleneck criticality methodology", "blurb": "Low → critical — how we score a node's leverage over the rest of the stack." },
+    { "id": "value-chain",  "kind": "Foundations",  "name": "The 8-tier value chain", "blurb": "The positional taxonomy locating every entity.", "url": "research/value-chain-taxonomy", "live": true },
+    { "id": "criticality",  "kind": "Index family", "name": "Bottleneck criticality methodology", "blurb": "Low → critical — how we score a node's leverage over the rest of the stack.", "url": "research/bottleneck-weighted-index", "live": true },
     { "id": "membership",   "kind": "Foundations",  "name": "Universe membership methodology", "blurb": "What qualifies as a Robotnik entity, and when it enters / leaves.", "url": "research/universe-membership", "live": true },
-    { "id": "data-sources", "kind": "Foundations",  "name": "Data & sources methodology", "blurb": "Sources, FX, corrections, the anti-fabrication / UNRATED standard." }
+    { "id": "data-sources", "kind": "Foundations",  "name": "Data & sources methodology", "blurb": "Sources, FX, corrections, the anti-fabrication / UNRATED standard.", "url": "research/sources-and-provenance", "live": true }
   ]
 }
