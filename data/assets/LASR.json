@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "LASR",
+    "slug": "LASR",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "nLight Inc",
+    "aliases": [
+      "LASR",
+      "NLIGHT INC",
+      "nLight",
+      "nLight Inc",
+      "nlight inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "LASR",
+      "coingecko_id": null,
+      "cik": "0001124796"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "High-power fibre lasers + photonic ICs for industrial + defence (directed-energy programs).",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "DoD (HELSI, OPIR), industrial laser systems integrators",
+    "key_suppliers": "Optical component suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 59,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Defence procurement creates qualified-part-list switching friction. Coherent (COHR), IPG Photonics, Trumpf compete in commercial high-power laser.",
+    "state": "authored"
+  }
+}

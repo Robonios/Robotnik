@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "KTOS",
+    "slug": "KTOS",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "KRATOS DEFENSE & SECURITY",
+    "aliases": [
+      "KRATOS DEFENSE & SECURITY",
+      "KTOS",
+      "kratos defense & security"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "KTOS",
+      "coingecko_id": null,
+      "cik": "0001069258"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": null,
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "US defence-technology firm spanning aerial target drones, tactical jet drones, solid rocket motors and hypersonics, C5ISR and satellite ground systems; near-sole supplier of high-performance aerial targets to the US Air Force.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "US Air Force, US Navy, US Department of Defense (MACH-TB hypersonic test bed)",
+    "key_suppliers": null,
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 6,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Kratos holds one genuine choke-point pocket: it is the dominant, effectively single-source supplier of US Air Force aerial target drones (BQM-167), where qualifying an alternative line would take years. That pocket alone would read HIGH. Against it, the rest of a diversified portfolio is contested; in solid rocket motors Kratos is the challenger trying to break the incumbent duopoly rather than the incumbent, and its Valkyrie tactical drone and ground-systems lines face active competition. Rated on the blended position the company lands MEDIUM, the treatment applied to other diversified niche-leaders, with the target-drone franchise noted as the sharp pocket. Heavy ITAR exposure runs across targets, hypersonics and motors.",
+    "state": "authored"
+  }
+}

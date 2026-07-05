@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "AMG NA",
+    "slug": "amg-na",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "AMG Critical Materials",
+    "aliases": [
+      "AMG CRITICAL MATERIALS",
+      "AMG Critical Materials",
+      "AMG NA",
+      "amg critical materials"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "AMG NA",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Rare Earths & Critical Minerals",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Largest US ferrovanadium producer + global #1 spent-catalyst recycler (V-CYCLE) + titanium aluminide / aluminum master alloys to aerospace engines + AMG Technologies vacuum furnace equipment to engine forgers.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Aerospace engine OEMs and forgers (via AMG Technologies furnaces and TAC master alloys), oil refiners (catalyst recycling feedstock), steel mills (ferrovanadium), tier-1 battery makers (lithium concentrate)",
+    "key_suppliers": "Oil-refinery spent catalyst (long-term recycling contracts), Brazilian tantalum ore (AMG Brasil), Brazil lithium spodumene (Mibra mine), chrome ore",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 24,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Netherlands",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "AMG owns multiple niche-leadership positions: world's largest spent-catalyst vanadium recycler, largest US ferrovanadium producer (60kt/yr in Zanesville, OH), and a meaningful share of qualified titanium master alloys (AMG TAC Nuremberg) and chrome metal for nickel superalloys serving aero engine programs. Switching costs are real in aero-qualified master alloys and chrome metal for Ni-superalloys, but global ferrovanadium has Chinese and South African competitors and lithium/tantalum segments are not market-leading. Not HIGH because the portfolio is genuinely competitive at the alloy commodity level; not LOW because the spent-catalyst recycling and US ferrovanadium positions plus aero master alloy qualification provide real choke-point bite.",
+    "state": "authored"
+  }
+}

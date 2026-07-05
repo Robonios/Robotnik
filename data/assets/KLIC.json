@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "KLIC",
+    "slug": "KLIC",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Kulicke & Soffa Industries Inc",
+    "aliases": [
+      "KLIC",
+      "KULICKE & SOFFA INDUSTRIES INC",
+      "Kulicke & Soffa Industries",
+      "Kulicke & Soffa Industries Inc",
+      "kulicke & soffa industries inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "KLIC",
+      "coingecko_id": null,
+      "cik": "0000056978"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Wire bonders + ball bonders for IC packaging — effectively a duopoly with ASMPT for advanced wire-bonding, the mainstream IC packaging interconnect.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "OSATs (Amkor, ASE, JCET), IDM packaging operations",
+    "key_suppliers": "Tooling and capillary suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 52,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Advanced wire-bonding is a 2-player market (KLIC + ASMPT). Wire-bond capacity remains structurally relevant even as advanced packaging grows — high pin-count BGAs and power devices continue to require wire bonders. Switching cost is multi-quarter (qualification of bond profiles for each device family). Revised from MEDIUM on the structural duopoly basis.",
+    "state": "authored"
+  }
+}

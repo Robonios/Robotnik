@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "BKSY",
+    "slug": "BKSY",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "BlackSky Technology",
+    "aliases": [
+      "BKSY",
+      "BLACKSKY TECHNOLOGY",
+      "BlackSky Technology",
+      "blacksky technology"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "BKSY",
+      "coingecko_id": null,
+      "cik": "0001753539"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "In-Orbit Services",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "High-revisit sub-meter optical earth-imaging constellation competing in a peer-competitive market with Planet, Maxar, Airbus, and emerging Asian operators.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "National Reconnaissance Office (NRO), NGA, US DoD, international defense ministries, Palantir, Esri",
+    "key_suppliers": "LeoStella (satellite JV with Thales Alenia), SpaceX/Rocket Lab (launch), Sierra Space (sensors)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 19,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "BlackSky operates ~19 Gen-2 satellites with Gen-3 35cm-resolution birds deploying, serving mostly US/allied government customers (97% gov in FY24, 62% US). The competitive set is large and growing: Maxar (legacy hi-res leader), Planet Labs, Airbus Defence & Space, Capella (SAR), ICEYE (SAR), plus Asian entrants Axelspace and Hancom InSpace. Customers routinely multi-source imagery. This mirrors the PL calibration anchor (LOW for earth imaging).",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "INRN SW",
+    "slug": "inrn-sw",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Interroll Holding Ag",
+    "aliases": [
+      "INRN SW",
+      "INTERROLL HOLDING AG",
+      "Interroll Holding Ag",
+      "interroll holding ag"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "INRN SW",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Warehouse & Logistics Automation",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Global market leader in conveyor rollers and drum motors with a broad platform (>60,000 SKUs) sold to system integrators, but in a component category where Van der Graaf, Rulmeca, Damon, Titan and dozens of regional suppliers offer direct substitutes.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Conveyor system integrators serving Amazon, DHL, FedEx, Coca-Cola, P&G, Walmart, airport baggage handlers, supermarket checkouts, mining/aggregates",
+    "key_suppliers": "Steel tube mills, bearing manufacturers (SKF, NSK, Schaeffler), copper wire, electronic motor controllers, rubber/poly belt material",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 60,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Switzerland",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Conveyor rollers and drum motors are an established commodity-engineered category with multiple credible alternatives at every price point. Interroll's scale (~CHF 527M revenue, 36 subsidiaries) and platform breadth give it specification advantages with integrators, but switching to Van der Graaf, Rulmeca or regional alternatives is a parts-spec decision, not a multi-year qualification. Drum motor efficiency (~90%) is matched by peers. Maps to LOW (broad competitive component supply).",
+    "state": "authored"
+  }
+}

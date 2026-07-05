@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "6841 JP",
+    "slug": "6841-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "YOKOGAWA ELECTRIC CORPORATION",
+    "aliases": [
+      "6841 JP",
+      "YOKOGAWA ELECTRIC",
+      "YOKOGAWA ELECTRIC CORPORATION",
+      "yokogawa electric corporation"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6841 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Test & Measurement",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Process automation, DCS, field instruments, and test/measurement equipment supplier competing in well-populated oligopolistic markets with multiple credible global alternatives.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Hydrocarbon/chemical/oil & gas processors, power utilities, pharma manufacturers, semiconductor fabs (T&M), electronics manufacturers (power analyzers, oscilloscopes)",
+    "key_suppliers": "Semiconductor component suppliers, silicon resonant sensor fabricators (internal), electronics ODM/EMS partners",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 20,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Yokogawa is a top-tier global player but sits in structurally competitive markets across all of its segments. In DCS it is one of six major players (ABB, Emerson, Honeywell, Siemens, Schneider, Yokogawa) where the top five share ~60% of the market — competitive, not bottleneck. In oscilloscopes/T&M it ranks around #9 with low single-digit mindshare versus Keysight, Tektronix, R&S, Teledyne LeCroy. In field instruments (pressure transmitters, flow meters) it holds #2 share with Emerson, E+H, ABB, Siemens, Honeywell, Krohne all credible substitutes. Strong installed-base lock-in creates switching friction within process plants, but there is no segment where Yokogawa is a sole-source choke point — substitution is realistic at the next greenfield project. Lower bottleneck position than Advantest (6857 JP MEDIUM) which has tighter ATE duopoly dynamics.",
+    "state": "authored"
+  }
+}

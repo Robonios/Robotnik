@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "RPI LN",
+    "slug": "rpi-ln",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "RASPBERRY PI HOLDINGS PLC",
+    "aliases": [
+      "RASPBERRY PI",
+      "RASPBERRY PI HOLDINGS PLC",
+      "RPI LN",
+      "raspberry pi holdings plc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "RPI LN",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Software & Simulation",
+    "value_chain": "Software & Services",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Low-cost single-board computer and RP2 microcontroller silicon for education, hobbyist, and OEM/IoT/industrial customers; structurally competitive SBC market.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Educators, hobbyists, industrial-automation/IoT OEMs embedding Compute Module, home-automation/robotics integrators",
+    "key_suppliers": "Sony (UK fab partnership for SBC assembly), Broadcom (SoCs for SBCs), TSMC (foundry for RP2 silicon), component distributors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 54,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United Kingdom",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Raspberry Pi has scale (>68M boards sold) and a strong software/community ecosystem advantage, but the SBC market includes Arduino, BeagleBone (incl. ruggedized BBBI), AAEON UP industrial boards, Orange Pi, Banana Pi, Rock Pi, and ARM/x86 industrial alternatives. Industrial OEMs increasingly favor rugged or x86 alternatives with longer lifecycle guarantees, and microcontroller competition (STM32, ESP32, NXP) is even more fragmented. No customer is locked in and substitution paths are abundant. Brand and ecosystem stickiness do not create a supply-chain bottleneck in the framework sense, so LOW is the calibrated rating.",
+    "state": "authored"
+  }
+}

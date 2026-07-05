@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "JEN GR",
+    "slug": "jen-gr",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "JENOPTIK AG",
+    "aliases": [
+      "JEN GR",
+      "JENOPTIK AG",
+      "jenoptik ag"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "JEN GR",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Machine Vision & Sensors",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Specialty optics, microoptics and beam-shaping subsystems co-designed with ASML for DUV/EUV lithography platforms, with a new ~EUR100M Dresden fab doubling micro-optics capacity.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "ASML, semiconductor inspection/metrology OEMs, defense/aerospace, automotive sensor/lidar customers",
+    "key_suppliers": "Schott (optical glass), specialty coating chemistry vendors, precision mechanical subcontractors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 48,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Germany",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Jenoptik supplies performance-critical, co-designed optical subsystems into ASML lithography and other semiconductor inspection/metrology platforms (DUV and EUV adjacent), and absorbed Berliner Glas optics from ASML in 2021. Qualification cycles for litho-grade optics are long (multi-year) and supplier base is limited, but Zeiss SMT remains the dominant projection-optics partner for ASML and other specialty-optics houses (Schott, Asphericon, Excelitas) exist. Real switching friction but not sole-source for EUV systems, so MEDIUM rather than HIGH.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "IRDM",
+    "slug": "IRDM",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "IRIDIUM COMMUNICATIONS INC",
+    "aliases": [
+      "IRDM",
+      "IRIDIUM COMMUNICATIONS",
+      "IRIDIUM COMMUNICATIONS INC",
+      "Iridium",
+      "iridium communications inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "IRDM",
+      "coingecko_id": null,
+      "cik": "0001418819"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "In-Orbit Services",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Only truly global LEO L-band MSS constellation with cross-linked 66 satellites and globally allocated L-band spectrum at 1616-1626.5 MHz.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "US Department of Defense (EMSS gateway), maritime/aviation operators, IoT integrators, Garmin (inReach)",
+    "key_suppliers": "Thales Alenia Space (NEXT satellites), SpaceX (launch), Qualcomm (NTN modems)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 9,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Iridium operates the world's only truly global LEO mobile satellite voice/data network, with L-band spectrum that is less susceptible to weather/interference than Ku/Ka-band LEO competitors. Mission-critical maritime, aviation, defense, and IoT users rely on it for high-latitude and polar coverage that no terrestrial or single GEO operator can match. However, Starlink, Inmarsat, OneWeb and AST SpaceMobile compete in adjacent broadband and D2D, eroding pricing power on the higher-bandwidth side. Switching costs for embedded mission-critical users (DoD EMSS contract) are high but not prohibitive.",
+    "state": "authored"
+  }
+}

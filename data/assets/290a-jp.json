@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "290A JP",
+    "slug": "290a-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Synspective",
+    "aliases": [
+      "290A JP",
+      "SYNSPECTIVE",
+      "Synspective",
+      "synspective"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "290A JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Earth Observation",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "SAR (synthetic-aperture radar) smallsat Earth-observation constellation (StriX) and analytics; a differentiated modality but fungible among SAR peers.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Japan Ministry of Defense, Japan Air Self-Defense Force",
+    "key_suppliers": "Rocket Lab (launch)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 20,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "SAR imagery is all-weather and works day or night, but among SAR providers the data is largely interchangeable on resolution and revisit. The decisive fact against a choke-point reading is that Japan's Ministry of Defense deliberately multi-sourced its constellation programme across several firms, buying the same capability from Synspective and its direct competitor iQPS at once. Competitors ICEYE, Capella and Umbra supply the same modality. The sovereign-defence backlog is real franchise strength, not a control point, so LOW.",
+    "state": "authored"
+  }
+}

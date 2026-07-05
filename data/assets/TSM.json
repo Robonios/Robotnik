@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "id": "TSM",
+    "slug": "TSM",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "TAIWAN SEMICONDUCTOR MANUFACTURING",
+    "aliases": [
+      "TAIWAN MANUFACTURING",
+      "TAIWAN SEMICONDUCTOR MANUFACTURING",
+      "TSM",
+      "TSMC",
+      "Taiwan Semiconductor",
+      "Taiwan Semiconductor Manufacturing",
+      "taiwan semiconductor manufacturing"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "TSM",
+      "coingecko_id": null,
+      "cik": "0001046179"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Foundry",
+    "value_chain": "Fabrication & Manufacturing",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "NVDA, AVGO, AMD, QCOM, MRVL",
+    "key_suppliers": "ASML (EUV), Shin-Etsu/SUMCO (wafers), Linde (gases)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "5-capped",
+    "sector_rank": 9,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Taiwan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Single most critical node in the frontier stack. Manufactures >90% of advanced logic chips. $165B US investment reshapes geographic risk but creates new Materials demand.",
+    "state": "authored"
+  }
+}

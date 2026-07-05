@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "HSAI",
+    "slug": "HSAI",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "HESAI GROUP",
+    "aliases": [
+      "HESAI GROUP",
+      "HSAI",
+      "hesai group"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "HSAI",
+      "coingecko_id": null,
+      "cik": "0001861737"
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Machine Vision & Sensors",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Automotive ADAS lidar leader with ~33% overall, 43% long-range ADAS and 61% robotaxi share, but RoboSense, Huawei and Seyond contest the market and Chinese lidar supply is geopolitically gated for Western buyers.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Li Auto, Xiaomi, BYD, Geely, Chery, Zoox (Amazon), Aurora, WeRide, Pony, Apollo (Baidu), Didi",
+    "key_suppliers": "Sony/Sumitomo (lasers/photodetectors), Chinese optical component vendors, MEMS/SiPM suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 49,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Hesai is the world's #1 long-range ADAS and robotaxi lidar supplier (5 consecutive years), with 1.6M+ unit shipments and 4M-unit 2026 capacity plan, supplying Li Auto, Xiaomi, BYD, Zoox, Aurora, WeRide and Pony. However, RoboSense holds #1 passenger-car volume share, Huawei and Seyond are credible competitors, and customers routinely dual-source. Chinese-supplier dominance (95% of automotive lidar) creates geopolitical switching friction for Western customers (mirrors TSEM-type regional concentration logic). Not a structural monopoly so MEDIUM rather than HIGH.",
+    "state": "authored"
+  }
+}

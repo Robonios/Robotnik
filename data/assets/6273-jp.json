@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "6273 JP",
+    "slug": "6273-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "SMC CORP",
+    "aliases": [
+      "6273 JP",
+      "SMC",
+      "SMC CORP",
+      "smc corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6273 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Motion Control & Actuators",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Global #1 pneumatic automation supplier (~30% global share) of solenoid valves, cylinders, and air treatment equipment for factory automation.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "TSMC, Samsung, semiconductor fab equipment makers (AMAT, ASML), automotive OEMs, packaging machine builders",
+    "key_suppliers": "Aluminum/steel suppliers, valve coil and electronics suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 6,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "SMC is the clear global leader in pneumatic components with ~30% share, ahead of Festo, Parker-Hannifin, Airtac, and CKD. Pneumatic valves are qualified into specific automation lines (semi front-end tools, packaging, automotive assembly) where re-qualification takes months, supporting MEDIUM. Below HIGH because the pneumatic technology stack itself has many capable players globally, and pneumatics is partially substitutable by electric actuators.",
+    "state": "authored"
+  }
+}

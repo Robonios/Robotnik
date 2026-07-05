@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "id": "6506 JP",
+    "slug": "6506-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "YASKAWA ELECTRIC CORP",
+    "aliases": [
+      "6506 JP",
+      "YASKAWA",
+      "YASKAWA ELECTRIC",
+      "YASKAWA ELECTRIC CORP",
+      "Yaskawa",
+      "yaskawa electric corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6506 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Industrial Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Big-4 industrial robot manufacturer with strong servo motor/motion control franchise; peer-competitive with Fanuc, ABB, KUKA.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Automotive OEMs (welding, painting), electronics assembly, semiconductor handling, general industrial",
+    "key_suppliers": "Renesas, Rohm and other Japanese semiconductor and component suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 17,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Yaskawa is a Big-4 robot OEM (~8-12% share) and a leader in servo motors and AC drives, but the Big-4 oligopoly is contested both internally and increasingly by Chinese entrants (Estun, Inovance, Siasun) plus collaborative-robot challengers. Calibration anchor 6954 JP Fanuc is LOW; Yaskawa sits in the same peer set. Servo motors are also a competitive subsystem with Mitsubishi, Siemens, Rockwell and Chinese alternatives.",
+    "state": "authored"
+  }
+}

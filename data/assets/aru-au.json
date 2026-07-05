@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "ARU AU",
+    "slug": "aru-au",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Arafura Rare Earths",
+    "aliases": [
+      "ARAFURA RARE EARTHS",
+      "ARU AU",
+      "Arafura Rare Earths",
+      "arafura rare earths"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "ARU AU",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Rare Earths & Critical Minerals",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Future NdPr producer at Nolans (NT) with multi-sovereign ECA financing and binding offtakes to Hyundai/Kia/Siemens Gamesa/Traxys; first production mid-2029.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Hyundai, Kia, Siemens Gamesa, Traxys (500tpa NdPr + 7.5tpa DyTb)",
+    "key_suppliers": "Internal Nolans deposit (pre-production); Australian engineering contractors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 23,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Australia",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Nolans achieved FID with A$1.6B fully funded (Hancock at 17.5%, multi-sovereign ECA syndicate, NAIF, Strategic Reserve eligibility) and ~93% offtake target contracted. Strategically important as one of very few Western NdPr projects, but it is pre-production until 2029, so it does not yet exert a bottleneck. MEDIUM reflects the strategic position once online combined with execution and dilution risk. Not flagging going-concern: capital is now in place per recent A$350M placement and Hancock underwrite, though equity holders face material dilution.",
+    "state": "authored"
+  }
+}

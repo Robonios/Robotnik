@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "AVAV",
+    "slug": "AVAV",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "AEROVIRONMENT INC",
+    "aliases": [
+      "AEROVIRONMENT",
+      "AEROVIRONMENT INC",
+      "AVAV",
+      "aerovironment inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "AVAV",
+      "coingecko_id": null,
+      "cik": "0001368622"
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Autonomous Systems & Drones",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Dominant US-domestic supplier of Switchblade loitering munitions and tactical small UAS to US Army/DoD, with battle-tested program-of-record status that creates real qualification switching friction.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "US Army, US Marine Corps, US Special Operations Command, Ukrainian Armed Forces (via FMS), allied NATO militaries",
+    "key_suppliers": "Various US-domestic electronics/composites suppliers; BlueHalo (post-acquisition) for space/cyber/directed energy; production capacity recently doubled to 2,000 units/month",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 19,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Switchblade has a real program-of-record moat in US loitering munitions (UVision and IAI exist but lack US production/DoD qualification at equivalent scale), and BlueHalo acquisition extends franchise into space/cyber/DE. However, the broader tactical UAS and loitering munition market is increasingly contested by Anduril, Shield AI, Kratos, Teal/Red Cat and low-cost FPV alternatives — the bottleneck is qualification and DoD relationship, not technological uniqueness. MEDIUM reflects real but contestable switching friction in a growing competitive field.",
+    "state": "authored"
+  }
+}

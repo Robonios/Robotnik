@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "OLED",
+    "slug": "OLED",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Universal Display Corp",
+    "aliases": [
+      "OLED",
+      "UNIVERSAL DISPLAY CORP",
+      "Universal Display",
+      "Universal Display Corp",
+      "universal display corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "OLED",
+      "coingecko_id": null,
+      "cik": "0001005284"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": null,
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Near-monopoly licensor and supplier of phosphorescent red/green OLED emitter materials and IP, with a patent estate of 7,000+ issued/pending worldwide that gates panel-maker bills of materials.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Samsung Display, LG Display, BOE Technology, CSOT, Visionox, Tianma, JOLED legacy IP licensees",
+    "key_suppliers": "PPG Industries (exclusive emitter material manufacturing partner), specialty organic-chemistry CDMOs",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 58,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "UDC is the de facto sole commercial supplier of phosphorescent (PHOLED) red and green emitters used across virtually all modern AMOLED displays for smartphones, TVs, and IT panels; competing emitters from Japan/Korea remain hemmed in by cross-licensing. Long-term supply/license agreements with LG Display (extended through 2030), Samsung Display, BOE, and CSOT cement the position, supporting ~42% operating margins. The reason this sits at HIGH (not CRITICAL) is that core patents begin to sunset late-decade and blue PHOLED commercialization is still in qualification — but through the 2026 horizon the chokepoint is real and structural.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "601100",
+    "slug": "601100",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "JIANGSU HENGLI HYDRAULIC C-A",
+    "aliases": [
+      "601100",
+      "JIANGSU HENGLI HYDRAULIC C-A",
+      "jiangsu hengli hydraulic c-a"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "601100",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Motion Control & Actuators",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "World's largest excavator hydraulic cylinder supplier (~30% global share) with growing presence in hydraulic pumps, motors, and valves for construction machinery.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Sany, XCMG, Zoomlion, Caterpillar (limited), Komatsu (limited), Volvo CE",
+    "key_suppliers": "Steel/alloy mills, sealing technology suppliers, casting foundries",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 10,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Hengli broke the Japanese-European duopoly (Kawasaki, Bosch Rexroth, Eaton) in excavator hydraulic cylinders and now serves all major Chinese OEMs (Sany, XCMG, Zoomlion) and key international names. Switching cylinders requires re-engineering for fit/pressure ratings, creating real friction. MEDIUM reflects Hengli's structural cost advantage in cylinders + entrenchment in China construction, but with viable global substitutes (Kawasaki, Bosch Rexroth) the bottleneck is not HIGH.",
+    "state": "authored"
+  }
+}

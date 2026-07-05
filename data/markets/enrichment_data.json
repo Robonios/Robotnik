@@ -1297,5 +1297,129 @@
     "key_customers": "Sovereign-AI & hyperscale (G42/Gulf), national labs, pharma/genomics, LLM developers",
     "key_suppliers": "TSMC (wafer fab), advanced packaging/substrate, HBM/SRAM, power & cooling",
     "robotnik_notes": "Differentiated wafer-scale AI compute (WSE-3/CS-3); frontier-relevant but substitutable (NVIDIA-dominant + AMD/TPU/Groq) and downstream of TSMC/CoWoS/HBM. MEDIUM re-validated at IPO."
+  },
+  "186A JP": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "On-orbit servicing and active debris-removal operator (ADRAS-J, ELSA, life extension); holds flown rendezvous-and-proximity-operations heritage but no concentrated supply-chain position.",
+    "key_customers": "JAXA, US Space Force, ESA / UK Space Agency, Eutelsat (life extension)",
+    "key_suppliers": "Rocket Lab (launch)",
+    "robotnik_notes": "Astroscale has genuine first-mover flight heritage: ADRAS-J is the first spacecraft to safely approach and characterise a large piece of orbital debris. That is a capability lead, not a control point. On-orbit servicing is an emerging, contestable service and the anchor customers deliberately multi-source it; the US Space Force ran its Tetra refuelling demonstrations across Astroscale, Northrop Grumman and Orbit Fab, and Northrop's life-extension vehicle is already operational. It fails the concentration and in-volume-dependence tests, so it rates LOW, the strongest of a weak-choke set. Revenue is demonstration and government-anchored rather than recurring.",
+    "confidence": "MEDIUM"
+  },
+  "290A JP": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "SAR (synthetic-aperture radar) smallsat Earth-observation constellation (StriX) and analytics; a differentiated modality but fungible among SAR peers.",
+    "key_customers": "Japan Ministry of Defense, Japan Air Self-Defense Force",
+    "key_suppliers": "Rocket Lab (launch)",
+    "robotnik_notes": "SAR imagery is all-weather and works day or night, but among SAR providers the data is largely interchangeable on resolution and revisit. The decisive fact against a choke-point reading is that Japan's Ministry of Defense deliberately multi-sourced its constellation programme across several firms, buying the same capability from Synspective and its direct competitor iQPS at once. Competitors ICEYE, Capella and Umbra supply the same modality. The sovereign-defence backlog is real franchise strength, not a control point, so LOW.",
+    "confidence": "MEDIUM"
+  },
+  "464A JP": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "SAR smallsat Earth-observation constellation (QPS-SAR); the same all-weather modality as Synspective, at an earlier build stage.",
+    "key_customers": "Japan Ministry of Defense (satellite-constellation programme, joint award)",
+    "key_suppliers": "Rocket Lab (launch), KSAT (ground-station network)",
+    "robotnik_notes": "iQPS is one of several qualified SAR providers and is treated as interchangeable by its anchor customer: it was a co-awardee alongside Synspective and others in Japan's Ministry of Defense constellation tender. The same substitutes apply (ICEYE, Capella, Umbra, Synspective), and the business is a capital-intensive constellation build ahead of revenue. No concentrated, hard-to-route-around input, so LOW.",
+    "confidence": "MEDIUM"
+  },
+  "9348 JP": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Commercial lunar landing and cislunar transport (HAKUTO-R); pre-revenue, with no successful landing to date and a contested, multi-sourced customer base.",
+    "key_customers": "NASA (CLPS ecosystem, via ispace-U.S.)",
+    "robotnik_notes": "Lunar delivery is a race among several providers, not a choke point, and NASA's Commercial Lunar Payload Services programme spreads awards across the field. ispace has attempted two landings and lost both, the June 2025 Resilience mission failing on descent, while competitors Firefly and Intuitive Machines have landed, and the June 2026 CLPS award went to Astrobotic, Firefly and Intuitive Machines with ispace absent. It holds no scarce input the stack depends on, so LOW with high confidence. Repeated capital raises fund the next attempts against a twice-failed core capability; key suppliers are not disclosed at a sourceable level and are left unstated rather than inferred.",
+    "confidence": "HIGH"
+  },
+  "ETL FP": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "European satellite operator running a GEO fleet plus the Eutelsat OneWeb LEO constellation; the only at-scale allied non-Starlink low-earth-orbit broadband network in service today.",
+    "key_customers": "European Union (IRIS2 concession, SpaceRISE consortium)",
+    "key_suppliers": "Airbus OneWeb Satellites (satellite manufacture), Arianespace and SpaceX (launch)",
+    "robotnik_notes": "Outside China, Eutelsat OneWeb is the only fully deployed non-Starlink global LEO network, which gives it a genuine sovereignty position: a European government or institution that requires an allied, non-US LEO network today has few alternatives before Amazon Kuiper and the EU IRIS2 constellation mature later this decade. That is what lifts it above the LOW band of substitutable operators. It is capped at MEDIUM because commercial capacity is fungible, Starlink is a far larger competitor, and the sovereignty premium is strategic rather than a sole-source input. The balance sheet is heavily leveraged and has required state-backed recapitalisation, which reinforces the sovereign role while signalling financial strain.",
+    "confidence": "MEDIUM"
+  },
+  "FLY": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "US launch and space-services company (Alpha small-lift, Blue Ghost lunar lander, Elytra orbital transfer, Eclipse medium-lift with Northrop Grumman); the first commercial operator to complete a fully successful lunar soft landing.",
+    "key_customers": "NASA (CLPS), US Space Force, US Department of Defense / DIU, Lockheed Martin, Northrop Grumman",
+    "robotnik_notes": "Firefly's one distinctive asset is being the only commercial entity with a proven, fully successful lunar landing (Blue Ghost, March 2025), and it is the sole-source domestic first-stage supplier for Northrop Grumman's Antares 330 and Eclipse. Both are real, but neither is route-around-proof: NASA deliberately multi-sources lunar delivery through CLPS, and the Alpha launch business is openly contested by Rocket Lab and SpaceX rideshare with a mixed reliability record. The deepest dependency actually runs the wrong way, with a heavily concentrated US-government customer base. Niche leadership with real switching costs rather than a choke point, so MEDIUM, on the Rocket Lab calibration. Engines and stages are built in-house; no external supplier is disclosed at a sourceable level.",
+    "confidence": "MEDIUM"
+  },
+  "KTOS": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "US defence-technology firm spanning aerial target drones, tactical jet drones, solid rocket motors and hypersonics, C5ISR and satellite ground systems; near-sole supplier of high-performance aerial targets to the US Air Force.",
+    "key_customers": "US Air Force, US Navy, US Department of Defense (MACH-TB hypersonic test bed)",
+    "robotnik_notes": "Kratos holds one genuine choke-point pocket: it is the dominant, effectively single-source supplier of US Air Force aerial target drones (BQM-167), where qualifying an alternative line would take years. That pocket alone would read HIGH. Against it, the rest of a diversified portfolio is contested; in solid rocket motors Kratos is the challenger trying to break the incumbent duopoly rather than the incumbent, and its Valkyrie tactical drone and ground-systems lines face active competition. Rated on the blended position the company lands MEDIUM, the treatment applied to other diversified niche-leaders, with the target-drone franchise noted as the sharp pocket. Heavy ITAR exposure runs across targets, hypersonics and motors.",
+    "confidence": "MEDIUM"
+  },
+  "MDA CN": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Canadian space-systems prime across space robotics (Canadarm heritage), SAR Earth observation (RADARSAT) and satellite systems (Aurora bus, phased-array antennas); sole-source builder of Canada's flagship robotics.",
+    "key_customers": "Canadian Space Agency (Canadarm3), NASA (Canadarm2 / Gateway via CSA), Telesat (Lightspeed), Globalstar",
+    "robotnik_notes": "MDA's robotics line is a sovereign-locked choke point: Canadarm3 is Canada's designated national contribution to the Lunar Gateway, contracted sole-source and effectively impossible to re-source to a non-Canadian firm without unwinding an international agreement. That pocket reads HIGH, arguably higher within the Canada and Gateway lane. The bulk of MDA's growth, however, sits in competitive markets, satellite buses and antennas for Telesat Lightspeed and Globalstar, where customers have alternatives such as Airbus and Thales Alenia Space. Blended, the company rates MEDIUM, with the sovereign robotics franchise as the sharp pocket. Programme-concentration risk attaches to the repeatedly re-scoped Lightspeed constellation.",
+    "confidence": "MEDIUM"
+  },
+  "SESG FP": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Luxembourg-based global satellite operator (GEO fleet plus O3b mPOWER MEO constellation), enlarged by the 2025 Intelsat acquisition; a scaled operator in a substitutable market.",
+    "key_customers": "US Government / US Department of Defense (SES Space & Defense)",
+    "key_suppliers": "Boeing (O3b mPOWER satellites), Thales Alenia Space (GEO satellites)",
+    "robotnik_notes": "SES operates the one commercial medium-earth-orbit broadband constellation (O3b mPOWER), a genuinely distinct architecture, and its defence arm carries US-government accreditation that raises the barrier to entry. Neither makes it a control point: connectivity capacity is broadly fungible across Eutelsat OneWeb, Viasat, Starlink and Telesat, and the low-latency case that MEO was built to own is increasingly captured by LEO. Consistent with how other scaled operators are treated, it rates LOW. The mPOWER fleet has suffered power-system anomalies and the Intelsat integration adds debt and execution risk.",
+    "confidence": "MEDIUM"
+  },
+  "SIDU": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "US micro-cap smallsat manufacturer and space-data services company (3D-printed structures, LizzieSat); no sourced concentration position, rated conservatively on thin evidence.",
+    "robotnik_notes": "Sidus is a small, vertically integrated smallsat builder and aspiring data provider competing against many smallsat manufacturers and a crowded Earth-observation field; nothing about it is hard to route around. No market-share or sole-source position could be sourced, and named customer contracts could not be confirmed to a sourceable standard, so both the customer and supplier lists are left unstated rather than populated by inference. Micro-cap space companies of this profile commonly carry dilution and going-concern pressure, but those specifics could not be verified here and are therefore not asserted. Rated LOW with low confidence, reflecting the structural absence of any choke role together with the thin evidentiary base.",
+    "confidence": "LOW"
+  },
+  "010060 KS": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Korean chemicals group; via OCI Company Ltd it makes solar- and semiconductor-grade polysilicon plus phosphoric acid and specialty gases. Non-China supply optionality but no concentrated, hard-to-substitute position.",
+    "key_customers": "SK Hynix (semiconductor-grade phosphoric acid), CubicPV (polysilicon offtake), Nexeon (monosilane)",
+    "robotnik_notes": "Solar polysilicon is commoditised and roughly nine-tenths China-controlled, and OCI fell out of the global top ten producers in 2023; in semiconductor-grade polysilicon the leaders are Wacker, Hemlock and Tokuyama, with OCI a secondary source. Its one genuine lift is scarce non-China, forced-labour-clean supply plus qualified niches such as semiconductor-grade phosphoric acid to Korean memory makers, but that value is policy-contingent (US import and Section 232 measures) rather than a structural choke. Rated LOW: no concentrated position others cannot route around. It would rise to MEDIUM only if the non-China scarcity premium is weighted heavily.",
+    "confidence": "MEDIUM",
+    "parent_basis_note": "010060 KS is OCI Holdings, a holding company; the polysilicon and chemicals operations sit in OCI Company Ltd. Rated on the consolidated operating basis, with the choke-point logic attaching one level down."
+  },
+  "3436 JP": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "World's second-largest silicon-wafer maker (300mm prime and epitaxial wafers), the substrate under essentially all leading-edge logic and memory.",
+    "key_customers": "NXP, Infineon, SK Hynix, major Taiwanese foundries",
+    "robotnik_notes": "Prime 300mm wafers are made at scale by only about five firms, and Shin-Etsu with SUMCO account for roughly half the market, so the concentration is a tight oligopoly rather than a monopoly. Every advanced logic, AI and HBM device starts on one of these wafers, making the volume dependence total, but customers deliberately multi-source and a credible named second source, Shin-Etsu, is qualified at every fab, even though switching carries multi-quarter to multi-year qualification. This is the same structure as Shin-Etsu, which is already rated MEDIUM, so SUMCO rates MEDIUM for parity. Clean operating entity with no export-control choke-point role.",
+    "confidence": "HIGH"
+  },
+  "4062 JP": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Leading maker of the highest-complexity FC-BGA / ABF IC package substrates that carry the largest AI accelerators and data-centre CPUs; ABF substrate is a named frontier choke-point.",
+    "key_customers": "Nvidia, Intel, AMD",
+    "robotnik_notes": "Ibiden holds the majority of the top tier of organic package substrates, the very high-layer-count, large-body parts the biggest AI GPU packages require, a segment that is sold out. Competitors exist (Shinko, Unimicron, AT&S, Samsung Electro-Mechanics, Nan Ya) but are described as roughly a generation behind at that leading edge, and Ibiden secures close to all orders for the high-end generative-AI server substrates against demand-constrained supply, so customers cannot route around it there. It rates HIGH, short of CRITICAL only because alternatives are being qualified. The substrate is built on Ajinomoto build-up film upstream, itself an even tighter choke-point with Ajinomoto supplying the large majority of that film; the automotive-ceramics segment does not dilute the rating, which attaches to the substrate business that provides the majority of both sales and profit.",
+    "confidence": "HIGH"
+  },
+  "4186 JP": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "World-leading photoresist maker, strong across EUV, ArF-immersion and KrF resists; a top-tier holder of the advanced-photoresist choke-point that is roughly nine-tenths Japanese.",
+    "key_customers": "Intel, Samsung, TSMC (EUV resist deployment)",
+    "robotnik_notes": "Advanced photoresist is a named frontier choke-point, with Japanese producers holding around nine-tenths of global supply, and TOK is one of the handful of top-tier makers alongside JSR, the overall leader, plus Shin-Etsu, Sumitomo and Fujifilm. Resist qualification at a leading-edge fab runs one to two years or more, so customers cannot swap resists mid-node, and the category's strategic status is proven by the 2019 Japan-Korea export-control episode. Every EUV layer of advanced logic and memory depends on it. It rates HIGH rather than CRITICAL because TOK shares the gate with JSR and others at the firm level, even though national concentration would tempt a higher call.",
+    "confidence": "HIGH"
+  },
+  "5384 JP": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "World leader in silicon-wafer final-polishing slurries and a leader in front-end-of-line CMP slurry; a concentrated niche upstream of every silicon wafer and advanced device.",
+    "robotnik_notes": "Fujimi holds a dominant global share of silicon-wafer final-polishing agents and a majority of front-end-of-line CMP products, concentrated niches where its lines are the incumbent-qualified standard and slurry qualification is long and per-node. On the broader back-end CMP-slurry market it is only one of five, with Entegris, Resonac, DuPont and Merck as qualified alternatives, which is why it rates HIGH rather than CRITICAL. Advanced logic and memory require ever more CMP steps as nodes scale, so AI and leading-edge demand pulls Fujimi volume directly. The headline shares come from company figures relayed through an analyst source, hence medium confidence; named customers are not disclosed at a sourceable level and are left unstated rather than inferred.",
+    "confidence": "MEDIUM"
+  },
+  "RGTI": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Full-stack superconducting quantum-computing company with an in-house superconducting-chip fab (Fab-1); pre-commercial, with no part of the stack yet dependent on it.",
+    "key_customers": "US Air Force Research Laboratory, DARPA, Amazon Braket (distribution)",
+    "robotnik_notes": "Quantum computing is pre-commercial research, and nothing in robotics, semiconductors, space or materials depends on Rigetti today; usage is experimental and revenue is immaterial. The field is crowded and contestable, with IBM, Google, IonQ, Quantinuum and others, and effectively no switching lock-in for users. Its in-house Fab-1, described as the first dedicated quantum foundry, is a genuine vertical-integration differentiator worth noting, but it is a capability Rigetti uses for itself rather than an input others must buy, so it creates no control point. Rated LOW with high confidence, the textbook pre-commercial case.",
+    "confidence": "HIGH"
+  },
+  "6680 HK": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "World's largest producer by volume of high-performance sintered NdFeB permanent magnets, used in EV traction motors, wind turbines and robotics; the leading operator inside China's magnet bloc.",
+    "key_customers": "Tesla, BYD, Toyota (electric-vehicle motors)",
+    "key_suppliers": "China Northern Rare Earth (NdPr feedstock), China Rare Earth Group (heavy rare earths), Hastings Technology Metals (feedstock stake)",
+    "robotnik_notes": "China makes the overwhelming majority of high-performance NdFeB magnets and JL MAG is the largest single operator, deeply depended on across EV drivetrains, wind and, increasingly, humanoid-robot rotor components. Magnet supply is a genuine choke, but the concentration sits with China at the country and export-licence level rather than with JL MAG specifically; several large Chinese peers such as Zhongke Sanhuan, Ningbo Yunsheng and Zhenghai can supply the same grades subject to re-qualification. It therefore rates HIGH, alongside MP Materials, not CRITICAL, and the CRITICAL node is one tier upstream at its own feedstock supplier, China Northern Rare Earth. It sits directly in China's October 2025 magnet export-licensing regime and was among the first to obtain general export licences, so the controls raised its scarcity value rather than cutting it off. Its listed EV customers are sourced; a specific humanoid-robot customer such as Tesla Optimus is not, and is not asserted here.",
+    "confidence": "HIGH"
   }
 }

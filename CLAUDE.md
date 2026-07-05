@@ -1,188 +1,71 @@
-# Robotniks
+# Robotnik
 
-Structured intelligence platform for robotics and semiconductors — like Messari, but for the physical AI stack. Tracks public markets, startup funding, supply chains, and technical milestones.
+Robotnik is a frontier-technology intelligence platform covering robotics, semiconductors, space and critical materials across public markets, private funding, supply chains and index construction. Static multi-page site, no build tooling, hosted on GitHub Pages. Pre-launch.
 
 ## Architecture
 
-- **Multi-page static site**: Separate HTML pages, shared CSS and JS
-- **No build tools**: No package.json, no bundler, no framework. Pure static site
-- **Data pipeline**: Python fetcher scripts → JSON files → frontend reads via `fetch()`
-- **Hosting**: GitHub Pages
-- **Config**: `.env` file for API keys, loaded by `scripts/config.py` (no external deps)
-- **Archiving**: `scripts/archive_utils.py` provides shared archive-and-filter logic for all fetchers
+- Multi-page static site: separate HTML pages, shared CSS and JS. No framework, no bundler, no package.json.
+- Data pipeline: Python scripts in `scripts/` fetch and compute, writing JSON into `data/`; the frontend reads it via `fetch()`.
+- Config: `.env` loaded by `scripts/config.py` (stdlib only). Vendor keys: EODHD, MarketStack, CoinGecko, OpenAlex.
+- Dev server: `python3 -m http.server 8000` (launch config `robotniks-site`).
 
-## Project Structure
+## HARD CONSTRAINT — vendor data (ToS)
 
-```
-Robotnik/
-├── index.html              # Home page — "The Frontier Stack" graph + index family (reads data/home.json)
-├── assets.html             # Frontier Assets (market table / registry)
-├── funding.html            # Funding Ops
-├── research.html           # Research index (coming-soon placeholder)
-├── intelligence.html       # News/research feed with filters
-├── signals.html            # Placeholder (greyed out)
-├── commodities.html        # Placeholder (greyed out)
-├── portfolio.html          # Placeholder (greyed out)
-├── thesis.html             # Mission directive + roadmap
-├── recreation.html         # Tetris game
-├── tetris.html             # Legacy landing/teaser page
-├── cosmonaut-bg.png        # Background image
-├── css/
-│   ├── style.css           # Shared styles (chrome, dashboard, tables)
-│   ├── typography.css      # Space Grotesk / Mulish type system
-│   ├── frontier-stack.css  # Home-page Frontier Stack graph styles
-│   └── home.css            # Home-page sections + Build-Brief token palette
-├── js/
-│   ├── main.js             # Legacy dashboard JS (NOT loaded on the new home page)
-│   ├── nav.js              # Left sidebar navigation (injected on all pages)
-│   ├── assets.js           # Frontier Assets page
-│   ├── funding.js          # Funding Ops page
-│   ├── frontier-stack.js   # Reusable FrontierStack graph module
-│   └── home.js             # Home-page controller (reads data/home.json)
-├── requirements.txt        # Python dependencies
-├── .env                    # API keys (gitignored)
-├── .gitignore
-├── CLAUDE.md
-├── .github/workflows/
-│   └── fetch-data.yml      # GitHub Actions: daily prices + weekly intel
-├── scripts/
-│   ├── config.py           # Shared config (paths, API keys)
-│   ├── archive_utils.py    # Shared archive-and-filter logic
-│   ├── fetch_prices.py     # EODHD + CoinGecko (equities + tokens)
-│   ├── fetch_market_caps.py # Market cap data
-│   ├── fetch_price_history.py # Historical price data
-│   ├── calculate_index.py  # Robotnik Composite Index + 4 sub-indices
-│   ├── fetch_prices_alphavantage.py  # Legacy Alpha Vantage fetcher
-│   ├── fetch_news.py       # ~30 RSS feeds
-│   ├── fetch_research.py   # OpenAlex API
-│   ├── fetch_filings.py    # SEC EDGAR
-│   └── fetch_reports.py    # IFR/SEMI/SIA websites
-├── data/
-│   ├── prices/             # Price data
-│   │   ├── equities.json
-│   │   ├── tokens.json
-│   │   ├── all_prices.json
-│   │   └── history/        # Historical price data
-│   ├── index/              # Index calculations
-│   │   ├── robotnik_index.json
-│   │   ├── sub_indices.json
-│   │   ├── market_caps.json
-│   │   ├── weights.json
-│   │   └── summary.json
-│   ├── mappings/           # Ticker/ID mappings
-│   │   ├── eodhd_tickers.json
-│   │   ├── coingecko_ids.json
-│   │   └── pending_tickers.json
-│   ├── home.json           # Home-page data contract (PLACEHOLDER — research preview; see js/home.js)
-│   ├── news.json
-│   ├── research.json
-│   ├── filings.json
-│   ├── reports.json
-│   └── prices.json         # Legacy Alpha Vantage output
-└── archive/                # Historical data for co-pilot training (gitignored)
-    ├── archive_news.json
-    ├── archive_research.json
-    ├── archive_filings.json
-    └── archive_reports.json
-```
+ToS: no raw vendor price, % change, market cap, P/E or sparkline from MarketStack/Yahoo may be displayed on any public surface. Price may appear only in derived, relative or categorical form, pending licence verification.
 
-## Design System
+Served-data rule: GitHub Pages serves the entire tracked tree, so the constraint extends to every published file, not only rendered pages. The published tree carries no raw vendor field (price, % change, market cap, P/E, sparkline, native spot price) in any JSON. Raw pipeline inputs (the `data/prices/` substrate, `market_caps.json`, `robotnik_public_markets.json`, `enriched_equities.json`) live gitignored in the working tree only; published index files carry derived levels, series, returns and weights, never raw market cap or native spot prices.
 
-- **Fonts**: **Space Grotesk** (headings, labels, numerals — with `font-variant-numeric: tabular-nums`) and **Mulish** (body / prose). Roboto Mono remains only as a stack fallback. Loaded via Google Fonts; the type system lives in `css/typography.css` (local font files in `assets/fonts/`). The earlier "Roboto Mono only" rule is retired.
-- **Background**: `#111318` (dark theme). The home page uses a darker `#0A0B0E` base and the Build-Brief token palette layered in `css/home.css`.
-- **Yellow accent**: `#F5D921` (primary brand color)
-- **CSS variables are defined in `:root` in `css/style.css`** (home-page-only tokens in `css/home.css`)
+## Directory map (verified 2026-07-03)
 
-## Site Pages
+Root `*.html` — one page each: `index` (home, Frontier Stack map), `assets` (placeholder), `funding`, `research`, `intelligence`, `thesis`, `about`, `news`, `report-1Q26`, `recreation`/`tetris`, plus greyed placeholders `portfolio`, `signals`, `commodities`.
 
-1. **Home** (`index.html`) — "The Frontier Stack" graph centerpiece (Stack⇄Flat morph, dot doorway, disruption cascade), index family, sector cards, research rail. Reads `data/home.json` (placeholder values — research preview).
-2. **Frontier Assets** (`assets.html`) — market table / asset registry
-3. **Funding Ops** (`funding.html`) — private-market funding rounds
-4. **Research** (`research.html`) — research index (coming-soon placeholder)
-5. **Intelligence** (`intelligence.html`) — News/research feed with type and category filters
-6. **Signals** (`signals.html`) — Placeholder, greyed out in nav
-7. **Commodities** (`commodities.html`) — Placeholder, greyed out in nav
-8. **Thesis** (`thesis.html`) — Mission directive and roadmap
-9. **Recreation** (`recreation.html`) — Tetris game (Recreation Bay)
+- `js/` — frontend modules:
+  - `nav.js` — sidebar nav, footer and global search, injected on every page (nav-item table at top; `openEarlyAccess` CTA)
+  - `home.js` — home controller (reads `data/home.json` + `data/index/index_summary.json`)
+  - `frontier-stack.js` — home Frontier Stack graph module
+  - `index-chart.js` — reusable index-series chart (source `data/index/index_summary.json`)
+  - `funding.js` — Funding Ops page (reads `data/funding/` + `private_capital_index.json`)
+  - `research.js`, `frontier-conditions.js` — research index and frontier-conditions widget
+- `scripts/` — Python, stdlib-first. Fetchers: `fetch_prices*.py`, `fetch_market_caps.py`, `fetch_fx.py`, `fetch_yahoo*.py`, `marketstack_client.py`, `fetch_news.py`, `fetch_research.py`, `fetch_filings.py`, `fetch_reports.py`. Index/calc: `calculate_index.py`, `calculate_composite_index.py`, `calculate_commodities_index.py`, `calculate_bottleneck_composite.py`, `calculate_private_index.py`, `build_index_summary.py`, `calculate_metrics.py`. Registry/enrichment: `match_entities.py`, `populate_value_chain.py`, `populate_subsectors.py`, `enrich_equities.py`, `build_material_nodes.py`, `build_dependency_edges.py`. Shared: `config.py`, `archive_utils.py`.
+- `research/` — long-form methodology pages: `composite-index`, `public-equities-index`, `commodities-index`, `bottleneck-weighted-index`, `private-capital-index`, `frontier-conditions-index`, `control-points`, `value-chain-taxonomy`, `universe-membership`, `structured-context`, `sources-and-provenance`, `frontier-stack-thesis`.
+- `data/registries/` — source-of-truth registries:
+  - `entity_registry.json` — the universe (see below)
+  - `taxonomy.json` — sector/subsector/value-chain taxonomy
+  - `cik_map.json` — active-public ticker to SEC CIK map (generated from SEC `company_tickers.json`)
+  - `search_index.json` — global-search index for `nav.js`, 454 active entities (id, name, ticker, sector, type, aliases); no vendor fields
+  - `marketstack_symbols.json`, `data_source_overrides.json`, `corporate_action_route.json`, `index_membership_exceptions.json`
+- `data/markets/` — public-market surface:
+  - `robotnik_public_markets.json` — pipeline market data, 197 entities (price, % change, mcap, sparkline, volume). Gitignored and unpublished (raw vendor fields); kept locally, regenerated by `calculate_metrics.py`, read by the pipeline only.
+  - `enrichment_data.json` — bottleneck / control-point store, per entity (customers, suppliers, notes); 179 rated
+  - `enriched_equities.json` — consolidated per-constituent record written by `enrich_equities.py`; gitignored and unpublished (raw vendor fields); not consumed by any page
+  - `coverage_report.json`, `marketstack_coverage_report.json`, `ms_gap_*.json`, `known_lag_cohort.json`
+- `data/index/` — index outputs:
+  - `index_summary.json` — front-end index feed (composite, public, bottleneck, commodities, private, plus four sector sub-indices; each with series and returns). No per-constituent lists.
+  - `weights.json` — index membership authority, 197 constituents (ticker, sector, weight_pct; market cap omitted from published output)
+  - `robotnik_index.json`, `composite_index.json`, `sub_indices.json`, `commodities_index.json`, `private_capital_index.json`, `bottleneck_weighted_composite.json` — per-index series and detail
+  - `market_caps.json`, `base_date.json`, `quarantine.json`, `parity_guard_report.json`
+- `data/` other: `home.json` (home-page contract, placeholder), `funding/` (`rounds.json`, `summary.json`), `news/` + `news.json`, `prices/` (price history and FX), `filings.json`, `reports.json`, `frontier_conditions.json`, `mappings/`.
+- `archive/` — retired code and historical data. Gitignored except `news/` and `research/`; other subdirectories (`assets-screener/`, `scripts/`) hold force-added tracked files. `assets-screener/` is the retired Frontier Assets screener.
 
-## Data
+## Universe (`data/registries/entity_registry.json`)
 
-- **Universe**: 347 entities (Robotnik_Universe_v5.xlsx) — Semi (45), Cross-stack (22), Robotics (152), Space (41), Materials (44), Tokens (43)
-- **Live data**: 331/347 entities with price feeds
-- **Robotnik Composite Index**: Market-cap weighted + 4 sub-indices (semiconductors, robotics, space, materials). Cross-stack entities are redistributed into these 4 by primary sector; tokens are isolated out of the index (token isolation policy). The "6 sectors" below describe the full 347-entity *universe*, not the index sub-indices.
-- API keys stored in `.env` (not committed), loaded by `scripts/config.py`
+- 602 entries, keyed by id. 454 active, 148 excluded.
+- Active rule: `status == null`. Excluded: `status == "excluded"` (carries `exclude_reason`, e.g. `non_frontier`).
+- Active by type: 197 public, 43 token, 214 private.
+- Join keys: for public entities registry `id` == ticker (also `public_ticker`, `eodhd_ticker`); tokens join by `coingecko_id`; private entities have no market-side file.
+- Index membership authority: `data/index/weights.json` (197 constituents = the active public set).
+- Bottleneck / control-point store: `data/markets/enrichment_data.json` (179 of 197 rated; also aggregated into `bottleneck_weighted_composite.json`).
+- Value-chain tiers in use (9): System Integration, IP & Design, Components & Subsystems, Upstream Materials, Software & Services, Deployment & Operation, Capital Equipment, Fabrication & Manufacturing, Launch Services.
 
-## Data Fetcher Scripts
+## Known placeholders
 
-All scripts live in `scripts/` and output to `data/`.
+- `data/home.json` — placeholder home-page contract; the Frontier Stack map renders synthetic dots from its `cells[]` (no live `assets[]` feed).
+- `assets.html` — placeholder page (per-asset profiles in development); the live screener is archived at `archive/assets-screener/`.
+- `portfolio.html`, `signals.html`, `commodities.html` — greyed "coming soon" placeholders (`nav.js` `online: false`).
 
-| Script | Source | Output | Dependencies |
-|--------|--------|--------|-------------|
-| `scripts/fetch_prices.py` | EODHD + CoinGecko | `data/prices/*.json` | stdlib only |
-| `scripts/fetch_market_caps.py` | EODHD + CoinGecko | `data/index/market_caps.json` | stdlib only |
-| `scripts/fetch_price_history.py` | EODHD + CoinGecko | `data/prices/history/` | stdlib only |
-| `scripts/calculate_index.py` | Local data | `data/index/*.json` | stdlib only |
-| `scripts/fetch_news.py` | ~30 RSS feeds | `data/news.json` | `feedparser` |
-| `scripts/fetch_research.py` | OpenAlex API | `data/research.json` | stdlib only |
-| `scripts/fetch_filings.py` | SEC EDGAR | `data/filings.json` | stdlib only |
-| `scripts/fetch_reports.py` | IFR/SEMI/SIA websites | `data/reports.json` | `beautifulsoup4`, `lxml` |
-| `scripts/fetch_prices_alphavantage.py` | Alpha Vantage API | `data/prices.json` | `requests` |
-| `scripts/archive_utils.py` | (shared utility) | — | stdlib only |
-| `scripts/config.py` | (shared config) | — | stdlib only |
+## Conventions
 
-### Content Retention Rules
-
-- **Research**: Papers from Jan 2023 onward in live output; all papers archived
-- **News**: Rolling 12-month window in live output; older items archived
-- **Filings**: Most recent filing per company in live output; all filings archived
-- **Reports**: All reports in live output (dates unreliable); all archived
-- **Archive files** (`archive/`): Full historical data for co-pilot training. Gitignored.
-
-### Key RSS Sources (~30 feeds in `scripts/fetch_news.py`)
-
-Industry: The Robot Report, IEEE Spectrum Robotics, Robohub, Robotics Tomorrow, Automate.org, Automation World, SemiEngineering, EE Times, Semiconductor Today, The Elec, eeNews Europe, Electronics Weekly
-
-Substacks: SemiAnalysis, Fabricated Knowledge, Asianometry
-
-Business/Tech: Ars Technica, TechCrunch AI, TechCrunch Robotics, VentureBeat AI, The Verge Robotics, Supply Chain Dive
-
-Company: NVIDIA Blog/Newsroom/Developer, Boston Dynamics, ARM Community, TSMC Newsroom
-
-Policy: Commerce Dept
-
-Research: arXiv Robotics (cs.RO), arXiv AI (cs.AI)
-
-### Setup
-
-```bash
-pip install -r requirements.txt
-```
-
-### `.env` file (required, not committed)
-
-```
-OPENALEX_API_KEY=<your-key>
-EODHD_API_KEY=<your-key>
-COINGECKO_API_KEY=<your-key>
-```
-
-### Running fetchers
-
-```bash
-python3 scripts/fetch_prices.py          # EODHD + CoinGecko → data/prices/
-python3 scripts/fetch_market_caps.py     # Market caps → data/index/market_caps.json
-python3 scripts/fetch_price_history.py   # Historical prices → data/prices/history/
-python3 scripts/calculate_index.py       # Index calculation → data/index/
-python3 scripts/fetch_news.py            # ~30 RSS feeds → data/news.json
-python3 scripts/fetch_research.py        # OpenAlex → data/research.json
-python3 scripts/fetch_filings.py         # SEC EDGAR → data/filings.json
-python3 scripts/fetch_reports.py         # IFR/SEMI/SIA → data/reports.json
-```
-
-## Dev Server
-
-```
-python3 -m http.server 8000
-```
-
-Config saved in `.claude/launch.json` as `robotniks-site`.
+- Prose: British English, no em-dashes, impersonal register, no bylines.
+- Archive: `archive/*` is gitignored except `news/` and `research/`; new tracked files elsewhere under `archive/` need `git add -f`.
+- Git: Claude Code works directly on `main` and may move files and stage changes (`git add`, `git rm --cached`, `git mv`), but commits are always Robert's. Claude does not commit or push.
+- Read-only audit before any consequential change; Robert reviews and commits after the audit.

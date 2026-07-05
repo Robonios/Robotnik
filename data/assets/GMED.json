@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "GMED",
+    "slug": "GMED",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "GLOBUS MED INC",
+    "aliases": [
+      "GLOBUS MED",
+      "GLOBUS MED INC",
+      "GMED",
+      "globus med inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "GMED",
+      "coingecko_id": null,
+      "cik": "0001237831"
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Surgical & Medical",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "#2 spine surgical robotics platform (ExcelsiusGPS) in a clearly contested 4-5 player market against Medtronic Mazor, J&J VELYS, Stryker Mako Spine, and Zimmer Rosa Spine.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Hospitals, ambulatory surgery centers (orthopedic surgery departments), spine surgeons",
+    "key_suppliers": "Component suppliers for navigation cameras, robotic arms, contract manufacturers; pull-through with Globus implants/spinal hardware",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 18,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Spine robotics is a peer-competitive oligopoly: Medtronic leads at ~22-24% share, Globus at ~16-18%, with J&J/Stryker/Zimmer all selling viable alternatives. While individual hospitals face real capital switching friction ($700K-$1.5M systems plus surgeon retraining), the market has 4-5 credible substitutes and no single platform is structurally indispensable. Globus's value comes from scale, IP, and integrated implant pull-through, not from being a sole-source bottleneck. Matches LOW calibration of peer-competitive system integrators (ABBN, 6954, ROK, SYM).",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "KARN SW",
+    "slug": "karn-sw",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "KARDEX HOLDING AG",
+    "aliases": [
+      "KARDEX HOLDING AG",
+      "KARN SW",
+      "kardex holding ag"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "KARN SW",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Warehouse & Logistics Automation",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "One of the largest vertical lift module (VLM) / vertical carousel vendors with global reach via Kardex Remstar, competing with Modula, SSI Schaefer Logimat, Hänel and System Logistics in a product category with low switching cost.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Manufacturing plants (Bosch, Siemens, automotive Tier-1s), MRO operations, healthcare distribution, e-commerce SKU pickers, Amazon US fulfillment (recently)",
+    "key_suppliers": "Steel structures and tray suppliers, servo motors (Siemens, ABB), PLCs (Siemens, Rockwell), Mitsubishi/Fanuc controllers, lift hardware",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 53,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Switzerland",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "VLMs are a discrete product class served by a roughly six-vendor field — Kardex Remstar, Modula, SSI Schaefer, Hänel, Ferretto, ICAM — with near-identical specs and pricing. Buyers cross-shop on price, service network and software integration; substitution is straightforward at the unit-purchase level. The recent AutoStore acquisition (Kardex bought Vertical Industries / Mlog and the AutoStore integrator footprint) expanded scope but not into a bottleneck position. Maps to LOW (peer-competitive intralogistics).",
+    "state": "authored"
+  }
+}

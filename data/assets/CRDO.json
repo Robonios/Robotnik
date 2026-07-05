@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "CRDO",
+    "slug": "CRDO",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "CREDO TECHNOLOGY GROUP HOLDING LTD",
+    "aliases": [
+      "CRDO",
+      "CREDO TECHNOLOGY GROUP HOLDING",
+      "CREDO TECHNOLOGY GROUP HOLDING LTD",
+      "credo technology group holding ltd"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "CRDO",
+      "coingecko_id": null,
+      "cik": "0001807794"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Active Electrical Cables (AECs) + serdes for AI cluster interconnect — niche leader competing for hyperscaler sockets.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Hyperscalers (AI training clusters), networking OEMs",
+    "key_suppliers": "TSMC (foundry)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "0.5-1",
+    "sector_rank": 30,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Direct competition with Marvell, Astera Labs, MACOM. Niche leader but customers have substitution paths.",
+    "state": "authored"
+  }
+}

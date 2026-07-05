@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "6645 JP",
+    "slug": "6645-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "OMRON CORP",
+    "aliases": [
+      "6645 JP",
+      "OMRON",
+      "OMRON CORP",
+      "omron corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6645 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Industrial Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Broad factory automation portfolio (PLC, sensors, switches, vision); peer-competitive vs Siemens, Rockwell, Mitsubishi, Keyence.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Global discrete-manufacturing factories across automotive, electronics, packaging",
+    "key_suppliers": "Japanese semiconductor and component base",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 25,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Omron is a competent mid-tier FA vendor (~5-7% in its sub-segments) but faces a strong oligopoly above it (Siemens >20% PLC share, Rockwell 19% in NA, Mitsubishi, Schneider) and below it in sensors from Keyence. Switching from Omron to a competitor is operationally feasible within a project cycle. No bottleneck position.",
+    "state": "authored"
+  }
+}

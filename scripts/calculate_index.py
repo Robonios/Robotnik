@@ -787,9 +787,10 @@ def main():
         "calculated_at": datetime.now(timezone.utc).isoformat() + "Z",
         "cap_limit_pct": CAP_LIMIT * 100,
         "entity_count": len(eligible),
+        # market_cap_usd omitted from published output (ToS: no raw vendor mcap on the
+        # served tree); mcap is still used above to compute the weights.
         "weights": sorted(
             [{"ticker": e["ticker"], "name": e["name"], "sector": e["sector"],
-              "market_cap_usd": e["market_cap_usd"],
               "weight_pct": round(weights[e["ticker"]] * 100, 4)}
              for e in eligible],
             key=lambda x: x["weight_pct"], reverse=True

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "6383 JP",
+    "slug": "6383-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "DAIFUKU CO LTD",
+    "aliases": [
+      "6383 JP",
+      "DAIFUKU CO",
+      "DAIFUKU CO LTD",
+      "daifuku co ltd"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6383 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Warehouse & Logistics Automation",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Effective duopolist (with Murata Machinery) in semiconductor AMHS / overhead hoist transport (OHT) and FOUP-stocker systems inside 300mm/sub-3nm fabs, where vendor qualification and cleanroom integration create multi-year switching cost.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "TSMC, Samsung, Intel, Micron, SK hynix, flat-panel/OLED fabs (LG Display, Samsung Display), plus Amazon/airport/auto warehouse customers in non-cleanroom segments",
+    "key_suppliers": "Motor and controls vendors (Fanuc, Yaskawa, Mitsubishi), bearings/precision mechanicals, cleanroom-grade enclosures, semiconductor controller chips",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 12,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Daifuku is consistently cited alongside Murata Machinery as the global leader in semiconductor AMHS (OHT segment ~46% of AMHS spend), with SEMES/SFA only meaningful inside Korea. Fab AMHS is sticky: the rail network is embedded in the cleanroom and qualified to a tool layout, so swapping vendors mid-fab is impractical. However, Daifuku's intralogistics/auto/airport segments (~50%+ of revenue) face peer competition from Dematic/KION, Honeywell, SSI Schaefer and Murata, so the bottleneck only applies to roughly half the business. That mixed profile maps to the MEDIUM tier alongside AMAT/MU rather than the HIGH-tier sole-supplier anchors.",
+    "state": "authored"
+  }
+}

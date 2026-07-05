@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "id": "spacex",
+    "slug": "spacex",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "SpaceX",
+    "aliases": [
+      "SpaceX",
+      "Space Exploration Technologies Corp"
+    ],
+    "type": "private",
+    "lifecycle_status": "pre_ipo_filed",
+    "description": null,
+    "identifiers": {
+      "ticker": null,
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Launch & Propulsion",
+    "value_chain": "Launch Services",
+    "universe_status": "active_private"
+  },
+  "bottleneck": {
+    "rating": "CRITICAL",
+    "description": "CRITICAL via adversarial verifier: dominant launch (Falcon 9 majority of global launch mass) + Starlink = access-to-orbit chokepoint.",
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": false,
+    "sector_index": null,
+    "weight_band": null,
+    "sector_rank": null,
+    "state": "private_capital_index"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "sparse"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

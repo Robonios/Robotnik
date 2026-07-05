@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "ALGM",
+    "slug": "ALGM",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "ALLEGRO MICROSYSTEMS INC",
+    "aliases": [
+      "ALGM",
+      "ALLEGRO MICROSYSTEMS",
+      "ALLEGRO MICROSYSTEMS INC",
+      "allegro microsystems inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "ALGM",
+      "coingecko_id": null,
+      "cik": "0000866291"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Power & Analog",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Magnetic sensors + power for automotive — auto qualification creates real switching friction, especially in safety-rated Hall-effect positions.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Tier-1 auto suppliers, industrial OEMs",
+    "key_suppliers": "Foundry partners",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 44,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Hall-effect sensors compete with Melexis, Infineon, NXP, TI; the auto-qualification process (AEC-Q100, ISO 26262) makes mid-platform switching multi-year. Revised from LOW given the auto-qualification dynamic.",
+    "state": "authored"
+  }
+}

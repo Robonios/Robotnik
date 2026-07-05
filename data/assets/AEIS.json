@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "AEIS",
+    "slug": "AEIS",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Advanced Energy Industries Inc",
+    "aliases": [
+      "ADVANCED ENERGY INDUSTRIES INC",
+      "AEIS",
+      "Advanced Energy Industries",
+      "Advanced Energy Industries Inc",
+      "advanced energy industries inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "AEIS",
+      "coingecko_id": null,
+      "cik": "0000927003"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "RF + DC plasma power generators for etch and deposition — structural 3-player market with mid-program switching virtually unheard of.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Lam Research, Applied Materials, Tokyo Electron",
+    "key_suppliers": "Specialty RF component vendors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 42,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Plasma power is structurally a 3-player oligopoly (AEIS, MKS-ENI, Comet). Customers (etch/deposition OEMs) qualify multiple suppliers but switching mid-program is rare due to qualification complexity. Revised from MEDIUM after consideration of mid-program switching friction in advanced-node fab build-outs.",
+    "state": "authored"
+  }
+}

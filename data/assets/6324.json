@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "id": "6324",
+    "slug": "6324",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "HARMONIC DRIVE SYSTEMS INC",
+    "aliases": [
+      "6324",
+      "HARMONIC DRIVE SYSTEMS",
+      "HARMONIC DRIVE SYSTEMS INC",
+      "harmonic drive systems inc",
+      "Harmonic",
+      "Harmonic Drive"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6324",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Motion Control & Actuators",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Inventor and dominant supplier of strain-wave (harmonic) gears used in robot wrist/elbow joints and humanoid-robot dexterous joints; standard-class incumbent across global cobot/industrial robot designs.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "FANUC, Yaskawa, Universal Robots, ABB, Tesla, Figure AI, Apptronik, satellite/space programs",
+    "key_suppliers": "Bearing steel mills, precision grinding/honing equipment suppliers, gear-cutting tool suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 34,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Harmonic Drive Systems holds dominant share in high-precision strain-wave gears - the standard small-joint reducer in cobots (UR, FANUC CRX), industrial robot wrists, and humanoid robot designs (Tesla Optimus, Figure 02, Apptronik). Switching to alternatives (Sumitomo, Leaderdrive) requires gear-class re-qualification and the precision class remains the gold standard. HIGH (not CRITICAL) because Chinese alternatives (Leaderdrive especially) have been validated for cost-sensitive applications and the moat is eroding, but global premium share remains highly concentrated. Adversarial verifier flagged dual-sourcing already underway: Suzhou Green Harmonic (688017) now primary Tesla Optimus harmonic-reducer supplier at 30-40% discount, Leaderdrive humanoid revenue grew from negligible to 30% of Q1 2025 revenue, Jefferies downgraded to Underperform. Original HIGH proposal downgraded to MEDIUM by user-approved verifier verdict.",
+    "state": "authored"
+  }
+}

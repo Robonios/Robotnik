@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "SESG FP",
+    "slug": "sesg-fp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "SES SA",
+    "aliases": [
+      "SES SA",
+      "SESG FP",
+      "ses sa",
+      "SES"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "SESG FP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Satellite Communications",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Luxembourg-based global satellite operator (GEO fleet plus O3b mPOWER MEO constellation), enlarged by the 2025 Intelsat acquisition; a scaled operator in a substitutable market.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "US Government / US Department of Defense (SES Space & Defense)",
+    "key_suppliers": "Boeing (O3b mPOWER satellites), Thales Alenia Space (GEO satellites)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 12,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Luxembourg",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "SES operates the one commercial medium-earth-orbit broadband constellation (O3b mPOWER), a genuinely distinct architecture, and its defence arm carries US-government accreditation that raises the barrier to entry. Neither makes it a control point: connectivity capacity is broadly fungible across Eutelsat OneWeb, Viasat, Starlink and Telesat, and the low-latency case that MEO was built to own is increasingly captured by LEO. Consistent with how other scaled operators are treated, it rates LOW. The mPOWER fleet has suffered power-system anomalies and the Intelsat integration adds debt and execution risk.",
+    "state": "authored"
+  }
+}

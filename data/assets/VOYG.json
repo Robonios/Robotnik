@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "VOYG",
+    "slug": "VOYG",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Voyager Technologies",
+    "aliases": [
+      "VOYAGER TECHNOLOGIES",
+      "VOYG",
+      "Voyager Technologies",
+      "voyager technologies"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "VOYG",
+      "coingecko_id": null,
+      "cik": "0001788060"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "In-Orbit Services",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Defense and space-station component supplier (signals intelligence, GNC, life-support) leading Starlab commercial LEO station consortium - one of three competing NASA CLD bidders alongside Axiom and Orbital Reef.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "NASA, US Air Force, Lockheed Martin, Palantir, Sierra Space, Northrop Grumman, intelligence community",
+    "key_suppliers": "Airbus, MDA Space, Mitsubishi (Starlab partners); diversified electronics and aerospace component vendors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 17,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Voyager (NYSE-listed June 2025) is a diversified defense electronics and space-infrastructure integrator without a clearly dominant chokepoint product. Its Starlab project is in active competition with Axiom and the Blue Origin/Sierra Space-led Orbital Reef for NASA's Commercial LEO Destinations program - no exclusive franchise. Defense & National Security segment offers communications, GNC, and SIGINT modules where multiple primes compete. LOW reflects competitive landscape across both segments.",
+    "state": "authored"
+  }
+}

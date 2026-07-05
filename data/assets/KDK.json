@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "KDK",
+    "slug": "KDK",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "KODIAK AI INC",
+    "aliases": [
+      "KDK",
+      "KODIAK AI",
+      "KODIAK AI INC",
+      "kodiak ai inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "KDK",
+      "coingecko_id": null,
+      "cik": "0001853138"
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Software & Simulation",
+    "value_chain": "Software & Services",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "AI self-driving software stack (Kodiak Driver) for Class-8 trucks and military AGV applications; competitive autonomy-software market with multiple credible peers.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Atlas Energy Solutions, U.S. Department of Defense, General Dynamics Land Systems (partnership), Verizon Business, freight shippers",
+    "key_suppliers": "Nvidia (compute), Luminar/sensor vendors, OEM truck chassis providers, AWS/cloud compute",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 63,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Kodiak operates in a multi-vendor autonomous-trucking market alongside Aurora (regarded as the leader), Plus (partnered with Traton/Navistar), Waabi, Gatik, and Embark legacy, plus OEM in-house programs. While Kodiak has differentiated wins (Atlas Energy customer-owned trucks, a ~$30M DoD contract, General Dynamics AGV collaboration, Verizon partnership), no single end-user is locked in and substitution paths exist. Its early defense-collaboration footprint and operational maturity are commercial strengths, not a bottleneck. The autonomy-software market is exactly the kind of contested frontier-stack baseline the framework labels LOW.",
+    "state": "authored"
+  }
+}

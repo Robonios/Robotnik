@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "FLY",
+    "slug": "FLY",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Firefly Aerospace",
+    "aliases": [
+      "FIREFLY AEROSPACE",
+      "FLY",
+      "Firefly Aerospace",
+      "firefly aerospace"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "FLY",
+      "coingecko_id": null,
+      "cik": "0001860160"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Launch",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "US launch and space-services company (Alpha small-lift, Blue Ghost lunar lander, Elytra orbital transfer, Eclipse medium-lift with Northrop Grumman); the first commercial operator to complete a fully successful lunar soft landing.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "NASA (CLPS), US Space Force, US Department of Defense / DIU, Lockheed Martin, Northrop Grumman",
+    "key_suppliers": null,
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 11,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Firefly's one distinctive asset is being the only commercial entity with a proven, fully successful lunar landing (Blue Ghost, March 2025), and it is the sole-source domestic first-stage supplier for Northrop Grumman's Antares 330 and Eclipse. Both are real, but neither is route-around-proof: NASA deliberately multi-sources lunar delivery through CLPS, and the Alpha launch business is openly contested by Rocket Lab and SpaceX rideshare with a mixed reliability record. The deepest dependency actually runs the wrong way, with a heavily concentrated US-government customer base. Niche leadership with real switching costs rather than a choke point, so MEDIUM, on the Rocket Lab calibration. Engines and stages are built in-house; no external supplier is disclosed at a sourceable level.",
+    "state": "authored"
+  }
+}

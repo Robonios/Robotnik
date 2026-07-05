@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "SPCE",
+    "slug": "SPCE",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Virgin Galactic",
+    "aliases": [
+      "SPCE",
+      "VIRGIN GALACTIC",
+      "Virgin Galactic",
+      "virgin galactic"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "SPCE",
+      "coingecko_id": null,
+      "cik": "0001706946"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Launch",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Suborbital space-tourism operator (SpaceShipTwo / Delta-class), not a satellite communications provider; no supply-chain bottleneck role — service is a discretionary consumer experience with multiple emerging alternatives (Blue Origin New Shepard, future SpaceX/Polaris).",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Private individuals (ticketed astronauts ~$450K/seat), research payload clients (NASA, universities) for microgravity experiments.",
+    "key_suppliers": "The Spaceship Company (in-house manufacturing arm), Aurora Flight Sciences/Bell Textron and Qarbon Aerospace for Delta-class production partners, hybrid rocket motor suppliers.",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 29,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "SPCE is mis-cohorted as satellite communications — it operates a suborbital tourism vehicle with no satcom function. Bottleneck rating is LOW: no supply-chain criticality, tourism is fully substitutable by Blue Origin and other future entrants, and the company has disclosed substantial doubt about ability to continue as a going concern with commercial flights pushed to late 2026. Financial distress flagged separately; structural bottleneck position is weak regardless.",
+    "state": "authored"
+  }
+}

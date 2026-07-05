@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "4062 JP",
+    "slug": "4062-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Ibiden Co",
+    "aliases": [
+      "4062 JP",
+      "IBIDEN CO",
+      "Ibiden Co",
+      "ibiden co",
+      "Ibiden"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "4062 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Packaging & Substrates",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Leading maker of the highest-complexity FC-BGA / ABF IC package substrates that carry the largest AI accelerators and data-centre CPUs; ABF substrate is a named frontier choke-point.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Nvidia, Intel, AMD",
+    "key_suppliers": null,
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 3,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Ibiden holds the majority of the top tier of organic package substrates, the very high-layer-count, large-body parts the biggest AI GPU packages require, a segment that is sold out. Competitors exist (Shinko, Unimicron, AT&S, Samsung Electro-Mechanics, Nan Ya) but are described as roughly a generation behind at that leading edge, and Ibiden secures close to all orders for the high-end generative-AI server substrates against demand-constrained supply, so customers cannot route around it there. It rates HIGH, short of CRITICAL only because alternatives are being qualified. The substrate is built on Ajinomoto build-up film upstream, itself an even tighter choke-point with Ajinomoto supplying the large majority of that film; the automotive-ceramics segment does not dilute the rating, which attaches to the substrate business that provides the majority of both sales and profit.",
+    "state": "authored"
+  }
+}

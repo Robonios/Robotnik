@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "6141 JP",
+    "slug": "6141-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Dmg Mori Co Ltd",
+    "aliases": [
+      "6141 JP",
+      "DMG MORI CO LTD",
+      "Dmg Mori Co",
+      "Dmg Mori Co Ltd",
+      "dmg mori co ltd"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6141 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Industrial Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Top-2 global CNC machining-center vendor (with Yamazaki Mazak); competes with Okuma, Makino, Haas, JTEKT, DN Solutions.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Aerospace, automotive, medical device, mold-and-die shops worldwide",
+    "key_suppliers": "Fanuc/Siemens/Mitsubishi CNC controllers, ballscrews, spindles",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 45,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Top-4 (TRUMPF, DMG Mori, Mazak, Amada) together hold only ~42% of global metal-fabrication revenue, indicating a fragmented market with viable substitutes at every tier. CNC machining centers are routinely cross-shopped; switching requires retraining but not multi-year qualification. No bottleneck.",
+    "state": "authored"
+  }
+}

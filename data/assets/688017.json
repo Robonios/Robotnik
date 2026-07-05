@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "688017",
+    "slug": "688017",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "LEADER HARMONIOUS DRIVE SY-A",
+    "aliases": [
+      "688017",
+      "LEADER HARMONIOUS DRIVE SY-A",
+      "leader harmonious drive sy-a"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "688017",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Motion Control & Actuators",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "China's largest harmonic reducer manufacturer with ~26-40% domestic share; primary domestic alternative to Harmonic Drive Systems Japan for robot wrist joints.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Estun, Siasun, Unitree, UBTech, Xiaomi, EFORT, Chinese cobot makers",
+    "key_suppliers": "Specialty steel mills, precision grinding equipment suppliers, bearing suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 16,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Leaderdrive (Leader Harmonious) is the de-facto Chinese substitute for Harmonic Drive Japan in small-joint robot reducers, increasingly qualified into humanoid robot programs (Unitree, UBTech, Xiaomi). It now meets a meaningful chunk of China robot demand at materially lower cost. MEDIUM reflects rapidly growing qualification with Chinese humanoid programs and structural cost advantage versus 6324 JP, but well below HIGH because alternatives (HD Systems, Sumitomo, ShuangHuan reducers, Lifeng) exist.",
+    "state": "authored"
+  }
+}

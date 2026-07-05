@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "id": "ON",
+    "slug": "ON",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "ON SEMICONDUCTOR CORP",
+    "aliases": [
+      "ON",
+      "ON CORP",
+      "ON SEMICONDUCTOR",
+      "ON SEMICONDUCTOR CORP",
+      "ON Semi",
+      "ON Semiconductor",
+      "on semiconductor corp",
+      "onsemi"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "ON",
+      "coingecko_id": null,
+      "cik": "0001097864"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "IDM",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Power semis + image sensors.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Auto OEMs, industrial, security/automotive imaging",
+    "key_suppliers": "Foundry partners + wafer suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 31,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "SiC + CMOS image sensors are both competitive markets. SiC competes with Wolfspeed/Infineon/STMicro; CMOS image sensors compete with Sony, Samsung.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "RR",
+    "slug": "RR",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "RICHTECH ROBOTICS INC-CL B",
+    "aliases": [
+      "RICHTECH ROBOTICS",
+      "RICHTECH ROBOTICS INC-CL B",
+      "RR",
+      "richtech robotics inc-cl b"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "RR",
+      "coingecko_id": null,
+      "cik": "0001963685"
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Humanoid & Service Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Small US service-robot integrator (ADAM coffee robot, Scorpion bartender, Titan delivery) with NVIDIA-based control stack; deployments are individually substitutable, no sole-source role.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Hospitality venues, ghost kitchens, healthcare facilities, retail spaces (US market)",
+    "key_suppliers": "NVIDIA (Jetson compute), US/Chinese component vendors, contract manufacturing for sub-assemblies",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 72,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Richtech sells service robots for hospitality (coffee, bartending, delivery) where customer commitments are individual contracts that can be terminated and replaced by alternatives (Bear Robotics, Pudu, Keenon, Savioke, or human staff). The Las Vegas 20K sqft expansion underscores that this is a niche scale operation, not a critical-stack supplier. Domestic assembly with NVIDIA Jetson-based controllers is a procurement choice, not a moat. Clearly LOW.",
+    "state": "authored"
+  }
+}

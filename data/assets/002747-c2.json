@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "002747 C2",
+    "slug": "002747-c2",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "ESTUN AUTOMATION CO LTD-A",
+    "aliases": [
+      "002747 C2",
+      "ESTUN AUTOMATION CO",
+      "ESTUN AUTOMATION CO LTD-A",
+      "estun automation co ltd-a",
+      "Estun"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "002747 C2",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Industrial Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Largest domestic Chinese industrial-robot brand (~10% China share) plus vertically integrated servo/controller stack.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Chinese photovoltaic, lithium battery, 3C electronics, welding integrators",
+    "key_suppliers": "Internally integrated servo/controller; reducer imports (Nabtesco, Harmonic) historically",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 29,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Estun ranks #1 among Chinese robot brands at ~10.5% domestic share, but the China industrial-robot market is competitive (Inovance, Siasun, Efort) and global incumbents (Fanuc, Yaskawa, ABB, KUKA) still hold roughly 45% of Chinese share. Estun's customers can substitute robots within months. Vertical-integration is a margin advantage, not a bottleneck.",
+    "state": "authored"
+  }
+}

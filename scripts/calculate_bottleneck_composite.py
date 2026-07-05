@@ -435,11 +435,12 @@ def main():
         len(flagged_months), DIVERGENCE_FLAG_PCT))
 
     # ── output ──
+    # market_cap_usd omitted from published output (ToS: no raw vendor mcap on the
+    # served tree); mcap is still used to compute the tilted weights above.
     weights_for_output = sorted(
         [{"ticker": t,
           "name": next((e["name"] for e in eligible if e["ticker"] == t), t),
           "sector": next((e["sector"] for e in eligible if e["ticker"] == t), None),
-          "market_cap_usd": next((e["market_cap_usd"] for e in eligible if e["ticker"] == t), None),
           "bottleneck_risk": (enrichment.get(t, {}) if isinstance(enrichment.get(t), dict) else {}).get("bottleneck_risk"),
           "multiplier": BOTTLENECK_MULTIPLIERS.get(
               (enrichment.get(t, {}) if isinstance(enrichment.get(t), dict) else {}).get("bottleneck_risk"),

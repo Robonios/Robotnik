@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "NVMI",
+    "slug": "NVMI",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "NOVA LTD",
+    "aliases": [
+      "NOVA",
+      "NOVA LTD",
+      "NVMI",
+      "nova ltd"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "NVMI",
+      "coingecko_id": null,
+      "cik": "0001109345"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Optical metrology — film-thickness + critical-dimension (OCD).",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Leading-edge fabs (TSMC, Samsung, Intel, Micron)",
+    "key_suppliers": "Optical and computational components",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 40,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Israel",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "KLA is structurally larger; Onto Innovation is the closest peer. Nova owns OCD metrology niche for several process-control loops; substitutes exist but require recalibration.",
+    "state": "authored"
+  }
+}

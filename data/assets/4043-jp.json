@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "4043 JP",
+    "slug": "4043-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Tokuyama Corp",
+    "aliases": [
+      "4043 JP",
+      "TOKUYAMA CORP",
+      "Tokuyama",
+      "Tokuyama Corp",
+      "tokuyama corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "4043 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Industrial & Specialty Gases",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Top global producer of high-purity TMAH photoresist developer for EUV/advanced-node lithography plus semiconductor-grade polysilicon (~12,500 MT capacity, 7nm-and-below grade).",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "TSMC, Samsung, leading-edge foundries via wafer/resist channels; Japanese and Korean fabs primarily",
+    "key_suppliers": "Trichlorosilane/silicon metal captive production, specialty chemicals",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 20,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Tokuyama is a major TMAH developer supplier (top-5 controls ~56% share) and a credible semiconductor-grade polysilicon producer alongside Wacker and Hemlock. Asia-Pacific dependence on Tokuyama for TMAH at advanced nodes is real. However, alternatives exist (Greenda, Hantok, Tama, SACHEM in TMAH; Wacker, Hemlock in poly), making MEDIUM the disciplined call. Switching is multi-quarter qualification but feasible.",
+    "state": "authored"
+  }
+}

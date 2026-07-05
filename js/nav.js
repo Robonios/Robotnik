@@ -3,7 +3,7 @@
 
   const navItems = [
     { href: 'index.html', page: 'home', label: 'Home', online: true },
-    { href: 'assets.html', page: 'assets', label: 'Frontier Assets', online: true },
+    { href: 'assets.html', page: 'assets', label: 'Frontier Assets', online: false },
     { href: 'funding.html', page: 'funding', label: 'Funding Ops', online: true },
     { href: 'portfolio.html', page: 'portfolio', label: 'Portfolio', online: false },
     { href: 'signals.html', page: 'signals', label: 'Frontier Signals', online: false },
@@ -391,10 +391,10 @@
     function loadDatasets() {
       if (_datasets) return Promise.resolve(_datasets);
       return Promise.all([
-        fetch('data/markets/robotnik_public_markets.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
+        fetch('data/registries/search_index.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
         fetch('data/funding/rounds.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}),
       ]).then(function(out){
-        _datasets = { pm: out[0], rounds: out[1] };
+        _datasets = { search: out[0], rounds: out[1] };
         return _datasets;
       });
     }
@@ -422,27 +422,33 @@
         }
       });
 
-      // 2. Assets
-      if (ds.pm && ds.pm.entities) {
+      // 2. Assets — searches the active universe from search_index.json (derived
+      // from entity_registry.json; no vendor fields). Match on name, ticker, id
+      // and aliases; display name / ticker · sector; route to assets.html?q=.
+      if (ds.search && Array.isArray(ds.search.entities)) {
         var assetMatches = [];
-        var tickers = Object.keys(ds.pm.entities);
-        for (var i = 0; i < tickers.length; i++) {
-          var ticker = tickers[i];
-          var ent = ds.pm.entities[ticker];
-          var tl = String(ticker || '').toLowerCase();
+        var ents = ds.search.entities;
+        for (var i = 0; i < ents.length; i++) {
+          var ent = ents[i];
+          var idl = String(ent.id || '').toLowerCase();
+          var tl = String(ent.ticker || '').toLowerCase();
           var nl = String(ent.name || '').toLowerCase();
-          var sl = String(ent.sector || '').toLowerCase();
-          if (tl.indexOf(ql) !== -1 || nl.indexOf(ql) !== -1 || sl.indexOf(ql) !== -1) {
-            // Rank: exact-ticker > ticker-prefix > name-prefix > substring.
+          var aliasHit = Array.isArray(ent.aliases) && ent.aliases.some(function(a){
+            return String(a).toLowerCase().indexOf(ql) !== -1;
+          });
+          if (tl.indexOf(ql) !== -1 || idl.indexOf(ql) !== -1 || nl.indexOf(ql) !== -1 || aliasHit) {
+            var routeKey = ent.ticker || ent.id;
+            var rl = String(routeKey || '').toLowerCase();
+            // Rank: exact ticker/id > prefix > name-prefix > substring/alias.
             var rank = 3;
-            if (tl === ql) rank = 0;
-            else if (tl.indexOf(ql) === 0) rank = 1;
+            if (tl === ql || idl === ql) rank = 0;
+            else if (rl.indexOf(ql) === 0) rank = 1;
             else if (nl.indexOf(ql) === 0) rank = 2;
             assetMatches.push({
               category: 'Assets',
-              primary: ent.name || ticker,
-              secondary: ticker + (ent.sector ? (' · ' + ent.sector) : ''),
-              url: 'assets.html?q=' + encodeURIComponent(ticker),
+              primary: ent.name || routeKey,
+              secondary: routeKey + (ent.sector ? (' · ' + ent.sector) : ''),
+              url: 'assets.html?q=' + encodeURIComponent(routeKey),
               _rank: rank,
             });
           }

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "AOSL",
+    "slug": "AOSL",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "ALPHA + OMEGA SEMICONDUCTOR",
+    "aliases": [
+      "ALPHA + OMEGA",
+      "ALPHA + OMEGA SEMICONDUCTOR",
+      "AOSL",
+      "alpha + omega semiconductor"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "AOSL",
+      "coingecko_id": null,
+      "cik": "0001387467"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Power & Analog",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Power MOSFETs + IGBTs.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Consumer electronics, industrial power supplies",
+    "key_suppliers": "Foundry partners",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 66,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Infineon, ON Semi, ST, TI, Nexperia substitute in mainstream power discretes.",
+    "state": "authored"
+  }
+}

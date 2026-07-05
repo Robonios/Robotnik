@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "SKYT",
+    "slug": "SKYT",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "SKYWATER TECHNOLOGY INC",
+    "aliases": [
+      "SKYT",
+      "SKYWATER TECHNOLOGY",
+      "SKYWATER TECHNOLOGY INC",
+      "skywater technology inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "SKYT",
+      "coingecko_id": null,
+      "cik": "0001819974"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Foundry",
+    "value_chain": "Fabrication & Manufacturing",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "US trusted-foundry (DoD STA-2 approved) for defence + emerging-customer R&D.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "DoD programs, R&D startups requiring trusted-foundry status",
+    "key_suppliers": "Wafer + materials suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 64,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Narrow customer base. GlobalFoundries also holds trusted-foundry credentials; Intel Foundry Services emerging. SkyWater's niche is small but defensible for strategic-supply programs.",
+    "state": "authored"
+  }
+}

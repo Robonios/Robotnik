@@ -74,7 +74,7 @@ MAPPING = {
     "4043 JP": "Industrial & Specialty Gases",
     "4062 JP": "Packaging & Substrates",
     "4091 JP": "Industrial & Specialty Gases",
-    "4112 JP": "Process Chemicals",
+    "4004 JP": "Process Chemicals",
     "4208 JP": "Process Chemicals",
     "5384 JP": "Process Chemicals",
     "5706 JP": "Rare Earths & Critical Minerals",

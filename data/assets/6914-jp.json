@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "6914 JP",
+    "slug": "6914-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "OPTEX GROUP COMPANY LTD",
+    "aliases": [
+      "6914 JP",
+      "OPTEX GROUP COMPANY",
+      "OPTEX GROUP COMPANY LTD",
+      "optex group company ltd"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6914 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Machine Vision & Sensors",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Photoelectric, laser displacement and FA sensors plus security PIR sensors, competing with Keyence, Omron, SICK, Panasonic, Banner, Pepperl+Fuchs and Micro-Epsilon.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Factory automation integrators, security/automatic door OEMs, electronics assembly customers in Japan/US/Europe/Asia",
+    "key_suppliers": "Image sensor vendors, optical component suppliers, electronics CMs",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 64,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Optex operates in highly fragmented industrial sensor categories (photoelectric, laser displacement, fiber, machine-vision lighting, security PIR) where the market leaders are Keyence, Omron, SICK and Panasonic; Optex is a mid-tier specialist with strong niches but no structural choke-point. Customers routinely qualify multiple vendors per sensor class with low switching friction. Aligns with the LOW frontier-stack baseline for peer-competitive industrial sensor incumbents.",
+    "state": "authored"
+  }
+}

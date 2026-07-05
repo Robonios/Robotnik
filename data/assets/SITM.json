@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "SITM",
+    "slug": "SITM",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "SiTime Corp",
+    "aliases": [
+      "SITIME CORP",
+      "SITM",
+      "SiTime",
+      "SiTime Corp",
+      "sitime corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "SITM",
+      "coingecko_id": null,
+      "cik": "0001451809"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "MEMS-based silicon clocks/oscillators displacing legacy quartz.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Networking, comms, datacenter equipment OEMs",
+    "key_suppliers": "Foundry partners",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 38,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Dominant in MEMS oscillators (~90% share). Quartz-based suppliers (Epson, NDK, Kyocera) remain technically substitutable in most designs, but the timing-precision advantage of MEMS creates lock-in once specified.",
+    "state": "authored"
+  }
+}

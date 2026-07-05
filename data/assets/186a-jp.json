@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "186A JP",
+    "slug": "186a-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Astroscale Holdings",
+    "aliases": [
+      "186A JP",
+      "ASTROSCALE HOLDINGS",
+      "Astroscale",
+      "Astroscale Holdings",
+      "astroscale holdings"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "186A JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "In-Orbit Services",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "On-orbit servicing and active debris-removal operator (ADRAS-J, ELSA, life extension); holds flown rendezvous-and-proximity-operations heritage but no concentrated supply-chain position.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "JAXA, US Space Force, ESA / UK Space Agency, Eutelsat (life extension)",
+    "key_suppliers": "Rocket Lab (launch)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 22,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Astroscale has genuine first-mover flight heritage: ADRAS-J is the first spacecraft to safely approach and characterise a large piece of orbital debris. That is a capability lead, not a control point. On-orbit servicing is an emerging, contestable service and the anchor customers deliberately multi-source it; the US Space Force ran its Tetra refuelling demonstrations across Astroscale, Northrop Grumman and Orbit Fab, and Northrop's life-extension vehicle is already operational. It fails the concentration and in-volume-dependence tests, so it rates LOW, the strongest of a weak-choke set. Revenue is demonstration and government-anchored rather than recurring.",
+    "state": "authored"
+  }
+}

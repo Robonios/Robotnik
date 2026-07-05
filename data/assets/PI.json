@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "PI",
+    "slug": "PI",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "IMPINJ INC",
+    "aliases": [
+      "IMPINJ",
+      "IMPINJ INC",
+      "PI",
+      "impinj inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "PI",
+      "coingecko_id": null,
+      "cik": "0001114995"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "RAIN RFID readers + IC tags — structural duopoly with NXP. Reader infrastructure ties to IC encoding at scale.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Retail (Walmart-tier rollouts), logistics, supply-chain operations",
+    "key_suppliers": "Foundry partners, antenna/substrate vendors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 56,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "RAIN UHF passive RFID IC market is a long-running duopoly with NXP. Reader infrastructure (encoding, antennas) is tied to ICs, so single-supplier defection at scale is multi-year. Structural duopoly persists even with one named substitute.",
+    "state": "authored"
+  }
+}

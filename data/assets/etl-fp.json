@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "ETL FP",
+    "slug": "etl-fp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Eutelsat Communications",
+    "aliases": [
+      "ETL FP",
+      "EUTELSAT COMMUNICATIONS",
+      "Eutelsat Communications",
+      "eutelsat communications"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "ETL FP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Satellite Communications",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "European satellite operator running a GEO fleet plus the Eutelsat OneWeb LEO constellation; the only at-scale allied non-Starlink low-earth-orbit broadband network in service today.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "European Union (IRIS2 concession, SpaceRISE consortium)",
+    "key_suppliers": "Airbus OneWeb Satellites (satellite manufacture), Arianespace and SpaceX (launch)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 13,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "France",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Outside China, Eutelsat OneWeb is the only fully deployed non-Starlink global LEO network, which gives it a genuine sovereignty position: a European government or institution that requires an allied, non-US LEO network today has few alternatives before Amazon Kuiper and the EU IRIS2 constellation mature later this decade. That is what lifts it above the LOW band of substitutable operators. It is capped at MEDIUM because commercial capacity is fungible, Starlink is a far larger competitor, and the sovereignty premium is strategic rather than a sole-source input. The balance sheet is heavily leveraged and has required state-backed recapitalisation, which reinforces the sovereign role while signalling financial strain.",
+    "state": "authored"
+  }
+}

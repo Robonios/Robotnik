@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "SMTC",
+    "slug": "SMTC",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Semtech Corp",
+    "aliases": [
+      "SEMTECH CORP",
+      "SMTC",
+      "Semtech",
+      "Semtech Corp",
+      "semtech corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "SMTC",
+      "coingecko_id": null,
+      "cik": "0000088941"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "LoRa wireless platform near-monopoly + analog mixed-signal.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "LPWAN network operators, IoT device OEMs, broadband infrastructure",
+    "key_suppliers": "Foundry partners",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 41,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "LoRa owns LPWAN niche, but cellular IoT (NB-IoT, LTE-M) is a credible substitute architecture chosen by carriers globally. Switching cost is moderate (firmware redesign).",
+    "state": "authored"
+  }
+}

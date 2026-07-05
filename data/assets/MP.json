@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "MP",
+    "slug": "MP",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "MP MATERIALS CORP",
+    "aliases": [
+      "MP",
+      "MP MATERIALS",
+      "MP MATERIALS CORP",
+      "MP Materials",
+      "mp materials corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "MP",
+      "coingecko_id": null,
+      "cik": "0001801368"
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Rare Earths & Critical Minerals",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Only scaled US mine-to-magnet NdPr producer; sole operator of Mountain Pass (the only US rare earth mine) with DoD-backed integrated separation and Fort Worth/Independence magnet build-out.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "US DoD (price-floor offtake), GM, Independence magnet customers; Chinese sales (Shenghe) ceased July 2025",
+    "key_suppliers": "Internal Mountain Pass concentrate; reagents from US chemical suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 12,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "MP operates the only commercially producing US rare earth mine and is the West's only vertically integrated mine-to-magnet NdPr entity outside China. The July 2025 DoD partnership (10-year $110/kg NdPr floor, $400M preferred equity, $150M heavy rare earth separation loan, 10X magnet facility commissioning 2028) cements its strategic-bottleneck status for US defense and EV magnet sovereignty. Lynas is the only credible substitute outside China; otherwise the West has no scaled alternative, hence HIGH rather than CRITICAL (a viable alternative exists in Lynas).",
+    "state": "authored"
+  }
+}

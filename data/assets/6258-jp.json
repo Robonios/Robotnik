@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "6258 JP",
+    "slug": "6258-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "HIRATA CORP",
+    "aliases": [
+      "6258 JP",
+      "HIRATA",
+      "HIRATA CORP",
+      "hirata corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6258 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Industrial Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Custom factory-automation integrator for autos, semiconductors and appliances; 'factory that builds factories' model.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Japanese auto OEMs, semiconductor fabs (wafer-handling EFEM/load ports/wafer transfer robots), appliance manufacturers",
+    "key_suppliers": "Robot arms (Fanuc, Yaskawa), motors, vision systems",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 67,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Hirata is a respected systems integrator with niche capability in semiconductor wafer-handling EFEMs (competes with Brooks Automation, RORZE, Sinfonia, DAIHEN, Yaskawa). Sub-segments are competitive with multiple qualified vendors. No sole-source position justifying a higher rating.",
+    "state": "authored"
+  }
+}

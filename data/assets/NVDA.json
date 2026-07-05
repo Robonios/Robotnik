@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "id": "NVDA",
+    "slug": "NVDA",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "NVIDIA CORP",
+    "aliases": [
+      "NVDA",
+      "NVIDIA",
+      "NVIDIA CORP",
+      "Nvidia",
+      "nvidia",
+      "nvidia corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "NVDA",
+      "coingecko_id": null,
+      "cik": "0001045810"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Data centres, robotics (Jetson), autonomous vehicles",
+    "key_suppliers": "TSM (foundry), Unimicron/Ibiden (substrates)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "5-capped",
+    "sector_rank": 8,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "The gravitational centre of the frontier stack. NVIDIA's compute silicon enables robotics inference, satellite processing, and autonomous systems. CoWoS packaging capacity is the binding constraint.",
+    "state": "authored"
+  }
+}

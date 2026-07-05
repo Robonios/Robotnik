@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "002050",
+    "slug": "002050",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "ZHEJIANG SANHUA INTELLIGEN-A",
+    "aliases": [
+      "002050",
+      "ZHEJIANG SANHUA INTELLIGEN-A",
+      "zhejiang sanhua intelligen-a"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "002050",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Motion Control & Actuators",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Qualified Tesla supplier for EV thermal management valves, expansion valves, and electronic pumps; designated for Tesla Optimus actuator joints.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Tesla, BYD, Volkswagen, Geely, Daikin, Midea, Gree",
+    "key_suppliers": "Steel/brass alloy mills, rare earth magnet suppliers (CNRE downstream)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 7,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Sanhua is a leading global supplier of HVAC/refrigeration valves and a designated Tesla Tier-1 for NEV thermal management (~RMB 1,300/vehicle in Model 3). Switching costs are real in EV TMS where Sanhua has multi-year qualification with major OEMs, and the Tesla Optimus actuator partnership adds humanoid optionality. However, alternatives exist (Danfoss, DunAn, Saginomiya) in refrigeration valves, so this is qualification-friction MEDIUM rather than monopoly HIGH.",
+    "state": "authored"
+  }
+}

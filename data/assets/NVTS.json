@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "NVTS",
+    "slug": "NVTS",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "NAVITAS SEMICONDUCTOR CORP",
+    "aliases": [
+      "NAVITAS CORP",
+      "NAVITAS SEMICONDUCTOR",
+      "NAVITAS SEMICONDUCTOR CORP",
+      "NVTS",
+      "navitas semiconductor corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "NVTS",
+      "coingecko_id": null,
+      "cik": "0001821769"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "GaN power ICs for fast chargers and (emerging) EV/datacenter.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Charger/adapter ODMs, EV power electronics OEMs",
+    "key_suppliers": "Wafer + substrate suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 60,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Leader in fast-charger GaN, but GaN itself is an emerging power-device category with multiple suppliers (Infineon's GaN Systems acquisition, Power Integrations, EPC, Transphorm, STMicro). SiC remains a substitute at higher voltages.",
+    "state": "authored"
+  }
+}

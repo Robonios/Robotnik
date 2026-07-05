@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "AVGO",
+    "slug": "AVGO",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "BROADCOM INC",
+    "aliases": [
+      "AVGO",
+      "BROADCOM",
+      "BROADCOM INC",
+      "Broadcom",
+      "broadcom inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "AVGO",
+      "coingecko_id": null,
+      "cik": "0001730168"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Hyperscalers (custom ASICs), enterprise networking",
+    "key_suppliers": "TSM (foundry)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "5-capped",
+    "sector_rank": 4,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Custom ASIC business with 3 major hyperscaler customers diversifies AI compute beyond GPUs. VMware acquisition adds software layer.",
+    "state": "authored"
+  }
+}

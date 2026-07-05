@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "090360 KS",
+    "slug": "090360-ks",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "ROBOSTAR CO LTD",
+    "aliases": [
+      "090360 KS",
+      "ROBOSTAR CO",
+      "ROBOSTAR CO LTD",
+      "robostar co ltd"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "090360 KS",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Industrial Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "LG Electronics' captive robotics supplier (cartesian, SCARA, parallel, glass-transfer); display/electronics handling focus.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "LG Electronics (parent), Korean display/electronics manufacturers",
+    "key_suppliers": "Korean motor/drive vendors plus imported components",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 69,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "South Korea",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Robostar operates primarily as a captive supplier to LG Electronics with revenue stability but no external supply-chain bottleneck. Competitors in display/electronics handling robots include Yaskawa, Fanuc, Hirata, DAIHEN, RORZE -- all substitutable. Captive relationship is not a bottleneck position for the broader market.",
+    "state": "authored"
+  }
+}

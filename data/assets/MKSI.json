@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "MKSI",
+    "slug": "MKSI",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "MKS Inc",
+    "aliases": [
+      "MKS",
+      "MKS INC",
+      "MKS Inc",
+      "MKSI",
+      "mks inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "MKSI",
+      "coingecko_id": null,
+      "cik": "0001049502"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Vacuum gauges, gas delivery, motion control, photonics subsystems for fab tools — largest pure-play fab subsystem supplier.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Wafer-fab equipment OEMs (Lam, AMAT, Tokyo Electron, ASML)",
+    "key_suppliers": "Specialty component vendors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 34,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Many products are mission-critical (vacuum interfaces specifically), but per-segment competitors exist (Brooks, Edwards, Watlow). Atotech acquisition adds chemistry/plating exposure.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "RSW LN",
+    "slug": "rsw-ln",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "RENISHAW PLC",
+    "aliases": [
+      "RENISHAW PLC",
+      "RSW LN",
+      "renishaw plc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "RSW LN",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Software & Simulation",
+    "value_chain": "Software & Services",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "World leader in machine-tool touch probes, CMM probes, optical/wireless transmission probes, and laser/encoder calibration; effective duopoly with Hexagon plus specialized peers (Heidenhain, Zeiss, Blum, Marposs).",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Boeing, Lockheed Martin (F-35), Ford, GM (EV battery), aerospace/auto Tier-1s, medical device manufacturers, semicap and machine-tool OEMs",
+    "key_suppliers": "Optics/laser component suppliers, ASIC/electronics suppliers, precision-machining sub-suppliers, ruby/sapphire stylus material vendors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 35,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United Kingdom",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Renishaw is the industry standard for workpiece and tool probes on CNC machine tools, with deep CAM/CNC ecosystem integration (Boeing, Lockheed, Ford, GM, F-35) and a strong installed base in metrology. The probe/encoder market is moderately consolidated with Hexagon as the principal direct rival, plus Heidenhain (CNC-integrated probes), Zeiss (scanning/CMM), Blum-Novotest, and Marposs. Switching cost is meaningful (post-process inspection workflows, programming integration, brand reliability) but not prohibitive, and aerospace/auto buyers actively dual-source. The competitive structure (handful of qualified suppliers, real switching friction) is closest to the MEDIUM band rather than LOW or HIGH.",
+    "state": "authored"
+  }
+}

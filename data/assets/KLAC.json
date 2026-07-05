@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "KLAC",
+    "slug": "KLAC",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "KLA CORP",
+    "aliases": [
+      "KLA",
+      "KLA CORP",
+      "KLA Corp",
+      "KLAC",
+      "kla corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "KLAC",
+      "coingecko_id": null,
+      "cik": "0000319201"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "TSM, Samsung, Intel, Micron",
+    "key_suppliers": "Optical component vendors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "3.5-5",
+    "sector_rank": 11,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Process control and metrology — defect inspection critical for sub-3nm yield management. Benefits from increasing process complexity.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "VSAT",
+    "slug": "VSAT",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Viasat Inc",
+    "aliases": [
+      "VIASAT INC",
+      "VSAT",
+      "Viasat",
+      "Viasat Inc",
+      "viasat inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "VSAT",
+      "coingecko_id": null,
+      "cik": "0000797721"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Satellite Communications",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "GEO Ka/L-band broadband (combined with Inmarsat) facing aggressive substitution from Starlink LEO and Eutelsat OneWeb across aviation, maritime, and government verticals.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Commercial aviation (Delta, JetBlue, United IFC), US DoD, maritime/government, Inmarsat enterprise base",
+    "key_suppliers": "Boeing (ViaSat-3 satellite bus), Airbus (older fleet), SpaceX/ULA (launch), ST Engineering iDirect (ground)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 4,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Viasat's ViaSat-3 GEO satellites deliver >1 Tbps per bird, and the Inmarsat acquisition (May 2023) consolidated L-band MSS for safety services. However, Starlink's 7,000+ LEO satellites have rapidly captured maritime/aviation broadband share, and Eutelsat OneWeb competes in multi-orbit enterprise. IFC/IFE customers (JetBlue, Delta, etc.) are actively dual-sourcing. Safety-of-life GMDSS L-band on Inmarsat is more sticky but represents a small share of revenue. Overall structurally LOW given clear, deployed substitutes.",
+    "state": "authored"
+  }
+}

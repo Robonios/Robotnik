@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "5384 JP",
+    "slug": "5384-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Fujimi Inc",
+    "aliases": [
+      "5384 JP",
+      "FUJIMI INC",
+      "Fujimi",
+      "Fujimi Inc",
+      "fujimi inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "5384 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Process Chemicals",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "World leader in silicon-wafer final-polishing slurries and a leader in front-end-of-line CMP slurry; a concentrated niche upstream of every silicon wafer and advanced device.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 22,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Fujimi holds a dominant global share of silicon-wafer final-polishing agents and a majority of front-end-of-line CMP products, concentrated niches where its lines are the incumbent-qualified standard and slurry qualification is long and per-node. On the broader back-end CMP-slurry market it is only one of five, with Entegris, Resonac, DuPont and Merck as qualified alternatives, which is why it rates HIGH rather than CRITICAL. Advanced logic and memory require ever more CMP steps as nodes scale, so AI and leading-edge demand pulls Fujimi volume directly. The headline shares come from company figures relayed through an analyst source, hence medium confidence; named customers are not disclosed at a sourceable level and are left unstated rather than inferred.",
+    "state": "authored"
+  }
+}

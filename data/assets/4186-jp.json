@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "4186 JP",
+    "slug": "4186-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Tokyo Ohka Kogyo",
+    "aliases": [
+      "4186 JP",
+      "TOKYO OHKA KOGYO",
+      "Tokyo Ohka Kogyo",
+      "tokyo ohka kogyo"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "4186 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Process Chemicals",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "World-leading photoresist maker, strong across EUV, ArF-immersion and KrF resists; a top-tier holder of the advanced-photoresist choke-point that is roughly nine-tenths Japanese.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Intel, Samsung, TSMC (EUV resist deployment)",
+    "key_suppliers": null,
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 13,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Advanced photoresist is a named frontier choke-point, with Japanese producers holding around nine-tenths of global supply, and TOK is one of the handful of top-tier makers alongside JSR, the overall leader, plus Shin-Etsu, Sumitomo and Fujifilm. Resist qualification at a leading-edge fab runs one to two years or more, so customers cannot swap resists mid-node, and the category's strategic status is proven by the 2019 Japan-Korea export-control episode. Every EUV layer of advanced logic and memory depends on it. It rates HIGH rather than CRITICAL because TOK shares the gate with JSR and others at the firm level, even though national concentration would tempt a higher call.",
+    "state": "authored"
+  }
+}

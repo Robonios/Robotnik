@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "CAMT",
+    "slug": "CAMT",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Camtek Ltd/Israel",
+    "aliases": [
+      "CAMT",
+      "CAMTEK LTD/ISRAEL",
+      "Camtek",
+      "Camtek Ltd/Israel",
+      "camtek ltd/israel"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "CAMT",
+      "coingecko_id": null,
+      "cik": "0001109138"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Israeli advanced-packaging inspection — bumps, RDL, copper pillars. Position strengthens with CoWoS / hybrid-bonding build-out.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "OSATs and IDMs running advanced packaging lines",
+    "key_suppliers": "Optical component suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 51,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Direct competition with Onto Innovation; KLA upstream. Advanced-packaging ramp (CoWoS, hybrid bonding) strengthens position.",
+    "state": "authored"
+  }
+}

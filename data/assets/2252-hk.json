@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "2252 HK",
+    "slug": "2252-hk",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "SHANGHAI MICROPORT MEDBOT-H",
+    "aliases": [
+      "2252 HK",
+      "SHANGHAI MICROPORT MEDBOT-H",
+      "shanghai microport medbot-h"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "2252 HK",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Surgical & Medical",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Chinese domestic challenger to Intuitive Surgical's da Vinci with its Toumai laparoscopic robot; only ~100 cumulative global orders as of late 2025 against a market overwhelmingly served by Intuitive.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Chinese tertiary hospitals (primary), international hospitals adopting domestic-substitute robotic surgery, telesurgery pilot programs",
+    "key_suppliers": "Domestic Chinese component manufacturers for robotic arms, optics, contract assembly",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 46,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "MedBot is structurally a challenger, not a bottleneck. The Chinese surgical robot market is dominated by Intuitive's da Vinci, with MicroPort, EdgeMed, KangDuo and other domestic players competing for the local-substitution opportunity. Toumai's NMPA approvals (urology 2022, expanded indications 2023, SP and tele-surgery 2025) make it a credible alternative within China, but the global laparoscopic robotic market has Intuitive as the dominant supplier with multiple emerging Chinese alternatives. Disruption of MedBot would have no meaningful downstream impact.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "9660 HK",
+    "slug": "9660-hk",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "HORIZON ROBOTICS INC",
+    "aliases": [
+      "9660 HK",
+      "HORIZON ROBOTICS",
+      "HORIZON ROBOTICS INC",
+      "horizon robotics inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "9660 HK",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Software & Simulation",
+    "value_chain": "Software & Services",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Leading Chinese ADAS SoC + software stack supplier with ~21% market share among Chinese OEMs and embedded Tier-1 design wins across BYD, Li Auto, SAIC, VW Carizon JV; switching cost rises with each model homologation.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "BYD, Li Auto, SAIC, GAC, Chery, Volkswagen Group (Carizon JV), Deepal, BAIC, Voyah, plus Tier-1s Bosch, Luxshare, Huaqin, TzTek",
+    "key_suppliers": "TSMC (foundry for Journey SoCs), packaging/test partners, IP licensors (Arm, etc.)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 23,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Horizon is the largest domestic ADAS solutions provider in China and the dominant non-Tesla/non-Nvidia compute platform in the mid-tier (36% share at J5 level in 2024), with 290 model integrations across 27 OEMs and a $2.3B VW JV. However, it faces head-on competition from Nvidia DRIVE (Orin/Thor), Mobileye, Huawei MDC, Black Sesame and Tier-1 in-house chips, all of which are validated alternatives. The bottleneck position is structural in the Chinese localization wave (geopolitical preference, software-hardware integration, qualified design wins) but does not approach a sole-source or duopoly status. The auto-grade qualification cycle creates real switching friction once a model launches, consistent with the MEDIUM ALGM/ALGM-style anchor.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "id": "600111",
+    "slug": "600111",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "China Northern Rare Earth",
+    "aliases": [
+      "China Northern Rare Earth"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "600111",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Rare Earths",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "CRITICAL",
+    "description": "Sole dominant global producer of separated NdPr oxide from the Bayan Obo deposit; controls ~90% of refined rare-earth magnet feedstock at the production-quota level, with no viable Western alternative at scale.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "NdFeB magnet makers (JL Mag, Ningbo Yunsheng, Zhongke Sanhuan, Proterial/Hitachi Metals); downstream EV motor, robotics, wind turbine, and defense supply chains",
+    "key_suppliers": "Baogang Group (parent — Bayan Obo mining), separation chemical suppliers, Chinese state coordination on export quotas",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 4,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "CNRE controls the Bayan Obo complex (world's largest light rare earth resource) and is the dominant single producer of separated NdPr oxide globally. China collectively refines ~90% of global rare earth magnet inputs and CNRE is the largest single operator — its production quotas materially move global NdPr prices within weeks. The 2024 and 2025 Chinese rare-earth export controls (October 2024 Annex IV additions; April/October 2025 expansions covering medium and heavy REEs) have escalated geopolitical bite from 'concentration risk' to 'active supply-chain weaponisation' — clearing the CRITICAL bar of 'no alternative exists today'. MP Materials (Mountain Pass), Lynas, and emerging Western processing capacity (Arafura, etc.) collectively run at <15% of CNRE's separation throughput and lack heavy-rare-earth processing capability outside Lynas's Kalgoorlie ramp. Consolidated key (was split as '600111' HIGH from Robotics batch + '600111 C1' CRITICAL from existing rated set; the existing CRITICAL was the right call given full context).",
+    "state": "authored"
+  }
+}

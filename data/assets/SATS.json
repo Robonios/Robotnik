@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "SATS",
+    "slug": "SATS",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "EchoStar Corp",
+    "aliases": [
+      "ECHOSTAR CORP",
+      "EchoStar",
+      "EchoStar Corp",
+      "SATS",
+      "echostar corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "SATS",
+      "coingecko_id": null,
+      "cik": "0001415404"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Satellite Comms",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Enterprise broadband, government",
+    "key_suppliers": "Satellite manufacturers, launch providers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 3,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Legacy GEO operator navigating LEO era. Hughes broadband business transitioning.",
+    "state": "authored"
+  }
+}

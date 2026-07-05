@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "cerebras-systems",
+    "slug": "cerebras-systems",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Cerebras Systems",
+    "aliases": [
+      "CEREBRAS SYSTEMS",
+      "Cerebras Systems",
+      "cerebras systems"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "CBRS",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "AI Accelerators",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Sovereign-AI & hyperscale (G42/Gulf), national labs, pharma/genomics, LLM developers",
+    "key_suppliers": "TSMC (wafer fab), advanced packaging/substrate, HBM/SRAM, power & cooling",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "0.5-1",
+    "sector_rank": 29,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": "Series H",
+    "total_raised_m": 1000.0,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "USA",
+    "hq_city": "Sunnyvale, CA",
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Differentiated wafer-scale AI compute (WSE-3/CS-3); frontier-relevant but substitutable (NVIDIA-dominant + AMD/TPU/Groq) and downstream of TSMC/CoWoS/HBM. MEDIUM re-validated at IPO.",
+    "state": "authored"
+  }
+}

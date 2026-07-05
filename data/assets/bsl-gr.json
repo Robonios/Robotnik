@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "BSL GR",
+    "slug": "bsl-gr",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Basler Ag",
+    "aliases": [
+      "BASLER AG",
+      "BSL GR",
+      "Basler Ag",
+      "basler ag"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "BSL GR",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Machine Vision & Sensors",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "World's largest unit-volume producer of digital industrial cameras (area-scan, line-scan, 3D, embedded vision), but heavily dependent on Sony CMOS sensors and competing with Teledyne, IDS, JAI, Allied Vision, Hikvision.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Cognex (board-level), machine vision integrators, factory automation OEMs, life-science/medical imaging, retail/traffic",
+    "key_suppliers": "Sony (Pregius/IMX CMOS image sensors), onsemi, FPGAs, optical lenses",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 65,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Germany",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Basler is the largest unit-volume maker of industrial machine-vision cameras in Europe, but the camera segment is highly contested by Teledyne DALSA, Sony, IDS, JAI, Allied Vision/FLIR, Hikvision/Hikrobot and Toshiba Teli. Basler is actually downstream of Sony's Pregius/IMX CMOS sensor monopoly-ish position; cameras are a mid-stack commodity-leaning subsystem with many substitution paths. No structural bottleneck — clear LOW.",
+    "state": "authored"
+  }
+}

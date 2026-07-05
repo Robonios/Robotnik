@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "6920 JP",
+    "slug": "6920-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Lasertec Corp",
+    "aliases": [
+      "6920 JP",
+      "LASERTEC CORP",
+      "Lasertec",
+      "Lasertec Corp",
+      "lasertec corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6920 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "CRITICAL",
+    "description": "Sole commercial supplier of EUV mask blank inspection (MBI) and actinic patterned mask inspection (APMI) tools. EUV reticle manufacturing at advanced nodes cannot be quality-controlled without Lasertec equipment.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "TSMC, Samsung Foundry, Intel Foundry, mask shops (Toppan, DNP, Hoya, Photronics)",
+    "key_suppliers": "Carl Zeiss SMT (EUV optics), Japanese subsystem supply chain",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 32,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "KLA and Applied Materials do not offer competing EUV-actinic mask inspection. ASML and the foundry/IDM ecosystem publicly acknowledge Lasertec's monopoly in EUV mask inspection. DUV-based mask inspection cannot detect printable defect modes that emerge under EUV exposure at sub-7nm geometries, so the bottleneck deepens as nodes shrink. Mirrors ASML's EUV-scanner monopoly one tier upstream in the mask production chain.",
+    "state": "authored"
+  }
+}

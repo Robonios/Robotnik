@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "464A JP",
+    "slug": "464a-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "QPS Holdings",
+    "aliases": [
+      "464A JP",
+      "QPS",
+      "QPS HOLDINGS",
+      "QPS Holdings",
+      "qps holdings"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "464A JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Earth Observation",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "SAR smallsat Earth-observation constellation (QPS-SAR); the same all-weather modality as Synspective, at an earlier build stage.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Japan Ministry of Defense (satellite-constellation programme, joint award)",
+    "key_suppliers": "Rocket Lab (launch), KSAT (ground-station network)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 25,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "iQPS is one of several qualified SAR providers and is treated as interchangeable by its anchor customer: it was a co-awardee alongside Synspective and others in Japan's Ministry of Defense constellation tender. The same substitutes apply (ICEYE, Capella, Umbra, Synspective), and the business is a capital-intensive constellation build ahead of revenue. No concentrated, hard-to-route-around input, so LOW.",
+    "state": "authored"
+  }
+}

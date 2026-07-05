@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "SIDU",
+    "slug": "SIDU",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Sidus Space",
+    "aliases": [
+      "SIDU",
+      "SIDUS SPACE",
+      "Sidus Space",
+      "sidus space"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "SIDU",
+      "coingecko_id": null,
+      "cik": "0001879726"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Earth Observation",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "US micro-cap smallsat manufacturer and space-data services company (3D-printed structures, LizzieSat); no sourced concentration position, rated conservatively on thin evidence.",
+    "confidence": "LOW",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 30,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Sidus is a small, vertically integrated smallsat builder and aspiring data provider competing against many smallsat manufacturers and a crowded Earth-observation field; nothing about it is hard to route around. No market-share or sole-source position could be sourced, and named customer contracts could not be confirmed to a sourceable standard, so both the customer and supplier lists are left unstated rather than populated by inference. Micro-cap space companies of this profile commonly carry dilution and going-concern pressure, but those specifics could not be verified here and are therefore not asserted. Rated LOW with low confidence, reflecting the structural absence of any choke role together with the thin evidentiary base.",
+    "state": "authored"
+  }
+}

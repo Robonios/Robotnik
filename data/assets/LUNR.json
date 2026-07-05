@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "LUNR",
+    "slug": "LUNR",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "INTUITIVE MACHINES INC",
+    "aliases": [
+      "INTUITIVE MACHINES",
+      "INTUITIVE MACHINES INC",
+      "LUNR",
+      "intuitive machines inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "LUNR",
+      "coingecko_id": null,
+      "cik": "0001844452"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "In-Orbit Services",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Commercial Lunar Payload Services (CLPS) lander provider in a peer-competitive NASA program alongside Firefly, Astrobotic, Draper, and others.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "NASA (CLPS, Near Space Network), US Space Force, US DoD, commercial payload customers",
+    "key_suppliers": "SpaceX (Falcon 9 launch), Northrop Grumman/Aerojet Rocketdyne (engines), Honeybee Robotics (drilling)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 14,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Intuitive Machines has won five CLPS task orders and successfully landed two Nova-C missions, but the CLPS roster includes Firefly Aerospace (the only fully successful soft landing to date), Astrobotic, Draper, Masten, Lockheed Martin, and others. NASA explicitly multi-sources lunar landers to mitigate single-provider risk. While IM has a meaningful book of business including the Near Space Network contract, lunar payload delivery is a competitive market by design.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "MNTS",
+    "slug": "MNTS",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Momentus",
+    "aliases": [
+      "MNTS",
+      "MOMENTUS",
+      "Momentus",
+      "momentus"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "MNTS",
+      "coingecko_id": null,
+      "cik": "0001781162"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "In-Orbit Services",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Vigoride orbital transfer vehicle in a competitive in-space transportation market with D-Orbit, Launcher (Vast), Impulse Space, Exolaunch, and Spaceflight.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "NASA (Juno RDRE payload), Spaceworks (COSMIC), commercial smallsat operators, hosted-payload defense customers",
+    "key_suppliers": "SpaceX (Transporter rideshare launch), water-plasma thruster vendors, off-the-shelf bus components",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 31,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Momentus operates Vigoride OTVs for last-mile orbital delivery, with $3.2M Q1 2026 revenue and a Vigoride 8 mission booked for early 2027. The company removed substantial-doubt going-concern language in Q1 2026 after a $25M PIPE and convertible debt cleanup, so I am NOT flagging going-concern despite historical distress. Structurally, in-space transportation is competitive with multiple commercial OTV providers and customers (NASA, ESA) actively multi-sourcing. Microcap scale ($50M mcap) and continuing operating losses keep this a fragile but not bottlenecked operator.",
+    "state": "authored"
+  }
+}

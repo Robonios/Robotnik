@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "6723",
+    "slug": "6723",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "RENESAS ELECTRONICS CORP",
+    "aliases": [
+      "6723",
+      "RENESAS ELECTRONICS",
+      "RENESAS ELECTRONICS CORP",
+      "renesas electronics corp",
+      "Renesas"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6723",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "IDM",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Japanese auto + industrial MCU supplier — part of the auto-MCU oligopoly with multi-year qualification cycles and tight Tier-1 relationships.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Toyota, global Tier-1 auto suppliers, industrial OEMs",
+    "key_suppliers": "Foundry partners (TSMC, GlobalFoundries), wafer suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "0.5-1",
+    "sector_rank": 27,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Auto MCU is structurally a 4-player oligopoly (Renesas, NXP, Infineon, ST). Mid-platform switching is multi-year due to functional-safety qualification (ISO 26262) and software-stack porting. Revised from LOW given the auto-qualification switching cost dynamic that LOW under-weighted.",
+    "state": "authored"
+  }
+}

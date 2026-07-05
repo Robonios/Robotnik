@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "3436 JP",
+    "slug": "3436-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "SUMCO Corp",
+    "aliases": [
+      "3436 JP",
+      "SUMCO",
+      "SUMCO CORP",
+      "SUMCO Corp",
+      "sumco corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "3436 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Silicon & Substrates",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "World's second-largest silicon-wafer maker (300mm prime and epitaxial wafers), the substrate under essentially all leading-edge logic and memory.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "NXP, Infineon, SK Hynix, major Taiwanese foundries",
+    "key_suppliers": null,
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 11,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Prime 300mm wafers are made at scale by only about five firms, and Shin-Etsu with SUMCO account for roughly half the market, so the concentration is a tight oligopoly rather than a monopoly. Every advanced logic, AI and HBM device starts on one of these wafers, making the volume dependence total, but customers deliberately multi-source and a credible named second source, Shin-Etsu, is qualified at every fab, even though switching carries multi-quarter to multi-year qualification. This is the same structure as Shin-Etsu, which is already rated MEDIUM, so SUMCO rates MEDIUM for parity. Clean operating entity with no export-control choke-point role.",
+    "state": "authored"
+  }
+}

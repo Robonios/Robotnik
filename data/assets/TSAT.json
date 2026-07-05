@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "TSAT",
+    "slug": "TSAT",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Telesat Corp",
+    "aliases": [
+      "TELESAT CORP",
+      "TSAT",
+      "Telesat",
+      "Telesat Corp",
+      "telesat corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "TSAT",
+      "coingecko_id": null,
+      "cik": "0001845840"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Satellite Comms",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Legacy GEO FSS operator pivoting to Lightspeed LEO constellation; capacity and customer set is substitutable with SES, Intelsat, Eutelsat OneWeb, and Starlink.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Bell Canada, Canadian government, US DoD (some), broadcasters, enterprise data customers",
+    "key_suppliers": "MDA Space (Lightspeed prime), SpaceX (launch), MELCO (older satellites)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 15,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Canada",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Telesat's existing GEO fleet competes directly with SES, Intelsat, Eutelsat, and ABS in fixed satellite services with no unique bottleneck position. The Lightspeed LEO constellation full-service date has slipped to end-Q1 2028 due to chip supply delays, and creditors are litigating over a September 2025 equity distribution to shield Lightspeed equity from $1.7B of debt maturing December 2026. Going-concern flag set: 2025 net loss of $530M, GEO revenue declining 25%+, refinancing or bankruptcy explicitly disclosed as a risk. Structural bottleneck rating remains LOW; financial distress flagged separately.",
+    "state": "authored"
+  }
+}

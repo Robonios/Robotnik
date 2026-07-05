@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "EH",
+    "slug": "EH",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "EHANG HOLDINGS LTD-SPS ADR",
+    "aliases": [
+      "EH",
+      "EHANG",
+      "EHANG HOLDINGS",
+      "EHANG HOLDINGS LTD-SPS ADR",
+      "ehang holdings ltd-sps adr"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "EH",
+      "coingecko_id": null,
+      "cik": "0001759783"
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Autonomous Systems & Drones",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "First and only eVTOL manufacturer worldwide to hold all four Chinese CAAC certificates (Type, Airworthiness, Production, Operational) for autonomous passenger air taxi, conferring a 12-24 month regulatory head-start in the China low-altitude economy market.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Guangzhou and Hefei municipal eVTOL operators (commercial ticketed flights at RMB299), Chinese tourism/sightseeing operators, future urban air mobility customers",
+    "key_suppliers": "Chinese domestic composites, battery cell, electric motor and avionics suppliers; specific component partners not publicly disclosed in detail",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 70,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "EHang's quadruple CAAC certification (the first and currently only eVTOL company globally) creates a temporary structural bottleneck in Chinese passenger eVTOL operations. However, this is a regulatory-timing moat rather than a permanent supply-chain monopoly: AeroHT (XPeng), Autoflight, Volant Aerospace are in final certification stages, and the broader global eVTOL race includes Joby, Archer, Lilium and Vertical. Revenue base is still negligible and commercial scaling is unproven. MEDIUM (not HIGH) reflects a real but time-limited regulatory advantage in a market where viable peer-substitutes are 1-2 years away.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "ASML",
+    "slug": "ASML",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "ASML HOLDING ADR REPRESENTING NV",
+    "aliases": [
+      "ASML",
+      "ASML HOLDING ADR REPRESENTING NV",
+      "ASML Holding",
+      "asml holding adr representing nv"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "ASML",
+      "coingecko_id": null,
+      "cik": "0000937966"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "CRITICAL",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "TSM, Samsung, Intel",
+    "key_suppliers": "Carl Zeiss (optics), VDL (assembly)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "5-capped",
+    "sector_rank": 3,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Netherlands",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Sole supplier of EUV lithography — the most critical single-source dependency in the entire frontier stack. No alternative exists. Record EUR 13.2B order backlog.",
+    "state": "authored"
+  }
+}

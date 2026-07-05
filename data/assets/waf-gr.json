@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "WAF GR",
+    "slug": "waf-gr",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Siltronic AG",
+    "aliases": [
+      "SILTRONIC AG",
+      "Siltronic AG",
+      "WAF GR",
+      "siltronic ag",
+      "Siltronic"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "WAF GR",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Silicon & Substrates",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "#4 global 300mm silicon wafer supplier (~12% revenue share) inside a 5-player oligopoly (Shin-Etsu/SUMCO/GlobalWafers/Siltronic/SK Siltron) controlling ~85% of 300mm capacity.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "TSMC, Samsung, SK Hynix, Micron, Intel, Infineon, STMicro (memory + logic + power)",
+    "key_suppliers": "Polysilicon producers (Wacker, OCI, GCL), quartz crucibles, slurry/CMP consumables, specialty gases",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 18,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Germany",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Siltronic sits in the same consolidated wafer oligopoly anchored at MEDIUM for Shin-Etsu — qualification cycles for prime 300mm wafers run multi-year and capital intensity is severe, but customers can dual-source across Shin-Etsu/SUMCO/GlobalWafers/SK Siltron. 2026 guidance flagged mid-single-digit revenue decline and net debt rose to EUR 837M on heavy capex; management noted peers being 'extremely vocal' about 200mm headwinds. Not a sole-source choke; calibration vs the Shin-Etsu MEDIUM anchor implies a smaller-share oligopoly participant should also rate MEDIUM rather than higher.",
+    "state": "authored"
+  }
+}

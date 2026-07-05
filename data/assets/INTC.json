@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "INTC",
+    "slug": "INTC",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "INTEL CORPORATION CORP",
+    "aliases": [
+      "INTC",
+      "INTEL",
+      "INTEL CORPORATION CORP",
+      "Intel",
+      "intel corporation corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "INTC",
+      "coingecko_id": null,
+      "cik": "0000050863"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "IDM",
+    "value_chain": "Fabrication & Manufacturing",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "PC OEMs, data centres, government",
+    "key_suppliers": "ASML (EUV), materials vendors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "5-capped",
+    "sector_rank": 5,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Foundry pivot critical for US semiconductor sovereignty. 18A customer wins validate CHIPS Act thesis. If IFS succeeds, reduces Taiwan concentration.",
+    "state": "authored"
+  }
+}

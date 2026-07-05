@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "IPGP",
+    "slug": "IPGP",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "IPG PHOTONICS CORP",
+    "aliases": [
+      "IPG PHOTONICS",
+      "IPG PHOTONICS CORP",
+      "IPGP",
+      "ipg photonics corp",
+      "IPG"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "IPGP",
+      "coingecko_id": null,
+      "cik": "0001111928"
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Industrial Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Global leader in high-power fiber lasers with vertical integration in pump diodes; structural top-5 oligopoly with TRUMPF, Coherent, nLIGHT, Lumentum.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "EV battery weld lines, cutting/welding integrators (Amada, Bystronic, Han's), aerospace, defense directed energy",
+    "key_suppliers": "Internally vertically integrated in pump diodes; specialty optics from Lumentum/Coherent peers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 37,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "IPG has structural leadership in high-power industrial fiber lasers with vertical integration in pump diodes (a real moat that took peers ~15 years to approach). The top-5 cohort controls >60% of fiber laser share, and IPG remains the de-facto reference for >10kW industrial cutting/welding. However, Chinese Raycus (~30% China share) and MaxPhotonics have eroded the moat in commodity power bands, and Coherent/TRUMPF compete at the high end. MEDIUM reflects oligopoly position with credible substitutes at most power tiers.",
+    "state": "authored"
+  }
+}

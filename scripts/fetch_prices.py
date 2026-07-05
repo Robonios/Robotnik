@@ -384,7 +384,7 @@ EQUITIES = [
     ("4186 JP", "Tokyo Ohka Kogyo", "Materials", "Japan"),
     ("MRK GR", "Merck KGaA", "Materials", "Germany"),
     ("BAS GR", "BASF", "Materials", "Germany"),
-    ("4112 JP", "Daicel Corp", "Materials", "Japan"),
+    ("4004 JP", "Resonac Holdings", "Materials", "Japan"),
     ("4005 JP", "Sumitomo Chemical", "Materials", "Japan"),
     ("4208 JP", "UBE Corp", "Materials", "Japan"),
     ("3407 JP", "Asahi Kasei", "Materials", "Japan"),

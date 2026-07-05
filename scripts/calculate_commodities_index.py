@@ -431,7 +431,8 @@ def main():
             "commodity": commodity,
             "source": SOURCE_LABEL[source],
             "basis": basis,
-            "native_price": snap["native_price"], "native_unit": snap["native_unit"],
+            # native_price / native_unit omitted from published output (ToS: no raw
+            # native spot price on the served tree); usd_price and base are derived.
             "native_currency": snap["native_currency"],
             "fx_rate_to_usd": snap["fx_rate_to_usd"], "fx_date_used": snap["fx_date_used"],
             "usd_price": round(snap["usd_price"], 6), "price_unit_usd": snap["price_unit_usd"],
@@ -520,12 +521,12 @@ def main():
 
     # ── 7. Surface ──────────────────────────────────────────────────────────
     print("\nMODE: {}   base {} = {:.2f}".format("GENESIS" if genesis else "WEEKLY", base_date, BASE_VALUE))
-    print("{:14s} {:>14s} {:>5s} {:>15s} {:>15s} {:>9s} {:>7s}".format(
-        "COMMODITY", "NATIVE", "CCY", "USD now", "USD base", "REL", "LIVE%"))
+    print("{:14s} {:>5s} {:>15s} {:>15s} {:>9s} {:>7s}".format(
+        "COMMODITY", "CCY", "USD now", "USD base", "REL", "LIVE%"))
     print("-" * 84)
     for c in constituents:
-        print("{:14s} {:>14.4f} {:>5s} {:>15.4f} {:>15.4f} {:>9.5f} {:>6.2f}%{}".format(
-            c["commodity"], c["native_price"], c["native_currency"], c["usd_price"],
+        print("{:14s} {:>5s} {:>15.4f} {:>15.4f} {:>9.5f} {:>6.2f}%{}".format(
+            c["commodity"], c["native_currency"], c["usd_price"],
             c["base_price_usd"], c["relative_to_base"], c["live_weight_pct"],
             "  <cap>" if c["capped"] else ("  carry" if c["carried_last_observation"] else "")))
     print("-" * 84)

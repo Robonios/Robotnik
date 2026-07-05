@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "id": "LSCC",
+    "slug": "LSCC",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Lattice Semiconductor Corp",
+    "aliases": [
+      "LATTICE CORP",
+      "LATTICE SEMICONDUCTOR CORP",
+      "LSCC",
+      "Lattice Semiconductor",
+      "Lattice Semiconductor Corp",
+      "lattice semiconductor corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "LSCC",
+      "coingecko_id": null,
+      "cik": "0000855658"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Low-power FPGA leader at sub-65nm process nodes — owns the low-density low-power FPGA niche.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Industrial, comms, AI inference at edge",
+    "key_suppliers": "Foundry partners (Samsung, TSMC)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 36,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "AMD (Xilinx) competes upmarket; Microchip in adjacencies. Toolchain lock-in slows but doesn't block substitution.",
+    "state": "authored"
+  }
+}

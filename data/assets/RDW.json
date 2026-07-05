@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "RDW",
+    "slug": "RDW",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Redwire Corp",
+    "aliases": [
+      "RDW",
+      "REDWIRE CORP",
+      "Redwire",
+      "Redwire Corp",
+      "redwire corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "RDW",
+      "coingecko_id": null,
+      "cik": "0001819810"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Space Components",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Sole supplier of Roll-Out Solar Array (ROSA/iROSA) deployable solar wings powering the ISS, Lunar Gateway PPE, and Axiom Station, with 300+ patents and 100% on-orbit success across 1,000+ missions.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "NASA, Axiom Space, Boeing, Maxar, Thales Alenia Space, US Space Force, ESA",
+    "key_suppliers": "Solar cell vendors (Spectrolab, Azur Space), composite & substrate manufacturers, MOOG (collaborator on ELSA contract)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 16,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Redwire's ROSA/ELSA deployable solar arrays and in-space manufacturing IP (acquired via Deployable Space Systems) create real switching costs - qualification for crewed/long-duration platforms takes years and competitors Beyond Gravity and Airbus Defence & Space have different form factors. However, multiple deployable solar alternatives exist and RDW is one of several space-infrastructure component suppliers rather than a single chokepoint. MEDIUM reflects the qualification moat without overstating monopoly position.",
+    "state": "authored"
+  }
+}

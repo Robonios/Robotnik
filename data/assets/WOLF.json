@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "WOLF",
+    "slug": "WOLF",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Wolfspeed Inc",
+    "aliases": [
+      "WOLF",
+      "WOLFSPEED INC",
+      "Wolfspeed",
+      "Wolfspeed Inc",
+      "wolfspeed inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "WOLF",
+      "coingecko_id": null,
+      "cik": "0000895419"
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "IDM",
+    "value_chain": "Fabrication & Manufacturing",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Largest US-based 200mm SiC substrate + SiC MOSFET capacity (Mohawk Valley fab).",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "EV power electronics OEMs, industrial inverter makers, defence",
+    "key_suppliers": "Wafer-handling equipment, materials",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 21,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "US national-security-relevant SiC substrate position (CHIPS Act funded), but global SiC market has credible substitutes (Coherent's 200mm rollout, ROHM, Sumitomo, Infineon vertical). Going-concern risk is real (Ch.11 watch as of late 2025) — flagged separately rather than weighted into the structural bottleneck rating.",
+    "state": "authored"
+  }
+}

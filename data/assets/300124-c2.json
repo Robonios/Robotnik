@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "300124 C2",
+    "slug": "300124-c2",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "SHENZHEN INOVANCE TECHNOLO-A",
+    "aliases": [
+      "300124 C2",
+      "SHENZHEN INOVANCE TECHNOLO-A",
+      "shenzhen inovance technolo-a"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "300124 C2",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Motion Control & Actuators",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Dominant China servo drive + low-voltage VFD supplier with ~40% domestic servo share; deep penetration into robot joint motors and industrial automation.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Chinese industrial robot OEMs, EV battery equipment makers, CNC builders, humanoid robot startups",
+    "key_suppliers": "Power semiconductor suppliers (STM, Infineon), rare earth magnet suppliers, MCU vendors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 8,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Inovance is the largest industrial automation player in China with leading shares in general-purpose servo systems and VFDs, and supplies servo motors for ~70% of domestic robot joint applications. While Inovance dominates China, global servo competition (Yaskawa, Mitsubishi, Siemens, Rockwell, ABB) is strong and switching is feasible outside China, so MEDIUM reflects China-only qualification stickiness rather than global monopoly.",
+    "state": "authored"
+  }
+}

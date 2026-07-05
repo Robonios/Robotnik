@@ -1,0 +1,3 @@
+# Assets Screener (retired)
+
+Retired 3 July 2026. These files are the previous Frontier Assets implementation: a live public-market screener (`assets.html`) and its controller (`assets.js`) that redisplayed raw vendor price, percentage change, market capitalisation, volume and 30-day sparkline data sourced from MarketStack and Yahoo. It was withdrawn from the public surface owing to vendor-licence exposure (raw price redisplay) and replaced by a placeholder page at the same URL. The sector and subsector glossary content in the old `assets.html` (roughly lines 172 to 280) is retained here and is earmarked for reuse in the forthcoming per-asset profile rebuild.

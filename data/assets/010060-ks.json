@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "010060 KS",
+    "slug": "010060-ks",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "OCI Holdings",
+    "aliases": [
+      "010060 KS",
+      "OCI",
+      "OCI HOLDINGS",
+      "OCI Holdings",
+      "oci holdings"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "010060 KS",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Industrial & Specialty Gases",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Korean chemicals group; via OCI Company Ltd it makes solar- and semiconductor-grade polysilicon plus phosphoric acid and specialty gases. Non-China supply optionality but no concentrated, hard-to-substitute position.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "SK Hynix (semiconductor-grade phosphoric acid), CubicPV (polysilicon offtake), Nexeon (monosilane)",
+    "key_suppliers": null,
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 19,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "South Korea",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Solar polysilicon is commoditised and roughly nine-tenths China-controlled, and OCI fell out of the global top ten producers in 2023; in semiconductor-grade polysilicon the leaders are Wacker, Hemlock and Tokuyama, with OCI a secondary source. Its one genuine lift is scarce non-China, forced-labour-clean supply plus qualified niches such as semiconductor-grade phosphoric acid to Korean memory makers, but that value is policy-contingent (US import and Section 232 measures) rather than a structural choke. Rated LOW: no concentrated position others cannot route around. It would rise to MEDIUM only if the non-China scarcity premium is weighted heavily.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "ALB",
+    "slug": "ALB",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Albemarle Corp",
+    "aliases": [
+      "ALB",
+      "ALBEMARLE CORP",
+      "Albemarle",
+      "Albemarle Corp",
+      "albemarle corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "ALB",
+      "coingecko_id": null,
+      "cik": "0000915913"
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Battery Materials",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Battery manufacturers, EV companies",
+    "key_suppliers": "Lithium brine/spodumene operations",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 9,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "#1 lithium producer. Geographic diversification (Australia, Chile, US). Battery supply chain for frontier stack mobile systems.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "WCH GR",
+    "slug": "wch-gr",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Wacker Chemie",
+    "aliases": [
+      "WACKER CHEMIE",
+      "WCH GR",
+      "Wacker Chemie",
+      "wacker chemie",
+      "Wacker"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "WCH GR",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Process Chemicals",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "One of two Western producers of semiconductor-grade hyperpure polysilicon (with Hemlock); supplies high-purity poly used at leading-edge logic and memory fabs.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Shin-Etsu, SUMCO, GlobalWafers, Siltronic (wafer manufacturers); Intel, GlobalFoundries downstream",
+    "key_suppliers": "Internal silicon metal sourcing, trichlorosilane production captive, energy (German power)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 15,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Germany",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Wacker is the dominant Western supplier of electronic-grade polysilicon and together with Hemlock controls roughly three-quarters of the semiconductor-grade poly market. With Chinese poly (GCL, Tongwei) primarily solar-grade and the US Section 232 investigation reinforcing Western sourcing preference, Wacker is structurally embedded in the semiconductor wafer supply chain. Capacity expansion plus shift away from solar-grade reinforces semi-criticality. HIGH rather than CRITICAL because Hemlock provides genuine alternative.",
+    "state": "authored"
+  }
+}

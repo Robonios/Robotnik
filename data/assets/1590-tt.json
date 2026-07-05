@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "1590 TT",
+    "slug": "1590-tt",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "AIRTAC INTERNATIONAL GROUP",
+    "aliases": [
+      "1590 TT",
+      "AIRTAC INTERNATIONAL GROUP",
+      "airtac international group"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "1590 TT",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Motion Control & Actuators",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "#2 pneumatic component supplier in China (~30% share) producing cylinders, valves, and FRLs; positioned as cost-disruptive alternative to SMC/Festo.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Chinese automation system integrators, EV battery makers (CATL), packaging machine OEMs, semiconductor tool builders",
+    "key_suppliers": "Aluminum extrusion mills, solenoid coil suppliers, seal/elastomer suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 21,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Taiwan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Airtac has gained share aggressively from Japanese pneumatics incumbents on price and now holds ~30% of China pneumatics, with plans to reach 33-35% by 2028-2030. However, the pneumatic component market is structurally competitive with SMC, Festo, Parker, CKD, and various Chinese players (Yadeke, etc.). Airtac is a strong margin operator but its product line is broadly substitutable, supporting LOW.",
+    "state": "authored"
+  }
+}

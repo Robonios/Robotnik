@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "SOI FP",
+    "slug": "soi-fp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Soitec SA",
+    "aliases": [
+      "SOI FP",
+      "SOITEC SA",
+      "Soitec SA",
+      "soitec sa"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "SOI FP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Silicon & Substrates",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "CRITICAL",
+    "description": "Sole-source supplier of RF-SOI wafers for 5G smartphone front-ends and the only volume-qualified supplier of photonics-grade SOI wafers used in AI photonics chips, protected by ~4,300 Smart Cut patents.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Qualcomm, Skyworks, Qorvo, Broadcom (RF-SOI); STMicroelectronics, GlobalFoundries (FD-SOI); TSMC, Intel, Tower (photonics-SOI for AI optical transceivers)",
+    "key_suppliers": "Shin-Etsu/SUMCO (bulk silicon wafers as substrate), captive Smart Cut process",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 16,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "France",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Soitec holds ~80% of total SOI wafers and BofA estimates >95% in photonics-grade SOI; >70% RF-SOI share for 5G smartphones. Smart Cut process is patent-protected (4,300 patents) with no equivalent process at volume. Photonics-SOI for AI optical transceivers is a sole-source dependency for the AI scale-up roadmap with no qualified second source today. RF-SOI and photonics-SOI together meet the calibration bar for CRITICAL (sole-source, no viable substitute today).",
+    "state": "authored"
+  }
+}

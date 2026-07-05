@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "id": "LECO",
+    "slug": "LECO",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Lincoln Electric Holdings Inc",
+    "aliases": [
+      "LECO",
+      "LINCOLN ELECTRIC HOLDINGS INC",
+      "Lincoln Electric",
+      "Lincoln Electric Holdings",
+      "Lincoln Electric Holdings Inc",
+      "lincoln electric holdings inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "LECO",
+      "coingecko_id": null,
+      "cik": "0000059527"
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Industrial Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Largest North American welding equipment/consumables supplier; competes head-to-head with ITW/Miller, ESAB, Kemppi.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Heavy industry, construction, shipyards, automotive welding cells, energy",
+    "key_suppliers": "Steel/wire raw materials, electronics for inverters",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 13,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Lincoln has ~18% global welding share and strong brand, but the welding equipment and consumables market is structurally competitive with multiple credible alternatives (ITW/Miller, ESAB, Fronius, Panasonic, Daihen). Switching is operationally easy; consumables interchange across vendors. No sole-source choke-point.",
+    "state": "authored"
+  }
+}

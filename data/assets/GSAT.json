@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "GSAT",
+    "slug": "GSAT",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Globalstar",
+    "aliases": [
+      "GLOBALSTAR",
+      "GSAT",
+      "Globalstar",
+      "globalstar"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "GSAT",
+      "coingecko_id": null,
+      "cik": "0001366868"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "In-Orbit Services",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "MSS L/S-band spectrum and Band 53/n53 licenses underpinning Apple's iPhone Emergency SOS service; substitute D2D paths exist but lock-in is multi-year.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Apple (anchor, ~85% capacity allocation), XCOM-Labs, Qualcomm, IoT and asset-tracking customers",
+    "key_suppliers": "MDA Space (next-gen satellites), Rocket Lab (satellite bus subcontractor to MDA), SpaceX (launch)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 7,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Globalstar has allocated 85% of current and future network capacity to Apple's Emergency SOS, with Apple investing ~$1.1B plus taking a ~20% equity stake to fund the next-generation constellation. The MSS spectrum (including Band 53/n53) and ground infrastructure are unique to Globalstar and not readily replicable. However, Apple could theoretically migrate to AST SpaceMobile, Iridium, or Starlink Direct-to-Cell over a multi-year horizon, so this is a costly but not impossible switch. Conservative MEDIUM in line with AST SpaceMobile-style D2C moats one tier above peers but below true sole-source.",
+    "state": "authored"
+  }
+}

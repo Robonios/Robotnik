@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "098460 KS",
+    "slug": "098460-ks",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "KOH YOUNG TECHNOLOGY INC.",
+    "aliases": [
+      "098460 KS",
+      "KOH YOUNG TECHNOLOGY",
+      "KOH YOUNG TECHNOLOGY INC.",
+      "koh young technology inc."
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "098460 KS",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Machine Vision & Sensors",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Sole producer of 3D AOI inspection equipment with 52% global SPI share and 30% AOI share, 24,000+ installed base, dominant in 3D Moire SMT inspection.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "EMS providers (Foxconn, Jabil, Flex), automotive electronics, semiconductor advanced packaging customers, defense electronics",
+    "key_suppliers": "CMOS image sensors, lasers, precision motion components, projection optics",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 61,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "South Korea",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Koh Young has held #1 global market share in 3D SPI (52%) and 3D AOI (30%) since 2006 and is described as the only producer of 3D AOI equipment using patented dual-projection Moire technology, with 24,000+ installed machines. Customers face real switching friction given installed-base inertia and 3D measurement workflow integration into SMT/advanced-packaging lines. However, 2D AOI and competing 3D systems from Test Research Inc (TRI), CyberOptics, Saki and Omron offer realistic substitution paths for many applications, so MEDIUM rather than HIGH. Aligns with MEDIUM anchor for structural duopoly/leader positions with viable but costly substitution.",
+    "state": "authored"
+  }
+}

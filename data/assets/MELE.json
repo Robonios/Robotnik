@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "MELE",
+    "slug": "MELE",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "MELEXIS NV",
+    "aliases": [
+      "MELE",
+      "MELEXIS NV",
+      "melexis nv"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "MELE",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Hall-effect/magnetic sensors for automotive (Belgian fabless).",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Tier-1 auto suppliers",
+    "key_suppliers": "Foundry partners",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 61,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Belgium",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Allegro (also in this batch, MEDIUM), Infineon, NXP, TI substitute. Note: Melexis is positioned closer to commodity Hall-effect than the safety-rated Allegro positions that justified MEDIUM there; this is a deliberate rating differentiation within the same product family.",
+    "state": "authored"
+  }
+}

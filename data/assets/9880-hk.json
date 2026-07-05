@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "id": "9880 HK",
+    "slug": "9880-hk",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "UBTECH ROBOTICS CORP LTD-H",
+    "aliases": [
+      "9880 HK",
+      "UBTECH ROBOTICS",
+      "UBTECH ROBOTICS CORP",
+      "UBTECH ROBOTICS CORP LTD-H",
+      "ubtech robotics corp ltd-h",
+      "UBTech"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "9880 HK",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Humanoid & Service Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "One of several Chinese humanoid OEMs (Walker S series) competing with Unitree, Xpeng, Fourier, Agibot domestically and Tesla/Figure/Apptronik globally; no sole-source role in any downstream OEM supply chain.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Dongfeng, BYD, Geely, Foxconn (humanoid pilots); Chinese education sector (Alpha/Cruzr); consumer Jimu kits",
+    "key_suppliers": "Inovance Technology (servo motors), ZD Motor (joint modules), Green Harmonic / Leader Drive (harmonic reducers), domestic Chinese precision components",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 27,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "China",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "UBTECH is a humanoid system integrator that pilots Walker S units in Chinese auto plants (Dongfeng, BYD, Geely, Foxconn), but these are pilot deployments, not committed production-line dependencies. The company is a buyer of critical components (Inovance servos, ZD Motor joint modules, harmonic reducers) rather than a supplier of them, so any bottleneck rents accrue upstream. The humanoid OEM market is structurally crowded with multiple peers shipping at similar maturity. This places UBTECH below industrial-robot incumbents (Fanuc/ABB at LOW) on bottleneck dimensions because its end-customer commitments are still pre-commercial pilots.",
+    "state": "authored"
+  }
+}

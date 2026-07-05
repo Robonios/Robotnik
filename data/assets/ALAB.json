@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "ALAB",
+    "slug": "ALAB",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "ASTERA LABS INC",
+    "aliases": [
+      "ALAB",
+      "ASTERA LABS",
+      "ASTERA LABS INC",
+      "astera labs inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "ALAB",
+      "coingecko_id": null,
+      "cik": "0001736297"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Leading PCIe Gen5/6 retimers + CXL interconnect for AI server fabric — niche leader with TSMC fab dependence.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Hyperscalers (Meta, MS, AWS), AI server OEMs",
+    "key_suppliers": "TSMC (foundry)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "0.5-1",
+    "sector_rank": 22,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Hyperscalers are dual-sourcing across Astera/Marvell/Credo. TSMC dependence on the fab side adds an upstream constraint. Switching cost is real (board-level qualification) but substitutes exist.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "AVIO IM",
+    "slug": "avio-im",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Avio SpA",
+    "aliases": [
+      "AVIO IM",
+      "AVIO SPA",
+      "Avio SpA",
+      "avio spa"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "AVIO IM",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Launch",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Sole European prime for Vega-C small/medium launch and solid-rocket-motor propulsion (P120C boosters shared with Ariane 6), positioning Avio as the only ESA-funded sovereign small-launch and tactical solid-propellant capability in Europe.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "European Space Agency, EU Commission (Galileo, Copernicus), Italian MoD, ArianeGroup (P120C boosters for Ariane 6), defense ministries (European + US tactical missile propulsion)",
+    "key_suppliers": "Europropulsion JV (with ArianeGroup) for solid motors, Italian/European aerospace supply chain, Snecma/Safran for upper-stage engines, Italian government-backed CDP financing",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 18,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Italy",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Avio benefits from sovereign-launch policy: ESA has formally designated it as Vega launch service provider post-Arianespace split, and P120C solid boosters are dual-use for Ariane 6 and Vega-C, making it structurally embedded in European institutional access to space. It is also Europe's only tier-1 large solid-propellant prime, relevant for the K-defense-style European missile build-out. However, ESA's European Launcher Challenge (Isar Aerospace, RFA, Maiaspace, Orbex, PLD Space) is funded specifically to introduce competition, and SpaceX rideshare remains a commercial substitute for non-sovereign payloads. Regional monopoly with eroding moat = MEDIUM.",
+    "state": "authored"
+  }
+}

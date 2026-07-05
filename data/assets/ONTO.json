@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "ONTO",
+    "slug": "ONTO",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Onto Innovation Inc",
+    "aliases": [
+      "ONTO",
+      "ONTO INNOVATION INC",
+      "Onto Innovation",
+      "Onto Innovation Inc",
+      "onto innovation inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "ONTO",
+      "coingecko_id": null,
+      "cik": "0000704532"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Macro defect inspection + lithography metrology + advanced-packaging inspection.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Leading-edge fabs + advanced-packaging operations",
+    "key_suppliers": "Optical components",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 39,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "KLA dominates patterned-wafer inspection; Onto leads in macro inspection and advanced-packaging metrology. Substitutes per-application but not blanket.",
+    "state": "authored"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "SPIR",
+    "slug": "SPIR",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Spire Global",
+    "aliases": [
+      "SPIR",
+      "SPIRE GLOBAL",
+      "Spire Global",
+      "spire global"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "SPIR",
+      "coingecko_id": null,
+      "cik": "0001816017"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "In-Orbit Services",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "100+ satellite RO/AIS/RF data constellation competing with PlanetiQ, GeoOptics, Kleos, HawkEye 360, and Unseenlabs in weather and RF-geolocation data services.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "NOAA, NASA, ESA, US Space Force, EUMETSAT, defense and intelligence agencies, Luxembourg Space Agency",
+    "key_suppliers": "Glasgow in-house satellite manufacturing, SpaceX/Rocket Lab (launch), commercial GNSS receivers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 24,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Spire operates ~100 LEMUR cubesats providing GNSS radio-occultation weather data, AIS/ADS-B tracking, and RF intelligence. Competitors include PlanetiQ and GeoOptics (RO weather), HawkEye 360 and Unseenlabs (RF geolocation), Kleos Space (RF), and ORBCOMM (AIS). Government customers (NOAA, ESA, NASA, DoD) explicitly multi-source data buys to avoid single-vendor lock-in. RF geolocation and weather-data niches are competitive and growing, with no unique chokehold position. Microcap scale with persistent operating losses.",
+    "state": "authored"
+  }
+}

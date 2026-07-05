@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "108490 KS",
+    "slug": "108490-ks",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "ROBOTIS CO LTD",
+    "aliases": [
+      "108490 KS",
+      "ROBOTIS CO",
+      "ROBOTIS CO LTD",
+      "robotis co ltd"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "108490 KS",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Humanoid & Service Robots",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Maker of Dynamixel all-in-one smart servo actuators widely used in research and education robots; competes with Maxon, Faulhaber, U2D2/Cubemars/Dephy in smart-servo categories.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Academic and research robotics labs globally, ROS/OpenManipulator ecosystem, Korean delivery pilots",
+    "key_suppliers": "Korean precision component supply chain (motors, encoders), in-house cycloidal Dynamixel Drive gearing",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 55,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "South Korea",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Dynamixel is well-known in the academic/educational robot ecosystem (TurtleBot, OpenManipulator), but smart servos are a contested category with multiple alternatives at varying price/performance points. Robotis is not a sole-source for any industrial humanoid OEM — production humanoids use proprietary actuators or harmonic-reducer + motor pairs from Harmonic Drive Systems, Nidec, or Chinese suppliers. The Dynamixel ecosystem stickiness in research labs is genuine but not a critical-stack bottleneck. Delivery robot business adds further contested SKUs. LOW.",
+    "state": "authored"
+  }
+}

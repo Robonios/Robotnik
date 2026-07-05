@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "id": "TSEM",
+    "slug": "TSEM",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Tower Semiconductor Ltd",
+    "aliases": [
+      "TOWER LTD",
+      "TOWER SEMICONDUCTOR LTD",
+      "TSEM",
+      "Tower Semiconductor",
+      "Tower Semiconductor Ltd",
+      "tower semiconductor ltd"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "TSEM",
+      "coingecko_id": null,
+      "cik": "0000928876"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Foundry",
+    "value_chain": "Fabrication & Manufacturing",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Specialty foundry — RF SOI, high-voltage analog, BCD, SiGe. RF SOI capacity in particular is mission-critical for smartphone PA chips with multi-year qualification cycles.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "RF chip designers (Qorvo, Skyworks, Broadcom), power management ICs",
+    "key_suppliers": "Wafer + materials suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 33,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "RF SOI capacity is structurally tight — Tower + GlobalFoundries are the merchant suppliers for smartphone PA chips. Failed Intel acquisition (2022-23) demonstrated the strategic value of this capacity. Multi-year process qualification creates real switching friction for fabless customers. Revised from MEDIUM on merchant-supplier oligopoly grounds.",
+    "state": "authored"
+  }
+}

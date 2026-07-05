@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "PLAB",
+    "slug": "PLAB",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Photronics Inc",
+    "aliases": [
+      "PHOTRONICS INC",
+      "PLAB",
+      "Photronics",
+      "Photronics Inc",
+      "photronics inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "PLAB",
+      "coingecko_id": null,
+      "cik": "0000810136"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Merchant photomask supplier in a structurally concentrated market.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Foundries, IDMs without captive mask shops",
+    "key_suppliers": "Mask blanks, optical materials",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 63,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Structurally concentrated market (Photronics + DNP + Toppan + Hoya). Captive mask shops at Samsung/Intel/SMIC reduce merchant TAM but provide no substitution for non-IDM customers.",
+    "state": "authored"
+  }
+}

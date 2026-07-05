@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "6268 JP",
+    "slug": "6268-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "NABTESCO CORP.",
+    "aliases": [
+      "6268 JP",
+      "NABTESCO",
+      "NABTESCO CORP.",
+      "nabtesco corp."
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6268 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Motion Control & Actuators",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Dominant global supplier of RV (cycloidal) reducers used in the base, shoulder, and elbow joints of articulated industrial robots; ~35-60% global share in robot RV reducers.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "FANUC, Yaskawa, ABB, KUKA, Kawasaki, Mitsubishi Electric, humanoid robot OEMs, Boeing/Airbus (aerospace actuators), railway brake market",
+    "key_suppliers": "Specialty bearing steel suppliers, precision grinding equipment, casting foundries",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 41,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Nabtesco RV reducers and Harmonic Drive strain-wave gears together form the de-facto duopoly enabling global industrial robot production. Nabtesco holds 35-60% share in RV reducers with top-3 (Nabtesco/Sumitomo/Spinea) collectively above 80%. RV reducer qualification at robot OEMs spans multi-year validation cycles and the precision class remains hard to match. HIGH (not CRITICAL) reflects credible alternatives (Sumitomo, Spinea, emerging Chinese suppliers like Shuanghuan) but with prohibitive switching cost in premium robot platforms.",
+    "state": "authored"
+  }
+}

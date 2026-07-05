@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "id": "FORM",
+    "slug": "FORM",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "FormFactor Inc",
+    "aliases": [
+      "FORM",
+      "FORMFACTOR INC",
+      "FormFactor",
+      "FormFactor Inc",
+      "formfactor inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "FORM",
+      "coingecko_id": null,
+      "cik": "0001039399"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Wafer probe cards — dominant in HBM probe-card segment; the AI-memory ramp leverages this position as the highest-value subsegment of test infrastructure.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Micron, SK Hynix, Samsung (HBM test); leading-edge logic test customers",
+    "key_suppliers": "Substrate suppliers, MEMS suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 45,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Probe cards are a 3-supplier market (FormFactor, MJC, Technoprobe). FormFactor's HBM probe-card position is leveraged by the AI-memory ramp — HBM cards have multi-quarter qualification timelines, making mid-program switching impractical. Revised from MEDIUM given the HBM-specific dominance in the highest-value test segment.",
+    "state": "authored"
+  }
+}

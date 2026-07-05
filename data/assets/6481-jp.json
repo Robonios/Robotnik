@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "6481 JP",
+    "slug": "6481-jp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "THK CO LTD.",
+    "aliases": [
+      "6481 JP",
+      "THK CO",
+      "THK CO LTD.",
+      "thk co ltd."
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6481 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Motion Control & Actuators",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "World #1 linear motion (LM) guide and ball screw supplier; precision class deeply qualified into semiconductor lithography, machine tool, and high-precision robotics.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "ASML, Nikon, Tokyo Electron, Yaskawa, FANUC, semiconductor fab equipment makers, machine tool builders",
+    "key_suppliers": "Bearing steel suppliers, precision grinding service providers, ceramic component suppliers",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 33,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "THK invented the linear motion guide in 1972 and remains global #1 in precision linear guides, with deep qualification into ASML/Nikon lithography, Yaskawa robots, and precision machine tools. While Hiwin, NSK, Bosch Rexroth, Schaeffler, and IKO contest the broader market, THK retains premium-class incumbency in high-precision/semi-grade applications. MEDIUM reflects this qualification stickiness in critical applications while acknowledging viable substitutes exist outside the precision tier.",
+    "state": "authored"
+  }
+}

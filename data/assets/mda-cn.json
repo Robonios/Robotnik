@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "MDA CN",
+    "slug": "mda-cn",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "MDA Space",
+    "aliases": [
+      "MDA CN",
+      "MDA SPACE",
+      "MDA Space",
+      "mda space"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "MDA CN",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "In-Orbit Services",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Canadian space-systems prime across space robotics (Canadarm heritage), SAR Earth observation (RADARSAT) and satellite systems (Aurora bus, phased-array antennas); sole-source builder of Canada's flagship robotics.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Canadian Space Agency (Canadarm3), NASA (Canadarm2 / Gateway via CSA), Telesat (Lightspeed), Globalstar",
+    "key_suppliers": null,
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 10,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Canada",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "MDA's robotics line is a sovereign-locked choke point: Canadarm3 is Canada's designated national contribution to the Lunar Gateway, contracted sole-source and effectively impossible to re-source to a non-Canadian firm without unwinding an international agreement. That pocket reads HIGH, arguably higher within the Canada and Gateway lane. The bulk of MDA's growth, however, sits in competitive markets, satellite buses and antennas for Telesat Lightspeed and Globalstar, where customers have alternatives such as Airbus and Thales Alenia Space. Blended, the company rates MEDIUM, with the sovereign robotics franchise as the sharp pocket. Programme-concentration risk attaches to the repeatedly re-scoped Lightspeed constellation.",
+    "state": "authored"
+  }
+}

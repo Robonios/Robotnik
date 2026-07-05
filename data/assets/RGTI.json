@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "RGTI",
+    "slug": "RGTI",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "RIGETTI COMPUTING INC",
+    "aliases": [
+      "RGTI",
+      "RIGETTI COMPUTING",
+      "RIGETTI COMPUTING INC",
+      "rigetti computing inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "RGTI",
+      "coingecko_id": null,
+      "cik": "0001838359"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": null,
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": "Full-stack superconducting quantum-computing company with an in-house superconducting-chip fab (Fab-1); pre-commercial, with no part of the stack yet dependent on it.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "US Air Force Research Laboratory, DARPA, Amazon Braket (distribution)",
+    "key_suppliers": null,
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 53,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Quantum computing is pre-commercial research, and nothing in robotics, semiconductors, space or materials depends on Rigetti today; usage is experimental and revenue is immaterial. The field is crowded and contestable, with IBM, Google, IonQ, Quantinuum and others, and effectively no switching lock-in for users. Its in-house Fab-1, described as the first dedicated quantum foundry, is a genuine vertical-integration differentiator worth noting, but it is a capability Rigetti uses for itself rather than an input others must buy, so it creates no control point. Rated LOW with high confidence, the textbook pre-commercial case.",
+    "state": "authored"
+  }
+}

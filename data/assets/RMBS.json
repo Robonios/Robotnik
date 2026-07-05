@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "RMBS",
+    "slug": "RMBS",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "RAMBUS INC",
+    "aliases": [
+      "RAMBUS",
+      "RAMBUS INC",
+      "RMBS",
+      "rambus inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "RMBS",
+      "coingecko_id": null,
+      "cik": "0000917273"
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "EDA & IP",
+    "value_chain": "IP & Design",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Memory interface IP (DDR5 RDIMM, CXL.mem) + security IP.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Memory controllers (AMD, Intel), CXL ecosystem participants",
+    "key_suppliers": "n/a (IP licensing model)",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductors Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 43,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Owns several memory-interface patents that are difficult to design around for DDR5/CXL. Synopsys and Cadence offer competing IP for adjacent functions; Rambus's RCD/MRDIMM positioning gives near-term dominance with CXL substitution paths emerging.",
+    "state": "authored"
+  }
+}

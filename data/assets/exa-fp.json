@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "EXA FP",
+    "slug": "exa-fp",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "EXAIL TECHNOLOGIES",
+    "aliases": [
+      "EXA FP",
+      "EXAIL TECHNOLOGIES",
+      "exail technologies"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "EXA FP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Autonomous Systems & Drones",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Top-tier global supplier of fiber-optic gyroscope inertial navigation systems, with vertically integrated FOG manufacturing and trusted-by-70-navies status creating multi-year qualification switching cost in maritime/defense INS.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "70+ navies and armies globally including French Navy, Spanish Forces, US Navy (subsea), European tactical drone programs (Airbus), satellite primes (Astrix series for spacecraft attitude control)",
+    "key_suppliers": "Vertically integrated; designs and manufactures FOG coils, accelerometers, electronics and algorithms in-house; minimal external dependency for core IP",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 52,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "France",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Exail sits in a structural global top-3 FOG oligopoly with Honeywell and Safran (top 5 collectively ~70% of nav-grade revenue), and defense/space qualification creates prohibitive switching cost on awarded programs. However, this is a peer-competitive oligopoly — Honeywell, Safran, Northrop Grumman LITEF, and KVH all compete for new sockets, and ring-laser-gyro and MEMS IMU alternatives exist in lower-grade tiers. MEDIUM reflects real qualification moat consistent with structural-duopoly anchors but not a sole-source position.",
+    "state": "authored"
+  }
+}

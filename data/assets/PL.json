@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "PL",
+    "slug": "PL",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Planet Labs",
+    "aliases": [
+      "PL",
+      "PLANET LABS",
+      "Planet Labs",
+      "planet labs"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "PL",
+      "coingecko_id": null,
+      "cik": "0001836833"
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Earth Observation",
+    "value_chain": "Deployment & Operation",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "LOW",
+    "description": null,
+    "confidence": null,
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "Government, agriculture, insurance",
+    "key_suppliers": "Launch providers, semiconductor sensors",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 5,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Largest EO constellation (~200 satellites). Daily global imaging. Semiconductor content per satellite rising with onboard AI processing.",
+    "state": "authored"
+  }
+}

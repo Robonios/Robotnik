@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "6488 TT",
+    "slug": "6488-tt",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "GlobalWafers",
+    "aliases": [
+      "6488 TT",
+      "GLOBALWAFERS",
+      "GlobalWafers",
+      "globalwafers"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "6488 TT",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Silicon & Substrates",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "#3 global 300mm silicon wafer supplier (~17% revenue share) inside the 5-player Shin-Etsu/SUMCO/GlobalWafers/Siltronic/SK Siltron oligopoly that controls ~85% of capacity.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "TSMC, Samsung, Intel, Micron, SK Hynix, Texas Instruments, GlobalFoundries, Infineon, onsemi",
+    "key_suppliers": "Polysilicon (Wacker, OCI, Hemlock, Tokuyama), quartz crucibles, CMP slurry, specialty gases",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 7,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Taiwan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "GlobalWafers is a meaningful member of the consolidated silicon-wafer oligopoly anchored at MEDIUM (Shin-Etsu). Multi-year qualification cycles, severe capital intensity (its Sherman, TX phase-2 expansion is part of a $7.5B program), and tight 300mm capacity create real switching frictions, but customers can dual-source across at least four other prime wafer suppliers. The Sherman fab and the US CHIPS Act anchoring give it slight strategic premium as the leading non-Japanese/non-Korean US-domiciled 300mm supplier, but not enough to lift above MEDIUM under the conservative framework.",
+    "state": "authored"
+  }
+}

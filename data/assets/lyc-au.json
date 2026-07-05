@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "id": "LYC AU",
+    "slug": "lyc-au",
+    "schema_version": "asset-profile/1.0",
+    "generated_at": "2026-07-04T08:26:00.457429+00:00"
+  },
+  "identity": {
+    "name": "Lynas Rare Earths",
+    "aliases": [
+      "LYC AU",
+      "LYNAS RARE EARTHS",
+      "Lynas Rare Earths",
+      "lynas rare earths"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "LYC AU",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Rare Earths & Critical Minerals",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Only scaled rare-earth separator outside China and the first commercial producer of separated heavy rare earths (dysprosium, terbium) ex-China.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": "JARE (JOGMEC/Sojitz), Japanese magnet makers, US DoD-funded Texas separation, European auto/wind OEMs",
+    "key_suppliers": "Internal Mt Weld ore; reagents, fuel, regional power",
+    "state": "mapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Sub-Index",
+    "weight_band": "<0.25",
+    "sector_rank": 8,
+    "state": "live"
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Australia",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": "Lynas operates the only fully integrated mine-to-separated-oxide rare earth supply chain outside China (Mt Weld mine, Kalgoorlie cracking-and-leaching, Malaysia separation, Kalgoorlie heavy REE expansion). First Dy shipments achieved 1H FY26, Tb following, with the JARE/Japan offtake extended to 2038 at a $110/kg NdPr floor. With China dominating ~90% of separation and Beijing imposing heavy-REE export controls, Western OEMs (Japan, US DoD, EU) have effectively no other near-term option — multi-year qualification and capital-intensity make substitution prohibitive. HIGH is appropriate (CRITICAL reserved for sole-source feedstock like 600111 C1).",
+    "state": "authored"
+  }
+}
