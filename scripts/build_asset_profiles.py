@@ -38,18 +38,20 @@ ENR_PATH = ROOT / "data" / "markets" / "enrichment_data.json"
 WEIGHTS_PATH = ROOT / "data" / "index" / "weights.json"
 CIK_PATH = ROOT / "data" / "registries" / "cik_map.json"
 OUT_DIR = ROOT / "data" / "assets"
+CONTENT_DIR = OUT_DIR / "content"          # authored narrative sidecars, deep-merged over the structured shard
 
-SCHEMA_VERSION = "asset-profile/1.0"
+SCHEMA_VERSION = "asset-profile/2.0"
 
 # Disputed constituent — excluded entirely, matched on both possible registry keys.
 EXCLUDE_IDS = {"4112 JP", "4004"}
 
-# weights.json sector label -> published sub-index name
+# weights.json sector label -> published sub-index name, as named in
+# data/index/sub_indices.json (the source of truth).
 SECTOR_INDEX = {
-    "Semiconductor": "Robotnik Semiconductors Sub-Index",
-    "Robotics": "Robotnik Robotics Sub-Index",
-    "Space": "Robotnik Space Sub-Index",
-    "Materials": "Robotnik Materials Sub-Index",
+    "Semiconductor": "Robotnik Semiconductor Index",
+    "Robotics": "Robotnik Robotics Index",
+    "Space": "Robotnik Space Index",
+    "Materials": "Robotnik Materials Index",
 }
 
 # Guard: none of these vendor field keys may ever appear in a shard. weight_pct is
@@ -99,6 +101,19 @@ def clean(x):
     return x
 
 
+def deep_merge(base, over):
+    """Recursively merge ``over`` onto ``base``; ``over`` (the authored sidecar)
+    wins on shared keys. Nested dicts merge key-by-key; lists and scalars from
+    ``over`` replace wholesale, so an authored upstream[]/downstream[] fully
+    defines the edge set."""
+    if isinstance(base, dict) and isinstance(over, dict):
+        out = dict(base)
+        for k, v in over.items():
+            out[k] = deep_merge(out[k], v) if (isinstance(out.get(k), dict) and isinstance(v, dict)) else v
+        return out
+    return over
+
+
 def main():
     reg = json.loads(REG_PATH.read_text())
     enr = json.loads(ENR_PATH.read_text())
@@ -144,6 +159,7 @@ def main():
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
     written = 0
+    merged = 0
     skipped = []
     states = defaultdict(int)
 
@@ -262,6 +278,21 @@ def main():
             "editorial": editorial,
         }
 
+        # ── authored sidecar merge (data/assets/content/{slug}.json) ──
+        # The generator owns the structured half; a sidecar owns the authored
+        # half (per-layer narrative bodies, upstream[]/downstream[] edges, and
+        # per-layer free|pro tier flags). When a sidecar exists, deep-merge it
+        # over the structured shard so authored content wins on shared keys; no
+        # sidecar means structured-only output, exactly as before. The ToS guard
+        # below then runs on the MERGED shard, so authored content is checked too.
+        # NOTE: sidecars are keyed by SLUG. If a re-key ever changes an entity's
+        # slug, move data/assets/content/{old}.json to {new}.json in the same
+        # change, or the authored content silently detaches from the entity.
+        sidecar_path = CONTENT_DIR / "{}.json".format(slug)
+        if sidecar_path.exists():
+            shard = deep_merge(shard, json.loads(sidecar_path.read_text()))
+            merged += 1
+
         # ── ToS guard: no raw vendor field / raw weight may leak ──
         blob = json.dumps(shard)
         leaks = [b for b in BANNED_KEYS if b in blob]
@@ -288,6 +319,7 @@ def main():
     print("active entities:      {}".format(len(active)))
     print("skipped (disputed):   {}".format(skipped))
     print("shards written:       {}  -> {}".format(written, OUT_DIR.relative_to(ROOT)))
+    print("with authored sidecar: {}  (from {})".format(merged, CONTENT_DIR.relative_to(ROOT)))
     print("\nstate distribution:")
     for k in sorted(states):
         print("  {:32s} {}".format(k, states[k]))

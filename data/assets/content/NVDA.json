@@ -1,0 +1,64 @@
+{
+  "meta": { "profile_status": "reference" },
+  "identity": {
+    "tier": "free",
+    "domicile": "Delaware, United States",
+    "listing": "Nasdaq: NVDA",
+    "body": "NVIDIA is the fabless designer of the accelerated-computing hardware and software on which the AI build-out runs. It designs GPUs and, increasingly, complete systems: the chips, the interconnect that binds thousands of them into one computer, the reference rack designs, and the CUDA software that makes the hardware programmable. The economic engine has shifted almost entirely to the data centre, which now supplies roughly nine-tenths of revenue, with gaming, professional visualisation, and automotive-and-robotics behind it. The defining move is that the unit of sale keeps rising, from chip to board to rack, sold as an integrated AI factory."
+  },
+  "classification": {
+    "tier": "free",
+    "lifecycle": "Public",
+    "body": "NVIDIA designs silicon and outsources fabrication, which fixes it at the IP & Design tier rather than the Fabrication tier occupied by its foundry. Its distinctive move is to climb the ladder without leaving that tier: by selling integrated racks, networking, and software it captures value normally booked at the System Integration and Deployment tiers, while remaining, in manufacturing terms, a design house dependent on others' capacity."
+  },
+  "bottleneck": {
+    "tier": "free",
+    "headline": "A control point at the software and interconnect layer; a dependent at fabrication.",
+    "body": "The rating answers a narrow question: can customers and rivals route around NVIDIA. The answer splits by layer, and that split is the story. Downstream, two proprietary assets are hard to route around: CUDA, a parallel-computing platform accumulated since 2006 with cross-generation compatibility that protects customers' software investments, and the interconnect (NVLink, InfiniBand, Spectrum-X) that binds thousands of GPUs into one machine. Together they carry an estimated four-fifths or more of merchant AI accelerators. Upstream, NVIDIA owns none of the physical chokepoints beneath it: its most advanced parts are fabricated only by TSMC, packaged with TSMC CoWoS, and fed by a three-supplier memory oligopoly. It sets the terms downstream and takes the terms upstream. That two-sided position is why the rating is HIGH rather than CRITICAL: a near-sole merchant supplier with a deep, contested moat, sitting on chokepoints it does not own."
+  },
+  "dependency": {
+    "tier": "free",
+    "analysis_tier": "pro",
+    "control_point": "CUDA software and interconnect (NVLink, InfiniBand, Spectrum-X)",
+    "upstream": [
+      { "name": "TSMC", "note": "Leading-edge foundry" },
+      { "name": "CoWoS packaging", "note": "Advanced packaging, binding constraint" },
+      { "name": "HBM memory", "note": "SK Hynix, Micron, Samsung" },
+      { "name": "IC substrates", "note": "Unimicron, Ibiden" }
+    ],
+    "downstream": [
+      { "name": "Hyperscalers", "note": "AWS, Azure, Google, Meta" },
+      { "name": "Neoclouds", "note": "CoreWeave, Nebius, Lambda" },
+      { "name": "Sovereign AI", "note": "Gulf, Europe, Asia" },
+      { "name": "Physical AI", "note": "Jetson robotics, DRIVE auto" }
+    ],
+    "analysis_teaser": "Every upstream edge is an oligopoly allocated years in advance, and the fragility is physical, not competitive.",
+    "analysis_body": "Why the dependencies concentrate: TSMC holds roughly seventy per cent of global foundry and is the only at-scale source for the leading node near term; CoWoS packaging is effectively sold out, with NVIDIA having pre-booked more than half of projected 2026 capacity; HBM is a three-way race led by SK Hynix, with Micron and Samsung qualified behind it. Downstream concentrates for the opposite reason: CUDA and interconnect lock-in funnel demand back to NVIDIA even as buyers seek alternatives. Where the fragility sits: CoWoS packaging is the binding constraint on how much demand converts to revenue; the same handful of hyperscalers that each represent a tenth or more of revenue are also the most credible competitors, building their own silicon; and the advanced-manufacturing base runs through Taiwan and Korea, a geographic single point of failure. What substitution would cost: upstream there is no near-term at-scale second source, and downstream porting a production workload off CUDA is feasible but costly in engineering time and performance, which is why custom silicon has advanced fastest where a single owner controls the whole stack."
+  },
+  "market_context": {
+    "tier": "free",
+    "weight_band_label": "At the 5% single-name cap (top band)",
+    "rank_label": "Joint-largest constituent (nine names sit at the cap)"
+  },
+  "capital": {
+    "tier": "pro",
+    "teaser": "A cash-generative, net-cash business returning capital primarily through buybacks, with a working-capital signature defined by supply prepayments.",
+    "body": "Categorical posture, no per-share figures. NVIDIA returns capital primarily through large repurchases, with a fresh multi-tens-of-billions authorisation added in mid-2026 and a small but recently-raised dividend that remains immaterial against free cash flow measured in the tens of billions. The balance-sheet shape that matters for the value-chain thesis is the working-capital commitment to supply: elevated inventory and large prepayments and purchase obligations made to secure scarce TSMC, CoWoS, and HBM capacity years ahead. That is the financial signature of a company converting a supply-constrained input into product, and it is also what turned into charges when China access was withdrawn."
+  },
+  "policy": {
+    "tier": "pro",
+    "teaser": "Export control is now a first-order determinant of the addressable market, and the China data-centre market has effectively closed.",
+    "body": "The dated sequence: an April 2025 licence requirement on the China-specific H20 and a multi-billion charge; a mid-2025 reversal tied to the rare-earths understanding; a reported August 2025 arrangement to remit a share of China revenue that was overtaken by events; Beijing's discouragement of purchases; management's October 2025 statement that NVIDIA was entirely out of China; a December 2025 approval to sell the second-tier H200 with a surcharge, explicitly excluding Blackwell and Rubin; and a January 2026 shift to case-by-case review. China moved from roughly a fifth to a quarter of data-centre revenue to zero in guidance. The deeper structural exposure is that the same controls could be turned on the Taiwan-centred supply chain."
+  },
+  "geographic": {
+    "tier": "pro",
+    "hq_city": "Santa Clara, California",
+    "teaser": "Not a location line but a dependency overlay: revenue is global, production is concentrated in East Asia.",
+    "body": "Fabrication and CoWoS packaging in Taiwan, HBM in Korea, substrates in Japan. From the third quarter of fiscal 2026 NVIDIA reports revenue by customer-headquarters location, and the earlier Singapore billing-location line is retired; it notes that end-customer location differs from headquarters, attributing about three-quarters of Data Center revenue from Taiwan-headquartered customers to end customers in the United States and Europe. The load-bearing fact is manufacturing concentration: any disruption to Taiwan, whether geopolitical or physical, would sever the ability to produce the most advanced parts. Diversification is under way but slow."
+  },
+  "editorial": {
+    "tier": "pro",
+    "teaser": "A structured reading of the debate as tensions, not a verdict.",
+    "body": "Tension one, dominance versus contest: share has slipped from roughly ninety per cent in 2023 toward the low eighties by 2026, yet absolute dollars keep rising because the market grows faster than NVIDIA cedes share; the credible pressure is custom silicon owned by NVIDIA's own customers. Tension two, demand durability versus concentration: the build-out is funded by a handful of buyers who are simultaneously the largest customers and the emerging competitors. Tension three, the Robotnik reading: the moat is downstream, where NVIDIA sets terms, and the fragility is upstream and lateral, where it takes terms; the binding constraints on this name in the near term are physical and political, not competitive share. Not a recommendation, a reading."
+  }
+}
