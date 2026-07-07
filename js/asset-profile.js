@@ -4,17 +4,23 @@
 // layers. The value-chain spine leads: bottleneck (3) and dependency
 // (4) first, then identity (1), classification (2), market context
 // (5), then the Pro stack (6-9). Free layers render open; Pro layers
-// render a legible teaser with the remainder under the site's
-// .blurred-preview treatment and one honest upgrade CTA. Market
-// context shows band and rank only, never a number. The dependency
-// chart is data-driven from the shard's upstream/downstream edges.
-// Schema 2.0 carries authored bodies; 1.0 shards degrade gracefully.
+// render a sharp lead sentence with the remainder lightly blurred and
+// one honest upgrade CTA. ?preview=pro unblurs Pro content for review
+// only (there is no server-side gating). Market context shows band and
+// rank only, never a number. The dependency chart is data-driven from
+// the shard's upstream/downstream edges; node labels that resolve to a
+// universe entity (via search_index.json) link to that profile, and
+// tier rungs link to the value-chain taxonomy page. Schema 2.0 carries
+// authored bodies; 1.0 shards degrade gracefully.
 // ═══════════════════════════════════════════════════════════
 (function () {
   'use strict';
   var FH = "'Space Grotesk','Roboto Mono',sans-serif";   // headings + numbers
   var FB = "'Mulish','Roboto Mono',sans-serif";           // body prose
   var FM = "var(--font,'Roboto Mono',monospace)";         // labels / chrome
+  // Render-scoped state, set in boot() before render():
+  var _preview = false;    // ?preview=pro -> show authored Pro content unblurred (review only)
+  var _resolver = null;    // search_index-backed edge-label -> slug resolver for chart links
 
   var STYLE_ID = 'asset-profile-styles-v2';
   function injectStyles() {
@@ -52,6 +58,13 @@
       '.ap-chart .tier.on{fill:var(--yellow-glow,rgba(245,217,33,0.12));stroke:var(--yellow,#F5D921);}',
       '.ap-chart .tier-t{fill:var(--text-dim,#8b92a5);font:600 9px ' + FB + ';}',
       '.ap-chart .tier-t.on{fill:var(--yellow,#F5D921);font-weight:700;}',
+      '.ap-chart a.node-link,.ap-chart a.tier-link{cursor:pointer;}',
+      '.ap-chart a.node-link .node{transition:fill .12s ease,stroke-width .12s ease;}',
+      '.ap-chart a.node-link:hover .node,.ap-chart a.node-link:focus-visible .node{fill:#1a1e27;stroke-width:2;}',
+      '.ap-chart a.node-link:hover .node-t,.ap-chart a.node-link:focus-visible .node-t{text-decoration:underline;}',
+      '.ap-chart a.tier-link:hover .tier,.ap-chart a.tier-link:focus-visible .tier{stroke:var(--yellow,#F5D921);}',
+      '.ap-chart a.node-link:focus,.ap-chart a.tier-link:focus{outline:none;}',
+      '.ap-chart a.node-link:focus-visible,.ap-chart a.tier-link:focus-visible{outline:2px solid var(--yellow,#F5D921);outline-offset:2px;}',
       // sections
       '.ap-section{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--border,#252a36);}',
       '.ap-section.first{border-top:none;padding-top:0.4rem;}',
@@ -81,7 +94,10 @@
       '.ap-mchip b{font-family:' + FB + ';font-size:12.5px;font-weight:600;color:var(--text,#e6e8ed);}',
       // pro gate
       '.ap-pro-teaser{font-family:' + FB + ';font-size:14px;line-height:1.65;color:var(--text,#e6e8ed);margin:0 0 0.6rem;}',
-      '.ap-blur{filter:blur(4px);opacity:0.5;user-select:none;pointer-events:none;max-height:5.5rem;overflow:hidden;}',
+      '.ap-blur{filter:blur(2.5px);opacity:0.65;user-select:none;pointer-events:none;max-height:5.5rem;overflow:hidden;}',
+      '.ap-pro-open{border-left:2px solid rgba(245,217,33,0.4);padding-left:0.8rem;}',
+      '.ap-pro-tag{font-family:' + FM + ';font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted,#5a6178);margin-top:0.5rem;}',
+      '.ap-preview-banner{background:var(--yellow-subtle,rgba(245,217,33,0.06));border:1px solid rgba(245,217,33,0.4);border-radius:5px;padding:0.5rem 0.75rem;margin:1rem 0 0.2rem;font-family:' + FM + ';font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--yellow,#F5D921);}',
       '.ap-cta-row{display:flex;align-items:center;gap:0.8rem;margin-top:0.7rem;flex-wrap:wrap;}',
       '.ap-cta-line{font-family:' + FM + ';font-size:10px;letter-spacing:0.05em;text-transform:uppercase;color:var(--text-muted,#5a6178);}',
       '.ap-cta{display:inline-block;background:var(--yellow,#F5D921);color:var(--bg,#111318);font-family:' + FM + ';font-weight:700;font-size:10px;letter-spacing:0.05em;text-transform:uppercase;padding:6px 12px;border-radius:4px;text-decoration:none;}',
@@ -112,20 +128,62 @@
   // body exists (sparse shard), render an honest Forthcoming state instead
   // of a fake lock.
   function proBlock(obj) {
-    if (obj && obj.body) {
-      return (obj.teaser ? '<p class="ap-pro-teaser">' + esc(obj.teaser) + '</p>' : '')
-        + '<div class="ap-blur"><p class="ap-body">' + esc(obj.body) + '</p></div>'
-        + ctaRow();
+    if (!(obj && obj.body)) return '<p class="ap-body">' + state('Forthcoming') + '</p>';
+    var teaser = obj.teaser ? '<p class="ap-pro-teaser">' + esc(obj.teaser) + '</p>' : '';
+    // The teaser (lead sentence) always renders sharp. In review mode the body
+    // renders sharp too; by default it is the lightly-blurred remainder.
+    if (_preview) {
+      return teaser + '<div class="ap-pro-open"><p class="ap-body">' + esc(obj.body) + '</p></div>'
+        + '<div class="ap-pro-tag">Pro layer &#183; review preview</div>';
     }
-    return '<p class="ap-body">' + state('Forthcoming') + '</p>';
+    return teaser + '<div class="ap-blur"><p class="ap-body">' + esc(obj.body) + '</p></div>' + ctaRow();
   }
 
+  // ── edge-label -> slug resolver (search_index.json is the name/alias source) ──
+  // slugifyId mirrors scripts/build_asset_profiles.py slugify exactly, so a
+  // resolved slug matches the entity's shard/shell path.
+  function slugifyId(id) {
+    return /^[A-Za-z0-9]+$/.test(id) ? id
+      : String(id).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  var RESOLVE_STOP = { adr: 1, ads: 1, corp: 1, corporation: 1, inc: 1, incorporated: 1,
+    ltd: 1, limited: 1, co: 1, company: 1, companies: 1, holdings: 1, holding: 1, group: 1,
+    grp: 1, plc: 1, sa: 1, nv: 1, ag: 1, kk: 1, gmbh: 1, representing: 1, american: 1,
+    depositary: 1, shares: 1, the: 1, ordinary: 1 };
+  function normName(s) {
+    s = String(s == null ? '' : s).toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ');
+    return s.split(/\s+/).filter(function (t) { return t && !RESOLVE_STOP[t]; }).join(' ').trim();
+  }
+  // Build a normalized name/alias -> slug map. A label that maps to two entities
+  // is marked ambiguous (false) and will not link.
+  function buildResolver(searchIndex) {
+    var map = {}, ents = (searchIndex && searchIndex.entities) || [];
+    function add(key, slug) {
+      if (!key) return;
+      if (key in map) { if (map[key] !== slug) map[key] = false; }
+      else map[key] = slug;
+    }
+    ents.forEach(function (e) {
+      var slug = slugifyId(e.id);
+      add(normName(e.name), slug);
+      (e.aliases || []).forEach(function (a) { add(normName(a), slug); });
+    });
+    return { resolve: function (label) { var s = map[normName(label)]; return (s && s !== false) ? s : null; } };
+  }
+  var TIER_PAGE = '/research/value-chain-taxonomy';   // the tier ladder's reference page
+
   // ── data-driven dependency chart (the free headline asset) ──
-  function node(x, y, w, h, stroke, title, note) {
-    var s = '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="8" class="node" stroke="' + stroke + '"/>';
-    s += '<text x="' + (x + 14) + '" y="' + (y + 23) + '" class="node-t">' + esc(title) + '</text>';
-    if (note) s += '<text x="' + (x + 14) + '" y="' + (y + 41) + '" class="node-s">' + esc(note) + '</text>';
-    return s;
+  function node(x, y, w, h, stroke, title, note, slug) {
+    var inner = '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="8" class="node" stroke="' + stroke + '"/>'
+      + '<text x="' + (x + 14) + '" y="' + (y + 23) + '" class="node-t">' + esc(title) + '</text>'
+      + (note ? '<text x="' + (x + 14) + '" y="' + (y + 41) + '" class="node-s">' + esc(note) + '</text>' : '');
+    // A node whose label resolves to a universe entity becomes a link to that
+    // profile; an unresolved label (process, component, category) stays plain.
+    if (slug) {
+      return '<a class="node-link" href="/assets/' + encodeURIComponent(slug) + '.html">'
+        + '<title>Open ' + esc(title) + ' profile</title>' + inner + '</a>';
+    }
+    return '<g>' + inner + '</g>';
   }
   var LADDER = ['Upstream Materials', 'Capital Equipment', 'Fabrication', 'Components', 'IP & Design', 'System Integration', 'Deploy / Operate'];
   function depChart(d) {
@@ -153,12 +211,12 @@
     var eSpots = [eY + 30, eY + 58, eY + 86];
     up.forEach(function (n, i) {
       var y = TOP + i * (NH + GAP), ty = eSpots[Math.min(i, 2)] || (eY + eH / 2);
-      s += node(22, y, NW, NH, '#3b82f6', n.name, n.note);
+      s += node(22, y, NW, NH, '#3b82f6', n.name, n.note, _resolver && _resolver.resolve(n.name));
       s += '<line x1="' + (22 + NW) + '" y1="' + (y + NH / 2) + '" x2="' + eX + '" y2="' + ty + '" class="edge-up" marker-end="url(#ma-up)"/>';
     });
     down.forEach(function (n, i) {
       var y = TOP + i * (NH + GAP), ty = eSpots[Math.min(i, 2)] || (eY + eH / 2);
-      s += node(W - 22 - NW, y, NW, NH, '#22c55e', n.name, n.note);
+      s += node(W - 22 - NW, y, NW, NH, '#22c55e', n.name, n.note, _resolver && _resolver.resolve(n.name));
       s += '<line x1="' + (eX + eW) + '" y1="' + ty + '" x2="' + (W - 22 - NW) + '" y2="' + (y + NH / 2) + '" class="edge-down" marker-end="url(#ma-down)"/>';
     });
     // entity centre
@@ -174,8 +232,11 @@
     var tw = (W - 44) / LADDER.length;
     LADDER.forEach(function (t, i) {
       var x = 22 + i * tw, on = String(t).toLowerCase() === String(tier).toLowerCase();
-      s += '<rect x="' + (x + 3) + '" y="' + ladderY + '" width="' + (tw - 6) + '" height="30" rx="5" class="tier' + (on ? ' on' : '') + '"/>';
-      s += '<text x="' + (x + tw / 2) + '" y="' + (ladderY + 19) + '" text-anchor="middle" class="tier-t' + (on ? ' on' : '') + '">' + esc(t) + '</text>';
+      var rung = '<rect x="' + (x + 3) + '" y="' + ladderY + '" width="' + (tw - 6) + '" height="30" rx="5" class="tier' + (on ? ' on' : '') + '"/>'
+        + '<text x="' + (x + tw / 2) + '" y="' + (ladderY + 19) + '" text-anchor="middle" class="tier-t' + (on ? ' on' : '') + '">' + esc(t) + '</text>';
+      // Each rung links to the value-chain taxonomy page (the tier ladder's
+      // reference) where it exists; otherwise it would render plain.
+      s += TIER_PAGE ? '<a class="tier-link" href="' + TIER_PAGE + '"><title>Value-chain tier: ' + esc(t) + '</title>' + rung + '</a>' : rung;
     });
     s += '</svg>';
     var cap = cp ? '<p class="ap-note">Control point: ' + esc(cp) + '. Edges from the entity registry and enrichment store; no price-derived data.</p>' : '';
@@ -296,6 +357,8 @@
       + '<div class="ap-idline">' + idbits.join(' &#183; ') + '</div>'
       + (chips ? '<div class="ap-chips">' + chips + '</div>' : '');
 
+    if (_preview) html += '<div class="ap-preview-banner">Pro preview mode &#183; authored Pro content shown for review only</div>';
+
     // free epigraph (the enrichment one-liner), if present
     var note = (d.editorial && d.editorial.notes) || '';
     if (note) html += '<blockquote class="ap-epigraph">' + esc(note) + '</blockquote>';
@@ -324,13 +387,23 @@
     injectStyles();
     var slug = slugFromPath();
     if (!slug) { mount.innerHTML = '<div class="ap-fail">No asset specified.</div>'; return; }
-    fetch('/data/assets/' + encodeURIComponent(slug) + '.json?v=' + Date.now())
-      .then(function (r) { if (!r.ok) throw new Error('shard ' + r.status); return r.json(); })
-      .then(function (d) { render(mount, d); })
-      .catch(function (e) {
-        mount.innerHTML = '<div class="ap-fail">Profile not available yet for <strong>' + esc(slug) + '</strong>.</div>';
-        if (window.console) console.warn('[asset-profile]', e);
-      });
+    // ?preview=pro reveals authored Pro content unblurred. This is REVIEW ONLY:
+    // there is no server-side access control, so it is not a security boundary.
+    try { _preview = /(^|[?&])preview=pro(&|#|$)/.test(location.search || ''); } catch (e) { _preview = false; }
+    // Fetch the shard (required) and search_index (optional, for chart links) in
+    // parallel. A missing/failed search_index leaves every node plain, not broken.
+    Promise.all([
+      fetch('/data/assets/' + encodeURIComponent(slug) + '.json?v=' + Date.now())
+        .then(function (r) { if (!r.ok) throw new Error('shard ' + r.status); return r.json(); }),
+      fetch('/data/registries/search_index.json?v=' + Date.now())
+        .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+    ]).then(function (res) {
+      _resolver = buildResolver(res[1]);
+      render(mount, res[0]);
+    }).catch(function (e) {
+      mount.innerHTML = '<div class="ap-fail">Profile not available yet for <strong>' + esc(slug) + '</strong>.</div>';
+      if (window.console) console.warn('[asset-profile]', e);
+    });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
   else boot();
