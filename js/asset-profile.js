@@ -118,6 +118,15 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
     });
   }
+  // Render prose as one or more paragraphs, splitting on blank lines. Each
+  // paragraph is escaped independently; single-paragraph text yields one <p>,
+  // matching the previous behaviour. Pass plain text only, never pre-built HTML.
+  function paras(t, cls) {
+    cls = cls || 'ap-body';
+    return String(t == null ? '' : t).split(/\n{2,}/)
+      .map(function (p) { return p.trim(); }).filter(function (p) { return p; })
+      .map(function (p) { return '<p class="' + cls + '">' + esc(p) + '</p>'; }).join('');
+  }
   function state(t) { return '<span class="ap-state">' + esc(t) + '</span>'; }
   function muted(t) { return '<span class="ap-muted">' + esc(t) + '</span>'; }
   function ctaRow() {
@@ -133,10 +142,10 @@
     // The teaser (lead sentence) always renders sharp. In review mode the body
     // renders sharp too; by default it is the lightly-blurred remainder.
     if (_preview) {
-      return teaser + '<div class="ap-pro-open"><p class="ap-body">' + esc(obj.body) + '</p></div>'
+      return teaser + '<div class="ap-pro-open">' + paras(obj.body) + '</div>'
         + '<div class="ap-pro-tag">Pro layer &#183; review preview</div>';
     }
-    return teaser + '<div class="ap-blur"><p class="ap-body">' + esc(obj.body) + '</p></div>' + ctaRow();
+    return teaser + '<div class="ap-blur">' + paras(obj.body) + '</div>' + ctaRow();
   }
 
   // ── edge-label -> slug resolver (search_index.json is the name/alias source) ──
@@ -252,8 +261,8 @@
     var b = d.bottleneck || {};
     if (b.state !== 'rated' && !b.rating) return '<p class="ap-body">Control-point rating: ' + state('Unrated') + '</p>';
     var head = b.headline ? '<p class="ap-lead">' + esc(b.headline) + '</p>' : '';
-    var body = b.body ? '<p class="ap-body">' + esc(b.body) + '</p>'
-      : (b.description ? '<p class="ap-body">' + esc(b.description) + '</p>' : '');
+    var body = b.body ? paras(b.body)
+      : (b.description ? paras(b.description) : '');
     return head + body;
   }
   function edgeCol(title, dir, nodes) {
@@ -283,13 +292,13 @@
   function rIdentity(d) {
     var id = d.identity || {}, ids = id.identifiers || {};
     var facts = [fact('Ticker', ids.ticker), fact('Listing', id.listing), fact('Domicile', id.domicile), fact('SEC CIK', ids.cik)].join('');
-    var body = id.body ? '<p class="ap-body">' + esc(id.body) + '</p>' : (id.description ? '<p class="ap-body">' + esc(id.description) + '</p>' : '');
+    var body = id.body ? paras(id.body) : (id.description ? paras(id.description) : '');
     return body + (facts ? '<div class="ap-facts">' + facts + '</div>' : '');
   }
   function rClassification(d) {
     var c = d.classification || {};
     var facts = [fact('Sector', c.sector), fact('Subsector', c.subsector), fact('Value-chain tier', c.value_chain), fact('Lifecycle', c.lifecycle || 'Public')].join('');
-    var body = c.body ? '<p class="ap-body">' + esc(c.body) + '</p>' : '';
+    var body = c.body ? paras(c.body) : '';
     return (facts ? '<div class="ap-facts">' + facts + '</div>' : '') + body;
   }
   function mchip(k, v) { return v ? '<div class="ap-mchip"><span>' + esc(k) + '</span><b>' + esc(v) + '</b></div>' : ''; }

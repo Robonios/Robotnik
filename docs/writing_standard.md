@@ -4,13 +4,13 @@
 
 This is the writing standard for Robotnik entity profiles. It is drawn from the NVIDIA editorial, the first section written to the deeper template, which passed through six editorial drafts and their edit notes (preceded by an initial sketch) before it reached the final text. The standard governs all profile sections and all 196 profiles that follow the NVIDIA reference.
 
-The document has two parts. **Section 1, The Standard, is the operative part**: the rules to apply, grouped into argumentation, prose mechanics, and register. **Section 2, The Evidence, is the rationale**: the drafts in order, each followed by the notes that moved it to the next. Read Section 1 to write. Read Section 2 to see why each rule is there.
+The document has two parts. **Section 1, The Standard, is the operative part**: the 28 rules to apply, grouped into argumentation (9), prose mechanics (15), and register (4). **Section 2, The Evidence, is the rationale**: the drafts in order, each followed by the notes that moved it to the next. Read Section 1 to write. Read Section 2 to see why each rule is there.
 
 Every rule in Section 1 was paid for by an edit in Section 2. Where a rule looks fussy, the draft that ignored it shows the cost.
 
 ## Section 1 — The Standard
 
-### Argumentation (8 rules)
+### Argumentation (9 rules)
 
 1. **State the actual debate.** Open from the real, documented contest around the subject, not a framing invented for the piece. Say which parts of that debate the profile can answer and which it cannot.
 2. **Source every figure, or cut it.** A number that cannot be traced to a filing, an earnings report, or the research sweep does not belong in the text. If it cannot be sourced, remove it or replace it with one that can. A load-bearing statistic no one can cite is the failure this standard exists to prevent.
@@ -20,6 +20,7 @@ Every rule in Section 1 was paid for by an edit in Section 2. Where a rule looks
 6. **One claim per sentence.** Each sentence carries one step of the argument. Break semicoloned chains into separate sentences.
 7. **Answer every question you raise.** Do not raise a question and leave it. If the piece asks what would settle the debate, it answers.
 8. **End with the house take.** Close on Robotnik's reading: a position the reader can hold, not a summary that dangles.
+9. **Say each thing once.** If a sentence restates a point already made, cut it or make it carry something new.
 
 ### Prose mechanics (15 rules)
 
