@@ -117,3 +117,23 @@ Read-only fact-check of the five new/newly-specific claims (FCF, buybacks, $80bn
 - **Claim-4 knock-on:** with the dividend now shown at ~a quarter of FCF, the following sentence *"Nothing here distinguishes NVIDIA… except scale"* sits in mild tension (a 25× hike to a ~$24bn dividend is itself somewhat distinctive). Left as written; your call.
 
 **Time-sensitive (capital):** **High** — 1 ($95.2bn is a point-in-time snapshot, refreshed quarterly, turns over within a year). **Medium** — 4 (the $0.25 rate is go-forward; buybacks shrink the share count and FCF is rising, so the ratio falls toward the low teens on forward FCF). **Low** — 2, 3, 5.
+
+## Bottleneck layer (Draft 3)
+
+Read-only fact-check of the five claims plus two dependency-graph edge-label corrections. Verdicts: **5 CONFIRMED** (claim 2 with an arithmetic fix). The gating merchant-share claim holds on the "merchant" definition; one fix folded into Draft 3.
+
+| # | Claim (abbreviated) | Verdict | Primary source & figure found | Re-verify |
+|---|---|---|---|---|
+| 1 | "Four-fifths or more of the world's **merchant** AI accelerators" | **CONFIRMED** | Merchant/data-centre GPU basis: NVIDIA **~90%+** (AMD ~5–8%, Intel <1%) — TrendForce (20 Jan 2026), Morgan Stanley. "Merchant" excludes captive ASICs (where NVIDIA is ~70–87%); 80%+ is conservative. (Do not cite the "92–94%" figures — those are *consumer* gaming GPUs) | High |
+| 2 | CUDA since 2006 + cross-generation compatibility | **CONFIRMED** (arithmetic fix) | CUDA unveiled Nov 2006 (SDK 2007); forward compatibility via PTX JIT. Draft's *"fifteen years"* was wrong (2006→2026 ≈ 20) → fixed to **"twenty years"** | Low (year-count increments) |
+| 3 | Interconnect NVLink / InfiniBand / Spectrum-X; InfiniBand+Spectrum-X via Mellanox | **CONFIRMED** | All current NVIDIA brands; Mellanox acquired (closed Apr 2020); NVLink is NVIDIA's own (correctly not attributed to Mellanox) | Low |
+| 4 | Sole-source: TSMC / CoWoS / three HBM makers at the leading edge | **CONFIRMED** (re-confirmed) | Restates the geography/dependency findings: no second source at the frontier, CoWoS sole packaging, three HBM makers sold out | Med |
+| 5 | HIGH bottleneck rating | **CONFIRMED** | `enrichment_data.json` records NVDA `bottleneck_risk` = **HIGH** (the layer's spine) | Low |
+
+**Correction folded into Draft 3:** claim 2 — *"Fifteen years"* → *"Twenty years"* of accumulated tools (matches "since 2006"). **Claim 1 sentence kept** (confirmed on the merchant definition; source noted above).
+
+**Dependency-graph edge labels corrected (Part 2):** HBM `"SK Hynix, Micron, Samsung"` → **`"SK Hynix, Samsung, Micron"`** (share order: SK Hynix ~50–59%, Samsung ~20–30%, Micron ~19–20%); IC substrates `"Unimicron, Ibiden"` → **`"Ibiden, Unimicron"`** (Ibiden leads).
+
+**Flagged, not changed (report and hold):** rule-16 (no "not X, but Y") — Draft 3 has one: P3 *"Modern AI needs **not** one chip **but** tens of thousands acting as one."* Outside this layer's amendment scope; easy reword if wanted.
+
+**Time-sensitive (bottleneck):** **High** — 1 (merchant share is declining as ASICs/AMD ramp; date-stamp and re-check quarterly). **Medium** — 4 (supply-chain concentration). **Low** — 2, 3, 5.
