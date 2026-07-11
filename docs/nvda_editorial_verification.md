@@ -205,3 +205,51 @@ The draft's **core thesis is unaffected**: IP & Design sits below System Integra
 **Data-hygiene aside (out of scope, flagged for a separate pass):** one active entity, **SpaceX**, carries `value_chain` = "Launch Services", outside the locked eight-tier `ALLOWED_TIERS`. It is the sole source of CLAUDE.md's "(9)". Re-tagging it to a locked tier - System Integration, per the script's own rule "launch-vehicle builder = System Integration" - would restore the eight-tier invariant. Not touched here.
 
 **Time-sensitive:** all **Low** - the taxonomy is a locked framework and the two registry tier assignments (NVDA, TSM) are stable. The render-vs-methodology inconsistency is a standing item, not time-sensitive.
+
+
+---
+
+# TSMC profile
+
+Full nine-layer verification of the TSMC (TSM) profile, Draft 1, against the research dataset, `metrics_methodology.md`, filings and web (post-cutoff figures fanned out to four parallel web checks). Appended here to keep one consolidated profile-verification record; splitting into `docs/tsmc_verification.md` later is a trivial move if preferred.
+
+## Part 1 - claims
+
+| # | Claim (abbreviated) | Verdict | Source & figure | Re-verify |
+|---|---|---|---|---|
+| 1 | **HIGH not CRITICAL** because TSMC depends on ASML (chokepoint above chokepoint) | **CONFIRMED - gate passed** | `metrics_methodology.md`: CRITICAL = "no viable substitute exists (ASML's EUV monopoly)", HIGH = "a costly substitute is available but requires multi-quarter switching"; ratings **ASML CRITICAL x4.0, TSM HIGH x2.5, NVDA HIGH x2.5**. Framework ratings + ASML-as-CRITICAL anchor support the rationale. **Two flags below.** | Low |
+| 2a | ">90% of the world's **advanced logic** chips" | **CORRECTED** | Advanced logic (<=7nm) is **~64%** (Semiwiki/Scotten Jones, Mar 2024); total foundry ~70-72% (TrendForce Q1 2026). The >90% belongs to leading edge only. Applied: bottleneck ">90% of advanced logic" -> **"most of the world's advanced logic chips"** | Moderate |
+| 2b | "effectively total" at the **leading edge** (3nm/2nm) | **CONFIRMED** | ~90%+ at 3nm, ~95% of N2 capacity; no volume-viable second source (investmentcase/PatentPC 2026; TrendForce Feb 2026). Identity's "TSMC makes more than 90% of [leading-edge processors]" is on this basis - kept | Moderate |
+| 3 | Leading-edge fab costs **>$20bn**, mostly equipment | **CONFIRMED** | 3nm ~$20bn, 2nm ~$28bn (IBS via Tom's Hardware, Jan 2025); equipment 70-80% of cost. "more than $20 billion, most of it the machines inside" holds | Low |
+| 4a | **~$165bn** US investment | **CONFIRMED (exact)** | $65bn + $100bn additional = **$165bn**, announced 3-4 Mar 2025 (TSMC PR #3210; White House); reaffirmed at Q4-2025 earnings (Jan 2026) | Low-moderate |
+| 4b | "largest **foreign manufacturing** investment in American history" | **CORRECTED** | Defensible sourced forms carry a qualifier: TSMC's "largest **single** foreign direct investment in U.S. history" or Commerce's "largest **greenfield** FDI." Bare form is contestable. Applied: capital -> **"largest single foreign direct investment in American history"** | Low |
+| 5 | Customers NVIDIA, AMD, Apple, Broadcom, Qualcomm (prose) vs NVDA/AVGO/AMD/QCOM/**MRVL** (data) | **CONFIRMED (both defensible)** | All six are real current TSMC customers. Naming Apple in prose is fair (marquee customer); the graph uses the data set incl. Marvell. Note: **NVIDIA overtook Apple as TSMC's #1 customer in 2025** (~19% vs ~17%) - the prose ranks none, so no correction needed | Moderate |
+| 6 | Suppliers ASML (EUV), Shin-Etsu & SUMCO (wafers), Linde (gases) | **CONFIRMED** | Each confirmed in role. Linde's documented TSMC contract is bulk industrial gases (on-site ASU, Arizona); "specialised industrial gases such as Linde" holds | Low |
+| 7 | ASML **sole source** for EUV, no second source worldwide | **CONFIRMED** | Only maker of production EUV scanners (2026). Canon NIL is not EUV; Chinese efforts (Huawei/SMIC) pre-commercial and DUV-based | Low |
+| 8 | **Japan and Germany** host TSMC plants at older nodes | **CONFIRMED (Japan) / CORRECTED (Germany)** | Japan: Kumamoto/JASM, 12-28nm mature, mass production since Dec 2024. Germany: Dresden/ESMC, 12-28nm mature, **under construction, online ~late 2027 - not yet operating**. Applied: geography -> "Japan hosts a further TSMC plant at older nodes, and **Germany one now being built**" | Low |
+| 9 | **Nine** names at the 5% cap in the Semiconductor Index | **CONFIRMED** | `weights.json`: 9 at the 5.0% cap (NVDA, TSM, AVGO, MU, AMD, ASML, INTC, AMAT, LRCX); TSM among them (restated from the NVDA field report) | Low |
+| 10 | Foundry model **pioneered in the 1980s**; TSMC founded | **CONFIRMED** | Founded **1987** by Morris Chang; first pure-play/dedicated foundry ("Foundry Father," IEEE Spectrum). "pioneered the model in the 1980s" accurate | Low |
+| + | Dependency: ASML builds "**a few hundred machines a year**" | **CORRECTED (figure cut)** | ASML EUV output is ~tens/year, not hundreds ("few hundred" fits all litho systems incl. DUV, not the EUV chokepoint the sentence is about). Per the standard's "source every figure or cut it," cut to **"the limited number of advanced machines it can build each year"** | Low |
+
+## Part 1 - two flags on the rating gate (claim 1)
+
+1. **Cross-layer contradiction with the committed NVDA layer (must-fix in NVDA).** The committed NVDA bottleneck prose states: *"CRITICAL is reserved for a company that is the sole source of something nobody can substitute... TSMC at the leading edge, ASML in lithography. Those companies have no one above them setting terms."* That names **TSMC as a CRITICAL exemplar with "no one above,"** which directly contradicts both the enrichment data (TSM = HIGH, ASML = CRITICAL) and this TSMC profile's central argument. The TSMC draft is aligned with the data; the NVDA prose is the outlier and should be corrected (e.g. drop "TSMC at the leading edge" from the CRITICAL example, or note TSMC sits one level down under ASML). Flagged for a separate NVDA edit.
+2. **Methodology-text wrinkle (minor).** The written HIGH definition ("a costly substitute is available but requires multi-quarter switching") does not literally fit TSMC's downstream reality (its customers have *no* substitute, as the draft itself says - "an absence of anywhere to switch to"). Both NVDA and TSMC are actually rated HIGH on an unstated **"sovereignty / no-one-above"** principle rather than on switching-cost. The rationale is sound and matches the ratings; the methodology text could state that principle explicitly.
+
+## Part 2 - rule-compliance scan (all nine layers)
+
+- **Rule 16 ("not X, but Y") - 6 recast (applied):**
+  - Classification: "not where it sits but how little of the ladder can function without it" -> "**less where it sits than** how little..."; "not a stage in the chain but a gate across it" -> "**stops being a stage in the chain and becomes a gate** across it".
+  - Bottleneck: "not a switching cost but an absence of anywhere to switch to" -> "**there is nowhere else to switch to at any price**".
+  - Geography: "would not slow the advanced chip industry but halt it" -> "**would halt the advanced chip industry rather than slow it**".
+  - Editorial: "studied not for how they stand but for how they might fall" -> "**studied for how they might fall, not for how they stand**"; "Watch it not for its customers... but for ASML..." -> "**Watch it for ASML above it and the Taiwan Strait around it, not for its customers, who are captive**".
+- **Rule 16 - borderline, kept:** Policy "TSMC is not the target of chip policy in the way NVIDIA is. It is something more consequential..." and "The policy exposure... is not a licence rule or a tariff. It is that..." - these are two-sentence negate-then-assert, not the single-clause "not X, but Y", so kept (consistent with keeping NVDA's "designed but not built"). Optional recasts available on request. Editorial "depends **not only** on TSMC **but** on the one company above it" is the additive "not only... but also" form - acceptable.
+- **Rule 13 (whilst not while) - 1 fix (applied):** Capital "while producing chips" -> "**whilst** producing chips". (Only "while" in the profile.)
+- **Rule 10 (numerals for percentages/money):** compliant - "90%", "5%", "$20 billion", "$165 billion" in numerals; spelled counts ("eight tiers", "nine names", "forty years") are not percentages/money and match the shipped NVDA house style.
+- **Rule 11-12 (British English, towards):** compliant - "towards", "specialised", "centre", "kilometres", no em-dashes, no "toward".
+
+## Held (judgement-level, not applied)
+
+- **Classification ladder ordering** - the layer's spatial framing ("TSMC... one rung below the IP & Design tier", "the design tier above it", "designers hand their work down to" Fabrication) is **coherent only under the on-page render `LADDER`** (which puts Fabrication below IP & Design), and is **inverted under the published methodology** (IP & Design tier 2, below Fabrication tier 4). This is the SAME unresolved render-vs-methodology contradiction flagged in the NVDA classification closeout. Shipped as drafted (render-consistent); **if the methodology ordering wins the pending decision, this layer must be inverted.** Also "one rung below" is two rungs under either ordering (a name sits between). And "finished systems at the top" - the ladder apex is Software & Services, not finished systems (same minor NVDA flag).
+
+**Time-sensitive:** **Moderate** - 2a/2b (share shifts as Samsung/Intel/Arizona ramp), 5 (customer standing shifts; NVIDIA/Apple ranking). **Low-moderate** - 4a. **Low** - the rest (framework, founding, sole-source, cap cohort are stable).

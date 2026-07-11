@@ -1,56 +1,21 @@
 {
-  "meta": {
-    "id": "TSM",
-    "slug": "TSM",
-    "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-11T21:49:24.619180+00:00"
-  },
   "identity": {
-    "name": "TAIWAN SEMICONDUCTOR MANUFACTURING",
-    "aliases": [
-      "TAIWAN MANUFACTURING",
-      "TAIWAN SEMICONDUCTOR MANUFACTURING",
-      "TSM",
-      "TSMC",
-      "Taiwan Semiconductor",
-      "Taiwan Semiconductor Manufacturing",
-      "taiwan semiconductor manufacturing"
-    ],
-    "type": "public",
-    "lifecycle_status": "public",
-    "description": null,
-    "identifiers": {
-      "ticker": "TSM",
-      "coingecko_id": null,
-      "cik": "0001046179"
-    },
     "tier": "free",
     "listing": "NYSE: TSM",
     "domicile": "Taiwan",
     "body": "TSMC makes the most advanced computer chips in the world for companies that design them but cannot build them. It owns no major chip brand of its own. Instead it manufactures to order: a customer sends a design, TSMC fabricates it. Nearly every leading-edge processor in an AI system, a phone or a laptop is made this way, and TSMC makes more than 90% of them. This makes it the most important single company in the chip supply chain, and the one others can least afford to lose.\n\nThe business is called a foundry: a factory that builds other companies' designs. TSMC pioneered the model in the 1980s and now dominates it. Its customers are the designers, NVIDIA, AMD, Apple, Broadcom, Qualcomm, who compete fiercely with each other but all depend on the same manufacturer. This gives TSMC a position most suppliers never reach. It sits below the whole design industry, and the industry cannot get past it, because no other company can match what TSMC builds at the leading edge.\n\nOne fact defines its place in this profile. TSMC is where the chip supply chain physically narrows to a single point. The most advanced chips can be made in volume by TSMC alone, and it makes most of them in one place, Taiwan. That concentration is the source of both its power and the risk around it, and the layers below trace what it means: for the customers that depend on TSMC, the suppliers TSMC depends on, and the geography that puts most of the world's advanced chipmaking on one island."
   },
   "classification": {
-    "sector": "Semiconductors",
-    "subsector": "Foundry",
-    "value_chain": "Fabrication & Manufacturing",
-    "universe_status": "index_constituent",
     "tier": "free",
     "lifecycle": "Public",
     "body": "Robotnik places every company in the frontier stack on a ladder of eight tiers, from the raw materials at the bottom to the finished systems at the top. Each tier is a stage where value is added, and a company's tier says what part of the work it does and where in the chain it earns its money.\n\nTSMC sits at the Fabrication & Manufacturing tier, the stage where a chip is physically built. This is the tier NVIDIA and the other designers hand their work down to, one rung below the IP & Design tier they occupy. The division is clean: the designers draw the chips, TSMC makes them.\n\nWhat makes TSMC unusual on the ladder is less where it sits than how little of the ladder can function without it. Most tiers have several companies competing at them, so no single firm is indispensable. The Fabrication tier at the leading edge has effectively one: the design tier above it and the system tiers above that all depend on TSMC to turn their intentions into physical product. A tier occupied by one company stops being a stage in the chain and becomes a gate across it. TSMC is that gate, which is why a foundry, a business that sounds like a subcontractor, holds more leverage over the frontier than most of the companies it serves."
   },
   "bottleneck": {
-    "rating": "HIGH",
-    "description": null,
-    "confidence": null,
-    "state": "rated",
     "tier": "free",
     "headline": "Indispensable to its customers, yet pinned by ASML above it: HIGH rather than CRITICAL, because the chokepoint has a chokepoint of its own.",
     "body": "Robotnik rates every company in the frontier stack on one question: does it hold a chokepoint, a position in the supply chain that others cannot easily get past. A chokepoint holds in one of two ways. Sometimes there is no alternative at all: one company makes a thing and no other can. Sometimes alternatives exist but switching costs so much, in money, time or lost performance, that customers stay put. TSMC's rating is HIGH, and the interesting question is why it is not the top grade, CRITICAL, given that it is the most depended-upon company in the entire stack.\n\nTowards its customers, TSMC holds a position no ordinary supplier reaches: they cannot take their most advanced work anywhere else. It manufactures most of the world's advanced logic chips, and at the leading edge, the newest and fastest generation, its share is effectively total. A chip designer who wants the best performance has one manufacturer to go to. This is the first kind of chokepoint, the kind with no alternative: there is nowhere else to switch to at any price. TSMC's customers, NVIDIA, Apple, AMD and the rest, compete with each other for its capacity rather than choosing between suppliers.\n\nBy the test of customer dependence alone, TSMC would be CRITICAL. The reason it is HIGH sits above it in the chain. TSMC is itself dependent on a single supplier it cannot get past: ASML, the Dutch company that makes the extreme-ultraviolet lithography machines without which leading-edge chips cannot be manufactured at all. There is no second source for those machines anywhere in the world. So the company that everyone else depends on is not itself sovereign; it stands beneath a chokepoint exactly as its own customers stand beneath TSMC. CRITICAL is reserved for the true sole source with no one above it. TSMC commands the design industry, but it takes ASML's terms, and that single dependence is what separates HIGH from CRITICAL.\n\nThe reading that follows shapes the rest of this profile. TSMC's power is real and its customers cannot escape it. But its own position rests on one supplier and, as the geography layer shows, one location. The company that the whole frontier leans on leans in turn on things it does not control."
   },
   "dependency": {
-    "key_customers": "NVDA, AVGO, AMD, QCOM, MRVL",
-    "key_suppliers": "ASML (EUV), Shin-Etsu/SUMCO (wafers), Linde (gases)",
-    "state": "mapped",
     "tier": "free",
     "analysis_tier": "pro",
     "control_point": "Leading-edge fabrication and CoWoS advanced packaging",
@@ -98,91 +63,28 @@
     "analysis_body": "The free view lists who TSMC depends on and who depends on it. This layer looks at how those bonds work, because TSMC's position is a rare one: it is the point where a whole industry's dependencies converge, and it is held in place by a supplier even more concentrated than itself.\n\nLook downstream first, because it is the simplest and the most striking. Almost every company that matters in advanced chips is a TSMC customer, and they are rivals with one another. NVIDIA and AMD compete in AI chips; both are made by TSMC. Apple and Qualcomm compete in phone chips; both are made by TSMC. This convergence gives TSMC something unusual: it profits from the competition among its customers without taking sides, because whoever wins, the winner's chips are built in its factories. The design industry's fiercest rivalries all resolve to the same manufacturer. That is why TSMC's revenue tracks the health of the entire frontier rather than any single customer's fortunes.\n\nUpstream is where the fragility sits, and it is sharper than TSMC's own. To make leading-edge chips, TSMC needs three things it does not produce. It needs the lithography machines that print circuit patterns, and for the most advanced patterns those come only from ASML. It needs ultra-pure silicon wafers, the discs the chips are built on, which come principally from two Japanese suppliers, Shin-Etsu and SUMCO. And it needs specialised industrial gases, supplied by a small number of firms such as Linde. The lithography dependence is the acute one. TSMC can pressure most suppliers because it is their largest customer, but it cannot pressure ASML into building machines faster than ASML can, and it cannot buy the machines anywhere else. The most powerful company in the chip industry is, at one crucial step, a supplicant.\n\nThe pattern is that TSMC concentrates the industry's dependence and then passes part of it upwards. Its customers depend on TSMC, and TSMC depends on ASML, so the whole edifice of advanced computing rests, at the top of the chain, on one Dutch company and the limited number of advanced machines it can build each year. TSMC is the visible chokepoint. ASML is the chokepoint above the chokepoint."
   },
   "market_context": {
-    "member": true,
-    "sector_index": "Robotnik Semiconductor Index",
-    "weight_band": "5-capped",
-    "sector_rank": 9,
-    "state": "live",
-    "chart": {
-      "total": 68,
-      "at_cap": 9,
-      "below_cap": 59,
-      "cohort": [
-        "AMAT",
-        "AMD",
-        "ASML",
-        "AVGO",
-        "INTC",
-        "LRCX",
-        "MU",
-        "NVDA",
-        "TSM"
-      ],
-      "falloff": [
-        {
-          "band": "5-capped",
-          "count": 9
-        },
-        {
-          "band": "3.5-5",
-          "count": 2
-        },
-        {
-          "band": "2-3.5",
-          "count": 5
-        },
-        {
-          "band": "1-2",
-          "count": 5
-        },
-        {
-          "band": "0.5-1",
-          "count": 9
-        },
-        {
-          "band": "0.25-0.5",
-          "count": 5
-        },
-        {
-          "band": "<0.25",
-          "count": 33
-        }
-      ],
-      "cap_label": "5%",
-      "me": "TSM"
-    },
     "tier": "free",
     "weight_band_label": "At the 5% single-name cap (top band)",
     "rank_label": "Joint-largest constituent (nine names sit at the cap)",
     "caption": "Robotnik caps any single name at 5% of its sector index, so no one company can dominate. Nine semiconductor leaders share that ceiling, TSMC among them; by raw weight the largest would tower over the field, but the cap reads the frontier as a cohort of leaders rather than a single bet."
   },
   "capital": {
-    "last_round": null,
-    "total_raised_m": null,
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "Holding the lead costs more each generation, and TSMC spends what no rival will match; its largest commitment, $165 billion in America, buys down concentration risk rather than earning a normal return.",
     "body": "TSMC's balance sheet tells the story its business cannot avoid: staying the only maker of the best chips costs more every year, and the cost is rising faster than almost any company has sustained.\n\nThe defining figure is capital spending. Building and equipping the factories that make leading-edge chips runs to tens of billions of dollars a year, and TSMC's annual capital budget has climbed into that range and kept climbing. A single advanced fabrication plant costs between $20 billion and $28 billion, most of it the machines inside, and each new generation of chip needs a more expensive plant than the last. This is the price of the lead: TSMC stays ahead because it spends what no rival will match, and the spending is what keeps the leading edge a place only TSMC can reach.\n\nThe money comes from a business that throws off cash in large amounts, but the balance between what comes in and what must go back out is tightening. TSMC's profits are high, protected by its position, but the capital demands consume much of what it earns, and the newest factories cost more than the last whilst producing chips whose prices do not rise as fast as the plants that make them. The company can afford this today. Whether it can afford it indefinitely, as each generation grows costlier, is the financial question beneath the strategic one.\n\nOne number reframes the whole picture: TSMC has committed roughly $165 billion to building chip plants in the United States. This is the largest single foreign direct investment in American history, and it is only partly a commercial decision. It is also a response to the risk the geography layer describes, an attempt to place some of the world's advanced chipmaking outside Taiwan. The capital point is that this investment does not earn a normal return. It is the cost of reducing a concentration risk that TSMC's customers and their governments will no longer tolerate, and TSMC is paying it as the price of remaining the manufacturer everyone trusts."
   },
   "policy": {
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "The prize, not the target: TSMC is the asset that America, China and Taiwan each have reason to secure, and the one company that cannot move itself out of the way.",
     "body": "TSMC is not the target of chip policy in the way NVIDIA is. It is something more consequential: the object policy is trying to secure. The world's governments have concluded that whoever controls advanced chipmaking holds decisive economic and military advantage, and TSMC controls it. That makes the company a strategic asset that three powers, the United States, China and Taiwan itself, each have reasons to want, protect or fear losing.\n\nFor the United States, the goal is to move some of TSMC's manufacturing onto American soil and out of reach of a possible Chinese move on Taiwan. Washington has pressed for this through a mix of subsidy and pressure, and the roughly $165 billion of TSMC investment in Arizona is the result. The aim is to hold a share of leading-edge production somewhere secure, so that a shock to Taiwan does not sever the American economy's access to advanced chips.\n\nFor China, TSMC is both a prize and a lever. Taiwan's chip industry is one of the reasons the island matters so much to Beijing and to the world, and control of TSMC would be one of the largest strategic gains imaginable. That prospect is precisely what makes TSMC a source of global risk: a company this important, located where it is, turns a regional dispute into a matter of worldwide economic security.\n\nFor Taiwan, TSMC is the centre of what is often called its silicon shield, the idea that the island's control of chipmaking so vital to the world gives other powers a stake in its safety. The company is thus entangled in its own home's security in a way no ordinary business is. The policy exposure for TSMC is not a licence rule or a tariff. It is that the company sits at the meeting point of the most dangerous strategic contest of the age, and cannot move itself out of the way."
   },
   "geographic": {
-    "hq_country": "Taiwan",
-    "hq_city": "Hsinchu",
-    "exposure": {
-      "state": "forthcoming"
-    },
     "tier": "pro",
+    "hq_city": "Hsinchu",
     "teaser": "Most of the world's most advanced chips are made in a few square kilometres of one island at the centre of a great-power dispute, and for the rest of the decade there is nowhere else they can be made.",
     "body": "TSMC's geography is the single most consequential fact about the company, and it is simply stated: most of the world's most advanced chips are made on one island that sits at the centre of a great-power dispute.\n\nThe concentration is near-total. TSMC's leading-edge manufacturing is in Taiwan, clustered in a handful of science parks along the island's western side. The most advanced chips in the world, the ones inside every frontier AI system, are made in a few square kilometres of one country. There is no comparable capacity anywhere else, because no other company has it and TSMC built almost all of its own in one place. The dependency and bottleneck layers explain why TSMC cannot be got past; this layer adds that TSMC itself is concentrated where its own single supplier's machines are installed, so the concentration compounds.\n\nWhy has it stayed this way? Because a leading-edge fabrication cluster cannot be quickly rebuilt elsewhere. It represents decades of accumulated skill, a dense web of local suppliers and engineers, and tens of billions of dollars a plant, none of which relocates on command. TSMC's Taiwanese base is the product of forty years of building in one location, and that history is not portable. Concentration is not a choice TSMC could easily reverse even if it wished to.\n\nDiversification is under way, and its scale is real but its pace is the honest measure of the risk. TSMC's roughly $165 billion American investment is building leading-edge capacity in Arizona, and it is the most serious attempt yet to place advanced chipmaking outside Taiwan. But it is a fraction of TSMC's total capacity, it trails the Taiwanese plants by a generation, and the most advanced work stays in Taiwan for the foreseeable future. Japan hosts a further TSMC plant at older nodes, and Germany one now being built. For the rest of this decade, the leading edge lives where it has always lived.\n\nThe consequence is the risk that runs through this whole profile and much of the frontier. A shock to Taiwan, whether conflict, blockade or natural disaster, would halt the advanced chip industry rather than slow it, because there is nowhere else the most advanced chips can currently be made. TSMC is the company the whole frontier depends on, and it stands in the one place the frontier can least afford it to stand."
   },
   "editorial": {
-    "notes": "Single most critical node in the frontier stack. Manufactures >90% of the world’s leading-edge logic chips. $165B US investment reshapes geographic risk but creates new Materials demand.",
-    "state": "authored",
     "tier": "pro",
     "teaser": "The three things TSMC's position makes easy to miss: how it holds power without a product, why it is itself dependent, and what its geography means for everyone else.",
     "body": "There are three things worth understanding about TSMC that its position makes easy to miss. The first is how it holds power without owning a product. The second is why the company everyone depends on is itself dependent. The third is what its unique geography means for everyone else. Robotnik does not price companies, so the question of whether TSMC's shares are cheap or dear stays with others. What this reading offers is where the company's real leverage and real fragility sit.\n\nStart with the power, because it is unusual. TSMC sells no chip of its own, yet it holds more leverage over the frontier than most of its customers. The reason is that it occupies a tier of the value chain that, at the leading edge, has room for only one company. Manufacturing the best chips demands such scale, skill and capital that competition has thinned to a single firm. TSMC's customers compete ferociously and all lose to the same dependence: they need TSMC more than TSMC needs any one of them. A company that makes what others merely design has turned a supposedly humble position, the contract manufacturer, into the industry's centre of gravity.\n\nThen the dependence, because it is the key to the rating. TSMC would be the most critical company in the stack but for one thing: it cannot make its chips without ASML's machines, and ASML has no rival. So the chain has a chokepoint above its chokepoint. This matters beyond a technicality. It means the frontier's single greatest concentration of power is itself pinned by an even narrower one, and that the resilience of advanced computing depends on TSMC and, above it, on the one company TSMC cannot replace. The dependence does not weaken TSMC's hold on its customers. It caps how sovereign TSMC can ever be.\n\nFinally the geography, because it is where TSMC stops being a company and becomes a global risk. Most of the world's advanced chipmaking is on an island that a great power claims and might one day move to take. This is not a business risk that diversification will soon fix; the roughly $165 billion American investment is a serious start and still a fraction of the whole. For the rest of the decade, the frontier's most important manufacturing sits in the world's most dangerous place, and nothing can quickly change that.\n\nRobotnik's reading is that TSMC is the load-bearing wall of the frontier stack, and load-bearing walls are studied for how they might fall, not for how they stand. TSMC stands through unmatched capability. It might fall through one supplier it cannot replace or one conflict it cannot avoid. The company is as strong as any in the world at what it does, and more exposed than almost any to things it does not control. Watch it for ASML above it and the Taiwan Strait around it, not for its customers, who are captive."
