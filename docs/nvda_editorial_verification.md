@@ -1,4 +1,4 @@
-Verification record for the NVDA editorial (Draft 8). Re-verify flagged items at each quarterly review; item 11 (China materials truce) additionally in late October 2026.
+Verification record for the NVDA editorial (Draft 8) and policy layer (Draft 4). Re-verify flagged items at each quarterly review; the China materials truce (editorial item 11 and the policy-layer truce-date claims) additionally in late October 2026.
 
 # NVDA editorial — verification record
 
@@ -57,3 +57,24 @@ Read-only fact-check of the final NVIDIA editorial against the research dataset,
 | 12 | Four-concern debate structure | Low (stable) | — |
 
 **Overall:** the editorial stands up. Every figure is traceable to a filing, an earnings call, or a primary policy document — the evidentiary bar the writing standard sets for the remaining 196 profiles.
+
+## Policy layer (Draft 4)
+
+Read-only fact-check of the eight new claims in the policy layer (truce dates, indium's carve-out, and the licence-chronology outline were already pinned in the editorial section above and were not re-verified). Verdicts: **5 CONFIRMED, 1 CONFIRMED with caveat, 1 CORRECTED, 1 UNSUPPORTED.** The two unambiguous fixes are folded into the staged Draft 4.
+
+| # | Claim (abbreviated) | Verdict | Primary source & figure found | Re-verify at QR |
+|---|---|---|---|---|
+| 1 | $4.5bn H20 inventory/purchase write-off | **CONFIRMED** | NVIDIA Q1 FY2026 (ended 27 Apr 2025): "$4.5bn charge… excess inventory and purchase obligations". $180m later released in Q2 FY2026 | Low |
+| 2 | Indium controlled from "early 2025" | **CONFIRMED** | MOFCOM/GAC Announcement No. 10 of 2025, issued **4 Feb 2025**; still in force (excluded from the Nov-2025 suspensions) | Low (date); Med (in-force) |
+| 3 | "H200, an older chip" (prior-gen Hopper) | **CONFIRMED** | H200 = Hopper, superseded by Blackwell. Approval announced 8 Dec 2025; codified/effective 15 Jan 2026 | Low |
+| 4 | Bruce Andrews — first CEAO, ex-Intel + Commerce, June 2026 | **CONFIRMED** (caveat) | Deputy Sec of Commerce 2014–17; Intel gov-affairs chief; appointed June 2026. **"first"** = plausible ("new role") but not verbatim-sourced | Low |
+| 5 | Retainers: Brownstein, Nickles Group, BGR | **CORRECTED** | Brownstein ✓ + BGR ✓ (2025). **Nickles Group is not an NVIDIA retainer** (its filings are Oracle/Lilly/etc.) → replaced with **the Vogel Group** (Senate LDA) | Mod–high |
+| 6 | "Lobbying as hard as any company in the industry" | **UNSUPPORTED** | NVIDIA ~**$4.97M** (2025), 5th behind Meta $26M / Amazon $18M / Alphabet $13M / Microsoft $9.4M. Body reworded to the verified trajectory (~$0.6M → ~$5M) | High |
+| 7 | "China refines most of the world's gallium and rare earths" | **CONFIRMED** | USGS MCS 2026: gallium **99%**; IEA: rare-earth refining **~91%** (mining only ~69% — prose correctly says "refines") | Low–med |
+| 8 | 25% H200 surcharge + Blackwell/Rubin exclusion | **CONFIRMED** | White House 8 Dec 2025 ("25% payment"); Fed. Register 15 Jan 2026 (25% ad valorem duty). Blackwell/Rubin excluded via performance ceilings. Distinct from the Aug-2025 **15%** H20 arrangement | High (active review) |
+
+**Corrections folded into Draft 4:** (5) Nickles Group → the Vogel Group; (6) the false superlative → *"sharply increasing its Washington lobbying, from around $0.6 million in 2024 to roughly $5 million in 2025"* — provisional, framed for restatement.
+
+**Flagged, not changed:** (4) *"first"* Chief External Affairs Officer — kept; confirm against NVIDIA's own release for the superlative. (8) the 25% is legally an ad valorem import duty the White House framed as a revenue-share; *"surcharge on the revenue"* kept as a fair characterisation.
+
+**Time-sensitive (policy):** **High** — 6 (spend updates quarterly), 8 (policy under active review). **Medium** — 2 (in-force status of Announcement 10), 5 (retainers turn over). **Late October 2026** — the truce-date claims (10 Nov / 27 Nov 2026), with editorial item 11.
