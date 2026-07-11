@@ -92,6 +92,18 @@
       '.ap-mchip{background:var(--bg-card,#1a1e27);border:1px solid var(--border,#252a36);border-radius:5px;padding:0.5rem 0.7rem;}',
       '.ap-mchip span{display:block;font-family:' + FM + ';font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-muted,#5a6178);}',
       '.ap-mchip b{font-family:' + FB + ';font-size:12.5px;font-weight:600;color:var(--text,#e6e8ed);}',
+      // market weight-shape chart (cap shelf + falloff; figure-free)
+      '.ap-chart .wc-bar{fill:#2b3140;}',
+      '.ap-chart .wc-cap{fill:var(--yellow-subtle,rgba(245,217,33,0.12));stroke:var(--yellow,#F5D921);stroke-width:1;}',
+      '.ap-chart .wc-me{fill:var(--yellow,#F5D921);}',
+      '.ap-chart .wc-capline{stroke:var(--yellow,#F5D921);stroke-width:1;stroke-dasharray:4 4;opacity:0.6;}',
+      '.ap-chart .wc-capline-lbl{fill:var(--yellow,#F5D921);font:600 9px ' + FM + ';letter-spacing:0.08em;}',
+      '.ap-chart .wc-me-lbl{fill:var(--yellow,#F5D921);font:700 12px ' + FH + ';letter-spacing:0.02em;}',
+      '.ap-chart .wc-bracket{stroke:var(--text-muted,#5a6178);stroke-width:1;}',
+      '.ap-chart .wc-bracket-lbl{fill:var(--text-dim,#8b92a5);font:600 9px ' + FM + ';letter-spacing:0.08em;}',
+      '.ap-chart .wc-base{stroke:var(--border,#252a36);stroke-width:1;}',
+      '.ap-chart .wc-axis{fill:var(--text-muted,#5a6178);font:600 9px ' + FM + ';letter-spacing:0.08em;}',
+      '.ap-caption{font-family:' + FB + ';font-size:13px;line-height:1.6;color:var(--text-dim,#8b92a5);margin:0.5rem 0 0.7rem;}',
       // pro gate
       '.ap-pro-teaser{font-family:' + FB + ';font-size:14px;line-height:1.65;color:var(--text,#e6e8ed);margin:0 0 0.6rem;}',
       '.ap-blur{filter:blur(2.5px);opacity:0.65;user-select:none;pointer-events:none;max-height:5.5rem;overflow:hidden;}',
@@ -302,13 +314,64 @@
     return (facts ? '<div class="ap-facts">' + facts + '</div>' : '') + body;
   }
   function mchip(k, v) { return v ? '<div class="ap-mchip"><span>' + esc(k) + '</span><b>' + esc(v) + '</b></div>' : ''; }
+  // ── market-context weight-shape chart (figure-free: cap shelf + falloff) ──
+  // Reads m.chart = { cap_label, total, at_cap, cohort[], falloff[{band,count}], me }.
+  // Every bar height is derived from a weight BAND (7 ordinal levels), never a
+  // weight; the payload carries only membership counts and labels. Shows which
+  // names sit at the cap and how the field falls away beneath them.
+  function wChart(m) {
+    var c = m.chart;
+    if (!c || !c.falloff || !c.falloff.length) return '';
+    var W = 900, H = 250, mL = 24, mR = 24, baseY = 190, capH = 132;
+    var HTS = [capH, 104, 82, 62, 44, 28, 16];        // ordinal band heights, high -> low
+    var total = c.total || c.falloff.reduce(function (a, b) { return a + (b.count || 0); }, 0);
+    if (!total) return '';
+    var slotW = (W - mL - mR) / total, barW = Math.max(3, slotW * 0.66);
+    var me = c.me, atCap = c.at_cap || 0;
+    var cohort = (c.cohort || []).slice().sort(function (a, b) { return (a === me ? -1 : 0) - (b === me ? -1 : 0); });
+    var bars = [], i, j, n;
+    for (i = 0; i < atCap; i++) bars.push({ h: HTS[0], kind: cohort[i] === me ? 'me' : 'cap', name: cohort[i] });
+    for (i = 1; i < c.falloff.length; i++) { n = c.falloff[i].count || 0; for (j = 0; j < n; j++) bars.push({ h: HTS[i] || HTS[HTS.length - 1], kind: 'bar', bi: i }); }
+    var capY = baseY - capH;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" xmlns="http://www.w3.org/2000/svg">';
+    s += '<title>' + esc(m.sector_index || 'Sector index') + ': ' + atCap + ' names at the ' + esc(c.cap_label || '') + ' single-name cap, then the field falls away</title>';
+    // cap ceiling line + label (the cap is the public policy ceiling, not a weight)
+    s += '<line class="wc-capline" x1="' + mL + '" y1="' + capY + '" x2="' + (W - mR) + '" y2="' + capY + '"/>';
+    s += '<text class="wc-capline-lbl" x="' + (W - mR) + '" y="' + (capY - 6) + '" text-anchor="end">' + esc(c.cap_label || '') + ' CAP</text>';
+    // bars
+    var x = mL;
+    bars.forEach(function (bar) {
+      var y = baseY - bar.h, cls = bar.kind === 'me' ? 'wc-bar wc-me' : (bar.kind === 'cap' ? 'wc-bar wc-cap' : 'wc-bar');
+      var op = bar.kind === 'bar' ? ' opacity="' + Math.max(0.3, 1 - (bar.bi - 1) * 0.12).toFixed(2) + '"' : '';
+      var tip = bar.name ? '<title>' + esc(bar.name) + '</title>' : '';
+      s += '<rect class="' + cls + '" x="' + x.toFixed(1) + '" y="' + y + '" width="' + barW.toFixed(1) + '" height="' + bar.h + '" rx="1.5"' + op + '>' + tip + '</rect>';
+      x += slotW;
+    });
+    // highlighted name above the shelf
+    if (me) s += '<text class="wc-me-lbl" x="' + mL + '" y="' + (capY - 20) + '">' + esc(me) + '</text>';
+    // cohort bracket beneath the shelf
+    var shelfW = atCap * slotW - (slotW - barW), brY = baseY + 12;
+    s += '<line class="wc-bracket" x1="' + mL + '" y1="' + brY + '" x2="' + (mL + shelfW).toFixed(1) + '" y2="' + brY + '"/>';
+    s += '<text class="wc-bracket-lbl" x="' + (mL + shelfW / 2).toFixed(1) + '" y="' + (brY + 15) + '" text-anchor="middle">' + atCap + ' AT THE CAP</text>';
+    // baseline + direction hints (no numeric axis)
+    s += '<line class="wc-base" x1="' + mL + '" y1="' + baseY + '" x2="' + (W - mR) + '" y2="' + baseY + '"/>';
+    s += '<text class="wc-axis" x="' + mL + '" y="' + (H - 8) + '">LARGEST</text>';
+    s += '<text class="wc-axis" x="' + (W - mR) + '" y="' + (H - 8) + '" text-anchor="end">SMALLEST &#183; BY WEIGHT</text>';
+    s += '</svg>';
+    return '<div class="ap-chart">' + s + '</div>';
+  }
   function rMarket(d) {
     var m = d.market_context || {};
     if (m.state === 'live' || m.member) {
       var band = m.weight_band_label || (m.weight_band === '5-capped' ? 'At the 5% single-name cap' : (m.weight_band ? m.weight_band + '% of sector index' : null));
       var rank = m.rank_label || (m.sector_rank != null ? ('No. ' + m.sector_rank + ' by weight') : null);
-      return '<div class="ap-market">' + mchip('Index', m.sector_index) + mchip('Weight band', band) + mchip('Sector rank', rank) + '</div>'
-        + '<p class="ap-note">Membership, band and rank only. No price, market capitalisation, or exact weight is shown.</p>';
+      var chips = '<div class="ap-market">' + mchip('Index', m.sector_index) + mchip('Weight band', band) + mchip('Sector rank', rank) + '</div>';
+      if (m.chart) {
+        var caption = m.caption ? '<p class="ap-caption">' + esc(m.caption) + '</p>' : '';
+        return wChart(m) + caption + chips
+          + '<p class="ap-note">Shape only: which names sit at the cap and how the field falls away below. No price, market capitalisation, weight or absolute figure is shown.</p>';
+      }
+      return chips + '<p class="ap-note">Membership, band and rank only. No price, market capitalisation, or exact weight is shown.</p>';
     }
     if (m.state === 'token_isolated') return '<p class="ap-body">' + state('Token isolated') + ' Tokens are held as a research watchlist and never enter an equity index.</p>';
     if (m.state === 'private_capital_index') return '<div class="ap-market">' + mchip('Coverage', 'Robotnik Private Capital Index') + '</div>';

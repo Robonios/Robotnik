@@ -171,3 +171,37 @@ Read-only fact-check of the public-facing identity prose. Verdicts: **5 CONFIRME
 **Note:** claim 2 is the most perishable public fact in the profile (market-cap #1 can change day to day) — re-verify at publication and each quarterly review. Claim 4's ~1% is the Automotive segment; robotics revenue is not separately disclosed.
 
 **Time-sensitive:** **High** — 2 (market-cap rank). **Moderate** — 1 (share declining). **Low–moderate** — 3, 5. **Low** — 4 (closed-year figure).
+
+## Classification layer (Draft 2)
+
+Read-only fact-check of the free, public-facing classification prose against Robotnik's own value-chain framework. Verdicts: the tier **count and names are CONFIRMED**; the **rung order cannot be cleanly verified because the platform carries two conflicting orderings** (see below), and the draft matches neither exactly. The one authorised change (a rule-16 recast) is applied; every ordering/bookend nuance is held. Structured fields (sector, subsector, value-chain tier, lifecycle) are machine-generated and unchanged.
+
+| # | Claim (abbreviated) | Verdict | Source & detail | Re-verify |
+|---|---|---|---|---|
+| 1a | Ladder is **"eight tiers"** | **CONFIRMED** | The published methodology (`value-chain-taxonomy.html`: "a single ordered axis of eight tiers"; FAQ enumerates 8) and `populate_value_chain.py` ("locked 8-tier taxonomy", `ALLOWED_TIERS` = 8) both say eight. (The on-page render `LADDER` shows only 7 rungs, dropping Software & Services - a display simplification, not the framework.) CLAUDE.md's "(9)" counts distinct registry strings, which include one stray `Launch Services` record (SpaceX) outside the locked set | Low |
+| 1b | Named rungs are **real** tier names, not invented | **CONFIRMED** | materials=Upstream Materials; "equipment that processes them"=Capital Equipment; design=IP & Design; fabrication=Fabrication & Manufacturing; "assembly into systems"=System Integration; deployment=Deployment & Operation. All six map to real tiers; none invented or misnamed (draft shortens "Fabrication & Manufacturing" to "Fabrication", as the render does too) | Low |
+| 1c | Rung **order** as glossed | **UNRESOLVED - platform is self-inconsistent** | See the ordering note. The draft's order matches neither of the platform's two orderings exactly, but is one adjacent swap from the published-methodology order. Held; immaterial to the argument | Low |
+| 2 | NVIDIA at **IP & Design**, TSMC at **Fabrication** | **CONFIRMED** | `entity_registry.json`: NVDA `value_chain` = "IP & Design"; TSM = "Fabrication & Manufacturing" | Low |
+| 3 | Captures value **above its tier** (System Integration + Deployment) | **CONFIRMED** | System Integration and Deployment sit above IP & Design under **both** platform orderings, so the "reaches up" thesis holds regardless. Consistent with the committed bottleneck ("sells more than the chip") and dependency layers; no contradiction | Low |
+
+**The ordering problem (claim 1c) - the platform contradicts itself; correcting my earlier note.** There are two live orderings of the same eight-tier ladder, and they disagree on where IP & Design sits:
+
+- **Published methodology** (`research/value-chain-taxonomy.html`, both its SVG diagram and its FAQ) and `scripts/populate_value_chain.py` all agree, base -> apex: Upstream Materials, **IP & Design (2nd)**, Capital Equipment, Fabrication, Components, System Integration, Deployment, Software & Services.
+- **On-page render** (`js/asset-profile.js` `LADDER`, line 197), the ladder shown in the dependency graph on this very profile: Upstream Materials, Capital Equipment, Fabrication, Components, **IP & Design (5th)**, System Integration, Deploy / Operate.
+
+The draft prose orders the rungs: materials, Capital Equipment, **IP & Design**, Fabrication, System Integration, deployment. That is one adjacent swap from the methodology order (draft puts equipment before design; the methodology puts design before equipment) and a different single swap from the render order (draft puts design before fabrication; the render puts fabrication before design). It matches neither cleanly.
+
+**Actionable finding (bigger than the prose):** the render ladder and the published methodology disagree on IP & Design's rung (5th vs 2nd) and on the rung count (7 vs 8). This is a live user-facing inconsistency on the profile page. It should be resolved - my read is the methodology page is authoritative (it is the document of record, three sources agree, and `TIER_PAGE` links to it), so the `LADDER` array in `asset-profile.js` is the outlier to fix. The classification prose should then be aligned to whichever ordering the platform commits to. Until that is settled, holding the prose as pasted is the safe call.
+
+**Held prose nuances (propose once the ordering is settled):**
+1. The rung sequence in P1 - align to the chosen canonical order (the referent "the equipment that processes them" would need re-pointing if design moves ahead of equipment).
+2. P2 "TSMC sits **one tier along**, at Fabrication" - IP & Design and Fabrication are **two rungs apart** under both orderings (and under the render, Fabrication sits *below* IP & Design). Proposed: "sits further along, at Fabrication" (drops the false one-rung adjacency).
+3. P1 "...to the **finished systems** at the top" - the apex is Software & Services (methodology) or Deploy / Operate (render), not finished systems (System Integration). Proposed: "...to the software and services at the top".
+
+The draft's **core thesis is unaffected**: IP & Design sits below System Integration and Deployment under both orderings, so NVIDIA "reaching up" the ladder is true either way - and under the methodology ordering (IP & Design 2nd) it is a longer climb, which strengthens the point.
+
+**Rule-16 (Part 2) - one fix applied:** P3 "selling **not just** chips **but** complete assembled systems" recast to the compliant "Y ... rather than X" form: *"selling complete assembled systems, the racks, the networking and the software together, **rather than chips alone**"*. Chose "rather than chips alone" over the literal "not just chips" placement because the appositive ("the racks, the networking and the software together") made the literal swap read awkwardly. P2 "designed **but not** built" is **compliant** - a direct X-but-not-Y factual contrast (both halves literally true), not the rhetorical negate-then-assert rule 16 bans; left as-is.
+
+**Data-hygiene aside (out of scope, flagged for a separate pass):** one active entity, **SpaceX**, carries `value_chain` = "Launch Services", outside the locked eight-tier `ALLOWED_TIERS`. It is the sole source of CLAUDE.md's "(9)". Re-tagging it to a locked tier - System Integration, per the script's own rule "launch-vehicle builder = System Integration" - would restore the eight-tier invariant. Not touched here.
+
+**Time-sensitive:** all **Low** - the taxonomy is a locked framework and the two registry tier assignments (NVDA, TSM) are stable. The render-vs-methodology inconsistency is a standing item, not time-sensitive.

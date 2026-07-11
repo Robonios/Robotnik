@@ -3,7 +3,7 @@
     "id": "NVDA",
     "slug": "NVDA",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-11T16:59:12.515171+00:00",
+    "generated_at": "2026-07-11T18:04:10.345108+00:00",
     "profile_status": "reference"
   },
   "identity": {
@@ -36,7 +36,7 @@
     "universe_status": "index_constituent",
     "tier": "free",
     "lifecycle": "Public",
-    "body": "NVIDIA designs silicon and outsources fabrication, which fixes it at the IP & Design tier rather than the Fabrication tier occupied by its foundry. Its distinctive move is to climb the ladder without leaving that tier: by selling integrated racks, networking, and software it captures value normally booked at the System Integration and Deployment tiers, while remaining, in manufacturing terms, a design house dependent on others' capacity."
+    "body": "Robotnik places every company in the frontier stack on a ladder of eight tiers, from the raw materials at the bottom to the finished systems at the top. Each tier is a stage where value is added: materials, then the equipment that processes them, then the design of the product, then its fabrication, then its assembly into systems, and so on up to deployment. A company's tier says what part of the work it does and, roughly, where in the chain it captures its money.\n\nNVIDIA sits at the IP & Design tier, the stage where a product is designed but not built. That is the correct home for a company that draws its chips and sends them elsewhere to be made. Its foundry, TSMC, sits one tier along, at Fabrication. On a simple reading, NVIDIA does the designing and TSMC does the building, and each keeps to its rung.\n\nWhat makes NVIDIA unusual is that it earns far beyond its tier without leaving it. By selling complete assembled systems, the racks, the networking and the software together, rather than chips alone, NVIDIA captures value that the ladder would normally book to the higher tiers of system integration and deployment. It reaches up the ladder commercially while staying put industrially. In what it sells, NVIDIA behaves like a company that spans half the stack. In what it actually makes, it remains a design house at a single tier, dependent on the tiers below it for everything physical. That gap, between how much of the chain NVIDIA captures and how little of it NVIDIA controls, is the tension the rest of this profile examines."
   },
   "bottleneck": {
     "rating": "HIGH",
@@ -99,9 +99,58 @@
     "weight_band": "5-capped",
     "sector_rank": 8,
     "state": "live",
+    "chart": {
+      "total": 68,
+      "at_cap": 9,
+      "below_cap": 59,
+      "cohort": [
+        "AMAT",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "INTC",
+        "LRCX",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 9
+        },
+        {
+          "band": "3.5-5",
+          "count": 2
+        },
+        {
+          "band": "2-3.5",
+          "count": 5
+        },
+        {
+          "band": "1-2",
+          "count": 5
+        },
+        {
+          "band": "0.5-1",
+          "count": 9
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 5
+        },
+        {
+          "band": "<0.25",
+          "count": 33
+        }
+      ],
+      "cap_label": "5%",
+      "me": "NVDA"
+    },
     "tier": "free",
     "weight_band_label": "At the 5% single-name cap (top band)",
-    "rank_label": "Joint-largest constituent (nine names sit at the cap)"
+    "rank_label": "Joint-largest constituent (nine names sit at the cap)",
+    "caption": "Robotnik caps any single name at 5% of its sector index, so no one company can dominate. Nine semiconductor leaders share that ceiling, NVIDIA among them; by raw weight the largest would tower over the field, but the cap is a deliberate choice to read the frontier as a cohort of leaders rather than a single bet."
   },
   "capital": {
     "last_round": null,

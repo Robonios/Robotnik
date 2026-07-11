@@ -28,7 +28,7 @@ Output: data/assets/{slug}.json. This script does NOT git-commit or git-add.
 import json
 import re
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -60,6 +60,42 @@ BANNED_KEYS = ('"weight_pct"', '"market_cap"', '"market_cap_usd"', '"price"',
                '"pe_ratio"', '"sparkline', '"native_price"', '"native_unit"',
                '"change_24h', '"change_7d', '"change_30d', '"change_ytd',
                '"volume"')
+
+# Weight bands, highest to lowest. The market-context chart is built from these
+# (a per-sector histogram of membership counts) so it shows the SHAPE of the
+# index only: which names sit at the cap, and how the field falls away below.
+BAND_ORDER = ("5-capped", "3.5-5", "2-3.5", "1-2", "0.5-1", "0.25-0.5", "<0.25")
+
+
+def scan_chart_payload(shard, slug):
+    """Extra ToS pass over market_context.chart. The chart is a deliberately
+    stripped, figure-free visual: it may carry only membership counts (ints) and
+    categorical labels (strings). Any float is a possible weight/price leak and
+    any banned vendor key is fatal, exactly as for the shard as a whole."""
+    chart = (shard.get("market_context") or {}).get("chart")
+    if not chart:
+        return
+    blob = json.dumps(chart)
+    leaks = [b for b in BANNED_KEYS if b in blob]
+    if leaks:
+        print("ToS VIOLATION (chart payload) in {}: {}".format(slug, leaks), file=sys.stderr)
+        sys.exit(3)
+
+    def walk(v, path):
+        if isinstance(v, bool):
+            return                      # bool is an int subclass; allow flags
+        if isinstance(v, float):
+            print("ToS VIOLATION (chart carries a float, possible weight) in {} at {}: {}"
+                  .format(slug, path, v), file=sys.stderr)
+            sys.exit(3)
+        if isinstance(v, dict):
+            for k, vv in v.items():
+                walk(vv, path + "." + k)
+        elif isinstance(v, list):
+            for i, vv in enumerate(v):
+                walk(vv, "{}[{}]".format(path, i))
+
+    walk(chart, "chart")
 
 
 def weight_band(w):
@@ -117,7 +153,10 @@ def deep_merge(base, over):
 def main():
     reg = json.loads(REG_PATH.read_text())
     enr = json.loads(ENR_PATH.read_text())
-    weights = json.loads(WEIGHTS_PATH.read_text())["weights"]
+    weights_doc = json.loads(WEIGHTS_PATH.read_text())
+    weights = weights_doc["weights"]
+    cap_limit = weights_doc.get("cap_limit_pct", 5.0)
+    cap_label = "{:g}%".format(cap_limit)          # "5%" — the public policy ceiling, a label not a weight
     cik = json.loads(CIK_PATH.read_text())
 
     weights_by = {w["ticker"]: w for w in weights}
@@ -133,6 +172,22 @@ def main():
     for rows in by_sector.values():
         for i, w in enumerate(sorted(rows, key=lambda r: (-r["weight_pct"], r["ticker"])), start=1):
             rank_by[w["ticker"]] = i
+
+    # Per-sector weight SHAPE for the market-context chart. ToS-safe by construction:
+    # a histogram of membership COUNTS per weight band, plus the cap cohort (names
+    # tied at the single-name cap) as membership. No raw weight, price or market cap
+    # enters this structure — only the SHAPE of the index (cap shelf + falloff).
+    sector_shape = {}
+    for sector, rows in by_sector.items():
+        counts = Counter(weight_band(r["weight_pct"]) for r in rows)
+        cohort = sorted(r["ticker"] for r in rows if weight_band(r["weight_pct"]) == "5-capped")
+        sector_shape[sector] = {
+            "total": len(rows),
+            "at_cap": len(cohort),
+            "below_cap": len(rows) - len(cohort),
+            "cohort": cohort,
+            "falloff": [{"band": b, "count": counts.get(b, 0)} for b in BAND_ORDER],
+        }
 
     active = {k: v for k, v in reg.items() if v.get("status") != "excluded"}
     now = datetime.now(timezone.utc).isoformat()
@@ -234,6 +289,8 @@ def main():
                 "weight_band": weight_band(wrow["weight_pct"]),
                 "sector_rank": rank_by.get(join_key),
                 "state": "live",
+                # figure-free shape of this member's sector index; renderer highlights `me`
+                "chart": dict(sector_shape[wrow["sector"]], cap_label=cap_label, me=join_key),
             }
         elif typ == "token":
             market_context = {"member": False, "sector_index": None,
@@ -294,11 +351,14 @@ def main():
             merged += 1
 
         # ── ToS guard: no raw vendor field / raw weight may leak ──
+        # First the whole-shard key scan, then a dedicated pass over the
+        # market-context chart payload (counts + labels only, never a figure).
         blob = json.dumps(shard)
         leaks = [b for b in BANNED_KEYS if b in blob]
         if leaks:
             print("ToS VIOLATION in {}: {}".format(slug, leaks), file=sys.stderr)
             sys.exit(3)
+        scan_chart_payload(shard, slug)
 
         (OUT_DIR / "{}.json".format(slug)).write_text(
             json.dumps(shard, indent=2, ensure_ascii=False) + "\n")
