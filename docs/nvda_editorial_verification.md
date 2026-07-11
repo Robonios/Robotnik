@@ -137,3 +137,37 @@ Read-only fact-check of the five claims plus two dependency-graph edge-label cor
 **Flagged, not changed (report and hold):** rule-16 (no "not X, but Y") — Draft 3 has one: P3 *"Modern AI needs **not** one chip **but** tens of thousands acting as one."* Outside this layer's amendment scope; easy reword if wanted.
 
 **Time-sensitive (bottleneck):** **High** — 1 (merchant share is declining as ASICs/AMD ramp; date-stamp and re-check quarterly). **Medium** — 4 (supply-chain concentration). **Low** — 2, 3, 5.
+
+## Dependency layer, Pro (Draft 3)
+
+Read-only fact-check of the five claims specific to the Pro analysis (TSMC sole-source, three HBM makers and hyperscaler-competitors were re-confirmed against the committed layers, not re-derived). Verdicts: **5 CONFIRMED.** No factual corrections; the CoWoS pre-booking figure holds, so nothing cut. Rule-16 findings reported separately (held for reword).
+
+| # | Claim (abbreviated) | Verdict | Primary source & figure | Re-verify |
+|---|---|---|---|---|
+| 1 | CoWoS (not wafer fab) is the binding output constraint | **CONFIRMED** | TrendForce (15 Jun 2026): CoWoS "sold out through 2026"; Silicon Analysts / INDmoney: "packaging, not wafer starts, gates AI-accelerator shipments" | Moderate (gap easing ~20%→~10% by end-2026) |
+| 2 | NVIDIA pre-booked **>half** of projected 2026 CoWoS capacity | **CONFIRMED** | Morgan Stanley ~**60%** (~595k wafers); DigiTimes (10 Dec 2025) "over half for 2026-27"; INDmoney ~60%. Caveat: largely one sell-side estimate reproduced second-hand; the **share is robust**, absolute wafer counts move (595k→850k) — the draft states the share, not a count | **High** |
+| 3 | High-bandwidth memory is sold years ahead | **CONFIRMED** (re-confirmed) | Consistent with the geography/editorial finding: three-maker HBM oligopoly sold out years forward | Med |
+| 4 | Four hyperscalers = largest customers + most credible in-house-silicon competitors | **CONFIRMED** (nuance) | FY2026 10-K: two *direct* (intermediary) customers 22%/14% + "some *indirect* customers 10%+"; hyperscalers ~40% aggregate (indirect), each with captive silicon (Trainium/TPU/Maia/MTIA). Per-hyperscaler ~10% is an analyst estimate, not a named 10-K line — the draft says "largest customers", not "each 10%+", so it does not over-state | Moderate–high |
+| 5 | No contradiction with committed bottleneck / geography / capital | **CONFIRMED** | CoWoS-binding, three-maker HBM years-ahead, hyperscaler-competitors and TSMC sole-source all consistent across layers; ">half of 2026 CoWoS" matches the prior analysis body | — |
+
+**Rule-16 (Part 2) — reported, held for your reword (shipped as pasted):** two genuine "not X, but Y" — P2 *"the binding constraint is **not** the chip **but** the packaging"* and P3 *"the constraint is **not** whether NVIDIA can buy it **but** whether it committed early enough"*. Spot (a) *"rather than the merchant chipmakers"* is **compliant**; spot (b) the closing *"**not** held in place by contracts… They rest on…"* reads **negative-first** (a positive-first restatement would be cleaner). Borderline: P3 *"not only… but…"* (additive), P4 *"is not paying…; it is redesigning…"* (semicolon).
+
+**Time-sensitive:** **High** — 2 (forward CoWoS allocation), 4 (competitive standing shifts quarterly). **Moderate** — 1 (constraint easing), 5. **Med** — 3.
+
+## Identity layer (Draft 3)
+
+Read-only fact-check of the public-facing identity prose. Verdicts: **5 CONFIRMED, 0 corrections.** Rule-16 scan: **zero "not X, but Y"** constructions. The facts table (ticker, listing, domicile, CIK) is machine-generated and unchanged.
+
+| # | Claim (abbreviated) | Verdict | Primary source & figure | Re-verify |
+|---|---|---|---|---|
+| 1 | "Great majority" of AI-training chips worldwide | **CONFIRMED** | Consistent with, and looser than, the verified ~90%+ merchant/training accelerator share (bottleneck layer); "great majority" is conservative, not overstated | Moderate |
+| 2 | "By market value, the largest company in the world" | **CONFIRMED** | NVIDIA **#1 by market cap**, July 2026 (CompaniesMarketCap; Motley Fool). #2 contested (Apple/Alphabet). Stated as a **categorical ranking**, no raw figure → ToS-safe | **High** (day-to-day) |
+| 3 | "Close to nine-tenths" of revenue from data centre | **CONFIRMED** | Matches the pinned FY2026 ~90% Data Center revenue share | Low–moderate |
+| 4 | Robotics/automotive "around 1%" | **CONFIRMED** (label nuance) | $2.3bn Automotive / $215.9bn = **1.07%** (editorial claim 9). Robotics is not broken out (sits in Data Center), so "robots and self-driving cars ~1%" is essentially the automotive line | Low |
+| 5 | NVIDIA "describes physical machines that sense and act… as its next major market" | **CONFIRMED** | Jensen Huang, GTC 2026 (16 Mar 2026): "physical AI", "the big bang of physical AI", ~$40T TAM. Attribution ("NVIDIA describes…") is fair | Low–moderate |
+
+**Rule-16 (Part 2):** none. "sells more than the chip" and "complete AI systems rather than parts" are the compliant forms; nothing else flags.
+
+**Note:** claim 2 is the most perishable public fact in the profile (market-cap #1 can change day to day) — re-verify at publication and each quarterly review. Claim 4's ~1% is the Automotive segment; robotics revenue is not separately disclosed.
+
+**Time-sensitive:** **High** — 2 (market-cap rank). **Moderate** — 1 (share declining). **Low–moderate** — 3, 5. **Low** — 4 (closed-year figure).
