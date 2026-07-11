@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-10T22:59:56.459069Z",
+    "generated_at": "2026-07-11T09:36:30.547699Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -30,21 +30,21 @@
       "name": "Robotnik Composite Index",
       "status": "live",
       "cadence": "weekly",
-      "value": 956.58,
-      "as_of": "2026-07-04",
-      "fresh_through": "2026-07-04",
+      "value": 966.06,
+      "as_of": "2026-07-11",
+      "fresh_through": "2026-07-11",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-07-04",
-        "points": 3,
+        "end": "2026-07-11",
+        "points": 4,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": -2.98,
+        "1W": 0.99,
         "1M": {
           "null": true,
           "reason": "insufficient_history"
@@ -78,6 +78,10 @@
         {
           "date": "2026-07-04",
           "value": 956.58
+        },
+        {
+          "date": "2026-07-11",
+          "value": 966.06
         }
       ],
       "code": "RCI",
@@ -2153,21 +2157,21 @@
       "name": "Commodities",
       "status": "live",
       "cadence": "weekly",
-      "value": 974.52,
-      "as_of": "2026-07-04",
-      "fresh_through": "2026-07-04",
+      "value": 979.11,
+      "as_of": "2026-07-11",
+      "fresh_through": "2026-07-11",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-07-04",
-        "points": 3,
+        "end": "2026-07-11",
+        "points": 4,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": -0.19,
+        "1W": 0.47,
         "1M": {
           "null": true,
           "reason": "insufficient_history"
@@ -2201,6 +2205,10 @@
         {
           "date": "2026-07-04",
           "value": 974.52
+        },
+        {
+          "date": "2026-07-11",
+          "value": 979.11
         }
       ],
       "code": "RCMI",
