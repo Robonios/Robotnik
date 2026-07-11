@@ -97,3 +97,23 @@ Read-only fact-check of the eight geography claims (the customer-HQ switch, FY20
 **Corrections:** (7) applied — "a few hundred" → "a few dozen square kilometres" (~46 km² of science-park land). (8) **held/provisional** — the false sentence ("no announced second sources at all") is self-contradicted by the body's own Micron reference; replaced with a truthful version (only ASML is genuinely sole-source; Korea's memory and Japan's substrates have announced second sources not yet matching the incumbents). Reword as preferred.
 
 **Time-sensitive (geography):** **High** — 4 (HBM shares move quarterly), 5 (Arizona 3nm date already moved 2028→2H2027). **Medium** — 2 (FY2026 estimate, restated yearly), 6 (per-fab cost rises each node), 8 (forward US fabs land ~2028; substrate qualification broadening). Re-check claims 1 and 2 against the **FY2027 10-K**.
+
+## Capital layer (Draft 3)
+
+Read-only fact-check of the five new/newly-specific claims (FCF, buybacks, $80bn/$58.5bn authorisations, dividend 1c→25c, $21.4bn inventory, $4.5bn charge, $25bn bond, $4bn optical were already pinned above and not re-derived). Verdicts: **2 CONFIRMED, 1 CONFIRMED+CORRECTED, 2 CORRECTED.** Two amendments folded into Draft 3.
+
+| # | Claim (abbreviated) | Verdict | Primary source & figure found | Re-verify |
+|---|---|---|---|---|
+| 1 | Purchase-obligations total in the FY2026 10-K | **CORRECTED** | Note 12: **$95.2bn** manufacturing/supply/capacity (no grand total; cloud $27bn, investment $11.4bn, other $3.4bn are separate). NVIDIA flags some cancellable/reschedulable before firm orders | High (quarterly snapshot) |
+| 2 | Bond timing "June 2026" | **CONFIRMED** | Priced **15 June 2026** (matches the editorial record) | Low |
+| 3 | Market read the issuance as financing the build-out | **CONFIRMED** | Bloomberg, 15 Jun 2026 ("Nvidia Joins AI Borrowing Frenzy…"); CNBC. Formal use-of-proceeds is general-corporate/refinancing; build-out is the market *reading* | Low |
+| 4 | Dividend 1c→25c, paid 26 Jun 2026; "small fraction of FCF" | **CONFIRMED** (step-up + date); **CORRECTED** ("small fraction") | NVIDIA Q1 FY2027 release: $0.01→$0.25/qtr, paid 26 Jun 2026. Annualised ~**$24.4bn ≈ 25% of $96.6bn FCF** → "small fraction" is wrong; fixed to "roughly a quarter" | Med |
+| 5 | $4.5bn charge "most of it" inventory + obligations | **CONFIRMED** | Q1 FY2026 10-Q: **$1.9bn inventory + $2.6bn purchase obligations = 100%** (obligations the larger half, 58%); no goodwill/other | Low |
+
+**Corrections folded into Draft 3:** (1) obligations sentence now reads *"…commitments to buy inventory, supply and manufacturing capacity that reached $95.2 billion at the end of fiscal 2026. Once orders firm up, they bind whether or not demand holds."* — inserts the figure and softens the absolute per the 10-K's cancellability language. (4) *"only a small fraction of"* → *"roughly a quarter of"* one year's free cash flow.
+
+**Flagged, not changed (report and hold):**
+- **Rule 16 (no "not X, but Y"):** Draft 3 contains two — P3 *"buying **not** components **but** the financial health…"* and P5 *"the write-off was **not** an accident of the strategy **but** its cost of doing business."* Shipped as pasted (outside this layer's amendment scope); reword at will.
+- **Claim-4 knock-on:** with the dividend now shown at ~a quarter of FCF, the following sentence *"Nothing here distinguishes NVIDIA… except scale"* sits in mild tension (a 25× hike to a ~$24bn dividend is itself somewhat distinctive). Left as written; your call.
+
+**Time-sensitive (capital):** **High** — 1 ($95.2bn is a point-in-time snapshot, refreshed quarterly, turns over within a year). **Medium** — 4 (the $0.25 rate is go-forward; buybacks shrink the share count and FCF is rising, so the ratio falls toward the low teens on forward FCF). **Low** — 2, 3, 5.
