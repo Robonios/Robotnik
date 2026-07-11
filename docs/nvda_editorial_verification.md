@@ -78,3 +78,22 @@ Read-only fact-check of the eight new claims in the policy layer (truce dates, i
 **Flagged, not changed:** (4) *"first"* Chief External Affairs Officer — kept; confirm against NVIDIA's own release for the superlative. (8) the 25% is legally an ad valorem import duty the White House framed as a revenue-share; *"surcharge on the revenue"* kept as a fair characterisation.
 
 **Time-sensitive (policy):** **High** — 6 (spend updates quarterly), 8 (policy under active review). **Medium** — 2 (in-force status of Announcement 10), 5 (retainers turn over). **Late October 2026** — the truce-date claims (10 Nov / 27 Nov 2026), with editorial item 11.
+
+## Geography layer (Draft 4)
+
+Read-only fact-check of the eight geography claims (the customer-HQ switch, FY2026 splits and ~76% attribution were re-confirmed here against the 10-K rather than re-derived). Verdicts: **6 CONFIRMED (one "defensible"), 2 CORRECTED.** Claim 7 is folded in; claim 8 is a truthful provisional held for reframe.
+
+| # | Claim (abbreviated) | Verdict | Primary source & figure found | Re-verify |
+|---|---|---|---|---|
+| 1 | FY2026 revenue by customer HQ: US $149.6 / TW $42.3 / CN+HK $19.7 / Other $4.3bn | **CONFIRMED** | FY2026 10-K geographic note: US $149,617M, TW $42,345M, CN+HK $19,677M, Other $4,299M (sum $215,938M) | Low |
+| 2 | "Roughly three-quarters" Taiwan-HQ DC revenue → US/Europe | **CONFIRMED** | 10-K footnote: "we estimate **76%**… attributed to end customers based in the United States and Europe" | Med (FY-specific) |
+| 3 | Foxconn & Quanta = Taiwan-HQ system builders | **CONFIRMED** | Both Taiwan-HQ GB200 ODMs; illustrative (the 10-K names no customers) | Low–med |
+| 4 | SK Hynix + Samsung most HBM; Micron the US exception | **CONFIRMED** | TrendForce: SK Hynix ~50–59%, Samsung ~20–30% (~78–85% together), Micron ~19–20% (Boise) | High (quarterly) |
+| 5 | TSMC Arizona: 4nm producing, first US Blackwell wafer, 3nm ~2027 | **CONFIRMED** | 4nm HVM; first US Blackwell wafer Oct 2025 (front-end only, still ships to TW for CoWoS); N3 volume **2H2027** (accelerated from 2028) | High (3nm date) |
+| 6 | "Tens of billions a single fabrication plant costs" | **CONFIRMED** (defensible) | IBS: one leading-edge fab ~$20–28bn. NB: the $165bn Arizona figure is the whole complex, not one fab | Med |
+| 7 | "A few hundred square kilometres of western Taiwan" | **CORRECTED** | Hsinchu+Taichung+Tainan science parks ≈ **46 km²** total → overstated ~5–9×. Fixed to "a few dozen square kilometres" | Low |
+| 8 | "no announced second sources at all" (Korea memory / Japan substrates / NL lithography) | **CORRECTED** | Lithography TRUE (ASML ~100% leading-edge EUV, sole-source); memory FALSE (Micron makes HBM outside Korea; SK Hynix Indiana, ground broken Apr 2026); substrates OVERSTATED (Kinsus/Unimicron/Shinko/AT&S qualified) | Med |
+
+**Corrections:** (7) applied — "a few hundred" → "a few dozen square kilometres" (~46 km² of science-park land). (8) **held/provisional** — the false sentence ("no announced second sources at all") is self-contradicted by the body's own Micron reference; replaced with a truthful version (only ASML is genuinely sole-source; Korea's memory and Japan's substrates have announced second sources not yet matching the incumbents). Reword as preferred.
+
+**Time-sensitive (geography):** **High** — 4 (HBM shares move quarterly), 5 (Arizona 3nm date already moved 2028→2H2027). **Medium** — 2 (FY2026 estimate, restated yearly), 6 (per-fab cost rises each node), 8 (forward US fabs land ~2028; substrate qualification broadening). Re-check claims 1 and 2 against the **FY2027 10-K**.

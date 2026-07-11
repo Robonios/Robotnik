@@ -4,7 +4,7 @@
 
 This is the writing standard for Robotnik entity profiles. It is drawn from the NVIDIA editorial, the first section written to the deeper template, which passed through six editorial drafts and their edit notes (preceded by an initial sketch) before it reached the final text. The standard governs all profile sections and all 196 profiles that follow the NVIDIA reference.
 
-The document has two parts. **Section 1, The Standard, is the operative part**: the 29 rules to apply, grouped into argumentation (10), prose mechanics (15), and register (4). **Section 2, The Evidence, is the rationale**: the drafts in order, each followed by the notes that moved it to the next. Read Section 1 to write. Read Section 2 to see why each rule is there.
+The document has two parts. **Section 1, The Standard, is the operative part**: the 30 rules to apply, grouped into argumentation (10), prose mechanics (16), and register (4). **Section 2, The Evidence, is the rationale**: the drafts in order, each followed by the notes that moved it to the next. Read Section 1 to write. Read Section 2 to see why each rule is there.
 
 Every rule in Section 1 was paid for by an edit in Section 2. Where a rule looks fussy, the draft that ignored it shows the cost.
 
@@ -23,7 +23,7 @@ Every rule in Section 1 was paid for by an edit in Section 2. Where a rule looks
 9. **Say each thing once.** If a sentence restates a point already made, cut it or make it carry something new.
 10. **Write the teaser last.** It states what the body argues, not what an earlier draft argued.
 
-### Prose mechanics (15 rules)
+### Prose mechanics (16 rules)
 
 Orwell's six rules, verbatim:
 
@@ -45,6 +45,7 @@ The house rules that sit alongside them:
 13. **"Whilst", not "while".**
 14. **No em-dashes.**
 15. **Colons sparingly.** Do not use a colon where a full stop and a new sentence would serve.
+16. **Do not write "not X, but Y" constructions.** State what a thing is directly.
 
 ### Register (4 rules)
 
