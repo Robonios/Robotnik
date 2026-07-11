@@ -67,12 +67,12 @@
   --ink:#EDEFF5; --body:#C7CEDA; --mute:#8A93A6;
   --brand:var(--yellow,#F5D921); --sector:${SECTOR_FALLBACK};
   --c-low:#46B49A; --c-med:#E3B341; --c-high:#E8894A; --c-crit:#E5484D;
-  --measure:68ch;
+  --measure:min(90vw, 660px);
   color:var(--body); font-family:${FB};
 }
-.ap-shell{display:grid; grid-template-columns:200px minmax(0,1fr); gap:3.2rem;
-  max-width:1120px; margin:0 auto; padding:1.5rem 1.4rem 6rem;}
-.ap-main{min-width:0; max-width:860px;}
+.ap-shell{display:grid; grid-template-columns:180px minmax(0,1fr); gap:2.2rem;
+  max-width:920px; margin:0 auto; padding:1.5rem 1.4rem 6rem;}
+.ap-main{min-width:0; max-width:660px;}
 
 /* ── the layer spine (signature) ── */
 .ap-spine{position:sticky; top:1.5rem; align-self:start; height:calc(100vh - 3rem);
@@ -83,22 +83,23 @@
 .ap-spine-sub{font-family:${FM}; font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase;
   color:var(--mute); margin:0 0 1.4rem 1.05rem;}
 .ap-spine-nav{position:relative; display:flex; flex-direction:column; gap:0.05rem;
-  padding-left:0.9rem; border-left:1px solid var(--line);}
-.ap-spine-prog{position:absolute; left:-1px; top:0; width:1px; height:0; background:var(--sector);
+  padding-left:0.55rem; border-left:1px solid var(--line);}
+.ap-spine-prog{position:absolute; left:-1px; top:0; width:1px; height:0; background:color-mix(in srgb,var(--sector) 38%,transparent);
   transition:height .15s linear;}
-.ap-spine-item{display:flex; align-items:center; gap:0.55rem; text-decoration:none;
+.ap-spine-item{position:relative; display:flex; align-items:center; gap:0.55rem; text-decoration:none;
   font-family:${FB}; font-size:13px; color:var(--mute); padding:0.32rem 0; line-height:1.25;
   border-radius:3px; transition:color .18s ease;}
 .ap-spine-num{font-family:${FM}; font-size:10px; letter-spacing:0.08em; color:var(--line);
   transition:color .18s ease;}
 .ap-spine-item:hover{color:var(--body);}
-.ap-spine-item.active{color:var(--ink);}
+.ap-spine-item.active{color:var(--brand);}
 .ap-spine-item.active .ap-spine-num{color:var(--sector);}
-.ap-spine-item.gated{color:var(--line);}
+.ap-spine-item.active::before{content:''; position:absolute; left:calc(-0.55rem - 1px); top:3px; bottom:3px;
+  width:2px; background:var(--sector); border-radius:1px;}
+.ap-spine-item.gated{color:color-mix(in srgb,var(--mute) 48%,var(--line));}
 .ap-spine-item.gated.active{color:var(--mute);}
-.ap-spine-dot{width:6px; height:6px; border-radius:50%; margin-left:auto; flex:0 0 auto;}
-.ap-spine-pro{display:flex; align-items:center; gap:0.5rem; margin:0.55rem 0 0.5rem -0.9rem;
-  padding-left:0.9rem; font-family:${FM}; font-size:9px; letter-spacing:0.14em;
+.ap-spine-pro{display:flex; align-items:center; gap:0.5rem; margin:0.55rem 0 0.5rem -0.55rem;
+  padding-left:0.55rem; font-family:${FM}; font-size:9px; letter-spacing:0.14em;
   text-transform:uppercase; color:var(--brand);}
 .ap-spine-pro::before{content:''; width:0.55rem; height:1px; background:var(--brand);}
 .ap-spine-item:focus-visible{outline:2px solid var(--sector); outline-offset:2px;}
@@ -128,6 +129,7 @@
 .ap-layer{padding:3rem 0; border-top:1px solid var(--line);}
 .ap-layer.lead{padding:3.8rem 0;}
 .ap-hero{padding:0.5rem 0 3.4rem;}
+.ap-hero,.ap-layer{scroll-margin-top:1.8rem;}
 
 /* ── identity hero ── */
 .ap-kicker{font-family:${FM}; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase;
@@ -159,8 +161,8 @@
 .ap-crit-cap{display:flex; justify-content:space-between; font-family:${FM}; font-size:9px;
   letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); margin-top:0.5rem;}
 
-/* ── figures: break out wider than the reading measure, opaque + depth ── */
-.ap-fig{margin:0 0 1rem; max-width:none;}
+/* ── figures: constrained to the reading measure, opaque + depth ── */
+.ap-fig{margin:0 0 1rem; max-width:var(--measure);}
 .ap-fig.fade{opacity:0; transform:translateY(10px); transition:opacity .5s ease,transform .5s ease;}
 .ap-fig.fade.in{opacity:1; transform:none;}
 .ap-chart{background:linear-gradient(180deg,var(--surface),var(--well)); border:1px solid var(--line);
@@ -209,7 +211,7 @@
 .ap-edge{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:0.5rem 0.65rem; margin-bottom:7px;}
 .ap-edge b{display:block; color:var(--ink); font-family:${FB}; font-size:13px; font-weight:600;}
 .ap-edge span{color:var(--mute); font-family:${FB}; font-size:11px;}
-.ap-market{display:flex; flex-wrap:wrap; gap:0.6rem; margin:0.2rem 0 0;}
+.ap-market{display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin:0.2rem 0 0; max-width:var(--measure);}
 .ap-mchip{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:0.5rem 0.75rem;}
 .ap-mchip span{display:block; font-family:${FM}; font-size:9px; text-transform:uppercase; letter-spacing:0.06em; color:var(--mute); margin-bottom:2px;}
 .ap-mchip b{font-family:${FB}; font-size:13px; font-weight:600; color:var(--ink);}
@@ -239,7 +241,7 @@
   color:var(--mute); background:var(--well); border:1px solid var(--line); border-radius:3px; padding:1px 7px;}
 .ap-fail{max-width:640px; margin:5rem auto; text-align:center; color:var(--mute); font-family:${FB}; font-size:14px;}
 
-/* ── responsive: spine collapses to a sticky top strip; figures full-bleed ── */
+/* ── responsive: spine collapses to a sticky top strip; figures fit content ── */
 @media(max-width:860px){
   .ap-shell{grid-template-columns:1fr; gap:0; padding:0 1.1rem 5rem;}
   .ap-spine{display:none;}
@@ -261,10 +263,9 @@
     color:var(--body); padding:0.4rem 0.6rem; border-radius:4px;}
   .ap-strip-menu a .num{font-family:${FM}; font-size:10px; color:var(--mute);}
   .ap-strip-menu a:hover{background:var(--well); color:var(--ink);}
-  .ap-fig{margin-left:-1.1rem; margin-right:-1.1rem;}
-  .ap-chart{border-radius:0; border-left:none; border-right:none;}
-  .ap-facts,.ap-edges{grid-template-columns:1fr;}
+  .ap-facts,.ap-edges,.ap-market{grid-template-columns:1fr;}
   .ap-body{font-size:16.5px;}
+  .ap-hero,.ap-layer{scroll-margin-top:4.6rem;}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -448,12 +449,10 @@
       fact('Sub-industry', c.subsector),
       fact('Value-chain tier', c.value_chain),
       fact('Headquarters', hq),
-      fact('Universe', UNIVERSE_LABEL[c.universe_status] || (c.universe_status ? String(c.universe_status).replace(/_/g, ' ') : '')),
-      fact('SEC CIK', ids.cik)
+      fact('Universe', UNIVERSE_LABEL[c.universe_status] || (c.universe_status ? String(c.universe_status).replace(/_/g, ' ') : ''))
     ].join('');
     var body = id.body ? paras(id.body) : (id.description ? paras(id.description) : '');
     return '<header class="ap-hero" id="layer-1">'
-      + '<div class="ap-kicker">Robotnik equity profile</div>'
       + '<h1 class="ap-name">' + esc(id.name || (d.meta && d.meta.id)) + '</h1>'
       + meta
       + (descriptor ? '<p class="ap-descriptor">' + esc(descriptor) + '</p>' : '')
@@ -583,12 +582,12 @@
 
   function spine(d, critColor) {
     var items = '', i, L;
+    var base = location.pathname || '';
     for (i = 0; i < LAYERS.length; i++) {
       L = LAYERS[i];
       if (i === 5) items += '<div class="ap-spine-pro">Pro</div>';
-      var dot = (L.crit && critColor) ? '<span class="ap-spine-dot" style="background:' + critColor + '"></span>' : '';
-      items += '<a class="ap-spine-item' + (L.tier === 'pro' ? ' gated' : '') + '" href="#layer-' + (i + 1) + '" data-spy="' + (i + 1) + '">'
-        + '<span class="ap-spine-num">' + L.n + '</span>' + esc(L.title) + dot + '</a>';
+      items += '<a class="ap-spine-item' + (L.tier === 'pro' ? ' gated' : '') + '" href="' + base + '#layer-' + (i + 1) + '" data-spy="' + (i + 1) + '">'
+        + '<span class="ap-spine-num">' + L.n + '</span>' + esc(L.title) + '</a>';
     }
     return '<aside class="ap-spine" aria-label="Profile contents">'
       + '<div class="ap-spine-head"><span class="ap-spine-mark">&#9670;</span>Robotnik</div>'
@@ -598,9 +597,10 @@
   }
   function strip(d) {
     var menu = '', i, L;
+    var base = location.pathname || '';
     for (i = 0; i < LAYERS.length; i++) {
       L = LAYERS[i];
-      menu += '<a href="#layer-' + (i + 1) + '"><span class="num">' + L.n + '</span>' + esc(L.title) + '</a>';
+      menu += '<a href="' + base + '#layer-' + (i + 1) + '" data-spy="' + (i + 1) + '"><span class="num">' + L.n + '</span>' + esc(L.title) + '</a>';
     }
     return '<div class="ap-strip">'
       + '<div class="ap-strip-now" id="ap-strip-now"><span class="n">01</span> &#183; Identity <span class="of">&#183; 1 of 9</span></div>'
@@ -662,6 +662,25 @@
         stripNow.innerHTML = '<span class="n">' + LAYERS[n - 1].n + '</span> &#183; ' + esc(LAYERS[n - 1].title) + ' <span class="of">&#183; ' + n + ' of 9</span>';
       }
       if (prog && nav) prog.style.height = (nav.scrollHeight * (n / LAYERS.length)) + 'px';
+    }
+
+    // spine + strip anchors: smooth in-page scroll to the layer. scroll-margin-top
+    // on the sections clears the sticky chrome; preventDefault stops the <base href>
+    // from routing the click to the home page.
+    function scrollToLayer(n, closeMenu) {
+      var el = document.getElementById('layer-' + n);
+      if (!el) return;
+      el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      if (closeMenu) { var dt = mount.querySelector('.ap-strip details'); if (dt) dt.open = false; }
+    }
+    var anchors = mount.querySelectorAll('.ap-spine-item, .ap-strip-menu a');
+    for (i = 0; i < anchors.length; i++) {
+      anchors[i].addEventListener('click', function (ev) {
+        var n = this.getAttribute('data-spy');
+        if (!n) return;
+        ev.preventDefault();
+        scrollToLayer(n, this.className.indexOf('ap-spine-item') < 0);
+      });
     }
 
     if ('IntersectionObserver' in window) {
