@@ -67,21 +67,18 @@
   --ink:#EDEFF5; --body:#C7CEDA; --mute:#8A93A6;
   --brand:var(--yellow,#F5D921); --sector:${SECTOR_FALLBACK};
   --c-low:#46B49A; --c-med:#E3B341; --c-high:#E8894A; --c-crit:#E5484D;
-  --measure:min(90vw, 660px);
+  --measure:min(100%, 71ch); --fig:min(100%, 900px);
   color:var(--body); font-family:${FB};
 }
 .ap-shell{display:grid; grid-template-columns:180px minmax(0,1fr); gap:2.2rem;
-  max-width:920px; margin:0 auto; padding:1.5rem 1.4rem 6rem;}
-.ap-main{min-width:0; max-width:660px;}
+  max-width:1180px; margin:0; padding:1.5rem 1.4rem 6rem 2.5rem;}
+.ap-main{min-width:0;}
 
 /* ── the layer spine (signature) ── */
 .ap-spine{position:sticky; top:1.5rem; align-self:start; height:calc(100vh - 3rem);
   display:flex; flex-direction:column;}
-.ap-spine-head{font-family:${FH}; font-weight:700; font-size:15px; color:var(--ink);
-  letter-spacing:-0.01em; display:flex; align-items:center; gap:0.45rem; margin-bottom:0.15rem;}
-.ap-spine-mark{color:var(--brand); font-size:11px; line-height:1;}
-.ap-spine-sub{font-family:${FM}; font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase;
-  color:var(--mute); margin:0 0 1.4rem 1.05rem;}
+.ap-spine-sub{font-family:${FM}; font-size:10px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--mute); margin:0 0 1.4rem;}
 .ap-spine-nav{position:relative; display:flex; flex-direction:column; gap:0.05rem;
   padding-left:0.55rem; border-left:1px solid var(--line);}
 .ap-spine-prog{position:absolute; left:-1px; top:0; width:1px; height:0; background:color-mix(in srgb,var(--sector) 38%,transparent);
@@ -162,12 +159,12 @@
   letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); margin-top:0.5rem;}
 
 /* ── figures: constrained to the reading measure, opaque + depth ── */
-.ap-fig{margin:0 0 1rem; max-width:var(--measure);}
+.ap-fig{margin:0 0 1rem; max-width:var(--fig);}
 .ap-fig.fade{opacity:0; transform:translateY(10px); transition:opacity .5s ease,transform .5s ease;}
 .ap-fig.fade.in{opacity:1; transform:none;}
 .ap-chart{background:linear-gradient(180deg,var(--surface),var(--well)); border:1px solid var(--line);
-  border-radius:12px; padding:0.8rem; overflow-x:auto; box-shadow:inset 0 1px 0 rgba(255,255,255,0.02),0 18px 40px -30px #000;}
-.ap-chart svg{display:block; width:100%; height:auto; min-width:640px;}
+  border-radius:12px; padding:0.8rem; box-shadow:inset 0 1px 0 rgba(255,255,255,0.02),0 18px 40px -30px #000;}
+.ap-chart svg{display:block; width:100%; height:auto;}
 /* dependency graph — neutral field, sole accent is the --sector centre */
 .ap-chart .cx-up,.ap-chart .cx-down{fill:var(--mute); font:600 10px ${FM}; letter-spacing:0.12em;}
 .ap-chart .node{fill:var(--well); stroke:var(--line); stroke-width:1;}
@@ -494,9 +491,13 @@
   function rDependency(d) {
     var dep = d.dependency || {}, up = dep.upstream || [], down = dep.downstream || [];
     var chart = depChart(d);
-    var edges;
+    var edges = '';
+    // The dependency graph already renders every upstream/downstream node with its
+    // note and profile link; a text restatement below duplicated it with nothing
+    // added, so it is collapsed. The key_suppliers/customers fallback stays for
+    // shards with no upstream[]/downstream[] edges (the graph shows none there).
     if (up.length || down.length) {
-      edges = '<div class="ap-edges">' + edgeCol('Upstream, depends on', up) + edgeCol('Downstream, supplies', down) + '</div>';
+      edges = '';
     } else if (dep.key_suppliers || dep.key_customers) {
       edges = '<div class="ap-edges"><div><div class="ap-edge-h">Upstream</div><p class="ap-body">' + esc(dep.key_suppliers || 'Not available') + '</p></div>'
         + '<div><div class="ap-edge-h">Downstream</div><p class="ap-body">' + esc(dep.key_customers || 'Not available') + '</p></div></div>';
@@ -590,7 +591,6 @@
         + '<span class="ap-spine-num">' + L.n + '</span>' + esc(L.title) + '</a>';
     }
     return '<aside class="ap-spine" aria-label="Profile contents">'
-      + '<div class="ap-spine-head"><span class="ap-spine-mark">&#9670;</span>Robotnik</div>'
       + '<div class="ap-spine-sub">Equity profile</div>'
       + '<nav class="ap-spine-nav"><span class="ap-spine-prog" aria-hidden="true"></span>' + items + '</nav>'
       + '</aside>';
