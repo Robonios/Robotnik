@@ -67,11 +67,11 @@
   --ink:#EDEFF5; --body:#C7CEDA; --mute:#8A93A6;
   --brand:var(--yellow,#F5D921); --sector:${SECTOR_FALLBACK};
   --c-low:#46B49A; --c-med:#E3B341; --c-high:#E8894A; --c-crit:#E5484D;
-  --measure:min(100%, 71ch); --fig:min(100%, 900px);
+  --w-read:680px; --w-fig:1040px;
   color:var(--body); font-family:${FB};
 }
 .ap-shell{display:grid; grid-template-columns:180px minmax(0,1fr); gap:2.2rem;
-  max-width:1180px; margin:0; padding:1.5rem 1.4rem 6rem 2.5rem;}
+  max-width:1320px; margin:0; padding:1.5rem 1.4rem 6rem 2.5rem;}
 .ap-main{min-width:0;}
 
 /* ── the layer spine (signature) ── */
@@ -106,49 +106,49 @@
 
 /* ── shared micro-label + type roles ── */
 .ap-eyebrow{font-family:${FM}; font-size:11px; letter-spacing:0.13em; text-transform:uppercase;
-  color:var(--sector); display:block; margin:0 0 0.7rem;}
+  color:var(--sector); display:block; margin:0 0 0.7rem; max-width:var(--w-read);}
 .ap-eyebrow .n{color:var(--sector); opacity:0.7;}
 .ap-heading{font-family:${FH}; font-weight:600; font-size:clamp(1.35rem,2.6vw,1.72rem);
-  letter-spacing:-0.01em; color:var(--ink); line-height:1.18; margin:0 0 1.1rem; max-width:var(--measure);}
+  letter-spacing:-0.01em; color:var(--ink); line-height:1.18; margin:0 0 1.1rem; max-width:var(--w-read);}
 .ap-body{font-family:${FB}; font-size:17.5px; line-height:1.7; color:var(--body);
-  margin:0 0 1.25rem; max-width:var(--measure);}
+  margin:0 0 1.25rem; max-width:var(--w-read);}
 .ap-body:last-child{margin-bottom:0;}
 .ap-lead{font-family:${FH}; font-weight:500; font-size:clamp(1.05rem,1.9vw,1.25rem); line-height:1.45;
-  color:var(--ink); margin:0 0 1.4rem; max-width:var(--measure);}
+  color:var(--ink); margin:0 0 1.4rem; max-width:var(--w-read);}
 .ap-prose a{color:var(--body); text-decoration:none;
   border-bottom:1px solid transparent; transition:border-color .15s ease,color .15s ease;}
 .ap-prose a:hover,.ap-prose a:focus-visible{color:var(--ink); border-bottom-color:var(--sector);}
 .ap-prose a:focus-visible{outline:2px solid var(--sector); outline-offset:2px; border-radius:1px;}
 .ap-note{font-family:${FM}; font-size:10.5px; line-height:1.6; letter-spacing:0.02em;
-  color:var(--mute); margin:0.7rem 0 0; max-width:var(--measure);}
+  color:var(--mute); margin:0.7rem 0 0; max-width:var(--w-read);}
 
 /* ── layers + rhythm ── */
 .ap-layer{padding:3rem 0; border-top:1px solid var(--line);}
 .ap-layer.lead{padding:3.8rem 0;}
 .ap-hero{padding:0.5rem 0 3.4rem;}
-.ap-hero,.ap-layer{scroll-margin-top:1.8rem;}
+.ap-hero,.ap-layer{scroll-margin-top:1.8rem; max-width:var(--w-fig);}
 
 /* ── identity hero ── */
 .ap-kicker{font-family:${FM}; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase;
   color:var(--mute); margin:0 0 0.9rem;}
 .ap-name{font-family:${FH}; font-weight:700; font-size:clamp(2.1rem,5vw,3.35rem); line-height:1.04;
-  letter-spacing:-0.02em; color:var(--ink); margin:0 0 1rem;}
-.ap-meta{display:flex; flex-wrap:wrap; align-items:center; gap:0.6rem 0.9rem; margin:0 0 1.4rem;}
+  letter-spacing:-0.02em; color:var(--ink); margin:0 0 1rem; max-width:var(--w-read);}
+.ap-meta{display:flex; flex-wrap:wrap; align-items:center; gap:0.6rem 0.9rem; margin:0 0 1.4rem; max-width:var(--w-read);}
 .ap-sector-chip{font-family:${FM}; font-size:10px; letter-spacing:0.08em; text-transform:uppercase;
   color:var(--sector); border:1px solid color-mix(in srgb,var(--sector) 45%,var(--line));
   background:color-mix(in srgb,var(--sector) 10%,transparent); border-radius:3px; padding:3px 9px;}
 .ap-tickline{font-family:${FM}; font-size:12px; letter-spacing:0.06em; color:var(--mute);}
 .ap-descriptor{font-family:${FH}; font-weight:400; font-size:clamp(1.1rem,2vw,1.35rem); line-height:1.45;
-  color:var(--ink); margin:0 0 1.8rem; max-width:var(--measure);}
+  color:var(--ink); margin:0 0 1.8rem; max-width:var(--w-read);}
 .ap-facts{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 2.4rem;
-  margin:0 0 2rem; max-width:var(--measure);}
+  margin:0 0 2rem; max-width:var(--w-read);}
 .ap-fact{display:flex; justify-content:space-between; gap:0.8rem; align-items:baseline;
   padding:0.55rem 0; border-bottom:1px solid var(--line);}
 .ap-fact-k{font-family:${FM}; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--mute);}
 .ap-fact-v{font-family:${FB}; font-size:14px; font-weight:600; color:var(--ink); text-align:right;}
 
 /* ── criticality scale (bottleneck only) ── */
-.ap-crit{margin:0 0 1.9rem; max-width:var(--measure);}
+.ap-crit{margin:0 0 1.9rem; max-width:var(--w-read);}
 .ap-crit-track{display:grid; grid-template-columns:repeat(4,1fr); gap:5px;}
 .ap-crit-step{font-family:${FM}; font-size:10px; letter-spacing:0.06em; text-transform:uppercase;
   text-align:center; color:var(--mute); padding:0.55rem 0.2rem; border-radius:4px;
@@ -159,7 +159,7 @@
   letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); margin-top:0.5rem;}
 
 /* ── figures: constrained to the reading measure, opaque + depth ── */
-.ap-fig{margin:0 0 1rem; max-width:var(--fig);}
+.ap-fig{margin:0 0 1rem; width:100%;}
 .ap-fig.fade{opacity:0; transform:translateY(10px); transition:opacity .5s ease,transform .5s ease;}
 .ap-fig.fade.in{opacity:1; transform:none;}
 .ap-chart{background:linear-gradient(180deg,var(--surface),var(--well)); border:1px solid var(--line);
@@ -200,32 +200,32 @@
 .ap-chart .wc-base{stroke:var(--line); stroke-width:1;}
 .ap-chart .wc-axis{fill:var(--mute); font:600 9px ${FM}; letter-spacing:0.08em;}
 .ap-caption{font-family:${FB}; font-size:14px; line-height:1.6; color:var(--mute);
-  margin:0.7rem 0 1.1rem; max-width:var(--measure);}
+  margin:0.7rem 0 1.1rem; max-width:var(--w-read);}
 
 /* ── dependency edges + market chips ── */
-.ap-edges{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin:1.4rem 0 0; max-width:var(--measure);}
+.ap-edges{display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; margin:1.4rem 0 0; max-width:var(--w-read);}
 .ap-edge-h{font-family:${FM}; font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); margin-bottom:0.6rem;}
 .ap-edge{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:0.5rem 0.65rem; margin-bottom:7px;}
 .ap-edge b{display:block; color:var(--ink); font-family:${FB}; font-size:13px; font-weight:600;}
 .ap-edge span{color:var(--mute); font-family:${FB}; font-size:11px;}
-.ap-market{display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin:0.2rem 0 0; max-width:var(--measure);}
+.ap-market{display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin:0.2rem 0 0; max-width:var(--w-read);}
 .ap-mchip{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:0.5rem 0.75rem;}
 .ap-mchip span{display:block; font-family:${FM}; font-size:9px; text-transform:uppercase; letter-spacing:0.06em; color:var(--mute); margin-bottom:2px;}
 .ap-mchip b{font-family:${FB}; font-size:13px; font-weight:600; color:var(--ink);}
-.ap-subhead{display:flex; align-items:center; gap:0.6rem; margin:2.2rem 0 1.1rem; font-family:${FM}; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); max-width:var(--measure);}
+.ap-subhead{display:flex; align-items:center; gap:0.6rem; margin:2.2rem 0 1.1rem; font-family:${FM}; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); max-width:var(--w-read);}
 .ap-badge-pro{font-family:${FM}; font-size:8.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--brand); border:1px solid color-mix(in srgb,var(--brand) 40%,var(--line)); border-radius:3px; padding:2px 7px;}
 
 /* ── the Pro boundary band + gated layers ── */
 .ap-pro-band{margin:1rem 0 0; padding:1.5rem 1.6rem; border:1px solid color-mix(in srgb,var(--brand) 40%,var(--line));
-  border-radius:12px; background:color-mix(in srgb,var(--brand) 5%,var(--surface)); max-width:var(--measure);}
+  border-radius:12px; background:color-mix(in srgb,var(--brand) 5%,var(--surface)); max-width:var(--w-read);}
 .ap-pro-band-tag{font-family:${FM}; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--brand); margin:0 0 0.5rem;}
 .ap-pro-band-title{font-family:${FH}; font-weight:600; font-size:1.15rem; color:var(--ink); margin:0 0 0.55rem;}
 .ap-pro-band-list{font-family:${FB}; font-size:13.5px; line-height:1.6; color:var(--mute); margin:0;}
-.ap-gate-summary{font-family:${FH}; font-weight:400; font-size:1.08rem; line-height:1.45; color:var(--ink); margin:0 0 1.1rem; max-width:var(--measure);}
-.ap-skel{display:flex; flex-wrap:wrap; gap:0.5rem; margin:0 0 1rem;}
+.ap-gate-summary{font-family:${FH}; font-weight:400; font-size:1.08rem; line-height:1.45; color:var(--ink); margin:0 0 1.1rem; max-width:var(--w-read);}
+.ap-skel{display:flex; flex-wrap:wrap; gap:0.5rem; margin:0 0 1rem; max-width:var(--w-read);}
 .ap-skel-item{font-family:${FM}; font-size:10px; letter-spacing:0.05em; text-transform:uppercase; color:var(--mute);
   border:1px dashed var(--line); border-radius:4px; padding:4px 10px;}
-.ap-gate-tag{display:flex; align-items:center; gap:0.7rem; margin-top:0.4rem;}
+.ap-gate-tag{display:flex; align-items:center; gap:0.7rem; margin-top:0.4rem; max-width:var(--w-read);}
 .ap-gate-tag .lbl{font-family:${FM}; font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:var(--mute);}
 .ap-cta{display:inline-block; background:var(--brand); color:#12151b; font-family:${FM}; font-weight:700;
   font-size:10px; letter-spacing:0.06em; text-transform:uppercase; padding:6px 13px; border-radius:4px; text-decoration:none;}
@@ -233,7 +233,7 @@
 .ap-cta:focus-visible{outline:2px solid var(--brand); outline-offset:2px;}
 .ap-preview-banner{margin:1.4rem 0 0; padding:0.55rem 0.8rem; border:1px solid color-mix(in srgb,var(--brand) 40%,var(--line));
   border-radius:6px; background:color-mix(in srgb,var(--brand) 6%,transparent); font-family:${FM}; font-size:10px;
-  letter-spacing:0.06em; text-transform:uppercase; color:var(--brand);}
+  letter-spacing:0.06em; text-transform:uppercase; color:var(--brand); max-width:var(--w-read);}
 .ap-state{display:inline-block; font-family:${FM}; font-size:9px; letter-spacing:0.06em; text-transform:uppercase;
   color:var(--mute); background:var(--well); border:1px solid var(--line); border-radius:3px; padding:1px 7px;}
 .ap-fail{max-width:640px; margin:5rem auto; text-align:center; color:var(--mute); font-family:${FB}; font-size:14px;}
