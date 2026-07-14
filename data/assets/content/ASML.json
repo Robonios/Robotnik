@@ -1,53 +1,21 @@
 {
-  "meta": {
-    "id": "ASML",
-    "slug": "ASML",
-    "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-14T06:33:30.209456+00:00"
-  },
   "identity": {
-    "name": "ASML HOLDING ADR REPRESENTING NV",
-    "aliases": [
-      "ASML",
-      "ASML HOLDING ADR REPRESENTING NV",
-      "ASML Holding",
-      "asml holding adr representing nv"
-    ],
-    "type": "public",
-    "lifecycle_status": "public",
-    "description": null,
-    "identifiers": {
-      "ticker": "ASML",
-      "coingecko_id": null,
-      "cik": "0000937966"
-    },
     "tier": "free",
     "listing": "Nasdaq: ASML",
     "domicile": "Netherlands",
     "body": "ASML builds the machines that print the world's most advanced computer chips. It makes no chips itself, and sells no service. It builds and sells a single physical tool, the one machine without which the best chips cannot be made, and it is the only company on earth that makes it. Every leading-edge processor, in every AI system, phone and laptop, is patterned by an ASML machine, because no alternative exists.\n\nThe tool is an EUV lithography machine, among the most complex objects ever built. It uses extreme-ultraviolet light to etch circuit patterns finer than any other method can reach. Each machine sells for hundreds of millions of dollars, takes years to build, and is bought outright by the chipmaker that will operate it. ASML's customers are the handful of chipmakers that can afford and use them, led by TSMC, Samsung and Intel.\n\nOne fact defines its place in this profile. ASML is the narrowest point in the entire chip supply chain. Chipmakers depend on TSMC; TSMC depends on ASML. At each step up the chain the alternatives thin, and at ASML they reach one. The chain does not end there, ASML has suppliers of its own, but nowhere in advanced computing is dependence more concentrated on a single company."
   },
   "classification": {
-    "sector": "Semiconductors",
-    "subsector": "Equipment",
-    "value_chain": "Capital Equipment",
-    "universe_status": "index_constituent",
     "tier": "free",
     "lifecycle": "Public",
     "body": "Robotnik places every company in the frontier stack on a ladder of eight tiers, from raw materials at the bottom to finished systems at the top. A company's tier says what work it does and where it earns its money.\n\nASML sits at the Capital Equipment tier, the stage that supplies the tools other companies use to make things. It is one rung below the foundries that are its customers: ASML builds the machine, TSMC uses it. This is a tier far from the finished product, and normally among the least visible.\n\nWhat makes ASML unusual is that a tier this far upstream holds the most decisive power in the chain. Equipment suppliers are usually replaceable, one of several firms selling comparable tools. ASML is not. It is the sole maker of the one tool the leading edge cannot do without, so a tier that sounds like a parts supplier turns out to be the foundation the entire frontier rests on. Remove it and everything above stops."
   },
   "bottleneck": {
-    "rating": "CRITICAL",
-    "description": null,
-    "confidence": null,
-    "state": "rated",
     "tier": "free",
     "headline": "Sole maker of the one tool the leading edge cannot do without, with no substitute at any price: CRITICAL, the clearest case of the top grade in the frontier stack.",
     "body": "Robotnik rates every company on one question: does it hold a chokepoint others cannot get past. A chokepoint holds in one of two ways, no alternative at all, or alternatives too costly to switch to. ASML's rating is CRITICAL, the top grade, and it is the clearest case of that grade in the stack.\n\nCRITICAL is reserved for the sole source of something no one can substitute at any price on any timeline, with no chokepoint above it setting its terms. ASML meets the test. It is the only maker of EUV lithography machines. There is no second source, no rival close to a working alternative, and no way to make leading-edge chips without these machines. A chipmaker cannot switch, wait, or improvise around ASML, because there is nothing to switch to.\n\nThe contrast with TSMC makes the grade precise. TSMC is the company almost everyone depends on, yet it rates HIGH, because ASML sits above it: TSMC commands its customers but takes ASML's terms. ASML takes no customer's terms; none can go elsewhere. That is the difference between HIGH and CRITICAL.\n\nOne qualification keeps the picture honest. ASML has a dependence of its own: the precision optics inside every machine come almost entirely from one German firm, Carl Zeiss. This is why ASML is the chain's narrowest point rather than its end, Zeiss sits above it, and below Zeiss sit the specialised materials the optics require. The rating stays CRITICAL, because ASML remains sole source to its own customers. But the pattern holds all the way up: at every level the frontier hangs on something that cannot easily be replaced."
   },
   "dependency": {
-    "key_customers": "TSM, Samsung, Intel",
-    "key_suppliers": "Carl Zeiss (optics), VDL (assembly)",
-    "state": "mapped",
     "tier": "free",
     "analysis_tier": "pro",
     "control_point": "EUV lithography systems (sole global source)",
@@ -79,91 +47,28 @@
     "analysis_body": "ASML's dependency shape is the most extreme in the stack: almost every advanced chipmaker depends on it, and it depends, at the critical step, on a single supplier of its own.\n\nDownstream, the concentration is total. The firms that can make leading-edge chips, led by TSMC, Samsung and Intel, are all ASML customers, and none has an alternative. ASML need not compete for their business or fear their departure; there is nowhere for them to go. This inverts the usual balance. Its customers are far larger than ASML, yet ASML holds the leverage, because it sells the one thing they cannot obtain elsewhere.\n\nUpstream, ASML has one dependence as acute as the one it imposes. The optics that focus EUV light come almost solely from Carl Zeiss, in a decades-long exclusive partnership. The mirrors are among the most precise objects ever made, and Zeiss is the only firm that can make them. So the sole supplier of lithography is itself served by a sole supplier of optics. The chain's narrowest point is a pair of firms locked together, ASML and Zeiss, not a single company.\n\nThe pattern is that dependence concentrates as you climb the chain rather than dissolving. Chipmakers depend on TSMC, TSMC on ASML, ASML on Zeiss, and Zeiss in turn on a handful of specialised materials. At each step the alternatives fall, until near the top sit a pair of firms on whom advanced computing rests. ASML is the narrowest point of the frontier, and Zeiss narrower still."
   },
   "market_context": {
-    "member": true,
-    "sector_index": "Robotnik Semiconductor Index",
-    "weight_band": "5-capped",
-    "sector_rank": 3,
-    "state": "live",
-    "chart": {
-      "total": 68,
-      "at_cap": 9,
-      "below_cap": 59,
-      "cohort": [
-        "AMAT",
-        "AMD",
-        "ASML",
-        "AVGO",
-        "INTC",
-        "LRCX",
-        "MU",
-        "NVDA",
-        "TSM"
-      ],
-      "falloff": [
-        {
-          "band": "5-capped",
-          "count": 9
-        },
-        {
-          "band": "3.5-5",
-          "count": 2
-        },
-        {
-          "band": "2-3.5",
-          "count": 5
-        },
-        {
-          "band": "1-2",
-          "count": 5
-        },
-        {
-          "band": "0.5-1",
-          "count": 9
-        },
-        {
-          "band": "0.25-0.5",
-          "count": 5
-        },
-        {
-          "band": "<0.25",
-          "count": 33
-        }
-      ],
-      "cap_label": "5%",
-      "me": "ASML"
-    },
     "tier": "free",
     "weight_band_label": "At the 5% single-name cap (top band)",
     "rank_label": "Joint-largest constituent (nine names sit at the cap)",
     "caption": "Robotnik caps any single name at 5% of its sector index, so no one company can dominate. Nine semiconductor leaders share that ceiling, ASML among them; by raw weight the largest would tower over the field, but the cap reads the frontier as a cohort of leaders rather than a single bet."
   },
   "capital": {
-    "last_round": null,
-    "total_raised_m": null,
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "ASML sells a product with no competitor, so it sets the price and rations the supply; its own spending goes to keeping the machine too hard for anyone else to build.",
     "body": "ASML's finances rest on a rare fact: it sells a product with no competitor, so it sets prices others must pay. The result is high margins and a demand it cannot always meet.\n\nEach EUV machine sells for around $180 million, and the newest generation for roughly twice that. Because ASML is the only source, buyers cannot negotiate on ordinary terms; they compete for allocation. The clearest sign of that demand is the order backlog, which runs to many billions of euros, chipmakers booking machines years ahead to hold their place in a queue only ASML controls.\n\nThe money funds an equally rare capability. Building an EUV machine draws on decades of research and a supply chain ASML spent years assembling, most of it impossible to copy. Its own spending goes into pushing the technology further, because the barrier that protects it is the difficulty of building the machine, and that difficulty must keep rising for the monopoly to hold.\n\nUnlike TSMC, ASML faces no forced investment to reduce a concentration risk; its concentration is its advantage. The strategic question is narrower: how long the lead lasts. The monopoly holds only whilst the machine stays too hard for anyone else to build, so ASML spends to keep it that hard. So far no rival has come close."
   },
   "policy": {
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "As the sole maker of the tool that prints advanced chips, ASML is the gate every government must act through, and its exposure is simply where it is allowed to sell.",
     "body": "ASML's political exposure comes from where it is allowed to sell. As the sole maker of the tool that produces advanced chips, it has become a central instrument in the technology contest between the United States and China.\n\nWashington has pressed to stop the most advanced lithography reaching China, reasoning that denying the machine denies China leading-edge chips at the source. Because ASML is Dutch, the United States has leaned on the Netherlands to restrict exports, and successive controls now bar ASML from selling its most advanced systems, and some older ones, to Chinese customers. One company's sales have become a matter of international negotiation.\n\nThis puts ASML in a bind. China has been a large market, and the controls cut off part of it, yet ASML cannot defy them without losing the Western supply chain and customers it depends on far more. It is caught between American policy limiting what it may sell and a Chinese market it is being made to forgo.\n\nThe deeper exposure is that ASML's monopoly makes it a permanent policy target. Any government seeking to shape who gets advanced chips must act through ASML, because ASML is the gate. That keeps it entangled in export politics for as long as its machines remain irreplaceable."
   },
   "geographic": {
-    "hq_country": "Netherlands",
-    "hq_city": "Veldhoven",
-    "exposure": {
-      "state": "forthcoming"
-    },
     "tier": "pro",
+    "hq_city": "Veldhoven",
     "teaser": "ASML's machine is drawn from a continent-wide network, more resilient than TSMC's single island, but its two hardest links, its own integration and Zeiss's optics, sit in neighbouring European countries neither can quickly rebuild.",
     "body": "ASML's geography is less concentrated than TSMC's but concentrated where it matters: the machines are assembled in one Dutch town, and their critical optics in one country beside it.\n\nFinal assembly is in Veldhoven, ASML's home. But an EUV machine is drawn from tens of thousands of parts across Europe, the United States and Asia, so ASML is less a factory than the integrator of a continent-wide network. That spread reduces the single-site risk TSMC carries; no one event halts ASML the way a strike on Taiwan halts TSMC.\n\nThe exception is optics. The mirrors and lenses come almost solely from Carl Zeiss in Germany, and cannot be sourced elsewhere. So whilst assembly is distributed, one irreplaceable input sits in one place.\n\nThe consequence differs from TSMC's. TSMC's risk is that the frontier's chipmaking sits on one contested island. ASML's is subtler: its network is resilient, but its two hardest links, ASML's own integration and Zeiss's optics, sit in neighbouring European countries, and neither can be quickly rebuilt. The concentration is smaller in area but no easier to replace."
   },
   "editorial": {
-    "notes": "Sole supplier of EUV lithography, the most critical single-source dependency in the entire frontier stack. No alternative exists. Its order book runs years ahead.",
-    "state": "authored",
     "tier": "pro",
     "teaser": "Three things about the frontier's most critical company are easy to miss because it sits so far upstream: what its monopoly rests on, why it draws the least attention, and what its own dependence means for everyone below.",
     "body": "Three things about ASML are easy to miss because it sits so far upstream. What its monopoly rests on. Why the most critical company in the chain draws the least attention. And what its own dependence means for everyone below. Robotnik does not price companies, so whether the shares are dear stays with others. What follows is where the real leverage and the real fragility sit.\n\nStart with the monopoly, because it is unlike the others in the stack. ASML's power comes from a machine so hard to build that, after decades, no one else has managed it. This is a technical barrier, not a switching cost or a network effect: the EUV system is arguably the most complex product ever made, and replicating it has defeated every attempt. A monopoly built on difficulty cannot be competed away, only out-engineered, and no one has come near.\n\nThen the obscurity, because it changes where a reader should look for risk. ASML draws far less attention than its customers, though it holds more leverage than any of them, because it sits two steps removed from anything the public buys. The consequence is practical: the frontier's single most critical company is also its least scrutinised, so the risk concentrated in ASML is the risk least priced into how the sector is watched. The famous names absorb the attention; the company they all depend on stays in the background.\n\nFinally the dependence, because it completes the pattern. ASML is the chain's narrowest point but not its end: Carl Zeiss's optics are as irreplaceable to ASML as ASML is to TSMC, and below Zeiss the chain runs on into specialised materials. So dependence does not stop at a single sovereign firm; it narrows to a locked pair and continues downward. Even the narrowest point has something narrower beneath it.\n\nRobotnik's reading is that ASML is the keystone of the frontier stack, the point that, removed, brings down the most. Its power is more secure than any other company's, resting on a barrier no rival has crossed. Its fragilities are narrow but absolute: one optics supplier it cannot replace, and export politics it cannot escape. ASML will not be displaced by competition. Watch instead the two things that could still constrain it, Zeiss beside it and the export controls around it."

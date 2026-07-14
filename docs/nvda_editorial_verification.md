@@ -253,3 +253,49 @@ Full nine-layer verification of the TSMC (TSM) profile, Draft 1, against the res
 - **Classification ladder ordering** - the layer's spatial framing ("TSMC... one rung below the IP & Design tier", "the design tier above it", "designers hand their work down to" Fabrication) is **coherent only under the on-page render `LADDER`** (which puts Fabrication below IP & Design), and is **inverted under the published methodology** (IP & Design tier 2, below Fabrication tier 4). This is the SAME unresolved render-vs-methodology contradiction flagged in the NVDA classification closeout. Shipped as drafted (render-consistent); **if the methodology ordering wins the pending decision, this layer must be inverted.** Also "one rung below" is two rungs under either ordering (a name sits between). And "finished systems at the top" - the ladder apex is Software & Services, not finished systems (same minor NVDA flag).
 
 **Time-sensitive:** **Moderate** - 2a/2b (share shifts as Samsung/Intel/Arizona ramp), 5 (customer standing shifts; NVIDIA/Apple ranking). **Low-moderate** - 4a. **Low** - the rest (framework, founding, sole-source, cap cohort are stable).
+
+
+---
+
+# ASML profile
+
+Full nine-layer verification of the ASML profile, Draft 2, against the dataset, `metrics_methodology.md`, filings and web (post-cutoff figures fanned out to four parallel web checks). Appended to the same consolidated record as NVDA/TSMC.
+
+## Part 1 - claims
+
+| # | Claim (abbreviated) | Verdict | Source & figure | Re-verify |
+|---|---|---|---|---|
+| 1 | **CRITICAL** rationale (sole-source EUV; still CRITICAL though Zeiss sits above it) | **CONFIRMED - gate passed; one clause held** | `metrics_methodology.md`: CRITICAL = "no viable substitute exists (**ASML's EUV monopoly**)" - ASML is the framework's own anchor. The L4 reading ("stays CRITICAL because sole-source to its customers, even with Zeiss above") **is** framework-consistent (the framework grades output-substitutability, not who is above). **But** L2's added clause "with no chokepoint above it setting its terms" is not the framework's criterion and self-contradicts L4 - see flag | Low |
+| 2 | Sole-source EUV, no rival building an alternative | **CONFIRMED (softened)** | ASML ~100% EUV; Canon NIL is not EUV; China LDP-EUV pre-commercial (50-100W vs ~250W needed, DigiTimes 2025). "no rival building an alternative" -> **"no rival close to a working alternative"** (China is reportedly trying, just nowhere near) | Moderate |
+| 3 | EUV price "well over a hundred million dollars" | **CORRECTED (understated) + numerals** | Standard/Low-NA ~**$180M** (NXE:3800E); newest High-NA ~**$380M** (Reuters ~$400M; Tom's Hardware 2026). Applied: identity -> "hundreds of millions of dollars"; capital -> "around $180 million, and the newest generation for roughly twice that" | Moderate |
+| 4 | Order backlog "many billions"; note says **EUR 13.2B** | **CORRECTED** | €13.2B is ASML's **Q4-2025 net bookings, not backlog**; real backlog is **€38.8B** (year-end 2025, ASML FY2025 release). The free epigraph carried the raw "EUR 13.2B" - fixed to qualitative ("Its order book runs years ahead"). Free identity/capital prose is already qualitative ("many billions"), so no raw figure surfaces in free prose | Low-moderate |
+| 5 | Customers TSMC, Samsung, Intel | **CONFIRMED (softened)** | All three are EUV customers. But there are **five** EUV producers (add SK Hynix, Micron for memory), so "ASML's customers are the three firms" overstates. Softened identity/dependency to "led by TSMC, Samsung and Intel". Graph keeps the three per the task | Moderate |
+| 6 | **Carl Zeiss** near-sole-source EUV optics, decades exclusive (LOAD-BEARING) | **CONFIRMED firmly** | ASML's own 20-F: Zeiss is "ASML's **sole external supplier** of lenses and other critical optical components"; ASML owns **24.9% of Zeiss SMT** (2016); >30-year partnership; Zeiss makes the EUV mirrors. Draft's "almost solely... decades-long exclusive" is if anything conservative | Low |
+| 7 | VDL as ASML assembly supplier | **CONFIRMED** | VDL ETG, Tier-1 ASML supplier, mechatronic modules / EUV-source vessel, Netherlands | Low |
+| 8 | Final assembly in Veldhoven | **CONFIRMED** | ASML HQ + main manufacturing (nuance: final integration/qualification completed at customer fab, standard for EUV) | Low |
+| 9 | Netherlands export controls bar advanced (and some older) systems to China | **CONFIRMED** | EUV never licensed to China; DUV immersion (1970i-2100i) licence-gated since 2023-24; servicing/parts now licence-gated; China guided to ~20% of 2026 sales. Draft's qualitative framing accurate | **High (time-sensitive)** - further tightening likely (servicing cut-off, EU list, rare-earth retaliation) |
+| 10 | Chain "continues into materials" below Zeiss | **CONFIRMED - substantiated** | EUV optics depend on **Corning ULE** (US, effectively single-source mirror/mask substrate), Mo/Si multilayer coatings; light source on tin. **Silicon and Tin are in the Robotnik commodities basket** - the clauses stand and even cross-link. (The specific "yttrium/gadolinium in EUV" claim is unsupported, but the draft does not make it.) | Low-moderate |
+| 11 | "Most complex object ever made" / "most precise mirrors ever made" | **CONFIRMED (hedged)** | Standard sourceable framing (~100k parts, "no one person understands it"); keep the "among"/"arguably" hedges. Mirror claim is Zeiss's own ("most precise mirrors in the world"). Added "among" to the dependency mirror line for consistency | Low |
+| 12 | Nine names at the 5% cap | **CONFIRMED** | ASML tied at the 5.0% cap, sector rank 3 of 68 (one of the nine) | Low |
+
+## Part 1 - flag on the rating gate (claim 1): the "who's above" framing breaks here
+
+ASML=CRITICAL is maximally supported (it is the framework's anchor). But the draft's **L2 clause "with no chokepoint above it setting its terms"** is a problem, and it is the same recurring issue flagged in the TSMC closeout:
+
+- The framework's actual CRITICAL/HIGH criterion is **output-substitutability**: CRITICAL = no viable substitute for what the company sells (ASML EUV); HIGH = a costly substitute exists (TSMC's foundry service has costly, inferior substitutes in Samsung and Intel).
+- The "who sits above you / whose terms you take" framing - used in L3 here, and in the committed TSMC and NVDA layers - is a **lossy proxy** that coincides for TSMC (ASML above) but **breaks for ASML** (Zeiss sits above ASML, yet ASML is CRITICAL). The draft's own L4 has to walk L2 back ("stays CRITICAL because sole-source to its customers").
+- **Held, not applied** (cross-profile + judgement): dropping "with no chokepoint above it setting its terms" from L2 would fix the self-contradiction but diverge from the committed TSMC/NVDA phrasing ("the true sole source with no one above it"). Recommend a **coordinated cross-profile edit** restating CRITICAL/HIGH as output-substitutability across NVDA, TSMC and ASML. Until then the ASML L2/L4 wobble ships as drafted, flagged.
+
+## Part 2 - rule-compliance scan (all nine layers)
+
+- **Rule 16 - 2 recast (applied):** dependency "the chain's narrowest point is **not one company but two**" -> "**a pair of firms locked together, ASML and Zeiss, not a single company**"; editorial "This is **not a switching cost or a network effect but a technical barrier**" -> "**This is a technical barrier, not a switching cost or a network effect**". Borderline editorial "cannot be competed away, only out-engineered" kept (a legitimate "only Y" form). Identity/editorial "X but not its end" is the compliant X-but-not-Y factual contrast.
+- **Rule 10 (numerals/money) - applied:** "well over a hundred million dollars" (spelled) -> figures (see claim 3).
+- **Rule 13 (whilst) - 2 fixes (applied):** geography and capital "while" -> "whilst" (both instances).
+- **Rule 11 (British):** compliant; also fixed the free epigraph's em-dash (", " for " - ") while correcting its backlog figure.
+
+## Held (judgement-level)
+
+- **Bottleneck L2 CRITICAL clause** (above) - the headline open item, cross-profile.
+- **Classification apex** - "finished systems at the top"; the ladder apex is Software & Services (same minor NVDA/TSM flag). Note: ASML's "one rung below the foundries" is **correct** under both ladder orderings (Capital Equipment is directly below Fabrication), so ASML does not inherit the ordering hold. Applied a minor softening: "the most upstream tier"/"the tier furthest from the finished product" -> "a tier this far upstream"/"a tier far from the finished product" (Capital Equipment is second-most-upstream, not the most - Upstream Materials sits below it).
+
+**Time-sensitive:** **High** - 9 (export controls move quarterly). **Moderate** - 2, 3, 5. **Low-moderate** - 4, 10. **Low** - the rest (framework, Zeiss, VDL, Veldhoven, cap cohort are stable).
