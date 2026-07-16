@@ -339,3 +339,24 @@ The draft is unusually **rule-16-clean** - the author uses the compliant "Y, not
 - **Held:** classification "finished systems at the top" - the ladder apex is Software & Services (same minor NVDA/TSM/ASML flag). AVGO does **not** inherit the ladder-ordering hold (it makes no relative-position claim - just "the same rung as NVIDIA", both IP & Design, which is correct).
 
 **Time-sensitive:** **High** - 10 (export-control posture moves quarterly). **Moderate** - 2, 3, 5, 8. **Low-moderate** - 4, 7. **Low** - the rest.
+
+
+---
+
+# Rating rationale correction
+
+**What was wrong.** The NVDA, TSM and ASML bottleneck and editorial layers argued their grades with a "chokepoint above the chokepoint" criterion — a company capped at HIGH if something above it "sets its terms", CRITICAL only with "no one above it" / "not sovereign". A forensic pull of the rating framework found that criterion in **no** framework document. NVDA's bottleneck additionally mis-listed **TSMC as a CRITICAL example**, contradicting both the framework and our own committed TSM profile (TSM = HIGH).
+
+**What the framework actually says.** It grades the **substitutability of a company's own output**, and never contemplates a company's upstream dependence affecting its rating. Verbatim:
+
+- `research/bottleneck-weighted-index.html`: *"Each company is rated critical, high, medium, or low on how concentrated its position is and how hard it would be to substitute... Critical is a genuine monopoly or sole-source position with no viable substitute; ASML's effective monopoly on extreme-ultraviolet lithography is the archetype. High is a category-dominant position where switching away is a multi-year, multi-billion undertaking: **a leading-edge foundry**, or the two firms that between them hold electronic-design automation. Medium is a position where a substitute exists but would need requalification or a redesign cycle to adopt. Low is a commodity position in a competitive field..."*
+- `metrics_methodology.md` §3: *"CRITICAL means no viable substitute exists (ASML's EUV monopoly), while HIGH means a costly substitute is available but requires multi-quarter switching."*
+
+So ASML/EUV is the framework's **CRITICAL** archetype and a leading-edge foundry (TSMC) is its **HIGH** archetype — for substitutability reasons, not because of anything above them.
+
+**Passages changed** (bodies re-argued from output-substitutability only; HIGH now uses the published page's "multi-year, multi-billion" language, not §3's "multi-quarter"):
+- **NVDA:** bottleneck body para 4 (final sentence) + para 5 (full) + headline; editorial body paras 5, 6, 9 (named sentences). NVDA no longer lists TSMC as CRITICAL anywhere.
+- **TSM:** bottleneck body para 3 (full) + headline; editorial body para 3 (full) + para 5 (final sentence). Dependency analysis para 4 ("ASML is the chokepoint above the chokepoint") and its teaser were **kept** — factual chain-structure observations, not rating arguments.
+- **ASML:** bottleneck body para 2 (opening) + para 3 (full) + para 4 (full); editorial body para 4 (full). Dependency (paras 3, 4, teaser), identity para 3, and classification para 3 were **kept** — factual chain observations. ASML's headline was already substitutability-based and is now consistent with the corrected body.
+
+**Ratings unchanged and confirmed correct on the framework's own test:** NVDA **HIGH** (a costly, multi-year substitute exists — hyperscaler in-house silicon, AMD), TSM **HIGH** (the framework's own leading-edge-foundry archetype; Samsung/Intel are costly substitutes), ASML **CRITICAL** (the framework's own EUV archetype; no substitute at any price), AVGO **MEDIUM** (worked around via Marvell, in-house teams, or reverting to NVIDIA). All four are now argued on the same substitutability test across the four profiles. Rule-16: zero violations in the corrected passages.
