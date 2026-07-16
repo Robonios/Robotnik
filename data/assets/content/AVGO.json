@@ -1,54 +1,21 @@
 {
-  "meta": {
-    "id": "AVGO",
-    "slug": "AVGO",
-    "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-16T06:56:35.900203+00:00"
-  },
   "identity": {
-    "name": "BROADCOM INC",
-    "aliases": [
-      "AVGO",
-      "BROADCOM",
-      "BROADCOM INC",
-      "Broadcom",
-      "broadcom inc"
-    ],
-    "type": "public",
-    "lifecycle_status": "public",
-    "description": null,
-    "identifiers": {
-      "ticker": "AVGO",
-      "coingecko_id": null,
-      "cik": "0001730168"
-    },
     "tier": "free",
     "listing": "Nasdaq: AVGO",
     "domicile": "Delaware, United States",
     "body": "Broadcom designs chips to order for a small number of very large customers. Where NVIDIA designs one chip and sells it to everyone, Broadcom builds a different chip for each buyer, made to that buyer's specification. Its main frontier business is designing the in-house AI chips that Google, Meta and other technology giants use alongside the NVIDIA chips they continue to buy in volume. These companies are not leaving NVIDIA. They are adding a second source they control themselves, and when they do, they need a partner with the engineering depth to build it. Broadcom is the partner they go to.\n\nThe company is a chip designer that makes nothing itself, handing its designs to TSMC to fabricate, the same arrangement NVIDIA uses. Beyond custom AI chips, Broadcom sells networking equipment for data centres and a large enterprise software business acquired with VMware. The AI work is the newest of these and the fastest-growing by far.\n\nOne fact defines its place in this profile. Broadcom's frontier position rests on being chosen, not on being unavoidable. Its customers come to it because it is very good at difficult engineering and because it has done this work for them before. They are not compelled. That distinction, between a company others depend on and a company others prefer, runs through every layer below."
   },
   "classification": {
-    "sector": "Semiconductors",
-    "subsector": "Fabless Design",
-    "value_chain": "IP & Design",
-    "universe_status": "index_constituent",
     "tier": "free",
     "lifecycle": "Public",
     "body": "Robotnik places every company in the frontier stack on a ladder of eight tiers, from raw materials at the bottom to finished systems at the top. A company's tier says what work it does and where it earns its money.\n\nBroadcom sits at the IP & Design tier, the same rung as NVIDIA. Both draw chips and send them to be manufactured; neither owns a factory. In tier terms they are identical, and that identity is instructive, because their positions in the chain could hardly be more different.\n\nThe difference is what each sells from that tier. NVIDIA sells a standard product with a software system around it that customers cannot easily leave. Broadcom sells engineering services embodied in silicon: it builds what a customer specifies, and the customer owns the result. Same tier, opposite relationship. The ladder tells you what work a company does. It does not tell you how much power the work carries, and Broadcom is the clearest example in the stack of a company that occupies a strong tier without commanding it."
   },
   "bottleneck": {
-    "rating": "MEDIUM",
-    "description": null,
-    "confidence": null,
-    "state": "rated",
     "tier": "free",
     "headline": "A company others prefer, not one they depend on: Broadcom wins its work on engineering and its customers keep their alternatives, which is why the rating is MEDIUM.",
     "body": "Robotnik rates every company on one question: does it hold a chokepoint, a position others cannot easily get past. The rating measures the position, not the company. It asks what would happen to the chain if the company faltered, not whether the company is strong. Broadcom's rating is MEDIUM, and understanding why a firm of this size and success rates in the middle is the most useful thing this layer can explain.\n\nStart with what MEDIUM means. HIGH and CRITICAL are for companies whose absence would stop the chain: no substitute at any price, or none without ruinous cost. MEDIUM is for a company that matters greatly but can be worked around. If Broadcom stopped tomorrow, its customers would suffer, budgets would slip and roadmaps would move by a year or more, but the work would move. It would not stop.\n\nWhy would it still move? Because Broadcom's advantage is capability rather than control. Designing custom AI chips is extremely hard, and few firms do it well, which is why Broadcom wins the work and earns handsomely from it. But hard is not the same as impossible. Marvell does similar work and competes for the same contracts. The hyperscalers themselves employ chip designers and could take more of the work in-house. And the fallback of last resort is the one they are already using: buy more NVIDIA chips, which is what the custom programmes were meant to reduce. Broadcom owns no software platform its customers are locked into, no manufacturing no one else has, no machine without which the job cannot be done. Its customers chose it, but they have alternatives.\n\nNone of this diminishes the company. Broadcom is one of the largest firms in the world and its AI business is growing faster than almost anything in the sector. The rating says something narrower: that its difficulties would be felt across the frontier without breaking it. In a stack held together by companies that cannot be gone around, Broadcom is a company that can, at a price its customers would rather not pay."
   },
   "dependency": {
-    "key_customers": "Hyperscalers (custom ASICs), enterprise networking",
-    "key_suppliers": "TSM (foundry)",
-    "state": "mapped",
     "tier": "free",
     "analysis_tier": "pro",
     "upstream": [
@@ -79,91 +46,28 @@
     "analysis_body": "Broadcom's dependencies are the mirror image of NVIDIA's, and comparing the two shows how much a shared position can conceal.\n\nUpstream, the two are nearly identical. Both design chips and neither builds them; both depend on TSMC to manufacture and on the same packaging and memory constraints that gate the industry. Whatever limits NVIDIA's ability to ship limits Broadcom's, and neither can do anything about it. On this side of the chain, Broadcom and NVIDIA are the same company wearing different names.\n\nDownstream they diverge completely, and the divergence is the whole story. NVIDIA's customers are held by software and wiring they cannot cheaply abandon. Broadcom's customers hold Broadcom. A handful of hyperscalers account for the great bulk of its AI revenue, and each of them is large enough to fund its own alternative, whether by moving to Marvell, by hiring more chip designers directly, or by returning to buying NVIDIA's standard parts. The concentration cuts against Broadcom rather than for it: when a few big customers make most of a business, and each has options, the supplier negotiates from the weaker position however impressive its engineering.\n\nThere is a subtler exposure beneath this. Broadcom's AI business exists because its customers want to escape NVIDIA. It is, in effect, a bet on other companies' desire to reduce their dependence on someone else. That demand is real and growing, but it is derivative: Broadcom's fortunes here rest on a strategic choice its customers are making, and a customer that changes its mind about in-house silicon changes Broadcom's business with it. NVIDIA's demand comes from the market wanting AI. Broadcom's comes from the market wanting an alternative to NVIDIA.\n\nThe pattern is that Broadcom shares the frontier's upstream constraints without holding any downstream leverage of its own. It is squeezed between a foundry it cannot bypass and customers it cannot bind. That it thrives regardless is a testament to its engineering. It is also why the rating sits where it does."
   },
   "market_context": {
-    "member": true,
-    "sector_index": "Robotnik Semiconductor Index",
-    "weight_band": "5-capped",
-    "sector_rank": 4,
-    "state": "live",
-    "chart": {
-      "total": 68,
-      "at_cap": 9,
-      "below_cap": 59,
-      "cohort": [
-        "AMAT",
-        "AMD",
-        "ASML",
-        "AVGO",
-        "INTC",
-        "LRCX",
-        "MU",
-        "NVDA",
-        "TSM"
-      ],
-      "falloff": [
-        {
-          "band": "5-capped",
-          "count": 9
-        },
-        {
-          "band": "3.5-5",
-          "count": 2
-        },
-        {
-          "band": "2-3.5",
-          "count": 5
-        },
-        {
-          "band": "1-2",
-          "count": 5
-        },
-        {
-          "band": "0.5-1",
-          "count": 9
-        },
-        {
-          "band": "0.25-0.5",
-          "count": 5
-        },
-        {
-          "band": "<0.25",
-          "count": 33
-        }
-      ],
-      "cap_label": "5%",
-      "me": "AVGO"
-    },
     "tier": "free",
     "weight_band_label": "At the 5% single-name cap (top band)",
     "rank_label": "Joint-largest constituent (nine names sit at the cap)",
     "caption": "Robotnik caps any single name at 5% of its sector index, so no one company can dominate. Nine names share that ceiling, Broadcom among them, and it is a useful reminder that weight and rating answer different questions: Broadcom sits at the cap on market value whilst rating MEDIUM on how much the frontier depends on it."
   },
   "capital": {
-    "last_round": null,
-    "total_raised_m": null,
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "Broadcom was built by acquiring businesses whose customers cannot easily leave and running them for cash; its fastest-growing engine, AI, is the one exception, with customers who can.",
     "body": "Broadcom's finances reflect a company built by acquisition as much as by invention, and the difference from its frontier peers is stark.\n\nWhere NVIDIA and ASML grew their positions by building capability others could not match, Broadcom has repeatedly bought businesses and run them for cash: networking, infrastructure software, and most recently VMware for roughly $69 billion. The pattern is consistent, acquire a business with entrenched customers, raise prices, cut costs, generate cash, repeat. It has made Broadcom one of the most valuable companies in the world without it ever holding a chokepoint of the kind this stack turns on.\n\nThat history shapes the balance sheet. Acquisitions of this scale are funded with debt, so unlike NVIDIA, which borrowed whilst sitting on a cash mountain, Broadcom carries substantial borrowings against the businesses it bought. Servicing and repaying that debt is a first call on the cash the company generates, which disciplines what else it can do.\n\nThe AI business sits oddly within this. It is the fastest-growing part of the company and the least like the rest: a hard engineering business won contract by contract, not an acquired annuity, whose customers are a handful of firms with the power to walk. Broadcom's financial model was built for businesses whose customers cannot easily leave. Its most important growth engine has customers who can."
   },
   "policy": {
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "Broadcom is neither the target of chip policy nor its instrument; its exposure arrives second-hand, through TSMC's Taiwan and customers shaped by the same controls that reshaped NVIDIA.",
     "body": "Broadcom's political exposure is real but indirect, which distinguishes it from the three profiles beside it.\n\nIt is not the named target of export controls as NVIDIA is, nor the object of industrial policy as TSMC is, nor the instrument of it as ASML is. It designs chips for American customers, manufactured in Taiwan, sold largely into American data centres. The controls that reshaped NVIDIA's China business barely touch a company whose AI work is built for a handful of US hyperscalers.\n\nThe exposure arrives second-hand, through the chain. Broadcom's chips are made by TSMC in Taiwan, so every geopolitical risk attaching to Taiwan attaches to Broadcom. Its customers' spending is shaped by the same policy environment that shapes NVIDIA's. And as custom silicon grows more strategically significant, the chips Broadcom designs for hyperscalers become more likely to attract the attention of export regulators, who have so far concentrated on merchant chips sold openly rather than bespoke parts built for a single American buyer.\n\nThe forward risk is that this changes. If policy comes to treat custom AI silicon as it treats NVIDIA's, Broadcom would find itself inside a regime it has so far watched from outside. Nothing suggests that is imminent. But a company whose chips are among the most capable in the world is unlikely to remain politically invisible indefinitely."
   },
   "geographic": {
-    "hq_country": "United States",
-    "hq_city": "Palo Alto",
-    "exposure": {
-      "state": "forthcoming"
-    },
     "tier": "pro",
+    "hq_city": "Palo Alto",
     "teaser": "Broadcom's own geography carries no real risk; the geography that matters is TSMC's, because a fabless company lives where its foundry lives.",
     "body": "Broadcom's geography is unremarkable in itself and entirely dependent on someone else's.\n\nThe company is headquartered in the United States, its engineering spread across American, Asian and European sites, and its customers concentrated in American data centres. None of that carries meaningful concentration risk: design work is portable in a way manufacturing is not, and no single Broadcom site is irreplaceable.\n\nThe geography that matters is TSMC's. Broadcom's chips are fabricated in Taiwan, on the same island, in the same handful of science parks, subject to the same risks the TSMC profile describes. A blockade or a conflict that stopped TSMC would stop Broadcom's AI business as completely as it would stop NVIDIA's, and Broadcom has no more ability to relocate that dependence than NVIDIA does.\n\nThis is the pattern for every fabless designer in the stack, and it is worth stating plainly: their own geography is almost irrelevant, because the risk sits where their chips are made rather than where they are drawn. Broadcom's American headquarters offers no protection whatsoever against the thing most likely to interrupt it. In geographic terms, a fabless company lives where its foundry lives."
   },
   "editorial": {
-    "notes": "Custom ASIC business with a handful of major hyperscaler customers diversifies AI compute beyond GPUs. VMware acquisition adds software layer.",
-    "state": "authored",
     "tier": "pro",
     "teaser": "Broadcom is best read as an instrument, not a chokepoint: its order book is the clearest public measure of how serious the hyperscalers' escape from NVIDIA has become.",
     "body": "Three things about Broadcom are worth understanding, and each concerns what its business tells you rather than what it controls. Where its AI revenue actually comes from. What that makes the company useful for. And why the market's view of it and Robotnik's are measuring different things. Robotnik does not price companies, so whether the shares are dear stays with others. What follows is what this company reveals about the frontier around it.\n\nStart with where the AI revenue comes from, because it is more contingent than it looks. Broadcom's frontier business exists because a few enormous customers want a second source of AI chips they control themselves. That desire is a strategic choice, not a law of nature. It rests on NVIDIA's prices being high enough, and its supply tight enough, to justify the cost and difficulty of designing an alternative. Those conditions hold today and show no sign of easing. But they are conditions, and they are set by another company's behaviour. Demand for AI compute is a fact about the world. Demand for custom AI silicon is a fact about how a handful of firms currently feel about NVIDIA.\n\nThat leads to what Broadcom is actually useful for, which is the reason to watch it. Its order book is the best public measure available of how serious the escape from NVIDIA has become. Every custom chip programme is a customer voting with a budget, and Broadcom's revenue is the aggregate of those votes. When the NVIDIA profile asks where the substitution threat stands, Broadcom's numbers are the answer, expressed in dollars rather than announcements. That is a genuinely valuable instrument: a growing order book means the hyperscalers are committing real money to reducing their dependence, and a stalling one means they have decided the effort is not worth it. Few companies offer so clean a read on someone else's position.\n\nThen the divergence between the market's view and this one, because it is instructive about both. The market rates Broadcom among the most valuable companies on earth, and it is right to: the company earns enormous sums from businesses whose customers rarely leave, and its AI work is growing at a pace few can match. Robotnik rates its position in the chain as MEDIUM, and that is right too. These are not competing verdicts. Size and criticality are different properties, and Broadcom is the clearest case in the stack where they part company. A reader who assumes a company's market value tracks its structural importance will misread this company badly, and misread the frontier with it.\n\nRobotnik's reading is that Broadcom is best understood as an instrument rather than a chokepoint. It measures something important without being something the chain depends on. Its difficulties would delay the hyperscalers' plans and push work back towards NVIDIA, and the chain would absorb it. Watch Broadcom for what its order book says about the balance of power above it. That is worth more than watching it for its own position, which is strong, well-earned, and not load-bearing."

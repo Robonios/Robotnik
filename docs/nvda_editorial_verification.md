@@ -299,3 +299,43 @@ ASML=CRITICAL is maximally supported (it is the framework's anchor). But the dra
 - **Classification apex** - "finished systems at the top"; the ladder apex is Software & Services (same minor NVDA/TSM flag). Note: ASML's "one rung below the foundries" is **correct** under both ladder orderings (Capital Equipment is directly below Fabrication), so ASML does not inherit the ordering hold. Applied a minor softening: "the most upstream tier"/"the tier furthest from the finished product" -> "a tier this far upstream"/"a tier far from the finished product" (Capital Equipment is second-most-upstream, not the most - Upstream Materials sits below it).
 
 **Time-sensitive:** **High** - 9 (export controls move quarterly). **Moderate** - 2, 3, 5. **Low-moderate** - 4, 10. **Low** - the rest (framework, Zeiss, VDL, Veldhoven, cap cohort are stable).
+
+
+---
+
+# Broadcom (AVGO) profile
+
+Full nine-layer verification of the Broadcom profile against the dataset, `metrics_methodology.md`, filings and web (post-cutoff figures fanned out to four parallel web checks). The **first MEDIUM-rated** profile in the set. Appended to the same consolidated record as NVDA/TSMC/ASML.
+
+## Part 1 - claims
+
+| # | Claim (abbreviated) | Verdict | Source & figure | Re-verify |
+|---|---|---|---|---|
+| 1 | **MEDIUM** rationale (capability not control; customers have real alternatives) | **CONFIRMED - gate passed** | The framework grades CRITICAL/HIGH/MEDIUM/LOW as **degrees of substitutability** (`metrics_methodology.md`; MEDIUM anchor = "concentration exists but viable substitution within 2-3 year reach"). Broadcom's output (custom-ASIC design) has substitutes (Marvell, in-house teams, revert to NVIDIA merchant parts) -> MEDIUM. **Notably, this layer uses pure substitutability and avoids the "who's above you" framing - it validates the cross-profile fix flagged for NVDA/TSM/ASML** | Low |
+| 2 | Google, Meta named custom-silicon customers | **CONFIRMED** | Broadcom Q1 FY2026 call (4 Mar 2026): Google 7th-gen TPU, Meta MTIA "shipping now". Count is now **six** (OpenAI + Anthropic officially confirmed; ByteDance/Apple reported) - see claim 5 | Moderate |
+| 3 | Hyperscalers keep buying NVIDIA in volume alongside own programmes | **CONFIRMED** | Committed NVDA profile ("in-house chips add capacity... rather than displacing NVIDIA's"; DC sales +92% YoY) + web. Load-bearing for identity; holds | Moderate |
+| 4 | Marvell a genuine competitor for the same custom-ASIC work | **CONFIRMED** | Broadcom + Marvell ~95% duopoly in hyperscaler custom ASIC; Marvell on AWS Trainium/Inferentia (first-party PR, Dec 2024), MS Maia, Google Axion (reporting) | Low-moderate |
+| 5 | "Three or four firms account for the great bulk of AI revenue" | **CORRECTED** | The **10-K discloses top-five end customers approximately 40% of net revenue (FY2025), rising to approximately 45% (H1 FY2026)** - "a significant portion", not "the great bulk"; one **distributor** was 32% -> 42%. AI-by-customer concentration is **management commentary, not a 10-K line**, and the count is now **six**, not 3-4. Applied: "three or four firms" -> **"a handful"** across capital/editorial/dependency; kept the (true) concentration characterisation | Moderate |
+| 6 | VMware ~$69bn + date | **CONFIRMED** | $69bn enterprise value; announced 26 May 2022, **closed 22 Nov 2023** | Low |
+| 7 | Substantial acquisition debt; servicing a first call on cash (vs NVIDIA borrowing from a surplus) | **CONFIRMED** | FY2025 gross debt ~$65bn / net ~$49bn; deleveraging a priority (Hock Tan). NVIDIA net cash even after its $25bn June-2026 bond (surplus is ~$80bn cash + marketable securities). Draft is qualitative ("substantial borrowings") - accurate | Low-moderate |
+| 8 | AI "fastest-growing by far" | **CONFIRMED** | AI semi +65% FY2025, **+143% YoY** in Q2 FY2026, now ~half of total and ~72% of semiconductor revenue. Draft qualitative - holds | Moderate |
+| 9 | Acquisition history + acquire-raise-cut playbook | **CONFIRMED** | LSI, Brocade, CA (2018), Symantec (2019), VMware (2023); the "raise prices, cut costs, harvest cash" pattern is well-evidenced (VMware: 50+ products -> ~4 bundles, min cores 16 -> 72, ~150-500% price rises). It is the analysts'/critics' framing, but supported; the draft states it in Robotnik's analytical voice, which is fine | Low |
+| 10 | Export controls concentrate on **merchant** chips, not bespoke custom silicon; Broadcom not a direct target | **CONFIRMED** | As of July 2026, Broadcom custom AI silicon has not been a direct export-control target (the China SKU drama is a merchant-GPU phenomenon; Jan-2026 BIS rule "explicitly rules out custom hyperscaler ASICs made solely for export"). **Caveat the draft respects: "so far", not "exempt"** - custom ASICs are not legally carved out; they escape because they are built for US buyers deployed in the US | **High (time-sensitive)** - Apr-2026 foundry-attestation rule, GAIN AI Act, cloud-access curbs are narrowing the gap; re-verify at each BIS/NDAA milestone |
+| 11 | Fabless; TSMC is the foundry for its AI silicon | **CONFIRMED** | Fabless; TSMC makes its leading-edge AI silicon (Tomahawk/Jericho on N3; first 2nm/N2 custom compute SoC shipped Feb 2026 on TSMC SoIC + CoWoS). No Intel/Samsung role in the leading-edge AI parts | Low |
+| 12 | Nine names at the 5% cap | **CONFIRMED** | AVGO tied at the 5.0% cap, sector rank 4 of 68 | Low |
+
+## Part 2 - rule-compliance scan (all nine layers)
+
+The draft is unusually **rule-16-clean** - the author uses the compliant "Y, not X" / "Y rather than X" forms throughout ("rests on being chosen, not on being unavoidable"; "the position, not the company"; "capability rather than control"; "an instrument rather than a chokepoint"; etc.).
+
+- **Rule 16 - 1 recast (applied):** capital "**not an acquired annuity but a hard engineering business** won contract by contract" -> "**a hard engineering business won contract by contract, not an acquired annuity**". Policy "not the named target... **nor**... **nor**..." is a not/nor enumeration for contrast, not the banned single clause - kept.
+- **Rule 13 (whilst) - 1 fix (applied):** capital "borrowed **while** sitting on a cash mountain" -> "**whilst**".
+- **Rule 10 (numerals/money):** compliant - "$69 billion" in numerals; spelled counts ("eight tiers", "a year or more") are not figures. **British:** compliant - "towards" already British, no em-dashes.
+
+## Notes
+
+- **Figure #13 (dependency graph):** upstream **TSMC** (links live to the TSM profile); downstream authored from the verified names - **Google (TPU), Meta (MTIA), OpenAI (custom accelerator)** plus **Enterprise networking** as a category. **control_point deliberately omitted** - a MEDIUM company the profile explicitly says holds no chokepoint should carry no CONTROL POINT marker, which visually distinguishes it from the chokepoint-holders (NVDA/TSM/ASML).
+- **Epigraph (out-of-sidecar):** the free `robotnik_notes` epigraph said "**3 major hyperscaler customers**" (outdated; now six) - aligned to "a handful of major hyperscaler customers", same care as the TSM/ASML epigraph fixes.
+- **Held:** classification "finished systems at the top" - the ladder apex is Software & Services (same minor NVDA/TSM/ASML flag). AVGO does **not** inherit the ladder-ordering hold (it makes no relative-position claim - just "the same rung as NVIDIA", both IP & Design, which is correct).
+
+**Time-sensitive:** **High** - 10 (export-control posture moves quarterly). **Moderate** - 2, 3, 5, 8. **Low-moderate** - 4, 7. **Low** - the rest.
