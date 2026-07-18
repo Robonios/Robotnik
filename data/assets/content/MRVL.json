@@ -1,55 +1,21 @@
 {
-  "meta": {
-    "id": "MRVL",
-    "slug": "MRVL",
-    "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-17T18:16:42.436113+00:00"
-  },
   "identity": {
-    "name": "MARVELL TECHNOLOGY INC",
-    "aliases": [
-      "MARVELL TECHNOLOGY",
-      "MARVELL TECHNOLOGY INC",
-      "MRVL",
-      "Marvell",
-      "Marvell Technology",
-      "marvell technology inc"
-    ],
-    "type": "public",
-    "lifecycle_status": "public",
-    "description": null,
-    "identifiers": {
-      "ticker": "MRVL",
-      "coingecko_id": null,
-      "cik": "0001835632"
-    },
     "tier": "free",
     "listing": "Nasdaq: MRVL",
     "domicile": "Delaware, United States",
     "body": "Marvell designs chips that move data rather than chips that process it. The company is usually described as Broadcom's smaller rival in designing custom AI chips. It is that, and the business is growing fast, but it is roughly 18% of what Marvell sells.\n\nIts largest data-centre line is optical interconnect. When an AI cluster spreads across thousands of machines, the data between them travels down fibre-optic cable, and the light in that cable must be turned into electrical signals and back again at each end. Marvell makes the chips that do this, and it leads that market. Like NVIDIA and Broadcom, it designs and does not manufacture, handing its work to TSMC. Revenue was $8.2 billion in the year to January 2026, up 42%, and data centres were 74% of it. The rest is a set of older businesses, mostly networking for telecoms and enterprises, slower work largely outside the frontier.\n\nOne fact defines its place in this profile. Marvell has two frontier businesses that bet on opposite outcomes. The custom-chip business grows only if the largest technology companies keep building alternatives to NVIDIA. The optical business grows whenever AI clusters grow, whatever chips are inside them."
   },
   "classification": {
-    "sector": "Semiconductors",
-    "subsector": "Fabless Design",
-    "value_chain": "IP & Design",
-    "universe_status": "index_constituent",
     "tier": "free",
     "lifecycle": "Public",
     "body": "Robotnik places every company in the frontier stack on a ladder of eight tiers, from raw materials at the bottom to finished systems at the top. A company's tier says what work it does and where in the chain it earns its money.\n\nMarvell sits at the IP & Design tier, the stage where a chip is drawn but not built. NVIDIA and Broadcom sit on the same rung, and all three send their designs to TSMC to manufacture.\n\nWhat the tier cannot show is that Marvell runs two frontier businesses with little in common, alongside the older networking and other work that sits outside the frontier entirely. The custom-chip work is design for hire: a customer specifies a chip, Marvell builds it to order, and the customer owns the result. The optical work is the opposite arrangement. Marvell designs a standard product and sells it to whoever needs it, which is nearly everyone building a data centre. One business has three customers and no catalogue. The other has a catalogue and a market. Both are design work, which is what the tier records."
   },
   "bottleneck": {
-    "rating": "MEDIUM",
-    "description": "Peak position is custom AI ASICs, where Marvell is number two in the ~95% Broadcom-Marvell duopoly, plus optical-DSP interconnect leadership, its largest data-centre line (Data Center 74% of $8.19bn FY26 revenue). A hyperscaler substitutes Marvell only through a silicon redesign and requalification cycle, which is the MEDIUM definition, not LOW. Consistency: AVGO, number one in the same duopoly, rates MEDIUM on the same test, so the number two cannot sit a full grade below.",
-    "confidence": "MEDIUM",
-    "state": "rated",
     "tier": "free",
     "headline": "Marvell leads one frontier market and holds one of two seats in another, and a customer can leave either at the cost of a redesign, which is why the rating is MEDIUM.",
     "body": "Robotnik rates every company on one question: does it hold a chokepoint, a position others cannot easily get past. The rating measures the position, not the company. It asks what would happen to the chain if Marvell faltered, not whether Marvell is strong. The rating is MEDIUM.\n\nMEDIUM sits below HIGH and CRITICAL, which are for companies whose absence would stop the chain, with no substitute at any price or none without ruinous cost. MEDIUM is for a company that matters but can be worked around. If Marvell stopped, its customers would lose time and money and some roadmaps would slip, but the work would move. It would not stop.\n\nMarvell has two frontier businesses, and the rating rests on both. It leads the market for optical interconnect, the chips that turn data into light and back so it can travel between machines in an AI cluster. And it is one of two companies that design custom AI chips for the technology giants at scale, the second of two behind Broadcom. One position is a lead. The other is a seat at a table for two.\n\nTake the optical business first, the one Marvell leads. Its chips do not reach a customer on their own. They sit inside modules, finished parts a buyer qualifies as a whole before trusting them in a data centre. A customer that wanted to drop Marvell's chip would have to requalify the module around a rival's, a job of months, not an afternoon's swap. That friction is real, and it is why leading the market still counts for something. It is also not absolute, because the requalification can be done and a rival chip, Broadcom's, is there to be qualified.\n\nThe custom business is more exposed. A custom chip is designed hand in hand with the customer that will use it, so leaving Marvell means redesigning it elsewhere, with Broadcom or with the customer's own engineers, a job measured in years. The cost is higher than switching an optical part. But the door opens the same way, and the customers who would walk through it, Amazon, Microsoft and Google, are among the few companies on earth with the resources to do the redesign.\n\nThe rating deliberately ignores one thing. About a quarter of Marvell's revenue sits outside the frontier, mostly networking for telecoms and enterprises, a competitive business the frontier does not depend on. That does not pull the grade down, because the rating attaches to a company's strongest frontier position rather than to an average across everything it sells. Marvell rates on optical and custom compute, whatever share of turnover they represent.\n\nThe check on this grade is Broadcom, which rates MEDIUM on the same test. Broadcom is the larger company and the leader in custom silicon, so it might seem to deserve a higher grade. It does not, because the question is whether customers can leave, not who is bigger. Both companies' customers can, at the cost of a redesign. Being the second of two does not make Marvell more replaceable than the first of two.\n\nWhat follows is that Marvell's frontier position is strong but shallow. It leads one market and holds one of two seats in another, and neither of those stops a determined customer from leaving."
   },
   "dependency": {
-    "key_customers": null,
-    "key_suppliers": null,
-    "state": "unmapped",
     "tier": "free",
     "analysis_tier": "pro",
     "upstream": [
@@ -80,91 +46,28 @@
     "analysis_body": "Marvell's two frontier businesses depend on different companies, and comparing them shows what Marvell actually rests on.\n\nUpstream they are the same, and the same as every fabless designer. TSMC makes both. Marvell can work around that no better than NVIDIA or Broadcom can, and the packaging and memory constraints that gate the industry gate Marvell too.\n\nDownstream they diverge. The custom business has three customers that matter: Amazon, Microsoft and Google, each building its own AI chips with Marvell's help. Marvell names none of them. Its own filing discloses one direct customer at 14% of revenue and one distributor at 37%, without saying who. The names come from those customers' own announcements and from reporting, not from Marvell. That reticence is itself a signal about the relationship. In custom silicon the customer owns the product and the story, and the designer is a contractor who does not advertise the work.\n\nThe optical business has no such concentration. Any company building a large data centre needs to move data between racks, and Marvell sells into that market broadly rather than to three buyers.\n\nThe asymmetry matters more than it first appears. The custom business is the one that gets attention, and it is the one where three companies hold Marvell's fate. The optical business is the one nobody discusses, and its demand comes from the size of the AI build-out rather than from anyone's decision about Marvell."
   },
   "market_context": {
-    "member": true,
-    "sector_index": "Robotnik Semiconductor Index",
-    "weight_band": "2-3.5",
-    "sector_rank": 16,
-    "state": "live",
-    "chart": {
-      "total": 68,
-      "at_cap": 9,
-      "below_cap": 59,
-      "cohort": [
-        "AMAT",
-        "AMD",
-        "ASML",
-        "AVGO",
-        "INTC",
-        "LRCX",
-        "MU",
-        "NVDA",
-        "TSM"
-      ],
-      "falloff": [
-        {
-          "band": "5-capped",
-          "count": 9
-        },
-        {
-          "band": "3.5-5",
-          "count": 2
-        },
-        {
-          "band": "2-3.5",
-          "count": 5
-        },
-        {
-          "band": "1-2",
-          "count": 5
-        },
-        {
-          "band": "0.5-1",
-          "count": 9
-        },
-        {
-          "band": "0.25-0.5",
-          "count": 5
-        },
-        {
-          "band": "<0.25",
-          "count": 33
-        }
-      ],
-      "cap_label": "5%",
-      "me": "MRVL"
-    },
     "tier": "free",
     "weight_band_label": "Below the 5% cap (2%-3.5% band)",
     "rank_label": "16th of 68 in the Semiconductor index",
     "caption": "Marvell sits in the Robotnik Semiconductor Index below the 5% single-name cap, in the field rather than at the ceiling. This is the first of these profiles where that is true. Nine names sit pinned at the cap and the rest of the index falls away beneath them, Marvell among the larger of those. The chart shows the shape the cap creates, a shelf of nine and then a slope. The cap is deliberate, so that no single company dominates the index. The slope is the market's own doing. Marvell's place on it measures its size in the market, not its importance in the chain. Broadcom is the proof that the two can differ, sitting at the cap whilst rating MEDIUM, the same grade as Marvell."
   },
   "capital": {
-    "last_round": null,
-    "total_raised_m": null,
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "Marvell bought its way into the frontier and borrowed to do it, so it carries real debt and the risk of having to keep winning the markets it paid to enter, with less room to be wrong than NVIDIA or Broadcom.",
     "body": "Marvell's strongest frontier position was bought rather than built. The optical interconnect business that now leads its market came from Inphi, a company Marvell acquired in April 2021 for roughly $10 billion, and it has grown into the largest part of Marvell's data-centre revenue since. The custom-chip capability was assembled the same way, through earlier purchases.\n\nThis is a third model, distinct from the two chip designers Marvell is usually set against. NVIDIA built its position over two decades of its own research. Broadcom buys businesses whose customers cannot easily leave and runs them for cash. Marvell buys technology positions and invests in them, which is the harder of the three. An acquired technology business has to keep winning on merit after the purchase, and a cash annuity does not.\n\nThe cost of that model is debt. Acquisitions of Inphi's size are funded with borrowing, and Marvell carries around $4.5 billion of it against $2.6 billion of cash, a net debt of roughly $1.8 billion. Servicing that is a call on the cash the company generates. Marvell is profitable and growing quickly, with revenue up 42% in the year to January 2026. But it carries neither NVIDIA's cash surplus nor Broadcom's entrenched annuities. It has to keep winning the markets it bought into, and its balance sheet gives it less room to be wrong than either of them."
   },
   "policy": {
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "Marvell is no one's target in chip policy; its exposure arrives second-hand, through TSMC's Taiwan and an optical-module industry led by Chinese firms that its own chips mostly route around.",
     "body": "Marvell's political exposure is indirect, and it arrives in two forms.\n\nThe first is the one every fabless designer shares. Marvell's chips are made by TSMC in Taiwan, so every risk attaching to Taiwan attaches to Marvell, and the export controls that reshaped NVIDIA's business shape the market Marvell's customers operate in. Marvell is not itself a target of those controls. Its custom chips are designed for American companies and deployed in American data centres, which is the pattern that has so far kept custom silicon outside the regime aimed at merchant chips sold openly. That pattern holds because of who buys the chips and where they run, not because of any exemption.\n\nThe second is specific to what Marvell sells. Optical chips do not reach a customer on their own. They go into pluggable modules, and that module industry is led by Chinese firms, seven of the ten largest makers among them. That puts the optical supply chain inside the same US-China trade friction that tariffs and export scrutiny run along. The exposure is real, and it sits at arm's length. Assembly is moving out of China to Thailand, Malaysia and Vietnam as makers work around tariffs, and Marvell's chips go mostly to Microsoft and Google, whose modules are assembled outside China. Marvell's optical product touches a politically sensitive industry without running through the most exposed part of it."
   },
   "geographic": {
-    "hq_country": "United States",
-    "hq_city": "Santa Clara",
-    "exposure": {
-      "state": "forthcoming"
-    },
     "tier": "pro",
+    "hq_city": "Santa Clara",
     "teaser": "Marvell's binding geography is TSMC's Taiwan, the same as any fabless designer; the optical business adds a longer path but not a second concentration, its module assembly spread across South-East Asia rather than pooled in one place.",
     "body": "Marvell's own geography carries little risk. Its products' geography carries more.\n\nThe company is American and its design centres are spread across several countries, and none of that concentrates anywhere consequential. Design work moves. A design centre can be replaced in a way a fabrication plant cannot.\n\nThe risk sits at TSMC, as it does for every fabless designer. Marvell's chips are fabricated in Taiwan, in the same few science parks the TSMC profile describes, subject to the same disruption, and Marvell can relocate that dependence no better than NVIDIA can.\n\nWhat is longer for Marvell than for a pure processor designer is the path after fabrication. A processor is fabricated in Taiwan and shipped. An optical chip is fabricated in Taiwan and then handed to a separate industry that assembles it into a finished module before it ships. That extra step might look like a second concentration, and the module industry is led by Chinese firms. But the assembly itself is spread across Thailand, Malaysia and Vietnam, and moving further out of China each year, so it adds breadth to the path, not another choke. Marvell's own chips go mostly to modules assembled outside China. The geography that binds Marvell is the one that binds every fabless designer: Taiwan, where the chip is made. The optical business lengthens the path without adding a second place it can be stopped."
   },
   "editorial": {
-    "notes": null,
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "Marvell is the clearest case in this stack of a company read through the wrong half of itself: the custom-silicon fight everyone watches is the smaller, more contingent business, whilst the optical line that scales with every AI cluster is the larger one and goes undiscussed.",
     "body": "Three things about Marvell repay attention, and each turns on the same fact: the business it is discussed for is not the business most of its money comes from. Why that gap exists. What it hides. And what it means for anyone reading the company through the custom-silicon debate. Robotnik does not price companies, so whether the shares are dear stays with others. What follows is where the leverage and the fragility sit.\n\nStart with the gap itself. Marvell is discussed almost entirely as Broadcom's smaller rival in custom AI silicon, a business that is roughly 18% of its revenue. Its optical interconnect line is larger, leads its market, and is rarely mentioned. Custom silicon is a story about a famous fight, with named combatants and a scoreboard. Chips that move data between racks have neither, and they are the part of the build-out that scales fastest as clusters grow.\n\nWhat that gap hides is a difference in the kind of demand. The custom business rests on Amazon, Microsoft and Google continuing to want AI chips they control themselves. That is a strategic choice, and choices are revisited. The optical business rests on clusters getting larger, which every party to the AI argument agrees is happening, and it holds whoever wins. NVIDIA winning suits it. The hyperscalers' own chips winning suits it equally. When a cluster grows from a thousand machines to ten thousand, the connections between them multiply faster than the machines do, and every connection needs the chips Marvell leads the market in selling.\n\nThen what that means for reading the company, which is the practical point. Anyone tracking Marvell through the custom-silicon debate is watching the smaller, more contingent half and drawing conclusions about the whole. That produces a specific error: bad news for custom silicon reads as bad news for Marvell, when the larger business is untouched by it and may benefit from the same conditions. The company's most-cited business and its most important one are not the same, and the gap between them is where misreadings live.\n\nRobotnik's reading is that Marvell is the clearest case in this stack of a company whose public framing obscures its position. The framing is not wrong, since the custom business is real, growing and genuinely one of two. It is incomplete in a way that inverts the picture, foregrounding the line that depends on other companies' resolve and burying the line that depends only on scale. Watch Marvell for interconnect. The fight everyone else is watching is the smaller half of what this company is."

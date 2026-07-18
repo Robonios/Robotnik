@@ -132,58 +132,94 @@
     "robotnik_notes": "#1 lithium producer. Geographic diversification (Australia, Chile, US). Battery supply chain for frontier stack mobile systems."
   },
   "TXN": {
-    "bottleneck_risk": "LOW"
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "The broadest broad-line analog and embedded supplier, number one in analog at ~18% of a fragmented, competitive field (Analog $14.0bn of $17.7bn CY25 revenue). Frontier exposure (AI-server power, data centre) is diffuse across a very large catalogue and is one of roughly five interchangeable power-IC vendors, with no single-source chokepoint. Competitive field, sourced elsewhere at modest penalty, which is LOW.",
+    "confidence": "HIGH"
   },
   "IFX GR": {
-    "bottleneck_risk": "LOW"
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Global number one in power semiconductors with the fastest-growing AI-server-power line of the analog cohort (over EUR 700m in FY25, guided toward EUR 1.5bn FY26; Automotive ~48% of EUR 14.7bn FY25 revenue). The strongest-position LOW in the set, but power is a genuinely multi-supplier field (STMicro, onsemi, TI, Renesas, MPWR all compete) and AI-power is still a single-digit share of group, so there is no stack-relevant concentration. LOW at the company level; the one to revisit first if AI-power share concentrates.",
+    "confidence": "MEDIUM"
   },
   "NXPI": {
-    "bottleneck_risk": "LOW"
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Automotive-led broad-line supplier (Automotive 58% of $12.3bn FY25 revenue): radar, vehicle processors, BMS and secure elements. Strong but not sole-source: Infineon, Renesas, STMicro and TI all compete across automotive and MCU, and direct AI-compute exposure is limited. Multi-supplier field with no stack-relevant concentration, which is LOW.",
+    "confidence": "HIGH"
   },
   "MCHP": {
-    "bottleneck_risk": "LOW"
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Broad-line microcontroller and analog supplier (Industrial ~30% of ~$4.4bn FY25 revenue, in a deep cyclical trough), with a small data-centre-connectivity line. Competes across MCU and analog with TI, STMicro, Renesas, NXP and Infineon, with no sole-source frontier position. Competitive multi-supplier field, which is LOW.",
+    "confidence": "HIGH"
   },
   "ARM": {
-    "bottleneck_risk": "HIGH"
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak position is the Arm instruction-set architecture, on which ~99% of smartphone application-processor designs depend (FY26 20-F; royalty 53% of $4.92bn revenue). Switching the ecosystem to RISC-V or x86 is a multi-year, multi-billion undertaking with no substitute at scale today, which meets the HIGH bar. Not CRITICAL: RISC-V is a viable if immature path, so the position is category-dominant rather than sole-source.",
+    "confidence": "HIGH"
   },
   "CDNS": {
-    "bottleneck_risk": "HIGH"
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "One of the two firms that hold electronic-design automation, the framework's named HIGH archetype (Cadence plus Synopsys ~61% combined; Core EDA ~70% of $5.30bn FY25 revenue). Tools are qualified over years into foundry-certified sign-off flows, so changing a core tool forces multi-year requalification of the whole design methodology. Category-dominant with deep lock-in, below CRITICAL only because a second vendor exists.",
+    "confidence": "HIGH"
   },
   "SNPS": {
-    "bottleneck_risk": "HIGH"
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "The other half of the electronic-design-automation duopoly and the framework's named HIGH archetype (number one at ~31%; Design Automation ~75% of $7.05bn FY25 revenue). Same foundry-certified, multi-year tool lock-in as Cadence. Category-dominant, below CRITICAL because Cadence is a qualified alternative.",
+    "confidence": "HIGH"
   },
   "QCOM": {
-    "bottleneck_risk": "MEDIUM"
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is premium mobile SoCs and modem-RF plus the cellular-SEP licensing book (QCT 87%, QTL 13% of $44.3bn FY25 revenue). The chip business is substitutable at a redesign cost: MediaTek is at premium-Android parity and Apple has designed the Qualcomm modem out toward ~20% of prior volume, eroding its one near-monopoly toward MEDIUM. QTL is a hard-to-avoid royalty moat but not a frontier-stack supply chokepoint, so the company brackets MEDIUM rather than HIGH.",
+    "confidence": "MEDIUM"
   },
   "MRVL": {
-    "bottleneck_risk": "LOW"
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is custom AI ASICs, where Marvell is number two in the ~95% Broadcom-Marvell duopoly, plus optical-DSP interconnect leadership, its largest data-centre line (Data Center 74% of $8.19bn FY26 revenue). A hyperscaler substitutes Marvell only through a silicon redesign and requalification cycle, which is the MEDIUM definition, not LOW. Consistency: AVGO, number one in the same duopoly, rates MEDIUM on the same test, so the number two cannot sit a full grade below.",
+    "confidence": "MEDIUM"
   },
   "8035 JP": {
-    "bottleneck_risk": "MEDIUM"
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak position is coater-developer track, where Tokyo Electron holds ~90% global and effectively 100% EUV-layer share of an essential lithography step with no leading-edge alternative (only SCREEN competes, at trailing nodes). Under the peak-position ruling the track franchise's mid-teens revenue share does not lower the grade: the company rates on its most concentrated frontier line, as ASML does on EUV. Category-dominant on an irreplaceable step meets HIGH; below CRITICAL because SCREEN supplies a substitute at lower nodes.",
+    "confidence": "HIGH"
   },
   "6857 JP": {
-    "bottleneck_risk": "MEDIUM"
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is high-end SoC and HBM/AI-accelerator test, where Advantest leads within the ~80% Advantest-Teradyne ATE duopoly (Test Systems ~90% of JPY 1,128.6bn FY26 revenue). Close call: the duopoly resembles the framework's HIGH EDA archetype, but ATE switching is multi-quarter tester requalification, below the multi-year, multi-billion HIGH bar, so the switching-cost test lands it at MEDIUM. Revisable at review; if the ATE duopoly is judged EDA-equivalent, Advantest moves to HIGH first.",
+    "confidence": "LOW"
   },
   "TER": {
-    "bottleneck_risk": "MEDIUM"
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is semiconductor test as co-leader of the ~80% Advantest-Teradyne ATE duopoly (Semi Test 79% of $3.19bn FY25 revenue), blended with a fragmented, competitive robotics arm (Universal Robots ~15% share, 10% of revenue). ATE switching is multi-quarter requalification, below the HIGH bar, and the robotics dilution reinforces MEDIUM. Robust to the ATE-grade question: even if the duopoly were judged HIGH, the fragmented robotics business holds the blend at MEDIUM.",
+    "confidence": "MEDIUM"
   },
   "ASX": {
-    "bottleneck_risk": "MEDIUM"
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is outsourced assembly and test, where ASE is the number-one OSAT at ~30% (ATM ~60% of NT$645bn FY25 revenue). A customer can move packaging and test among OSATs (Amkor, JCET, Powertech) at a requalification cost, which is the MEDIUM definition. Guard: ASE is not the advanced-packaging chokepoint; leading-edge CoWoS-class 2.5D sits at TSMC and ASE is a spillover player, so the grade rests on scale-leader qualification friction, not a packaging monopoly.",
+    "confidence": "MEDIUM"
   },
   "4063 JP": {
-    "bottleneck_risk": "MEDIUM"
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is silicon wafers, where Shin-Etsu is number one at ~30% within a roughly five-supplier oligopoly, qualification-gated but multi-sourced (Electronics Materials ~40% of JPY 2.57tn FY26 revenue; the balance is non-frontier PVC and chemicals). Concentration with substitution within reach matches MEDIUM, the same read as the SiC-substrate anchor. Not a photoresist monopolist (resist is a JSR-led oligopoly, Shin-Etsu only top-five); its one above-70% position, ULE-quartz photomask substrates, is a Shin-Etsu/Tosoh duopoly too small to lift the company.",
+    "confidence": "MEDIUM"
   },
   "ADI": {
-    "bottleneck_risk": "LOW"
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "High-performance analog and mixed-signal supplier, number two in analog at ~13.5% of a fragmented field (top five ~58%; Industrial 45% and Automotive 30% of $11.0bn FY25 revenue). No frontier position is single-sourced and every socket has qualified alternatives, so there is no stack-relevant concentration, which is LOW. Parts are design-in sticky, placing it at the high end of LOW rather than the commodity floor, but the company-level grade is LOW.",
+    "confidence": "HIGH"
   },
   "MPWR": {
-    "bottleneck_risk": "LOW"
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Peak position is power delivery for AI servers and GPU boards, where MPWR was the dominant incumbent on Nvidia's Hopper generation (Enterprise Data plus Storage and Computing ~half of $2.79bn FY25 revenue). LOW because substitution was demonstrated: Nvidia second-sourced Blackwell power to Renesas and Infineon within one architecture generation and MPWR lost share in a boom year, in a competitive five-vendor field. Flip condition: if a future architecture's power requirements narrow the qualified vendor field so switching becomes a board redesign rather than a part swap, the grade moves to MEDIUM; watch the next generation's power-vendor list.",
+    "confidence": "LOW"
   },
   "STMPA": {
-    "bottleneck_risk": "LOW"
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Broad-line supplier led by automotive (~39% of $11.8bn FY25 revenue): automotive-SiC (with Infineon), MCUs, power and MEMS. Every line is a multi-supplier field (Infineon, onsemi, TI, Renesas, NXP) and AI-compute exposure is indirect. Competitive with no sole-source frontier position, which is LOW.",
+    "confidence": "HIGH"
   },
   "SYM": {
-    "bottleneck_risk": "LOW"
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "A warehouse-automation systems integrator whose output is differentiated but replaceable (its 10-K names Dematic, Honeywell, AutoStore, Ocado and Daifuku as competitors; Systems 94% of $2.25bn FY25 revenue). On the supply-substitutability test the frontier stack does not depend on it and a buyer could procure automation from several integrators, which is LOW. Its salient risk is customer concentration (Walmart ~85% of revenue), a commercial exposure on a different axis from supply substitutability, not a bottleneck.",
+    "confidence": "HIGH"
   },
   "6920 JP": {
     "bottleneck_risk": "CRITICAL",

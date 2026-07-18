@@ -193,6 +193,31 @@ The values are **revisable**. The methodology should be re-examined as:
   measured (currently insufficient sample, especially in CRITICAL).
 - Stakeholders provide pushback on specific encodings.
 
+### Rating attachment (peak-position ruling, 2026-07-17)
+
+The bottleneck grade attaches to a company's **peak frontier-relevant
+position**, not to a revenue-weighted average across its lines. The revenue
+share of that peak line does not lower the grade: a company whose most
+concentrated position is an irreplaceable chokepoint rates on that line
+whatever fraction of turnover it represents. Worked precedents: ASML rates
+CRITICAL on EUV lithography, and a leading-edge foundry rates HIGH on its
+leading edge, both despite competitive other lines. This clarifies existing
+practice; it is not a change to the scale.
+
+### Rating changes are forward-only (2026-07-17)
+
+When a bottleneck rating changes, the new multiplier applies from the change's
+effective date onward; index history before that date is not recalculated. The
+series carries the old multiplier up to the change and the new one after it, so
+a re-rating never rewrites a level that was already published. Each change is
+recorded as a dated note in [rating_changes.md](../../docs/rating_changes.md).
+
+Applied once as an exception: today's two changes (8035 JP MEDIUM → HIGH, MRVL
+LOW → MEDIUM) were applied retroactively across the whole series rather than
+forward-only. This is accepted as a one-off because the composite is
+pre-publication (status: preliminary, not headline-publishable) and the
+affected history is short. Later changes follow the forward-only rule above.
+
 ---
 
 ## 4. Bottleneck-weighted composite (v1.0 — preliminary)
