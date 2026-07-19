@@ -1,27 +1,35 @@
 {
   "NVDA": {
     "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Rated on whether a customer can leave NVIDIA. A substitute for its chips exists (hyperscaler in-house silicon, AMD's merchant parts), so the position is not CRITICAL. But leaving means abandoning CUDA, the software a business runs on, and NVIDIA's interconnect (NVLink, InfiniBand, Spectrum-X) that binds tens of thousands of chips into one machine; rewriting the software and rebuilding the wiring is a multi-year, multi-billion switch. Customers can go elsewhere, and the cost keeps most in place, which is what HIGH means.",
     "key_customers": "Data centres, robotics (Jetson), autonomous vehicles",
     "key_suppliers": "TSM (foundry), Unimicron/Ibiden (substrates)",
-    "robotnik_notes": "The gravitational centre of the frontier stack. NVIDIA's compute silicon enables robotics inference, satellite processing, and autonomous systems. CoWoS packaging capacity is the binding constraint."
+    "robotnik_notes": "The gravitational centre of the frontier stack. NVIDIA's compute silicon enables robotics inference, satellite processing, and autonomous systems. CoWoS packaging capacity is the binding constraint.",
+    "confidence": "HIGH"
   },
   "TSM": {
     "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Rated on whether a chip designer can take its most advanced work elsewhere. A substitute exists, since Samsung and Intel run advanced foundries, so the position is not CRITICAL; TSMC is the framework's own leading-edge-foundry archetype for HIGH. Moving to a less advanced foundry means a slower, less efficient chip, and requalifying a design there is a multi-year, multi-billion undertaking with a worse product at the end. Customers can leave and almost none do, which is what HIGH means.",
     "key_customers": "NVDA, AVGO, AMD, QCOM, MRVL",
     "key_suppliers": "ASML (EUV), Shin-Etsu/SUMCO (wafers), Linde (gases)",
-    "robotnik_notes": "Single most critical node in the frontier stack. Manufactures >90% of the world’s leading-edge logic chips. $165B US investment reshapes geographic risk but creates new Materials demand."
+    "robotnik_notes": "Single most critical node in the frontier stack. Manufactures >90% of the world’s leading-edge logic chips. $165B US investment reshapes geographic risk but creates new Materials demand.",
+    "confidence": "HIGH"
   },
   "AVGO": {
     "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Rated on whether a customer can work around Broadcom, and it can. Its custom-ASIC advantage is capability rather than control: the work is hard and few do it well, but a customer can move to Marvell, bring more of the design in-house, or fall back on buying NVIDIA's chips. Broadcom owns no software lock-in, no unique manufacturing, and no essential machine, so if it faltered budgets would slip and roadmaps would move by a year or more, but the work would move rather than stop. A company others prefer rather than one they depend on, which is what MEDIUM means.",
     "key_customers": "Hyperscalers (custom ASICs), enterprise networking",
     "key_suppliers": "TSM (foundry)",
-    "robotnik_notes": "Custom ASIC business with a handful of major hyperscaler customers diversifies AI compute beyond GPUs. VMware acquisition adds software layer."
+    "robotnik_notes": "Custom ASIC business with a handful of major hyperscaler customers diversifies AI compute beyond GPUs. VMware acquisition adds software layer.",
+    "confidence": "HIGH"
   },
   "ASML": {
     "bottleneck_risk": "CRITICAL",
+    "bottleneck_description": "Rated on whether a chipmaker can find its machines elsewhere, and it cannot. ASML is the sole maker of EUV lithography, with no second source, no rival near a working alternative, and no way to make leading-edge chips without these machines, at any price on any timeline. A chipmaker cannot switch, wait, or improvise around it. That is no substitute at all, the step beyond HIGH's costly-but-possible substitute, which makes ASML the framework's own archetype for CRITICAL.",
     "key_customers": "TSM, Samsung, Intel",
     "key_suppliers": "Carl Zeiss (optics), VDL (assembly)",
-    "robotnik_notes": "Sole supplier of EUV lithography, the most critical single-source dependency in the entire frontier stack. No alternative exists. Its order book runs years ahead."
+    "robotnik_notes": "Sole supplier of EUV lithography, the most critical single-source dependency in the entire frontier stack. No alternative exists. Its order book runs years ahead.",
+    "confidence": "HIGH"
   },
   "MU": {
     "bottleneck_risk": "MEDIUM",

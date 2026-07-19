@@ -3,7 +3,7 @@
     "id": "NVDA",
     "slug": "NVDA",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-16T17:04:26.836956+00:00",
+    "generated_at": "2026-07-19T17:33:51.001456+00:00",
     "profile_status": "reference"
   },
   "identity": {
@@ -40,8 +40,8 @@
   },
   "bottleneck": {
     "rating": "HIGH",
-    "description": null,
-    "confidence": null,
+    "description": "Rated on whether a customer can leave NVIDIA. A substitute for its chips exists (hyperscaler in-house silicon, AMD's merchant parts), so the position is not CRITICAL. But leaving means abandoning CUDA, the software a business runs on, and NVIDIA's interconnect (NVLink, InfiniBand, Spectrum-X) that binds tens of thousands of chips into one machine; rewriting the software and rebuilding the wiring is a multi-year, multi-billion switch. Customers can go elsewhere, and the cost keeps most in place, which is what HIGH means.",
+    "confidence": "HIGH",
     "state": "rated",
     "tier": "free",
     "headline": "A substitute exists and almost nobody takes it: leaving CUDA and NVIDIA's wiring costs years, which is what HIGH means.",

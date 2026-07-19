@@ -3,7 +3,7 @@
     "id": "TSM",
     "slug": "TSM",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-16T17:04:26.836956+00:00"
+    "generated_at": "2026-07-19T17:33:51.001456+00:00"
   },
   "identity": {
     "name": "TAIWAN SEMICONDUCTOR MANUFACTURING",
@@ -40,8 +40,8 @@
   },
   "bottleneck": {
     "rating": "HIGH",
-    "description": null,
-    "confidence": null,
+    "description": "Rated on whether a chip designer can take its most advanced work elsewhere. A substitute exists, since Samsung and Intel run advanced foundries, so the position is not CRITICAL; TSMC is the framework's own leading-edge-foundry archetype for HIGH. Moving to a less advanced foundry means a slower, less efficient chip, and requalifying a design there is a multi-year, multi-billion undertaking with a worse product at the end. Customers can leave and almost none do, which is what HIGH means.",
+    "confidence": "HIGH",
     "state": "rated",
     "tier": "free",
     "headline": "A substitute exists at the cost of a worse chip and years of requalification, which is what HIGH means.",
