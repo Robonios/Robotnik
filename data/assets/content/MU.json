@@ -1,55 +1,21 @@
 {
-  "meta": {
-    "id": "MU",
-    "slug": "MU",
-    "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-19T07:14:33.692234+00:00"
-  },
   "identity": {
-    "name": "MICRON TECHNOLOGY INC",
-    "aliases": [
-      "MICRON TECHNOLOGY",
-      "MICRON TECHNOLOGY INC",
-      "MU",
-      "Micron",
-      "Micron Technology",
-      "micron technology inc"
-    ],
-    "type": "public",
-    "lifecycle_status": "public",
-    "description": null,
-    "identifiers": {
-      "ticker": "MU",
-      "coingecko_id": null,
-      "cik": "0000723125"
-    },
     "tier": "free",
     "listing": "Nasdaq: MU",
     "domicile": "Delaware, United States",
     "body": "Micron makes memory chips, the components that hold data whilst a computer works on it. It is one of only three companies in the world that make the fast memory AI chips need, and the only one based in the United States. That memory is called high-bandwidth memory, or HBM, and it is the part of Micron's business that matters most to the frontier, though not yet the largest part of what it sells.\n\nMicron is unusual among the companies in this stack because it both designs and manufactures its chips. NVIDIA, Broadcom and the other designers own no factories; Micron owns its own, which makes it what the industry calls an integrated device manufacturer. Revenue was $37.4 billion in the year to August 2025, up 49%, most of it from conventional memory for phones, computers and data centres. HBM was a fast-growing slice, running at roughly $8 billion a year by the end of that period and climbing steeply since.\n\nOne fact defines its place in this profile. Micron is the third of the three memory makers that supply the AI build-out, behind SK Hynix and Samsung. It is a genuine supplier of a scarce and critical component, and it is the smallest and most replaceable of the three that make it."
   },
   "classification": {
-    "sector": "Semiconductors",
-    "subsector": "IDM",
-    "value_chain": "Fabrication & Manufacturing",
-    "universe_status": "index_constituent",
     "tier": "free",
     "lifecycle": "Public",
     "body": "Robotnik places every company in the frontier stack on a ladder of eight tiers. A company's tier says what work it does and where in the chain it earns its money.\n\nMicron sits at the Fabrication & Manufacturing tier, the stage where chips are physically built. TSMC sits at the same tier. The two make very different things, TSMC builds the logic chips that do the computing, Micron builds the memory chips that store the data, but both are manufacturers, and both turn designs into physical silicon at enormous cost.\n\nWhat separates Micron from the fabless designers elsewhere in this stack is that it carries its own factories. A company like NVIDIA can grow by hiring engineers; its costs rise roughly with the talent it adds. Micron cannot. To make more memory it must build more fabrication capacity, and a memory fab costs billions and takes years. This is the defining burden of the tier: the company must commit vast capital years before it knows whether the demand will be there. The memory industry's long history of booms and busts follows directly from this. Every maker adds capacity in the profitable years, the new supply from all of them arrives together, and the resulting glut collapses prices for all of them at once."
   },
   "bottleneck": {
-    "rating": "MEDIUM",
-    "description": "Peak position is HBM (peak-position ruling: rated on HBM, not the broader DRAM/NAND book). HBM has three qualified makers and Micron is the smallest and most substitutable at ~19-21%, third behind SK Hynix (~50-63%); a customer can transfer to SK Hynix or Samsung at a qualification cost of months, which is the MEDIUM definition. The industry-wide sold-out condition raises switching cost (hence not LOW) but is a cyclical market state, not a permanent feature (hence not HIGH). Anchors the HBM spread: SK Hynix HIGH when built, Samsung between, Micron MEDIUM as the smallest of three.",
-    "confidence": "MEDIUM",
-    "state": "rated",
     "tier": "free",
     "headline": "Micron is one of three makers of a scarce, AI-critical memory and the smallest and most substitutable of them, which is why the rating is MEDIUM rather than HIGH.",
     "body": "Robotnik rates every company on one question: does it hold a chokepoint, a position others cannot easily get past. The rating measures the position, not the company. It asks what would happen to the chain if the company faltered, not whether the company is large or well run. Micron's rating is MEDIUM.\n\nMEDIUM means a substitute exists but taking it requires a redesign or a requalification cycle. It sits between HIGH, where a substitute exists but switching costs years and billions, and LOW, where supply can be sourced elsewhere without much penalty.\n\nThe reasoning turns on a distinction worth stating plainly, because it is easy to get wrong. High-bandwidth memory as a whole is a genuine chokepoint on AI: only three companies make it, and no AI accelerator ships without it. If HBM as a category vanished, the AI build-out would stop. But Robotnik does not rate the category. It rates Micron, and the question is whether a customer could replace Micron specifically.\n\nIt could. HBM is a standardised product, and three companies are qualified to make it. NVIDIA has certified all three for its next-generation chips. Micron is the smallest of the three, supplying roughly a fifth of the market and a smaller share still of the newest memory going into NVIDIA's Vera Rubin platform, where SK Hynix holds the majority. If Micron faltered, its customers would lean harder on SK Hynix and Samsung.\n\nTransferring Micron's volume to those two suppliers bears significant cost. Before a memory maker can ship to a customer like NVIDIA, its chips must be qualified: tested exhaustively against the customer's exact requirements, a process that takes months. That qualification cost and delay is what defines the MEDIUM grade. A substitute exists, and it is the other two members of the same small club, but reaching it is not quick.\n\nThis is why Micron is the most substitutable of the three HBM makers, and it is the reason its grade sits below the grade the leader will carry. Being one of three suppliers of a scarce thing is a real position. Being the smallest of the three is what makes it MEDIUM rather than HIGH.\n\nOne market condition sharpens the switching cost without changing the grade, and it is worth understanding precisely. All three makers are sold out. Micron's entire HBM output for the coming year is already committed to customers on agreed price and volume, and binding multi-year contracts run towards the end of the decade. So a customer wanting to leave Micron cannot simply place its order with SK Hynix instead, because SK Hynix has no spare memory to sell it; that capacity is already promised to others. The substitute exists but cannot be obtained on short notice. This is why the grade is MEDIUM rather than LOW. It is not HIGH, because being sold out is a passing condition of a tight market, not a permanent feature of Micron's position: when capacity catches up with demand, as it eventually does, the constraint eases and Micron remains the third of three."
   },
   "dependency": {
-    "key_customers": "NVDA (HBM), data centres",
-    "key_suppliers": "Equipment vendors (ASML, AMAT, LRCX)",
-    "state": "mapped",
     "tier": "free",
     "analysis_tier": "pro",
     "upstream": [
@@ -84,91 +50,28 @@
     "analysis_body": "Micron's dependencies run in both directions and tell opposite stories, and the contrast is the key to the company.\n\nUpstream, Micron depends on the equipment makers that supply every chip manufacturer: ASML for lithography, Applied Materials and Lam Research for the machines that build the memory layer by layer. This is the same dependence TSMC carries, and it is unavoidable in the same way. A memory fab is only as advanced as the tools inside it, and those tools come from a handful of suppliers Micron cannot replace. On this side, Micron is a customer like any other chipmaker, subject to the same equipment chokepoints.\n\nDownstream is where Micron's position is genuinely strong, and where the tension in this profile lives. Micron makes a scarce product that AI customers urgently need, and the largest of those customers is NVIDIA. Its own filing discloses one customer at 17% of revenue, unnamed, widely reported to be NVIDIA, and that single relationship is the frontier heart of the business. But the strength is shared three ways. NVIDIA buys HBM from all three memory makers deliberately, precisely so that no one of them can hold it hostage. Micron has a powerful customer and a scarce product, and it sits alongside two rivals selling that same customer the same thing.\n\nThe asymmetry is instructive. Upstream, Micron cannot escape its suppliers. Downstream, its most important customer has deliberately arranged not to depend too heavily on Micron. So Micron is squeezed in a familiar shape: pinned from above by equipment makers it cannot replace, and held from below by a customer who has engineered alternatives to it. Its scarce product gives it real pricing power whilst the shortage lasts, but its structural position is weaker than the scarcity alone suggests.\n\nThe forward question is whether Micron can climb from third place to second in the HBM market. Its HBM4 qualification for Vera Rubin secures it a place in the next generation, but a small one, well behind SK Hynix. Whether that place grows depends on execution against two rivals who are not standing still, and on whether Micron's Taiwan-centred manufacturing can scale as fast as SK Hynix's."
   },
   "market_context": {
-    "member": true,
-    "sector_index": "Robotnik Semiconductor Index",
-    "weight_band": "5-capped",
-    "sector_rank": 7,
-    "state": "live",
-    "chart": {
-      "total": 68,
-      "at_cap": 9,
-      "below_cap": 59,
-      "cohort": [
-        "AMAT",
-        "AMD",
-        "ASML",
-        "AVGO",
-        "INTC",
-        "LRCX",
-        "MU",
-        "NVDA",
-        "TSM"
-      ],
-      "falloff": [
-        {
-          "band": "5-capped",
-          "count": 9
-        },
-        {
-          "band": "3.5-5",
-          "count": 2
-        },
-        {
-          "band": "2-3.5",
-          "count": 5
-        },
-        {
-          "band": "1-2",
-          "count": 4
-        },
-        {
-          "band": "0.5-1",
-          "count": 10
-        },
-        {
-          "band": "0.25-0.5",
-          "count": 5
-        },
-        {
-          "band": "<0.25",
-          "count": 33
-        }
-      ],
-      "cap_label": "5%",
-      "me": "MU"
-    },
     "tier": "free",
     "weight_band_label": "At the 5% single-name cap (top band)",
     "rank_label": "Joint-largest (nine names share the cap)",
     "caption": "Micron sits at the 5% single-name cap in the Robotnik Semiconductor Index, the ceiling that stops any one company dominating it. Nine names share that cap. The cap is deliberate: it treats the frontier as a cohort of leaders rather than a single bet. Micron's presence at the cap reflects its market value, which is large. Its bottleneck rating, MEDIUM, reflects something different: how much the frontier depends on Micron specifically, which is less than its size suggests, because two other companies make the same critical product. The cap measures weight in the market. The rating measures position in the chain, and for Micron the two diverge."
   },
   "capital": {
-    "last_round": null,
-    "total_raised_m": null,
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "Micron's earnings swing from record profit to heavy loss with the memory cycle whilst it must keep spending billions on fabs through the trough; HBM's locked-in contracts bring some steadiness, but the capital burden and the cycle remain.",
     "body": "Micron's finances are the clearest illustration in this stack of what it costs to be a manufacturer rather than a designer, and of a sensitivity to the business cycle that few industries match.\n\nThe company's revenue swings violently with the memory cycle. It was $37.4 billion in the year to August 2025, up 49% on the prior year, and by mid-2026 it was running far higher still as a memory shortage drove prices up sharply. A year or two earlier it had been in a deep downturn, losing money. This swing is far more extreme than most industries experience, and the reason is specific to memory: the product is a standardised commodity whose price is set purely by the balance of supply and demand, with no brand or lock-in to cushion it. When supply is short, prices and profits spike; when the industry's new capacity floods in together, prices collapse below the cost of making the chips. The same forces exist everywhere, but memory feels them at an amplitude that turns whole years from record profit to heavy loss.\n\nAgainst that volatile income sits a relentless capital demand. Building leading-edge memory capacity costs billions per fab and takes years, and Micron must keep investing through the cycle to stay at the frontier, including during downturns when it is losing money and can least afford to. It is also building new fabrication plants in the United States under government subsidy, a multi-year, multi-billion commitment whose output lies years ahead. So Micron spends heavily and continuously against an income it cannot predict, which is the structural bind of every memory maker and the reason the industry consolidated to three survivors.\n\nThe HBM business changes the character of this without removing it. HBM commands higher and steadier prices than conventional memory, and Micron has locked in multi-year contracts on volume and price, which brings a measure of predictability the memory business has rarely had. If HBM grows as a share of Micron's revenue, the company's earnings should steady. But the capital burden remains, the cycle still governs the larger conventional-memory business, and Micron carries the cost of building through the trough as the price of staying one of three."
   },
   "policy": {
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "Micron is the one company in this stack China has already singled out, barred from Chinese critical infrastructure in 2023, whilst America funds it as a strategic asset, so its standing in each country is set by its nationality rather than its products.",
     "body": "Micron sits inside the same US-China semiconductor conflict as the rest of this stack, but its exposure has a feature none of the others share: it has already been directly targeted by Beijing.\n\nIn 2023, China's cyberspace regulator barred Micron's products from sale to operators of critical information infrastructure in China, citing security concerns, after a review widely read as retaliation for American export controls. Micron is the only company in this stack to have been singled out by China in that way, and China had been a meaningful market for it. The ban gave Micron a direct, early lesson in being a pawn in a larger contest.\n\nOn the American side, Micron is a favoured beneficiary. As the only US-based maker of leading-edge memory, it is central to Washington's aim of bringing chip manufacturing back to American soil, and it has been awarded substantial subsidy under the CHIPS programme to build domestic fabs. So Micron is pulled both ways more sharply than most: penalised by China as an American company, and funded by America as a strategic asset, its position in each country shaped by its nationality rather than its products.\n\nThe deeper exposure is the one the geography layer develops. Micron is celebrated as the American memory champion, but its most advanced memory is made in Taiwan today, so it carries the same Taiwan risk as the rest of the frontier whilst being politically treated as the answer to that risk. The gap between where Micron is based and where it manufactures is itself a policy vulnerability."
   },
   "geographic": {
-    "hq_country": "United States",
-    "hq_city": "Boise",
-    "exposure": {
-      "state": "forthcoming"
-    },
     "tier": "pro",
+    "hq_city": "Boise",
     "teaser": "Micron is the American memory champion whose most advanced memory is made in Taiwan; the company treated as the hedge against Taiwan sits inside the same risk, its US fabs still years away.",
     "body": "Micron's geography holds a contradiction worth stating plainly, because the rest of this stack, and Micron's own reputation, obscure it. Micron is the American memory maker, and its most advanced memory is made in Taiwan.\n\nThe company is headquartered in Idaho, listed in New York, and is the only leading-edge memory manufacturer based in the United States. That is what earns it the \"American exception\" label the other profiles in this stack apply to it. But the label describes its nationality, not its factories. Micron's leading-edge DRAM and effectively all of its HBM, including the delicate stacking that turns memory chips into high-bandwidth memory, are manufactured in Taiwan, principally in Taichung. Its March 2026 purchase of a Taiwanese fab deepened that concentration rather than reducing it.\n\nSo Micron carries the same Taiwan exposure as TSMC and everything else in this stack. A blockade or conflict that stopped Taiwan would stop Micron's advanced memory as surely as it would stop TSMC's logic chips, and the AI build-out needs both. The company that is politically treated as the way to reduce Taiwan dependence in fact sits inside it.\n\nIts diversification is real but, like TSMC's, years from maturity. Micron is building leading-edge fabs in the United States under CHIPS subsidy, with first American production expected around 2027 and more capacity beyond that. It also manufactures in Japan and Singapore. For the rest of this decade, though, its frontier-critical memory is made where TSMC's chips are made, on the same island, exposed to the same single point of failure. The American memory champion is, for now, a Taiwan story."
   },
   "editorial": {
-    "notes": "HBM memory capacity gates AI accelerator production. FY2025 revenue $37.4bn, up 49%, with HBM a fast-growing slice. HBM4 shipping for NVIDIA's Vera Rubin.",
-    "state": "authored",
     "tier": "pro",
     "teaser": "The market prices Micron on an HBM shortage that is the most temporary thing about it; the two forces that will outlast it, its third-of-three position and its Taiwan-based manufacturing, are what the shortage is hiding.",
     "body": "The market is pricing Micron on its HBM shortage. Robotnik's dependency map says that is the one thing about Micron least worth pricing, because it is the most temporary, and that the two forces which will actually decide the company are the two the shortage is currently hiding. That is the whole of this reading, and it runs against the prevailing story.\n\nConsider what the shortage conceals. Micron's shares and its record profits both rest on high-bandwidth memory being scarce and dear. Scarcity is, by nature, the least durable thing a supplier can be built on. It ends in one of two ways, and both are visible in Micron's own position. Either demand cools, or the three makers, all now racing to add capacity, succeed in building it, at which point the memory cycle does what it has always done and turns a shortage into a glut. Micron is spending billions today precisely to add that capacity, which means the company is, in effect, working to end the condition its valuation depends on. The shortage is real and it is good for Micron now. It is also the part of the story with the shortest life.\n\nUnderneath it sit the two forces that will still be there when the shortage has passed, and Robotnik's framework foregrounds both. The first is that Micron is the third of three, the most substitutable member of its own club, kept that way by a customer who buys from all three on purpose. A shortage lifts all three makers together and flatters the weakest most, because when buyers are desperate even the junior supplier commands premium prices. When supply loosens, that flattery is withdrawn first from the smallest, and Micron's structural position, third and replaceable, reasserts itself. The scarcity is masking a ranking that will matter again.\n\nThe second is geography, and here Robotnik's reading directly contradicts how Micron is labelled. The company is celebrated, and funded by Washington, as the American answer to Asian memory dominance. Its most advanced memory is made in Taiwan, on the same island as TSMC, exposed to the identical risk. An investor holding Micron as a hedge against Taiwan is holding a Taiwan bet that happens to have an American flag on it. The hedge is a decade of domestic fab-building away; the exposure is present in every HBM stack Micron ships today. Of everything about this company, the gap between its reputation and its factories is the least understood and the most consequential.\n\nSo the Robotnik view is a specific inversion of the market's. Where the market sees an American memory champion riding an AI shortage, Robotnik sees a Taiwan-based, third-place supplier of a commodity, currently enjoying a shortage that its own capital spending is designed to end. None of this makes Micron a poor company; it is a genuine beneficiary of a genuine boom, and one of only three firms that make something the frontier cannot do without. It makes Micron a company whose real risks are being obscured by its best moment. Watch the three things that will outlast the shortage: whether Micron rises from third towards second in HBM, whether its American fabs arrive fast enough to make the nationality real rather than nominal, and whether the memory cycle turns whilst it is still spending to build. The shortage is what everyone is looking at. The other three are what will decide the company, and they are what Robotnik is looking at instead."

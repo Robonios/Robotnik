@@ -25,9 +25,11 @@
   },
   "MU": {
     "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is HBM (peak-position ruling: rated on HBM, not the broader DRAM/NAND book). HBM has three qualified makers and Micron is the smallest and most substitutable at ~19-21%, third behind SK Hynix (~50-63%); a customer can transfer to SK Hynix or Samsung at a qualification cost of months, which is the MEDIUM definition. The industry-wide sold-out condition raises switching cost (hence not LOW) but is a cyclical market state, not a permanent feature (hence not HIGH). Anchors the HBM spread: SK Hynix HIGH when built, Samsung between, Micron MEDIUM as the smallest of three.",
     "key_customers": "NVDA (HBM), data centres",
     "key_suppliers": "Equipment vendors (ASML, AMAT, LRCX)",
-    "robotnik_notes": "HBM memory capacity gates AI accelerator production. Revenue tripled to $23.9B on HBM demand. HBM4 in development."
+    "robotnik_notes": "HBM memory capacity gates AI accelerator production. FY2025 revenue $37.4bn, up 49%, with HBM a fast-growing slice. HBM4 shipping for NVIDIA's Vera Rubin.",
+    "confidence": "MEDIUM"
   },
   "AMD": {
     "bottleneck_risk": "LOW",

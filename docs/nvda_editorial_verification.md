@@ -404,3 +404,44 @@ Rule-16 clean in the strict sense: **zero** banned "not X, but Y" constructions.
 - **Held (judgement):** classification "finished systems at the top" ladder apex (the same minor flag as NVDA/TSM/ASML; apex is Software & Services).
 
 **Time-sensitive:** **High** - 3 (optical-module assembly geography shifts quarterly with tariffs), 5 (optical > custom is a FY2026 snapshot, custom closing fast). **Moderate** - 7 (Google/Axion evolving), 8. **Low** - the rest.
+
+
+---
+
+# Micron (MU) profile
+
+Full nine-layer verification of the Micron profile, Draft 2, against the dataset, `metrics_methodology.md`, filings and web (three parallel web checks this session: revenue mix + HBM structure; HBM supply + customers + geography; the 2023 China ban). The first **grade-write-back** profile: MU's notes-only MEDIUM gains a reasoned `bottleneck_description` + `confidence` in `enrichment_data.json` (grade value **unchanged**, so **no** `docs/rating_changes.md` entry and no composite regeneration). The first profile to set the **HBM spread precedent** (SK Hynix HIGH when built, Samsung between, Micron MEDIUM as the smallest of three). Appended to the same consolidated record as NVDA/TSMC/ASML/AVGO/MRVL.
+
+## Part 1 - claims
+
+| # | Claim (abbreviated) | Verdict | Source & figure | Re-verify |
+|---|---|---|---|---|
+| 1 | **Memory-drawn**: 2023 CAC ban on Micron (CII operators; retaliation framing) | **CONFIRMED** (all 4 parts) | **Cyberspace Administration of China**, decision **21 May 2023** (Micron 8-K 22 May); barred **critical-information-infrastructure operators** from purchasing Micron products after a cybersecurity review; "widely read as retaliation" correct as the **observers'/press** reading (CSIS "thinly veiled retaliation"), China framed it security-only. China was ~25% of revenue; Micron guided "low-double-digit % at risk" | Low (settled 2023 event) |
+| 2 | FY2025 rev $37.4bn, +49% from $25.1bn; DRAM 76.5%, NAND 22.7% | **CONFIRMED** | FY2025 10-K: $37.38bn (+49%); DRAM $28.58bn/76.5%, NAND $8.50bn/22.7% | Low |
+| 3 | HBM not broken out; ~$8bn run-rate (nearly $2bn FQ4'25), climbing | **CONFIRMED** | 10-K carries no HBM line; mgmt "nearly $2bn" FQ4'25 -> ~$8bn annualised | Moderate |
+| 4 | Three makers; Micron ~19-21% third; SK Hynix ~50-63% majority | **CONFIRMED** (est.) | TrendForce/Counterpoint/IDC (all analyst estimates); three-maker structure is hard fact | Moderate |
+| 5 | All three qualified for Vera Rubin/HBM4 (NVIDIA CEO 5 Jun 2026); Micron smallest allocation (low-single-digits-to-~10%), SK Hynix 60-70% | **CONFIRMED** | NVIDIA CEO 5 Jun 2026; Micron FQ3'26 release "high-volume shipments for lead customer"; allocation split analyst-est. | High |
+| 6 | HBM sold out CY2026 (price+volume); binding multi-year take-or-pay to ~2030 | **CONFIRMED** | Q1 FY2026 remarks (entire CY2026 committed on price+volume); Q3 FY2026 16 five-year SCAs, ~$5bn RPO | Moderate |
+| 7 | One customer 17% FY2025 (unnamed, reported NVIDIA); easing to ~10% 9mo FY2026 | **CONFIRMED** | 10-K Note 28 "one customer 17% ... CMBU segment"; 10-Qs 13%->10%; NVIDIA = press attribution, not disclosed | Moderate |
+| 8 | **Structural correction**: leading-edge DRAM + all HBM in Taiwan (Taichung); US ~2027+; Mar-2026 Tongluo deepens Taiwan -> "American exception is corporate, not physical" | **CONFIRMED** | 10-K Item 2 (US lists wafer fab but **no** advanced packaging; Taiwan+Singapore list both); Taichung A3 = sole HBM stacking site; Tongluo/PSMC $1.8bn (Mar 2026); Boise first wafers ~mid-2027 | High |
+| 9 | IDM (designs + fabricates); at 5% cap; sector rank 7/68 | **CONFIRMED** | registry `subsector: IDM`; weights.json weight_pct 5.0, sector rank 7/68 (one of nine at the cap) | Low |
+| 10 | Equipment ASML/AMAT/LRCX; mid-2026 crunch supports "running far higher still" | **CONFIRMED** | FQ3 FY2026 (24 Jun 2026): revenue $41.46bn, ~84.6% gross margin — an acute memory-pricing spike, primary-source-confirmed | High |
+
+## Part 2 - rule-compliance scan (all nine layers)
+
+- **Rule 13 (whilst not while) — 3 violations, all applied:** identity "hold data **while** a computer works" -> "whilst"; policy "**while** being politically treated as the answer" -> "whilst"; editorial "whether the memory cycle turns **while** it is still spending" -> "whilst". (Dependency already used "whilst the shortage lasts".)
+- **Rule 16 (not X, but Y) — zero banned constructions.** Only accepted forms ("the position, not the company"; "MEDIUM rather than HIGH"; "its nationality, not its factories"; "a manufacturer rather than a designer").
+- **Rule 10 (numerals/money):** money as "$37.4 billion / $8 billion" (house practice); percentages numeral (49%, 17%, 5%). **Held (judgement):** bottleneck "roughly **a fifth** of the market" is a spelled fraction where rule 10 favours "roughly 20%" — flagged, not forced (author's prose).
+- **British / em-dashes:** compliant — no "toward", no em-dashes.
+- **Held (judgement):** editorial "a Taiwan bet that happens to have an **American flag on it**" (Orwell rule 1, a figure of speech; fresh not clichéd, likely fine under rule 6); geography "**listed in New York**" (Micron is NASDAQ-listed; NASDAQ is NY-based, so loosely accurate).
+
+## Notes
+
+- **Grade write-back (Part 3):** MU's notes-only record gained `bottleneck_description` (peak-position ruling; three qualified makers; Micron smallest/most substitutable ~19-21%; qualification-cost switching = MEDIUM; sold-out raises cost -> not LOW, cyclical -> not HIGH; anchors the HBM spread) and `confidence: MEDIUM`. **Grade value held at MEDIUM** — only rationale added, so no `rating_changes.md` entry, no composite regeneration. The stale `robotnik_notes` figure ("$23.9B") left untouched (out of scope) and flagged for a separate cleanup.
+- **Confidence = MEDIUM (my call):** the grade is well-reasoned on own-output substitutability and ruled on a clear principle, but the sold-out / only-three-makers / AI-gating facts are a genuine HIGH-pull and this is the precedent-setting HBM anchor, so MEDIUM confidence signals "revisit if the sold-out condition proves structural rather than cyclical" (the multi-year take-or-pay to 2030 is the thing that could push it toward HIGH).
+- **Bottleneck-store consistency (Part 5.3):** the bottleneck layer **matches** the rationale written to `enrichment_data.json` — own-output substitutability, three qualified makers, Micron the smallest, sold-out raises cost (not LOW) but is cyclical (not HIGH). No divergence.
+- **Figure #13 (dependency graph):** upstream **ASML** (link live), **Applied Materials**, **Lam Research** (index shards only, no authored profile/shell yet); downstream **NVIDIA** (link live), **AI accelerator makers** and **Memory market** (categories). No CONTROL POINT marker (MEDIUM).
+- **Figure #14 (market context):** **at the cap** (nine-name shelf), MU highlighted on the shelf — the capped-name treatment (like AVGO), not MRVL's falloff. Chart payload = membership counts + labels only; no absolute figure; extended guard passes.
+- **The structural correction (claim 8) runs through four layers** — identity, policy, geography, editorial — all state the "American exception is corporate, not physical / HBM made in Taiwan" framing consistently and accurately.
+
+**Time-sensitive:** **High** - 1 is settled but 5, 8, 10 move (Vera Rubin allocation, Taiwan/US fab timelines, the memory-pricing crunch). **Moderate** - 3, 4, 6, 7. **Low** - 2, 9.
