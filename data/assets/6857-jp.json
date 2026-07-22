@@ -3,7 +3,7 @@
     "id": "6857 JP",
     "slug": "6857-jp",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-06T15:15:55.657977+00:00"
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
   },
   "identity": {
     "name": "Advantest Corp",
@@ -31,8 +31,8 @@
   },
   "bottleneck": {
     "rating": "MEDIUM",
-    "description": null,
-    "confidence": null,
+    "description": "Peak position is high-end SoC and HBM/AI-accelerator test, where Advantest leads within the ~80% Advantest-Teradyne ATE duopoly (Test Systems ~90% of JPY 1,128.6bn FY26 revenue). Close call: the duopoly resembles the framework's HIGH EDA archetype, but ATE switching is multi-quarter tester requalification, below the multi-year, multi-billion HIGH bar, so the switching-cost test lands it at MEDIUM. Revisable at review; if the ATE duopoly is judged EDA-equivalent, Advantest moves to HIGH first.",
+    "confidence": "LOW",
     "state": "rated"
   },
   "dependency": {
@@ -44,8 +44,55 @@
     "member": true,
     "sector_index": "Robotnik Semiconductor Index",
     "weight_band": "1-2",
-    "sector_rank": 17,
-    "state": "live"
+    "sector_rank": 20,
+    "state": "live",
+    "chart": {
+      "total": 75,
+      "at_cap": 8,
+      "below_cap": 67,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 3
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 9
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 7
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "6857 JP"
+    }
   },
   "capital": {
     "last_round": null,

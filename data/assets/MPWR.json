@@ -3,7 +3,7 @@
     "id": "MPWR",
     "slug": "MPWR",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-06T15:15:55.657977+00:00"
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
   },
   "identity": {
     "name": "MONOLITHIC POWER SYSTEMS INC",
@@ -30,8 +30,8 @@
   },
   "bottleneck": {
     "rating": "LOW",
-    "description": null,
-    "confidence": null,
+    "description": "Peak position is power delivery for AI servers and GPU boards, where MPWR was the dominant incumbent on Nvidia's Hopper generation (Enterprise Data plus Storage and Computing ~half of $2.79bn FY25 revenue). LOW because substitution was demonstrated: Nvidia second-sourced Blackwell power to Renesas and Infineon within one architecture generation and MPWR lost share in a boom year, in a competitive five-vendor field. Flip condition: if a future architecture's power requirements narrow the qualified vendor field so switching becomes a board redesign rather than a part swap, the grade moves to MEDIUM; watch the next generation's power-vendor list.",
+    "confidence": "LOW",
     "state": "rated"
   },
   "dependency": {
@@ -43,8 +43,55 @@
     "member": true,
     "sector_index": "Robotnik Semiconductor Index",
     "weight_band": "0.5-1",
-    "sector_rank": 24,
-    "state": "live"
+    "sector_rank": 26,
+    "state": "live",
+    "chart": {
+      "total": 75,
+      "at_cap": 8,
+      "below_cap": 67,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 3
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 9
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 7
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "MPWR"
+    }
   },
   "capital": {
     "last_round": null,

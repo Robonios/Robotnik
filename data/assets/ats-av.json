@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "id": "ATS AV",
+    "slug": "ats-av",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
+  },
+  "identity": {
+    "name": "AT&S AUSTRIA TECH & SYSTEMTECHNIK",
+    "aliases": [
+      "AT&S",
+      "AT&S Austria Technologie & Systemtechnik",
+      "ATS AV",
+      "AT&S AUSTRIA TECH & SYSTEMTECHNIK",
+      "at&s austria tech & systemtechnik"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "ATS AV",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Packaging & Substrates",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Peak position is high-end IC and ABF substrates, one of the small set of qualified makers serving leading-edge packaging (Ibiden, Shinko, Unimicron, AT&S). A customer can requalify substrate supply elsewhere in the oligopoly at a switching cost, so the work would move rather than stop. A supplier others can substitute at a redesign cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Index",
+    "weight_band": "<0.25",
+    "sector_rank": 16,
+    "state": "live",
+    "chart": {
+      "total": 28,
+      "at_cap": 0,
+      "below_cap": 28,
+      "cohort": [],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 0
+        },
+        {
+          "band": "3.5-5",
+          "count": 0
+        },
+        {
+          "band": "2-3.5",
+          "count": 0
+        },
+        {
+          "band": "1-2",
+          "count": 0
+        },
+        {
+          "band": "0.5-1",
+          "count": 2
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 3
+        },
+        {
+          "band": "<0.25",
+          "count": 23
+        }
+      ],
+      "cap_label": "5%",
+      "me": "ATS AV"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Austria",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

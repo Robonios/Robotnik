@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "id": "8046 TT",
+    "slug": "8046-tt",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
+  },
+  "identity": {
+    "name": "NAN YA PRINTED CIRCUIT BOARD",
+    "aliases": [
+      "Nan Ya PCB",
+      "Nan Ya Printed Circuit Board",
+      "8046 TT",
+      "NAN YA PRINTED CIRCUIT BOARD",
+      "nan ya printed circuit board"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "8046 TT",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "Packaging & Substrates",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Peak position is ABF flip-chip substrates, an oligopoly of a handful of qualified makers (Ibiden, Shinko, Unimicron, AT&S, Nan Ya). A processor maker can move substrate orders to another qualified supplier at a requalification cost, and Nan Ya is the smaller end of the top tier rather than a sole source. A supplier customers can substitute at a switching cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 5,
+    "state": "live",
+    "chart": {
+      "total": 28,
+      "at_cap": 0,
+      "below_cap": 28,
+      "cohort": [],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 0
+        },
+        {
+          "band": "3.5-5",
+          "count": 0
+        },
+        {
+          "band": "2-3.5",
+          "count": 0
+        },
+        {
+          "band": "1-2",
+          "count": 0
+        },
+        {
+          "band": "0.5-1",
+          "count": 2
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 3
+        },
+        {
+          "band": "<0.25",
+          "count": 23
+        }
+      ],
+      "cap_label": "5%",
+      "me": "8046 TT"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Taiwan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

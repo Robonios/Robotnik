@@ -3,7 +3,7 @@
     "id": "TSM",
     "slug": "TSM",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-19T18:39:00.159362+00:00"
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
   },
   "identity": {
     "name": "TAIWAN SEMICONDUCTOR MANUFACTURING",
@@ -101,19 +101,18 @@
     "member": true,
     "sector_index": "Robotnik Semiconductor Index",
     "weight_band": "5-capped",
-    "sector_rank": 9,
+    "sector_rank": 8,
     "state": "live",
     "chart": {
-      "total": 68,
-      "at_cap": 9,
-      "below_cap": 59,
+      "total": 75,
+      "at_cap": 8,
+      "below_cap": 67,
       "cohort": [
-        "AMAT",
+        "000660 KS",
+        "005930 KS",
         "AMD",
         "ASML",
         "AVGO",
-        "INTC",
-        "LRCX",
         "MU",
         "NVDA",
         "TSM"
@@ -121,31 +120,31 @@
       "falloff": [
         {
           "band": "5-capped",
-          "count": 9
+          "count": 8
         },
         {
           "band": "3.5-5",
-          "count": 2
+          "count": 3
         },
         {
           "band": "2-3.5",
-          "count": 5
+          "count": 3
         },
         {
           "band": "1-2",
-          "count": 4
+          "count": 6
         },
         {
           "band": "0.5-1",
-          "count": 10
+          "count": 9
         },
         {
           "band": "0.25-0.5",
-          "count": 5
+          "count": 7
         },
         {
           "band": "<0.25",
-          "count": 33
+          "count": 39
         }
       ],
       "cap_label": "5%",

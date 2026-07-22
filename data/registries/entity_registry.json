@@ -767,7 +767,7 @@
       "rigetti computing inc"
     ],
     "reinstatement_date": "2026-05-30",
-    "reinstatement_notes": "Readmitted by membership audit \u2014 core business is frontier (data/curation error, not a business exclusion).",
+    "reinstatement_notes": "Readmitted by membership audit — core business is frontier (data/curation error, not a business exclusion).",
     "value_chain": "Components & Subsystems",
     "entity_id": "RGTI",
     "lifecycle_status": "public",
@@ -972,7 +972,7 @@
       "universal display corp"
     ],
     "reinstatement_date": "2026-05-30",
-    "reinstatement_notes": "Readmitted by membership audit \u2014 core business is frontier (data/curation error, not a business exclusion).",
+    "reinstatement_notes": "Readmitted by membership audit — core business is frontier (data/curation error, not a business exclusion).",
     "value_chain": "Upstream Materials",
     "entity_id": "OLED",
     "lifecycle_status": "public",
@@ -1413,7 +1413,7 @@
     "value_chain": "Components & Subsystems",
     "status": "excluded",
     "exclude_reason": "secondary_listing",
-    "exclude_note": "US ADR of STMicroelectronics; the primary listing STMPA (Euronext Paris) is the index constituent. Both map to Yahoo 'STM' \u2014 excluded here to prevent double-counting.",
+    "exclude_note": "US ADR of STMicroelectronics; the primary listing STMPA (Euronext Paris) is the index constituent. Both map to Yahoo 'STM' — excluded here to prevent double-counting.",
     "membership_audit": "2026-05-31",
     "entity_id": "STM",
     "lifecycle_status": "public",
@@ -3263,7 +3263,7 @@
       "kratos defense & security"
     ],
     "reinstatement_date": "2026-05-30",
-    "reinstatement_notes": "Readmitted by membership audit \u2014 core business is frontier (data/curation error, not a business exclusion).",
+    "reinstatement_notes": "Readmitted by membership audit — core business is frontier (data/curation error, not a business exclusion).",
     "value_chain": "System Integration",
     "entity_id": "KTOS",
     "lifecycle_status": "public",
@@ -5274,7 +5274,7 @@
       "hanwha aerospace"
     ],
     "reinstatement_date": "2026-04-16",
-    "reinstatement_notes": "Backfilled from Yahoo Finance due to EODHD KRW ceiling (\u20a9999,999.9999 cap); ongoing prices from Yahoo override via data/registries/data_source_overrides.json",
+    "reinstatement_notes": "Backfilled from Yahoo Finance due to EODHD KRW ceiling (₩999,999.9999 cap); ongoing prices from Yahoo override via data/registries/data_source_overrides.json",
     "data_source": "yahoo_finance",
     "value_chain": "System Integration",
     "status": "excluded",
@@ -9593,7 +9593,7 @@
     "public_ticker": "CBRS",
     "ipo_date": "2026-05-14",
     "bottleneck_risk": "MEDIUM",
-    "transition_note": "private\u2192public via Cerebras IPO (CBRS, Nasdaq, first trade 2026-05-14). Immutable entity_id; lifecycle field-update only.",
+    "transition_note": "private→public via Cerebras IPO (CBRS, Nasdaq, first trade 2026-05-14). Immutable entity_id; lifecycle field-update only.",
     "rating_note": "Re-validated MEDIUM at IPO via adversarial verifier (NOT carryover HIGH): differentiated wafer-scale AI compute but substitutable (NVIDIA-dominant + AMD/TPU/Groq) and downstream of TSMC/CoWoS/HBM."
   },
   "positron": {
@@ -10654,11 +10654,11 @@
     "lifecycle_status": "pre_ipo_filed",
     "public_ticker": null,
     "filing_valuation_m": null,
-    "valuation_source": "Shanghai STAR draft S-1 (accepted 2026-03-20); valuation not cleanly disclosed \u2192 null (no fabrication)",
+    "valuation_source": "Shanghai STAR draft S-1 (accepted 2026-03-20); valuation not cleanly disclosed → null (no fabrication)",
     "valuation_as_of": "2026-03-20",
     "bottleneck_risk": "HIGH",
     "rating_provisional": true,
-    "rating_note": "PROVISIONAL \u2014 leading Chinese humanoid/quadruped maker; finalize in Workstream D.",
+    "rating_note": "PROVISIONAL — leading Chinese humanoid/quadruped maker; finalize in Workstream D.",
     "note": "Shanghai STAR draft S-1 accepted 2026-03-20; pre-IPO, NOT in any index."
   },
   "kandou-ai": {
@@ -13033,8 +13033,8 @@
     "id": "7741 JP",
     "name": "HOYA CORP",
     "type": "public",
-    "sector": "Semiconductors",
-    "subsector": null,
+    "sector": "Materials",
+    "subsector": "EUV mask blanks",
     "country": "Japan",
     "city": null,
     "eodhd_ticker": null,
@@ -13046,21 +13046,17 @@
       "7741 JP",
       "hoya corp"
     ],
-    "value_chain": null,
+    "value_chain": "Upstream Materials",
     "entity_id": "7741 JP",
     "lifecycle_status": "public",
-    "public_ticker": "7741 JP",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public 7741/Tokyo; EUV mask blanks"
+    "public_ticker": "7741 JP"
   },
   "7912 JP": {
     "id": "7912 JP",
     "name": "DAI NIPPON PRINTING CO",
     "type": "public",
     "sector": "Semiconductors",
-    "subsector": null,
+    "subsector": "Equipment (photomask)",
     "country": "Japan",
     "city": null,
     "eodhd_ticker": null,
@@ -13073,21 +13069,17 @@
       "7912 JP",
       "dai nippon printing co"
     ],
-    "value_chain": null,
+    "value_chain": "Capital Equipment",
     "entity_id": "7912 JP",
     "lifecycle_status": "public",
-    "public_ticker": "7912 JP",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public 7912/Tokyo; photomask/substrate"
+    "public_ticker": "7912 JP"
   },
   "7911 JP": {
     "id": "7911 JP",
     "name": "TOPPAN HOLDINGS INC",
     "type": "public",
     "sector": "Semiconductors",
-    "subsector": null,
+    "subsector": "Equipment (photomask)",
     "country": "Japan",
     "city": null,
     "eodhd_ticker": null,
@@ -13099,21 +13091,17 @@
       "7911 JP",
       "toppan holdings inc"
     ],
-    "value_chain": null,
+    "value_chain": "Capital Equipment",
     "entity_id": "7911 JP",
     "lifecycle_status": "public",
-    "public_ticker": "7911 JP",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public 7911/Tokyo (renamed from Toppan Inc 2023)"
+    "public_ticker": "7911 JP"
   },
   "8046 TT": {
     "id": "8046 TT",
     "name": "NAN YA PRINTED CIRCUIT BOARD",
     "type": "public",
-    "sector": "Semiconductors",
-    "subsector": null,
+    "sector": "Materials",
+    "subsector": "Packaging & Substrates",
     "country": "Taiwan",
     "city": null,
     "eodhd_ticker": null,
@@ -13126,21 +13114,17 @@
       "NAN YA PRINTED CIRCUIT BOARD",
       "nan ya printed circuit board"
     ],
-    "value_chain": null,
+    "value_chain": "Upstream Materials",
     "entity_id": "8046 TT",
     "lifecycle_status": "public",
-    "public_ticker": "8046 TT",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public 8046/Taiwan; ABF substrate"
+    "public_ticker": "8046 TT"
   },
   "ATS AV": {
     "id": "ATS AV",
     "name": "AT&S AUSTRIA TECH & SYSTEMTECHNIK",
     "type": "public",
-    "sector": "Semiconductors",
-    "subsector": null,
+    "sector": "Materials",
+    "subsector": "Packaging & Substrates",
     "country": "Austria",
     "city": null,
     "eodhd_ticker": null,
@@ -13153,21 +13137,17 @@
       "AT&S AUSTRIA TECH & SYSTEMTECHNIK",
       "at&s austria tech & systemtechnik"
     ],
-    "value_chain": null,
+    "value_chain": "Upstream Materials",
     "entity_id": "ATS AV",
     "lifecycle_status": "public",
-    "public_ticker": "ATS AV",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public ATS/Vienna; ABF substrate"
+    "public_ticker": "ATS AV"
   },
   "600584": {
     "id": "600584",
     "name": "JCET GROUP CO",
     "type": "public",
     "sector": "Semiconductors",
-    "subsector": null,
+    "subsector": "OSAT",
     "country": "China",
     "city": null,
     "eodhd_ticker": null,
@@ -13180,14 +13160,10 @@
       "JCET GROUP CO",
       "jcet group co"
     ],
-    "value_chain": null,
+    "value_chain": "Fabrication & Manufacturing",
     "entity_id": "600584",
     "lifecycle_status": "public",
-    "public_ticker": "600584",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public 600584/Shanghai; OSAT"
+    "public_ticker": "600584"
   },
   "CC": {
     "id": "CC",
@@ -13324,7 +13300,7 @@
     "name": "NSK LTD",
     "type": "public",
     "sector": "Robotics",
-    "subsector": null,
+    "subsector": "Motion Control & Actuators",
     "country": "Japan",
     "city": null,
     "eodhd_ticker": null,
@@ -13337,14 +13313,10 @@
       "NSK LTD",
       "nsk ltd"
     ],
-    "value_chain": null,
+    "value_chain": "Components & Subsystems",
     "entity_id": "6471 JP",
     "lifecycle_status": "public",
-    "public_ticker": "6471 JP",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public 6471/Tokyo; bearings/motion"
+    "public_ticker": "6471 JP"
   },
   "SKFB SS": {
     "id": "SKFB SS",
@@ -13456,7 +13428,7 @@
     "name": "SK HYNIX INC",
     "type": "public",
     "sector": "Semiconductors",
-    "subsector": null,
+    "subsector": "IDM",
     "country": "South Korea",
     "city": null,
     "eodhd_ticker": null,
@@ -13469,22 +13441,17 @@
       "000660 KS",
       "sk hynix inc"
     ],
-    "value_chain": null,
+    "value_chain": "Fabrication & Manufacturing",
     "entity_id": "000660 KS",
     "lifecycle_status": "public",
-    "public_ticker": "000660 KS",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public 000660/Korea KRX; memory/HBM",
-    "universe_review": "pending"
+    "public_ticker": "000660 KS"
   },
   "2454 TT": {
     "id": "2454 TT",
     "name": "MEDIATEK INC",
     "type": "public",
     "sector": "Semiconductors",
-    "subsector": null,
+    "subsector": "Fabless Design",
     "country": "Taiwan",
     "city": null,
     "eodhd_ticker": null,
@@ -13497,22 +13464,17 @@
       "2454 TT",
       "mediatek inc"
     ],
-    "value_chain": null,
+    "value_chain": "IP & Design",
     "entity_id": "2454 TT",
     "lifecycle_status": "public",
-    "public_ticker": "2454 TT",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public 2454/Taiwan; fabless",
-    "universe_review": "pending"
+    "public_ticker": "2454 TT"
   },
   "GFS": {
     "id": "GFS",
     "name": "GLOBALFOUNDRIES INC",
     "type": "public",
     "sector": "Semiconductors",
-    "subsector": null,
+    "subsector": "Foundry",
     "country": "United States",
     "city": null,
     "eodhd_ticker": null,
@@ -13524,15 +13486,10 @@
       "GFS",
       "globalfoundries inc"
     ],
-    "value_chain": null,
+    "value_chain": "Fabrication & Manufacturing",
     "entity_id": "GFS",
     "lifecycle_status": "public",
-    "public_ticker": "GFS",
-    "status": "excluded",
-    "exclude_reason": "supply_chain_node",
-    "enrichment": "pending",
-    "phase1_status_note": "public GFS/NASDAQ; foundry",
-    "universe_review": "pending"
+    "public_ticker": "GFS"
   },
   "2382 TT": {
     "id": "2382 TT",
@@ -14026,5 +13983,29 @@
     "exclude_reason": "supply_chain_node",
     "enrichment": "pending",
     "phase1_status_note": "DELISTED 2023 (Advent take-private); EO/satellites"
+  },
+  "005930 KS": {
+    "id": "005930 KS",
+    "name": "SAMSUNG ELECTRONICS CO",
+    "type": "public",
+    "sector": "Semiconductors",
+    "subsector": "IDM",
+    "country": "South Korea",
+    "city": null,
+    "eodhd_ticker": null,
+    "coingecko_id": null,
+    "description": null,
+    "aliases": [
+      "005930 KS",
+      "005930",
+      "SAMSUNG",
+      "SAMSUNG ELECTRONICS",
+      "SAMSUNG ELECTRONICS CO",
+      "samsung electronics co"
+    ],
+    "value_chain": "Fabrication & Manufacturing",
+    "entity_id": "005930 KS",
+    "lifecycle_status": "public",
+    "public_ticker": "005930 KS"
   }
 }

@@ -3,7 +3,7 @@
     "id": "ARM",
     "slug": "ARM",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-06T15:15:55.657977+00:00"
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
   },
   "identity": {
     "name": "ARM HOLDINGS AMERICAN DEPOSITARY S",
@@ -33,8 +33,8 @@
   },
   "bottleneck": {
     "rating": "HIGH",
-    "description": null,
-    "confidence": null,
+    "description": "Peak position is the Arm instruction-set architecture, on which ~99% of smartphone application-processor designs depend (FY26 20-F; royalty 53% of $4.92bn revenue). Switching the ecosystem to RISC-V or x86 is a multi-year, multi-billion undertaking with no substitute at scale today, which meets the HIGH bar. Not CRITICAL: RISC-V is a viable if immature path, so the position is category-dominant rather than sole-source.",
+    "confidence": "HIGH",
     "state": "rated"
   },
   "dependency": {
@@ -45,9 +45,56 @@
   "market_context": {
     "member": true,
     "sector_index": "Robotnik Semiconductor Index",
-    "weight_band": "3.5-5",
-    "sector_rank": 10,
-    "state": "live"
+    "weight_band": "2-3.5",
+    "sector_rank": 12,
+    "state": "live",
+    "chart": {
+      "total": 75,
+      "at_cap": 8,
+      "below_cap": 67,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 3
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 9
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 7
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "ARM"
+    }
   },
   "capital": {
     "last_round": null,

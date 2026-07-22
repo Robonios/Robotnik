@@ -1,0 +1,117 @@
+{
+  "meta": {
+    "id": "005930 KS",
+    "slug": "005930-ks",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
+  },
+  "identity": {
+    "name": "SAMSUNG ELECTRONICS CO",
+    "aliases": [
+      "005930 KS",
+      "005930",
+      "SAMSUNG",
+      "SAMSUNG ELECTRONICS",
+      "SAMSUNG ELECTRONICS CO",
+      "samsung electronics co"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "005930 KS",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "IDM",
+    "value_chain": "Fabrication & Manufacturing",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Rated on its DRAM leadership, its peak position, not on HBM where it is a substitutable non-leader (peak-position ruling). Samsung is the number-one maker in the three-supplier DRAM oligopoly (Samsung, SK Hynix, Micron); a memory buyer cannot leave that oligopoly, and requalifying volume away from the category leader is a multi-quarter, multi-billion undertaking. On HBM specifically Samsung lags SK Hynix and would rate lower, but the grade attaches to the strongest frontier position, which for Samsung is DRAM. Category-dominant with a costly-but-possible substitute, which is what HIGH means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductor Index",
+    "weight_band": "5-capped",
+    "sector_rank": 2,
+    "state": "live",
+    "chart": {
+      "total": 75,
+      "at_cap": 8,
+      "below_cap": 67,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 3
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 9
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 7
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "005930 KS"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "South Korea",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

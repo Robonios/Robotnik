@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "id": "000660 KS",
+    "slug": "000660-ks",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
+  },
+  "identity": {
+    "name": "SK HYNIX INC",
+    "aliases": [
+      "SK Hynix",
+      "SK hynix",
+      "SK HYNIX INC",
+      "000660 KS",
+      "sk hynix inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "000660 KS",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "IDM",
+    "value_chain": "Fabrication & Manufacturing",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Rated on whether an AI-accelerator builder can take its HBM demand elsewhere. Two other makers are qualified (Samsung, Micron), so the position is not CRITICAL, but SK Hynix is the category leader, first to each HBM generation and holding roughly two-thirds of the leading customer's allocation, and moving volume away means a multi-quarter requalification against a supplier the customer already prefers. Customers can leave and few do, which is what HIGH means.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductor Index",
+    "weight_band": "5-capped",
+    "sector_rank": 1,
+    "state": "live",
+    "chart": {
+      "total": 75,
+      "at_cap": 8,
+      "below_cap": 67,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 3
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 9
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 7
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "000660 KS"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "South Korea",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

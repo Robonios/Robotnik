@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "id": "7911 JP",
+    "slug": "7911-jp",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
+  },
+  "identity": {
+    "name": "TOPPAN HOLDINGS INC",
+    "aliases": [
+      "Toppan",
+      "TOPPAN HOLDINGS INC",
+      "7911 JP",
+      "toppan holdings inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "7911 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Equipment (photomask)",
+    "value_chain": "Capital Equipment",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Peak position is merchant photomasks, a structurally concentrated three-maker market (Toppan, DNP, Photronics). A chipmaker that outsources masks can move among the merchant suppliers at a requalification cost, so supply is substitutable within a narrow field. A supplier customers can switch at a cost rather than depend on, which is what MEDIUM means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductor Index",
+    "weight_band": "<0.25",
+    "sector_rank": 52,
+    "state": "live",
+    "chart": {
+      "total": 75,
+      "at_cap": 8,
+      "below_cap": 67,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 3
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 9
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 7
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "7911 JP"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

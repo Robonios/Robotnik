@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "id": "7741 JP",
+    "slug": "7741-jp",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
+  },
+  "identity": {
+    "name": "HOYA CORP",
+    "aliases": [
+      "Hoya",
+      "HOYA CORP",
+      "7741 JP",
+      "hoya corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "7741 JP",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Materials",
+    "subsector": "EUV mask blanks",
+    "value_chain": "Upstream Materials",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Rated on EUV mask blanks (peak-position ruling), where Hoya and AGC hold roughly ninety per cent of supply between them and no third source is near qualification. A leading-edge fab cannot pattern EUV layers without qualified blanks and has no near-term second path outside the duopoly, so switching away is a multi-year undertaking with no ready alternative. A duopoly with no viable near-term substitute, one step short of sole-source, which is what HIGH means.",
+    "confidence": "HIGH",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Materials Index",
+    "weight_band": "0.5-1",
+    "sector_rank": 2,
+    "state": "live",
+    "chart": {
+      "total": 28,
+      "at_cap": 0,
+      "below_cap": 28,
+      "cohort": [],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 0
+        },
+        {
+          "band": "3.5-5",
+          "count": 0
+        },
+        {
+          "band": "2-3.5",
+          "count": 0
+        },
+        {
+          "band": "1-2",
+          "count": 0
+        },
+        {
+          "band": "0.5-1",
+          "count": 2
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 3
+        },
+        {
+          "band": "<0.25",
+          "count": 23
+        }
+      ],
+      "cap_label": "5%",
+      "me": "7741 JP"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "Japan",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

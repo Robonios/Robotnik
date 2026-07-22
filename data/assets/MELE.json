@@ -3,7 +3,7 @@
     "id": "MELE",
     "slug": "MELE",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-06T15:15:55.657977+00:00"
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
   },
   "identity": {
     "name": "MELEXIS NV",
@@ -42,8 +42,55 @@
     "member": true,
     "sector_index": "Robotnik Semiconductor Index",
     "weight_band": "<0.25",
-    "sector_rank": 60,
-    "state": "live"
+    "sector_rank": 67,
+    "state": "live",
+    "chart": {
+      "total": 75,
+      "at_cap": 8,
+      "below_cap": 67,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 3
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 9
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 7
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "MELE"
+    }
   },
   "capital": {
     "last_round": null,

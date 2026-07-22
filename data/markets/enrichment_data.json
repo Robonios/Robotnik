@@ -1467,5 +1467,60 @@
     "key_suppliers": "China Northern Rare Earth (NdPr feedstock), China Rare Earth Group (heavy rare earths), Hastings Technology Metals (feedstock stake)",
     "robotnik_notes": "China makes the overwhelming majority of high-performance NdFeB magnets and JL MAG is the largest single operator, deeply depended on across EV drivetrains, wind and, increasingly, humanoid-robot rotor components. Magnet supply is a genuine choke, but the concentration sits with China at the country and export-licence level rather than with JL MAG specifically; several large Chinese peers such as Zhongke Sanhuan, Ningbo Yunsheng and Zhenghai can supply the same grades subject to re-qualification. It therefore rates HIGH, alongside MP Materials, not CRITICAL, and the CRITICAL node is one tier upstream at its own feedstock supplier, China Northern Rare Earth. It sits directly in China's October 2025 magnet export-licensing regime and was among the first to obtain general export licences, so the controls raised its scarcity value rather than cutting it off. Its listed EV customers are sourced; a specific humanoid-robot customer such as Tesla Optimus is not, and is not asserted here.",
     "confidence": "HIGH"
+  },
+  "000660 KS": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Rated on whether an AI-accelerator builder can take its HBM demand elsewhere. Two other makers are qualified (Samsung, Micron), so the position is not CRITICAL, but SK Hynix is the category leader, first to each HBM generation and holding roughly two-thirds of the leading customer's allocation, and moving volume away means a multi-quarter requalification against a supplier the customer already prefers. Customers can leave and few do, which is what HIGH means.",
+    "confidence": "HIGH"
+  },
+  "005930 KS": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Rated on its DRAM leadership, its peak position, not on HBM where it is a substitutable non-leader (peak-position ruling). Samsung is the number-one maker in the three-supplier DRAM oligopoly (Samsung, SK Hynix, Micron); a memory buyer cannot leave that oligopoly, and requalifying volume away from the category leader is a multi-quarter, multi-billion undertaking. On HBM specifically Samsung lags SK Hynix and would rate lower, but the grade attaches to the strongest frontier position, which for Samsung is DRAM. Category-dominant with a costly-but-possible substitute, which is what HIGH means.",
+    "confidence": "MEDIUM"
+  },
+  "2454 TT": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is premium and mainstream mobile SoCs, where MediaTek sits at Android parity with Qualcomm. A handset maker can move a design to Qualcomm, or occasionally in-house silicon, at a redesign-cycle cost, so the work would move rather than stop. A supplier customers weigh against a close rival rather than depend on, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "GFS": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Rated on its trusted-foundry and RF-SOI niche, not its commodity mature nodes (peak-position ruling). GlobalFoundries is the US trusted-foundry supplier for defence and aerospace and a category leader in RF-SOI, where a qualified part carries a multi-year requalification and, for trusted-foundry work, a sole-accredited constraint; its mature nodes, where UMC and SMIC compete, would rate LOW alone. Rated on the niche it dominates, not the volume it competes for, which is what HIGH means.",
+    "confidence": "MEDIUM"
+  },
+  "600584": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is outsourced assembly and test, where JCET is the number-three OSAT globally. A customer can move packaging and test among the OSATs (ASE, Amkor, Powertech) at a requalification cost; JCET is not the advanced-packaging chokepoint, which sits upstream at the leading-edge foundry. A supplier others can substitute at a switching cost, which is what MEDIUM means.",
+    "confidence": "HIGH"
+  },
+  "8046 TT": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is ABF flip-chip substrates, an oligopoly of a handful of qualified makers (Ibiden, Shinko, Unimicron, AT&S, Nan Ya). A processor maker can move substrate orders to another qualified supplier at a requalification cost, and Nan Ya is the smaller end of the top tier rather than a sole source. A supplier customers can substitute at a switching cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "ATS AV": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is high-end IC and ABF substrates, one of the small set of qualified makers serving leading-edge packaging (Ibiden, Shinko, Unimicron, AT&S). A customer can requalify substrate supply elsewhere in the oligopoly at a switching cost, so the work would move rather than stop. A supplier others can substitute at a redesign cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "7741 JP": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Rated on EUV mask blanks (peak-position ruling), where Hoya and AGC hold roughly ninety per cent of supply between them and no third source is near qualification. A leading-edge fab cannot pattern EUV layers without qualified blanks and has no near-term second path outside the duopoly, so switching away is a multi-year undertaking with no ready alternative. A duopoly with no viable near-term substitute, one step short of sole-source, which is what HIGH means.",
+    "confidence": "HIGH"
+  },
+  "7911 JP": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is merchant photomasks, a structurally concentrated three-maker market (Toppan, DNP, Photronics). A chipmaker that outsources masks can move among the merchant suppliers at a requalification cost, so supply is substitutable within a narrow field. A supplier customers can switch at a cost rather than depend on, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "7912 JP": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is leading-edge merchant photomasks, including advanced-node EUV work, in the same three-maker merchant field as Toppan and Photronics. A customer can requalify mask supply with another merchant maker at a switching cost, so the position is substitutable within a concentrated field. A supplier others can substitute at a cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "6471 JP": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak position is precision linear-motion components (ball screws and linear guides) qualified into semiconductor tools and high-precision robotics, where NSK is number three of a concentrated top tier (THK, HIWIN, NSK). A tool builder can design in a rival's qualified component at a requalification cost, and copy-exact stickiness raises that cost without removing the alternative. A supplier others can substitute at a switching cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
   }
 }

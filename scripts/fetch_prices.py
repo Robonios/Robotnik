@@ -410,6 +410,25 @@ EQUITIES = [
     ("CRS", "Carpenter Technology", "Materials", "United States"),
     ("CSTM FP", "Constellium", "Materials", "France"),
     ("MRSN FP", "Mersen", "Materials", "France"),
+
+    # ── Universe admission 2026-07 — 11 supply-chain nodes promoted to index
+    # constituents. DATA-FETCH stage only: added here so fetch_market_caps.py
+    # (imports EQUITIES) and the history fetchers pick them up. The registry flip
+    # (status excluded→active) and index regeneration are a SEPARATE later pass.
+    # All 11 route to Yahoo via data_source_overrides.json (not yet in the
+    # MarketStack symbol map); AT&S (Vienna) is not in the MarketStack catalogue
+    # at all (cf. ANDR AV), so Yahoo is mandatory there.
+    ("000660 KS", "SK Hynix", "Semiconductor", "South Korea"),
+    ("005930 KS", "Samsung Electronics", "Semiconductor", "South Korea"),
+    ("2454 TT", "MediaTek", "Semiconductor", "Taiwan"),
+    ("GFS", "GlobalFoundries", "Semiconductor", "United States"),
+    ("600584", "JCET Group", "Semiconductor", "China"),
+    ("8046 TT", "Nan Ya PCB", "Materials", "Taiwan"),
+    ("ATS AV", "AT&S", "Materials", "Austria"),
+    ("7741 JP", "Hoya", "Materials", "Japan"),
+    ("7911 JP", "Toppan", "Semiconductor", "Japan"),
+    ("7912 JP", "Dai Nippon Printing", "Semiconductor", "Japan"),
+    ("6471 JP", "NSK", "Robotics", "Japan"),
 ]
 
 

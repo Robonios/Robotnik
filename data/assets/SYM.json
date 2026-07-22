@@ -3,7 +3,7 @@
     "id": "SYM",
     "slug": "SYM",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-06T15:15:55.657977+00:00"
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
   },
   "identity": {
     "name": "SYMBOTIC INC",
@@ -30,8 +30,8 @@
   },
   "bottleneck": {
     "rating": "LOW",
-    "description": null,
-    "confidence": null,
+    "description": "A warehouse-automation systems integrator whose output is differentiated but replaceable (its 10-K names Dematic, Honeywell, AutoStore, Ocado and Daifuku as competitors; Systems 94% of $2.25bn FY25 revenue). On the supply-substitutability test the frontier stack does not depend on it and a buyer could procure automation from several integrators, which is LOW. Its salient risk is customer concentration (Walmart ~85% of revenue), a commercial exposure on a different axis from supply substitutability, not a bottleneck.",
+    "confidence": "HIGH",
     "state": "rated"
   },
   "dependency": {
@@ -43,8 +43,46 @@
     "member": true,
     "sector_index": "Robotnik Robotics Index",
     "weight_band": "0.25-0.5",
-    "sector_rank": 9,
-    "state": "live"
+    "sector_rank": 7,
+    "state": "live",
+    "chart": {
+      "total": 74,
+      "at_cap": 0,
+      "below_cap": 74,
+      "cohort": [],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 0
+        },
+        {
+          "band": "3.5-5",
+          "count": 0
+        },
+        {
+          "band": "2-3.5",
+          "count": 0
+        },
+        {
+          "band": "1-2",
+          "count": 2
+        },
+        {
+          "band": "0.5-1",
+          "count": 2
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 4
+        },
+        {
+          "band": "<0.25",
+          "count": 66
+        }
+      ],
+      "cap_label": "5%",
+      "me": "SYM"
+    }
   },
   "capital": {
     "last_round": null,

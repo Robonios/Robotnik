@@ -3,7 +3,7 @@
     "id": "ADI",
     "slug": "ADI",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-06T15:15:55.657977+00:00"
+    "generated_at": "2026-07-22T12:51:30.459011+00:00"
   },
   "identity": {
     "name": "ANALOG DEVICES INC",
@@ -30,8 +30,8 @@
   },
   "bottleneck": {
     "rating": "LOW",
-    "description": null,
-    "confidence": null,
+    "description": "High-performance analog and mixed-signal supplier, number two in analog at ~13.5% of a fragmented field (top five ~58%; Industrial 45% and Automotive 30% of $11.0bn FY25 revenue). No frontier position is single-sourced and every socket has qualified alternatives, so there is no stack-relevant concentration, which is LOW. Parts are design-in sticky, placing it at the high end of LOW rather than the commodity floor, but the company-level grade is LOW.",
+    "confidence": "HIGH",
     "state": "rated"
   },
   "dependency": {
@@ -42,9 +42,56 @@
   "market_context": {
     "member": true,
     "sector_index": "Robotnik Semiconductor Index",
-    "weight_band": "2-3.5",
+    "weight_band": "1-2",
     "sector_rank": 16,
-    "state": "live"
+    "state": "live",
+    "chart": {
+      "total": 75,
+      "at_cap": 8,
+      "below_cap": 67,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 3
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 9
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 7
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "ADI"
+    }
   },
   "capital": {
     "last_round": null,
