@@ -1,40 +1,40 @@
 {
-  "calculated_at": "2026-07-22T12:50:51.182374+00:00Z",
+  "calculated_at": "2026-07-21T22:55:07.537996+00:00Z",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 3468.22,
-    "daily_change_pct": -2.31,
+    "value": 3232.1,
+    "daily_change_pct": 4.96,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 208
+    "entities": 197
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 3468.22,
+    "value": 3232.1,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 208
+    "entities": 197
   },
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 3554.84,
-      "entities": 75
+      "value": 3320.99,
+      "entities": 68
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
-      "value": 1641.67,
-      "entities": 74
+      "value": 1636.36,
+      "entities": 73
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 2449.1,
+      "value": 2523.81,
       "entities": 31
     },
     "materials": {
       "name": "Robotnik Materials Index",
-      "value": 3683.54,
-      "entities": 28
+      "value": 3137.5,
+      "entities": 25
     }
   },
   "top_10_weights": [
@@ -57,20 +57,8 @@
       "weight_pct": 5.0
     },
     {
-      "ticker": "005930 KS",
-      "name": "Samsung Electronics",
-      "sector": "Semiconductor",
-      "weight_pct": 5.0
-    },
-    {
       "ticker": "MU",
       "name": "Micron Technology",
-      "sector": "Semiconductor",
-      "weight_pct": 5.0
-    },
-    {
-      "ticker": "000660 KS",
-      "name": "SK Hynix",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
@@ -90,13 +78,25 @@
       "ticker": "INTC",
       "name": "Intel",
       "sector": "Semiconductor",
-      "weight_pct": 4.9994
+      "weight_pct": 5.0
     },
     {
       "ticker": "AMAT",
       "name": "Applied Materials",
       "sector": "Semiconductor",
-      "weight_pct": 4.4013
+      "weight_pct": 5.0
+    },
+    {
+      "ticker": "LRCX",
+      "name": "Lam Research",
+      "sector": "Semiconductor",
+      "weight_pct": 5.0
+    },
+    {
+      "ticker": "ARM",
+      "name": "ARM Holdings ADR",
+      "sector": "Semiconductor",
+      "weight_pct": 4.0011
     }
   ]
 }
