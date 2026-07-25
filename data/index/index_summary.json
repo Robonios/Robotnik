@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-24T23:01:34.109616Z",
+    "generated_at": "2026-07-25T09:55:23.357201Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -30,22 +30,22 @@
       "name": "Robotnik Composite Index",
       "status": "live",
       "cadence": "weekly",
-      "value": 973.29,
-      "as_of": "2026-07-18",
-      "fresh_through": "2026-07-18",
+      "value": 983.02,
+      "as_of": "2026-07-25",
+      "fresh_through": "2026-07-25",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-07-18",
-        "points": 5,
+        "end": "2026-07-25",
+        "points": 6,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": 0.75,
-        "1M": -2.67,
+        "1W": 1.0,
+        "1M": -1.7,
         "3M": {
           "null": true,
           "reason": "insufficient_history"
@@ -83,6 +83,10 @@
         {
           "date": "2026-07-18",
           "value": 973.29
+        },
+        {
+          "date": "2026-07-25",
+          "value": 983.02
         }
       ],
       "code": "RCI",
@@ -2166,22 +2170,22 @@
       "name": "Commodities",
       "status": "live",
       "cadence": "weekly",
-      "value": 976.35,
-      "as_of": "2026-07-18",
-      "fresh_through": "2026-07-18",
+      "value": 977.63,
+      "as_of": "2026-07-25",
+      "fresh_through": "2026-07-25",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-07-18",
-        "points": 5,
+        "end": "2026-07-25",
+        "points": 6,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": -0.28,
-        "1M": -2.36,
+        "1W": 0.13,
+        "1M": -2.24,
         "3M": {
           "null": true,
           "reason": "insufficient_history"
@@ -2219,6 +2223,10 @@
         {
           "date": "2026-07-18",
           "value": 976.35
+        },
+        {
+          "date": "2026-07-25",
+          "value": 977.63
         }
       ],
       "code": "RCMI",
