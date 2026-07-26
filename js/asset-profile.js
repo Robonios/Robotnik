@@ -67,10 +67,10 @@
   --ink:#EDEFF5; --body:#C7CEDA; --mute:#8A93A6;
   --brand:var(--yellow,#F5D921); --sector:${SECTOR_FALLBACK};
   --c-low:#46B49A; --c-med:#E3B341; --c-high:#E8894A; --c-crit:#E5484D;
-  --w-read:680px;
+  --w-read:780px;
   color:var(--body); font-family:${FB};
 }
-.ap-shell{display:grid; grid-template-columns:200px minmax(0,1fr) 300px; gap:48px;
+.ap-shell{display:grid; grid-template-columns:200px minmax(0,1fr) 300px; gap:40px;
   max-width:1760px; margin:0; padding:1.5rem 3rem 6rem 3rem;}
 .ap-main{min-width:0;}
 
