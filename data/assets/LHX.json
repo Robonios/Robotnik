@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "id": "LHX",
+    "slug": "LHX",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-26T06:27:55.668844+00:00"
+  },
+  "identity": {
+    "name": "L3HARRIS TECHNOLOGIES INC",
+    "aliases": [
+      "L3HARRIS TECHNOLOGIES",
+      "L3HARRIS TECHNOLOGIES INC",
+      "LHX",
+      "l3harris technologies inc",
+      "Aerojet Rocketdyne"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "LHX",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Space Components",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "HIGH",
+    "description": "Rated on solid rocket motors, where L3Harris (Aerojet Rocketdyne) and Northrop form the two-supplier US market, not on the diversified defence book (peak-position ruling). A launch or missile programme has exactly two qualified motor sources, and requalifying away from one is a multi-year undertaking. A category-dominant duopoly position with a costly-but-possible substitute, which is what HIGH means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Index",
+    "weight_band": "0.5-1",
+    "sector_rank": 2,
+    "state": "live",
+    "chart": {
+      "total": 35,
+      "at_cap": 0,
+      "below_cap": 35,
+      "cohort": [],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 0
+        },
+        {
+          "band": "3.5-5",
+          "count": 0
+        },
+        {
+          "band": "2-3.5",
+          "count": 0
+        },
+        {
+          "band": "1-2",
+          "count": 0
+        },
+        {
+          "band": "0.5-1",
+          "count": 2
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 3
+        },
+        {
+          "band": "<0.25",
+          "count": 30
+        }
+      ],
+      "cap_label": "5%",
+      "me": "LHX"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

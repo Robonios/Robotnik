@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "id": "PENG",
+    "slug": "PENG",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-26T06:27:55.668844+00:00"
+  },
+  "identity": {
+    "name": "PENGUIN SOLUTIONS INC",
+    "aliases": [
+      "PENG",
+      "PENGUIN SOLUTIONS",
+      "PENGUIN SOLUTIONS INC",
+      "penguin solutions inc"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "PENG",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Components & Subsystems",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Peak frontier position is AI compute and memory-integration infrastructure (SMART Modular memory plus AI cluster build-out), a capable integrator in a competitive field where hyperscalers multi-source. The work would move rather than stop. A supplier substitutable at a redesign cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductor Index",
+    "weight_band": "<0.25",
+    "sector_rank": 69,
+    "state": "live",
+    "chart": {
+      "total": 76,
+      "at_cap": 8,
+      "below_cap": 68,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 4
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 8
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 8
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "PENG"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

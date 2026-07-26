@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "id": "COHR",
+    "slug": "COHR",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-26T06:27:55.668844+00:00"
+  },
+  "identity": {
+    "name": "COHERENT CORP",
+    "aliases": [
+      "COHERENT",
+      "COHERENT CORP",
+      "COHR",
+      "coherent corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "COHR",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Semiconductors",
+    "subsector": "Photonics",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Peak frontier position is datacentre optical transceivers and photonics for AI fabric, plus SiC substrates. Coherent is a leading merchant supplier but competes with several qualified vendors, so a customer can requalify supply at a switching cost. A supplier others prefer rather than depend on, which is what MEDIUM means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Semiconductor Index",
+    "weight_band": "0.5-1",
+    "sector_rank": 28,
+    "state": "live",
+    "chart": {
+      "total": 76,
+      "at_cap": 8,
+      "below_cap": 68,
+      "cohort": [
+        "000660 KS",
+        "005930 KS",
+        "AMD",
+        "ASML",
+        "AVGO",
+        "MU",
+        "NVDA",
+        "TSM"
+      ],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 8
+        },
+        {
+          "band": "3.5-5",
+          "count": 3
+        },
+        {
+          "band": "2-3.5",
+          "count": 4
+        },
+        {
+          "band": "1-2",
+          "count": 6
+        },
+        {
+          "band": "0.5-1",
+          "count": 8
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 8
+        },
+        {
+          "band": "<0.25",
+          "count": 39
+        }
+      ],
+      "cap_label": "5%",
+      "me": "COHR"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

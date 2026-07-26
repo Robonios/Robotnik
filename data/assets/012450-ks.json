@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "id": "012450 KS",
+    "slug": "012450-ks",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-26T06:27:55.668844+00:00"
+  },
+  "identity": {
+    "name": "Hanwha Aerospace",
+    "aliases": [
+      "012450 KS",
+      "HANWHA AEROSPACE",
+      "Hanwha Aerospace",
+      "hanwha aerospace"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "012450 KS",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Space",
+    "subsector": "Launch",
+    "value_chain": "System Integration",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Peak frontier position is space launch, where Hanwha Aerospace is Korea's national launch prime (Nuri/KSLV) and a growing satellite-launch integrator. It is a national champion in a contestable global launch market, so the position is strong but substitutable. A supplier others can substitute at a cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Space Index",
+    "weight_band": "0.25-0.5",
+    "sector_rank": 4,
+    "state": "live",
+    "chart": {
+      "total": 35,
+      "at_cap": 0,
+      "below_cap": 35,
+      "cohort": [],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 0
+        },
+        {
+          "band": "3.5-5",
+          "count": 0
+        },
+        {
+          "band": "2-3.5",
+          "count": 0
+        },
+        {
+          "band": "1-2",
+          "count": 0
+        },
+        {
+          "band": "0.5-1",
+          "count": 2
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 3
+        },
+        {
+          "band": "<0.25",
+          "count": 30
+        }
+      ],
+      "cap_label": "5%",
+      "me": "012450 KS"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "South Korea",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

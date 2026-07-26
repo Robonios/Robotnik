@@ -3,7 +3,7 @@
     "id": "4004 JP",
     "slug": "4004-jp",
     "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-07-22T12:51:30.459011+00:00"
+    "generated_at": "2026-07-26T06:27:55.668844+00:00"
   },
   "identity": {
     "name": "Resonac Holdings",
@@ -30,10 +30,10 @@
     "universe_status": "index_constituent"
   },
   "bottleneck": {
-    "rating": null,
-    "description": null,
-    "confidence": null,
-    "state": "unrated"
+    "rating": "MEDIUM",
+    "description": "Peak frontier position is back-end and advanced-packaging materials, where Resonac is a top-three CMP slurry maker (its copper GPX series qualified at TSMC) and number two in epoxy moulding compound, and is investing in CoWoS, HBM and RDL planarization. These are oligopolistic positions where a fab can requalify onto a competing slurry or compound at a switching cost. A supplier others can substitute at a requalification cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
   },
   "dependency": {
     "key_customers": null,
@@ -44,12 +44,12 @@
     "member": true,
     "sector_index": "Robotnik Materials Index",
     "weight_band": "<0.25",
-    "sector_rank": 11,
+    "sector_rank": 13,
     "state": "live",
     "chart": {
-      "total": 28,
+      "total": 31,
       "at_cap": 0,
-      "below_cap": 28,
+      "below_cap": 31,
       "cohort": [],
       "falloff": [
         {
@@ -62,11 +62,11 @@
         },
         {
           "band": "2-3.5",
-          "count": 0
+          "count": 1
         },
         {
           "band": "1-2",
-          "count": 0
+          "count": 1
         },
         {
           "band": "0.5-1",
@@ -74,7 +74,7 @@
         },
         {
           "band": "0.25-0.5",
-          "count": 3
+          "count": 4
         },
         {
           "band": "<0.25",

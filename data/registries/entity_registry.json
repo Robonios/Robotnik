@@ -414,8 +414,8 @@
     "id": "KOPN",
     "name": "KOPIN CORP",
     "type": "public",
-    "sector": "Semiconductors",
-    "subsector": null,
+    "sector": "Robotics",
+    "subsector": "Machine Vision & Sensors",
     "country": "United States",
     "city": null,
     "eodhd_ticker": "KOPN.KOPN.US",
@@ -427,10 +427,10 @@
       "KOPN",
       "kopin corp"
     ],
-    "status": "excluded",
     "entity_id": "KOPN",
     "lifecycle_status": "public",
-    "public_ticker": "KOPN"
+    "public_ticker": "KOPN",
+    "value_chain": "Components & Subsystems"
   },
   "KLIC": {
     "id": "KLIC",
@@ -643,7 +643,7 @@
     "name": "PENGUIN SOLUTIONS INC",
     "type": "public",
     "sector": "Semiconductors",
-    "subsector": null,
+    "subsector": "Components & Subsystems",
     "country": "United States",
     "city": null,
     "eodhd_ticker": "PENG.PENG.US",
@@ -655,10 +655,10 @@
       "PENGUIN SOLUTIONS INC",
       "penguin solutions inc"
     ],
-    "status": "excluded",
     "entity_id": "PENG",
     "lifecycle_status": "public",
-    "public_ticker": "PENG"
+    "public_ticker": "PENG",
+    "value_chain": "Components & Subsystems"
   },
   "POWI": {
     "id": "POWI",
@@ -1861,7 +1861,10 @@
     "value_chain": "System Integration",
     "entity_id": "6113 JP",
     "lifecycle_status": "public",
-    "public_ticker": "6113 JP"
+    "public_ticker": "6113 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "ANDR AV": {
     "id": "ANDR AV",
@@ -1908,7 +1911,10 @@
     "value_chain": "System Integration",
     "entity_id": "6845 JP",
     "lifecycle_status": "public",
-    "public_ticker": "6845 JP"
+    "public_ticker": "6845 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "BIDU": {
     "id": "BIDU",
@@ -1953,7 +1959,10 @@
     "value_chain": "System Integration",
     "entity_id": "688169 C1",
     "lifecycle_status": "public",
-    "public_ticker": "688169 C1"
+    "public_ticker": "688169 C1",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "BWXT": {
     "id": "BWXT",
@@ -2148,8 +2157,8 @@
     "id": "COHR",
     "name": "COHERENT CORP",
     "type": "public",
-    "sector": "Robotics",
-    "subsector": null,
+    "sector": "Semiconductors",
+    "subsector": "Photonics",
     "country": "United States",
     "city": null,
     "eodhd_ticker": "COHR.COHR.US",
@@ -2161,10 +2170,10 @@
       "COHR",
       "coherent corp"
     ],
-    "status": "excluded",
     "entity_id": "COHR",
     "lifecycle_status": "public",
-    "public_ticker": "COHR"
+    "public_ticker": "COHR",
+    "value_chain": "Components & Subsystems"
   },
   "6383 JP": {
     "id": "6383 JP",
@@ -2208,7 +2217,10 @@
     "value_chain": "System Integration",
     "entity_id": "6622 JP",
     "lifecycle_status": "public",
-    "public_ticker": "6622 JP"
+    "public_ticker": "6622 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "2308 TT": {
     "id": "2308 TT",
@@ -2352,7 +2364,10 @@
     "value_chain": "System Integration",
     "entity_id": "6141 JP",
     "lifecycle_status": "public",
-    "public_ticker": "6141 JP"
+    "public_ticker": "6141 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "688165 C1": {
     "id": "688165 C1",
@@ -2579,7 +2594,10 @@
     "value_chain": "System Integration",
     "entity_id": "GMED",
     "lifecycle_status": "public",
-    "public_ticker": "GMED"
+    "public_ticker": "GMED",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "002008 C2": {
     "id": "002008 C2",
@@ -2666,9 +2684,6 @@
       "hexagon ab"
     ],
     "value_chain": "Components & Subsystems",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "HEXAB SS",
     "lifecycle_status": "public",
     "public_ticker": "HEXAB SS"
@@ -3060,7 +3075,10 @@
     "value_chain": "Components & Subsystems",
     "entity_id": "601100",
     "lifecycle_status": "public",
-    "public_ticker": "601100"
+    "public_ticker": "601100",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "KALMAR FH": {
     "id": "KALMAR FH",
@@ -3338,7 +3356,10 @@
     "value_chain": "System Integration",
     "entity_id": "KCR FH",
     "lifecycle_status": "public",
-    "public_ticker": "KCR FH"
+    "public_ticker": "KCR FH",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "LHX": {
     "id": "LHX",
@@ -3359,9 +3380,6 @@
       "Aerojet Rocketdyne"
     ],
     "value_chain": "Components & Subsystems",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "LHX",
     "lifecycle_status": "public",
     "public_ticker": "LHX"
@@ -3432,7 +3450,10 @@
     "value_chain": "System Integration",
     "entity_id": "LECO",
     "lifecycle_status": "public",
-    "public_ticker": "LECO"
+    "public_ticker": "LECO",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "MG": {
     "id": "MG",
@@ -3613,9 +3634,6 @@
       "nidec corp"
     ],
     "value_chain": "Components & Subsystems",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "6594",
     "lifecycle_status": "public",
     "public_ticker": "6594"
@@ -3740,8 +3758,8 @@
     "id": "ONDS",
     "name": "ONDAS INC.",
     "type": "public",
-    "sector": "Robotics",
-    "subsector": null,
+    "sector": "Space",
+    "subsector": "Autonomous Systems & Drones",
     "country": "United States",
     "city": null,
     "eodhd_ticker": "ONDS.ONDS.US",
@@ -3753,10 +3771,10 @@
       "ONDS",
       "ondas inc."
     ],
-    "status": "excluded",
     "entity_id": "ONDS",
     "lifecycle_status": "public",
-    "public_ticker": "ONDS"
+    "public_ticker": "ONDS",
+    "value_chain": "System Integration"
   },
   "6600 HK": {
     "id": "6600 HK",
@@ -3799,7 +3817,10 @@
     "value_chain": "Components & Subsystems",
     "entity_id": "6914 JP",
     "lifecycle_status": "public",
-    "public_ticker": "6914 JP"
+    "public_ticker": "6914 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "OUST": {
     "id": "OUST",
@@ -4393,7 +4414,10 @@
     "value_chain": "System Integration",
     "entity_id": "6104 JP",
     "lifecycle_status": "public",
-    "public_ticker": "6104 JP"
+    "public_ticker": "6104 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "300100": {
     "id": "300100",
@@ -4446,8 +4470,8 @@
     "id": "SIE GR",
     "name": "SIEMENS AG",
     "type": "public",
-    "sector": "Robotics",
-    "subsector": "Software & Simulation",
+    "sector": "Semiconductors",
+    "subsector": "EDA & IP",
     "country": "Germany",
     "city": null,
     "eodhd_ticker": "SIE GR.SIE.XETRA",
@@ -4460,9 +4484,6 @@
       "siemens ag"
     ],
     "value_chain": "Software & Services",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "SIE GR",
     "lifecycle_status": "public",
     "public_ticker": "SIE GR"
@@ -4577,7 +4598,10 @@
     "value_chain": "System Integration",
     "entity_id": "TECN SW",
     "lifecycle_status": "public",
-    "public_ticker": "TECN SW"
+    "public_ticker": "TECN SW",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "TDY": {
     "id": "TDY",
@@ -4837,7 +4861,10 @@
     "value_chain": "Capital Equipment",
     "entity_id": "6841 JP",
     "lifecycle_status": "public",
-    "public_ticker": "6841 JP"
+    "public_ticker": "6841 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "388720 KS": {
     "id": "388720 KS",
@@ -4908,7 +4935,10 @@
     "value_chain": "Components & Subsystems",
     "entity_id": "002050",
     "lifecycle_status": "public",
-    "public_ticker": "002050"
+    "public_ticker": "002050",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "002472": {
     "id": "002472",
@@ -4929,7 +4959,10 @@
     "value_chain": "Components & Subsystems",
     "entity_id": "002472",
     "lifecycle_status": "public",
-    "public_ticker": "002472"
+    "public_ticker": "002472",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "ASTS": {
     "id": "ASTS",
@@ -5277,9 +5310,6 @@
     "reinstatement_notes": "Backfilled from Yahoo Finance due to EODHD KRW ceiling (₩999,999.9999 cap); ongoing prices from Yahoo override via data/registries/data_source_overrides.json",
     "data_source": "yahoo_finance",
     "value_chain": "System Integration",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "012450 KS",
     "lifecycle_status": "public",
     "public_ticker": "012450 KS"
@@ -5950,9 +5980,6 @@
       "air liquide"
     ],
     "value_chain": "Upstream Materials",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "AI FP",
     "lifecycle_status": "public",
     "public_ticker": "AI FP"
@@ -5975,9 +6002,6 @@
       "air products"
     ],
     "value_chain": "Upstream Materials",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "APD",
     "lifecycle_status": "public",
     "public_ticker": "APD"
@@ -5987,7 +6011,7 @@
     "name": "Ajinomoto Co",
     "type": "public",
     "sector": "Materials",
-    "subsector": "Process Chemicals",
+    "subsector": "Packaging & Substrates",
     "country": "Japan",
     "city": null,
     "eodhd_ticker": "2802 JP.2802.TSE",
@@ -6001,9 +6025,6 @@
       "ajinomoto co"
     ],
     "value_chain": "Upstream Materials",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "2802 JP",
     "lifecycle_status": "public",
     "public_ticker": "2802 JP"
@@ -6240,7 +6261,10 @@
     "value_chain": "Upstream Materials",
     "entity_id": "ILU AU",
     "lifecycle_status": "public",
-    "public_ticker": "ILU AU"
+    "public_ticker": "ILU AU",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "6680 HK": {
     "id": "6680 HK",
@@ -6310,9 +6334,6 @@
       "Linde"
     ],
     "value_chain": "Upstream Materials",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "LIN",
     "lifecycle_status": "public",
     "public_ticker": "LIN"
@@ -6344,7 +6365,7 @@
     "name": "Materion Corp",
     "type": "public",
     "sector": "Materials",
-    "subsector": "Process Chemicals",
+    "subsector": "Rare Earths & Critical Minerals",
     "country": "United States",
     "city": null,
     "eodhd_ticker": "MTRN.MTRN.US",
@@ -6358,9 +6379,6 @@
       "materion corp"
     ],
     "value_chain": "Upstream Materials",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "MTRN",
     "lifecycle_status": "public",
     "public_ticker": "MTRN"
@@ -6481,9 +6499,6 @@
       "nippon sanso holdings"
     ],
     "value_chain": "Upstream Materials",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "4091 JP",
     "lifecycle_status": "public",
     "public_ticker": "4091 JP"
@@ -6509,7 +6524,10 @@
     "value_chain": "Upstream Materials",
     "entity_id": "010060 KS",
     "lifecycle_status": "public",
-    "public_ticker": "010060 KS"
+    "public_ticker": "010060 KS",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "4004 JP": {
     "id": "4004 JP",
@@ -6746,7 +6764,10 @@
     "value_chain": "Upstream Materials",
     "entity_id": "4043 JP",
     "lifecycle_status": "public",
-    "public_ticker": "4043 JP"
+    "public_ticker": "4043 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "4186 JP": {
     "id": "4186 JP",
@@ -12951,9 +12972,6 @@
       "Northrop Grumman"
     ],
     "value_chain": "Components & Subsystems",
-    "status": "excluded",
-    "exclude_reason": "non_frontier",
-    "membership_audit": "2026-05-30",
     "entity_id": "NOC",
     "lifecycle_status": "public",
     "public_ticker": "NOC"
@@ -13072,7 +13090,10 @@
     "value_chain": "Capital Equipment",
     "entity_id": "7912 JP",
     "lifecycle_status": "public",
-    "public_ticker": "7912 JP"
+    "public_ticker": "7912 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "7911 JP": {
     "id": "7911 JP",
@@ -13094,7 +13115,10 @@
     "value_chain": "Capital Equipment",
     "entity_id": "7911 JP",
     "lifecycle_status": "public",
-    "public_ticker": "7911 JP"
+    "public_ticker": "7911 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "8046 TT": {
     "id": "8046 TT",
@@ -13316,7 +13340,10 @@
     "value_chain": "Components & Subsystems",
     "entity_id": "6471 JP",
     "lifecycle_status": "public",
-    "public_ticker": "6471 JP"
+    "public_ticker": "6471 JP",
+    "status": "excluded",
+    "exclude_reason": "non_frontier_peak",
+    "membership_audit": "2026-07-25"
   },
   "SKFB SS": {
     "id": "SKFB SS",

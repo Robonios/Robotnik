@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "id": "KOPN",
+    "slug": "KOPN",
+    "schema_version": "asset-profile/2.0",
+    "generated_at": "2026-07-26T06:27:55.668844+00:00"
+  },
+  "identity": {
+    "name": "KOPIN CORP",
+    "aliases": [
+      "KOPIN",
+      "KOPIN CORP",
+      "KOPN",
+      "kopin corp"
+    ],
+    "type": "public",
+    "lifecycle_status": "public",
+    "description": null,
+    "identifiers": {
+      "ticker": "KOPN",
+      "coingecko_id": null,
+      "cik": null
+    }
+  },
+  "classification": {
+    "sector": "Robotics",
+    "subsector": "Machine Vision & Sensors",
+    "value_chain": "Components & Subsystems",
+    "universe_status": "index_constituent"
+  },
+  "bottleneck": {
+    "rating": "MEDIUM",
+    "description": "Peak frontier position is microdisplays for defence and AR headsets, a designed-in component with real qualification barriers but multiple qualified alternatives for the next design cycle. A supplier substitutable at a redesign cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM",
+    "state": "rated"
+  },
+  "dependency": {
+    "key_customers": null,
+    "key_suppliers": null,
+    "state": "unmapped"
+  },
+  "market_context": {
+    "member": true,
+    "sector_index": "Robotnik Robotics Index",
+    "weight_band": "<0.25",
+    "sector_rank": 54,
+    "state": "live",
+    "chart": {
+      "total": 61,
+      "at_cap": 0,
+      "below_cap": 61,
+      "cohort": [],
+      "falloff": [
+        {
+          "band": "5-capped",
+          "count": 0
+        },
+        {
+          "band": "3.5-5",
+          "count": 0
+        },
+        {
+          "band": "2-3.5",
+          "count": 0
+        },
+        {
+          "band": "1-2",
+          "count": 1
+        },
+        {
+          "band": "0.5-1",
+          "count": 1
+        },
+        {
+          "band": "0.25-0.5",
+          "count": 4
+        },
+        {
+          "band": "<0.25",
+          "count": 55
+        }
+      ],
+      "cap_label": "5%",
+      "me": "KOPN"
+    }
+  },
+  "capital": {
+    "last_round": null,
+    "total_raised_m": null,
+    "state": "forthcoming"
+  },
+  "policy": {
+    "state": "forthcoming"
+  },
+  "geographic": {
+    "hq_country": "United States",
+    "hq_city": null,
+    "exposure": {
+      "state": "forthcoming"
+    }
+  },
+  "editorial": {
+    "notes": null,
+    "state": "forthcoming"
+  }
+}

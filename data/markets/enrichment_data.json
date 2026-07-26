@@ -208,7 +208,7 @@
   },
   "4063 JP": {
     "bottleneck_risk": "MEDIUM",
-    "bottleneck_description": "Peak frontier position is silicon wafers, where Shin-Etsu is number one at ~30% within a roughly five-supplier oligopoly, qualification-gated but multi-sourced (Electronics Materials ~40% of JPY 2.57tn FY26 revenue; the balance is non-frontier PVC and chemicals). Concentration with substitution within reach matches MEDIUM, the same read as the SiC-substrate anchor. Not a photoresist monopolist (resist is a JSR-led oligopoly, Shin-Etsu only top-five); its one above-70% position, ULE-quartz photomask substrates, is a Shin-Etsu/Tosoh duopoly too small to lift the company.",
+    "bottleneck_description": "Peak frontier position is photomask blanks, where Shin-Etsu is number one at about thirty-five per cent but Hoya (about thirty per cent) and AGC are credible alternatives, a three-firm field a mask maker can requalify across at a switching cost. It is also number one in silicon wafers at about thirty per cent within a five-supplier oligopoly. Neither is a category lock: a substitute exists but would need requalification, which is what MEDIUM means. Corrects an earlier rationale that cited a >70% Shin-Etsu/Tosoh ULE-quartz photomask-substrate duopoly; ULE is Corning's EUV-substrate glass and the synthetic-quartz photomask substrate is a three-firm field, so no such duopoly exists.",
     "confidence": "MEDIUM"
   },
   "ADI": {
@@ -1521,6 +1521,91 @@
   "6471 JP": {
     "bottleneck_risk": "MEDIUM",
     "bottleneck_description": "Peak position is precision linear-motion components (ball screws and linear guides) qualified into semiconductor tools and high-precision robotics, where NSK is number three of a concentrated top tier (THK, HIWIN, NSK). A tool builder can design in a rival's qualified component at a requalification cost, and copy-exact stickiness raises that cost without removing the alternative. A supplier others can substitute at a switching cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "LIN": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak frontier position is on-site industrial and specialty gases for fabs, supplied under roughly fifteen-year contracts from plant built on the customer's site and piped directly in. A committed fab cannot switch on-site supplier mid-contract at any price, and requalifying a new gas supply is a multi-year undertaking. A category-dominant position a customer cannot leave for years, which is what HIGH means.",
+    "confidence": "HIGH"
+  },
+  "AI FP": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak frontier position is on-site and bulk fab gases on the same long-term on-site model as the other gas majors, physically locked to the customer's plant for the contract term. Switching supply is a multi-year requalification a committed fab cannot take mid-contract. A costly-but-locked category position, which is what HIGH means.",
+    "confidence": "HIGH"
+  },
+  "APD": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak frontier position is on-site fab gases and helium supply on the long-term on-site contract model, piped from plant on the customer's site and not switchable mid-contract. Requalifying a new gas supplier is a multi-year undertaking. A category-dominant position a customer cannot leave for years, which is what HIGH means.",
+    "confidence": "HIGH"
+  },
+  "4091 JP": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak frontier position is electronic specialty and on-site gases for Asian fabs on the same on-site contract model, physically locked to the customer's plant. A committed fab cannot switch mid-contract and requalification runs for years. A costly-but-locked category position, which is what HIGH means.",
+    "confidence": "HIGH"
+  },
+  "2802 JP": {
+    "bottleneck_risk": "CRITICAL",
+    "bottleneck_description": "Peak frontier position is ABF, Ajinomoto Build-up Film, the sole-source dielectric insulating film used in essentially every flip-chip IC substrate. No qualified alternative exists: a substrate maker cannot pattern advanced build-up layers without it, at any price on any timeline. That is no viable substitute at all, the archetype of CRITICAL.",
+    "confidence": "HIGH"
+  },
+  "MTRN": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is beryllium and thin-film deposition (sputtering-target) materials, where Materion is a leading supplier but a customer can qualify an alternative source at a requalification cost. A supplier others can substitute at a switching cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "SIE GR": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Rated on Siemens EDA and its Calibre platform, the de-facto standard for physical verification, sign-off and mask synthesis at the leading edge, not on the diversified automation and energy book (peak-position ruling). Calibre is one of the small set of firms that hold electronic-design automation between them, with no practical substitute in the tapeout flow; moving off it re-tools a fab's whole sign-off methodology over years. A category-dominant position with a costly-but-possible substitute, which is what HIGH means.",
+    "confidence": "MEDIUM"
+  },
+  "COHR": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is datacentre optical transceivers and photonics for AI fabric, plus SiC substrates. Coherent is a leading merchant supplier but competes with several qualified vendors, so a customer can requalify supply at a switching cost. A supplier others prefer rather than depend on, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "PENG": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is AI compute and memory-integration infrastructure (SMART Modular memory plus AI cluster build-out), a capable integrator in a competitive field where hyperscalers multi-source. The work would move rather than stop. A supplier substitutable at a redesign cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "6594": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is precision brushless and servo motors, where Nidec is the world's largest maker but a customer can design in a rival's qualified motor at a requalification cost. A supplier others can substitute at a switching cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "HEXAB SS": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is industrial metrology and measurement, where Hexagon is a category leader alongside Keyence and Renishaw. A customer can requalify onto a competing metrology platform at a switching cost, so supply is substitutable within a concentrated field. A supplier others can substitute at a cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "KOPN": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is microdisplays for defence and AR headsets, a designed-in component with real qualification barriers but multiple qualified alternatives for the next design cycle. A supplier substitutable at a redesign cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "NOC": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Rated on solid rocket motors, where Northrop and L3Harris (Aerojet Rocketdyne) form the two-supplier US market, not on the diversified defence book (peak-position ruling). A launch or missile programme has exactly two qualified motor sources, and requalifying away from one is a multi-year undertaking. A category-dominant duopoly position with a costly-but-possible substitute, which is what HIGH means.",
+    "confidence": "MEDIUM"
+  },
+  "LHX": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Rated on solid rocket motors, where L3Harris (Aerojet Rocketdyne) and Northrop form the two-supplier US market, not on the diversified defence book (peak-position ruling). A launch or missile programme has exactly two qualified motor sources, and requalifying away from one is a multi-year undertaking. A category-dominant duopoly position with a costly-but-possible substitute, which is what HIGH means.",
+    "confidence": "MEDIUM"
+  },
+  "012450 KS": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is space launch, where Hanwha Aerospace is Korea's national launch prime (Nuri/KSLV) and a growing satellite-launch integrator. It is a national champion in a contestable global launch market, so the position is strong but substitutable. A supplier others can substitute at a cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "ONDS": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is autonomous drone-in-a-box systems and industrial wireless for critical infrastructure, an early leader in a competitive autonomous-systems field where several vendors qualify. The work would move rather than stop. A supplier substitutable at a redesign cost, which is what MEDIUM means.",
+    "confidence": "MEDIUM"
+  },
+  "4004 JP": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is back-end and advanced-packaging materials, where Resonac is a top-three CMP slurry maker (its copper GPX series qualified at TSMC) and number two in epoxy moulding compound, and is investing in CoWoS, HBM and RDL planarization. These are oligopolistic positions where a fab can requalify onto a competing slurry or compound at a switching cost. A supplier others can substitute at a requalification cost, which is what MEDIUM means.",
     "confidence": "MEDIUM"
   }
 }

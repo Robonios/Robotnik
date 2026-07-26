@@ -218,6 +218,50 @@ forward-only. This is accepted as a one-off because the composite is
 pre-publication (status: preliminary, not headline-publishable) and the
 affected history is short. Later changes follow the forward-only rule above.
 
+### Membership changes are forward-drop (ruled 2026-07-25)
+
+A constituent removed from the universe should drop from its exit date forward:
+its historical contribution stands, and the levels published before the exit are
+not rewritten. This is the mirror of the enter-at-first-price rule for
+admissions and of the forward-only rule for rating changes above.
+
+Applied once as an exception: the 2026-07-25 universe-correction pass removed 21
+constituents (Toppan, DNP, NSK and the other outside-core-below-HIGH names)
+retroactively — the series was rebuilt as if they had never been members,
+erasing their historical contribution — rather than dropping them forward. This
+is accepted as a one-off on the same grounds as the retroactive rating changes:
+the composite is pre-publication (status: preliminary, not headline-publishable)
+and the vacated weight is small (~1.45% of the index). It sits alongside the two
+prior retroactive one-offs — the two mid-series admission passes, which wove
+long-listed names into the whole back-series rather than entering them at first
+price.
+
+### Forward-only machinery is a publication prerequisite (standing note)
+
+Three retroactive one-offs have now been taken — two admissions (long-listed
+names woven into the full back-series) and one removal (21 names erased from the
+back-series) — each because the pipeline has no forward-only machinery. Before
+the composite is published (graduates from preliminary to headline), that
+machinery is a REQUIRED build, and it is a single change covering all three
+event types:
+
+- **Per-name exit dates** and **as-of eligibility**, so a removed name
+  contributes to the series before its exit date and not after (forward-drop),
+  instead of being erased from all history by the current current-membership
+  rebuild.
+- **Entry-at-first-price for admissions**, so a newly admitted long-listed name
+  enters at its admission date rather than having its full price history woven
+  retroactively into the back-series. (The chain-link already enters genuine
+  post-base IPOs at first price; this extends the same treatment to long-listed
+  admissions.)
+- **Time-varying multipliers for rating changes**, so a re-rating carries the old
+  multiplier up to its effective date and the new one after, rather than applying
+  the new multiplier across the whole history.
+
+Until this exists, every membership or rating event rewrites published history —
+tolerable only while the index is preliminary. This is the gate that must close
+before publication: a publication prerequisite, not a near-term task.
+
 ---
 
 ## 4. Bottleneck-weighted composite (v1.0 — preliminary)
@@ -1817,31 +1861,48 @@ single vendor's `split_factor`. B-with-the-guard is the right fix for now.
 
 ## §14 — Frontier membership, chain-linked methodology, and Yahoo's role (MarketStack cutover)
 
-### 14.1 Index membership — frontier pure-play
+### 14.1 Index membership — the core-business test
 The Composite is a **deliberate, name-by-name frontier book**, not a market-cap
-sweep. A constituent is IN only if its **core business is the physical
-frontier-stack value chain** (semiconductors / robotics-automation / space /
-frontier materials), including direct supply chain, frontier-SPECIFIC software
-(EDA in; general AI/data/enterprise software out), and operators+integrators of
-frontier hardware. OUT: Big-Tech (GOOG/AMZN/TSLA), diversified industrials
-(CAT/Siemens/ABB), diversified defense primes (RTX/LMT/NOC), EMS + horizontal
-interconnect (Foxconn/Amphenol), diversified chemicals (BASF), industrial-gas
-majors (Linde), energy/nuclear (OKLO/Cameco), autos.
-- **Principle 1** — supply chain means frontier-SPECIFIC suppliers, not
-  horizontal suppliers serving all electronics.
-- **Principle 2** — the equity-index bar is stricter than the bottleneck bar: an
-  equity dominated by non-frontier revenue is OUT of the index even if it makes a
-  critical frontier input — that input stays tracked in the bottleneck/commodities
-  layer with the company NAMED (e.g. Ajinomoto→ABF, Carpenter/ATI→superalloys,
-  Hexcel→carbon-fibre, Linde/Air Liquide→industrial gases).
+sweep. Membership turns on a single core-business test, applied by judgment and
+recorded with its reasoning:
+
+- A company whose **core business sits in the frontier stack** (semiconductors /
+  robotics-automation / space / frontier materials) — including its direct supply
+  chain, frontier-SPECIFIC software (EDA in; general AI/data/enterprise software
+  out), and operators+integrators of frontier hardware — is admitted if it holds a
+  frontier position (its grade is set separately by the bottleneck framework).
+- A company whose **core business sits outside the frontier stack** is admitted
+  only if its **peak frontier position rates HIGH or CRITICAL**. Revenue share no
+  longer excludes a name outright; it selects which bar applies. So a diversified
+  parent that owns a genuine frontier chokepoint is IN on that chokepoint —
+  Linde / Air Liquide / Air Products / Nippon Sanso (on-site fab gas), Ajinomoto
+  (ABF, the sole-source substrate dielectric), Siemens (Calibre / Siemens EDA),
+  Northrop and L3Harris (the solid-rocket-motor duopoly) — while a diversified
+  parent whose frontier position is merely MEDIUM stays OUT.
+- **Principle 1** (unchanged) — supply chain means frontier-SPECIFIC suppliers,
+  not horizontal suppliers serving all electronics.
+- **Principle 2 (superseded 2026-07 by the core-business test above)** — the
+  former rule excluded any equity dominated by non-frontier revenue even where it
+  made a critical frontier input, tracking that input in the bottleneck layer with
+  the company NAMED. That under-counted genuine chokepoints held inside diversified
+  parents (Linde, Ajinomoto, Siemens EDA), which the amended rule now admits on
+  their peak position. A frontier position that is real but only MEDIUM still
+  leaves an outside-core name OUT — tagged `non_frontier_peak`, not `non_frontier`.
+- **OUT** (core outside the stack, no HIGH/CRITICAL frontier position): Big-Tech
+  (GOOG/AMZN/TSLA), most diversified industrials (CAT/ABB/Schneider), diversified
+  defense primes without a chokepoint (RTX/LMT/GD), EMS + horizontal interconnect
+  (Foxconn/Amphenol), diversified chemicals (BASF), energy/nuclear (OKLO/Cameco),
+  autos; plus outside-core names whose peak frontier position is only MEDIUM
+  (Toppan/DNP photomasks, Tokuyama polysilicon, Iluka zircon, machine-tool and
+  instrumentation makers).
 - **Enforcement is a guarded invariant**: the index reads `status:"excluded"`
   from the **registry** (single source of truth), same gate as the bottleneck
   composite, with a publish-blocking parity guard (index universe ≡ bottleneck
-  universe). Result: **182 frontier constituents**, ~40% of prior weight removed.
-- **Character (disclosed honestly):** a concentrated, higher-beta pure-play book.
-  +222% from base sits *above* SOXX (+202%) because it carries the space/materials
-  supercycle winners SOXX excludes — the correct signature, not a red flag. The
-  prior Big-Tech-diluted readings (+81.7% / +157%) understated the frontier tilt.
+  universe).
+- **Character (disclosed honestly):** a concentrated, higher-beta frontier book,
+  weighted to the companies that own or depend on the stack's chokepoints. It
+  carries the space/materials supercycle winners a broad semis benchmark excludes —
+  the correct signature of a frontier tilt, not a red flag.
 
 ### 14.2 Chain-linked construction
 Sub-indices are **chain-linked daily-return** (industry-standard), not fixed-base
