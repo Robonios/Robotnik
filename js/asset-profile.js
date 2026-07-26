@@ -70,7 +70,7 @@
   --w-read:780px;
   color:var(--body); font-family:${FB};
 }
-.ap-shell{display:grid; grid-template-columns:200px minmax(0,1fr) 300px; gap:40px;
+.ap-shell{display:grid; grid-template-columns:max-content minmax(0,1fr) 300px; gap:40px;
   max-width:1760px; margin:0; padding:1.5rem 3rem 6rem 3rem;}
 .ap-main{min-width:0;}
 
@@ -253,7 +253,7 @@
 
 /* ── below ~1400px the rail drops to a full-width block at the foot (content stays wide) ── */
 @media(max-width:1400px){
-  .ap-shell{grid-template-columns:200px minmax(0,1fr);}
+  .ap-shell{grid-template-columns:max-content minmax(0,1fr);}
   .ap-rail{position:static; grid-column:1 / -1; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--line);}
   .ap-rail-cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:0.6rem;}
 }
