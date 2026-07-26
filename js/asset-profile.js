@@ -67,11 +67,11 @@
   --ink:#EDEFF5; --body:#C7CEDA; --mute:#8A93A6;
   --brand:var(--yellow,#F5D921); --sector:${SECTOR_FALLBACK};
   --c-low:#46B49A; --c-med:#E3B341; --c-high:#E8894A; --c-crit:#E5484D;
-  --w-read:680px; --w-fig:1040px;
+  --w-read:680px;
   color:var(--body); font-family:${FB};
 }
-.ap-shell{display:grid; grid-template-columns:180px minmax(0,1fr); gap:2.2rem;
-  max-width:1320px; margin:0; padding:1.5rem 1.4rem 6rem 2.5rem;}
+.ap-shell{display:grid; grid-template-columns:200px minmax(0,1fr) 300px; gap:48px;
+  max-width:1760px; margin:0; padding:1.5rem 3rem 6rem 3rem;}
 .ap-main{min-width:0;}
 
 /* ── the layer spine (signature) ── */
@@ -126,7 +126,7 @@
 .ap-layer{padding:3rem 0; border-top:1px solid var(--line);}
 .ap-layer.lead{padding:3.8rem 0;}
 .ap-hero{padding:0.5rem 0 3.4rem;}
-.ap-hero,.ap-layer{scroll-margin-top:1.8rem; max-width:var(--w-fig);}
+.ap-hero,.ap-layer{scroll-margin-top:1.8rem;}
 
 /* ── identity hero ── */
 .ap-kicker{font-family:${FM}; font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase;
@@ -238,6 +238,26 @@
   color:var(--mute); background:var(--well); border:1px solid var(--line); border-radius:3px; padding:1px 7px;}
 .ap-fail{max-width:640px; margin:5rem auto; text-align:center; color:var(--mute); font-family:${FB}; font-size:14px;}
 
+/* ── related-research rail (third column; universal across every profile) ── */
+.ap-rail{position:sticky; top:1.5rem; align-self:start;}
+.ap-rail-head{font-family:${FM}; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--mute); margin:0 0 0.8rem;}
+.ap-rail-cards{display:flex; flex-direction:column; gap:0.5rem;}
+.ap-rail-card{display:flex; flex-direction:column; gap:0.3rem; text-decoration:none; padding:0.7rem 0.8rem;
+  border:1px solid var(--line); border-radius:8px; background:var(--surface); transition:border-color .15s ease,background .15s ease;}
+.ap-rail-card:hover,.ap-rail-card:focus-visible{border-color:var(--sector); background:var(--well);}
+.ap-rail-card:focus-visible{outline:2px solid var(--sector); outline-offset:2px;}
+.ap-rail-topic{font-family:${FM}; font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:var(--sector);}
+.ap-rail-title{font-family:${FH}; font-size:13.5px; font-weight:500; line-height:1.3; color:var(--ink);}
+.ap-rail-card.is-soon{opacity:0.55;}
+.ap-rail-soon{font-family:${FM}; font-size:8.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--mute); margin-top:0.1rem;}
+
+/* ── below ~1400px the rail drops to a full-width block at the foot (content stays wide) ── */
+@media(max-width:1400px){
+  .ap-shell{grid-template-columns:200px minmax(0,1fr);}
+  .ap-rail{position:static; grid-column:1 / -1; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--line);}
+  .ap-rail-cards{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:0.6rem;}
+}
+
 /* ── responsive: spine collapses to a sticky top strip; figures fit content ── */
 @media(max-width:860px){
   .ap-shell{grid-template-columns:1fr; gap:0; padding:0 1.1rem 5rem;}
@@ -266,7 +286,7 @@
 }
 
 @media(prefers-reduced-motion:reduce){
-  .ap-fig.fade,.ap-spine-item,.ap-spine-prog,.ap-chart a.node-link .node,.ap-prose a{transition:none !important;}
+  .ap-fig.fade,.ap-spine-item,.ap-spine-prog,.ap-chart a.node-link .node,.ap-prose a,.ap-rail-card{transition:none !important;}
   .ap-fig.fade{opacity:1; transform:none;}
 }`;
     var el = document.createElement('style');
@@ -608,6 +628,38 @@
       + '</div>';
   }
 
+  // ── Related-research rail (STEP 4) ──
+  // Identical on every profile: the methodology is universal across the nine
+  // layers, so it maps LAYER TOPICS to shared reference pieces, not to the shard.
+  // Mirrors the live pieces in js/research.js (the REFERENCE set research.html
+  // renders); keep in sync if a piece's URL or live state changes. URLs are the
+  // extensionless canonical form. De-duped: the value-chain piece serves both
+  // classification and dependency (one card).
+  var RELATED_RESEARCH = [
+    { topic: 'How to read this profile', title: 'Structured context', url: '/research/structured-context', live: true },
+    { topic: 'Classification & dependency', title: 'Value-chain taxonomy', url: '/research/value-chain-taxonomy', live: true },
+    { topic: 'Bottleneck', title: 'Bottleneck-weighted index', url: '/research/bottleneck-weighted-index', live: true },
+    { topic: 'Market context', title: 'Public equities index', url: '/research/public-equities-index', live: true },
+    { topic: 'Universe', title: 'Universe membership methodology', url: '/research/universe-membership', live: true }
+  ];
+  function rail() {
+    var cards = RELATED_RESEARCH.map(function (r) {
+      var inner = '<span class="ap-rail-topic">' + esc(r.topic) + '</span>'
+        + '<span class="ap-rail-title">' + esc(r.title) + '</span>';
+      // Live pieces link to their extensionless URL; a mapped piece not yet live
+      // renders as a muted, non-linked "coming soon" card so the rail still shows
+      // the research map. (All five are currently live.)
+      if (r.live && r.url) {
+        return '<a class="ap-rail-card" href="' + esc(r.url) + '">' + inner + '</a>';
+      }
+      return '<div class="ap-rail-card is-soon">' + inner + '<span class="ap-rail-soon">Coming soon</span></div>';
+    }).join('');
+    return '<aside class="ap-rail" aria-label="Related research">'
+      + '<div class="ap-rail-head">Related research</div>'
+      + '<div class="ap-rail-cards">' + cards + '</div>'
+      + '</aside>';
+  }
+
   function render(mount, d) {
     var c = d.classification || {}, b = d.bottleneck || {};
     var hue = sectorHue(c.sector);
@@ -639,6 +691,7 @@
       + '<div class="ap-shell">'
       + spine(d, critColor)
       + '<main class="ap-main">' + strip(d) + sections + '</main>'
+      + rail()
       + '</div></div>';
 
     wireMotion(mount);
