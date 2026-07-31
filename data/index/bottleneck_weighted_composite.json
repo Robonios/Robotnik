@@ -4,8 +4,8 @@
   "status": "preliminary \u2014 directional signal only, not headline-publishable",
   "base_date": "2025-03-31",
   "base_value": 1000.0,
-  "current_value": 2962.73,
-  "current_date": "2026-07-30",
+  "current_value": 3080.75,
+  "current_date": "2026-07-31",
   "entity_count": 203,
   "rated_entity_count": 203,
   "rating_coverage_pct": 100.0,
@@ -44,19 +44,19 @@
       "weight_pct": 5.0
     },
     {
-      "ticker": "MU",
-      "name": "Micron Technology",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 5.0
-    },
-    {
       "ticker": "005930 KS",
       "name": "Samsung Electronics",
       "sector": "Semiconductor",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
+      "weight_pct": 5.0
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
       "weight_pct": 5.0
     },
     {
@@ -81,7 +81,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 4.6472
+      "weight_pct": 4.5739
     },
     {
       "ticker": "ARM",
@@ -89,7 +89,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 3.7869
+      "weight_pct": 3.6983
     },
     {
       "ticker": "SIE GR",
@@ -97,7 +97,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 3.6296
+      "weight_pct": 3.5724
     },
     {
       "ticker": "AMAT",
@@ -105,7 +105,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 3.5087
+      "weight_pct": 3.4939
     },
     {
       "ticker": "LIN",
@@ -113,7 +113,7 @@
       "sector": "Materials",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 3.452
+      "weight_pct": 3.1954
     },
     {
       "ticker": "LRCX",
@@ -121,7 +121,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 3.2792
+      "weight_pct": 3.1782
     },
     {
       "ticker": "INTC",
@@ -129,7 +129,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 2.6989
+      "weight_pct": 2.6292
     },
     {
       "ticker": "8035 JP",
@@ -137,7 +137,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 2.1848
+      "weight_pct": 2.3161
     },
     {
       "ticker": "KLAC",
@@ -145,7 +145,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 2.0747
+      "weight_pct": 2.0701
     },
     {
       "ticker": "AI FP",
@@ -153,31 +153,7 @@
       "sector": "Materials",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 1.8487
-    },
-    {
-      "ticker": "TXN",
-      "name": "Texas Instruments",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 1.4948
-    },
-    {
-      "ticker": "MRVL",
-      "name": "Marvell Technology",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 1.449
-    },
-    {
-      "ticker": "QCOM",
-      "name": "Qualcomm",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 1.4073
+      "weight_pct": 1.8079
     },
     {
       "ticker": "2454 TT",
@@ -185,7 +161,23 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 1.4038
+      "weight_pct": 1.523
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 1.4593
+    },
+    {
+      "ticker": "TXN",
+      "name": "Texas Instruments",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 1.4552
     },
     {
       "ticker": "CDNS",
@@ -193,7 +185,15 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 1.3475
+      "weight_pct": 1.3528
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 1.3435
     },
     {
       "ticker": "6857 JP",
@@ -201,7 +201,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 1.1162
+      "weight_pct": 1.2958
     },
     {
       "ticker": "NOC",
@@ -209,15 +209,7 @@
       "sector": "Space",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 1.1153
-    },
-    {
-      "ticker": "ADI",
-      "name": "Analog Devices",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 1.0487
+      "weight_pct": 1.1134
     },
     {
       "ticker": "SNPS",
@@ -225,7 +217,15 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 1.0465
+      "weight_pct": 1.0754
+    },
+    {
+      "ticker": "ADI",
+      "name": "Analog Devices",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 1.0321
     },
     {
       "ticker": "APD",
@@ -233,23 +233,7 @@
       "sector": "Materials",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.9813
-    },
-    {
-      "ticker": "LHX",
-      "name": "L3Harris Technologies",
-      "sector": "Space",
-      "bottleneck_risk": "HIGH",
-      "multiplier": 2.5,
-      "weight_pct": 0.7435
-    },
-    {
-      "ticker": "ISRG",
-      "name": "Intuitive Surgical",
-      "sector": "Robotics",
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 0.7425
+      "weight_pct": 0.9658
     },
     {
       "ticker": "7741 JP",
@@ -257,7 +241,23 @@
       "sector": "Materials",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.7336
+      "weight_pct": 0.7576
+    },
+    {
+      "ticker": "LHX",
+      "name": "L3Harris Technologies",
+      "sector": "Space",
+      "bottleneck_risk": "HIGH",
+      "multiplier": 2.5,
+      "weight_pct": 0.7457
+    },
+    {
+      "ticker": "ISRG",
+      "name": "Intuitive Surgical",
+      "sector": "Robotics",
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 0.7316
     },
     {
       "ticker": "6861 JP",
@@ -265,7 +265,7 @@
       "sector": "Robotics",
       "bottleneck_risk": "LOW",
       "multiplier": 1.0,
-      "weight_pct": 0.7047
+      "weight_pct": 0.7226
     },
     {
       "ticker": "2802 JP",
@@ -273,7 +273,7 @@
       "sector": "Materials",
       "bottleneck_risk": "CRITICAL",
       "multiplier": 4.0,
-      "weight_pct": 0.6798
+      "weight_pct": 0.696
     },
     {
       "ticker": "ASX",
@@ -281,7 +281,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 0.6719
+      "weight_pct": 0.6703
     },
     {
       "ticker": "4063 JP",
@@ -289,15 +289,7 @@
       "sector": "Materials",
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 0.5908
-    },
-    {
-      "ticker": "IFX GR",
-      "name": "Infineon Technologies",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 0.5233
+      "weight_pct": 0.594
     },
     {
       "ticker": "3037 TT",
@@ -305,31 +297,15 @@
       "sector": "Materials",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.5107
+      "weight_pct": 0.5542
     },
     {
-      "ticker": "TER",
-      "name": "Teradyne",
+      "ticker": "IFX GR",
+      "name": "Infineon Technologies",
       "sector": "Semiconductor",
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.5039
-    },
-    {
-      "ticker": "600111",
-      "name": "China Northern Rare Earth",
-      "sector": "Materials",
-      "bottleneck_risk": "CRITICAL",
-      "multiplier": 4.0,
-      "weight_pct": 0.4929
-    },
-    {
-      "ticker": "ALAB",
-      "name": "Astera Labs",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.4524
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 0.5339
     },
     {
       "ticker": "6920 JP",
@@ -337,7 +313,31 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "CRITICAL",
       "multiplier": 4.0,
-      "weight_pct": 0.4435
+      "weight_pct": 0.499
+    },
+    {
+      "ticker": "TER",
+      "name": "Teradyne",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.496
+    },
+    {
+      "ticker": "600111",
+      "name": "China Northern Rare Earth",
+      "sector": "Materials",
+      "bottleneck_risk": "CRITICAL",
+      "multiplier": 4.0,
+      "weight_pct": 0.4919
+    },
+    {
+      "ticker": "ALAB",
+      "name": "Astera Labs",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.4624
     },
     {
       "ticker": "COHR",
@@ -345,47 +345,7 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 0.4291
-    },
-    {
-      "ticker": "GFS",
-      "name": "GlobalFoundries",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "HIGH",
-      "multiplier": 2.5,
-      "weight_pct": 0.4018
-    },
-    {
-      "ticker": "CBRS",
-      "name": "Cerebras Systems",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.3986
-    },
-    {
-      "ticker": "MPWR",
-      "name": "Monolithic Power Systems",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 0.3797
-    },
-    {
-      "ticker": "NXPI",
-      "name": "NXP Semiconductors",
-      "sector": "Semiconductor",
-      "bottleneck_risk": "LOW",
-      "multiplier": 1.0,
-      "weight_pct": 0.363
-    },
-    {
-      "ticker": "RKLB",
-      "name": "Rocket Lab USA",
-      "sector": "Space",
-      "bottleneck_risk": "MEDIUM",
-      "multiplier": 1.5,
-      "weight_pct": 0.3559
+      "weight_pct": 0.4458
     },
     {
       "ticker": "4062 JP",
@@ -393,7 +353,31 @@
       "sector": "Materials",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.3509
+      "weight_pct": 0.4271
+    },
+    {
+      "ticker": "MPWR",
+      "name": "Monolithic Power Systems",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 0.4049
+    },
+    {
+      "ticker": "GFS",
+      "name": "GlobalFoundries",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "HIGH",
+      "multiplier": 2.5,
+      "weight_pct": 0.3963
+    },
+    {
+      "ticker": "CBRS",
+      "name": "Cerebras Systems",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.3839
     },
     {
       "ticker": "TSEM",
@@ -401,15 +385,23 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "HIGH",
       "multiplier": 2.5,
-      "weight_pct": 0.3504
+      "weight_pct": 0.3587
     },
     {
-      "ticker": "ASTS",
-      "name": "AST SpaceMobile",
+      "ticker": "RKLB",
+      "name": "Rocket Lab USA",
       "sector": "Space",
-      "bottleneck_risk": "HIGH",
-      "multiplier": 2.5,
-      "weight_pct": 0.3329
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.3518
+    },
+    {
+      "ticker": "6723",
+      "name": "Renesas Electronics",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "MEDIUM",
+      "multiplier": 1.5,
+      "weight_pct": 0.3439
     },
     {
       "ticker": "CRDO",
@@ -417,7 +409,15 @@
       "sector": "Semiconductor",
       "bottleneck_risk": "MEDIUM",
       "multiplier": 1.5,
-      "weight_pct": 0.3302
+      "weight_pct": 0.3346
+    },
+    {
+      "ticker": "NXPI",
+      "name": "NXP Semiconductors",
+      "sector": "Semiconductor",
+      "bottleneck_risk": "LOW",
+      "multiplier": 1.0,
+      "weight_pct": 0.3339
     }
   ],
   "weight_count_total": 203,
@@ -748,7 +748,7 @@
     },
     {
       "date": "2021-09-01",
-      "value": 677.02
+      "value": 670.81
     },
     {
       "date": "2021-09-02",
@@ -832,7 +832,7 @@
     },
     {
       "date": "2021-10-01",
-      "value": 639.75
+      "value": 645.96
     },
     {
       "date": "2021-10-04",
@@ -1036,7 +1036,7 @@
     },
     {
       "date": "2021-12-14",
-      "value": 732.92
+      "value": 739.13
     },
     {
       "date": "2021-12-15",
@@ -1360,7 +1360,7 @@
     },
     {
       "date": "2022-04-11",
-      "value": 627.33
+      "value": 621.12
     },
     {
       "date": "2022-04-12",
@@ -1380,7 +1380,7 @@
     },
     {
       "date": "2022-04-19",
-      "value": 633.54
+      "value": 627.33
     },
     {
       "date": "2022-04-20",
@@ -1512,7 +1512,7 @@
     },
     {
       "date": "2022-06-06",
-      "value": 627.33
+      "value": 621.12
     },
     {
       "date": "2022-06-07",
@@ -1548,7 +1548,7 @@
     },
     {
       "date": "2022-06-17",
-      "value": 534.16
+      "value": 527.95
     },
     {
       "date": "2022-06-21",
@@ -1608,7 +1608,7 @@
     },
     {
       "date": "2022-07-12",
-      "value": 515.53
+      "value": 509.32
     },
     {
       "date": "2022-07-13",
@@ -1676,11 +1676,11 @@
     },
     {
       "date": "2022-08-04",
-      "value": 602.48
+      "value": 596.27
     },
     {
       "date": "2022-08-05",
-      "value": 602.48
+      "value": 596.27
     },
     {
       "date": "2022-08-08",
@@ -1704,7 +1704,7 @@
     },
     {
       "date": "2022-08-15",
-      "value": 608.7
+      "value": 602.48
     },
     {
       "date": "2022-08-16",
@@ -1776,7 +1776,7 @@
     },
     {
       "date": "2022-09-09",
-      "value": 540.37
+      "value": 534.16
     },
     {
       "date": "2022-09-12",
@@ -1836,7 +1836,7 @@
     },
     {
       "date": "2022-09-30",
-      "value": 465.84
+      "value": 459.63
     },
     {
       "date": "2022-10-03",
@@ -1864,7 +1864,7 @@
     },
     {
       "date": "2022-10-11",
-      "value": 459.63
+      "value": 453.42
     },
     {
       "date": "2022-10-12",
@@ -1948,7 +1948,7 @@
     },
     {
       "date": "2022-11-09",
-      "value": 515.53
+      "value": 509.32
     },
     {
       "date": "2022-11-10",
@@ -2072,7 +2072,7 @@
     },
     {
       "date": "2022-12-23",
-      "value": 540.37
+      "value": 534.16
     },
     {
       "date": "2022-12-27",
@@ -2352,7 +2352,7 @@
     },
     {
       "date": "2023-04-06",
-      "value": 639.75
+      "value": 633.54
     },
     {
       "date": "2023-04-10",
@@ -2360,7 +2360,7 @@
     },
     {
       "date": "2023-04-11",
-      "value": 652.17
+      "value": 645.96
     },
     {
       "date": "2023-04-12",
@@ -2416,7 +2416,7 @@
     },
     {
       "date": "2023-05-01",
-      "value": 639.75
+      "value": 633.54
     },
     {
       "date": "2023-05-02",
@@ -2440,7 +2440,7 @@
     },
     {
       "date": "2023-05-09",
-      "value": 639.75
+      "value": 633.54
     },
     {
       "date": "2023-05-10",
@@ -2448,7 +2448,7 @@
     },
     {
       "date": "2023-05-11",
-      "value": 639.75
+      "value": 633.54
     },
     {
       "date": "2023-05-12",
@@ -2548,7 +2548,7 @@
     },
     {
       "date": "2023-06-16",
-      "value": 770.19
+      "value": 776.4
     },
     {
       "date": "2023-06-20",
@@ -2692,7 +2692,7 @@
     },
     {
       "date": "2023-08-09",
-      "value": 745.34
+      "value": 751.55
     },
     {
       "date": "2023-08-10",
@@ -2712,7 +2712,7 @@
     },
     {
       "date": "2023-08-16",
-      "value": 720.5
+      "value": 726.71
     },
     {
       "date": "2023-08-17",
@@ -2848,7 +2848,7 @@
     },
     {
       "date": "2023-10-04",
-      "value": 701.86
+      "value": 708.07
     },
     {
       "date": "2023-10-05",
@@ -2888,7 +2888,7 @@
     },
     {
       "date": "2023-10-18",
-      "value": 714.29
+      "value": 720.5
     },
     {
       "date": "2023-10-19",
@@ -3048,7 +3048,7 @@
     },
     {
       "date": "2023-12-14",
-      "value": 850.93
+      "value": 857.14
     },
     {
       "date": "2023-12-15",
@@ -3060,7 +3060,7 @@
     },
     {
       "date": "2023-12-19",
-      "value": 857.14
+      "value": 863.35
     },
     {
       "date": "2023-12-20",
@@ -3076,7 +3076,7 @@
     },
     {
       "date": "2023-12-26",
-      "value": 875.78
+      "value": 881.99
     },
     {
       "date": "2023-12-27",
@@ -3120,7 +3120,7 @@
     },
     {
       "date": "2024-01-11",
-      "value": 850.93
+      "value": 857.14
     },
     {
       "date": "2024-01-12",
@@ -3128,7 +3128,7 @@
     },
     {
       "date": "2024-01-16",
-      "value": 850.93
+      "value": 857.14
     },
     {
       "date": "2024-01-17",
@@ -3160,7 +3160,7 @@
     },
     {
       "date": "2024-01-26",
-      "value": 894.41
+      "value": 900.62
     },
     {
       "date": "2024-01-29",
@@ -3264,7 +3264,7 @@
     },
     {
       "date": "2024-03-05",
-      "value": 1031.06
+      "value": 1037.27
     },
     {
       "date": "2024-03-06",
@@ -3276,11 +3276,11 @@
     },
     {
       "date": "2024-03-08",
-      "value": 1049.69
+      "value": 1055.9
     },
     {
       "date": "2024-03-11",
-      "value": 1031.06
+      "value": 1037.27
     },
     {
       "date": "2024-03-12",
@@ -3348,7 +3348,7 @@
     },
     {
       "date": "2024-04-04",
-      "value": 1037.27
+      "value": 1043.48
     },
     {
       "date": "2024-04-05",
@@ -3520,7 +3520,7 @@
     },
     {
       "date": "2024-06-05",
-      "value": 1105.59
+      "value": 1099.38
     },
     {
       "date": "2024-06-06",
@@ -3720,7 +3720,7 @@
     },
     {
       "date": "2024-08-16",
-      "value": 1086.96
+      "value": 1093.17
     },
     {
       "date": "2024-08-19",
@@ -3788,7 +3788,7 @@
     },
     {
       "date": "2024-09-11",
-      "value": 1024.84
+      "value": 1018.63
     },
     {
       "date": "2024-09-12",
@@ -3844,7 +3844,7 @@
     },
     {
       "date": "2024-10-01",
-      "value": 1074.53
+      "value": 1080.75
     },
     {
       "date": "2024-10-02",
@@ -3892,7 +3892,7 @@
     },
     {
       "date": "2024-10-17",
-      "value": 1099.38
+      "value": 1105.59
     },
     {
       "date": "2024-10-18",
@@ -3960,11 +3960,11 @@
     },
     {
       "date": "2024-11-11",
-      "value": 1099.38
+      "value": 1105.59
     },
     {
       "date": "2024-11-12",
-      "value": 1080.75
+      "value": 1086.96
     },
     {
       "date": "2024-11-13",
@@ -4040,7 +4040,7 @@
     },
     {
       "date": "2024-12-10",
-      "value": 1062.11
+      "value": 1068.32
     },
     {
       "date": "2024-12-11",
@@ -4120,7 +4120,7 @@
     },
     {
       "date": "2025-01-10",
-      "value": 1093.17
+      "value": 1099.38
     },
     {
       "date": "2025-01-13",
@@ -4136,7 +4136,7 @@
     },
     {
       "date": "2025-01-16",
-      "value": 1118.01
+      "value": 1124.22
     },
     {
       "date": "2025-01-17",
@@ -4168,7 +4168,7 @@
     },
     {
       "date": "2025-01-29",
-      "value": 1093.17
+      "value": 1099.38
     },
     {
       "date": "2025-01-30",
@@ -4180,7 +4180,7 @@
     },
     {
       "date": "2025-02-03",
-      "value": 1086.96
+      "value": 1093.17
     },
     {
       "date": "2025-02-04",
@@ -4208,7 +4208,7 @@
     },
     {
       "date": "2025-02-12",
-      "value": 1124.22
+      "value": 1130.43
     },
     {
       "date": "2025-02-13",
@@ -4216,11 +4216,11 @@
     },
     {
       "date": "2025-02-14",
-      "value": 1142.86
+      "value": 1149.07
     },
     {
       "date": "2025-02-18",
-      "value": 1161.49
+      "value": 1167.7
     },
     {
       "date": "2025-02-19",
@@ -4236,7 +4236,7 @@
     },
     {
       "date": "2025-02-24",
-      "value": 1118.01
+      "value": 1124.22
     },
     {
       "date": "2025-02-25",
@@ -4248,7 +4248,7 @@
     },
     {
       "date": "2025-02-27",
-      "value": 1068.32
+      "value": 1074.53
     },
     {
       "date": "2025-02-28",
@@ -4288,7 +4288,7 @@
     },
     {
       "date": "2025-03-13",
-      "value": 1037.27
+      "value": 1043.48
     },
     {
       "date": "2025-03-14",
@@ -4348,7 +4348,7 @@
     },
     {
       "date": "2025-04-03",
-      "value": 950.31
+      "value": 956.52
     },
     {
       "date": "2025-04-04",
@@ -4380,7 +4380,7 @@
     },
     {
       "date": "2025-04-15",
-      "value": 975.16
+      "value": 981.37
     },
     {
       "date": "2025-04-16",
@@ -4412,7 +4412,7 @@
     },
     {
       "date": "2025-04-28",
-      "value": 1012.42
+      "value": 1018.63
     },
     {
       "date": "2025-04-29",
@@ -4460,7 +4460,7 @@
     },
     {
       "date": "2025-05-14",
-      "value": 1155.28
+      "value": 1161.49
     },
     {
       "date": "2025-05-15",
@@ -4508,7 +4508,7 @@
     },
     {
       "date": "2025-06-02",
-      "value": 1142.86
+      "value": 1149.07
     },
     {
       "date": "2025-06-03",
@@ -4520,7 +4520,7 @@
     },
     {
       "date": "2025-06-05",
-      "value": 1180.12
+      "value": 1186.34
     },
     {
       "date": "2025-06-06",
@@ -4548,7 +4548,7 @@
     },
     {
       "date": "2025-06-16",
-      "value": 1236.02
+      "value": 1242.24
     },
     {
       "date": "2025-06-17",
@@ -4556,11 +4556,11 @@
     },
     {
       "date": "2025-06-18",
-      "value": 1236.02
+      "value": 1242.24
     },
     {
       "date": "2025-06-20",
-      "value": 1229.81
+      "value": 1236.02
     },
     {
       "date": "2025-06-23",
@@ -4572,7 +4572,7 @@
     },
     {
       "date": "2025-06-25",
-      "value": 1291.93
+      "value": 1298.14
     },
     {
       "date": "2025-06-26",
@@ -4604,7 +4604,7 @@
     },
     {
       "date": "2025-07-08",
-      "value": 1316.77
+      "value": 1322.98
     },
     {
       "date": "2025-07-09",
@@ -4624,15 +4624,15 @@
     },
     {
       "date": "2025-07-15",
-      "value": 1347.83
+      "value": 1354.04
     },
     {
       "date": "2025-07-16",
-      "value": 1341.61
+      "value": 1347.83
     },
     {
       "date": "2025-07-17",
-      "value": 1347.83
+      "value": 1354.04
     },
     {
       "date": "2025-07-18",
@@ -4648,15 +4648,15 @@
     },
     {
       "date": "2025-07-23",
-      "value": 1347.83
-    },
-    {
-      "date": "2025-07-24",
       "value": 1354.04
     },
     {
+      "date": "2025-07-24",
+      "value": 1360.25
+    },
+    {
       "date": "2025-07-25",
-      "value": 1347.83
+      "value": 1354.04
     },
     {
       "date": "2025-07-28",
@@ -4672,7 +4672,7 @@
     },
     {
       "date": "2025-07-31",
-      "value": 1335.4
+      "value": 1341.61
     },
     {
       "date": "2025-08-01",
@@ -4684,11 +4684,11 @@
     },
     {
       "date": "2025-08-05",
-      "value": 1322.98
+      "value": 1329.19
     },
     {
       "date": "2025-08-06",
-      "value": 1316.77
+      "value": 1322.98
     },
     {
       "date": "2025-08-07",
@@ -4700,7 +4700,7 @@
     },
     {
       "date": "2025-08-11",
-      "value": 1354.04
+      "value": 1360.25
     },
     {
       "date": "2025-08-12",
@@ -4712,11 +4712,11 @@
     },
     {
       "date": "2025-08-14",
-      "value": 1391.3
+      "value": 1397.52
     },
     {
       "date": "2025-08-15",
-      "value": 1372.67
+      "value": 1378.88
     },
     {
       "date": "2025-08-18",
@@ -4728,7 +4728,7 @@
     },
     {
       "date": "2025-08-20",
-      "value": 1341.61
+      "value": 1347.83
     },
     {
       "date": "2025-08-21",
@@ -4740,7 +4740,7 @@
     },
     {
       "date": "2025-08-25",
-      "value": 1366.46
+      "value": 1372.67
     },
     {
       "date": "2025-08-26",
@@ -4748,23 +4748,23 @@
     },
     {
       "date": "2025-08-27",
-      "value": 1378.88
+      "value": 1385.09
     },
     {
       "date": "2025-08-28",
-      "value": 1391.3
+      "value": 1397.52
     },
     {
       "date": "2025-08-29",
-      "value": 1366.46
+      "value": 1372.67
     },
     {
       "date": "2025-09-02",
-      "value": 1341.61
+      "value": 1347.83
     },
     {
       "date": "2025-09-03",
-      "value": 1341.61
+      "value": 1347.83
     },
     {
       "date": "2025-09-04",
@@ -4772,11 +4772,11 @@
     },
     {
       "date": "2025-09-05",
-      "value": 1378.88
+      "value": 1385.09
     },
     {
       "date": "2025-09-08",
-      "value": 1397.52
+      "value": 1403.73
     },
     {
       "date": "2025-09-09",
@@ -4784,23 +4784,23 @@
     },
     {
       "date": "2025-09-10",
-      "value": 1428.57
+      "value": 1434.78
     },
     {
       "date": "2025-09-11",
-      "value": 1447.2
+      "value": 1453.42
     },
     {
       "date": "2025-09-12",
-      "value": 1459.63
+      "value": 1465.84
     },
     {
       "date": "2025-09-15",
-      "value": 1478.26
+      "value": 1484.47
     },
     {
       "date": "2025-09-16",
-      "value": 1490.68
+      "value": 1496.89
     },
     {
       "date": "2025-09-17",
@@ -4816,19 +4816,19 @@
     },
     {
       "date": "2025-09-22",
-      "value": 1552.8
+      "value": 1559.01
     },
     {
       "date": "2025-09-23",
-      "value": 1552.8
+      "value": 1559.01
     },
     {
       "date": "2025-09-24",
-      "value": 1546.58
+      "value": 1552.8
     },
     {
       "date": "2025-09-25",
-      "value": 1540.37
+      "value": 1546.58
     },
     {
       "date": "2025-09-26",
@@ -4836,11 +4836,11 @@
     },
     {
       "date": "2025-09-29",
-      "value": 1540.37
+      "value": 1546.58
     },
     {
       "date": "2025-09-30",
-      "value": 1552.8
+      "value": 1559.01
     },
     {
       "date": "2025-10-01",
@@ -4848,51 +4848,51 @@
     },
     {
       "date": "2025-10-02",
-      "value": 1627.33
+      "value": 1633.54
     },
     {
       "date": "2025-10-03",
-      "value": 1627.33
+      "value": 1633.54
     },
     {
       "date": "2025-10-06",
-      "value": 1664.6
+      "value": 1670.81
     },
     {
       "date": "2025-10-07",
-      "value": 1645.96
+      "value": 1652.17
     },
     {
       "date": "2025-10-08",
-      "value": 1677.02
+      "value": 1683.23
     },
     {
       "date": "2025-10-09",
-      "value": 1677.02
+      "value": 1683.23
     },
     {
       "date": "2025-10-10",
-      "value": 1614.91
+      "value": 1621.12
     },
     {
       "date": "2025-10-13",
-      "value": 1664.6
+      "value": 1670.81
     },
     {
       "date": "2025-10-14",
-      "value": 1639.75
+      "value": 1645.96
     },
     {
       "date": "2025-10-15",
-      "value": 1677.02
+      "value": 1683.23
     },
     {
       "date": "2025-10-16",
-      "value": 1695.65
+      "value": 1701.86
     },
     {
       "date": "2025-10-17",
-      "value": 1689.44
+      "value": 1695.65
     },
     {
       "date": "2025-10-20",
@@ -4900,7 +4900,7 @@
     },
     {
       "date": "2025-10-21",
-      "value": 1701.86
+      "value": 1708.07
     },
     {
       "date": "2025-10-22",
@@ -4908,11 +4908,11 @@
     },
     {
       "date": "2025-10-23",
-      "value": 1695.65
+      "value": 1701.86
     },
     {
       "date": "2025-10-24",
-      "value": 1732.92
+      "value": 1739.13
     },
     {
       "date": "2025-10-27",
@@ -4920,755 +4920,759 @@
     },
     {
       "date": "2025-10-28",
-      "value": 1770.19
-    },
-    {
-      "date": "2025-10-29",
-      "value": 1801.24
-    },
-    {
-      "date": "2025-10-30",
-      "value": 1788.82
-    },
-    {
-      "date": "2025-10-31",
-      "value": 1795.03
-    },
-    {
-      "date": "2025-11-03",
-      "value": 1813.66
-    },
-    {
-      "date": "2025-11-04",
-      "value": 1757.76
-    },
-    {
-      "date": "2025-11-05",
-      "value": 1770.19
-    },
-    {
-      "date": "2025-11-06",
-      "value": 1751.55
-    },
-    {
-      "date": "2025-11-07",
-      "value": 1726.71
-    },
-    {
-      "date": "2025-11-10",
       "value": 1776.4
     },
     {
-      "date": "2025-11-11",
-      "value": 1751.55
-    },
-    {
-      "date": "2025-11-12",
-      "value": 1763.98
-    },
-    {
-      "date": "2025-11-13",
-      "value": 1720.5
-    },
-    {
-      "date": "2025-11-14",
-      "value": 1708.07
-    },
-    {
-      "date": "2025-11-17",
-      "value": 1701.86
-    },
-    {
-      "date": "2025-11-18",
-      "value": 1658.39
-    },
-    {
-      "date": "2025-11-19",
-      "value": 1670.81
-    },
-    {
-      "date": "2025-11-20",
-      "value": 1627.33
-    },
-    {
-      "date": "2025-11-21",
-      "value": 1614.91
-    },
-    {
-      "date": "2025-11-24",
-      "value": 1658.39
-    },
-    {
-      "date": "2025-11-25",
-      "value": 1670.81
-    },
-    {
-      "date": "2025-11-26",
-      "value": 1708.07
-    },
-    {
-      "date": "2025-11-28",
-      "value": 1732.92
-    },
-    {
-      "date": "2025-12-01",
-      "value": 1732.92
-    },
-    {
-      "date": "2025-12-02",
-      "value": 1751.55
-    },
-    {
-      "date": "2025-12-03",
-      "value": 1782.61
-    },
-    {
-      "date": "2025-12-04",
-      "value": 1770.19
-    },
-    {
-      "date": "2025-12-05",
-      "value": 1788.82
-    },
-    {
-      "date": "2025-12-08",
+      "date": "2025-10-29",
       "value": 1807.45
     },
     {
-      "date": "2025-12-09",
-      "value": 1807.45
-    },
-    {
-      "date": "2025-12-10",
-      "value": 1826.09
-    },
-    {
-      "date": "2025-12-11",
-      "value": 1819.88
-    },
-    {
-      "date": "2025-12-12",
-      "value": 1763.98
-    },
-    {
-      "date": "2025-12-15",
-      "value": 1751.55
-    },
-    {
-      "date": "2025-12-16",
-      "value": 1732.92
-    },
-    {
-      "date": "2025-12-17",
-      "value": 1695.65
-    },
-    {
-      "date": "2025-12-18",
-      "value": 1720.5
-    },
-    {
-      "date": "2025-12-19",
-      "value": 1751.55
-    },
-    {
-      "date": "2025-12-22",
-      "value": 1782.61
-    },
-    {
-      "date": "2025-12-23",
+      "date": "2025-10-30",
       "value": 1795.03
     },
     {
-      "date": "2025-12-24",
+      "date": "2025-10-31",
       "value": 1801.24
     },
     {
-      "date": "2025-12-26",
+      "date": "2025-11-03",
+      "value": 1819.88
+    },
+    {
+      "date": "2025-11-04",
+      "value": 1763.98
+    },
+    {
+      "date": "2025-11-05",
+      "value": 1776.4
+    },
+    {
+      "date": "2025-11-06",
+      "value": 1757.76
+    },
+    {
+      "date": "2025-11-07",
+      "value": 1732.92
+    },
+    {
+      "date": "2025-11-10",
+      "value": 1782.61
+    },
+    {
+      "date": "2025-11-11",
+      "value": 1757.76
+    },
+    {
+      "date": "2025-11-12",
+      "value": 1776.4
+    },
+    {
+      "date": "2025-11-13",
+      "value": 1732.92
+    },
+    {
+      "date": "2025-11-14",
+      "value": 1714.29
+    },
+    {
+      "date": "2025-11-17",
+      "value": 1708.07
+    },
+    {
+      "date": "2025-11-18",
+      "value": 1664.6
+    },
+    {
+      "date": "2025-11-19",
+      "value": 1677.02
+    },
+    {
+      "date": "2025-11-20",
+      "value": 1633.54
+    },
+    {
+      "date": "2025-11-21",
+      "value": 1621.12
+    },
+    {
+      "date": "2025-11-24",
+      "value": 1664.6
+    },
+    {
+      "date": "2025-11-25",
+      "value": 1677.02
+    },
+    {
+      "date": "2025-11-26",
+      "value": 1714.29
+    },
+    {
+      "date": "2025-11-28",
+      "value": 1739.13
+    },
+    {
+      "date": "2025-12-01",
+      "value": 1739.13
+    },
+    {
+      "date": "2025-12-02",
+      "value": 1763.98
+    },
+    {
+      "date": "2025-12-03",
+      "value": 1788.82
+    },
+    {
+      "date": "2025-12-04",
+      "value": 1776.4
+    },
+    {
+      "date": "2025-12-05",
+      "value": 1795.03
+    },
+    {
+      "date": "2025-12-08",
       "value": 1813.66
     },
     {
-      "date": "2025-12-29",
-      "value": 1819.88
+      "date": "2025-12-09",
+      "value": 1813.66
     },
     {
-      "date": "2025-12-30",
-      "value": 1819.88
+      "date": "2025-12-10",
+      "value": 1838.51
     },
     {
-      "date": "2025-12-31",
+      "date": "2025-12-11",
+      "value": 1826.09
+    },
+    {
+      "date": "2025-12-12",
+      "value": 1776.4
+    },
+    {
+      "date": "2025-12-15",
+      "value": 1757.76
+    },
+    {
+      "date": "2025-12-16",
+      "value": 1739.13
+    },
+    {
+      "date": "2025-12-17",
+      "value": 1701.86
+    },
+    {
+      "date": "2025-12-18",
+      "value": 1726.71
+    },
+    {
+      "date": "2025-12-19",
+      "value": 1757.76
+    },
+    {
+      "date": "2025-12-22",
+      "value": 1788.82
+    },
+    {
+      "date": "2025-12-23",
+      "value": 1801.24
+    },
+    {
+      "date": "2025-12-24",
       "value": 1807.45
     },
     {
+      "date": "2025-12-26",
+      "value": 1819.88
+    },
+    {
+      "date": "2025-12-29",
+      "value": 1826.09
+    },
+    {
+      "date": "2025-12-30",
+      "value": 1826.09
+    },
+    {
+      "date": "2025-12-31",
+      "value": 1819.88
+    },
+    {
       "date": "2026-01-02",
-      "value": 1875.78
+      "value": 1881.99
     },
     {
       "date": "2026-01-05",
-      "value": 1913.04
-    },
-    {
-      "date": "2026-01-06",
-      "value": 1956.52
-    },
-    {
-      "date": "2026-01-07",
-      "value": 1956.52
-    },
-    {
-      "date": "2026-01-08",
       "value": 1925.47
     },
     {
+      "date": "2026-01-06",
+      "value": 1962.73
+    },
+    {
+      "date": "2026-01-07",
+      "value": 1962.73
+    },
+    {
+      "date": "2026-01-08",
+      "value": 1931.68
+    },
+    {
       "date": "2026-01-09",
-      "value": 1968.94
+      "value": 1975.16
     },
     {
       "date": "2026-01-12",
-      "value": 1981.37
-    },
-    {
-      "date": "2026-01-13",
       "value": 1993.79
     },
     {
+      "date": "2026-01-13",
+      "value": 2000.0
+    },
+    {
       "date": "2026-01-14",
-      "value": 1987.58
+      "value": 2000.0
     },
     {
       "date": "2026-01-15",
-      "value": 2024.84
+      "value": 2031.06
     },
     {
       "date": "2026-01-16",
-      "value": 2049.69
-    },
-    {
-      "date": "2026-01-20",
-      "value": 2018.63
-    },
-    {
-      "date": "2026-01-21",
-      "value": 2068.32
-    },
-    {
-      "date": "2026-01-22",
-      "value": 2086.96
-    },
-    {
-      "date": "2026-01-23",
-      "value": 2080.75
-    },
-    {
-      "date": "2026-01-26",
-      "value": 2074.53
-    },
-    {
-      "date": "2026-01-27",
-      "value": 2130.43
-    },
-    {
-      "date": "2026-01-28",
-      "value": 2161.49
-    },
-    {
-      "date": "2026-01-29",
-      "value": 2161.49
-    },
-    {
-      "date": "2026-01-30",
-      "value": 2111.8
-    },
-    {
-      "date": "2026-02-02",
-      "value": 2105.59
-    },
-    {
-      "date": "2026-02-03",
-      "value": 2111.8
-    },
-    {
-      "date": "2026-02-04",
-      "value": 2043.48
-    },
-    {
-      "date": "2026-02-05",
-      "value": 2024.84
-    },
-    {
-      "date": "2026-02-06",
-      "value": 2105.59
-    },
-    {
-      "date": "2026-02-09",
-      "value": 2155.28
-    },
-    {
-      "date": "2026-02-10",
-      "value": 2155.28
-    },
-    {
-      "date": "2026-02-11",
-      "value": 2186.34
-    },
-    {
-      "date": "2026-02-12",
-      "value": 2173.91
-    },
-    {
-      "date": "2026-02-13",
-      "value": 2180.12
-    },
-    {
-      "date": "2026-02-17",
-      "value": 2173.91
-    },
-    {
-      "date": "2026-02-18",
-      "value": 2198.76
-    },
-    {
-      "date": "2026-02-19",
-      "value": 2198.76
-    },
-    {
-      "date": "2026-02-20",
-      "value": 2217.39
-    },
-    {
-      "date": "2026-02-23",
-      "value": 2211.18
-    },
-    {
-      "date": "2026-02-24",
-      "value": 2260.87
-    },
-    {
-      "date": "2026-02-25",
-      "value": 2298.14
-    },
-    {
-      "date": "2026-02-26",
-      "value": 2273.29
-    },
-    {
-      "date": "2026-02-27",
-      "value": 2254.66
-    },
-    {
-      "date": "2026-03-02",
-      "value": 2248.45
-    },
-    {
-      "date": "2026-03-03",
-      "value": 2142.86
-    },
-    {
-      "date": "2026-03-04",
-      "value": 2142.86
-    },
-    {
-      "date": "2026-03-05",
-      "value": 2149.07
-    },
-    {
-      "date": "2026-03-06",
-      "value": 2086.96
-    },
-    {
-      "date": "2026-03-09",
-      "value": 2099.38
-    },
-    {
-      "date": "2026-03-10",
-      "value": 2149.07
-    },
-    {
-      "date": "2026-03-11",
-      "value": 2173.91
-    },
-    {
-      "date": "2026-03-12",
-      "value": 2118.01
-    },
-    {
-      "date": "2026-03-13",
-      "value": 2105.59
-    },
-    {
-      "date": "2026-03-16",
-      "value": 2149.07
-    },
-    {
-      "date": "2026-03-17",
-      "value": 2167.7
-    },
-    {
-      "date": "2026-03-18",
-      "value": 2180.12
-    },
-    {
-      "date": "2026-03-19",
-      "value": 2167.7
-    },
-    {
-      "date": "2026-03-20",
-      "value": 2130.43
-    },
-    {
-      "date": "2026-03-23",
-      "value": 2130.43
-    },
-    {
-      "date": "2026-03-24",
-      "value": 2149.07
-    },
-    {
-      "date": "2026-03-25",
-      "value": 2192.55
-    },
-    {
-      "date": "2026-03-26",
-      "value": 2105.59
-    },
-    {
-      "date": "2026-03-27",
-      "value": 2074.53
-    },
-    {
-      "date": "2026-03-30",
-      "value": 2006.21
-    },
-    {
-      "date": "2026-03-31",
       "value": 2062.11
     },
     {
-      "date": "2026-04-01",
-      "value": 2149.07
+      "date": "2026-01-20",
+      "value": 2031.06
     },
     {
-      "date": "2026-04-02",
-      "value": 2130.43
+      "date": "2026-01-21",
+      "value": 2080.75
     },
     {
-      "date": "2026-04-06",
-      "value": 2161.49
+      "date": "2026-01-22",
+      "value": 2099.38
     },
     {
-      "date": "2026-04-07",
+      "date": "2026-01-23",
+      "value": 2086.96
+    },
+    {
+      "date": "2026-01-26",
+      "value": 2086.96
+    },
+    {
+      "date": "2026-01-27",
+      "value": 2142.86
+    },
+    {
+      "date": "2026-01-28",
+      "value": 2173.91
+    },
+    {
+      "date": "2026-01-29",
+      "value": 2173.91
+    },
+    {
+      "date": "2026-01-30",
+      "value": 2124.22
+    },
+    {
+      "date": "2026-02-02",
+      "value": 2118.01
+    },
+    {
+      "date": "2026-02-03",
+      "value": 2124.22
+    },
+    {
+      "date": "2026-02-04",
+      "value": 2055.9
+    },
+    {
+      "date": "2026-02-05",
+      "value": 2037.27
+    },
+    {
+      "date": "2026-02-06",
+      "value": 2118.01
+    },
+    {
+      "date": "2026-02-09",
+      "value": 2167.7
+    },
+    {
+      "date": "2026-02-10",
+      "value": 2167.7
+    },
+    {
+      "date": "2026-02-11",
+      "value": 2198.76
+    },
+    {
+      "date": "2026-02-12",
       "value": 2186.34
     },
     {
+      "date": "2026-02-13",
+      "value": 2192.55
+    },
+    {
+      "date": "2026-02-17",
+      "value": 2186.34
+    },
+    {
+      "date": "2026-02-18",
+      "value": 2211.18
+    },
+    {
+      "date": "2026-02-19",
+      "value": 2211.18
+    },
+    {
+      "date": "2026-02-20",
+      "value": 2229.81
+    },
+    {
+      "date": "2026-02-23",
+      "value": 2223.6
+    },
+    {
+      "date": "2026-02-24",
+      "value": 2273.29
+    },
+    {
+      "date": "2026-02-25",
+      "value": 2310.56
+    },
+    {
+      "date": "2026-02-26",
+      "value": 2291.93
+    },
+    {
+      "date": "2026-02-27",
+      "value": 2267.08
+    },
+    {
+      "date": "2026-03-02",
+      "value": 2260.87
+    },
+    {
+      "date": "2026-03-03",
+      "value": 2155.28
+    },
+    {
+      "date": "2026-03-04",
+      "value": 2155.28
+    },
+    {
+      "date": "2026-03-05",
+      "value": 2161.49
+    },
+    {
+      "date": "2026-03-06",
+      "value": 2099.38
+    },
+    {
+      "date": "2026-03-09",
+      "value": 2111.8
+    },
+    {
+      "date": "2026-03-10",
+      "value": 2161.49
+    },
+    {
+      "date": "2026-03-11",
+      "value": 2186.34
+    },
+    {
+      "date": "2026-03-12",
+      "value": 2130.43
+    },
+    {
+      "date": "2026-03-13",
+      "value": 2118.01
+    },
+    {
+      "date": "2026-03-16",
+      "value": 2161.49
+    },
+    {
+      "date": "2026-03-17",
+      "value": 2180.12
+    },
+    {
+      "date": "2026-03-18",
+      "value": 2192.55
+    },
+    {
+      "date": "2026-03-19",
+      "value": 2180.12
+    },
+    {
+      "date": "2026-03-20",
+      "value": 2142.86
+    },
+    {
+      "date": "2026-03-23",
+      "value": 2142.86
+    },
+    {
+      "date": "2026-03-24",
+      "value": 2161.49
+    },
+    {
+      "date": "2026-03-25",
+      "value": 2204.97
+    },
+    {
+      "date": "2026-03-26",
+      "value": 2118.01
+    },
+    {
+      "date": "2026-03-27",
+      "value": 2080.75
+    },
+    {
+      "date": "2026-03-30",
+      "value": 2012.42
+    },
+    {
+      "date": "2026-03-31",
+      "value": 2068.32
+    },
+    {
+      "date": "2026-04-01",
+      "value": 2161.49
+    },
+    {
+      "date": "2026-04-02",
+      "value": 2136.65
+    },
+    {
+      "date": "2026-04-06",
+      "value": 2167.7
+    },
+    {
+      "date": "2026-04-07",
+      "value": 2198.76
+    },
+    {
       "date": "2026-04-08",
-      "value": 2329.19
+      "value": 2341.61
     },
     {
       "date": "2026-04-09",
-      "value": 2347.83
+      "value": 2360.25
     },
     {
       "date": "2026-04-10",
-      "value": 2378.88
+      "value": 2391.3
     },
     {
       "date": "2026-04-13",
-      "value": 2409.94
+      "value": 2422.36
     },
     {
       "date": "2026-04-14",
-      "value": 2465.84
+      "value": 2478.26
     },
     {
       "date": "2026-04-15",
-      "value": 2472.05
+      "value": 2490.68
     },
     {
       "date": "2026-04-16",
-      "value": 2503.11
+      "value": 2515.53
     },
     {
       "date": "2026-04-17",
-      "value": 2527.95
-    },
-    {
-      "date": "2026-04-20",
       "value": 2540.37
     },
     {
-      "date": "2026-04-21",
+      "date": "2026-04-20",
       "value": 2552.8
     },
     {
+      "date": "2026-04-21",
+      "value": 2571.43
+    },
+    {
       "date": "2026-04-22",
-      "value": 2614.91
+      "value": 2627.33
     },
     {
       "date": "2026-04-23",
-      "value": 2621.12
+      "value": 2639.75
     },
     {
       "date": "2026-04-24",
-      "value": 2720.5
-    },
-    {
-      "date": "2026-04-27",
-      "value": 2732.92
-    },
-    {
-      "date": "2026-04-28",
-      "value": 2664.6
-    },
-    {
-      "date": "2026-04-29",
-      "value": 2689.44
-    },
-    {
-      "date": "2026-04-30",
       "value": 2739.13
     },
     {
-      "date": "2026-05-01",
+      "date": "2026-04-27",
       "value": 2751.55
     },
     {
-      "date": "2026-05-04",
+      "date": "2026-04-28",
+      "value": 2677.02
+    },
+    {
+      "date": "2026-04-29",
+      "value": 2708.07
+    },
+    {
+      "date": "2026-04-30",
+      "value": 2751.55
+    },
+    {
+      "date": "2026-05-01",
       "value": 2770.19
     },
     {
+      "date": "2026-05-04",
+      "value": 2782.61
+    },
+    {
       "date": "2026-05-05",
-      "value": 2844.72
+      "value": 2863.35
     },
     {
       "date": "2026-05-06",
-      "value": 3000.0
+      "value": 3012.42
     },
     {
       "date": "2026-05-07",
-      "value": 2968.94
+      "value": 2987.58
     },
     {
       "date": "2026-05-08",
-      "value": 3068.32
+      "value": 3086.96
     },
     {
       "date": "2026-05-11",
-      "value": 3136.65
-    },
-    {
-      "date": "2026-05-12",
-      "value": 3074.53
-    },
-    {
-      "date": "2026-05-13",
-      "value": 3130.43
-    },
-    {
-      "date": "2026-05-14",
-      "value": 3161.49
-    },
-    {
-      "date": "2026-05-15",
-      "value": 3024.84
-    },
-    {
-      "date": "2026-05-18",
-      "value": 2993.79
-    },
-    {
-      "date": "2026-05-19",
-      "value": 2962.73
-    },
-    {
-      "date": "2026-05-20",
-      "value": 3055.9
-    },
-    {
-      "date": "2026-05-21",
-      "value": 3149.07
-    },
-    {
-      "date": "2026-05-22",
-      "value": 3198.76
-    },
-    {
-      "date": "2026-05-26",
-      "value": 3329.19
-    },
-    {
-      "date": "2026-05-27",
-      "value": 3335.4
-    },
-    {
-      "date": "2026-05-28",
-      "value": 3347.83
-    },
-    {
-      "date": "2026-05-29",
-      "value": 3366.46
-    },
-    {
-      "date": "2026-06-01",
-      "value": 3428.57
-    },
-    {
-      "date": "2026-06-02",
-      "value": 3515.53
-    },
-    {
-      "date": "2026-06-03",
-      "value": 3552.8
-    },
-    {
-      "date": "2026-06-04",
-      "value": 3503.11
-    },
-    {
-      "date": "2026-06-05",
-      "value": 3248.45
-    },
-    {
-      "date": "2026-06-08",
-      "value": 3291.93
-    },
-    {
-      "date": "2026-06-10",
-      "value": 3217.39
-    },
-    {
-      "date": "2026-06-11",
-      "value": 3378.88
-    },
-    {
-      "date": "2026-06-12",
-      "value": 3453.42
-    },
-    {
-      "date": "2026-06-15",
-      "value": 3608.7
-    },
-    {
-      "date": "2026-06-16",
-      "value": 3515.53
-    },
-    {
-      "date": "2026-06-17",
-      "value": 3571.43
-    },
-    {
-      "date": "2026-06-18",
-      "value": 3708.07
-    },
-    {
-      "date": "2026-06-22",
-      "value": 3757.76
-    },
-    {
-      "date": "2026-06-23",
-      "value": 3521.74
-    },
-    {
-      "date": "2026-06-24",
-      "value": 3515.53
-    },
-    {
-      "date": "2026-06-25",
-      "value": 3633.54
-    },
-    {
-      "date": "2026-06-26",
-      "value": 3503.11
-    },
-    {
-      "date": "2026-06-29",
-      "value": 3583.85
-    },
-    {
-      "date": "2026-06-30",
-      "value": 3701.86
-    },
-    {
-      "date": "2026-07-01",
-      "value": 3565.22
-    },
-    {
-      "date": "2026-07-02",
-      "value": 3403.73
-    },
-    {
-      "date": "2026-07-06",
-      "value": 3484.47
-    },
-    {
-      "date": "2026-07-07",
-      "value": 3335.4
-    },
-    {
-      "date": "2026-07-08",
-      "value": 3335.4
-    },
-    {
-      "date": "2026-07-09",
-      "value": 3422.36
-    },
-    {
-      "date": "2026-07-10",
-      "value": 3440.99
-    },
-    {
-      "date": "2026-07-13",
-      "value": 3285.71
-    },
-    {
-      "date": "2026-07-14",
-      "value": 3335.4
-    },
-    {
-      "date": "2026-07-15",
-      "value": 3329.19
-    },
-    {
-      "date": "2026-07-16",
-      "value": 3198.76
-    },
-    {
-      "date": "2026-07-17",
-      "value": 3130.43
-    },
-    {
-      "date": "2026-07-20",
-      "value": 3118.01
-    },
-    {
-      "date": "2026-07-21",
-      "value": 3267.08
-    },
-    {
-      "date": "2026-07-22",
-      "value": 3273.29
-    },
-    {
-      "date": "2026-07-23",
-      "value": 3273.29
-    },
-    {
-      "date": "2026-07-24",
       "value": 3155.28
     },
     {
+      "date": "2026-05-12",
+      "value": 3093.17
+    },
+    {
+      "date": "2026-05-13",
+      "value": 3149.07
+    },
+    {
+      "date": "2026-05-14",
+      "value": 3180.12
+    },
+    {
+      "date": "2026-05-15",
+      "value": 3043.48
+    },
+    {
+      "date": "2026-05-18",
+      "value": 3012.42
+    },
+    {
+      "date": "2026-05-19",
+      "value": 2975.16
+    },
+    {
+      "date": "2026-05-20",
+      "value": 3074.53
+    },
+    {
+      "date": "2026-05-21",
+      "value": 3167.7
+    },
+    {
+      "date": "2026-05-22",
+      "value": 3211.18
+    },
+    {
+      "date": "2026-05-26",
+      "value": 3347.83
+    },
+    {
+      "date": "2026-05-27",
+      "value": 3354.04
+    },
+    {
+      "date": "2026-05-28",
+      "value": 3366.46
+    },
+    {
+      "date": "2026-05-29",
+      "value": 3385.09
+    },
+    {
+      "date": "2026-06-01",
+      "value": 3447.2
+    },
+    {
+      "date": "2026-06-02",
+      "value": 3540.37
+    },
+    {
+      "date": "2026-06-03",
+      "value": 3577.64
+    },
+    {
+      "date": "2026-06-04",
+      "value": 3527.95
+    },
+    {
+      "date": "2026-06-05",
+      "value": 3267.08
+    },
+    {
+      "date": "2026-06-08",
+      "value": 3310.56
+    },
+    {
+      "date": "2026-06-10",
+      "value": 3236.02
+    },
+    {
+      "date": "2026-06-11",
+      "value": 3397.52
+    },
+    {
+      "date": "2026-06-12",
+      "value": 3478.26
+    },
+    {
+      "date": "2026-06-15",
+      "value": 3627.33
+    },
+    {
+      "date": "2026-06-16",
+      "value": 3540.37
+    },
+    {
+      "date": "2026-06-17",
+      "value": 3596.27
+    },
+    {
+      "date": "2026-06-18",
+      "value": 3732.92
+    },
+    {
+      "date": "2026-06-22",
+      "value": 3782.61
+    },
+    {
+      "date": "2026-06-23",
+      "value": 3540.37
+    },
+    {
+      "date": "2026-06-24",
+      "value": 3540.37
+    },
+    {
+      "date": "2026-06-25",
+      "value": 3658.39
+    },
+    {
+      "date": "2026-06-26",
+      "value": 3527.95
+    },
+    {
+      "date": "2026-06-29",
+      "value": 3608.7
+    },
+    {
+      "date": "2026-06-30",
+      "value": 3726.71
+    },
+    {
+      "date": "2026-07-01",
+      "value": 3590.06
+    },
+    {
+      "date": "2026-07-02",
+      "value": 3428.57
+    },
+    {
+      "date": "2026-07-06",
+      "value": 3509.32
+    },
+    {
+      "date": "2026-07-07",
+      "value": 3360.25
+    },
+    {
+      "date": "2026-07-08",
+      "value": 3354.04
+    },
+    {
+      "date": "2026-07-09",
+      "value": 3447.2
+    },
+    {
+      "date": "2026-07-10",
+      "value": 3459.63
+    },
+    {
+      "date": "2026-07-13",
+      "value": 3310.56
+    },
+    {
+      "date": "2026-07-14",
+      "value": 3360.25
+    },
+    {
+      "date": "2026-07-15",
+      "value": 3354.04
+    },
+    {
+      "date": "2026-07-16",
+      "value": 3217.39
+    },
+    {
+      "date": "2026-07-17",
+      "value": 3149.07
+    },
+    {
+      "date": "2026-07-20",
+      "value": 3136.65
+    },
+    {
+      "date": "2026-07-21",
+      "value": 3285.71
+    },
+    {
+      "date": "2026-07-22",
+      "value": 3291.93
+    },
+    {
+      "date": "2026-07-23",
+      "value": 3298.14
+    },
+    {
+      "date": "2026-07-24",
+      "value": 3173.91
+    },
+    {
       "date": "2026-07-27",
-      "value": 3118.01
+      "value": 3136.65
     },
     {
       "date": "2026-07-28",
-      "value": 2950.31
+      "value": 2968.94
     },
     {
       "date": "2026-07-29",
-      "value": 2813.66
+      "value": 2826.09
     },
     {
       "date": "2026-07-30",
-      "value": 2962.73
+      "value": 2993.79
+    },
+    {
+      "date": "2026-07-31",
+      "value": 3080.75
     }
   ],
   "divergence_vs_mcap_composite": {
@@ -5676,186 +5680,186 @@
     "months_flagged": 0,
     "per_day_sample": [
       {
-        "date": "2026-06-17",
-        "bw": 3571.43,
-        "mcap": 3677.42,
-        "divergence_pct": -2.882
-      },
-      {
         "date": "2026-06-18",
-        "bw": 3708.07,
-        "mcap": 3832.26,
-        "divergence_pct": -3.241
+        "bw": 3732.92,
+        "mcap": 3858.06,
+        "divergence_pct": -3.244
       },
       {
         "date": "2026-06-22",
-        "bw": 3757.76,
-        "mcap": 3896.77,
-        "divergence_pct": -3.567
+        "bw": 3782.61,
+        "mcap": 3922.58,
+        "divergence_pct": -3.568
       },
       {
         "date": "2026-06-23",
-        "bw": 3521.74,
-        "mcap": 3638.71,
-        "divergence_pct": -3.215
+        "bw": 3540.37,
+        "mcap": 3664.52,
+        "divergence_pct": -3.388
       },
       {
         "date": "2026-06-24",
-        "bw": 3515.53,
-        "mcap": 3638.71,
-        "divergence_pct": -3.385
+        "bw": 3540.37,
+        "mcap": 3664.52,
+        "divergence_pct": -3.388
       },
       {
         "date": "2026-06-25",
-        "bw": 3633.54,
-        "mcap": 3761.29,
-        "divergence_pct": -3.396
+        "bw": 3658.39,
+        "mcap": 3793.55,
+        "divergence_pct": -3.563
       },
       {
         "date": "2026-06-26",
-        "bw": 3503.11,
-        "mcap": 3619.35,
-        "divergence_pct": -3.212
+        "bw": 3527.95,
+        "mcap": 3645.16,
+        "divergence_pct": -3.215
       },
       {
         "date": "2026-06-29",
-        "bw": 3583.85,
-        "mcap": 3709.68,
-        "divergence_pct": -3.392
+        "bw": 3608.7,
+        "mcap": 3729.03,
+        "divergence_pct": -3.227
       },
       {
         "date": "2026-06-30",
-        "bw": 3701.86,
-        "mcap": 3838.71,
-        "divergence_pct": -3.565
+        "bw": 3726.71,
+        "mcap": 3864.52,
+        "divergence_pct": -3.566
       },
       {
         "date": "2026-07-01",
-        "bw": 3565.22,
-        "mcap": 3677.42,
-        "divergence_pct": -3.051
+        "bw": 3590.06,
+        "mcap": 3703.23,
+        "divergence_pct": -3.056
       },
       {
         "date": "2026-07-02",
-        "bw": 3403.73,
-        "mcap": 3509.68,
-        "divergence_pct": -3.019
+        "bw": 3428.57,
+        "mcap": 3535.48,
+        "divergence_pct": -3.024
       },
       {
         "date": "2026-07-06",
-        "bw": 3484.47,
-        "mcap": 3600.0,
-        "divergence_pct": -3.209
+        "bw": 3509.32,
+        "mcap": 3625.81,
+        "divergence_pct": -3.213
       },
       {
         "date": "2026-07-07",
-        "bw": 3335.4,
-        "mcap": 3438.71,
-        "divergence_pct": -3.004
+        "bw": 3360.25,
+        "mcap": 3464.52,
+        "divergence_pct": -3.01
       },
       {
         "date": "2026-07-08",
-        "bw": 3335.4,
-        "mcap": 3438.71,
-        "divergence_pct": -3.004
+        "bw": 3354.04,
+        "mcap": 3464.52,
+        "divergence_pct": -3.189
       },
       {
         "date": "2026-07-09",
-        "bw": 3422.36,
-        "mcap": 3535.48,
-        "divergence_pct": -3.2
+        "bw": 3447.2,
+        "mcap": 3554.84,
+        "divergence_pct": -3.028
       },
       {
         "date": "2026-07-10",
-        "bw": 3440.99,
-        "mcap": 3548.39,
-        "divergence_pct": -3.027
+        "bw": 3459.63,
+        "mcap": 3574.19,
+        "divergence_pct": -3.205
       },
       {
         "date": "2026-07-13",
-        "bw": 3285.71,
-        "mcap": 3387.1,
-        "divergence_pct": -2.993
+        "bw": 3310.56,
+        "mcap": 3412.9,
+        "divergence_pct": -2.999
       },
       {
         "date": "2026-07-14",
-        "bw": 3335.4,
-        "mcap": 3445.16,
-        "divergence_pct": -3.186
+        "bw": 3360.25,
+        "mcap": 3470.97,
+        "divergence_pct": -3.19
       },
       {
         "date": "2026-07-15",
-        "bw": 3329.19,
-        "mcap": 3432.26,
-        "divergence_pct": -3.003
+        "bw": 3354.04,
+        "mcap": 3458.06,
+        "divergence_pct": -3.008
       },
       {
         "date": "2026-07-16",
-        "bw": 3198.76,
-        "mcap": 3290.32,
-        "divergence_pct": -2.783
+        "bw": 3217.39,
+        "mcap": 3316.13,
+        "divergence_pct": -2.978
       },
       {
         "date": "2026-07-17",
-        "bw": 3130.43,
-        "mcap": 3219.35,
-        "divergence_pct": -2.762
+        "bw": 3149.07,
+        "mcap": 3238.71,
+        "divergence_pct": -2.768
       },
       {
         "date": "2026-07-20",
-        "bw": 3118.01,
-        "mcap": 3212.9,
-        "divergence_pct": -2.953
+        "bw": 3136.65,
+        "mcap": 3232.26,
+        "divergence_pct": -2.958
       },
       {
         "date": "2026-07-21",
-        "bw": 3267.08,
-        "mcap": 3367.74,
-        "divergence_pct": -2.989
+        "bw": 3285.71,
+        "mcap": 3393.55,
+        "divergence_pct": -3.178
       },
       {
         "date": "2026-07-22",
-        "bw": 3273.29,
-        "mcap": 3374.19,
-        "divergence_pct": -2.99
+        "bw": 3291.93,
+        "mcap": 3400.0,
+        "divergence_pct": -3.179
       },
       {
         "date": "2026-07-23",
-        "bw": 3273.29,
-        "mcap": 3374.19,
-        "divergence_pct": -2.99
+        "bw": 3298.14,
+        "mcap": 3400.0,
+        "divergence_pct": -2.996
       },
       {
         "date": "2026-07-24",
-        "bw": 3155.28,
-        "mcap": 3245.16,
-        "divergence_pct": -2.77
+        "bw": 3173.91,
+        "mcap": 3264.52,
+        "divergence_pct": -2.776
       },
       {
         "date": "2026-07-27",
-        "bw": 3118.01,
-        "mcap": 3206.45,
-        "divergence_pct": -2.758
+        "bw": 3136.65,
+        "mcap": 3225.81,
+        "divergence_pct": -2.764
       },
       {
         "date": "2026-07-28",
-        "bw": 2950.31,
-        "mcap": 3032.26,
-        "divergence_pct": -2.703
+        "bw": 2968.94,
+        "mcap": 3051.61,
+        "divergence_pct": -2.709
       },
       {
         "date": "2026-07-29",
-        "bw": 2813.66,
-        "mcap": 2883.87,
-        "divergence_pct": -2.435
+        "bw": 2826.09,
+        "mcap": 2903.23,
+        "divergence_pct": -2.657
       },
       {
         "date": "2026-07-30",
-        "bw": 2962.73,
-        "mcap": 3051.61,
-        "divergence_pct": -2.913
+        "bw": 2993.79,
+        "mcap": 3090.32,
+        "divergence_pct": -3.124
+      },
+      {
+        "date": "2026-07-31",
+        "bw": 3080.75,
+        "mcap": 3174.19,
+        "divergence_pct": -2.944
       }
     ]
   },
-  "calculated_at": "2026-07-30T23:03:49.167222+00:00Z"
+  "calculated_at": "2026-07-31T22:58:25.725529+00:00Z"
 }
