@@ -328,6 +328,8 @@ def load_public_universe():
         'credo': 'CRDO',
         'credo technology': 'CRDO',
         'rocket lab': 'RKLB',
+        'procore': 'PCOR',
+        'procore technologies': 'PCOR',
     }
     for n, t in EXTRA_PUBLIC.items():
         names.setdefault(n, t)

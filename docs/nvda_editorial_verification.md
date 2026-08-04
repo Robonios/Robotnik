@@ -445,3 +445,29 @@ Full nine-layer verification of the Micron profile, Draft 2, against the dataset
 - **The structural correction (claim 8) runs through four layers** — identity, policy, geography, editorial — all state the "American exception is corporate, not physical / HBM made in Taiwan" framing consistently and accurately.
 
 **Time-sensitive:** **High** - 1 is settled but 5, 8, 10 move (Vera Rubin allocation, Taiwan/US fab timelines, the memory-pricing crunch). **Moderate** - 3, 4, 6, 7. **Low** - 2, 9.
+
+
+# SK Hynix (000660 KS) profile
+
+Verification 2026-07-30 (four parallel research streams). Sources: SK Hynix newsroom/IR, SEC F-1/A, Q2 2026 results (reported 29 July 2026), trade press (TrendForce, KED, Korea Times), NIST/CHIPS, USGS.
+
+| # | Claim | Verdict | Source / note | Time-sensitivity |
+|---|-------|---------|---------------|------------------|
+| 1 | Namics MR-MUF single-source + exclusive + near-expiry; Micron/Samsung TC-NCF, broader base | CONFIRMED (trade-press, not company-disclosed) | Single-source/exclusive/near-expiry all TrendForce (13 Jan 2026); SK Hynix MR-MUF page names no supplier. TC-NCF broader base confirmed. | Near-expiry undated, single-outlet, absent from Q2 earnings; editorial spine rests on single-source reporting. |
+| 2 | Hybrid bonding different process/equipment; all three ~same time; MR-MUF lead doesn't carry | CONFIRMED (caveat) | Cu-Cu bumpless; BESI/ASMPT/AMAT tools. Timing slipped to HBM4E ~2027 / HBM5 ~2028-29; Samsung may move first; SK Hynix 12-high hybrid validated Apr 2026. | Timeline slipping; Q2 shows SK Hynix extending enhanced MR-MUF + developing hybrid bonding and iHBM for HBM5. |
+| 3 | TSMC HBM4 base die; own through HBM3E; Micron still own | CONFIRMED (SK Hynix disclosure) | SK Hynix newsroom 19 Apr 2024. Caveat: Micron outsources HBM4E base die to TSMC ~2027 (one-generation lag). | Micron foundry shift ~2027. |
+| 4 | Wuxi DRAM + Dalian NAND; export controls; Micron no China exposure | CONFIRMED | Wuxi ~30-40% of DRAM output; Dalian ex-Intel; VEU expired Dec 2025 to annual maintenance licences, EUV off-limits. Caveat: Micron runs Xi'an back-end packaging. | Annual China tool-licence regime. Profile tightened to "no such fabrication exposure". |
+| 5 | FY2025 ₩97tn record; Q1 2026 ~triple YoY, >70% margin; Q2 landed? | CONFIRMED; USD CORRECTED | FY2025 ₩97.147tn record (F-1); USD ~$63.8bn per F-1, not $68bn -> corrected to $64bn. Q1 2026 2.98x at 72%. Q2 2026 (29 Jul): record ₩79.3tn, 76% margin. | Q2 landed, strengthens the picture; "first half of 2026" now confirmed. |
+| 6 | Net cash ~₩35tn Q1 2026, reversing net debt | CONFIRMED (Q1); SUPERSEDED by Q2 | Q1 cash ₩54.3tn vs debt ₩19.3tn = ₩35tn. Q2 lifted to ~₩69tn (partly Kioxia stake sale). | Profile: ₩35tn dated to Q1 + Q2 ₩69tn with Kioxia caveat. |
+| 7 | HBM #1 ~57-62%; Micron #2 bits / Samsung #2 revenue; Micron smallest by revenue | #1 CONFIRMED; split SUPPORTED-soft | #1 = 56.4% by revenue Q1 2026 (F-1); estimates 62-70%. Bit-vs-revenue split contested/soft; Micron smallest by revenue = estimate. | Profile says "majority" + "smallest by revenue"; no flat ranking asserted. |
+| 8 | Vera Rubin ~two-thirds, NVIDIA-only, estimate | CONFIRMED | NVIDIA-only base; Yonhap/industry-sources estimate, not disclosure; some ~70%. | Profile prose stays vague ("largest share"). |
+| 9 | First to every HBM gen + first NVIDIA-qualified incl HBM4; Samsung earliest mass-prod-start but qualified later | DEFENSIBLE (HBM4 qual-order contested) | Firsts through HBM3E supported. HBM4: SK Hynix ready/qualified first by most accounts; Samsung first to mass-production (Feb 2026); NVIDIA certified all three together ~5 Jun 2026. | Profile says "first to every generation" (not readable as Samsung-first); HBM4 qual-order not asserted as settled. |
+| 10 | One customer ~24% FY2025 (disclosed, unnamed); second >10% Q1 2026 | CONFIRMED (verbatim, F-1) | Customer A 23.9% FY2025; Customers A/B 14.80%/12.43% Q1 2026 (first second-customer >10%); top-customer share fell to 14.8%. | Q2 concentration not yet disclosed. |
+| 11 | Icheon + Cheongju DRAM/HBM; Cheongju M15X front-end DRAM for HBM4 | CONFIRMED | SK Hynix newsroom + TrendForce; Cheongju M15X now designated main HBM hub. | Profile's "increasingly Cheongju" tracks the shift. |
+| 12 | Indiana West Lafayette ~$3.87bn, construction underway, mass prod H2 2028, packaging | CONFIRMED (all parts) | SK Hynix + NIST/CHIPS; construction underway per press Jul 2026. | -- |
+| 13 | EUV earlier than Micron; first High-NA in a memory fab | CONFIRMED | 1anm EUV 2021 vs Micron 1-gamma 2025; first commercial High-NA (EXE:5200B) at M16 Icheon (Intel first overall on an R&D tool). | -- |
+| 14 | At 5% cap; nine names at cap; SK Hynix + Samsung recently admitted | CORRECTED: EIGHT at cap | weights.json: 8 at cap (NVDA, TSM, AVGO, Samsung, MU, AMD, SK Hynix, ASML); SK Hynix + Samsung recently admitted confirmed. Profile "Nine" -> "Eight". | Same stale "nine" in committed MU sidecar (report-only). |
+
+### Watch item — Namics exclusive contract (load-bearing, single-source)
+
+The claim that SK Hynix single-sources its MR-MUF bonding compound from Namics under an EXCLUSIVE contract REPORTED TO BE NEAR EXPIRY rests on a single trade-press outlet (TrendForce, 13 Jan 2026). It is undated, absent from SK Hynix's own disclosure (its MR-MUF newsroom page names no supplier), and absent from the Q2 2026 earnings materials. It carries a load-bearing paragraph of the editorial layer (the advantage-is-the-same-fact-as-the-vulnerability argument) and appears in the dependency layer. The profile's "reported to be near expiry" / "reported to be near its end" hedging is what currently makes it safe to publish. Revisit if the contract's exclusivity or expiry appears in an SK Hynix filing, an earnings call, or a second independent source: firm it up if corroborated; if contradicted, the dependency and editorial layers need reworking, not softening.

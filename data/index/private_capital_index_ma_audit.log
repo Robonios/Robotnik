@@ -1,12 +1,12 @@
 Robotnik Private Capital Index — M&A conditional-inclusion audit
-Generated: 2026-07-06T09:33:56.351654+00:00
+Generated: 2026-08-03T10:14:09.210784+00:00
 Rule: include the M&A row in RPCI iff the acquirer is a private company in
       the Robotnik universe. Public-universe acquirers and out-of-universe
       acquirers are both excluded. Private in-universe = (acquirer appears
       as a non-M&A round target in rounds.json) OR (acquirer is in the
       PRIVATE_ACQUIRER_ALLOWLIST in scripts/calculate_private_index.py).
 
-Total M&A rows: 21 (5 included, 16 excluded)
+Total M&A rows: 25 (5 included, 20 excluded)
 
 DATE         TARGET                               ACQUIRER                      AMOUNT         DECISION
 -----------  -----------------------------------  ----------------------------  -------------  ------------------------------------------------
@@ -31,6 +31,10 @@ DATE         TARGET                               ACQUIRER                      
 2026-06-22  Aechelon Technology                  Shield AI                     $undisclosed   INCLUDE: private in-universe acquirer (fundraised-in-universe)
 2026-06-22  Kinisi Robotics                      Bear Robotics                 $undisclosed   INCLUDE: private in-universe acquirer (fundraised-in-universe)
 2026-06-25  Synaptics                            onsemi                        $7000M         EXCLUDE: public acquirer (ON)
+2026-07-06  DZYNE Technologies                   Ondas                         $876M          EXCLUDE: public acquirer (ONDS)
+2026-07-29  DroneDeploy                          Procore Technologies          $845M          EXCLUDE: public acquirer (PCOR)
+2026-07-14  ElevATE Semiconductor                Diodes Incorporated           $250M          EXCLUDE: public acquirer (DIOD)
+2026-07-08  MDA Space / CLS                      MDA Space                     $651M          EXCLUDE: public acquirer (MDA CN)
 
 Review note: any row marked "EXCLUDE: acquirer not in Robotnik universe"
 is a candidate for the PRIVATE_ACQUIRER_ALLOWLIST. Periodic review keeps

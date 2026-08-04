@@ -1,54 +1,21 @@
 {
-  "meta": {
-    "id": "000660 KS",
-    "slug": "000660-ks",
-    "schema_version": "asset-profile/2.0",
-    "generated_at": "2026-08-02T14:58:23.128977+00:00"
-  },
   "identity": {
-    "name": "SK HYNIX INC",
-    "aliases": [
-      "SK Hynix",
-      "SK hynix",
-      "SK HYNIX INC",
-      "000660 KS",
-      "sk hynix inc"
-    ],
-    "type": "public",
-    "lifecycle_status": "public",
-    "description": null,
-    "identifiers": {
-      "ticker": "000660 KS",
-      "coingecko_id": null,
-      "cik": null
-    },
     "tier": "free",
     "listing": "KRX: 000660",
     "domicile": "South Korea",
     "body": "SK Hynix makes memory chips, and it makes the best high-bandwidth memory in the world. High-bandwidth memory, or HBM, is the fast memory stacked beside an AI processor to feed it data, and every leading AI accelerator needs it. Three companies make it: SK Hynix, Samsung and Micron. SK Hynix is the largest and the most advanced, and it has been first to every generation of the technology since it created the category.\n\nLike Micron, SK Hynix both designs and manufactures its chips, which makes it an integrated device manufacturer rather than a company that farms production out to others. It is South Korean, and that matters more than a headquarters usually does, because unlike its American rival Micron, SK Hynix makes its HBM at home. Revenue was ₩97tn in 2025, roughly $64bn, a record, and it climbed steeply through the first half of 2026 as an acute memory shortage drove prices up.\n\nOne fact defines its place in this profile. Samsung and Micron both make high-bandwidth memory and both are certified to supply NVIDIA, so SK Hynix is not the only source of it. It holds the majority of the market, though, and the largest share of the newest memory going into the most important customer's chips. It is the leader by a wide margin."
   },
   "classification": {
-    "sector": "Semiconductors",
-    "subsector": "IDM",
-    "value_chain": "Fabrication & Manufacturing",
-    "universe_status": "index_constituent",
     "tier": "free",
     "lifecycle": "Public",
     "body": "Robotnik places every company in the frontier stack on a ladder of eight tiers. A company's tier says what work it does and where in the chain it earns its money.\n\nSK Hynix sits at the Fabrication & Manufacturing tier, the stage where chips are physically built. Micron and TSMC sit at the same tier, and the three make different things: TSMC builds the logic chips that compute, Micron and SK Hynix build the memory chips that store, but all three turn designs into physical silicon at enormous cost.\n\nSitting at this tier carries the burden every manufacturer carries. To make more memory, SK Hynix must build more fabrication capacity. A memory fab costs billions and takes years to bring online. The money is committed long before anyone knows whether the demand will still be there when the fab opens.\n\nWhat SK Hynix has that its rivals do not quite match is a manufacturing lead in one specific process. Chips are cut from a silicon wafer as individual squares called dies, and high-bandwidth memory is made by stacking those dies on top of one another and bonding them together. Doing that without ruining the yield is genuinely difficult, and SK Hynix does it better than anyone. That process advantage, rather than any design secret, is the foundation of its position, and it comes from having done the hard thing first and longest."
   },
   "bottleneck": {
-    "rating": "HIGH",
-    "description": "Rated on whether an AI-accelerator builder can take its HBM demand elsewhere. Two other makers are qualified (Samsung, Micron), so the position is not CRITICAL, but SK Hynix is the category leader, first to each HBM generation and holding roughly two-thirds of the leading customer's allocation, and moving volume away means a multi-quarter requalification against a supplier the customer already prefers. Customers can leave and few do, which is what HIGH means.",
-    "confidence": "HIGH",
-    "state": "rated",
     "tier": "free",
     "headline": "SK Hynix is the largest and least substitutable of the three makers of a scarce, AI-critical memory, which is why it rates HIGH; the two other qualified makers are what keep it below CRITICAL.",
     "body": "Robotnik rates every company on one question: does it hold a chokepoint, a position others cannot easily get past. The rating measures the position, not the company. It asks what would happen to the chain if the company faltered, not whether the company is large or well run. SK Hynix's rating is HIGH.\n\nHIGH, on Robotnik's scale, is a category-dominant position where switching away is a multi-year, multi-billion undertaking. It sits one step below CRITICAL, which is a genuine monopoly or sole-source position with no viable substitute, the place ASML holds with extreme-ultraviolet lithography. The gap between those two grades is the whole of this rating, so it is worth being exact about which side SK Hynix falls.\n\nSK Hynix is not CRITICAL, because a substitute exists. High-bandwidth memory is made by three companies, and NVIDIA has qualified all three for its chips. If SK Hynix vanished, its customers could turn to Samsung and Micron. That is what keeps it below the sole-source grade, however dominant it is.\n\nThe substitute is costly to reach, though, which is what lifts SK Hynix to HIGH rather than the grade below it. High-bandwidth memory as a category is a chokepoint on the whole AI build-out, since no accelerator ships without it. Robotnik does not rate the category. It rates SK Hynix, and the question is what it would cost to replace SK Hynix specifically. Moving that volume to Samsung and Micron means qualifying a new supplier against a customer's exact requirements, a matter of quarters, against two rivals that are themselves sold out.\n\nThis is the same rating Micron carries in reverse. Micron is the smallest of the three by revenue and rates MEDIUM, because it is the most substitutable member of the field. SK Hynix is the largest and rates HIGH, because it is the least substitutable. Both grades measure the same thing, position within the field of three, and the two companies sit at opposite ends of it. Samsung, the third maker, also rates HIGH, on the strength of its lead in conventional memory rather than its position in HBM, where it trails.\n\nWhat follows is that SK Hynix is the most important single supplier in the memory layer of the AI build-out. Two others can make what it makes, so it is not the sole source. It is dominant enough, though, that its faltering would slow the whole build-out whilst customers moved volume to suppliers who could not easily absorb it."
   },
   "dependency": {
-    "key_customers": null,
-    "key_suppliers": null,
-    "state": "unmapped",
     "tier": "free",
     "analysis_tier": "pro",
     "upstream": [
@@ -91,90 +58,28 @@
     "analysis_body": "SK Hynix's dependencies run in both directions, and the upstream side holds vulnerabilities its rivals do not share.\n\nDownstream, its position is commanding but concentrated. SK Hynix sells HBM into a market that cannot get enough of it, to customers led by NVIDIA, which its own filing discloses as a single customer at roughly 24% of revenue, though the filing does not name it. That concentration is easing: a second customer, presumed to be a hyperscaler building its own AI chips, crossed 10% of revenue for the first time in early 2026, and the top customer's own share fell over the same period. So SK Hynix is following the same path Micron is, a dominant relationship with NVIDIA slowly broadening as other buyers scale. The demand is real and the pricing power is real, but it rests heavily on one customer's continued growth.\n\nUpstream, SK Hynix depends on the same equipment makers every advanced chipmaker depends on: ASML for lithography, Applied Materials and Lam Research for the machines that build memory layer by layer. This is unavoidable and shared, the same chokepoint above every fab, and it is not what distinguishes SK Hynix. If anything SK Hynix is deeper into the most critical of these dependencies than Micron, having adopted ASML's extreme-ultraviolet machines earlier and installed the first of the next-generation High-NA machines in a memory fab.\n\nTwo further upstream dependencies are specific to SK Hynix, and neither is shared by its rivals. The first is a single-source material. SK Hynix's method of bonding memory dies into a stack relies on a specialised liquid compound supplied, under an exclusive contract, by a single Japanese firm, Namics. Micron and Samsung use a different bonding method with a broader supplier base, so this particular dependence is SK Hynix's alone, and the exclusive contract is reported to be near expiry, which makes it a live question for its roadmap rather than a settled arrangement.\n\nThe second is the base die. An HBM stack is not memory alone: at the bottom of each stack sits a thin logic chip, the base die, which manages the traffic between the memory above it and the processor beside it. Through its previous generations SK Hynix made that logic chip itself. For its newest generation it does not, buying it instead from TSMC in Taiwan, whilst Micron still makes its own, for now. So the leader in Korean-made memory has, at the base of every new stack, a Taiwanese dependency its American rival does not yet carry.\n\nThe pattern is that SK Hynix commands its downstream position and is more exposed upstream than it first appears. The shared equipment chokepoints are not what create that exposure; every fab carries them. Two narrow dependencies do, a single bonding material and a single foundry for one layer, and they sit above even the dominant memory maker."
   },
   "market_context": {
-    "member": true,
-    "sector_index": "Robotnik Semiconductor Index",
-    "weight_band": "5-capped",
-    "sector_rank": 1,
-    "state": "live",
-    "chart": {
-      "total": 76,
-      "at_cap": 8,
-      "below_cap": 68,
-      "cohort": [
-        "000660 KS",
-        "005930 KS",
-        "AMD",
-        "ASML",
-        "AVGO",
-        "MU",
-        "NVDA",
-        "TSM"
-      ],
-      "falloff": [
-        {
-          "band": "5-capped",
-          "count": 8
-        },
-        {
-          "band": "3.5-5",
-          "count": 2
-        },
-        {
-          "band": "2-3.5",
-          "count": 5
-        },
-        {
-          "band": "1-2",
-          "count": 6
-        },
-        {
-          "band": "0.5-1",
-          "count": 8
-        },
-        {
-          "band": "0.25-0.5",
-          "count": 8
-        },
-        {
-          "band": "<0.25",
-          "count": 39
-        }
-      ],
-      "cap_label": "5%",
-      "me": "000660 KS"
-    },
     "tier": "free",
     "weight_band_label": "At the 5% single-name cap (top band)",
     "rank_label": "Joint-largest (eight names share the cap)",
     "caption": "SK Hynix sits at the 5% single-name cap in the Robotnik Semiconductor Index, the ceiling that stops any one company dominating it. Eight names share that cap, and SK Hynix and Samsung both joined it recently, the two Korean memory makers entering the index together. The cap is deliberate: it treats the frontier as a cohort of leaders rather than a single bet. SK Hynix's presence at the cap reflects its market value, which the memory shortage has driven to enormous levels. Its bottleneck rating, HIGH, reflects something the cap cannot: that among the eight names at the ceiling, SK Hynix is one the frontier genuinely depends on, the leader in a memory the AI build-out cannot do without."
   },
   "capital": {
-    "last_round": null,
-    "total_raised_m": null,
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "The memory shortage has handed SK Hynix record profits and cleared its debt, but the cycle that made it rich is the cycle that empties balance sheets, and it is spending its strongest-ever position on capacity that arrives years out.",
     "body": "SK Hynix's finances have been transformed by the memory shortage, and the transformation is the story of this layer.\n\nThe company's revenue swings violently with the memory cycle, more violently than almost any industry. The reason is specific to memory: chips of a given specification are interchangeable between makers, so nothing holds a customer to its supplier when a cheaper one appears, and prices fall as far as oversupply pushes them. When supply is short the profits are extraordinary, and they are extraordinary now, with quarterly revenue in early 2026 running nearly triple the year before at operating margins above 70%. A year or two earlier the same company was losing money in a downturn. This is the amplitude memory makers live with, and no management smooths it, because every maker faces the same cycle at once.\n\nThe shortage has done something to SK Hynix's balance sheet worth stating plainly, because it reverses the industry's historic norm. Memory makers carry heavy debt, since building capacity costs billions and must be funded through downturns when the company is losing money. SK Hynix carried that debt for years. The supercycle cleared it. By the first quarter of 2026 the company held a net cash position of roughly ₩35tn, its cash more than double its borrowings, having paid debt down through 2025 on the flood of cash the shortage generated. Its second-quarter results, reported in late July, lifted net cash to roughly ₩69tn, though part of that rise came from selling its stake in the Japanese memory maker Kioxia rather than from trading. So SK Hynix enters a period of heavy investment, new fabs in Korea and a packaging plant in the United States, from a position of financial strength its own history would not have predicted.\n\nWhether that strength lasts is not a question about SK Hynix. It is a question about the cycle, and every memory maker faces it identically. HBM's higher prices, locked in through multi-year contracts, bring a steadiness memory has rarely had, and if HBM grows as a share of revenue the swings should soften. But the larger part of SK Hynix's business is still conventional memory, still governed by the old boom and bust, and net cash built in a shortage is exactly what a downturn consumes. What is particular to SK Hynix is only the scale of the bet: it is spending the strongest balance sheet in its history on capacity that arrives years from now."
   },
   "policy": {
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "SK Hynix is constrained in China by American export rules on its Wuxi and Dalian fabs and courted in America as an allied supplier, an exposure sharper than its American rival's because Korea sits less securely on Washington's side of the line.",
     "body": "SK Hynix's political exposure runs along two axes, and both are sharper for a Korean company than for its American rival.\n\nThe first is the US-China conflict that shapes the whole industry, and SK Hynix sits inside it awkwardly, because it manufactures in both Korea and China. It operates a major DRAM fab in Wuxi and a NAND operation in Dalian, on the Chinese mainland, which places a meaningful part of its production directly inside the country the American export controls are aimed at. Those controls restrict the equipment SK Hynix can install in its Chinese fabs, which constrains its ability to upgrade them and leaves a portion of its manufacturing base politically stranded. Micron, an American company, carries no such fabrication exposure inside China; SK Hynix, caught between its home country's alliance with Washington and its large Chinese manufacturing footprint, does.\n\nThe second axis is its position as a Korean national champion. SK Hynix is, with Samsung, one of the two pillars of South Korea's most strategically important industry, which makes it central to Korean industrial policy and to the country's leverage in a contest between larger powers. Its investment in the United States, the packaging plant in Indiana, is partly a commercial decision and partly the kind of allied-manufacturing gesture that governments now expect of strategic suppliers. So SK Hynix is shaped by policy from two directions at once: constrained in China by American rules, and courted in America as an allied alternative to Chinese supply.\n\nThe forward risk is that the ground it stands on is a Korean company's ground, and Korea's position between the United States and China is more exposed than America's. SK Hynix cannot simply align with Washington the way an American firm can, because too much of its manufacturing and its market sits on the other side of the line."
   },
   "geographic": {
-    "hq_country": "South Korea",
-    "hq_city": "Icheon",
-    "exposure": {
-      "state": "forthcoming"
-    },
     "tier": "pro",
+    "hq_city": "Icheon",
     "teaser": "SK Hynix's advantage over Micron is that it makes its HBM at home in Korea rather than in Taiwan, a real edge on the risk that matters most, though the base die it now buys from TSMC keeps even the Korean maker partly tied to Taiwan.",
     "body": "SK Hynix's geography is its clearest advantage over its nearest rival, and stating it precisely matters, because the advantage is real but not total.\n\nSK Hynix makes its high-bandwidth memory in South Korea. The memory dies are fabricated at Icheon and, increasingly, Cheongju; the delicate stacking that turns those dies into HBM is done at the same Korean sites; and the packaging is Korean too. This is the sharp contrast with Micron, the only non-Korean HBM maker, whose most advanced memory and stacking sit in Taiwan, on the same island as TSMC and exposed to the same single point of failure. Micron is celebrated as the American memory champion whilst making its HBM in Taiwan; SK Hynix, without any such branding, actually makes its most important product at home. On the axis that matters most to the AI build-out, concentration of critical memory supply, SK Hynix is the more geographically resilient of the two.\n\nThe advantage has one genuine exception, and honesty requires naming it. Each HBM stack sits on a thin logic layer at its base, and for its newest generation SK Hynix buys that base die from TSMC in Taiwan. So even the Korean memory maker has a Taiwanese dependency at the foundation of every new stack. The exception is narrow, the base die is a small part of the value and the mass of the memory remains Korean, but it means SK Hynix is not wholly free of the Taiwan risk that defines the rest of this stack. No leading-edge chipmaker is.\n\nIts diversification runs the other way from most. Where the American and Taiwanese companies in this stack are building towards the United States, SK Hynix is a Korean company adding American capacity, the Indiana packaging plant, for the same reasons of policy and customer proximity. But that plant is years from production, and for the rest of this decade SK Hynix's HBM is a Korean story, which is, on the geography that matters, a stronger position than any of its rivals hold."
   },
   "editorial": {
-    "notes": null,
-    "state": "forthcoming",
     "tier": "pro",
     "teaser": "SK Hynix has won the memory race on a narrower base than the win suggests, a process lead the next process generation partly resets and two upstream dependencies its own success created, and the more consequential shift is memory quietly becoming a foundry customer.",
     "body": "SK Hynix is discussed as the company winning the AI memory race, and it is winning it. Robotnik's map does not dispute the lead. What the map shows is that the lead rests on a narrower base than the framing suggests, and that the more consequential thing happening to this company is not competitive at all. Robotnik does not price companies, so whether the shares are dear stays with others. What follows is where the leverage and the fragility sit.\n\nStart with what the lead actually consists of, because it is more specific than making the best memory. SK Hynix's advantage is a method of bonding stacked dies together, one it pioneered and has refined across four generations, and which its two rivals do not use. Its yields are better because it has done this particular thing longer than anyone else. That is a real advantage and a hard one to copy. But it is an advantage in a technique rather than in a product, and the industry is preparing to change the technique. Hybrid bonding, the method expected for the taller stacks that follow the current generation, is a different process with a different equipment base, and all three makers will adopt it at roughly the same time. A lead built on mastering one method does not automatically carry into the method that replaces it.\n\nThis is also why the single-source material matters more than it first appears. The compound SK Hynix buys exclusively from one Japanese supplier is the material its bonding method requires, and the rival method uses a different material with a broader supply base. So SK Hynix's distinctive advantage and its distinctive vulnerability are the same fact seen from two sides: the process that put it ahead is the process that ties it to one supplier, on a contract now reported to be near its end. The narrowness upstream is a direct consequence of the thing that made it dominant downstream.\n\nThe second thing the map shows is a structural shift that the question of who wins HBM misses entirely. High-bandwidth memory is no longer purely memory. Each stack sits on a logic chip, and as the generations advance that logic layer grows more sophisticated, which means it increasingly needs a leading-edge foundry to make it. SK Hynix, first to the newest generation, is the first memory maker to hand that layer to TSMC. Micron still makes its own, for now. The direction of travel is what matters: as base dies move to more advanced processes, memory makers become foundry customers for part of their own product, and the independence memory has always had from the foundry chokepoint erodes. The stack's most concentrated dependency is quietly extending into the one layer that sat outside it.\n\nFor anyone reading the frontier through its dependencies rather than its market shares, that is the more consequential development, and it changes what several other things mean. A contest between three memory makers is a question about who supplies a component. Whether memory remains a separate chokepoint, or becomes an extension of the foundry chokepoint, is a question about the shape of the stack. It changes what a memory shortage signals, how far a Taiwan disruption reaches, and how much of the frontier's total risk sits with one company in Hsinchu. SK Hynix's base-die decision is the first visible instance, and it was taken by the strongest memory maker in the market, from a position of maximum leverage. If the leader outsources this layer, the others have less reason not to.\n\nRobotnik's reading is that SK Hynix has won the memory race on terms narrower and more provisional than the win suggests: a process advantage that the next process generation partly resets, a material dependency created by that same advantage, and a foundry dependency it has chosen to take on. None of this threatens its lead over Samsung and Micron, which is not seriously in question. What it threatens is the assumption that memory is a layer with its own destiny, held by companies that answer to no one above them. Watch the base die and which process node it moves to, watch the bonding contract, and watch what the other two do when hybrid bonding arrives. Those decide what the lead is worth, and not one of them is a market-share number."
