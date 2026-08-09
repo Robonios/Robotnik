@@ -1,6 +1,6 @@
 # Robotnik Data Quality — Weekly Report
-**Generated:** 02-Aug-2026 23:56 UTC
-**Period:** 26-Jul to 02-Aug-2026
+**Generated:** 09-Aug-2026 23:28 UTC
+**Period:** 02-Aug to 09-Aug-2026
 
 ## 🟢 Ready for Reinstatement
 No entities ready for reinstatement.
@@ -21,34 +21,34 @@ No index-side quarantine events this week.
 No rejection log found.
 
 ## ⏱ Price History Staleness
-Scanned **357** history files. Newest last-close: **2026-08-01**. Yesterday (UTC): **2026-08-01**. Threshold: **>3 days stale** (aligned with the 24H freshness gate in `calculate_metrics.py`).
-🟠 **39 file(s) stale** beyond threshold. Each of these will show `—` in the 24H column and may degrade the 7D column if the staleness exceeds the 5-day lookback window.
-- **ROBCO** (RobCo Network) — last close `2026-03-01`, **153d stale** [Token]
-- **MECHA** (MechaOs) — last close `2026-05-24`, **69d stale** [Token]
-- **ATNM** (Autonoma Network) — last close `2026-05-27`, **66d stale** [Token]
-- **$CPT** (Empulser Enterprises) — last close `2026-05-28`, **65d stale** [Token]
-- **ANIMUS** (Animus) — last close `2026-05-28`, **65d stale** [Token]
-- **AUKI** (Auki) — last close `2026-05-28`, **65d stale** [Token]
-- **BREW** (Homebrew Robotics Club) — last close `2026-05-28`, **65d stale** [Token]
-- **CODEC** (Codec Flow) — last close `2026-05-28`, **65d stale** [Token]
-- **DEUS** (XMAQUINA) — last close `2026-05-28`, **65d stale** [Token]
-- **DPTX** (DEEPTICS) — last close `2026-05-28`, **65d stale** [Token]
-- **EMDR** (Modulr) — last close `2026-05-28`, **65d stale** [Token]
-- **FORMA** (Forma Robotics) — last close `2026-05-28`, **65d stale** [Token]
-- **GEOD** (Geodnet) — last close `2026-05-28`, **65d stale** [Token]
-- **IOTX** (IoTeX) — last close `2026-05-28`, **65d stale** [Token]
-- **JOJO** (JojoWorld) — last close `2026-05-28`, **65d stale** [Token]
-- **KAGE** (KAGE Network) — last close `2026-05-28`, **65d stale** [Token]
-- **NATIX** (NATIX Network) — last close `2026-05-28`, **65d stale** [Token]
-- **ONO** (Onocoy Token) — last close `2026-05-28`, **65d stale** [Token]
-- **OP** (One Path) — last close `2026-05-28`, **65d stale** [Token]
-- **OPAN** (Opanarchy) — last close `2026-05-28`, **65d stale** [Token]
-- **OPUS** (Opus Genesis) — last close `2026-05-28`, **65d stale** [Token]
-- **OVR** (Ovr) — last close `2026-05-28`, **65d stale** [Token]
-- **PEAQ** (peaq) — last close `2026-05-28`, **65d stale** [Token]
-- **QACE** (Qace Dynamics) — last close `2026-05-28`, **65d stale** [Token]
-- **RBR** (Robora) — last close `2026-05-28`, **65d stale** [Token]
-- _…and 14 more. Run `python scripts/fetch_price_history.py --refresh` to catch up._
+Scanned **357** history files. Newest last-close: **2026-08-08**. Yesterday (UTC): **2026-08-08**. Threshold: **>3 days stale** (aligned with the 24H freshness gate in `calculate_metrics.py`).
+🟠 **40 file(s) stale** beyond threshold. Each of these will show `—` in the 24H column and may degrade the 7D column if the staleness exceeds the 5-day lookback window.
+- **ROBCO** (RobCo Network) — last close `2026-03-01`, **160d stale** [Token]
+- **MECHA** (MechaOs) — last close `2026-05-24`, **76d stale** [Token]
+- **ATNM** (Autonoma Network) — last close `2026-05-27`, **73d stale** [Token]
+- **$CPT** (Empulser Enterprises) — last close `2026-05-28`, **72d stale** [Token]
+- **ANIMUS** (Animus) — last close `2026-05-28`, **72d stale** [Token]
+- **AUKI** (Auki) — last close `2026-05-28`, **72d stale** [Token]
+- **BREW** (Homebrew Robotics Club) — last close `2026-05-28`, **72d stale** [Token]
+- **CODEC** (Codec Flow) — last close `2026-05-28`, **72d stale** [Token]
+- **DEUS** (XMAQUINA) — last close `2026-05-28`, **72d stale** [Token]
+- **DPTX** (DEEPTICS) — last close `2026-05-28`, **72d stale** [Token]
+- **EMDR** (Modulr) — last close `2026-05-28`, **72d stale** [Token]
+- **FORMA** (Forma Robotics) — last close `2026-05-28`, **72d stale** [Token]
+- **GEOD** (Geodnet) — last close `2026-05-28`, **72d stale** [Token]
+- **IOTX** (IoTeX) — last close `2026-05-28`, **72d stale** [Token]
+- **JOJO** (JojoWorld) — last close `2026-05-28`, **72d stale** [Token]
+- **KAGE** (KAGE Network) — last close `2026-05-28`, **72d stale** [Token]
+- **NATIX** (NATIX Network) — last close `2026-05-28`, **72d stale** [Token]
+- **ONO** (Onocoy Token) — last close `2026-05-28`, **72d stale** [Token]
+- **OP** (One Path) — last close `2026-05-28`, **72d stale** [Token]
+- **OPAN** (Opanarchy) — last close `2026-05-28`, **72d stale** [Token]
+- **OPUS** (Opus Genesis) — last close `2026-05-28`, **72d stale** [Token]
+- **OVR** (Ovr) — last close `2026-05-28`, **72d stale** [Token]
+- **PEAQ** (peaq) — last close `2026-05-28`, **72d stale** [Token]
+- **QACE** (Qace Dynamics) — last close `2026-05-28`, **72d stale** [Token]
+- **RBR** (Robora) — last close `2026-05-28`, **72d stale** [Token]
+- _…and 15 more. Run `python scripts/fetch_price_history.py --refresh` to catch up._
 
 ---
 *Report generated by `scripts/quarantine_health_check.py`*
