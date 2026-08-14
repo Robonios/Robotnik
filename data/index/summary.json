@@ -1,16 +1,16 @@
 {
-  "calculated_at": "2026-08-13T22:38:44.574066+00:00Z",
+  "calculated_at": "2026-08-14T22:23:03.911805+00:00Z",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 3674.19,
-    "daily_change_pct": 1.15,
+    "value": 3684.37,
+    "daily_change_pct": 0.21,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
     "entities": 203
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 3674.19,
+    "value": 3684.37,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
     "entities": 203
@@ -18,22 +18,22 @@
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 3788.46,
+      "value": 3794.87,
       "entities": 76
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
-      "value": 1790.91,
+      "value": 1800.0,
       "entities": 61
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 3197.92,
+      "value": 3233.16,
       "entities": 35
     },
     "materials": {
       "name": "Robotnik Materials Index",
-      "value": 3112.24,
+      "value": 3185.57,
       "entities": 31
     }
   },
@@ -69,14 +69,14 @@
       "weight_pct": 5.0
     },
     {
-      "ticker": "000660 KS",
-      "name": "SK Hynix",
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
     {
-      "ticker": "AMD",
-      "name": "Advanced Micro Devices",
+      "ticker": "000660 KS",
+      "name": "SK Hynix",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
@@ -90,13 +90,13 @@
       "ticker": "INTC",
       "name": "Intel",
       "sector": "Semiconductor",
-      "weight_pct": 4.7271
+      "weight_pct": 4.659
     },
     {
-      "ticker": "AMAT",
-      "name": "Applied Materials",
+      "ticker": "LRCX",
+      "name": "Lam Research",
       "sector": "Semiconductor",
-      "weight_pct": 3.6516
+      "weight_pct": 3.5761
     }
   ]
 }
