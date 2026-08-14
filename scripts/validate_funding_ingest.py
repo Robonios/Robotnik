@@ -240,10 +240,20 @@ def check_weak_citation(url):
 # run
 # --------------------------------------------------------------------------- #
 
-def run(online=False, tol_url=14, tol_fetch=30, limit_online=None,
+def run(online=False, tol_url=14, tol_fetch=30, tol_embargo=30, limit_online=None,
         only_companies=None, advisory=False, path=None):
     # tol_url : R4a, date encoded in newswire URL (reliable) -> FAIL. Calibrated
     #           to +/-14d: catches 11/11 labelled index-movers at ~1% false pos.
+    # tol_embargo: R4a embargo asymmetry. Newswire IDs are stamped at UPLOAD, so
+    #           an embargoed release carries an ID EARLIER than its publication /
+    #           announcement (the row date). A URL-ID up to tol_embargo days
+    #           EARLIER than the row is therefore embargo-plausible -> WARN, not
+    #           FAIL. A URL-ID LATER than the row (cannot embargo into the future)
+    #           or EARLIER beyond the window stays a FAIL. Trade-off: a window
+    #           wide enough to pass a long embargo (Manna, 22d) also downgrades a
+    #           same-direction "recorded-too-late" error of smaller gap (Archetype,
+    #           15d) from FAIL to WARN -- both are url-earlier and 15 < 22, so no
+    #           window separates them. WARN still surfaces it. See calibration.
     # tol_fetch: R4b, publish date parsed from a fetched page (lags variably,
     #           noisier) -> WARN at +/-30d.
     # path    : validate a candidate file (e.g. a pre-merge monthly-sweep shard)
@@ -304,16 +314,25 @@ def run(online=False, tol_url=14, tol_fetch=30, limit_online=None,
                       f"same_source={same_src}")
             add("R3-duplicate", "FAIL", r, detail)
 
-    # ---- R4a : date-in-URL newswires (offline) ---------------------------- #
+    # ---- R4a : date-in-URL newswires (offline, embargo-asymmetric) -------- #
     for r in rows:
         url = (r.get("source") or "").strip()
         u = date_from_url(url)
         rd = parse_date(r.get("date"))
         if u and rd:
-            delta = abs((u - rd).days)
-            if delta > tol_url:
+            signed = (u - rd).days          # <0 => URL-ID earlier than row
+            delta = abs(signed)
+            if delta <= tol_url:
+                pass                        # within reliable tolerance
+            elif signed < 0 and delta <= tol_embargo:
+                add("R4a-date-url", "WARN", r,
+                    f"row date {rd} vs URL-encoded release date {u} = {delta}d EARLIER "
+                    f"(embargo-plausible, within {tol_embargo}d; ID stamped pre-publication) "
+                    f"-- verify the announcement date")
+            else:
+                where = "LATER than row" if signed > 0 else f"EARLIER, beyond {tol_embargo}d embargo window"
                 add("R4a-date-url", "FAIL", r,
-                    f"row date {rd} vs URL-encoded release date {u} = {delta}d "
+                    f"row date {rd} vs URL-encoded release date {u} = {delta}d {where} "
                     f"(> {tol_url}d tolerance)")
 
     # ---- R4b : online fetch (opt-in) -------------------------------------- #
@@ -384,6 +403,9 @@ def main():
                     help="R4a FAIL tolerance, days, for date-in-URL newswires (default 14)")
     ap.add_argument("--tol-fetch", type=int, default=30,
                     help="R4b WARN tolerance, days, for fetched publish dates (default 30)")
+    ap.add_argument("--tol-embargo", type=int, default=30,
+                    help="R4a embargo window, days: URL-ID up to this many days EARLIER "
+                         "than the row is WARN not FAIL (default 30)")
     ap.add_argument("--limit-online", type=int, default=None,
                     help="cap R4b fetches (for demos)")
     ap.add_argument("--only", nargs="*", default=None,
@@ -397,8 +419,8 @@ def main():
     args = ap.parse_args()
 
     findings = run(online=args.online, tol_url=args.tol_url, tol_fetch=args.tol_fetch,
-                   limit_online=args.limit_online, only_companies=args.only,
-                   advisory=args.advisory, path=args.path)
+                   tol_embargo=args.tol_embargo, limit_online=args.limit_online,
+                   only_companies=args.only, advisory=args.advisory, path=args.path)
     if args.json:
         report(findings, as_json=True)
         nfail = sum(1 for f in findings if f["severity"] == "FAIL")
