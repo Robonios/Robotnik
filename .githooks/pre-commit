@@ -1,0 +1,25 @@
+#!/bin/sh
+# Robotnik funding ingest guard — pre-commit hook.
+#
+# Runs the OFFLINE four-rule validator (R1 bare-domain, R2 truncated-newswire,
+# R3 duplicate, R4a date-vs-URL) whenever data/funding/rounds.json is part of
+# the commit, and blocks the commit on any FAIL. It does NOT run the online
+# tier (no --online) and does NOT run advisory checks (no --advisory) — the
+# gate is the four deterministic rules only, so a commit never depends on the
+# network or on a bot-blockable fetch.
+#
+# Activate once per clone:   git config core.hooksPath .githooks
+# Bypass intentionally:      git commit --no-verify
+
+# Only gate when the funding dataset is actually being committed.
+if git diff --cached --name-only | grep -q '^data/funding/rounds\.json$'; then
+    echo "[ingest-guard] data/funding/rounds.json staged — validating (offline, 4 rules)…"
+    if ! python3 scripts/validate_funding_ingest.py; then
+        echo ""
+        echo "[ingest-guard] COMMIT BLOCKED: FAIL findings above."
+        echo "  Fix the flagged rows, or bypass intentionally with: git commit --no-verify"
+        exit 1
+    fi
+    echo "[ingest-guard] clean."
+fi
+exit 0

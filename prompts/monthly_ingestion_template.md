@@ -1,6 +1,6 @@
 # Monthly Funding Ingestion — Agent Prompt Template
 
-**Locked at:** v1.0 (2026-05-06)
+**Locked at:** v1.2 (2026-08-14)
 **Use for:** all monthly ingestion runs (first Sunday of each month) and any backfill / supplemental passes.
 
 This template encodes the schema, classification, and **anti-fabrication** rules that emerged from the v1.0 backfill experience. Copy verbatim into each research agent's prompt; only swap the `## Window` block.
@@ -249,6 +249,27 @@ Print a brief summary at the end: deal count, total $ disclosed, top 5 by size, 
 
 ---
 
+## Pre-merge validation gate (orchestrator)
+
+Run **before** merging the sector shards into `data/funding/rounds.json`, so mechanical defects surface before rows enter the dataset. Assemble the five `/tmp/{window_slug}_research/{sector}.json` shards into one candidate array and validate it:
+
+```bash
+python3 scripts/validate_funding_ingest.py --online --advisory --path <candidate.json>
+```
+
+The guard is flag-only (it never edits a row). It enforces the anti-fabrication rules above mechanically:
+
+- **R1 bare-domain / R2 truncated-newswire** — enforce Rule 1 and Rule 3: no domain-root citations, and no truncated PRNewswire / BusinessWire / GlobeNewswire links (a newswire URL missing its release id is rejected).
+- **R4 date-vs-source** — enforces Rule 5. `--online` fetches each candidate's article and compares its date to the row's date (±30d, WARN); `R4a` checks BusinessWire / GlobeNewswire dates offline from the URL itself (±14d, FAIL, unblockable).
+- **A5 weak-citation** — flags Tracxn / Crunchbase-org / CB-Insights profile URLs, which the Quality bar bans as primary sources.
+- **A6 null-amount** — flags index-eligible rows carrying no amount.
+
+**Resolve every FAIL before merging.** Bot-blocked fetches report as UNVERIFIABLE, never FAIL (expected for PRNewswire / SpaceNews / BusinessWire) — do not treat them as defects. WARN (A5/A6) is advisory.
+
+R3 (duplicate) against rows **already** in the dataset needs the merged set, so a candidate-only run only catches within-batch dups. The `.githooks/pre-commit` hook runs the offline four rules again on the merged `rounds.json` at commit time and catches new-vs-existing double-counts (e.g. a re-reported round). Activate the hook once per clone with `git config core.hooksPath .githooks`.
+
+---
+
 ## Run summary expectations
 
 After all sectors complete, the orchestrator will produce a monthly summary with:
@@ -269,3 +290,4 @@ After all sectors complete, the orchestrator will produce a monthly summary with
 - **2026-05-06 (v1.0.1):** Added Rules 5, 6, 7 covering systematic error classes surfaced in the 1Q25-4Q25 bulk data audit: date verification (use canonical announcement date, not synthesized), currency capture mandatory for non-USD raises (native + FX), and round naming verbatim (no normalization that changes meaning). Audit found 14 confirmed errors in 200 rows (~7% rate) plus 69 unverifiable; pattern errors concentrated in date-misattribution and currency-conversion-drift. Added `Series B2` to round enum (first use: Commonwealth Fusion Systems $863M, 2025-08-28) per Rule 7 verbatim-naming.
 - **2026-05-12 (v1.1.1):** Added Rules 8, 9, 10 covering data-quality patterns surfaced in v1.1.1 CSV review: (8) investor placeholder ban — no "Multiple"/"Various"/"Existing investors" filler in lead/co fields; unknown → `Undisclosed` / empty. (9) canonical-name check against `investor_name_map.csv` before writing investor names; corporate-vs-venture-arm distinct globally. (10) `robotnik_take` ↔ `company_description` cross-check before submitting (transposition pattern caught 7× across the dataset). Note: `total_raised_m` and `total_number_of_raises` are retained internally but no longer in CSV export — they computed only from 2023+ coverage and under-counted companies with pre-2023 history.
 - **2026-07-06 (v1.1.2):** Rule 9 repointed. The curated `investor_name_map.csv` was retired in the data-exposure cleanup (commit `afe10397`) and no longer exists in the repo; the old Rule 9 link pointed at a deleted file, so sweep agents silently fell back to a derived list (surfaced during the June 2026 sweep). Rule 9 now canonicalizes investor names against the spellings already present in `data/funding/rounds.json` (the living canonical corpus). No change to the canonicalization principles themselves (corporate-vs-venture-arm distinct, no duplicate spellings).
+- **2026-08-14 (v1.2):** Added the **Pre-merge validation gate** — `scripts/validate_funding_ingest.py --online --advisory` run on the assembled candidate rows before merge, mechanically enforcing the URL (Rules 1/3) and date (Rule 5) anti-fabrication rules and flagging weak-citation / null-amount rows. Complemented by a `.githooks/pre-commit` hook that runs the offline four rules on the merged `rounds.json` at commit (catches new-vs-existing duplicates). Built from the full-dataset RPCI citation audit (46 defects across 1,404 rows); the guard's first run on the committed tree surfaced a live duplicate (Astranis, Series D $200M double-counted across 2023-04-11 / 2024-07-24) and a new date error the audit missed (Manna Air Delivery, recorded 2026-04-01 vs a 2026-03-10 citation).
