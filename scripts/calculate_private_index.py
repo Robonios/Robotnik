@@ -64,6 +64,7 @@ INDEX_DIR = os.path.join(ROOT_DIR, 'data', 'index')
 OUT_PATH = os.path.join(INDEX_DIR, 'private_capital_index.json')
 GUARDRAIL_LOG = os.path.join(INDEX_DIR, 'private_capital_index_guardrails.log')
 MA_AUDIT_LOG  = os.path.join(INDEX_DIR, 'private_capital_index_ma_audit.log')
+SCOPE_PATH    = os.path.join(INDEX_DIR, 'rpci_scope.json')
 
 # ── methodology constants ────────────────────────────────────────────────
 BASE_VALUE = 1000.0
@@ -923,6 +924,30 @@ def main():
     with open(MA_AUDIT_LOG, 'w') as f:
         f.write('\n'.join(ma_lines))
     print(f"-> {os.path.relpath(MA_AUDIT_LOG, ROOT_DIR)}")
+
+    # ── RPCI scope manifest — single source of truth for the funding page's
+    # primary-capital vs lifecycle-exit split. The page READS this instead of
+    # hand-maintaining a parallel EXCLUDED_ROUNDS / M&A list, so the two can
+    # never drift. A round feeds primary capital (RPCI-eligible) unless its
+    # round value is in excluded_rounds; M&A is eligible only when it appears
+    # in mna_included (private in-universe acquirer).
+    scope = {
+        'generated_at': datetime.now(timezone.utc).isoformat(),
+        'note': ('Authoritative RPCI round-scope, emitted by calculate_private_index.py. '
+                 'The funding page reads this to separate primary capital from lifecycle exits — '
+                 'do not hand-maintain a parallel list.'),
+        'excluded_rounds': sorted(EXCLUDED_ROUNDS),
+        'mna_rule': ('M&A is RPCI-eligible iff the acquirer is a private company in the Robotnik '
+                     'universe (a non-M&A round target, or PRIVATE_ACQUIRER_ALLOWLIST). Public-acquirer '
+                     'and out-of-universe M&A are lifecycle exits.'),
+        'mna_included': [{'company': d['company'], 'date': d['date']}
+                         for d in mna_decisions if d['include']],
+        'mna_excluded': [{'company': d['company'], 'date': d['date'], 'reason': d['reason']}
+                         for d in mna_decisions if not d['include']],
+    }
+    with open(SCOPE_PATH, 'w') as f:
+        json.dump(scope, f, indent=2, ensure_ascii=False)
+    print(f"-> {os.path.relpath(SCOPE_PATH, ROOT_DIR)}")
 
 
 if __name__ == '__main__':

@@ -225,6 +225,39 @@
 
 </div>
 </div>
+
+<!-- Lifecycle Exits — IPOs + excluded M&A, stored but NOT counted as primary capital.
+     Kept in sync with the index via data/index/rpci_scope.json (no parallel list). -->
+<div class="chart-box" id="exits-section" style="margin-top:1.25rem;display:none;">
+  <div class="chart-box-title">LIFECYCLE EXITS <span style="font-weight:400;color:#5A6178;font-size:9px;">— stored, not primary capital</span></div>
+  <p style="color:#8B92A5;font-size:11px;line-height:1.5;margin:0.35rem 0 0.75rem;">
+    These are <strong style="color:#e6e8ed;">exits, not fundraising</strong>: public listings (IPOs) and acquisitions by public or out-of-universe buyers. They are tracked for the record but excluded from every capital figure above and from the RPCI, which measures private <em>primary</em> capital deployment. Acquisitions by private in-universe buyers are <em>not</em> here &mdash; they redeploy private capital and stay in the primary view.
+  </p>
+  <div class="top-table-wrap">
+    <table class="top-table" id="exits-table">
+      <thead><tr><th>Company</th><th>Type</th><th>Sector</th><th class="r">Value ($M)</th><th>Date</th></tr></thead>
+      <tbody id="exits-body"></tbody>
+    </table>
+  </div>
+  <div id="exits-summary" style="margin-top:0.5rem;color:#5A6178;font-size:10px;"></div>
+</div>
+
+<!-- Non-venture capital events — Strategic / Government / Grant / Debt / Bridge / Undisclosed / Other.
+     Excluded from primary capital and not exits. Keyed on the same rpci_scope.json manifest. -->
+<div class="chart-box" id="nonventure-section" style="margin-top:1.25rem;display:none;">
+  <div class="chart-box-title">NON-VENTURE CAPITAL <span style="font-weight:400;color:#5A6178;font-size:9px;">— stored, not primary capital</span></div>
+  <p style="color:#8B92A5;font-size:11px;line-height:1.5;margin:0.35rem 0 0.75rem;">
+    Capital events that are <strong style="color:#e6e8ed;">neither private venture rounds nor exits</strong>: strategic corporate investments, government funding and grants, debt financing, bridges, and undisclosed-type rounds. They are tracked for completeness but excluded from every capital figure above and from the RPCI, which measures private <em>venture</em> primary capital deployment.
+  </p>
+  <div class="top-table-wrap">
+    <table class="top-table" id="nonventure-table">
+      <thead><tr><th>Company</th><th>Type</th><th>Sector</th><th class="r">Value ($M)</th><th>Date</th></tr></thead>
+      <tbody id="nonventure-body"></tbody>
+    </table>
+  </div>
+  <div id="nonventure-summary" style="margin-top:0.5rem;color:#5A6178;font-size:10px;"></div>
+</div>
+
 </div>
 
 <!-- Rounds / Investors / Frontier Funds tabs are gated; their buttons now
@@ -236,6 +269,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script src="js/nav.js?v=20260627g"></script>
-<script src="js/funding.js?v=20260520f"></script>
+<script src="js/funding.js?v=20260809a"></script>
 </body>
 </html>

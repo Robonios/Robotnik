@@ -1,25 +1,25 @@
 Robotnik Private Capital Index — guardrail log
-Generated: 2026-08-03T10:14:09.148045+00:00
+Generated: 2026-08-14T14:01:46.677924+00:00
 Source: data/funding/rounds.json
 
 
 [GUARDRAIL 3] Stage-label classification:
-  Total rows scanned: 1406
-  In RPCI (mapped + included M&A): 1134
-  Excluded:                       272
+  Total rows scanned: 1400
+  In RPCI (mapped + included M&A): 1129
+  Excluded:                       271
     - Strategic: 85
     - Government investment: 36
     - Other: 33
     - Undisclosed: 26
     - Debt Financing: 24
     - M&A (excluded by conditional rule): 20
-    - IPO: 18
+    - IPO: 17
     - Grant: 10
     - IPO (filed): 9
     - Bridge: 9
     - Government: 2
 
-[FILTER: IPO] 27 IPO + IPO (filed) row(s) excluded across the dataset
+[FILTER: IPO] 26 IPO + IPO (filed) row(s) excluded across the dataset
   Per-month breakdown (in-RPCI scope only, i.e. months 2024-01 onward):
     2024-03: 1 IPO row(s) filtered out
     2024-06: 1 IPO row(s) filtered out
@@ -29,7 +29,7 @@ Source: data/funding/rounds.json
     2025-07: 1 IPO row(s) filtered out
     2025-08: 1 IPO row(s) filtered out
     2025-12: 1 IPO row(s) filtered out
-    2026-03: 2 IPO row(s) filtered out
+    2026-03: 1 IPO row(s) filtered out
     2026-04: 4 IPO row(s) filtered out
     2026-05: 3 IPO row(s) filtered out
     2026-06: 1 IPO row(s) filtered out
@@ -70,10 +70,10 @@ Source: data/funding/rounds.json
   [GUARDRAIL 1] month=2026-04 Waymo 2026-02-02 stage=Series C+ amount=$16000M trailing-99th=$1829M (8.7x); CAPPED at $1000M
 
 [BASE] March 2025 raw components used as normalisation reference:
-  capital_deployed: 5140.3800
+  capital_deployed: 5153.3800
   deal_count: 49.0000
   stage_weighted_activity: 53.5000
-  round_size_vs_trailing: 2.5534
+  round_size_vs_trailing: 2.5567
   investor_breadth: 248.0000
 
 [CALIBRATION] During Jan-Dec 2023 readings:
@@ -91,15 +91,15 @@ Source: data/funding/rounds.json
 [ACCEPTANCE] OK — March 2025 = 1000.00 exact.
 
 *** WARN: composite ≠ weighted sum at:
-  2023-01: composite=429.1332 weighted_sum=364.7632
-  2023-02: composite=735.6605 weighted_sum=625.3114
-  2023-03: composite=1043.0607 weighted_sum=886.6016
-  2023-04: composite=1101.0304 weighted_sum=1068.7656
-  2023-05: composite=1314.3608 weighted_sum=1209.4662
-  2023-06: composite=1388.0025 weighted_sum=1301.7911
-  2023-07: composite=1291.1253 weighted_sum=1212.1247
-  2023-08: composite=1229.4224 weighted_sum=1175.4735
-  2023-09: composite=1460.6803 weighted_sum=1430.8913
-  2023-10: composite=1520.0864 weighted_sum=1473.0657
-  2023-11: composite=1457.0293 weighted_sum=1411.415
-  2023-12: composite=1359.3072 weighted_sum=1236.7935
+  2023-01: composite=428.9452 weighted_sum=364.6034
+  2023-02: composite=735.2959 weighted_sum=625.0015
+  2023-03: composite=1042.5843 weighted_sum=886.1966
+  2023-04: composite=1100.5855 weighted_sum=1068.2173
+  2023-05: composite=1313.7639 weighted_sum=1208.8408
+  2023-06: composite=1387.3616 weighted_sum=1301.0902
+  2023-07: composite=1290.5466 weighted_sum=1211.486
+  2023-08: composite=1228.8494 weighted_sum=1174.8195
+  2023-09: composite=1459.8626 weighted_sum=1429.954
+  2023-10: composite=1519.2698 weighted_sum=1472.14
+  2023-11: composite=1435.9741 weighted_sum=1393.9334
+  2023-12: composite=1338.8925 weighted_sum=1218.9224

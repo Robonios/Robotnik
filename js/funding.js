@@ -1,6 +1,44 @@
 // ===== FUNDING OPERATIONS PAGE =====
 var summaryData = null, roundsData = null;
 var currentPeriod = '1Y';
+
+// ===== RPCI scope (single source of truth) =====
+// data/index/rpci_scope.json is emitted by scripts/calculate_private_index.py and
+// defines which round types are RPCI-eligible "primary capital" vs lifecycle
+// "exits". The page READS it rather than hand-maintaining a parallel EXCLUDED_ROUNDS
+// / M&A list, so the funding page and the index can never drift.
+var excludedRoundsSet = null;   // {roundValue: 1} — excluded from primary capital
+var mnaIncludedSet = null;      // {"company|date": 1} — the only M&A that count as primary
+function buildScope(scope){
+  excludedRoundsSet = {};
+  ((scope && scope.excluded_rounds) || []).forEach(function(r){ excludedRoundsSet[r] = 1; });
+  mnaIncludedSet = {};
+  ((scope && scope.mna_included) || []).forEach(function(m){ mnaIncludedSet[(m.company||'')+'|'+(m.date||'')] = 1; });
+}
+// RPCI-eligible primary capital: a round counts unless it is an excluded type;
+// M&A counts only when the acquirer is private in-universe (mna_included).
+function isPrimary(r){
+  if(!excludedRoundsSet) return true; // scope not loaded -> degrade to unfiltered
+  var rd = (r.round||'').trim();
+  if(rd === 'M&A') return !!mnaIncludedSet[(r.company||'')+'|'+(r.date||'')];
+  return !excludedRoundsSet[rd];
+}
+// Lifecycle exits surfaced separately: IPOs (listed or filed) + M&A that is NOT primary.
+function isExit(r){
+  var rd = (r.round||'').trim();
+  if(rd === 'IPO' || rd === 'IPO (filed)') return true;
+  if(rd === 'M&A') return !isPrimary(r);
+  return false;
+}
+// Non-venture capital events: excluded round types that are neither venture rounds
+// nor exits — Strategic / Government / Grant / Debt / Bridge / Undisclosed / Other /
+// blank. Stored, but not primary capital. Together primary + exits + non-venture
+// partition every (dated, non-Token/Cross-Stack) row exactly once.
+function isNonVenture(r){
+  var rd = (r.round||'').trim();
+  if(rd === 'IPO' || rd === 'IPO (filed)' || rd === 'M&A') return false; // exits or M&A
+  return !!(excludedRoundsSet && excludedRoundsSet[rd]);
+}
 var trendsChart = null, sectorChart = null;
 var topRoundsSortCol = 'amount', topRoundsSortAsc = false;
 
@@ -34,19 +72,43 @@ function monthKey(iso){if(!iso)return null;var months=['','Jan','Feb','Mar','Apr
 
 // ===== Period filtering =====
 function periodDays(p){return p==='3M'?90:p==='6M'?180:p==='1Y'?365:null /* ALL */}
+// Primary-capital filter: base filter (dated, non-Token/Cross-Stack) AND RPCI-eligible.
+// This single point makes every downstream aggregate (KPIs, trends, donut, top rounds,
+// top investors, stage distribution, commentary) count only RPCI's eligible set.
 function filterByPeriod(rounds,p){
   if(p==='ALL'){
-    return rounds.filter(function(r){return r.date&&r.sector!=='Token'&&r.sector!=='Cross-Stack'});
+    return rounds.filter(function(r){return r.date&&r.sector!=='Token'&&r.sector!=='Cross-Stack'&&isPrimary(r)});
   }
   var cutoff=daysAgo(periodDays(p));
-  return rounds.filter(function(r){return r.date&&r.date>=cutoff&&r.sector!=='Token'&&r.sector!=='Cross-Stack'});
+  return rounds.filter(function(r){return r.date&&r.date>=cutoff&&r.sector!=='Token'&&r.sector!=='Cross-Stack'&&isPrimary(r)});
 }
 function filterByPriorPeriod(rounds,p){
   if(p==='ALL')return[];/* No prior comparison for ALL window */
   var days=periodDays(p);
   var start=daysAgo(days*2);
   var end=daysAgo(days);
-  return rounds.filter(function(r){return r.date&&r.date>=start&&r.date<end&&r.sector!=='Token'&&r.sector!=='Cross-Stack'});
+  return rounds.filter(function(r){return r.date&&r.date>=start&&r.date<end&&r.sector!=='Token'&&r.sector!=='Cross-Stack'&&isPrimary(r)});
+}
+// Lifecycle exits for the current period (IPOs + excluded M&A), rendered in their own section.
+function filterExits(rounds,p){
+  var ok=function(r){return r.date&&r.sector!=='Token'&&r.sector!=='Cross-Stack'&&isExit(r)};
+  if(p==='ALL')return rounds.filter(ok);
+  var cutoff=daysAgo(periodDays(p));
+  return rounds.filter(function(r){return r.date>=cutoff&&ok(r)});
+}
+// Non-venture capital events for the current period, rendered in their own section.
+function filterNonVenture(rounds,p){
+  var ok=function(r){return r.date&&r.sector!=='Token'&&r.sector!=='Cross-Stack'&&isNonVenture(r)};
+  if(p==='ALL')return rounds.filter(ok);
+  var cutoff=daysAgo(periodDays(p));
+  return rounds.filter(function(r){return r.date>=cutoff&&ok(r)});
+}
+// Every dated non-Token/Cross-Stack row in the period (denominator for reconciliation).
+function filterAllInWindow(rounds,p){
+  var ok=function(r){return r.date&&r.sector!=='Token'&&r.sector!=='Cross-Stack'};
+  if(p==='ALL')return rounds.filter(ok);
+  var cutoff=daysAgo(periodDays(p));
+  return rounds.filter(function(r){return r.date>=cutoff&&ok(r)});
 }
 
 function median(nums){
@@ -119,9 +181,10 @@ function getMonthKeys(n){
 // ===== Init =====
 async function init(){
   var cb='?v='+Date.now();
-  var [sResp,rResp]=await Promise.all([fetch('data/funding/summary.json'+cb),fetch('data/funding/rounds.json'+cb)]);
+  var [sResp,rResp,scResp]=await Promise.all([fetch('data/funding/summary.json'+cb),fetch('data/funding/rounds.json'+cb),fetch('data/index/rpci_scope.json'+cb)]);
   summaryData=await sResp.json();
   roundsData=(await rResp.json()).rounds;
+  try{ buildScope(await scResp.json()); }catch(e){ console.warn('rpci_scope load failed; funding page will show unfiltered (all rounds)',e); }
   renderAll();
 }
 
@@ -220,6 +283,15 @@ function renderAll(){
   renderTopInvestors(current);
   renderStageDistribution(p);
   renderNotable(p,periodLabel);
+  var exitsRows=filterExits(roundsData,currentPeriod);
+  var nvRows=filterNonVenture(roundsData,currentPeriod);
+  renderExits(exitsRows);
+  renderNonVenture(nvRows);
+  // Reconciliation: primary + exits + non-venture must equal every row in the window.
+  var windowTotal=filterAllInWindow(roundsData,currentPeriod).length;
+  var recon=current.length+exitsRows.length+nvRows.length;
+  window.__fundRecon={primary:current.length,exits:exitsRows.length,nonventure:nvRows.length,sum:recon,windowTotal:windowTotal,ok:recon===windowTotal};
+  if(recon!==windowTotal) console.warn('funding reconciliation mismatch',window.__fundRecon);
 
   // "View all N rounds in dataset" — always shows the FULL dataset row count,
   // unfiltered. A VC sees the same headline number here as on the CSV they
@@ -295,7 +367,7 @@ function renderTrendsChart(currentRounds){
   var chartMonths,activeCutoffMonths,dimStart,chartRounds;
   if(currentPeriod==='ALL'){
     // Show every month from earliest dated round through now; no dimming.
-    chartRounds=roundsData.filter(function(r){return r.date&&r.sector!=='Token'&&r.sector!=='Cross-Stack'});
+    chartRounds=roundsData.filter(function(r){return r.date&&r.sector!=='Token'&&r.sector!=='Cross-Stack'&&isPrimary(r)});
     var earliest=chartRounds.reduce(function(a,r){return r.date<a?r.date:a},'9999-99-99');
     var ed=earliest.split('-');var now=new Date();
     chartMonths=(now.getFullYear()-parseInt(ed[0]))*12+(now.getMonth()+1-parseInt(ed[1]))+1;
@@ -305,7 +377,7 @@ function renderTrendsChart(currentRounds){
     activeCutoffMonths=Math.ceil(days/30);
     dimStart=chartMonths-activeCutoffMonths;
     var chartCutoff=daysAgo(chartMonths*31);
-    chartRounds=roundsData.filter(function(r){return r.date&&r.date>=chartCutoff&&r.sector!=='Token'&&r.sector!=='Cross-Stack'});
+    chartRounds=roundsData.filter(function(r){return r.date&&r.date>=chartCutoff&&r.sector!=='Token'&&r.sector!=='Cross-Stack'&&isPrimary(r)});
   }
   var allMonths=getMonthKeys(chartMonths);
   var mbs=monthlyBySector(chartRounds);
@@ -441,6 +513,72 @@ function renderNotable(p,periodLabel){
   var phrase=currentPeriod==='ALL'?'across the full dataset (since Jan 2023)':'in the last '+periodLabel;
   document.getElementById('notable-card').innerHTML=
     'Tovarishch, <strong>'+p.num_rounds+' frontier stack rounds<\/strong> detected '+phrase+', deploying <strong>'+fmtM(p.total_capital_m)+'<\/strong> of capital. '+esc(mostActive)+' dominates deal flow with '+mostActiveRounds+' rounds, but '+esc(bestAvgSector)+' commands the highest average deal size at '+fmtM(Math.round(bestAvg))+' per round. <strong>'+megas+' mega-rounds<\/strong> exceeding $500M signal deep conviction in frontier compute and physical AI infrastructure.';
+}
+
+// ===== Lifecycle Exits =====
+// IPOs (listed + filed) and excluded M&A (public / out-of-universe acquirers).
+// Stored for the record but deliberately excluded from every primary-capital
+// figure and from the RPCI. Private in-universe M&A is NOT here — it stays in
+// the primary view because it redeploys private capital (feeds RPCI).
+function renderExits(exits){
+  var tbody=document.getElementById('exits-body');
+  var sec=document.getElementById('exits-section');
+  if(!tbody||!sec)return;
+  if(!exits.length){sec.style.display='none';return;}
+  sec.style.display='';
+  var sorted=exits.slice().sort(function(a,b){return (b.amount_m||0)-(a.amount_m||0)});
+  tbody.innerHTML='';
+  sorted.slice(0,12).forEach(function(r){
+    var t=(r.round||'').trim();
+    var label=t==='M&A'?'Acquisition':(t==='IPO (filed)'?'IPO (filed)':'IPO');
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td style="font-weight:600">'+esc(r.company)+'<\/td>'+
+      '<td><span style="font-size:9px;color:#8B92A5;border:1px solid #252A36;border-radius:3px;padding:1px 5px">'+label+'<\/span><\/td>'+
+      '<td>'+esc(r.sector)+'<\/td>'+
+      '<td class="r" style="font-weight:600;color:#8B92A5">'+fmtM(r.amount_m)+'<\/td>'+
+      '<td style="color:#5A6178">'+fmtDate(r.date)+'<\/td>';
+    tbody.appendChild(tr);
+  });
+  var ipos=exits.filter(function(r){var t=(r.round||'').trim();return t==='IPO'||t==='IPO (filed)'}).length;
+  var mnas=exits.length-ipos;
+  var val=0;exits.forEach(function(r){if(r.amount_m)val+=r.amount_m});
+  var sum=document.getElementById('exits-summary');
+  if(sum){
+    sum.innerHTML=exits.length+' exit'+(exits.length!==1?'s':'')+' in view — '+
+      ipos+' IPO'+(ipos!==1?'s':'')+', '+mnas+' acquisition'+(mnas!==1?'s':'')+
+      ' — totalling '+fmtM(val)+', all excluded from the capital figures above'+
+      (sorted.length>12?' (top 12 shown)':'')+'.';
+  }
+}
+
+// ===== Non-venture capital events =====
+// Strategic / Government / Grant / Debt / Bridge / Undisclosed / Other / blank —
+// excluded from primary capital and from the RPCI, and not lifecycle exits either.
+// Stored for completeness; surfaced here so no row silently vanishes from the page.
+function renderNonVenture(items){
+  var tbody=document.getElementById('nonventure-body');
+  var sec=document.getElementById('nonventure-section');
+  if(!tbody||!sec)return;
+  if(!items.length){sec.style.display='none';return;}
+  sec.style.display='';
+  var sorted=items.slice().sort(function(a,b){return (b.amount_m||0)-(a.amount_m||0)});
+  tbody.innerHTML='';
+  sorted.slice(0,12).forEach(function(r){
+    var typ=(r.round||'').trim()||'Undisclosed';
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td style="font-weight:600">'+esc(r.company)+'<\/td>'+
+      '<td><span style="font-size:9px;color:#8B92A5;border:1px solid #252A36;border-radius:3px;padding:1px 5px">'+esc(typ)+'<\/span><\/td>'+
+      '<td>'+esc(r.sector)+'<\/td>'+
+      '<td class="r" style="font-weight:600;color:#8B92A5">'+fmtM(r.amount_m)+'<\/td>'+
+      '<td style="color:#5A6178">'+fmtDate(r.date)+'<\/td>';
+    tbody.appendChild(tr);
+  });
+  var val=0;items.forEach(function(r){if(r.amount_m)val+=r.amount_m});
+  var sum=document.getElementById('nonventure-summary');
+  if(sum){
+    sum.innerHTML=items.length+' non-venture event'+(items.length!==1?'s':'')+' in view — totalling '+fmtM(val)+
+      ', excluded from the capital figures above'+(sorted.length>12?' (top 12 shown)':'')+'.';
+  }
 }
 
 // ===== Gated tab content removed (v1.1.3 polish): the Rounds / Investors /

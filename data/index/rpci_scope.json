@@ -1,0 +1,142 @@
+{
+  "generated_at": "2026-08-14T14:01:46.735085+00:00",
+  "note": "Authoritative RPCI round-scope, emitted by calculate_private_index.py. The funding page reads this to separate primary capital from lifecycle exits — do not hand-maintain a parallel list.",
+  "excluded_rounds": [
+    "",
+    "Bridge",
+    "Debt Financing",
+    "Government",
+    "Government investment",
+    "Grant",
+    "IPO",
+    "IPO (filed)",
+    "Other",
+    "Strategic",
+    "Undisclosed"
+  ],
+  "mna_rule": "M&A is RPCI-eligible iff the acquirer is a private company in the Robotnik universe (a non-M&A round target, or PRIVATE_ACQUIRER_ALLOWLIST). Public-acquirer and out-of-universe M&A are lifecycle exits.",
+  "mna_included": [
+    {
+      "company": "Adranos (acquired by Anduril)",
+      "date": "2023-06-25"
+    },
+    {
+      "company": "York Space Systems / ALL.SPACE",
+      "date": "2026-04-29"
+    },
+    {
+      "company": "Phantom Space / Thermal Management Technologies",
+      "date": "2026-04-02"
+    },
+    {
+      "company": "Aechelon Technology",
+      "date": "2026-06-22"
+    },
+    {
+      "company": "Kinisi Robotics",
+      "date": "2026-06-22"
+    }
+  ],
+  "mna_excluded": [
+    {
+      "company": "Rivr",
+      "date": "2026-03-19",
+      "reason": "EXCLUDE: public acquirer (AMZN)"
+    },
+    {
+      "company": "GaN Systems",
+      "date": "2023-10-24",
+      "reason": "EXCLUDE: public acquirer (IFNNY)"
+    },
+    {
+      "company": "Berkshire Grey",
+      "date": "2023-07-21",
+      "reason": "EXCLUDE: public acquirer (SFTBY)"
+    },
+    {
+      "company": "Tower Semiconductor",
+      "date": "2023-08-16",
+      "reason": "EXCLUDE: public acquirer (INTC)"
+    },
+    {
+      "company": "MACOM / Wolfspeed RF",
+      "date": "2023-08-22",
+      "reason": "EXCLUDE: public acquirer (MTSI)"
+    },
+    {
+      "company": "Eutelsat OneWeb (combination)",
+      "date": "2023-09-28",
+      "reason": "EXCLUDE: no acquirer disclosed"
+    },
+    {
+      "company": "Softnautics (acquired by MosChip)",
+      "date": "2023-06-07",
+      "reason": "EXCLUDE: public acquirer (MOSCHIP)"
+    },
+    {
+      "company": "Fungible",
+      "date": "2023-01-09",
+      "reason": "EXCLUDE: public acquirer (MSFT)"
+    },
+    {
+      "company": "Premium Robotics",
+      "date": "2026-04-21",
+      "reason": "EXCLUDE: acquirer not in Robotnik universe"
+    },
+    {
+      "company": "Polariton Technologies",
+      "date": "2026-04-23",
+      "reason": "EXCLUDE: public acquirer (MRVL)"
+    },
+    {
+      "company": "DustPhotonics",
+      "date": "2026-04-13",
+      "reason": "EXCLUDE: public acquirer (CRDO)"
+    },
+    {
+      "company": "Rocket Lab / Mynaric",
+      "date": "2026-04-14",
+      "reason": "EXCLUDE: public acquirer (RKLB)"
+    },
+    {
+      "company": "Amazon / Globalstar",
+      "date": "2026-04-14",
+      "reason": "EXCLUDE: public acquirer (AMZN)"
+    },
+    {
+      "company": "Empower Semiconductor",
+      "date": "2026-05-19",
+      "reason": "EXCLUDE: public acquirer (ADI)"
+    },
+    {
+      "company": "Motiv Space Systems",
+      "date": "2026-05-26",
+      "reason": "EXCLUDE: public acquirer (RKLB)"
+    },
+    {
+      "company": "Synaptics",
+      "date": "2026-06-25",
+      "reason": "EXCLUDE: public acquirer (ON)"
+    },
+    {
+      "company": "DZYNE Technologies",
+      "date": "2026-07-06",
+      "reason": "EXCLUDE: public acquirer (ONDS)"
+    },
+    {
+      "company": "DroneDeploy",
+      "date": "2026-07-29",
+      "reason": "EXCLUDE: public acquirer (PCOR)"
+    },
+    {
+      "company": "ElevATE Semiconductor",
+      "date": "2026-07-14",
+      "reason": "EXCLUDE: public acquirer (DIOD)"
+    },
+    {
+      "company": "MDA Space / CLS",
+      "date": "2026-07-08",
+      "reason": "EXCLUDE: public acquirer (MDA CN)"
+    }
+  ]
+}
