@@ -3,7 +3,7 @@
   "index_code": "RPCI",
   "base_date": "2025-03-31",
   "base_value": 1000.0,
-  "fetched_at": "2026-08-14T14:01:46.733531+00:00",
+  "fetched_at": "2026-08-14T18:04:37.381305+00:00",
   "method": "5-component composite, 3M trailing window, monthly recalc",
   "components": {
     "capital_deployed": {
@@ -35,9 +35,9 @@
     }
   },
   "current_month": "2026-07",
-  "current_value": 2607.5188,
-  "current_value_3m_trailing": 2635.1175,
-  "current_value_6m_trailing": 2516.3596,
+  "current_value": 2627.3544,
+  "current_value_3m_trailing": 2663.7264,
+  "current_value_6m_trailing": 2539.1599,
   "series": [
     {
       "month": "2023-01",
@@ -46,16 +46,16 @@
       "month_num": 1,
       "window_start": "2022-11-01",
       "window_end": "2023-01-31",
-      "value": 428.9452,
+      "value": 373.3508,
       "components": {
-        "capital_deployed": 210.6385,
-        "deal_count": 530.6122,
-        "stage_weighted_activity": 603.7383,
-        "round_size_vs_trailing": 0.0,
-        "investor_breadth": 443.5484
+        "capital_deployed": 158.0443,
+        "deal_count": 479.1667,
+        "stage_weighted_activity": 543.5606,
+        "round_size_vs_trailing": 250.3483,
+        "investor_breadth": 382.1138
       },
-      "deal_count_raw": 26,
-      "capital_deployed_raw_usd": 1085500000.0,
+      "deal_count_raw": 23,
+      "capital_deployed_raw_usd": 812600000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
@@ -69,16 +69,16 @@
       "month_num": 2,
       "window_start": "2022-12-01",
       "window_end": "2023-02-28",
-      "value": 735.2959,
+      "value": 671.6752,
       "components": {
-        "capital_deployed": 408.4504,
-        "deal_count": 897.9592,
-        "stage_weighted_activity": 985.0467,
-        "round_size_vs_trailing": 0.0,
-        "investor_breadth": 766.129
+        "capital_deployed": 322.9261,
+        "deal_count": 854.1667,
+        "stage_weighted_activity": 929.9242,
+        "round_size_vs_trailing": 271.5321,
+        "investor_breadth": 707.3171
       },
-      "deal_count_raw": 44,
-      "capital_deployed_raw_usd": 2104900000.0,
+      "deal_count_raw": 41,
+      "capital_deployed_raw_usd": 1660355000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
@@ -92,20 +92,20 @@
       "month_num": 3,
       "window_start": "2023-01-01",
       "window_end": "2023-03-31",
-      "value": 1042.5843,
+      "value": 976.7825,
       "components": {
-        "capital_deployed": 533.7856,
-        "deal_count": 1306.1224,
-        "stage_weighted_activity": 1409.3458,
-        "round_size_vs_trailing": 0.0,
-        "investor_breadth": 1125.0
+        "capital_deployed": 430.7525,
+        "deal_count": 1270.8333,
+        "stage_weighted_activity": 1359.8485,
+        "round_size_vs_trailing": 261.5746,
+        "investor_breadth": 1069.1057
       },
-      "deal_count_raw": 64,
-      "capital_deployed_raw_usd": 2750800000.0,
+      "deal_count_raw": 61,
+      "capital_deployed_raw_usd": 2214755000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 735.6085,
+      "value_3m_trailing": 673.9362,
       "value_6m_trailing": null
     },
     {
@@ -115,20 +115,20 @@
       "month_num": 4,
       "window_start": "2023-02-01",
       "window_end": "2023-04-30",
-      "value": 1100.5855,
+      "value": 1115.6485,
       "components": {
-        "capital_deployed": 498.4602,
-        "deal_count": 1448.9796,
-        "stage_weighted_activity": 1523.3645,
-        "round_size_vs_trailing": 884.7977,
-        "investor_breadth": 1153.2258
+        "capital_deployed": 501.0585,
+        "deal_count": 1479.1667,
+        "stage_weighted_activity": 1543.5606,
+        "round_size_vs_trailing": 895.3602,
+        "investor_breadth": 1162.6016
       },
       "deal_count_raw": 71,
-      "capital_deployed_raw_usd": 2568755000.0,
+      "capital_deployed_raw_usd": 2576240000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 959.4886,
+      "value_3m_trailing": 921.3687,
       "value_6m_trailing": null
     },
     {
@@ -138,20 +138,20 @@
       "month_num": 5,
       "window_start": "2023-03-01",
       "window_end": "2023-05-31",
-      "value": 1313.7639,
+      "value": 1332.39,
       "components": {
-        "capital_deployed": 668.6873,
-        "deal_count": 1693.8776,
-        "stage_weighted_activity": 1820.5607,
-        "round_size_vs_trailing": 614.2769,
-        "investor_breadth": 1221.7742
+        "capital_deployed": 674.5105,
+        "deal_count": 1729.1667,
+        "stage_weighted_activity": 1844.697,
+        "round_size_vs_trailing": 627.4048,
+        "investor_breadth": 1231.7073
       },
       "deal_count_raw": 83,
-      "capital_deployed_raw_usd": 3446000000.0,
+      "capital_deployed_raw_usd": 3468060000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 1152.3112,
+      "value_3m_trailing": 1141.607,
       "value_6m_trailing": null
     },
     {
@@ -161,21 +161,21 @@
       "month_num": 6,
       "window_start": "2023-04-01",
       "window_end": "2023-06-30",
-      "value": 1387.3616,
+      "value": 1406.6125,
       "components": {
-        "capital_deployed": 718.0918,
-        "deal_count": 1775.5102,
-        "stage_weighted_activity": 1925.2336,
-        "round_size_vs_trailing": 812.2192,
-        "investor_breadth": 1274.1935
+        "capital_deployed": 723.2532,
+        "deal_count": 1812.5,
+        "stage_weighted_activity": 1950.7576,
+        "round_size_vs_trailing": 833.769,
+        "investor_breadth": 1284.5528
       },
       "deal_count_raw": 87,
-      "capital_deployed_raw_usd": 3700600000.0,
+      "capital_deployed_raw_usd": 3718675000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 1267.237,
-      "value_6m_trailing": 1001.4227
+      "value_3m_trailing": 1284.8837,
+      "value_6m_trailing": 979.4099
     },
     {
       "month": "2023-07",
@@ -184,21 +184,21 @@
       "month_num": 7,
       "window_start": "2023-05-01",
       "window_end": "2023-07-31",
-      "value": 1290.5466,
+      "value": 1307.7573,
       "components": {
-        "capital_deployed": 648.3803,
-        "deal_count": 1653.0612,
-        "stage_weighted_activity": 1801.8692,
-        "round_size_vs_trailing": 763.4762,
-        "investor_breadth": 1213.7097
+        "capital_deployed": 650.9887,
+        "deal_count": 1687.5,
+        "stage_weighted_activity": 1825.7576,
+        "round_size_vs_trailing": 770.4422,
+        "investor_breadth": 1223.5772
       },
       "deal_count_raw": 81,
-      "capital_deployed_raw_usd": 3341350000.0,
+      "capital_deployed_raw_usd": 3347120000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 1330.5574,
-      "value_6m_trailing": 1145.023
+      "value_3m_trailing": 1348.9199,
+      "value_6m_trailing": 1135.1443
     },
     {
       "month": "2023-08",
@@ -207,21 +207,21 @@
       "month_num": 8,
       "window_start": "2023-06-01",
       "window_end": "2023-08-31",
-      "value": 1228.8494,
+      "value": 1245.7231,
       "components": {
-        "capital_deployed": 641.9418,
-        "deal_count": 1530.6122,
-        "stage_weighted_activity": 1689.7196,
-        "round_size_vs_trailing": 868.6503,
-        "investor_breadth": 1233.871
+        "capital_deployed": 646.4803,
+        "deal_count": 1562.5,
+        "stage_weighted_activity": 1712.1212,
+        "round_size_vs_trailing": 870.5484,
+        "investor_breadth": 1243.9024
       },
       "deal_count_raw": 75,
-      "capital_deployed_raw_usd": 3308170000.0,
+      "capital_deployed_raw_usd": 3323940000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 1302.2525,
-      "value_6m_trailing": 1227.2819
+      "value_3m_trailing": 1320.031,
+      "value_6m_trailing": 1230.819
     },
     {
       "month": "2023-09",
@@ -230,21 +230,21 @@
       "month_num": 9,
       "window_start": "2023-07-01",
       "window_end": "2023-09-30",
-      "value": 1459.8626,
+      "value": 1479.9331,
       "components": {
-        "capital_deployed": 916.1541,
-        "deal_count": 1714.2857,
-        "stage_weighted_activity": 1923.3645,
-        "round_size_vs_trailing": 1260.4722,
-        "investor_breadth": 1423.3871
+        "capital_deployed": 924.1043,
+        "deal_count": 1750.0,
+        "stage_weighted_activity": 1948.8636,
+        "round_size_vs_trailing": 1253.4902,
+        "investor_breadth": 1434.9593
       },
       "deal_count_raw": 84,
-      "capital_deployed_raw_usd": 4721290000.0,
+      "capital_deployed_raw_usd": 4751370000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 1326.4195,
-      "value_6m_trailing": 1296.8283
+      "value_3m_trailing": 1344.4712,
+      "value_6m_trailing": 1314.6774
     },
     {
       "month": "2023-10",
@@ -253,21 +253,21 @@
       "month_num": 10,
       "window_start": "2023-08-01",
       "window_end": "2023-10-31",
-      "value": 1519.2698,
+      "value": 1539.7267,
       "components": {
-        "capital_deployed": 914.8344,
-        "deal_count": 1857.1429,
-        "stage_weighted_activity": 1998.1308,
-        "round_size_vs_trailing": 1205.0713,
-        "investor_breadth": 1459.6774
+        "capital_deployed": 920.9709,
+        "deal_count": 1895.8333,
+        "stage_weighted_activity": 2024.6212,
+        "round_size_vs_trailing": 1199.3546,
+        "investor_breadth": 1471.5447
       },
       "deal_count_raw": 91,
-      "capital_deployed_raw_usd": 4714489500.0,
+      "capital_deployed_raw_usd": 4735259500.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 1402.6606,
-      "value_6m_trailing": 1366.609
+      "value_3m_trailing": 1421.7943,
+      "value_6m_trailing": 1385.3571
     },
     {
       "month": "2023-11",
@@ -276,21 +276,21 @@
       "month_num": 11,
       "window_start": "2023-09-01",
       "window_end": "2023-11-30",
-      "value": 1435.9741,
+      "value": 1454.3265,
       "components": {
-        "capital_deployed": 803.6956,
-        "deal_count": 1795.9184,
-        "stage_weighted_activity": 1885.9813,
-        "round_size_vs_trailing": 1155.7026,
-        "investor_breadth": 1487.9032
+        "capital_deployed": 805.882,
+        "deal_count": 1833.3333,
+        "stage_weighted_activity": 1910.9848,
+        "round_size_vs_trailing": 1155.8926,
+        "investor_breadth": 1500.0
       },
       "deal_count_raw": 88,
-      "capital_deployed_raw_usd": 4141749000.0,
+      "capital_deployed_raw_usd": 4143519000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 1471.7022,
-      "value_6m_trailing": 1386.9774
+      "value_3m_trailing": 1491.3288,
+      "value_6m_trailing": 1405.6799
     },
     {
       "month": "2023-12",
@@ -299,21 +299,21 @@
       "month_num": 12,
       "window_start": "2023-10-01",
       "window_end": "2023-12-31",
-      "value": 1338.8925,
+      "value": 1356.6772,
       "components": {
-        "capital_deployed": 617.6672,
-        "deal_count": 1795.9184,
-        "stage_weighted_activity": 1824.2991,
-        "round_size_vs_trailing": 539.0917,
-        "investor_breadth": 1375.0
+        "capital_deployed": 619.2327,
+        "deal_count": 1833.3333,
+        "stage_weighted_activity": 1848.4848,
+        "round_size_vs_trailing": 535.9092,
+        "investor_breadth": 1386.1789
       },
       "deal_count_raw": 88,
-      "capital_deployed_raw_usd": 3183074000.0,
+      "capital_deployed_raw_usd": 3183844000.0,
       "calibration": true,
       "weighting": "4-component (component 4 renormalised)",
       "component_5_multiplier_applied": false,
-      "value_3m_trailing": 1431.3788,
-      "value_6m_trailing": 1378.8992
+      "value_3m_trailing": 1450.2434,
+      "value_6m_trailing": 1397.3573
     },
     {
       "month": "2024-01",
@@ -322,21 +322,21 @@
       "month_num": 1,
       "window_start": "2023-11-01",
       "window_end": "2024-01-31",
-      "value": 1205.1731,
+      "value": 1220.0069,
       "components": {
-        "capital_deployed": 648.4686,
-        "deal_count": 1653.0612,
-        "stage_weighted_activity": 1721.4953,
-        "round_size_vs_trailing": 541.3255,
-        "investor_breadth": 1684.4758
+        "capital_deployed": 650.1047,
+        "deal_count": 1687.5,
+        "stage_weighted_activity": 1744.3182,
+        "round_size_vs_trailing": 543.8593,
+        "investor_breadth": 1698.1707
       },
       "deal_count_raw": 81,
-      "capital_deployed_raw_usd": 3341805000.0,
+      "capital_deployed_raw_usd": 3342575000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1326.6799,
-      "value_6m_trailing": 1364.6702
+      "value_3m_trailing": 1343.6702,
+      "value_6m_trailing": 1382.7322
     },
     {
       "month": "2024-02",
@@ -345,21 +345,21 @@
       "month_num": 2,
       "window_start": "2023-12-01",
       "window_end": "2024-02-29",
-      "value": 1280.9747,
+      "value": 1295.9086,
       "components": {
-        "capital_deployed": 791.6183,
-        "deal_count": 1653.0612,
-        "stage_weighted_activity": 1732.7103,
-        "round_size_vs_trailing": 708.0765,
-        "investor_breadth": 1734.879
+        "capital_deployed": 793.8821,
+        "deal_count": 1687.5,
+        "stage_weighted_activity": 1755.6818,
+        "round_size_vs_trailing": 709.5012,
+        "investor_breadth": 1748.9837
       },
       "deal_count_raw": 81,
-      "capital_deployed_raw_usd": 4079510000.0,
+      "capital_deployed_raw_usd": 4081820000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1275.0134,
-      "value_6m_trailing": 1373.3578
+      "value_3m_trailing": 1290.8642,
+      "value_6m_trailing": 1391.0965
     },
     {
       "month": "2024-03",
@@ -368,21 +368,21 @@
       "month_num": 3,
       "window_start": "2024-01-01",
       "window_end": "2024-03-31",
-      "value": 1205.3027,
+      "value": 1217.8544,
       "components": {
-        "capital_deployed": 648.2357,
-        "deal_count": 1551.0204,
-        "stage_weighted_activity": 1594.3925,
-        "round_size_vs_trailing": 785.7095,
-        "investor_breadth": 1841.7339
+        "capital_deployed": 649.8713,
+        "deal_count": 1583.3333,
+        "stage_weighted_activity": 1615.5303,
+        "round_size_vs_trailing": 777.8205,
+        "investor_breadth": 1856.7073
       },
       "deal_count_raw": 76,
-      "capital_deployed_raw_usd": 3340605000.0,
+      "capital_deployed_raw_usd": 3341375000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1230.4835,
-      "value_6m_trailing": 1330.9312
+      "value_3m_trailing": 1244.59,
+      "value_6m_trailing": 1347.4167
     },
     {
       "month": "2024-04",
@@ -391,21 +391,21 @@
       "month_num": 4,
       "window_start": "2024-02-01",
       "window_end": "2024-04-30",
-      "value": 1124.6816,
+      "value": 1135.6196,
       "components": {
-        "capital_deployed": 611.6791,
-        "deal_count": 1408.1633,
-        "stage_weighted_activity": 1429.9065,
-        "round_size_vs_trailing": 867.9574,
-        "investor_breadth": 1718.75
+        "capital_deployed": 613.0812,
+        "deal_count": 1437.5,
+        "stage_weighted_activity": 1448.8636,
+        "round_size_vs_trailing": 858.0469,
+        "investor_breadth": 1732.7236
       },
       "deal_count_raw": 69,
       "capital_deployed_raw_usd": 3152215000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1203.653,
-      "value_6m_trailing": 1265.1665
+      "value_3m_trailing": 1216.4609,
+      "value_6m_trailing": 1280.0655
     },
     {
       "month": "2024-05",
@@ -414,21 +414,21 @@
       "month_num": 5,
       "window_start": "2024-03-01",
       "window_end": "2024-05-31",
-      "value": 1122.8827,
+      "value": 1134.5089,
       "components": {
-        "capital_deployed": 540.1174,
-        "deal_count": 1510.2041,
-        "stage_weighted_activity": 1467.2897,
-        "round_size_vs_trailing": 845.0831,
-        "investor_breadth": 1652.2177
+        "capital_deployed": 541.3554,
+        "deal_count": 1541.6667,
+        "stage_weighted_activity": 1486.7424,
+        "round_size_vs_trailing": 835.4337,
+        "investor_breadth": 1667.6829
       },
       "deal_count_raw": 74,
       "capital_deployed_raw_usd": 2783430000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1150.9557,
-      "value_6m_trailing": 1212.9845
+      "value_3m_trailing": 1162.661,
+      "value_6m_trailing": 1226.7626
     },
     {
       "month": "2024-06",
@@ -437,21 +437,21 @@
       "month_num": 6,
       "window_start": "2024-04-01",
       "window_end": "2024-06-30",
-      "value": 1211.6302,
+      "value": 1240.5209,
       "components": {
-        "capital_deployed": 731.5606,
-        "deal_count": 1510.2041,
-        "stage_weighted_activity": 1523.3645,
-        "round_size_vs_trailing": 922.082,
-        "investor_breadth": 1709.6774
+        "capital_deployed": 748.4078,
+        "deal_count": 1562.5,
+        "stage_weighted_activity": 1562.5,
+        "round_size_vs_trailing": 932.0297,
+        "investor_breadth": 1730.6911
       },
-      "deal_count_raw": 74,
-      "capital_deployed_raw_usd": 3770010000.0,
+      "deal_count_raw": 75,
+      "capital_deployed_raw_usd": 3848010000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1153.0648,
-      "value_6m_trailing": 1191.7742
+      "value_3m_trailing": 1170.2165,
+      "value_6m_trailing": 1207.4032
     },
     {
       "month": "2024-07",
@@ -460,21 +460,21 @@
       "month_num": 7,
       "window_start": "2024-05-01",
       "window_end": "2024-07-31",
-      "value": 1247.1627,
+      "value": 1290.2314,
       "components": {
-        "capital_deployed": 866.2412,
-        "deal_count": 1448.9796,
-        "stage_weighted_activity": 1500.9346,
-        "round_size_vs_trailing": 1104.7221,
-        "investor_breadth": 1565.5242
+        "capital_deployed": 886.1725,
+        "deal_count": 1541.6667,
+        "stage_weighted_activity": 1566.2879,
+        "round_size_vs_trailing": 1089.3141,
+        "investor_breadth": 1610.7724
       },
-      "deal_count_raw": 71,
-      "capital_deployed_raw_usd": 4464070000.0,
+      "deal_count_raw": 74,
+      "capital_deployed_raw_usd": 4556340000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1193.8918,
-      "value_6m_trailing": 1198.7724
+      "value_3m_trailing": 1221.7537,
+      "value_6m_trailing": 1219.1073
     },
     {
       "month": "2024-08",
@@ -483,21 +483,21 @@
       "month_num": 8,
       "window_start": "2024-06-01",
       "window_end": "2024-08-31",
-      "value": 1211.7263,
+      "value": 1243.0365,
       "components": {
-        "capital_deployed": 963.934,
-        "deal_count": 1285.7143,
-        "stage_weighted_activity": 1357.0093,
-        "round_size_vs_trailing": 1191.8123,
-        "investor_breadth": 1473.7903
+        "capital_deployed": 980.502,
+        "deal_count": 1354.1667,
+        "stage_weighted_activity": 1401.5152,
+        "round_size_vs_trailing": 1183.8143,
+        "investor_breadth": 1501.0163
       },
-      "deal_count_raw": 63,
-      "capital_deployed_raw_usd": 4967518000.0,
+      "deal_count_raw": 65,
+      "capital_deployed_raw_usd": 5041344000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1223.5064,
-      "value_6m_trailing": 1187.231
+      "value_3m_trailing": 1257.9296,
+      "value_6m_trailing": 1210.2953
     },
     {
       "month": "2024-09",
@@ -506,21 +506,21 @@
       "month_num": 9,
       "window_start": "2024-07-01",
       "window_end": "2024-09-30",
-      "value": 1072.2372,
+      "value": 1088.4455,
       "components": {
-        "capital_deployed": 788.2617,
-        "deal_count": 1204.0816,
-        "stage_weighted_activity": 1271.028,
-        "round_size_vs_trailing": 1009.8651,
-        "investor_breadth": 1257.0565
+        "capital_deployed": 793.9202,
+        "deal_count": 1250.0,
+        "stage_weighted_activity": 1295.4545,
+        "round_size_vs_trailing": 986.3372,
+        "investor_breadth": 1284.5528
       },
-      "deal_count_raw": 59,
-      "capital_deployed_raw_usd": 4062212000.0,
+      "deal_count_raw": 60,
+      "capital_deployed_raw_usd": 4082016000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1177.0421,
-      "value_6m_trailing": 1165.0534
+      "value_3m_trailing": 1207.2378,
+      "value_6m_trailing": 1188.7271
     },
     {
       "month": "2024-10",
@@ -529,21 +529,21 @@
       "month_num": 10,
       "window_start": "2024-08-01",
       "window_end": "2024-10-31",
-      "value": 1291.0997,
+      "value": 1301.4029,
       "components": {
-        "capital_deployed": 938.5409,
-        "deal_count": 1489.7959,
-        "stage_weighted_activity": 1588.785,
-        "round_size_vs_trailing": 1036.7402,
-        "investor_breadth": 1588.7097
+        "capital_deployed": 942.4682,
+        "deal_count": 1520.8333,
+        "stage_weighted_activity": 1609.8485,
+        "round_size_vs_trailing": 1013.1512,
+        "investor_breadth": 1600.6098
       },
       "deal_count_raw": 73,
-      "capital_deployed_raw_usd": 4836658000.0,
+      "capital_deployed_raw_usd": 4845790000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1191.6877,
-      "value_6m_trailing": 1192.7898
+      "value_3m_trailing": 1210.9616,
+      "value_6m_trailing": 1216.3577
     },
     {
       "month": "2024-11",
@@ -552,21 +552,21 @@
       "month_num": 11,
       "window_start": "2024-09-01",
       "window_end": "2024-11-30",
-      "value": 1271.7572,
+      "value": 1280.365,
       "components": {
-        "capital_deployed": 860.7302,
-        "deal_count": 1510.2041,
-        "stage_weighted_activity": 1629.9065,
-        "round_size_vs_trailing": 975.7294,
-        "investor_breadth": 1576.6129
+        "capital_deployed": 859.9024,
+        "deal_count": 1541.6667,
+        "stage_weighted_activity": 1651.5152,
+        "round_size_vs_trailing": 955.7131,
+        "investor_breadth": 1578.252
       },
       "deal_count_raw": 74,
-      "capital_deployed_raw_usd": 4435670000.0,
+      "capital_deployed_raw_usd": 4421270000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1211.6981,
-      "value_6m_trailing": 1217.6022
+      "value_3m_trailing": 1223.4045,
+      "value_6m_trailing": 1240.667
     },
     {
       "month": "2024-12",
@@ -575,21 +575,21 @@
       "month_num": 12,
       "window_start": "2024-10-01",
       "window_end": "2024-12-31",
-      "value": 1173.1902,
+      "value": 1177.4998,
       "components": {
-        "capital_deployed": 878.0327,
-        "deal_count": 1285.7143,
-        "stage_weighted_activity": 1401.8692,
-        "round_size_vs_trailing": 1080.3289,
-        "investor_breadth": 1401.2097
+        "capital_deployed": 877.8365,
+        "deal_count": 1312.5,
+        "stage_weighted_activity": 1420.4545,
+        "round_size_vs_trailing": 1041.9421,
+        "investor_breadth": 1402.439
       },
       "deal_count_raw": 63,
-      "capital_deployed_raw_usd": 4524836000.0,
+      "capital_deployed_raw_usd": 4513480000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1245.3491,
-      "value_6m_trailing": 1211.1956
+      "value_3m_trailing": 1253.0893,
+      "value_6m_trailing": 1230.1635
     },
     {
       "month": "2025-01",
@@ -598,21 +598,21 @@
       "month_num": 1,
       "window_start": "2024-11-01",
       "window_end": "2025-01-31",
-      "value": 922.0326,
+      "value": 907.4766,
       "components": {
-        "capital_deployed": 767.0771,
-        "deal_count": 1000.0,
-        "stage_weighted_activity": 1044.8598,
-        "round_size_vs_trailing": 788.6356,
-        "investor_breadth": 1123.9919
+        "capital_deployed": 762.0476,
+        "deal_count": 979.1667,
+        "stage_weighted_activity": 1026.5152,
+        "round_size_vs_trailing": 782.3699,
+        "investor_breadth": 1090.4472
       },
-      "deal_count_raw": 49,
-      "capital_deployed_raw_usd": 3953040000.0,
+      "deal_count_raw": 47,
+      "capital_deployed_raw_usd": 3918140000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1122.3267,
-      "value_6m_trailing": 1157.0072
+      "value_3m_trailing": 1121.7805,
+      "value_6m_trailing": 1166.3711
     },
     {
       "month": "2025-02",
@@ -621,21 +621,21 @@
       "month_num": 2,
       "window_start": "2024-12-01",
       "window_end": "2025-02-28",
-      "value": 924.3237,
+      "value": 923.8572,
       "components": {
-        "capital_deployed": 877.0671,
-        "deal_count": 938.7755,
-        "stage_weighted_activity": 994.3925,
-        "round_size_vs_trailing": 805.4538,
-        "investor_breadth": 1040.3226
+        "capital_deployed": 877.327,
+        "deal_count": 937.5,
+        "stage_weighted_activity": 994.3182,
+        "round_size_vs_trailing": 803.43,
+        "investor_breadth": 1040.6504
       },
-      "deal_count_raw": 46,
-      "capital_deployed_raw_usd": 4519860000.0,
+      "deal_count_raw": 45,
+      "capital_deployed_raw_usd": 4510860000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1006.5155,
-      "value_6m_trailing": 1109.1068
+      "value_3m_trailing": 1002.9445,
+      "value_6m_trailing": 1113.1745
     },
     {
       "month": "2025-03",
@@ -652,13 +652,13 @@
         "round_size_vs_trailing": 1000.0,
         "investor_breadth": 1000.0
       },
-      "deal_count_raw": 49,
-      "capital_deployed_raw_usd": 5153380000.0,
+      "deal_count_raw": 48,
+      "capital_deployed_raw_usd": 5141595000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 948.7854,
-      "value_6m_trailing": 1097.0672
+      "value_3m_trailing": 943.7779,
+      "value_6m_trailing": 1098.4336
     },
     {
       "month": "2025-04",
@@ -667,21 +667,21 @@
       "month_num": 4,
       "window_start": "2025-02-01",
       "window_end": "2025-04-30",
-      "value": 905.5414,
+      "value": 914.6426,
       "components": {
-        "capital_deployed": 819.0717,
-        "deal_count": 918.3673,
-        "stage_weighted_activity": 914.0187,
-        "round_size_vs_trailing": 1069.6278,
-        "investor_breadth": 871.9758
+        "capital_deployed": 820.6782,
+        "deal_count": 937.5,
+        "stage_weighted_activity": 926.1364,
+        "round_size_vs_trailing": 1076.6572,
+        "investor_breadth": 879.065
       },
       "deal_count_raw": 45,
-      "capital_deployed_raw_usd": 4220987500.0,
+      "capital_deployed_raw_usd": 4219595000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 943.2884,
-      "value_6m_trailing": 1032.8075
+      "value_3m_trailing": 946.1666,
+      "value_6m_trailing": 1033.9735
     },
     {
       "month": "2025-05",
@@ -690,21 +690,21 @@
       "month_num": 5,
       "window_start": "2025-03-01",
       "window_end": "2025-05-31",
-      "value": 766.651,
+      "value": 775.6614,
       "components": {
-        "capital_deployed": 534.0354,
-        "deal_count": 918.3673,
-        "stage_weighted_activity": 829.9065,
-        "round_size_vs_trailing": 823.0373,
-        "investor_breadth": 918.3468
+        "capital_deployed": 534.9887,
+        "deal_count": 937.5,
+        "stage_weighted_activity": 840.9091,
+        "round_size_vs_trailing": 832.375,
+        "investor_breadth": 925.813
       },
       "deal_count_raw": 45,
-      "capital_deployed_raw_usd": 2752087500.0,
+      "capital_deployed_raw_usd": 2750695000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 890.7308,
-      "value_6m_trailing": 948.6232
+      "value_3m_trailing": 896.768,
+      "value_6m_trailing": 949.8563
     },
     {
       "month": "2025-06",
@@ -713,21 +713,21 @@
       "month_num": 6,
       "window_start": "2025-04-01",
       "window_end": "2025-06-30",
-      "value": 993.8857,
+      "value": 976.619,
       "components": {
-        "capital_deployed": 987.6955,
-        "deal_count": 1040.8163,
-        "stage_weighted_activity": 981.3084,
-        "round_size_vs_trailing": 939.7447,
-        "investor_breadth": 1031.25
+        "capital_deployed": 969.9519,
+        "deal_count": 1020.8333,
+        "stage_weighted_activity": 962.1212,
+        "round_size_vs_trailing": 934.8338,
+        "investor_breadth": 1007.1138
       },
-      "deal_count_raw": 51,
-      "capital_deployed_raw_usd": 5089970000.0,
+      "deal_count_raw": 49,
+      "capital_deployed_raw_usd": 4987100000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 888.6927,
-      "value_6m_trailing": 918.7391
+      "value_3m_trailing": 888.9744,
+      "value_6m_trailing": 916.3761
     },
     {
       "month": "2025-07",
@@ -736,21 +736,21 @@
       "month_num": 7,
       "window_start": "2025-05-01",
       "window_end": "2025-07-31",
-      "value": 1176.7539,
+      "value": 1160.6211,
       "components": {
-        "capital_deployed": 1053.0632,
-        "deal_count": 1367.3469,
-        "stage_weighted_activity": 1246.729,
-        "round_size_vs_trailing": 884.9315,
-        "investor_breadth": 1429.4355
+        "capital_deployed": 1034.6361,
+        "deal_count": 1354.1667,
+        "stage_weighted_activity": 1231.0606,
+        "round_size_vs_trailing": 871.8538,
+        "investor_breadth": 1408.5366
       },
-      "deal_count_raw": 67,
-      "capital_deployed_raw_usd": 5426835000.0,
+      "deal_count_raw": 65,
+      "capital_deployed_raw_usd": 5319680000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 979.0969,
-      "value_6m_trailing": 961.1926
+      "value_3m_trailing": 970.9672,
+      "value_6m_trailing": 958.5669
     },
     {
       "month": "2025-08",
@@ -759,21 +759,21 @@
       "month_num": 8,
       "window_start": "2025-06-01",
       "window_end": "2025-08-31",
-      "value": 1209.5974,
+      "value": 1193.79,
       "components": {
-        "capital_deployed": 1093.7278,
-        "deal_count": 1346.9388,
-        "stage_weighted_activity": 1295.3271,
-        "round_size_vs_trailing": 1015.8162,
-        "investor_breadth": 1358.871
+        "capital_deployed": 1075.9604,
+        "deal_count": 1333.3333,
+        "stage_weighted_activity": 1280.303,
+        "round_size_vs_trailing": 1003.464,
+        "investor_breadth": 1337.3984
       },
-      "deal_count_raw": 66,
-      "capital_deployed_raw_usd": 5636395000.0,
+      "deal_count_raw": 64,
+      "capital_deployed_raw_usd": 5532152500.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1126.7457,
-      "value_6m_trailing": 1008.7382
+      "value_3m_trailing": 1110.3433,
+      "value_6m_trailing": 1003.5557
     },
     {
       "month": "2025-09",
@@ -782,21 +782,21 @@
       "month_num": 9,
       "window_start": "2025-07-01",
       "window_end": "2025-09-30",
-      "value": 1262.681,
+      "value": 1268.1254,
       "components": {
-        "capital_deployed": 1161.5813,
-        "deal_count": 1448.9796,
-        "stage_weighted_activity": 1371.9626,
-        "round_size_vs_trailing": 881.5101,
-        "investor_breadth": 1491.9355
+        "capital_deployed": 1164.0785,
+        "deal_count": 1458.3333,
+        "stage_weighted_activity": 1376.8939,
+        "round_size_vs_trailing": 883.3575,
+        "investor_breadth": 1505.0813
       },
-      "deal_count_raw": 71,
-      "capital_deployed_raw_usd": 5986070000.0,
+      "deal_count_raw": 70,
+      "capital_deployed_raw_usd": 5985220000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1216.3441,
-      "value_6m_trailing": 1052.5184
+      "value_3m_trailing": 1207.5122,
+      "value_6m_trailing": 1048.2433
     },
     {
       "month": "2025-10",
@@ -805,21 +805,21 @@
       "month_num": 10,
       "window_start": "2025-08-01",
       "window_end": "2025-10-31",
-      "value": 1169.8569,
+      "value": 1174.0981,
       "components": {
-        "capital_deployed": 1218.8253,
-        "deal_count": 1244.898,
-        "stage_weighted_activity": 1218.6916,
-        "round_size_vs_trailing": 836.3736,
-        "investor_breadth": 1251.0081
+        "capital_deployed": 1221.6287,
+        "deal_count": 1250.0,
+        "stage_weighted_activity": 1221.5909,
+        "round_size_vs_trailing": 839.9481,
+        "investor_breadth": 1262.1951
       },
-      "deal_count_raw": 61,
-      "capital_deployed_raw_usd": 6281070000.0,
+      "deal_count_raw": 60,
+      "capital_deployed_raw_usd": 6281120000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1214.0451,
-      "value_6m_trailing": 1096.571
+      "value_3m_trailing": 1212.0045,
+      "value_6m_trailing": 1091.4858
     },
     {
       "month": "2025-11",
@@ -828,21 +828,21 @@
       "month_num": 11,
       "window_start": "2025-09-01",
       "window_end": "2025-11-30",
-      "value": 1433.6587,
+      "value": 1467.3424,
       "components": {
-        "capital_deployed": 1450.712,
-        "deal_count": 1632.6531,
-        "stage_weighted_activity": 1562.6168,
-        "round_size_vs_trailing": 833.4017,
-        "investor_breadth": 1562.5
+        "capital_deployed": 1466.0665,
+        "deal_count": 1687.5,
+        "stage_weighted_activity": 1607.9545,
+        "round_size_vs_trailing": 837.5694,
+        "investor_breadth": 1623.9837
       },
-      "deal_count_raw": 80,
-      "capital_deployed_raw_usd": 7476070000.0,
+      "deal_count_raw": 81,
+      "capital_deployed_raw_usd": 7537920000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1288.7322,
-      "value_6m_trailing": 1207.7389
+      "value_3m_trailing": 1303.1886,
+      "value_6m_trailing": 1206.766
     },
     {
       "month": "2025-12",
@@ -851,21 +851,21 @@
       "month_num": 12,
       "window_start": "2025-10-01",
       "window_end": "2025-12-31",
-      "value": 1331.2652,
+      "value": 1359.1671,
       "components": {
-        "capital_deployed": 1077.5142,
-        "deal_count": 1632.6531,
-        "stage_weighted_activity": 1534.5794,
-        "round_size_vs_trailing": 1011.7792,
-        "investor_breadth": 1460.6855
+        "capital_deployed": 1085.03,
+        "deal_count": 1687.5,
+        "stage_weighted_activity": 1573.8636,
+        "round_size_vs_trailing": 1013.8825,
+        "investor_breadth": 1506.0976
       },
-      "deal_count_raw": 80,
-      "capital_deployed_raw_usd": 5552840000.0,
+      "deal_count_raw": 81,
+      "capital_deployed_raw_usd": 5578785000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1311.5936,
-      "value_6m_trailing": 1263.9688
+      "value_3m_trailing": 1333.5358,
+      "value_6m_trailing": 1270.524
     },
     {
       "month": "2026-01",
@@ -874,21 +874,21 @@
       "month_num": 1,
       "window_start": "2025-11-01",
       "window_end": "2026-01-31",
-      "value": 1567.0941,
+      "value": 1591.2893,
       "components": {
-        "capital_deployed": 1632.742,
-        "deal_count": 1693.8776,
-        "stage_weighted_activity": 1680.3738,
-        "round_size_vs_trailing": 1123.3558,
-        "investor_breadth": 1498.9919
+        "capital_deployed": 1644.089,
+        "deal_count": 1750.0,
+        "stage_weighted_activity": 1721.5909,
+        "round_size_vs_trailing": 1087.9555,
+        "investor_breadth": 1544.7154
       },
-      "deal_count_raw": 83,
-      "capital_deployed_raw_usd": 8414140000.0,
+      "deal_count_raw": 84,
+      "capital_deployed_raw_usd": 8453240000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1444.006,
-      "value_6m_trailing": 1329.0256
+      "value_3m_trailing": 1472.5996,
+      "value_6m_trailing": 1342.302
     },
     {
       "month": "2026-02",
@@ -897,21 +897,21 @@
       "month_num": 2,
       "window_start": "2025-12-01",
       "window_end": "2026-02-28",
-      "value": 1967.9317,
+      "value": 1969.5214,
       "components": {
-        "capital_deployed": 2535.9647,
-        "deal_count": 1755.102,
-        "stage_weighted_activity": 1764.486,
-        "round_size_vs_trailing": 1612.099,
-        "investor_breadth": 1731.8548
+        "capital_deployed": 2535.5148,
+        "deal_count": 1770.8333,
+        "stage_weighted_activity": 1768.9394,
+        "round_size_vs_trailing": 1603.428,
+        "investor_breadth": 1719.5122
       },
-      "deal_count_raw": 86,
-      "capital_deployed_raw_usd": 13068790000.0,
+      "deal_count_raw": 85,
+      "capital_deployed_raw_usd": 13036590000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1622.097,
-      "value_6m_trailing": 1455.4146
+      "value_3m_trailing": 1639.9926,
+      "value_6m_trailing": 1471.5906
     },
     {
       "month": "2026-03",
@@ -920,21 +920,21 @@
       "month_num": 3,
       "window_start": "2026-01-01",
       "window_end": "2026-03-31",
-      "value": 2347.6204,
+      "value": 2364.8865,
       "components": {
-        "capital_deployed": 3522.853,
-        "deal_count": 1959.1837,
-        "stage_weighted_activity": 2013.0841,
-        "round_size_vs_trailing": 1441.4752,
-        "investor_breadth": 1794.3548
+        "capital_deployed": 3530.9277,
+        "deal_count": 2000.0,
+        "stage_weighted_activity": 2039.7727,
+        "round_size_vs_trailing": 1431.805,
+        "investor_breadth": 1808.9431
       },
       "deal_count_raw": 96,
       "capital_deployed_raw_usd": 18154600000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 1960.8821,
-      "value_6m_trailing": 1636.2378
+      "value_3m_trailing": 1975.2324,
+      "value_6m_trailing": 1654.3841
     },
     {
       "month": "2026-04",
@@ -943,21 +943,21 @@
       "month_num": 4,
       "window_start": "2026-02-01",
       "window_end": "2026-04-30",
-      "value": 2877.2534,
+      "value": 2909.3721,
       "components": {
-        "capital_deployed": 3661.461,
-        "deal_count": 2897.9592,
-        "stage_weighted_activity": 2844.8598,
-        "round_size_vs_trailing": 1282.9588,
-        "investor_breadth": 2955.6452
+        "capital_deployed": 3670.7578,
+        "deal_count": 2979.1667,
+        "stage_weighted_activity": 2895.8333,
+        "round_size_vs_trailing": 1269.2373,
+        "investor_breadth": 2979.6748
       },
-      "deal_count_raw": 142,
-      "capital_deployed_raw_usd": 18868900000.0,
+      "deal_count_raw": 143,
+      "capital_deployed_raw_usd": 18873550000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 2397.6018,
-      "value_6m_trailing": 1920.8039
+      "value_3m_trailing": 2414.5933,
+      "value_6m_trailing": 1943.5965
     },
     {
       "month": "2026-05",
@@ -966,21 +966,21 @@
       "month_num": 5,
       "window_start": "2026-03-01",
       "window_end": "2026-05-31",
-      "value": 2636.3763,
+      "value": 2671.1217,
       "components": {
-        "capital_deployed": 3186.8599,
-        "deal_count": 2795.9184,
-        "stage_weighted_activity": 2751.4019,
-        "round_size_vs_trailing": 958.4539,
-        "investor_breadth": 2895.1613
+        "capital_deployed": 3196.3914,
+        "deal_count": 2875.0,
+        "stage_weighted_activity": 2801.1364,
+        "round_size_vs_trailing": 967.0016,
+        "investor_breadth": 2918.6992
       },
-      "deal_count_raw": 137,
-      "capital_deployed_raw_usd": 16423100000.0,
+      "deal_count_raw": 138,
+      "capital_deployed_raw_usd": 16434550000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 2620.4167,
-      "value_6m_trailing": 2121.2569
+      "value_3m_trailing": 2648.4601,
+      "value_6m_trailing": 2144.2263
     },
     {
       "month": "2026-06",
@@ -989,21 +989,21 @@
       "month_num": 6,
       "window_start": "2026-04-01",
       "window_end": "2026-06-30",
-      "value": 2661.4572,
+      "value": 2692.7032,
       "components": {
-        "capital_deployed": 3094.8814,
-        "deal_count": 2775.5102,
-        "stage_weighted_activity": 2850.4673,
-        "round_size_vs_trailing": 936.5037,
-        "investor_breadth": 3247.9839
+        "capital_deployed": 3102.335,
+        "deal_count": 2854.1667,
+        "stage_weighted_activity": 2901.5152,
+        "round_size_vs_trailing": 922.3439,
+        "investor_breadth": 3274.3902
       },
-      "deal_count_raw": 136,
-      "capital_deployed_raw_usd": 15949100000.0,
+      "deal_count_raw": 137,
+      "capital_deployed_raw_usd": 15950950000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 2725.029,
-      "value_6m_trailing": 2342.9555
+      "value_3m_trailing": 2757.7323,
+      "value_6m_trailing": 2366.4824
     },
     {
       "month": "2026-07",
@@ -1012,21 +1012,21 @@
       "month_num": 7,
       "window_start": "2026-05-01",
       "window_end": "2026-07-31",
-      "value": 2607.5188,
+      "value": 2627.3544,
       "components": {
-        "capital_deployed": 3455.2042,
-        "deal_count": 2428.5714,
-        "stage_weighted_activity": 2528.972,
-        "round_size_vs_trailing": 1191.373,
-        "investor_breadth": 2742.9435
+        "capital_deployed": 3463.3183,
+        "deal_count": 2479.1667,
+        "stage_weighted_activity": 2562.5,
+        "round_size_vs_trailing": 1169.1747,
+        "investor_breadth": 2765.2439
       },
       "deal_count_raw": 119,
-      "capital_deployed_raw_usd": 17805980000.0,
+      "capital_deployed_raw_usd": 17806980000.0,
       "calibration": false,
       "weighting": "5-component (full)",
       "component_5_multiplier_applied": true,
-      "value_3m_trailing": 2635.1175,
-      "value_6m_trailing": 2516.3596
+      "value_3m_trailing": 2663.7264,
+      "value_6m_trailing": 2539.1599
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-14T17:16:29.684583Z",
+    "generated_at": "2026-08-14T18:04:37.431946Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -2245,7 +2245,7 @@
       "code": "RPCI",
       "status": "live",
       "cadence": "monthly",
-      "value": 2607.5188,
+      "value": 2627.3544,
       "as_of": "2026-07",
       "fresh_through": "2026-07",
       "base": {
@@ -2264,9 +2264,9 @@
           "null": true,
           "reason": "not_applicable_for_cadence"
         },
-        "1M": -2.03,
-        "3M": -9.37,
-        "1Y": 121.59,
+        "1M": -2.43,
+        "3M": -9.69,
+        "1Y": 126.37,
         "3Y": {
           "null": true,
           "reason": "insufficient_history"
@@ -2279,51 +2279,51 @@
       "series": [
         {
           "date": "2025-08",
-          "value": 1209.5974
+          "value": 1193.79
         },
         {
           "date": "2025-09",
-          "value": 1262.681
+          "value": 1268.1254
         },
         {
           "date": "2025-10",
-          "value": 1169.8569
+          "value": 1174.0981
         },
         {
           "date": "2025-11",
-          "value": 1433.6587
+          "value": 1467.3424
         },
         {
           "date": "2025-12",
-          "value": 1331.2652
+          "value": 1359.1671
         },
         {
           "date": "2026-01",
-          "value": 1567.0941
+          "value": 1591.2893
         },
         {
           "date": "2026-02",
-          "value": 1967.9317
+          "value": 1969.5214
         },
         {
           "date": "2026-03",
-          "value": 2347.6204
+          "value": 2364.8865
         },
         {
           "date": "2026-04",
-          "value": 2877.2534
+          "value": 2909.3721
         },
         {
           "date": "2026-05",
-          "value": 2636.3763
+          "value": 2671.1217
         },
         {
           "date": "2026-06",
-          "value": 2661.4572
+          "value": 2692.7032
         },
         {
           "date": "2026-07",
-          "value": 2607.5188
+          "value": 2627.3544
         }
       ]
     }

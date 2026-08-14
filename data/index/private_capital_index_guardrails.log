@@ -1,5 +1,5 @@
 Robotnik Private Capital Index — guardrail log
-Generated: 2026-08-14T14:01:46.677924+00:00
+Generated: 2026-08-14T18:04:37.320993+00:00
 Source: data/funding/rounds.json
 
 
@@ -43,13 +43,13 @@ Source: data/funding/rounds.json
   [GUARDRAIL 1] month=2023-04 Hanyang Technology 2023-03-15 stage=Pre-seed / Seed amount=$14M trailing-99th=$2M (5.8x); CAPPED at $2M
 
 [GUARDRAIL 1] 1 round(s) flagged in 2023-06:
-  [GUARDRAIL 1] month=2023-06 Anhui YOFC Advanced Semiconductor (YASC) 2023-06-28 stage=Series A amount=$562M trailing-99th=$76M (7.4x); CAPPED at $60M
+  [GUARDRAIL 1] month=2023-06 Anhui YOFC Advanced Semiconductor (YASC) 2023-06-28 stage=Series A amount=$562M trailing-99th=$76M (7.4x); CAPPED at $61M
 
 [GUARDRAIL 1] 1 round(s) flagged in 2023-07:
   [GUARDRAIL 1] month=2023-07 Anhui YOFC Advanced Semiconductor (YASC) 2023-06-28 stage=Series A amount=$562M trailing-99th=$92M (6.1x); CAPPED at $75M
 
 [GUARDRAIL 1] 1 round(s) flagged in 2023-08:
-  [GUARDRAIL 1] month=2023-08 Anhui YOFC Advanced Semiconductor (YASC) 2023-06-28 stage=Series A amount=$562M trailing-99th=$90M (6.2x); CAPPED at $78M
+  [GUARDRAIL 1] month=2023-08 Anhui YOFC Advanced Semiconductor (YASC) 2023-06-28 stage=Series A amount=$562M trailing-99th=$91M (6.2x); CAPPED at $79M
 
 [GUARDRAIL 1] 1 round(s) flagged in 2024-05:
   [GUARDRAIL 1] month=2024-05 The Bot Company 2024-05-13 stage=Pre-seed / Seed amount=$150M trailing-99th=$26M (5.8x); CAPPED at $22M
@@ -70,11 +70,11 @@ Source: data/funding/rounds.json
   [GUARDRAIL 1] month=2026-04 Waymo 2026-02-02 stage=Series C+ amount=$16000M trailing-99th=$1829M (8.7x); CAPPED at $1000M
 
 [BASE] March 2025 raw components used as normalisation reference:
-  capital_deployed: 5153.3800
-  deal_count: 49.0000
-  stage_weighted_activity: 53.5000
-  round_size_vs_trailing: 2.5567
-  investor_breadth: 248.0000
+  capital_deployed: 5141.5950
+  deal_count: 48.0000
+  stage_weighted_activity: 52.8000
+  round_size_vs_trailing: 2.5862
+  investor_breadth: 246.0000
 
 [CALIBRATION] During Jan-Dec 2023 readings:
   Component 4 (round size vs trailing-12M median) is DROPPED
@@ -91,15 +91,15 @@ Source: data/funding/rounds.json
 [ACCEPTANCE] OK — March 2025 = 1000.00 exact.
 
 *** WARN: composite ≠ weighted sum at:
-  2023-01: composite=428.9452 weighted_sum=364.6034
-  2023-02: composite=735.2959 weighted_sum=625.0015
-  2023-03: composite=1042.5843 weighted_sum=886.1966
-  2023-04: composite=1100.5855 weighted_sum=1068.2173
-  2023-05: composite=1313.7639 weighted_sum=1208.8408
-  2023-06: composite=1387.3616 weighted_sum=1301.0902
-  2023-07: composite=1290.5466 weighted_sum=1211.486
-  2023-08: composite=1228.8494 weighted_sum=1174.8195
-  2023-09: composite=1459.8626 weighted_sum=1429.954
-  2023-10: composite=1519.2698 weighted_sum=1472.14
-  2023-11: composite=1435.9741 weighted_sum=1393.9334
-  2023-12: composite=1338.8925 weighted_sum=1218.9224
+  2023-01: composite=373.3508 weighted_sum=354.9004
+  2023-02: composite=671.6752 weighted_sum=611.6537
+  2023-03: composite=976.7825 weighted_sum=869.5013
+  2023-04: composite=1115.6485 weighted_sum=1082.6052
+  2023-05: composite=1332.39 weighted_sum=1226.6422
+  2023-06: composite=1406.6125 weighted_sum=1320.686
+  2023-07: composite=1307.7573 weighted_sum=1227.1601
+  2023-08: composite=1245.7231 weighted_sum=1189.4469
+  2023-09: composite=1479.9331 weighted_sum=1445.9666
+  2023-10: composite=1539.7267 weighted_sum=1488.6709
+  2023-11: composite=1454.3265 weighted_sum=1409.5614
+  2023-12: composite=1356.6772 weighted_sum=1233.5619
