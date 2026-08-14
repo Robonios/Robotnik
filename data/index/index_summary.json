@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-14T18:04:37.431946Z",
+    "generated_at": "2026-08-14T21:33:45.177892Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -2245,7 +2245,7 @@
       "code": "RPCI",
       "status": "live",
       "cadence": "monthly",
-      "value": 2627.3544,
+      "value": 2627.2528,
       "as_of": "2026-07",
       "fresh_through": "2026-07",
       "base": {
@@ -2265,7 +2265,7 @@
           "reason": "not_applicable_for_cadence"
         },
         "1M": -2.43,
-        "3M": -9.69,
+        "3M": -9.7,
         "1Y": 126.37,
         "3Y": {
           "null": true,
@@ -2319,11 +2319,11 @@
         },
         {
           "date": "2026-06",
-          "value": 2692.7032
+          "value": 2692.6016
         },
         {
           "date": "2026-07",
-          "value": 2627.3544
+          "value": 2627.2528
         }
       ]
     }
