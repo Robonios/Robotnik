@@ -654,7 +654,7 @@ def main():
     _hist_keys = set().union(*price_matrix.values()) if price_matrix else set()
     _unkeyed = sorted(e["ticker"] for e in eligible if e["ticker"] not in _hist_keys)
     save_json(os.path.join(OUT_DIR, "unkeyed_constituents.json"),
-              {"checked_at": datetime.now(timezone.utc).isoformat() + "Z",
+              {"checked_at": datetime.now(timezone.utc).isoformat(),
                "count": len(_unkeyed), "tickers": _unkeyed})
     if _unkeyed:
         print("  UNKEYED CONSTITUENTS (eligible, no history bar): {}".format(_unkeyed))
@@ -758,7 +758,7 @@ def main():
     # Keep last 90 days
     quarantine_history = quarantine_history[-500:]
     save_json(quarantine_log_path, {
-        "last_run": datetime.now(timezone.utc).isoformat() + "Z",
+        "last_run": datetime.now(timezone.utc).isoformat(),
         "quarantined_today": quarantine_today,
         "history": quarantine_history,
     })
@@ -784,7 +784,7 @@ def main():
 
     # ── weights.json ─────────────────────────────────────────────────
     weights_output = {
-        "calculated_at": datetime.now(timezone.utc).isoformat() + "Z",
+        "calculated_at": datetime.now(timezone.utc).isoformat(),
         "cap_limit_pct": CAP_LIMIT * 100,
         "entity_count": len(eligible),
         # market_cap_usd omitted from published output (ToS: no raw vendor mcap on the
@@ -1033,7 +1033,7 @@ def main():
         daily_change_pct = 0.0
 
     summary = {
-        "calculated_at": datetime.now(timezone.utc).isoformat() + "Z",
+        "calculated_at": datetime.now(timezone.utc).isoformat(),
         "composite": {
             "name": "Robotnik Composite Index",
             "value": composite_value,

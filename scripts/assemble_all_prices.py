@@ -148,7 +148,7 @@ def main():
     ages = sorted(_age_days(p) for p in eq_prices)
 
     out = {
-        "fetched_at": datetime.now(timezone.utc).isoformat() + "Z",
+        "fetched_at": datetime.now(timezone.utc).isoformat(),
         "count": len(prices),
         "kept_stale_count": kept_stale,
         "equity_count": len(eq_prices),

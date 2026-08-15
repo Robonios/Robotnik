@@ -1,0 +1,57 @@
+name: Staleness Monitor
+
+# Runs the "green != fresh" check as its OWN scheduled workflow — deliberately
+# standalone: no `needs:`, no dependency on the data-pipeline jobs. A monitor
+# wired inside the job it watches dies with that job. Precedent: the fetch-intel
+# cron was never registered, so research/filings/reports went dormant for ~4
+# months with CI green throughout and nothing ever exited non-zero. This job
+# checks the COMMITTED artefacts on a fixed, independent clock, so a dead writer
+# (frozen run-stamp, or frozen git commit-date) surfaces within days, not months.
+#
+# Cadence deconfliction — no shared minute with any existing cron:
+#   0 22 * * 1-5   fetch-data.yml                    EOD price/index pipeline
+#   0 5  * * 0     fetch-data.yml                    market caps
+#   0 23 * * 0     fetch-data.yml                    weekly health check
+#   0 6  * * 1     fetch-data.yml                    weekly intel
+#   0 8  * * 6     weekly-commodities-composite.yml  commodities/composite
+#   0 12 * * *     THIS                              midday UTC — distinct slot,
+#                                                    no writer runs at that time
+#
+# Read-only by construction: no `contents: write`, no git identity, no commit,
+# no push, no API keys, no network. It only reads files + `git log`, prints a
+# report, and exits 0 (fresh) or 1 (a writer has died).
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # daily 12:00 UTC — independent of every data cron
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check-staleness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo (full history)
+        uses: actions/checkout@v5
+        with:
+          # fetch-depth: 0 is REQUIRED. The monitor's mtime fallback reads
+          # `git log -1 --format=%cI -- <path>` for the three artefacts that
+          # carry no in-file run-stamp (robotnik_index, sub_indices,
+          # index_summary). A shallow depth-1 clone omits the commit that last
+          # touched a path when HEAD did not, so git log returns empty and the
+          # monitor would report a FALSE stale. Full history makes the
+          # commit-date signal reliable.
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      # check_staleness.py imports only the standard library — no pip install.
+      # Exit 1 => a monitored artefact is STALE (a writer has died) => this step
+      # fails => the workflow fails => GitHub sends the standard failure alert.
+      - name: Check artefact staleness
+        run: python scripts/check_staleness.py

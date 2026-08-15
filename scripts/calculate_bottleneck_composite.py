@@ -477,7 +477,7 @@ def main():
             "months_flagged": len(flagged_months),
             "per_day_sample": per_day_div[-30:] if len(per_day_div) >= 30 else per_day_div,
         },
-        "calculated_at": datetime.now(timezone.utc).isoformat() + "Z",
+        "calculated_at": datetime.now(timezone.utc).isoformat(),
     }
     save_json(OUT_PATH, output)
 
