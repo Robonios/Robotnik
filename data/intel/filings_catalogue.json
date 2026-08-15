@@ -1,0 +1,29 @@
+{
+  "_purpose": "Cowork-owned interpretation layer for the SEC filings feed. Append-only. NEVER regenerated or overwritten by any fetcher or script. Each row interprets and taxonomy-tags one material item drawn from the raw feed named in source_feed. Held in a separate file from the raw feed because that feed is overwritten in full on every fetch (a news refresh once wiped 150 entity-tagged items — see data_exposure/interpretation separation).",
+  "catalogue": "filings",
+  "source_feed": "data/filings.json",
+  "source_feed_owner": "scripts/fetch_filings.py (SEC EDGAR) — fetcher-owned, overwritten in full on each run",
+  "owner": "monthly Cowork research sweep",
+  "append_only": true,
+  "regenerated_by_script": false,
+  "dedup_key": "url_or_sec_accession",
+  "dedup_key_note": "The raw filing row carries no standalone accession field; the SEC accession is embedded in the EDGAR url as /Archives/edgar/data/<cik>/<accession_clean>/. Dedup on the url, or parse the accession out of it — both are stable per filing.",
+  "row_schema": [
+    "id",
+    "entity_or_institution",
+    "title",
+    "date",
+    "sectors",
+    "subsectors",
+    "value_chain_tier",
+    "summary",
+    "robotnik_note",
+    "source",
+    "url",
+    "retrieval_date"
+  ],
+  "enum_authority": "data/registries/taxonomy.json — sectors, subsectors and the 9 value_chain_tier values are authoritative there (also listed in CLAUDE.md).",
+  "schema_version": "1.0",
+  "created": "2026-08-15",
+  "rows": []
+}
