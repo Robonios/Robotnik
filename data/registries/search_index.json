@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-03T19:19:01.332180+00:00",
+  "generated_at": "2026-08-15T16:38:59.111123+00:00",
   "source": "entity_registry.json (active universe; status == null)",
-  "note": "Global-search index for nav.js. Derived from the registry; contains no vendor fields.",
-  "count": 454,
+  "note": "Global-search index (nav.js) and asset-profile edge-label resolver (asset-profile.js). Derived from the registry; contains no vendor fields.",
+  "count": 460,
   "entities": [
     {
       "id": "$CPT",
@@ -15,6 +15,20 @@
         "EMPULSER ENTERPRISES",
         "Empulser Enterprises",
         "empulser enterprises"
+      ]
+    },
+    {
+      "id": "000660 KS",
+      "name": "SK HYNIX INC",
+      "ticker": "000660 KS",
+      "sector": "Semiconductors",
+      "type": "public",
+      "aliases": [
+        "SK Hynix",
+        "SK hynix",
+        "SK HYNIX INC",
+        "000660 KS",
+        "sk hynix inc"
       ]
     },
     {
@@ -32,30 +46,6 @@
       ]
     },
     {
-      "id": "002050",
-      "name": "ZHEJIANG SANHUA INTELLIGEN-A",
-      "ticker": "002050",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "002050",
-        "ZHEJIANG SANHUA INTELLIGEN-A",
-        "zhejiang sanhua intelligen-a"
-      ]
-    },
-    {
-      "id": "002472",
-      "name": "ZHEJIANG SHUANGHUAN DRIVEL-A",
-      "ticker": "002472",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "002472",
-        "ZHEJIANG SHUANGHUAN DRIVEL-A",
-        "zhejiang shuanghuan drivel-a"
-      ]
-    },
-    {
       "id": "002747 C2",
       "name": "ESTUN AUTOMATION CO LTD-A",
       "ticker": "002747 C2",
@@ -70,17 +60,31 @@
       ]
     },
     {
-      "id": "010060 KS",
-      "name": "OCI Holdings",
-      "ticker": "010060 KS",
-      "sector": "Materials",
+      "id": "005930 KS",
+      "name": "SAMSUNG ELECTRONICS CO",
+      "ticker": "005930 KS",
+      "sector": "Semiconductors",
       "type": "public",
       "aliases": [
-        "010060 KS",
-        "OCI",
-        "OCI HOLDINGS",
-        "OCI Holdings",
-        "oci holdings"
+        "005930 KS",
+        "005930",
+        "SAMSUNG",
+        "SAMSUNG ELECTRONICS",
+        "SAMSUNG ELECTRONICS CO",
+        "samsung electronics co"
+      ]
+    },
+    {
+      "id": "012450 KS",
+      "name": "Hanwha Aerospace",
+      "ticker": "012450 KS",
+      "sector": "Space",
+      "type": "public",
+      "aliases": [
+        "012450 KS",
+        "HANWHA AEROSPACE",
+        "Hanwha Aerospace",
+        "hanwha aerospace"
       ]
     },
     {
@@ -227,6 +231,20 @@
       ]
     },
     {
+      "id": "2454 TT",
+      "name": "MEDIATEK INC",
+      "ticker": "2454 TT",
+      "sector": "Semiconductors",
+      "type": "public",
+      "aliases": [
+        "MediaTek",
+        "MTK",
+        "MEDIATEK INC",
+        "2454 TT",
+        "mediatek inc"
+      ]
+    },
+    {
       "id": "2498 HK",
       "name": "ROBOSENSE TECHNOLOGY CO LTD",
       "ticker": "2498 HK",
@@ -249,6 +267,20 @@
         "277810 KS",
         "RAINBOW ROBOTICS",
         "rainbow robotics"
+      ]
+    },
+    {
+      "id": "2802 JP",
+      "name": "Ajinomoto Co",
+      "ticker": "2802 JP",
+      "sector": "Materials",
+      "type": "public",
+      "aliases": [
+        "2802 JP",
+        "AJINOMOTO CO",
+        "Ajinomoto",
+        "Ajinomoto Co",
+        "ajinomoto co"
       ]
     },
     {
@@ -318,17 +350,17 @@
       ]
     },
     {
-      "id": "4043 JP",
-      "name": "Tokuyama Corp",
-      "ticker": "4043 JP",
+      "id": "4004 JP",
+      "name": "Resonac Holdings",
+      "ticker": "4004 JP",
       "sector": "Materials",
       "type": "public",
       "aliases": [
-        "4043 JP",
-        "TOKUYAMA CORP",
-        "Tokuyama",
-        "Tokuyama Corp",
-        "tokuyama corp"
+        "4004 JP",
+        "RESONAC HOLDINGS",
+        "Resonac",
+        "Resonac Holdings",
+        "resonac holdings"
       ]
     },
     {
@@ -361,17 +393,17 @@
       ]
     },
     {
-      "id": "4004 JP",
-      "name": "Resonac Holdings",
-      "ticker": "4004 JP",
+      "id": "4091 JP",
+      "name": "Nippon Sanso Holdings",
+      "ticker": "4091 JP",
       "sector": "Materials",
       "type": "public",
       "aliases": [
-        "4004 JP",
-        "RESONAC HOLDINGS",
-        "Resonac",
-        "Resonac Holdings",
-        "resonac holdings"
+        "4091 JP",
+        "NIPPON SANSO HOLDINGS",
+        "Nippon Sanso",
+        "Nippon Sanso Holdings",
+        "nippon sanso holdings"
       ]
     },
     {
@@ -477,43 +509,17 @@
       ]
     },
     {
-      "id": "601100",
-      "name": "JIANGSU HENGLI HYDRAULIC C-A",
-      "ticker": "601100",
-      "sector": "Robotics",
+      "id": "600584",
+      "name": "JCET GROUP CO",
+      "ticker": "600584",
+      "sector": "Semiconductors",
       "type": "public",
       "aliases": [
-        "601100",
-        "JIANGSU HENGLI HYDRAULIC C-A",
-        "jiangsu hengli hydraulic c-a"
-      ]
-    },
-    {
-      "id": "6104 JP",
-      "name": "SHIBAURA MACHINE CO., LTD",
-      "ticker": "6104 JP",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "6104 JP",
-        "SHIBAURA MACHINE CO.,",
-        "SHIBAURA MACHINE CO., LTD",
-        "shibaura machine co., ltd"
-      ]
-    },
-    {
-      "id": "6113 JP",
-      "name": "Amada Co Ltd",
-      "ticker": "6113 JP",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "6113 JP",
-        "AMADA CO LTD",
-        "Amada Co",
-        "Amada Co Ltd",
-        "amada co ltd",
-        "Amada"
+        "JCET",
+        "JCET Group",
+        "600584",
+        "JCET GROUP CO",
+        "jcet group co"
       ]
     },
     {
@@ -527,20 +533,6 @@
         "FUJI",
         "FUJI CORPORATION",
         "fuji corporation"
-      ]
-    },
-    {
-      "id": "6141 JP",
-      "name": "Dmg Mori Co Ltd",
-      "ticker": "6141 JP",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "6141 JP",
-        "DMG MORI CO LTD",
-        "Dmg Mori Co",
-        "Dmg Mori Co Ltd",
-        "dmg mori co ltd"
       ]
     },
     {
@@ -652,6 +644,19 @@
       ]
     },
     {
+      "id": "6594",
+      "name": "NIDEC CORP",
+      "ticker": "6594",
+      "sector": "Robotics",
+      "type": "public",
+      "aliases": [
+        "6594",
+        "NIDEC",
+        "NIDEC CORP",
+        "nidec corp"
+      ]
+    },
+    {
       "id": "6600 HK",
       "name": "ONEROBOTICS SHENZHEN CO -H",
       "ticker": "6600 HK",
@@ -661,19 +666,6 @@
         "6600 HK",
         "ONEROBOTICS SHENZHEN CO -H",
         "onerobotics shenzhen co -h"
-      ]
-    },
-    {
-      "id": "6622 JP",
-      "name": "DAIHEN CORP",
-      "ticker": "6622 JP",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "6622 JP",
-        "DAIHEN",
-        "DAIHEN CORP",
-        "daihen corp"
       ]
     },
     {
@@ -715,33 +707,6 @@
         "RENESAS ELECTRONICS CORP",
         "renesas electronics corp",
         "Renesas"
-      ]
-    },
-    {
-      "id": "6841 JP",
-      "name": "YOKOGAWA ELECTRIC CORPORATION",
-      "ticker": "6841 JP",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "6841 JP",
-        "YOKOGAWA ELECTRIC",
-        "YOKOGAWA ELECTRIC CORPORATION",
-        "yokogawa electric corporation"
-      ]
-    },
-    {
-      "id": "6845 JP",
-      "name": "Azbil Corp",
-      "ticker": "6845 JP",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "6845 JP",
-        "AZBIL CORP",
-        "Azbil",
-        "Azbil Corp",
-        "azbil corp"
       ]
     },
     {
@@ -797,31 +762,6 @@
       ]
     },
     {
-      "id": "688169 C1",
-      "name": "BEIJING ROBOROCK TECHNOLOG-A",
-      "ticker": "688169 C1",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "688169 C1",
-        "BEIJING ROBOROCK TECHNOLOG-A",
-        "beijing roborock technolog-a"
-      ]
-    },
-    {
-      "id": "6914 JP",
-      "name": "OPTEX GROUP COMPANY LTD",
-      "ticker": "6914 JP",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "6914 JP",
-        "OPTEX GROUP COMPANY",
-        "OPTEX GROUP COMPANY LTD",
-        "optex group company ltd"
-      ]
-    },
-    {
       "id": "6920 JP",
       "name": "Lasertec Corp",
       "ticker": "6920 JP",
@@ -850,6 +790,19 @@
       ]
     },
     {
+      "id": "7741 JP",
+      "name": "HOYA CORP",
+      "ticker": "7741 JP",
+      "sector": "Materials",
+      "type": "public",
+      "aliases": [
+        "Hoya",
+        "HOYA CORP",
+        "7741 JP",
+        "hoya corp"
+      ]
+    },
+    {
       "id": "8035 JP",
       "name": "Tokyo Electron Ltd",
       "ticker": "8035 JP",
@@ -861,6 +814,20 @@
         "Tokyo Electron",
         "Tokyo Electron Ltd",
         "tokyo electron ltd"
+      ]
+    },
+    {
+      "id": "8046 TT",
+      "name": "NAN YA PRINTED CIRCUIT BOARD",
+      "ticker": "8046 TT",
+      "sector": "Materials",
+      "type": "public",
+      "aliases": [
+        "Nan Ya PCB",
+        "Nan Ya Printed Circuit Board",
+        "8046 TT",
+        "NAN YA PRINTED CIRCUIT BOARD",
+        "nan ya printed circuit board"
       ]
     },
     {
@@ -930,6 +897,19 @@
         "Advanced Energy Industries",
         "Advanced Energy Industries Inc",
         "advanced energy industries inc"
+      ]
+    },
+    {
+      "id": "AI FP",
+      "name": "Air Liquide",
+      "ticker": "AI FP",
+      "sector": "Materials",
+      "type": "public",
+      "aliases": [
+        "AI FP",
+        "AIR LIQUIDE",
+        "Air Liquide",
+        "air liquide"
       ]
     },
     {
@@ -1067,6 +1047,19 @@
       ]
     },
     {
+      "id": "APD",
+      "name": "Air Products",
+      "ticker": "APD",
+      "sector": "Materials",
+      "type": "public",
+      "aliases": [
+        "AIR PRODUCTS",
+        "APD",
+        "Air Products",
+        "air products"
+      ]
+    },
+    {
       "id": "ARM",
       "name": "ARM HOLDINGS AMERICAN DEPOSITARY S",
       "ticker": "ARM",
@@ -1145,6 +1138,20 @@
         "AUTONOMA NETWORK",
         "Autonoma Network",
         "autonoma network"
+      ]
+    },
+    {
+      "id": "ATS AV",
+      "name": "AT&S AUSTRIA TECH & SYSTEMTECHNIK",
+      "ticker": "ATS AV",
+      "sector": "Materials",
+      "type": "public",
+      "aliases": [
+        "AT&S",
+        "AT&S Austria Technologie & Systemtechnik",
+        "ATS AV",
+        "AT&S AUSTRIA TECH & SYSTEMTECHNIK",
+        "at&s austria tech & systemtechnik"
       ]
     },
     {
@@ -1331,6 +1338,19 @@
         "CODEC FLOW",
         "Codec Flow",
         "codec flow"
+      ]
+    },
+    {
+      "id": "COHR",
+      "name": "COHERENT CORP",
+      "ticker": "COHR",
+      "sector": "Semiconductors",
+      "type": "public",
+      "aliases": [
+        "COHERENT",
+        "COHERENT CORP",
+        "COHR",
+        "coherent corp"
       ]
     },
     {
@@ -1542,6 +1562,19 @@
       ]
     },
     {
+      "id": "GFS",
+      "name": "GLOBALFOUNDRIES INC",
+      "ticker": "GFS",
+      "sector": "Semiconductors",
+      "type": "public",
+      "aliases": [
+        "GlobalFoundries",
+        "GLOBALFOUNDRIES INC",
+        "GFS",
+        "globalfoundries inc"
+      ]
+    },
+    {
       "id": "GILT",
       "name": "Gilat Satellite Networks",
       "ticker": "GILT",
@@ -1555,19 +1588,6 @@
       ]
     },
     {
-      "id": "GMED",
-      "name": "GLOBUS MED INC",
-      "ticker": "GMED",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "GLOBUS MED",
-        "GLOBUS MED INC",
-        "GMED",
-        "globus med inc"
-      ]
-    },
-    {
       "id": "GSAT",
       "name": "Globalstar",
       "ticker": "GSAT",
@@ -1578,6 +1598,18 @@
         "GSAT",
         "Globalstar",
         "globalstar"
+      ]
+    },
+    {
+      "id": "HEXAB SS",
+      "name": "HEXAGON AB",
+      "ticker": "HEXAB SS",
+      "sector": "Robotics",
+      "type": "public",
+      "aliases": [
+        "HEXAB SS",
+        "HEXAGON AB",
+        "hexagon ab"
       ]
     },
     {
@@ -1603,19 +1635,6 @@
         "INFINEON TECHNOLOGIES AG",
         "infineon technologies ag",
         "Infineon"
-      ]
-    },
-    {
-      "id": "ILU AU",
-      "name": "Iluka Resources",
-      "ticker": "ILU AU",
-      "sector": "Materials",
-      "type": "public",
-      "aliases": [
-        "ILU AU",
-        "ILUKA RESOURCES",
-        "Iluka Resources",
-        "iluka resources"
       ]
     },
     {
@@ -1764,19 +1783,6 @@
       ]
     },
     {
-      "id": "KCR FH",
-      "name": "Konecranes Oyj",
-      "ticker": "KCR FH",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "KCR FH",
-        "KONECRANES OYJ",
-        "Konecranes Oyj",
-        "konecranes oyj"
-      ]
-    },
-    {
       "id": "KDK",
       "name": "KODIAK AI INC",
       "ticker": "KDK",
@@ -1815,6 +1821,19 @@
         "Kulicke & Soffa Industries",
         "Kulicke & Soffa Industries Inc",
         "kulicke & soffa industries inc"
+      ]
+    },
+    {
+      "id": "KOPN",
+      "name": "KOPIN CORP",
+      "ticker": "KOPN",
+      "sector": "Robotics",
+      "type": "public",
+      "aliases": [
+        "KOPIN",
+        "KOPIN CORP",
+        "KOPN",
+        "kopin corp"
       ]
     },
     {
@@ -1858,18 +1877,31 @@
       ]
     },
     {
-      "id": "LECO",
-      "name": "Lincoln Electric Holdings Inc",
-      "ticker": "LECO",
-      "sector": "Robotics",
+      "id": "LHX",
+      "name": "L3HARRIS TECHNOLOGIES INC",
+      "ticker": "LHX",
+      "sector": "Space",
       "type": "public",
       "aliases": [
-        "LECO",
-        "LINCOLN ELECTRIC HOLDINGS INC",
-        "Lincoln Electric",
-        "Lincoln Electric Holdings",
-        "Lincoln Electric Holdings Inc",
-        "lincoln electric holdings inc"
+        "L3HARRIS TECHNOLOGIES",
+        "L3HARRIS TECHNOLOGIES INC",
+        "LHX",
+        "l3harris technologies inc",
+        "Aerojet Rocketdyne"
+      ]
+    },
+    {
+      "id": "LIN",
+      "name": "Linde PLC",
+      "ticker": "LIN",
+      "sector": "Materials",
+      "type": "public",
+      "aliases": [
+        "LIN",
+        "LINDE PLC",
+        "Linde PLC",
+        "linde plc",
+        "Linde"
       ]
     },
     {
@@ -2063,6 +2095,20 @@
       ]
     },
     {
+      "id": "MTRN",
+      "name": "Materion Corp",
+      "ticker": "MTRN",
+      "sector": "Materials",
+      "type": "public",
+      "aliases": [
+        "MATERION CORP",
+        "MTRN",
+        "Materion",
+        "Materion Corp",
+        "materion corp"
+      ]
+    },
+    {
       "id": "MTSI",
       "name": "MACOM TECHNOLOGY SOLUTIONS INC",
       "ticker": "MTSI",
@@ -2115,6 +2161,16 @@
         "NATIX NETWORK",
         "NATIX Network",
         "natix network"
+      ]
+    },
+    {
+      "id": "NOC",
+      "name": "Northrop Grumman",
+      "ticker": "NOC",
+      "sector": "Space",
+      "type": "public",
+      "aliases": [
+        "Northrop Grumman"
       ]
     },
     {
@@ -2244,6 +2300,19 @@
       ]
     },
     {
+      "id": "ONDS",
+      "name": "ONDAS INC.",
+      "ticker": "ONDS",
+      "sector": "Space",
+      "type": "public",
+      "aliases": [
+        "ONDAS",
+        "ONDAS INC.",
+        "ONDS",
+        "ondas inc."
+      ]
+    },
+    {
       "id": "ONO",
       "name": "Onocoy Token",
       "ticker": null,
@@ -2356,6 +2425,19 @@
       "aliases": [
         "PEAQ",
         "peaq"
+      ]
+    },
+    {
+      "id": "PENG",
+      "name": "PENGUIN SOLUTIONS INC",
+      "ticker": "PENG",
+      "sector": "Semiconductors",
+      "type": "public",
+      "aliases": [
+        "PENG",
+        "PENGUIN SOLUTIONS",
+        "PENGUIN SOLUTIONS INC",
+        "penguin solutions inc"
       ]
     },
     {
@@ -2765,6 +2847,19 @@
       ]
     },
     {
+      "id": "SIE GR",
+      "name": "SIEMENS AG",
+      "ticker": "SIE GR",
+      "sector": "Semiconductors",
+      "type": "public",
+      "aliases": [
+        "SIE GR",
+        "SIEMENS AG",
+        "Siemens",
+        "siemens ag"
+      ]
+    },
+    {
       "id": "SITM",
       "name": "SiTime Corp",
       "ticker": "SITM",
@@ -2970,18 +3065,6 @@
         "SYNAPTICS",
         "SYNAPTICS INC",
         "synaptics inc"
-      ]
-    },
-    {
-      "id": "TECN SW",
-      "name": "TECAN GROUP AG-REG",
-      "ticker": "TECN SW",
-      "sector": "Robotics",
-      "type": "public",
-      "aliases": [
-        "TECAN GROUP AG-REG",
-        "TECN SW",
-        "tecan group ag-reg"
       ]
     },
     {

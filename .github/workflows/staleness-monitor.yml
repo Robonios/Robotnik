@@ -55,3 +55,14 @@ jobs:
       # fails => the workflow fails => GitHub sends the standard failure alert.
       - name: Check artefact staleness
         run: python scripts/check_staleness.py
+
+      # Content drift-guard for the event-driven search_index.json. It has no time
+      # cadence (rebuilt only on a registry change, by refresh-search-index.yml), so
+      # a freshness tolerance in check_staleness.py would be meaningless - a long
+      # quiet spell is legitimate, and a drifted file can still carry a recent
+      # timestamp. Instead we assert here that the served file still equals the
+      # registry projection. Exit 1 => it has drifted from entity_registry.json (a
+      # refresh that failed to run, or a hand-edit). This is why check_staleness.py
+      # deliberately EXCLUDES search_index.json rather than time-monitoring it.
+      - name: Search-index drift check (served == registry projection)
+        run: python scripts/build_search_index.py --check

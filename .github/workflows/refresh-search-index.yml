@@ -1,0 +1,70 @@
+name: Refresh Search Index
+
+# Regenerates data/registries/search_index.json whenever the entity universe
+# changes. search_index.json is a pure projection of entity_registry.json (built
+# by scripts/build_search_index.py) and is served live by nav.js (global search)
+# and asset-profile.js (edge-label resolver). It is EVENT-DRIVEN: stale the moment
+# the registry's active set - or any active entity's projected field - changes, so
+# it is rebuilt on a push to the registry, never on a clock.
+#
+# Deconfliction / no race with the daily pipeline:
+#   - No other workflow triggers on data/registries/entity_registry.json. sitemap
+#     watches *.html; conflict-marker runs on every push but only validates JSON.
+#   - The daily pipeline (fetch-data.yml) never writes entity_registry.json, so it
+#     cannot trigger this workflow; and it never writes search_index.json, so the
+#     two only ever touch DISJOINT files.
+#   - concurrency serialises this workflow against itself.
+#   - The job stages ONLY search_index.json and rebases onto origin/main before
+#     pushing, so an overlapping daily push (different files) merges without
+#     conflict by construction.
+#   - It commits only when the active projection actually changed (the --check
+#     gate below), so a registry edit that leaves the projection untouched - e.g.
+#     an edit to a non-projected field like description - produces no commit and
+#     no timestamp churn.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'data/registries/entity_registry.json'
+      - 'scripts/build_search_index.py'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-search-index
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main (full history for a clean rebase)
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Regenerate search_index.json, commit only on real drift
+        run: |
+          git config user.name "Robotnik Pipeline"
+          git config user.email "data@robotniks.com"
+          # --check exits 0 when the served file already matches the registry
+          # (ignoring the timestamp), 1 when the active projection has drifted.
+          if python scripts/build_search_index.py --check; then
+            echo "search_index.json already matches the registry - nothing to do."
+            exit 0
+          fi
+          echo "Registry drift detected - regenerating."
+          python scripts/build_search_index.py
+          git add data/registries/search_index.json      # narrow: this file ONLY
+          git commit -m "data: regenerate search_index.json from registry $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main                   # rebase the lone file onto latest main
+          git push

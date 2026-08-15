@@ -81,8 +81,9 @@ EXCLUDED = [
     ("data/index/index_metrics.json",
      "DEAD - writer calculate_index_metrics.py is in no workflow and nothing reads it (last 2026-05-23). Remove it."),
     ("data/registries/search_index.json",
-     "NO REPRODUCIBLE BUILD - served (nav search + asset-profile) but NO script writes it; generated ad-hoc 2026-07-03. "
-     "Build a generator + schedule it, THEN monitor. Serious: it is already stale vs the universe."),
+     "EVENT-DRIVEN - pure projection of entity_registry.json (writer scripts/build_search_index.py; "
+     "workflow refresh-search-index.yml regenerates on registry push). No time cadence, so NOT time-monitored "
+     "here; its content is drift-guarded by 'build_search_index.py --check' in staleness-monitor.yml."),
     ("data/markets/enrichment_data.json", "hand-curated ratings - no schedule."),
     ("sitemap.xml",                       "event-driven (on push) - no time cadence."),
     ("data/index/base_date.json",         "legitimately static (index base date) - mtime would false-positive."),
