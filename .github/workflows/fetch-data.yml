@@ -5,12 +5,13 @@ on:
     - cron: '0 22 * * 1-5'   # Weekdays at 22:00 UTC — EOD pipeline (after US close)
     - cron: '0 5 * * 0'      # Sunday at 05:00 UTC — market caps refresh
     - cron: '0 23 * * 0'    # Sunday at 23:00 UTC — weekly health check
+    - cron: '0 6 * * 1'      # Monday at 06:00 UTC — weekly intel fetch (research/filings/reports)
     # (live-prices 30-min job removed at MarketStack cutover — EODHD intraday,
     #  not displayed, not the product; saved ~8.7k EODHD calls/mo)
   workflow_dispatch:
     inputs:
       run_intel:
-        description: 'Also run intel fetchers (news/research/filings/reports)?'
+        description: 'Also run intel fetchers (research/filings/reports)?'
         type: boolean
         default: false
 
@@ -168,22 +169,23 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    if: >
-      (github.event_name == 'schedule' && github.event.schedule == '0 6 * * 1-5')
-      || (github.event_name == 'workflow_dispatch' && inputs.run_intel == true)
-      && github.event.schedule != '0 5 * * 0'
     needs: fetch-prices
+    # Weekly on its own Monday 06:00 UTC slot (registered in on.schedule above).
+    # needs: fetch-prices is kept ONLY to serialise pushes on the manual
+    # workflow_dispatch path, where both jobs run. On the Monday cron, fetch-prices
+    # is skipped, so !cancelled() is required or the skipped dependency would skip
+    # this job too. Intel feeds (OpenAlex/EDGAR/RSS) are independent of the price
+    # pipeline, so running when fetch-prices is skipped or failed is intended.
+    # History: the prior '0 6 * * 1-5' trigger was never registered in on.schedule,
+    # so this job had been dead since 2026-04-09. The cron is now Monday-only, so
+    # the old "Check if Monday" step (which used exit 0 and ended only the step,
+    # never the job) has been removed.
+    if: >
+      !cancelled() &&
+      ( (github.event_name == 'schedule' && github.event.schedule == '0 6 * * 1')
+        || (github.event_name == 'workflow_dispatch' && inputs.run_intel == true) )
 
     steps:
-      - name: Check if Monday
-        if: github.event_name == 'schedule'
-        run: |
-          DAY=$(date -u +%u)
-          if [ "$DAY" != "1" ]; then
-            echo "Not Monday (day=$DAY) — skipping intel fetch"
-            exit 0
-          fi
-
       - name: Checkout repo
         uses: actions/checkout@v5
         with:
@@ -200,9 +202,8 @@ jobs:
       - name: Fetch research papers (OpenAlex)
         run: python scripts/fetch_research.py
 
-      - name: Fetch news (RSS feeds)
-        run: python scripts/fetch_news.py
-
+      # News is intentionally NOT fetched here — it runs daily in the fetch-prices
+      # job. A weekly duplicate would overwrite the fresher daily pull every Monday.
       - name: Fetch SEC filings (EDGAR)
         run: python scripts/fetch_filings.py
 
@@ -214,7 +215,10 @@ jobs:
         run: |
           git config user.name "Robotnik Pipeline"
           git config user.email "data@robotniks.com"
-          git add data/
+          # Stage only the feed files this job owns (news excluded — owned by the
+          # daily fetch-prices job). Never data/intel/ (the Cowork interpretation
+          # layer, now tracked under data/) or any other dirty path.
+          git add data/research.json data/filings.json data/reports.json
           if git diff --cached --quiet; then
             echo "No intel changes — skipping commit"
           else
