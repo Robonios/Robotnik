@@ -329,7 +329,7 @@ EQUITIES = [
     ("BKSY", "BlackSky Technology", "Space", "United States"),
     ("GSAT", "Globalstar Inc", "Space", "United States"),
     ("TSAT", "Telesat Corp", "Space", "United States"),
-    ("SATS", "EchoStar Corp", "Space", "United States"),
+    ("ECHO", "EchoStar Corp", "Space", "United States"),
     ("BA", "Boeing Co", "Space", "United States"),
     ("LMT", "Lockheed Martin", "Space", "United States"),
     ("RTX", "RTX Corp", "Space", "United States"),

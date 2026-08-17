@@ -460,5 +460,14 @@
       "marketstack"
     ],
     "reason": "NSK \u2014 universe admission 2026-07: promoted to constituent; not yet in the MarketStack symbol map, Yahoo for initial history + daily. TSE. Can be MS-resolved later."
+  },
+  "ECHO": {
+    "provider": "yahoo",
+    "yahoo_symbol": "ECHO",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "SATS->ECHO NASDAQ rename effective 2026-06-24. MarketStack v2 EOD still serves the old symbol SATS (frozen 2026-07-29) and returns 422 no_valid_symbols for ECHO; the rename has not propagated to v2. resolve_marketstack_symbols.py cannot resolve ECHO (empty candidate ladder + v2 422). Yahoo carries ECHO fresh (USD, NASDAQ). TEMPORARY - remove once v2 lists ECHO so the name returns to the primary path.",
+    "added_date": "2026-08-15"
   }
 }

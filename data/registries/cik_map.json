@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-04T09:35:20.416284+00:00",
-  "source": "https://www.sec.gov/files/company_tickers.json",
+  "generated_at": "2026-08-16T19:19:25.108577+00:00",
+  "source": "entity_registry.json (active-public) x https://www.sec.gov/files/company_tickers.json",
   "matched": [
     {
       "ticker": "ADI",
@@ -63,6 +63,12 @@
       "matched_by": "public_ticker"
     },
     {
+      "ticker": "APD",
+      "cik": "0000002969",
+      "sec_title": "Air Products & Chemicals, Inc.",
+      "matched_by": "public_ticker"
+    },
+    {
       "ticker": "ARM",
       "cik": "0001973239",
       "sec_title": "ARM HOLDINGS PLC /UK",
@@ -111,6 +117,12 @@
       "matched_by": "public_ticker"
     },
     {
+      "ticker": "CBRS",
+      "cik": "0002021728",
+      "sec_title": "Cerebras Systems Inc.",
+      "matched_by": "public_ticker"
+    },
+    {
       "ticker": "CDNS",
       "cik": "0000813672",
       "sec_title": "CADENCE DESIGN SYSTEMS INC",
@@ -129,6 +141,12 @@
       "matched_by": "public_ticker"
     },
     {
+      "ticker": "COHR",
+      "cik": "0000820318",
+      "sec_title": "COHERENT CORP.",
+      "matched_by": "public_ticker"
+    },
+    {
       "ticker": "CRDO",
       "cik": "0001807794",
       "sec_title": "Credo Technology Group Holding Ltd",
@@ -144,6 +162,12 @@
       "ticker": "DIOD",
       "cik": "0000029002",
       "sec_title": "DIODES INC /DEL/",
+      "matched_by": "public_ticker"
+    },
+    {
+      "ticker": "ECHO",
+      "cik": "0001415404",
+      "sec_title": "EchoStar CORP",
       "matched_by": "public_ticker"
     },
     {
@@ -171,15 +195,15 @@
       "matched_by": "public_ticker"
     },
     {
-      "ticker": "GILT",
-      "cik": "0000897322",
-      "sec_title": "GILAT SATELLITE NETWORKS LTD",
+      "ticker": "GFS",
+      "cik": "0001709048",
+      "sec_title": "GLOBALFOUNDRIES Inc.",
       "matched_by": "public_ticker"
     },
     {
-      "ticker": "GMED",
-      "cik": "0001237831",
-      "sec_title": "GLOBUS MEDICAL INC",
+      "ticker": "GILT",
+      "cik": "0000897322",
+      "sec_title": "GILAT SATELLITE NETWORKS LTD",
       "matched_by": "public_ticker"
     },
     {
@@ -243,6 +267,12 @@
       "matched_by": "public_ticker"
     },
     {
+      "ticker": "KOPN",
+      "cik": "0000771266",
+      "sec_title": "KOPIN CORP",
+      "matched_by": "public_ticker"
+    },
+    {
       "ticker": "KRMN",
       "cik": "0002040127",
       "sec_title": "Karman Holdings Inc.",
@@ -261,9 +291,15 @@
       "matched_by": "public_ticker"
     },
     {
-      "ticker": "LECO",
-      "cik": "0000059527",
-      "sec_title": "LINCOLN ELECTRIC HOLDINGS INC",
+      "ticker": "LHX",
+      "cik": "0000202058",
+      "sec_title": "L3HARRIS TECHNOLOGIES, INC. /DE/",
+      "matched_by": "public_ticker"
+    },
+    {
+      "ticker": "LIN",
+      "cik": "0001707925",
+      "sec_title": "LINDE PLC",
       "matched_by": "public_ticker"
     },
     {
@@ -317,13 +353,19 @@
     {
       "ticker": "MPWR",
       "cik": "0001280452",
-      "sec_title": "MONOLITHIC POWER SYSTEMS INC",
+      "sec_title": "MONOLITHIC POWER SYSTEMS, INC.",
       "matched_by": "public_ticker"
     },
     {
       "ticker": "MRVL",
       "cik": "0001835632",
       "sec_title": "Marvell Technology, Inc.",
+      "matched_by": "public_ticker"
+    },
+    {
+      "ticker": "MTRN",
+      "cik": "0001104657",
+      "sec_title": "MATERION Corp",
       "matched_by": "public_ticker"
     },
     {
@@ -342,6 +384,12 @@
       "ticker": "MXL",
       "cik": "0001288469",
       "sec_title": "MAXLINEAR, INC",
+      "matched_by": "public_ticker"
+    },
+    {
+      "ticker": "NOC",
+      "cik": "0001133421",
+      "sec_title": "NORTHROP GRUMMAN CORP /DE/",
       "matched_by": "public_ticker"
     },
     {
@@ -393,6 +441,12 @@
       "matched_by": "public_ticker"
     },
     {
+      "ticker": "ONDS",
+      "cik": "0001646188",
+      "sec_title": "Ondas Inc.",
+      "matched_by": "public_ticker"
+    },
+    {
       "ticker": "ONTO",
       "cik": "0000704532",
       "sec_title": "ONTO INNOVATION INC.",
@@ -402,6 +456,12 @@
       "ticker": "OUST",
       "cik": "0001816581",
       "sec_title": "Ouster, Inc.",
+      "matched_by": "public_ticker"
+    },
+    {
+      "ticker": "PENG",
+      "cik": "0001616533",
+      "sec_title": "Penguin Solutions, Inc.",
       "matched_by": "public_ticker"
     },
     {
@@ -489,12 +549,6 @@
       "matched_by": "public_ticker"
     },
     {
-      "ticker": "SATS",
-      "cik": "0001415404",
-      "sec_title": "EchoStar CORP",
-      "matched_by": "public_ticker"
-    },
-    {
       "ticker": "SERV",
       "cik": "0001832483",
       "sec_title": "Serve Robotics Inc. /DE/",
@@ -510,12 +564,6 @@
       "ticker": "SITM",
       "cik": "0001451809",
       "sec_title": "SITIME Corp",
-      "matched_by": "public_ticker"
-    },
-    {
-      "ticker": "SKYT",
-      "cik": "0001819974",
-      "sec_title": "SkyWater Technology, Inc",
       "matched_by": "public_ticker"
     },
     {
@@ -625,28 +673,17 @@
       "cik": "0000895419",
       "sec_title": "WOLFSPEED, INC.",
       "matched_by": "public_ticker"
-    },
-    {
-      "ticker": "cerebras-systems",
-      "cik": "0002021728",
-      "sec_title": "Cerebras Systems Inc.",
-      "matched_by": "public_ticker"
     }
   ],
   "unmatched": [
     {
+      "ticker": "000660 KS",
+      "name": "SK HYNIX INC",
+      "country": "South Korea"
+    },
+    {
       "ticker": "002008 C2",
       "name": "HAN'S LASER TECHNOLOGY INDUSTRY GROUP CO LTD.",
-      "country": "China"
-    },
-    {
-      "ticker": "002050",
-      "name": "ZHEJIANG SANHUA INTELLIGEN-A",
-      "country": "China"
-    },
-    {
-      "ticker": "002472",
-      "name": "ZHEJIANG SHUANGHUAN DRIVEL-A",
       "country": "China"
     },
     {
@@ -655,8 +692,13 @@
       "country": "China"
     },
     {
-      "ticker": "010060 KS",
-      "name": "OCI Holdings",
+      "ticker": "005930 KS",
+      "name": "SAMSUNG ELECTRONICS CO",
+      "country": "South Korea"
+    },
+    {
+      "ticker": "012450 KS",
+      "name": "Hanwha Aerospace",
       "country": "South Korea"
     },
     {
@@ -715,6 +757,11 @@
       "country": "China"
     },
     {
+      "ticker": "2454 TT",
+      "name": "MEDIATEK INC",
+      "country": "Taiwan"
+    },
+    {
       "ticker": "2498 HK",
       "name": "ROBOSENSE TECHNOLOGY CO LTD",
       "country": "China"
@@ -723,6 +770,11 @@
       "ticker": "277810 KS",
       "name": "RAINBOW ROBOTICS",
       "country": "South Korea"
+    },
+    {
+      "ticker": "2802 JP",
+      "name": "Ajinomoto Co",
+      "country": "Japan"
     },
     {
       "ticker": "290A JP",
@@ -755,11 +807,6 @@
       "country": "Japan"
     },
     {
-      "ticker": "4043 JP",
-      "name": "Tokuyama Corp",
-      "country": "Japan"
-    },
-    {
       "ticker": "4062 JP",
       "name": "Ibiden Co",
       "country": "Japan"
@@ -767,6 +814,11 @@
     {
       "ticker": "4063 JP",
       "name": "Shin-Etsu Chemical",
+      "country": "Japan"
+    },
+    {
+      "ticker": "4091 JP",
+      "name": "Nippon Sanso Holdings",
       "country": "Japan"
     },
     {
@@ -805,28 +857,13 @@
       "country": "China"
     },
     {
-      "ticker": "601100",
-      "name": "JIANGSU HENGLI HYDRAULIC C-A",
+      "ticker": "600584",
+      "name": "JCET GROUP CO",
       "country": "China"
-    },
-    {
-      "ticker": "6104 JP",
-      "name": "SHIBAURA MACHINE CO., LTD",
-      "country": "Japan"
-    },
-    {
-      "ticker": "6113 JP",
-      "name": "Amada Co Ltd",
-      "country": "Japan"
     },
     {
       "ticker": "6134 JP",
       "name": "FUJI CORPORATION",
-      "country": "Japan"
-    },
-    {
-      "ticker": "6141 JP",
-      "name": "Dmg Mori Co Ltd",
       "country": "Japan"
     },
     {
@@ -870,14 +907,14 @@
       "country": "Japan"
     },
     {
+      "ticker": "6594",
+      "name": "NIDEC CORP",
+      "country": "Japan"
+    },
+    {
       "ticker": "6600 HK",
       "name": "ONEROBOTICS SHENZHEN CO -H",
       "country": "China"
-    },
-    {
-      "ticker": "6622 JP",
-      "name": "DAIHEN CORP",
-      "country": "Japan"
     },
     {
       "ticker": "6645 JP",
@@ -892,16 +929,6 @@
     {
       "ticker": "6723",
       "name": "RENESAS ELECTRONICS CORP",
-      "country": "Japan"
-    },
-    {
-      "ticker": "6841 JP",
-      "name": "YOKOGAWA ELECTRIC CORPORATION",
-      "country": "Japan"
-    },
-    {
-      "ticker": "6845 JP",
-      "name": "Azbil Corp",
       "country": "Japan"
     },
     {
@@ -925,16 +952,6 @@
       "country": "China"
     },
     {
-      "ticker": "688169 C1",
-      "name": "BEIJING ROBOROCK TECHNOLOG-A",
-      "country": "China"
-    },
-    {
-      "ticker": "6914 JP",
-      "name": "OPTEX GROUP COMPANY LTD",
-      "country": "Japan"
-    },
-    {
       "ticker": "6920 JP",
       "name": "Lasertec Corp",
       "country": "Japan"
@@ -945,9 +962,19 @@
       "country": "Japan"
     },
     {
+      "ticker": "7741 JP",
+      "name": "HOYA CORP",
+      "country": "Japan"
+    },
+    {
       "ticker": "8035 JP",
       "name": "Tokyo Electron Ltd",
       "country": "Japan"
+    },
+    {
+      "ticker": "8046 TT",
+      "name": "NAN YA PRINTED CIRCUIT BOARD",
+      "country": "Taiwan"
     },
     {
       "ticker": "9348 JP",
@@ -965,6 +992,11 @@
       "country": "China"
     },
     {
+      "ticker": "AI FP",
+      "name": "Air Liquide",
+      "country": "France"
+    },
+    {
       "ticker": "AMG NA",
       "name": "AMG Critical Materials",
       "country": "Netherlands"
@@ -973,6 +1005,11 @@
       "ticker": "ARU AU",
       "name": "Arafura Rare Earths",
       "country": "Australia"
+    },
+    {
+      "ticker": "ATS AV",
+      "name": "AT&S AUSTRIA TECH & SYSTEMTECHNIK",
+      "country": "Austria"
     },
     {
       "ticker": "ATS CN",
@@ -1005,14 +1042,14 @@
       "country": "France"
     },
     {
+      "ticker": "HEXAB SS",
+      "name": "HEXAGON AB",
+      "country": "Sweden"
+    },
+    {
       "ticker": "IFX GR",
       "name": "INFINEON TECHNOLOGIES AG",
       "country": "Germany"
-    },
-    {
-      "ticker": "ILU AU",
-      "name": "Iluka Resources",
-      "country": "Australia"
     },
     {
       "ticker": "INRN SW",
@@ -1028,11 +1065,6 @@
       "ticker": "KARN SW",
       "name": "KARDEX HOLDING AG",
       "country": "Switzerland"
-    },
-    {
-      "ticker": "KCR FH",
-      "name": "Konecranes Oyj",
-      "country": "Finland"
     },
     {
       "ticker": "LYC AU",
@@ -1070,6 +1102,16 @@
       "country": "Luxembourg"
     },
     {
+      "ticker": "SIE GR",
+      "name": "SIEMENS AG",
+      "country": "Germany"
+    },
+    {
+      "ticker": "SKYT",
+      "name": "SKYWATER TECHNOLOGY INC",
+      "country": "United States"
+    },
+    {
       "ticker": "SOI FP",
       "name": "Soitec SA",
       "country": "France"
@@ -1078,11 +1120,6 @@
       "ticker": "STMPA",
       "name": "STMicroelectronics NV",
       "country": "France"
-    },
-    {
-      "ticker": "TECN SW",
-      "name": "TECAN GROUP AG-REG",
-      "country": "Switzerland"
     },
     {
       "ticker": "WAF GR",

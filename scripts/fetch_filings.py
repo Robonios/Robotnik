@@ -56,7 +56,7 @@ COMPANIES = [
     {"ticker": "BKSY", "name": "BlackSky Technology"},
     {"ticker": "SPIR", "name": "Spire Global"},
     {"ticker": "VSAT", "name": "Viasat"},
-    {"ticker": "SATS", "name": "EchoStar"},
+    {"ticker": "ECHO", "name": "EchoStar"},
     {"ticker": "IRDM", "name": "Iridium Communications"},
     {"ticker": "GSAT", "name": "Globalstar"},
     {"ticker": "SPCE", "name": "Virgin Galactic"},

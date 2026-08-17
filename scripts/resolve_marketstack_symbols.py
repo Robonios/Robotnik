@@ -92,6 +92,16 @@ def candidates_for(tk, country, routed_sym):
             return [code + china_suffix(code)]    # China A-share
         if len(code) == 4:
             return [code + ".TW", code + ".TWO"]  # default 4-digit → Taiwan
+    # Bare US listing (Nasdaq / NYSE): the v2 symbol IS the ticker, no venue suffix.
+    # ONLY when there is no routed_sym yet — a genuinely new US name. The `not
+    # routed_sym` guard is essential: a few names are tagged US in EQUITIES but list
+    # abroad (e.g. Melexis -> MELE.BR); those carry a dotted routed_sym and must fall
+    # through to the final `return [routed_sym]`, not be forced to a wrong bare ticker
+    # here. Without this branch a new US name matched nothing and fell to `return []`
+    # — never probed, so it dropped silently to a Yahoo override even when v2 carried
+    # it (GFS was v2-fresh throughout, never asked).
+    if country in ("United States", "USA") and " " not in tk and not routed_sym:
+        return [code]
     sufs = COUNTRY_SUFFIX.get(country)            # last resort: HQ-country guess
     if sufs:
         return [code + s for s in sufs]
