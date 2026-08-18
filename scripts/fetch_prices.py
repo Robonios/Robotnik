@@ -132,7 +132,6 @@ EQUITIES = [
     ("RMBS", "Rambus", "Semiconductor", "United States"),
     ("RGTI", "Rigetti Computing", "Semiconductor", "United States"),
     ("SLAB", "Silicon Laboratories", "Semiconductor", "United States"),
-    ("SKYT", "SkyWater Technology", "Semiconductor", "United States"),
     ("SWKS", "Skyworks Solutions", "Semiconductor", "United States"),
     ("SYNA", "Synaptics", "Semiconductor", "United States"),
     ("SMTC", "Semtech Corp", "Semiconductor", "United States"),
