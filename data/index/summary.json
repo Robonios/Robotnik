@@ -1,39 +1,39 @@
 {
-  "calculated_at": "2026-08-20T11:24:02.319412+00:00",
+  "calculated_at": "2026-08-19T22:23:58.712312+00:00",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 3573.26,
-    "daily_change_pct": -3.89,
+    "value": 3460.1,
+    "daily_change_pct": -2.57,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 209
+    "entities": 202
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 3573.26,
+    "value": 3460.1,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 209
+    "entities": 202
   },
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 3679.49,
-      "entities": 78
+      "value": 3557.69,
+      "entities": 75
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
-      "value": 1781.82,
-      "entities": 64
+      "value": 1754.55,
+      "entities": 61
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 3142.86,
-      "entities": 36
+      "value": 3103.09,
+      "entities": 35
     },
     "materials": {
       "name": "Robotnik Materials Index",
-      "value": 3153.06,
+      "value": 3071.43,
       "entities": 31
     }
   },
@@ -90,13 +90,13 @@
       "ticker": "INTC",
       "name": "Intel",
       "sector": "Semiconductor",
-      "weight_pct": 4.4883
+      "weight_pct": 4.4541
     },
     {
-      "ticker": "LRCX",
-      "name": "Lam Research",
+      "ticker": "AMAT",
+      "name": "Applied Materials",
       "sector": "Semiconductor",
-      "weight_pct": 3.6035
+      "weight_pct": 3.5769
     }
   ]
 }
