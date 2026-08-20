@@ -428,6 +428,26 @@ EQUITIES = [
     ("7911 JP", "Toppan", "Semiconductor", "Japan"),
     ("7912 JP", "Dai Nippon Printing", "Semiconductor", "Japan"),
     ("6471 JP", "NSK", "Robotics", "Japan"),
+
+    # ── Universe admission 2026-08-20 — 10 IPO'd frontier names. DATA-FETCH stage:
+    # added so the resolver, fetch_market_caps and history fetchers pick them up;
+    # the registry flip + index regen are the same pass. Rulings: Black Sesame →
+    # Robotics (mirror Horizon Robotics 9660 HK); Hua Hong routed via the HK line
+    # (1347); CXMT + SJ Semi admitted PRICED-BUT-UNWEIGHTED (no vendor share count →
+    # no market cap → dropped from weighting, present in the price book); SkyeChip +
+    # ideaForge enabled by the MYR/INR FX addition. All six non-v2 names route to
+    # Yahoo via data_source_overrides.json. Geekplus/HawkEye 360/Moore Threads are
+    # lifecycle transitions (private→public) on their stable slug ids.
+    ("2533 HK", "Black Sesame International Holding", "Robotics", "China"),
+    ("688825 C1", "ChangXin Memory Technologies (CXMT)", "Semiconductors", "China"),
+    ("1347 HK", "Hua Hong Semiconductor", "Semiconductors", "China"),
+    ("688820 C1", "SJ Semiconductor", "Semiconductors", "China"),
+    ("5357 MK", "SkyeChip Berhad", "Semiconductors", "Malaysia"),
+    ("SDST", "Stardust Power", "Materials", "United States"),
+    ("IDEAFORGE IN", "ideaForge Technology", "Robotics", "India"),
+    ("2590 HK", "Geekplus", "Robotics", "China"),
+    ("HAWK", "HawkEye 360", "Space", "United States"),
+    ("688795 C1", "Moore Threads", "Semiconductors", "China"),
 ]
 
 

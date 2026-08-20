@@ -9092,7 +9092,7 @@
   "hawkeye-360": {
     "id": "hawkeye-360",
     "name": "HawkEye 360",
-    "type": "private",
+    "type": "public",
     "sector": "Space",
     "subsector": "Earth Observation",
     "country": "USA",
@@ -9109,8 +9109,10 @@
     "total_raised_m": 150.0,
     "value_chain": "Deployment & Operation",
     "entity_id": "hawkeye-360",
-    "lifecycle_status": "private",
-    "public_ticker": null
+    "lifecycle_status": "public",
+    "public_ticker": "HAWK",
+    "membership_audit": "2026-08-20",
+    "transition_note": "private->public via HawkEye 360 NYSE listing (HAWK). Immutable entity_id; lifecycle field-update only. Priced via MarketStack v2 (HAWK)."
   },
   "galbot": {
     "id": "galbot",
@@ -9183,7 +9185,7 @@
   "moore-threads": {
     "id": "moore-threads",
     "name": "Moore Threads",
-    "type": "private",
+    "type": "public",
     "sector": "Semiconductors",
     "subsector": "Fabless Design",
     "country": "China",
@@ -9200,8 +9202,10 @@
     "total_raised_m": 1100.0,
     "value_chain": "IP & Design",
     "entity_id": "moore-threads",
-    "lifecycle_status": "private",
-    "public_ticker": null
+    "lifecycle_status": "public",
+    "public_ticker": "688795 C1",
+    "membership_audit": "2026-08-20",
+    "transition_note": "private->public via Moore Threads SSE STAR listing (688795). Immutable entity_id; lifecycle field-update only. Priced via Yahoo override (v2 .SS 422s, .XSHG serves - ladder gap)."
   },
   "moonshot-ai": {
     "id": "moonshot-ai",
@@ -12163,7 +12167,7 @@
   "geekplus": {
     "id": "geekplus",
     "name": "Geekplus",
-    "type": "private",
+    "type": "public",
     "sector": "Robotics",
     "subsector": "Warehouse & Logistics Automation",
     "country": "China",
@@ -12180,8 +12184,10 @@
     "total_raised_m": null,
     "value_chain": "System Integration",
     "entity_id": "geekplus",
-    "lifecycle_status": "private",
-    "public_ticker": null
+    "lifecycle_status": "public",
+    "public_ticker": "2590 HK",
+    "membership_audit": "2026-08-20",
+    "transition_note": "private->public via Geekplus HKEX listing (2590 HK, 2025). Immutable entity_id; lifecycle field-update only. Priced via Yahoo override (v2 2590.HK 422s - post-catalogue HK IPO)."
   },
   "kongsberg-ferrotech": {
     "id": "kongsberg-ferrotech",
@@ -14038,5 +14044,177 @@
     "entity_id": "005930 KS",
     "lifecycle_status": "public",
     "public_ticker": "005930 KS"
+  },
+  "2533 HK": {
+    "id": "2533 HK",
+    "name": "Black Sesame International Holding",
+    "type": "public",
+    "sector": "Robotics",
+    "subsector": "Software & Simulation",
+    "country": "China",
+    "city": null,
+    "eodhd_ticker": null,
+    "coingecko_id": null,
+    "description": null,
+    "aliases": [
+      "2533 HK",
+      "BLACK SESAME",
+      "Black Sesame International Holding",
+      "black sesame intelligence"
+    ],
+    "value_chain": "Software & Services",
+    "entity_id": "2533 HK",
+    "lifecycle_status": "public",
+    "public_ticker": "2533 HK",
+    "membership_audit": "2026-08-20",
+    "note": "Sector ruled Robotics 2026-08-20, mirroring Horizon Robotics (9660 HK) for automotive autonomous-driving compute SoC; contested vs Semiconductors/Fabless Design (cf. Moore Threads, NVDA). Priced via MarketStack v2 (2533.HK)."
+  },
+  "688825 C1": {
+    "id": "688825 C1",
+    "name": "ChangXin Memory Technologies (CXMT)",
+    "type": "public",
+    "sector": "Semiconductors",
+    "subsector": "IDM",
+    "country": "China",
+    "city": null,
+    "eodhd_ticker": null,
+    "coingecko_id": null,
+    "description": null,
+    "aliases": [
+      "688825 C1",
+      "CXMT",
+      "ChangXin Memory Technologies",
+      "changxin memory"
+    ],
+    "value_chain": "Fabrication & Manufacturing",
+    "entity_id": "688825 C1",
+    "lifecycle_status": "public",
+    "public_ticker": "688825 C1",
+    "membership_audit": "2026-08-20",
+    "ipo_date": "2026-07-27",
+    "note": "IDM DRAM maker (precedent Micron MU, SK Hynix 000660 KS). Listed SSE STAR (688825); priced via Yahoo override (v2 .SS 422s, .XSHG serves - ladder gap). No vendor share count / market cap at admission -> PRICED BUT UNWEIGHTED; carries no index weight until a cap exists."
+  },
+  "1347 HK": {
+    "id": "1347 HK",
+    "name": "Hua Hong Semiconductor",
+    "type": "public",
+    "sector": "Semiconductors",
+    "subsector": "Foundry",
+    "country": "China",
+    "city": null,
+    "eodhd_ticker": null,
+    "coingecko_id": null,
+    "description": null,
+    "aliases": [
+      "1347 HK",
+      "688347 C1",
+      "HUA HONG",
+      "Hua Hong Semiconductor",
+      "hua hong grace"
+    ],
+    "value_chain": "Fabrication & Manufacturing",
+    "entity_id": "1347 HK",
+    "lifecycle_status": "public",
+    "public_ticker": "1347 HK",
+    "membership_audit": "2026-08-20",
+    "note": "Foundry (precedent GlobalFoundries GFS, TSMC, Tower TSEM). Dual-listed HKEX 1347 + SSE STAR 688347; index routed via the HK line (1347 HK, MarketStack v2 fresh) per ruling 2026-08-20. Market cap = H-share line (STAR line would ~2x the weight)."
+  },
+  "688820 C1": {
+    "id": "688820 C1",
+    "name": "SJ Semiconductor",
+    "type": "public",
+    "sector": "Semiconductors",
+    "subsector": "OSAT & Packaging",
+    "country": "China",
+    "city": null,
+    "eodhd_ticker": null,
+    "coingecko_id": null,
+    "description": null,
+    "aliases": [
+      "688820 C1",
+      "SJ SEMICONDUCTOR",
+      "SJ Semiconductor",
+      "sjsemi"
+    ],
+    "value_chain": "Fabrication & Manufacturing",
+    "entity_id": "688820 C1",
+    "lifecycle_status": "public",
+    "public_ticker": "688820 C1",
+    "membership_audit": "2026-08-20",
+    "ipo_date": "2026-04-21",
+    "note": "Advanced-packaging OSAT (precedent JCET 600584, ASE ASX). Listed SSE STAR (688820); priced via Yahoo override (v2 .SS 422s, .XSHG serves - ladder gap). No vendor share count / market cap at admission -> PRICED BUT UNWEIGHTED."
+  },
+  "5357 MK": {
+    "id": "5357 MK",
+    "name": "SkyeChip Berhad",
+    "type": "public",
+    "sector": "Semiconductors",
+    "subsector": "Fabless Design",
+    "country": "Malaysia",
+    "city": null,
+    "eodhd_ticker": null,
+    "coingecko_id": null,
+    "description": null,
+    "aliases": [
+      "5357 MK",
+      "SKYECHIP",
+      "SkyeChip Berhad",
+      "skyechip"
+    ],
+    "value_chain": "IP & Design",
+    "entity_id": "5357 MK",
+    "lifecycle_status": "public",
+    "public_ticker": "5357 MK",
+    "membership_audit": "2026-08-20",
+    "ipo_date": "2026-05-20",
+    "note": "Fabless edge-AI / chiplet designer (precedent NVDA, AMD, Moore Threads). Listed Bursa Malaysia (5357); priced via Yahoo override (MarketStack carries no Bursa; ladder mis-routes to Taiwan). MYR FX added to the pipeline at admission (ECB-covered)."
+  },
+  "SDST": {
+    "id": "SDST",
+    "name": "Stardust Power",
+    "type": "public",
+    "sector": "Materials",
+    "subsector": "Battery Materials",
+    "country": "United States",
+    "city": null,
+    "eodhd_ticker": null,
+    "coingecko_id": null,
+    "description": null,
+    "aliases": [
+      "SDST",
+      "STARDUST POWER",
+      "Stardust Power Inc",
+      "stardust power"
+    ],
+    "value_chain": "Upstream Materials",
+    "entity_id": "SDST",
+    "lifecycle_status": "public",
+    "public_ticker": "SDST",
+    "membership_audit": "2026-08-20",
+    "note": "Lithium refiner; admitted under Battery Materials per the Albemarle ALB / SQM precedent (energy-transition upstream materials are in). Priced via MarketStack v2 (SDST). Micro-cap (~$9m) -> effectively zero index weight."
+  },
+  "IDEAFORGE IN": {
+    "id": "IDEAFORGE IN",
+    "name": "ideaForge Technology",
+    "type": "public",
+    "sector": "Robotics",
+    "subsector": "Autonomous Systems & Drones",
+    "country": "India",
+    "city": null,
+    "eodhd_ticker": null,
+    "coingecko_id": null,
+    "description": null,
+    "aliases": [
+      "IDEAFORGE IN",
+      "IDEAFORGE",
+      "ideaForge Technology",
+      "idea forge"
+    ],
+    "value_chain": "System Integration",
+    "entity_id": "IDEAFORGE IN",
+    "lifecycle_status": "public",
+    "public_ticker": "IDEAFORGE IN",
+    "membership_audit": "2026-08-20",
+    "note": "UAV/drone manufacturer; Autonomous Systems & Drones per AeroVironment AVAV / EHang EH precedent. Listed NSE India; priced via Yahoo override (resolver ladder has no India mapping; MS v2 IDEAFORGE.NS does serve - ladder gap). INR FX added at admission (ECB-covered)."
   }
 }

@@ -60,6 +60,10 @@ MIC_TO_CURRENCY = {
     "XKRX": "KRW", "XKOS": "KRW", "KS": "KRW", "KQ": "KRW", "KO": "KRW",
     # Taiwan
     "XTAI": "TWD", "TW": "TWD", "TWO": "TWD",
+    # Malaysia (Bursa) — Yahoo/v2 short suffix ".KL"
+    "XKLS": "MYR", "KL": "MYR", "KLS": "MYR",
+    # India (NSE ".NS" / BSE ".BO") — both ECB-covered
+    "XNSE": "INR", "NS": "INR", "NSI": "INR", "XBOM": "INR", "BO": "INR", "BSE": "INR",
     # Eurozone exchanges
     "XFRA": "EUR", "XETR": "EUR", "XETRA": "EUR", "F": "EUR", "DE": "EUR",
     "XPAR": "EUR", "PA": "EUR", "XAMS": "EUR", "AS": "EUR",
@@ -91,11 +95,12 @@ COUNTRY_TO_CURRENCY = {
     "Spain": "EUR", "Portugal": "EUR", "Luxembourg": "EUR",
     "Switzerland": "CHF", "Sweden": "SEK", "Norway": "NOK",
     "Australia": "AUD", "Canada": "CAD", "Israel": "ILS",
+    "Malaysia": "MYR", "India": "INR",
 }
 
 # Currencies we fetch FX for. GBp is NOT a Yahoo pair — it maps to GBP/100.
 FX_CURRENCIES = ["JPY", "CNY", "EUR", "GBP", "HKD", "KRW", "TWD",
-                 "CHF", "SEK", "NOK", "AUD", "CAD", "ILS"]
+                 "CHF", "SEK", "NOK", "AUD", "CAD", "ILS", "MYR", "INR"]
 
 # Minor units quoted in 1/100 of a major currency → divide by 100, then apply the
 # MAJOR currency's FX. GBp (London pence) and ILA (Tel-Aviv agorot) verified against

@@ -114,6 +114,10 @@ def ticker_to_yahoo(ticker, country):
         # silently dropped from the index. AU=Australia, IM=Italy(Milan), NA=Netherlands,
         # IT=Israel(Tel Aviv, NOT Italy). Recovered Lynas/Iluka/Arafura/AMG/Avio.
         "AU": "AX", "IM": "MI", "NA": "AS", "IT": "TA",
+        # added 2026-08-20 (admissions): Bursa Malaysia, NSE India. Without these
+        # the "TICKER MK/IN" string is unmapped → Yahoo lookup fails → no cap →
+        # the name drops from weighting (SkyeChip, ideaForge).
+        "MK": "KL", "IN": "NS",
     }
 
     parts = t.split()
@@ -168,6 +172,8 @@ def fetch_fx_rates():
         "EUR": "EURUSD=X", "CHF": "CHFUSD=X", "SEK": "SEKUSD=X",
         "NOK": "NOKUSD=X", "DKK": "DKKUSD=X", "CAD": "CADUSD=X",
         "ILS": "ILSUSD=X", "GBp": "GBPUSD=X",  # GBp = pence
+        "MYR": "MYRUSD=X", "INR": "INRUSD=X",  # added 2026-08-20 (admissions): else a
+        # native MYR/INR marketCap is treated as USD (SkyeChip ~5x, ideaForge ~87x over).
     }
     rates = {"USD": 1.0}
     for ccy, pair in pairs.items():

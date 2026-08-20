@@ -469,5 +469,68 @@
     ],
     "reason": "SATS->ECHO NASDAQ rename effective 2026-06-24. MarketStack v2 EOD still serves the old symbol SATS (frozen 2026-07-29) and returns 422 no_valid_symbols for ECHO; the rename has not propagated to v2. resolve_marketstack_symbols.py cannot resolve ECHO (empty candidate ladder + v2 422). Yahoo carries ECHO fresh (USD, NASDAQ). TEMPORARY - remove once v2 lists ECHO so the name returns to the primary path.",
     "added_date": "2026-08-15"
+  },
+  "688825 C1": {
+    "provider": "yahoo",
+    "yahoo_symbol": "688825.SS",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "ChangXin Memory (CXMT) - SSE STAR listing. MarketStack v2 short-suffix .SS returns HTTP 422 no_valid_symbol (new STAR listings absent from MS's .SS alias catalogue); MS v2 DOES serve it under the .XSHG MIC suffix, which resolve_marketstack_symbols.candidates_for (china_suffix -> .SS) never tries. So this is a LADDER GAP, not absent MS coverage - removable if the China ladder gains a .XSHG/.XSHE fallback. Yahoo 688825.SS returns a clean CNY close; USD via daily FX. No vendor share count yet -> priced but UNWEIGHTED.",
+    "added_date": "2026-08-20"
+  },
+  "688820 C1": {
+    "provider": "yahoo",
+    "yahoo_symbol": "688820.SS",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "SJ Semiconductor - SSE STAR listing. MarketStack v2 short-suffix .SS returns HTTP 422 no_valid_symbol (new STAR listings absent from MS's .SS alias catalogue); MS v2 DOES serve it under the .XSHG MIC suffix, which resolve_marketstack_symbols.candidates_for (china_suffix -> .SS) never tries. So this is a LADDER GAP, not absent MS coverage - removable if the China ladder gains a .XSHG/.XSHE fallback. Yahoo 688820.SS returns a clean CNY close; USD via daily FX. No vendor share count yet -> priced but UNWEIGHTED.",
+    "added_date": "2026-08-20"
+  },
+  "688795 C1": {
+    "provider": "yahoo",
+    "yahoo_symbol": "688795.SS",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Moore Threads - SSE STAR listing. MarketStack v2 short-suffix .SS returns HTTP 422 no_valid_symbol (new STAR listings absent from MS's .SS alias catalogue); MS v2 DOES serve it under the .XSHG MIC suffix, which resolve_marketstack_symbols.candidates_for (china_suffix -> .SS) never tries. So this is a LADDER GAP, not absent MS coverage - removable if the China ladder gains a .XSHG/.XSHE fallback. Yahoo 688795.SS returns a clean CNY close; USD via daily FX.",
+    "added_date": "2026-08-20"
+  },
+  "5357 MK": {
+    "provider": "yahoo",
+    "yahoo_symbol": "5357.KL",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "SkyeChip Berhad - Bursa Malaysia. MarketStack carries no Bursa listings (v2 .KL -> HTTP 422; the resolver ladder has no Malaysia mapping and mis-routes 5357 to Taiwan .TW/.TWO, both 422). Genuine ABSENT COVERAGE, not a ladder gap. Yahoo 5357.KL returns a clean MYR close; MYR FX added at admission (ECB-covered).",
+    "added_date": "2026-08-20"
+  },
+  "IDEAFORGE IN": {
+    "provider": "yahoo",
+    "yahoo_symbol": "IDEAFORGE.NS",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "ideaForge Technology - NSE India. The resolver ladder has no India mapping (candidates_for returns [] -> unresolved). MS v2 IDEAFORGE.NS DOES serve a fresh INR close, so MS coverage exists - a LADDER GAP, removable if candidates_for gains an India (.NS/.BO) suffix. Routed to Yahoo for consistency; INR FX added at admission (ECB-covered).",
+    "added_date": "2026-08-20"
+  },
+  "2590 HK": {
+    "provider": "yahoo",
+    "yahoo_symbol": "2590.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Beijing Geekplus - HKEX post-catalogue IPO (2025). MarketStack v2 2590.HK -> HTTP 422 no_valid_symbol (MS HK catalogue omits this post-2023 listing; cf. the frozen-HK cohort). ABSENT MS coverage, not a ladder gap. Yahoo 2590.HK returns a clean HKD close; USD via daily FX.",
+    "added_date": "2026-08-20"
+  },
+  "HAWK": {
+    "provider": "yahoo",
+    "yahoo_symbol": "HAWK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "HawkEye 360, NYSE HAWK. MarketStack SERVES HAWK but its history is TICKER-REUSE contaminated: bars from 2021-07-22 belong to a prior ~$0.04 penny-stock entity, then an 850x jump on 2026-05-07 (0.04 -> 34) marks HawkEye 360 taking over the ticker at its actual first trade. MS returns the legacy entity for the pre-2026-05 tail (cf. the 6600/6680 HK slot-reissue class). Yahoo HAWK correctly starts 2026-05-07 (HawkEye only). Route live+history to Yahoo for a clean single-source series.",
+    "added_date": "2026-08-20"
   }
 }

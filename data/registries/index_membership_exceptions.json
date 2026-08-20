@@ -2,8 +2,24 @@
   "_meta": {
     "purpose": "Reverse-parity escape hatch. The reverse-parity guard in calculate_index.py asserts: {non-excluded frontier public names in the registry} == {index constituents} UNION {these exceptions}. A name belongs here ONLY when it is legitimately non-excluded yet legitimately NOT in the index, with a documented reason (e.g. a secondary listing already counted under its primary, or a genuine unrecoverable market-data gap). An EMPTY exceptions map means the index exactly equals the non-excluded frontier set.",
     "guard": "calculate_index.py reverse-parity guard (publish-blocking)",
-    "last_reviewed": "2026-05-31",
-    "history": "Created in the B-sweep index-completion pass after closing a silent 13-name market-cap-coverage gap (Lynas, GlobalWafers, China Northern Rare Earth, 6 KOSDAQ robotics, etc.) + Renishaw (all_prices gap) + de-duplicating STM (ADR of STMPA). Post-fix the set is perfectly closed (196 == 196), so this map is empty."
+    "last_reviewed": "2026-08-20",
+    "history": "Created in the B-sweep index-completion pass after closing a silent 13-name market-cap-coverage gap (Lynas, GlobalWafers, China Northern Rare Earth, 6 KOSDAQ robotics, etc.) + Renishaw (all_prices gap) + de-duplicating STM (ADR of STMPA). The set stayed empty (perfectly closed) until the 2026-08-20 universe admission, which added three legitimately-unweighted names: CXMT (688825 C1) and SJ Semiconductor (688820 C1) pending a published share count, and Stardust Power (SDST) below the $10M floor (floor reviewed and left unchanged)."
   },
-  "exceptions": {}
+  "exceptions": {
+    "688825 C1": {
+      "reason": "ChangXin Memory (CXMT), SSE STAR 688825. Priced via Yahoo override, but no vendor reports shares outstanding / a market cap for this very recent listing, so no cap and no index weight. This is pending a PUBLISHED SHARE COUNT, not a membership decision: a priced universe member (lifecycle public) that re-enters the index automatically once any vendor carries a cap.",
+      "status": "priced_unweighted_no_cap",
+      "added_date": "2026-08-20"
+    },
+    "688820 C1": {
+      "reason": "SJ Semiconductor, SSE STAR 688820. Same posture as CXMT: priced via Yahoo override, no vendor share count / market cap yet, so no index weight. Pending a PUBLISHED SHARE COUNT, not a membership decision; re-enters the index automatically once a cap exists.",
+      "status": "priced_unweighted_no_cap",
+      "added_date": "2026-08-20"
+    },
+    "SDST": {
+      "reason": "Stardust Power, Nasdaq SDST. Market cap ~$8.6M sits below the MIN_MARKET_CAP index floor ($10M), so it is a priced universe member that carries no index weight. SETTLED 2026-08-20: the $10M floor was reviewed and deliberately left unchanged; Stardust remains universe-only and re-enters the index automatically if its cap rises above $10M.",
+      "status": "below_min_market_cap",
+      "added_date": "2026-08-20"
+    }
+  }
 }

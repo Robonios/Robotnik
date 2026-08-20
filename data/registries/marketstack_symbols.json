@@ -2,10 +2,11 @@
   "_meta": {
     "resolved_at": "2026-08-17T10:36:00.757103+00:00Z",
     "criterion": "validity (eod/latest returns a bar) on v2; freshness is the floor's job",
-    "fresh": 301,
+    "fresh": 304,
     "stale": 1,
-    "unresolved": 15,
-    "total": 317
+    "unresolved": 22,
+    "total": 327,
+    "partial_update": "2026-08-20: +10 admitted names resolved surgically; existing entries untouched"
   },
   "symbols": {
     "ALGM": {
@@ -3504,6 +3505,116 @@
         "6471.T"
       ],
       "country": "Japan"
+    },
+    "2533 HK": {
+      "symbol": "2533.HK",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-08-19",
+      "last_close": 11.15,
+      "candidates_tried": [
+        "2533.HK"
+      ],
+      "country": "China"
+    },
+    "688825 C1": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "688825.SS"
+      ],
+      "country": "China"
+    },
+    "1347 HK": {
+      "symbol": "1347.HK",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-08-19",
+      "last_close": 113.7,
+      "candidates_tried": [
+        "1347.HK"
+      ],
+      "country": "China"
+    },
+    "688820 C1": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "688820.SS"
+      ],
+      "country": "China"
+    },
+    "5357 MK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "5357.TW",
+        "5357.TWO"
+      ],
+      "country": "Malaysia"
+    },
+    "SDST": {
+      "symbol": "SDST",
+      "version": "v2",
+      "status": "fresh",
+      "last_date": "2026-08-19",
+      "last_close": 0.611,
+      "candidates_tried": [
+        "SDST"
+      ],
+      "country": "United States"
+    },
+    "IDEAFORGE IN": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [],
+      "country": "India"
+    },
+    "2590 HK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "2590.HK"
+      ],
+      "country": "China"
+    },
+    "HAWK": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "HAWK"
+      ],
+      "country": "United States",
+      "note": "MS ticker-reuse (predecessor penny-stock tail + 850x jump 2026-05-07); routed to Yahoo override for a clean HawkEye-only series"
+    },
+    "688795 C1": {
+      "symbol": null,
+      "version": "v2",
+      "status": "unresolved",
+      "last_date": null,
+      "last_close": null,
+      "candidates_tried": [
+        "688795.SS"
+      ],
+      "country": "China"
     }
   }
 }
