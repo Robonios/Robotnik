@@ -14,6 +14,10 @@ on:
         description: 'Also run intel fetchers (research/filings/reports)?'
         type: boolean
         default: false
+      seed_history_cache:
+        description: 'One-time / post-eviction: rebuild data/prices/history from git and prime the cache (bypasses the fail-closed guard for this run).'
+        type: boolean
+        default: false
 
 jobs:
   # (live-prices intraday job removed at MarketStack cutover — EODHD, not displayed)
@@ -35,6 +39,67 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v5
+        with:
+          # Seed runs need full history to reach the pre-untrack commit that still
+          # carries data/prices/history/; normal runs restore history from the cache
+          # and need only the tip. String values on purpose: GHA treats integer 0 as
+          # falsy, so `&& 0 || 1` would always yield 1.
+          fetch-depth: ${{ (github.event_name == 'workflow_dispatch' && inputs.seed_history_cache) && '0' || '1' }}
+
+      # ── Price-history persistence (ToS: raw OHLC is no longer committed) ─────────
+      # The 5-year price-history store and market_caps.json live in the working tree
+      # + this cache, never the served git tree. Rolling run-id key so each run also
+      # SAVES a fresh copy (a static key would never update); restore-keys picks the
+      # newest prior cache. Caches evict after 7 days idle / under the 10GB repo cap,
+      # so a long gap trips the fail-closed guard below and needs a re-seed.
+      - name: Restore price-history cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/prices/history
+            data/index/market_caps.json
+          key: robotnik-price-history-v1-${{ github.run_id }}
+          restore-keys: |
+            robotnik-price-history-v1-
+
+      # One-time / post-eviction bootstrap: rebuild the history store from the last
+      # commit that carried it (the blobs remain in git history after the untrack),
+      # then UNSTAGE it (it is gitignored and must never be re-committed). The Save
+      # step at the end then primes the cache. Trigger: workflow_dispatch with
+      # seed_history_cache = true.
+      - name: Seed price-history from git (cache bootstrap)
+        if: github.event_name == 'workflow_dispatch' && inputs.seed_history_cache
+        run: |
+          set -euo pipefail
+          DEL=$(git rev-list -1 HEAD -- data/prices/history/ || true)
+          if [ -z "$DEL" ]; then
+            echo "::error::No commit ever tracked data/prices/history/ — cannot seed."; exit 1
+          fi
+          echo "Restoring data/prices/history + market_caps.json from ${DEL}^ (pre-untrack commit)"
+          git checkout "${DEL}^" -- data/prices/history data/index/market_caps.json
+          git reset -q -- data/prices/history data/index/market_caps.json
+          echo "Seeded $(find data/prices/history -maxdepth 1 -name '*.json' | wc -l) history files (left unstaged)."
+
+      # LOUD-FAILURE GUARD (Robert's ruling): never publish a truncated index. If the
+      # cache did not restore and this is not a seed run, the history store is absent
+      # or materially short — FAIL here, before the history refresh and calculate_index,
+      # with an obvious message. Threshold 300: the store holds ~367 files and the
+      # universe churns by a handful a month, so < 300 (> ~18% short) means a cache
+      # miss / eviction / truncation, never normal churn. Raise if the universe shrinks.
+      - name: Guard - price-history must be restored (fail-closed)
+        run: |
+          set -euo pipefail
+          MIN=300
+          if [ ! -d data/prices/history ]; then
+            echo "::error::PRICE-HISTORY CACHE NOT RESTORED - data/prices/history/ is absent. The index was NOT rebuilt and nothing will be published. Re-seed the cache: run this workflow via workflow_dispatch with seed_history_cache=true."
+            exit 1
+          fi
+          N=$(find data/prices/history -maxdepth 1 -name '*.json' | wc -l | tr -d ' ')
+          if [ "$N" -lt "$MIN" ]; then
+            echo "::error::PRICE-HISTORY CACHE INCOMPLETE - found ${N} history files, expected >= ${MIN} (store is ~367). The cache did not fully restore; the index was NOT rebuilt. Re-seed via workflow_dispatch with seed_history_cache=true."
+            exit 1
+          fi
+          echo "Price-history OK: ${N} files present (>= ${MIN})."
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -74,6 +139,18 @@ jobs:
 
       - name: Backfill any newly-added tickers (no-op when universe stable)
         run: python scripts/fetch_price_history_marketstack.py --backfill
+
+      # Persist the refreshed + backfilled history (and market_caps kept-stale carry-
+      # over) for the next run. Runs before calculate_index, so a later index failure
+      # never loses the freshly-fetched history. Unique run-id key => always saves.
+      - name: Save price-history cache
+        if: success()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/prices/history
+            data/index/market_caps.json
+          key: robotnik-price-history-v1-${{ github.run_id }}
 
       - name: Fetch benchmark prices (MarketStack, split-adjusted PR)
         run: python scripts/fetch_benchmarks.py
