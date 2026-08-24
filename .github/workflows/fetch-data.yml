@@ -53,7 +53,7 @@ jobs:
       # newest prior cache. Caches evict after 7 days idle / under the 10GB repo cap,
       # so a long gap trips the fail-closed guard below and needs a re-seed.
       - name: Restore price-history cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: |
             data/prices/history
@@ -145,7 +145,7 @@ jobs:
       # never loses the freshly-fetched history. Unique run-id key => always saves.
       - name: Save price-history cache
         if: success()
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: |
             data/prices/history
