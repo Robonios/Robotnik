@@ -3,7 +3,7 @@
 
   const navItems = [
     { href: 'index.html', page: 'home', label: 'Home', online: true },
-    { href: 'assets.html', page: 'assets', label: 'Frontier Assets', online: false },
+    { href: 'assets.html', page: 'assets', label: 'Frontier Assets', online: true },
     { href: 'funding.html', page: 'funding', label: 'Funding Ops', online: true },
     { href: 'portfolio.html', page: 'portfolio', label: 'Portfolio', online: false },
     { href: 'signals.html', page: 'signals', label: 'Frontier Signals', online: false },

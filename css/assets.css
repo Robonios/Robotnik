@@ -1,0 +1,180 @@
+/* ============================================================================
+   Frontier Assets listing (assets.html) — phase one.
+   Server-rendered classification table: filter bar, criticality rating tags,
+   profile markers. Reuses .market-table / .sector-tag from style.css and the
+   bottleneck criticality palette from home.css (re-declared here because home.css
+   is not linked on this page). No price-derived surface anywhere.
+   ============================================================================ */
+
+:root {
+  /* Bottleneck criticality scale — identical to home.css --c-* so the listing
+     reads the same as the rest of the site. */
+  --c-low:  #4DA98B;
+  --c-med:  #E0A33C;
+  --c-high: #E0703D;
+  --c-crit: #DC4A4A;
+  --c-none: #5A6178;
+}
+
+/* Wider content column than the centred placeholder — the table needs room. */
+body[data-page="assets"] .main-content { max-width: 1100px; }
+
+.assets-intro {
+  max-width: 760px;
+  margin: 0 auto 1.6rem;
+}
+.assets-intro p {
+  color: var(--text-dim);
+  font-size: 12px;
+  line-height: 1.75;
+  margin: 0 0 0.6rem;
+}
+.assets-intro-note { color: var(--text-muted); }
+.assets-legend-link { color: var(--yellow); font-weight: 600; }
+
+/* ── Toolbar: filters + controls ─────────────────────────────────────────── */
+.assets-toolbar {
+  margin: 0 0 0.75rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+}
+.assets-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+.filter-legend {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-right: 0.15rem;
+}
+.filter-btn {
+  font-family: var(--font);
+  font-size: 10px;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s, background 0.12s;
+}
+.filter-btn:hover { color: var(--text); border-color: var(--text-muted); }
+.filter-btn.active {
+  color: #111318;
+  background: var(--yellow);
+  border-color: var(--yellow);
+  font-weight: 600;
+}
+.filter-btn:focus-visible { outline: 2px solid var(--yellow); outline-offset: 1px; }
+
+.assets-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+.assets-search {
+  font-family: var(--font);
+  font-size: 11px;
+  color: var(--text);
+  background: var(--bg-raised);
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  padding: 0.3rem 0.55rem;
+  width: 220px;
+  max-width: 100%;
+}
+.assets-search:focus-visible { outline: none; border-color: var(--yellow); }
+.assets-sort-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.assets-sort {
+  font-family: var(--font);
+  font-size: 11px;
+  color: var(--text-dim);
+  background: var(--bg-raised);
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  padding: 0.28rem 0.4rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.assets-clear {
+  font-family: var(--font);
+  font-size: 10px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+.assets-clear:hover { color: var(--text); }
+.assets-count {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+.assets-table-wrap { overflow-x: auto; }
+.assets-table { min-width: 720px; }
+.assets-table th[data-sort] { cursor: pointer; }
+.assets-table td.asset-name { color: var(--text); font-weight: 500; }
+.assets-table td.asset-sub,
+.assets-table td.asset-tier { color: var(--text-muted); font-size: 10px; }
+.asset-none { color: #3E4456; }
+
+/* Rating tags — bordered pill tinted by criticality (dark-bg legible). */
+.rating-tag {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.12rem 0.4rem;
+  border-radius: 3px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.rating-crit { color: var(--c-crit); border-color: rgba(220,74,74,0.5);  background: rgba(220,74,74,0.10); }
+.rating-high { color: var(--c-high); border-color: rgba(224,112,61,0.5); background: rgba(224,112,61,0.10); }
+.rating-med  { color: var(--c-med);  border-color: rgba(224,163,60,0.5); background: rgba(224,163,60,0.10); }
+.rating-low  { color: var(--c-low);  border-color: rgba(77,169,139,0.5); background: rgba(77,169,139,0.10); }
+.rating-none { color: var(--c-none); border-color: var(--border); background: transparent; }
+
+/* Profile marker column */
+.asset-profile-cell { white-space: nowrap; }
+.asset-profile-link {
+  color: var(--yellow);
+  font-size: 10px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.asset-profile-link:hover { text-decoration: underline; }
+
+.assets-pending { color: var(--text-muted); font-size: 11px; }
+.assets-nojs { color: var(--text-muted); font-size: 10px; margin-top: 0.5rem; }
+.assets-empty td { text-align: center; color: var(--text-muted); padding: 1.5rem; }
+
+@media (max-width: 640px) {
+  .assets-count { margin-left: 0; }
+  .assets-controls { gap: 0.5rem; }
+}
