@@ -54,8 +54,12 @@ RETURN_CONVENTION = ("nearest-prior-trading-day; per period P the anchor is the 
 TRADING_DAY_CONVENTION = ("as_of is the latest session in the published series — already the "
                           ">=50% / 98-of-197 quorum trading day from index_dates.py; the summary "
                           "anchors returns on the series' own dates, so it cannot drift from it")
-FRESHNESS_RULE = ("status='live' is emitted only when fresh_through == as_of at the native cadence; "
-                  "otherwise the entry must not be rendered as a current value")
+FRESHNESS_RULE = ("status='live' when the data (fresh_through) is current at the entry's OWN cadence "
+                  "relative to the run date (as_of), else 'stale': daily within 4 days, weekly within "
+                  "9 days, monthly within one calendar month (current or prior month live; two or more "
+                  "months behind stale). A 'stale' entry still carries its last value and fresh_through "
+                  "date and must be rendered as DELAYED - a real number with its age - not as a current "
+                  "value and not as calibrating.")
 
 
 def load(p):
@@ -120,11 +124,41 @@ def trailing_1y_daily(series):
     return [{"date": p["date"], "value": p["value"]} for p in series[max(0, j - 1):]]
 
 
-def daily_entry(name, value, series, base, status="live", entity_count=None, code=None):
-    as_of = series[-1]["date"]
+def compute_status(cadence, fresh_through, run_date):
+    """Cadence-aware freshness verdict: 'live' when the data (fresh_through) is current
+    at the entry's OWN cadence relative to the run date, else 'stale'. This is what
+    "fresh_through == as_of at the native cadence" actually means - an exact date match
+    is wrong, because data legitimately lags the run at every cadence (a daily close is
+    the prior session, a weekly mark is last Saturday, a monthly mark is last month), so
+    exact equality would read every index stale on every normal day. Tolerances:
+      daily   <= 4 days   -- a Fri session read the following Mon/Tue over a holiday is
+                             ~3-4d; >4d means a weekday feed actually died (matches the
+                             staleness-monitor daily bucket).
+      weekly  <= 9 days   -- 7d cadence + 2d margin: a forward-only weekly index holds its
+                             Saturday mark until the next Saturday; >9d means a weekly run
+                             was missed.
+      monthly <= 1 month  -- compared at MONTH granularity, not days: the prior month's
+                             mark is current until the next month publishes, and RPCI is
+                             an irregular manual sweep, so 0-1 months behind is live; a
+                             day-based tolerance would read a normal mid-month RPCI stale.
+                             >=2 months behind is a genuinely skipped sweep.
+    """
+    if fresh_through is None:
+        return "live"
+    if cadence == "monthly":
+        fy, fm = map(int, str(fresh_through)[:7].split("-"))
+        months_behind = (run_date.year * 12 + run_date.month) - (fy * 12 + fm)
+        return "live" if months_behind <= 1 else "stale"
+    gap = (run_date - _d(fresh_through)).days
+    return "live" if gap <= (9 if cadence == "weekly" else 4) else "stale"
+
+
+def daily_entry(name, value, series, base, run_date, entity_count=None, code=None):
+    fresh_through = series[-1]["date"]           # latest session present in the data
     e = {
-        "name": name, "status": status, "cadence": "daily",
-        "value": value, "as_of": as_of, "fresh_through": as_of,
+        "name": name, "status": compute_status("daily", fresh_through, run_date),
+        "cadence": "daily",
+        "value": value, "as_of": str(run_date), "fresh_through": fresh_through,
         "base": base,
         "span": {"start": series[0]["date"], "end": series[-1]["date"],
                  "points": len(series), "floor": SUB_INDEX_FLOOR},
@@ -138,7 +172,7 @@ def daily_entry(name, value, series, base, status="live", entity_count=None, cod
     return e
 
 
-def weekly_entry(name, src, code=None, note=None):
+def weekly_entry(name, src, run_date, code=None, note=None):
     """Live WEEKLY index entry (Commodities, Composite) — reader-only.
 
     value / base / series are taken verbatim from the published file; `returns`
@@ -148,10 +182,10 @@ def weekly_entry(name, src, code=None, note=None):
     (base) date, not the equity SUB_INDEX_FLOOR.
     """
     series = [{"date": p["date"], "value": p["value"]} for p in src["series"]]
-    as_of = series[-1]["date"]
+    fresh_through = series[-1]["date"]
     e = {
-        "name": name, "status": "live", "cadence": "weekly",
-        "value": src.get("current_value"), "as_of": as_of, "fresh_through": as_of,
+        "name": name, "status": compute_status("weekly", fresh_through, run_date), "cadence": "weekly",
+        "value": src.get("current_value"), "as_of": str(run_date), "fresh_through": fresh_through,
         "base": {"value": src.get("base_value"), "date": src.get("base_date")},
         "span": {"start": series[0]["date"], "end": series[-1]["date"],
                  "points": len(series), "floor": src.get("base_date")},
@@ -177,22 +211,22 @@ def placeholder_entry(name, status, cadence=None, note=None, code=None):
     return e
 
 
-def rpci_entry(src):
+def rpci_entry(src, run_date):
     rows = src["series"]
     disp = sorted((x["month"], x["value"]) for x in rows if not x.get("calibration"))
     dispmap = dict(disp)
-    as_of = src.get("current_month") or disp[-1][0]
-    lv = dispmap[as_of]                       # the published April mark
+    data_month = src.get("current_month") or disp[-1][0]   # latest data month, e.g. "2026-07"
+    lv = dispmap[data_month]                  # the latest published monthly mark
     returns = {"1W": {"null": True, "reason": "not_applicable_for_cadence"}}
     for name, n in [("1M", 1), ("3M", 3), ("1Y", 12), ("3Y", 36), ("5Y", 60)]:
-        tg = _ym_before(as_of, n)
+        tg = _ym_before(data_month, n)
         returns[name] = (round((lv / dispmap[tg] - 1) * 100, 2)
                          if tg in dispmap else {"null": True, "reason": "insufficient_history"})
     return {
         "name": src.get("index_name", "Robotnik Private Capital Index"),
         "code": src.get("index_code"),
-        "status": "live", "cadence": "monthly",
-        "value": src.get("current_value"), "as_of": as_of, "fresh_through": as_of,
+        "status": compute_status("monthly", data_month, run_date), "cadence": "monthly",
+        "value": src.get("current_value"), "as_of": str(run_date), "fresh_through": data_month,
         "base": {"value": src.get("base_value"), "date": src.get("base_date")},
         "span": {"start": disp[0][0], "end": disp[-1][0], "points": len(disp),
                  "display_start": disp[0][0],
@@ -203,6 +237,9 @@ def rpci_entry(src):
 
 
 def main():
+    run_now = datetime.now(timezone.utc)
+    run_date = run_now.date()            # as_of stamp + cadence-freshness reference
+
     comp = load(COMPOSITE_PATH)          # equities-only book -> Public Equities
     bn = load(BOTTLENECK_PATH)
     sub = load(SUB_PATH)
@@ -217,20 +254,20 @@ def main():
         # Composite is now the live 75/25 public-equities/commodities blend
         # (composite_index.json), distinct from Public Equities.
         "composite": weekly_entry(
-            "Robotnik Composite Index", blend, code="RCI",
+            "Robotnik Composite Index", blend, run_date, code="RCI",
             note=("75% Public Equities + 25% Commodities, periodically rebalanced "
                   "(weights reset 75/25 each period). Forward-only from the 2026-06-17 "
                   "commodities launch — no pre-launch series.")),
         "public": daily_entry("Public Equities", comp["current_value"], comp["series"], base,
-                              code="RPEI"),
+                              run_date, code="RPEI"),
         "bottleneck": daily_entry("Bottleneck-Weighted", bn["current_value"], bn["series"],
                                   {"value": bn.get("base_value"), "date": bn.get("base_date")},
-                                  code="RBWC"),
+                                  run_date, code="RBWC"),
         "commodities": weekly_entry(
-            "Commodities", commod, code="RCMI",
+            "Commodities", commod, run_date, code="RCMI",
             note=("Forward-only weekly index of frontier-input price relatives "
                   "(§6.1 live weights, 12% single-name cap). Launched 2026-06-17.")),
-        "private": rpci_entry(rpci),
+        "private": rpci_entry(rpci, run_date),
     }
 
     # source sub-index key -> contract sector key (registry vocabulary: "semiconductors")
@@ -240,11 +277,11 @@ def main():
     for src_key, label in SECTORS:
         v = sub[src_key]
         sectors[label.lower()] = daily_entry(label, v["current_value"], v["series"], base,
-                                             entity_count=v.get("entity_count"))
+                                             run_date, entity_count=v.get("entity_count"))
 
     out = {
         "_meta": {
-            "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            "generated_at": run_now.isoformat().replace("+00:00", "Z"),
             "generator": "scripts/build_index_summary.py",
             "purpose": "read-only contract for the home-page Index Family + Sector Performance; "
                        "single writer = this script, single reader = the site (site reads, never computes)",
@@ -256,7 +293,7 @@ def main():
                 "sectors": "data/index/sub_indices.json",
                 "private": "data/index/private_capital_index.json",
             },
-            "status_enum": ["live", "calibrating", "soon"],
+            "status_enum": ["live", "stale", "calibrating", "soon"],
             "return_reasons": ["insufficient_history", "not_applicable_for_cadence"],
             "return_convention": RETURN_CONVENTION,
             "trading_day_convention": TRADING_DAY_CONVENTION,

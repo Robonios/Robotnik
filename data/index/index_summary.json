@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-25T22:24:37.328834Z",
+    "generated_at": "2026-08-26T18:34:05.757626Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -13,6 +13,7 @@
     },
     "status_enum": [
       "live",
+      "stale",
       "calibrating",
       "soon"
     ],
@@ -22,7 +23,7 @@
     ],
     "return_convention": "nearest-prior-trading-day; per period P the anchor is the latest published series date <= (as_of - P); return = (value/anchor - 1) * 100, rounded to 2dp; daily P in {1W=7d,1M,3M,1Y,3Y,5Y}, monthly RPCI in {1M,3M,1Y,3Y,5Y}",
     "trading_day_convention": "as_of is the latest session in the published series \u2014 already the >=50% / 98-of-197 quorum trading day from index_dates.py; the summary anchors returns on the series' own dates, so it cannot drift from it",
-    "freshness_rule": "status='live' is emitted only when fresh_through == as_of at the native cadence; otherwise the entry must not be rendered as a current value",
+    "freshness_rule": "status='live' when the data (fresh_through) is current at the entry's OWN cadence relative to the run date (as_of), else 'stale': daily within 4 days, weekly within 9 days, monthly within one calendar month (current or prior month live; two or more months behind stale). A 'stale' entry still carries its last value and fresh_through date and must be rendered as DELAYED - a real number with its age - not as a current value and not as calibrating.",
     "sector_key_note": "contract uses 'semiconductors' (registry vocabulary); the home.json reader currently keys this sector as 'semi' and must map semi -> semiconductors"
   },
   "indexes": {
@@ -31,7 +32,7 @@
       "status": "live",
       "cadence": "weekly",
       "value": 985.98,
-      "as_of": "2026-08-22",
+      "as_of": "2026-08-26",
       "fresh_through": "2026-08-22",
       "base": {
         "value": 1000.0,
@@ -113,7 +114,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3447.06,
-      "as_of": "2026-08-25",
+      "as_of": "2026-08-26",
       "fresh_through": "2026-08-25",
       "base": {
         "value": 1000.0,
@@ -1150,7 +1151,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3228.4,
-      "as_of": "2026-08-25",
+      "as_of": "2026-08-26",
       "fresh_through": "2026-08-25",
       "base": {
         "value": 1000.0,
@@ -2187,7 +2188,7 @@
       "status": "live",
       "cadence": "weekly",
       "value": 993.92,
-      "as_of": "2026-08-22",
+      "as_of": "2026-08-26",
       "fresh_through": "2026-08-22",
       "base": {
         "value": 1000.0,
@@ -2270,7 +2271,7 @@
       "status": "live",
       "cadence": "monthly",
       "value": 2627.2528,
-      "as_of": "2026-07",
+      "as_of": "2026-08-26",
       "fresh_through": "2026-07",
       "base": {
         "value": 1000.0,
@@ -2358,7 +2359,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 2876.29,
-      "as_of": "2026-08-25",
+      "as_of": "2026-08-26",
       "fresh_through": "2026-08-25",
       "base": {
         "value": 1000.0,
@@ -3395,7 +3396,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 1672.73,
-      "as_of": "2026-08-25",
+      "as_of": "2026-08-26",
       "fresh_through": "2026-08-25",
       "base": {
         "value": 1000.0,
@@ -4432,7 +4433,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3551.28,
-      "as_of": "2026-08-25",
+      "as_of": "2026-08-26",
       "fresh_through": "2026-08-25",
       "base": {
         "value": 1000.0,
@@ -5469,7 +5470,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3030.61,
-      "as_of": "2026-08-25",
+      "as_of": "2026-08-26",
       "fresh_through": "2026-08-25",
       "base": {
         "value": 1000.0,

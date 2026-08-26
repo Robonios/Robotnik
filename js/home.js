@@ -37,7 +37,12 @@
     for (var k in s.returns) { if (isNum(s.returns[k])) return true; }
     return false;
   }
-  function isFresh(s) { return !!s && s.status === 'live' && s.fresh_through === s.as_of; }
+  // The build (build_index_summary.py) now owns the cadence-aware freshness judgement
+  // and emits status='live' | 'stale' | 'calibrating' | 'soon'. Trust it: a 'live'
+  // entry is current at its cadence. (The old fresh_through === as_of check was
+  // tautological — the writer set them equal — and would false-negative now that as_of
+  // is the run date and fresh_through the data date.)
+  function isFresh(s) { return !!s && s.status === 'live'; }
   function seriesVals(s) { return (s && s.series ? s.series : []).map(function (p) { return p.value; }); }
   var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   function fmtDate(s) {                     // "2026-06-17"->"17 Jun 2026"; "2026-05"->"May 2026"
@@ -126,7 +131,21 @@
         '<div class="index-tile-val">—</div>' +
         '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' + detail + '</div>';
     }
-    // Calibrating, or live-but-stale (fresh_through != as_of): no current value.
+    // Live-but-behind cadence: a launched index whose data has fallen behind its cadence.
+    // Show the REAL last value with its age and a "Delayed" badge — never "Calibrating",
+    // which would claim not-yet-live when the truth is live-but-behind.
+    if (s.status === 'stale') {
+      var svals = seriesVals(s);
+      var sspark = svals.length >= 2 ? spark(svals, SPARK_COLOR[key] || '#F5D921') : '';
+      return '<div class="index-tile is-stale">' +
+        '<div class="index-tile-top"><span class="index-tile-name">' + name + '</span>' +
+          '<span class="index-tag delayed">Delayed</span></div>' +
+        '<div class="index-tile-val">' + num(s.value, 2) + '</div>' +
+        '<div class="index-tile-chg muted">as of ' + esc(fmtDate(s.fresh_through)) + '</div>' +
+        '<div class="index-tile-blurb">' + esc(ed.blurb || '') + '</div>' +
+        '<div class="index-spark">' + sspark + '</div>' + detail + '</div>';
+    }
+    // Calibrating (not yet live), or any other non-live status: no current value.
     if (s.status === 'calibrating' || !isFresh(s)) {
       return '<div class="index-tile is-calibrating">' +
         '<div class="index-tile-top"><span class="index-tile-name">' + name + '</span>' +
