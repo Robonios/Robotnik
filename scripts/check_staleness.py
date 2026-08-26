@@ -42,10 +42,16 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #   weekly  = 7d cadence + 2d margin (catches one missed run without alerting on
 #             the normal 7d hold).
 #   monthly = a full month + margin; a mid-month RPCI is not stale (stamp recent).
+#   price_daily = the fresh_through DATE lags the writer-timestamp by ~1 day (it is
+#             the prior session's close) and the monitor runs 13:00 UTC, before the
+#             22:00 fetch, so a normal age is ~1.5d; a Fri session seen the following
+#             Tue over a Monday holiday reaches ~4.5d. stale=5 clears that and fires
+#             only on a real multi-session death; ageing=4 warns as it approaches.
 TOL = {
     "daily":   {"ageing": 3,  "stale": 4},
     "weekly":  {"ageing": 8,  "stale": 9},
     "monthly": {"ageing": 33, "stale": 38},
+    "price_daily": {"ageing": 4, "stale": 5},
 }
 
 # Inventory: (path, writer, cadence, freshness-spec).
@@ -54,14 +60,16 @@ TOL = {
 # Cadences verified against .github/workflows/ crons; writers via grep.
 MONITORED = [
     # -- daily: weekday EOD pipeline, 22:00 UTC (fetch-data.yml) --
-    ("data/index/robotnik_index.json",                "calculate_index.py",                "daily",   ("mtime",)),
+    # Price-feed liveness: current_date advances only when fresh prices arrive, so it
+    # catches "cron green but serving frozen last-good", which the calc stamps (mtime /
+    # calculated_at, bumped every run) cannot. calculate_index calc-liveness stays
+    # covered by weights / summary / sub_indices below.
+    ("data/index/robotnik_index.json",                "price feed -> calculate_index (fresh_through)", "price_daily", ("data_date", "current_date")),
     ("data/index/sub_indices.json",                   "calculate_index.py",                "daily",   ("mtime",)),
     ("data/index/weights.json",                       "calculate_index.py",                "daily",   ("field", "calculated_at")),
     ("data/index/summary.json",                       "calculate_index.py",                "daily",   ("field", "calculated_at")),
-    ("data/index/market_caps.json",                   "fetch_market_caps.py",              "daily",   ("field", "fetched_at")),
-    ("data/prices/all_prices.json",                   "assemble_all_prices.py",            "daily",   ("field", "fetched_at")),
-    ("data/prices/equities.json",                     "fetch_prices_marketstack.py",       "daily",   ("field", "fetched_at")),
-    ("data/prices/benchmarks.json",                   "fetch_benchmarks.py",               "daily",   ("field", "fetched_at")),
+    # (market_caps / all_prices / equities / benchmarks were purged for vendor ToS,
+    #  5473421c 2026-08-22; moved to EXCLUDED. Price liveness now via current_date above.)
     ("data/index/bottleneck_weighted_composite.json", "calculate_bottleneck_composite.py", "daily",   ("field", "calculated_at")),
     ("data/index/index_summary.json",                 "build_index_summary.py",            "daily",   ("mtime",)),
     ("data/news.json",                                "fetch_news.py",                     "daily",   ("field", "fetched_at")),
@@ -78,6 +86,12 @@ MONITORED = [
 
 # Deliberately NOT monitored (printed for transparency, and audited 2026-08-15).
 EXCLUDED = [
+    ("data/prices/{equities,all_prices,benchmarks}.json + data/index/market_caps.json",
+     "PURGED for vendor ToS (5473421c, 2026-08-22): raw OHLC / market caps are no longer "
+     "committed - fetched ephemerally in CI and persisted via the price-history cache, never "
+     "the served git tree. Price-fetcher liveness is now tracked by the fresh_through date of "
+     "the published index (robotnik_index.json 'current_date', monitored above), which advances "
+     "only when fresh prices arrive - unlike the calc mtime/calculated_at stamps."),
     ("data/index/index_metrics.json",
      "DEAD - writer calculate_index_metrics.py is in no workflow and nothing reads it (last 2026-05-23). Remove it."),
     ("data/registries/search_index.json",
@@ -142,6 +156,19 @@ def freshness(path, spec):
             pass
         # run-stamp expected but absent/unparseable -> fall back, but flag loudly
         return git_commit_dt(path), "git-commit (WARN: field '%s' missing)" % spec[1]
+    if spec[0] == "data_date":
+        # A published DATA-DATE (YYYY-MM-DD, e.g. the index's current_date): price-age,
+        # not calc-age. Advances only when fresh prices arrive, so it catches a dead
+        # feed that the run-stamps miss.
+        try:
+            d = json.load(open(full))
+            if isinstance(d, dict) and d.get(spec[1]) is not None:
+                dt = parse_ts(d[spec[1]])          # parse_ts handles bare YYYY-MM-DD
+                if dt:
+                    return dt, "data-date '%s'" % spec[1]
+        except Exception:
+            pass
+        return git_commit_dt(path), "git-commit (WARN: data-date '%s' missing)" % spec[1]
     return git_commit_dt(path), "git-commit"
 
 
