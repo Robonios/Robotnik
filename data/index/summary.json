@@ -1,25 +1,25 @@
 {
-  "calculated_at": "2026-08-28T05:59:49.802489+00:00",
+  "calculated_at": "2026-08-29T03:31:33.860118+00:00",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 3540.13,
-    "daily_change_pct": 1.82,
+    "value": 3515.27,
+    "daily_change_pct": -2.71,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 209
+    "entities": 211
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 3540.13,
+    "value": 3515.27,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 209
+    "entities": 211
   },
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 3647.44,
-      "entities": 78
+      "value": 3621.79,
+      "entities": 80
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
@@ -28,12 +28,12 @@
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 2911.92,
+      "value": 2808.29,
       "entities": 36
     },
     "materials": {
       "name": "Robotnik Materials Index",
-      "value": 3081.63,
+      "value": 3071.43,
       "entities": 31
     }
   },
@@ -87,16 +87,16 @@
       "weight_pct": 5.0
     },
     {
+      "ticker": "688825 C1",
+      "name": "ChangXin Memory Technologies (CXMT)",
+      "sector": "Semiconductor",
+      "weight_pct": 4.9543
+    },
+    {
       "ticker": "INTC",
       "name": "Intel",
       "sector": "Semiconductor",
-      "weight_pct": 4.3553
-    },
-    {
-      "ticker": "LRCX",
-      "name": "Lam Research",
-      "sector": "Semiconductor",
-      "weight_pct": 3.5667
+      "weight_pct": 3.9587
     }
   ]
 }
