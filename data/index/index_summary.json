@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-29T03:31:37.561342Z",
+    "generated_at": "2026-08-29T13:46:05.015331Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -31,22 +31,22 @@
       "name": "Robotnik Composite Index",
       "status": "live",
       "cadence": "weekly",
-      "value": 985.98,
+      "value": 987.48,
       "as_of": "2026-08-29",
-      "fresh_through": "2026-08-22",
+      "fresh_through": "2026-08-29",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-08-22",
-        "points": 10,
+        "end": "2026-08-29",
+        "points": 11,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": -3.6,
-        "1M": 1.3,
+        "1W": 0.15,
+        "1M": 2.26,
         "3M": {
           "null": true,
           "reason": "insufficient_history"
@@ -104,6 +104,10 @@
         {
           "date": "2026-08-22",
           "value": 985.98
+        },
+        {
+          "date": "2026-08-29",
+          "value": 987.48
         }
       ],
       "code": "RCI",
@@ -2187,22 +2191,22 @@
       "name": "Commodities",
       "status": "live",
       "cadence": "weekly",
-      "value": 993.92,
+      "value": 990.15,
       "as_of": "2026-08-29",
-      "fresh_through": "2026-08-22",
+      "fresh_through": "2026-08-29",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-08-22",
-        "points": 10,
+        "end": "2026-08-29",
+        "points": 11,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": 0.32,
-        "1M": 1.8,
+        "1W": -0.38,
+        "1M": 1.28,
         "3M": {
           "null": true,
           "reason": "insufficient_history"
@@ -2260,6 +2264,10 @@
         {
           "date": "2026-08-22",
           "value": 993.92
+        },
+        {
+          "date": "2026-08-29",
+          "value": 990.15
         }
       ],
       "code": "RCMI",
