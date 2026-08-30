@@ -576,6 +576,16 @@ def main():
         _documented = set((load_json(_exc_path).get("exceptions") or {}).keys())
     except Exception:
         _documented = set()
+    # Runtime route-quarantine (completeness-guard softening): names auto-quarantined this
+    # run for having no vendor route (suspected delisting) are documented-out, not "missing",
+    # so ONE dead constituent does not trip this guard and halt the pipeline (SkyWater lesson).
+    # Plausibility candidates in the same file stay eligible, so listing them here is a no-op.
+    try:
+        _rtq_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                 "data", "quarantine", "auto_quarantine_candidates.json")
+        _documented |= set((load_json(_rtq_path) or {}).keys())
+    except Exception:
+        pass
     _non_excl_public = {k for k, v in _rev_reg.items() if isinstance(v, dict)
                         and v.get("lifecycle_status") == "public"
                         and v.get("status") not in ("excluded", "data_quarantine")}

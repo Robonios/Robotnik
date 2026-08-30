@@ -67,6 +67,59 @@ def require_marketstack_resolved(n_resolved, n_failed, api_calls):
         sys.exit(1)
 
 
+# Resolution-completeness: >= this many routable names unresolved in ONE run is SYSTEMIC
+# (a resolver regression, a vendor-catalogue change, a key/auth failure) and halts, rather
+# than silently publishing a book missing that many names. 1-2 is consistent with
+# INDIVIDUAL corporate actions (a delisting, a re-ticker) resolving separately, so those
+# are quarantine-and-continue instead of the blunt whole-pipeline FATAL (the SkyWater
+# lesson). The bias is deliberate: a false FATAL is a recoverable halt; a false mass-
+# quarantine silently corrupts the index. Resolver-induced mass regressions are caught
+# upstream by check_entity_lifecycle --validate (E3) before a map is committed.
+SYSTEMIC_GAP_THRESHOLD = 3
+
+
+def _quarantine_route_gaps(gaps):
+    """Flag route-less names in the shared candidate store. calculate_index reads this into
+    the reverse-parity guard's `_documented` set, so a quarantined name is documented-out
+    (not 'missing') and does not trip the guard; the weekly quarantine report reads it too."""
+    path = ROOT / "data" / "quarantine" / "auto_quarantine_candidates.json"
+    cand = {}
+    if path.exists():
+        try:
+            cand = json.loads(path.read_text())
+        except Exception:
+            cand = {}
+    now = datetime.utcnow().isoformat() + "Z"
+    for tk in gaps:
+        cand[tk] = {"source": "completeness_guard", "signal": "route_gap",
+                    "reason": "no fresh v2 symbol and no Yahoo override — suspected "
+                              "delisting / re-ticker", "flagged_date": now}
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(cand, indent=2))
+
+
+def handle_route_gaps(gaps):
+    """Softened resolution-completeness guard. Systemic (>= threshold) FATALs as before; an
+    individual gap (1-2) is quarantined and the run CONTINUES, so one dead constituent no
+    longer halts the whole pipeline."""
+    if not gaps:
+        return
+    if len(gaps) >= SYSTEMIC_GAP_THRESHOLD:
+        print("FATAL: resolution-completeness violation — {} routable name(s) have neither a "
+              "fresh MarketStack symbol nor a Yahoo override: {}. {} at once is SYSTEMIC (a "
+              "resolver regression / vendor-catalogue change / key failure), not individual "
+              "corporate actions — halting rather than publishing a book missing {} names. "
+              "Re-run resolve_marketstack_symbols.py or add data_source_overrides entries.".format(
+              len(gaps), ", ".join(gaps), len(gaps), len(gaps)), file=sys.stderr)
+        sys.exit(1)
+    _quarantine_route_gaps(gaps)
+    print("WARN: {} routable name(s) have no vendor route ({}) — AUTO-QUARANTINED for this run "
+          "(dropped from the index, flagged in data/quarantine/auto_quarantine_candidates.json "
+          "for human review); pipeline CONTINUES. Suspected delisting / re-ticker. A human "
+          "confirms: exclude (delisted), re-key (re-ticker), or add an override.".format(
+          len(gaps), ", ".join(gaps)), file=sys.stderr)
+
+
 def main():
     print("=" * 60)
     print("ROBOTNIK PRICE FETCHER — MarketStack")
@@ -216,12 +269,7 @@ def main():
     # would silently drop from the book — surface it and fail rather than publish a
     # gap. (Catches a re-ticker / a newly-added universe name with no resolution.)
     gaps = sorted(f["ticker"] for f in failed if f.get("reason") == "unresolved_no_override")
-    if gaps:
-        print("FATAL: resolution-completeness violation — {} routable name(s) have "
-              "neither a fresh MarketStack symbol nor a Yahoo override: {}. Re-run "
-              "resolve_marketstack_symbols.py or add a data_source_overrides entry "
-              "before publishing.".format(len(gaps), ", ".join(gaps)), file=sys.stderr)
-        sys.exit(1)
+    handle_route_gaps(gaps)   # softened: quarantine 1-2 and continue; FATAL if systemic
 
 
 if __name__ == "__main__":

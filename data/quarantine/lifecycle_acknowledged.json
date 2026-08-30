@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "purpose": "Acknowledgment baseline for scripts/check_entity_lifecycle.py. A finding listed under E2/E4/E10 below is still REPORTED by the check but does not red the run, so a red daily workflow always means an UNADDRESSED finding. This is a PER-NAME, per-invariant list - not a blanket mute: a finding that is not listed here still reds.",
+    "created": "2026-08-29",
+    "E2_baseline": {
+      "what": "The v2-migration backlog. Every ticker in the E2 list below is resolvable on MarketStack v2 (returns a fresh bar) but is deliberately held on a Yahoo override. This is DEFERRED WORK, not a suppressed defect.",
+      "why_held": "Migrating a constituent from Yahoo to v2 must be validated PER NAME - the Yahoo->v2 history seam (continuity across the switch) has to be checked one name at a time and NOT bulk-removed, so the overrides stay until each seam is verified.",
+      "how_to_clear": "Remove a ticker from the E2 list once its override has been migrated to v2 and the history seam validated. A DIFFERENT override that later becomes v2-fresh is a NEW E2 finding, absent from this list, and will red the run until it is reviewed and either migrated or acknowledged.",
+      "surfaced_2026-08-29": 20
+    },
+    "E2_kept_correctness": {
+      "note": "NOT migration work and NOT acknowledged. Recorded here only so they are never mistaken for the backlog above. These overrides return a fresh v2 bar but are retained for CORRECTNESS - the v2 bar is wrong or untrustworthy - so they must NEVER be migrated. The check classifies them automatically from the override's `reason` field (KEEP_REASONS in check_entity_lifecycle.py) and lists them under 'kept', separate from findings; this block is the human-facing record.",
+      "names": {
+        "012450 KS": "Hanwha Aerospace - real KRW price (~1,519,000) exceeds the vendor KRW cap (999,999.9999); the v2 bar is truncated.",
+        "4062 JP": "Ibiden - MS V1 history 406s and a raw-JPY tail leaked into the merged series; Yahoo (4062.T) is clean.",
+        "6680 HK": "China Rare Earth Resources - MS returns JL Mag Rare-Earth instead (wrong instrument, ambiguous mapping).",
+        "HAWK": "HawkEye 360 - MS serves HAWK but its history is ticker-reuse contaminated (a predecessor penny-stock tail before 2026-05).",
+        "RSW LN": "Renishaw - MS returns the ticker metadata but a null close (GBp); Yahoo (RSW.L) returns a clean close."
+      }
+    }
+  },
+  "E2": [
+    "000660 KS",
+    "005930 KS",
+    "090360 KS",
+    "098460 KS",
+    "189300 KS",
+    "2252 HK",
+    "2454 TT",
+    "600584",
+    "7741 JP",
+    "8046 TT",
+    "ATS AV",
+    "AUTO NO",
+    "CBRS",
+    "FLY",
+    "GFS",
+    "IFX GR",
+    "KDK",
+    "KRMN",
+    "PENG",
+    "VOYG"
+  ],
+  "E4": [],
+  "E10": []
+}

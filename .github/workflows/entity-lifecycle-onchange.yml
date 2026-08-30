@@ -1,0 +1,58 @@
+name: Entity Lifecycle (on change)
+
+# Runs the entity-lifecycle surveillance whenever the universe or its resolution changes,
+# so an admission gap (E10), a mis-route (E2) or a regression surfaces AT THE CHANGE rather
+# than days later on the daily clock — the Melexis/GlobalFoundries class was caught by luck
+# or a month late. Modelled on refresh-search-index.yml (path-triggered on the registry).
+#
+# NOT inside fetch-data.yml: a check wired inside the job it watches dies with that job, and
+# this must fire on registry / resolution EDITS, which fetch-data.yml never makes. Read-only
+# (contents: read, no commit, no push); exit 1 (RED) on an actionable finding so it is seen.
+#
+# Deconfliction: fetch-data.yml never writes entity_registry.json / marketstack_symbols.json
+# / data_source_overrides.json / fetch_prices.py, so it cannot trigger this. refresh-search-
+# index.yml also watches the registry but only rebuilds search_index.json (a disjoint action);
+# concurrency serialises this workflow against itself.
+#
+# The E3 pre-commit gate is a LOCAL tool, not this workflow: after resolve_marketstack_symbols
+# and BEFORE committing, run  `python scripts/check_entity_lifecycle.py --validate`  to vet the
+# proposed map against HEAD without writing (exit 1 on any fresh->stale/unresolved or symbol
+# overwrite). This workflow is the post-change safety net that sweeps the resulting state.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'data/registries/entity_registry.json'
+      - 'data/registries/marketstack_symbols.json'
+      - 'data/registries/data_source_overrides.json'
+      - 'scripts/fetch_prices.py'            # the EQUITIES universe list
+      - 'scripts/check_entity_lifecycle.py'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: entity-lifecycle-onchange
+  cancel-in-progress: false
+
+jobs:
+  lifecycle:
+    runs-on: ubuntu-latest
+    env:
+      MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}   # E2/E4 probe MS v2
+    steps:
+      - name: Checkout (full history for the E3 map diff)
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      # Stdlib + repo modules only, no pip install. Yahoo is blocked from CI, so E4's both-
+      # vendors-frozen corroboration degrades to the map fresh->stale signal (the Yahoo arm
+      # runs out-of-band). Exit 1 => an actionable finding => RED.
+      - name: Entity-lifecycle sweep (E2 route / E4 frozen+exit / E10 graduation)
+        run: python scripts/check_entity_lifecycle.py

@@ -17,9 +17,16 @@ name: Staleness Monitor
 #   0 12 * * *     THIS                              midday UTC — distinct slot,
 #                                                    no writer runs at that time
 #
-# Read-only by construction: no `contents: write`, no git identity, no commit,
-# no push, no API keys, no network. It only reads files + `git log`, prints a
-# report, and exits 0 (fresh) or 1 (a writer has died).
+# The check-staleness job is read-only by construction: no `contents: write`, no git
+# identity, no commit, no push, no API keys, no network. It only reads files + `git log`,
+# prints a report, and exits 0 (fresh) or 1 (a writer has died).
+#
+# The entity-lifecycle job (added later) is the sibling surveillance of the entity-
+# transition invariants the pipeline does not watch — E2 route optimality, E4 frozen/exit
+# with corroboration, E10 graduation. It is a SEPARATE job precisely so the check-staleness
+# job keeps its no-network / no-key purity: E2/E4 probe MarketStack v2, so only that job
+# carries MARKETSTACK_API_KEY. Still read-only (contents: read, no commit), still
+# independent of fetch-data.yml, exits 1 (RED) on an actionable finding.
 
 on:
   schedule:
@@ -66,3 +73,28 @@ jobs:
       # deliberately EXCLUDES search_index.json rather than time-monitoring it.
       - name: Search-index drift check (served == registry projection)
         run: python scripts/build_search_index.py --check
+
+  entity-lifecycle:
+    # Independent surveillance of the four unwatched entity-transition invariants. Separate
+    # job so check-staleness stays network/key-free (see header). NOT inside fetch-data.yml:
+    # a check wired inside the job it watches dies with that job.
+    runs-on: ubuntu-latest
+    env:
+      MARKETSTACK_API_KEY: ${{ secrets.MARKETSTACK_API_KEY }}   # E2/E4 probe MS v2
+    steps:
+      - name: Checkout repo (full history)
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0   # E3 reads `git show HEAD:...marketstack_symbols.json`
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      # Stdlib + repo modules only, no pip install. Exit 1 => an actionable lifecycle
+      # finding (E4 escalation, E10 gap, or an unacknowledged E2) => this job fails => the
+      # workflow goes RED. E4 escalations are also written to auto_quarantine_candidates.json
+      # (which the weekly quarantine report reads). Yahoo is blocked from CI, so E4's both-
+      # vendors-frozen corroboration degrades to the map fresh->stale signal here; the
+      # Yahoo arm runs out-of-band (local / manual dispatch).
+      - name: Entity-lifecycle check (E2 route / E4 frozen+exit / E10 graduation)
+        run: python scripts/check_entity_lifecycle.py
