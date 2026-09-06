@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "updated_at": "2026-06-14T08:47:49.169602+00:00Z",
-    "count": 21,
+    "updated_at": "2026-09-06T09:17:11.615156+00:00Z",
+    "count": 22,
     "purpose": "v2 split_factor misses bonus/scrip/rights; these names' HISTORY routes to Yahoo"
   },
   "tickers": {
@@ -199,6 +199,18 @@
       ],
       "detected_by": "sweep_v2_vs_yahoo",
       "recorded_at": "2026-06-14T08:47:49.169582+00:00Z"
+    },
+    "APH": {
+      "reason": "corporate_action_miss \u2014 v2 under-adjusts vs Yahoo (sustained-ratio sweep)",
+      "yahoo_symbol": "APH",
+      "evidence": [
+        {
+          "old_ratio": 2.0,
+          "recent_ratio": 1.0
+        }
+      ],
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-09-06T09:17:11.615141+00:00Z"
     }
   }
 }
