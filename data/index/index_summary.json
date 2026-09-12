@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-11T23:52:51.441332Z",
+    "generated_at": "2026-09-12T12:08:07.079911Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -31,22 +31,22 @@
       "name": "Robotnik Composite Index",
       "status": "live",
       "cadence": "weekly",
-      "value": 995.78,
-      "as_of": "2026-09-11",
-      "fresh_through": "2026-09-05",
+      "value": 1008.62,
+      "as_of": "2026-09-12",
+      "fresh_through": "2026-09-12",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-09-05",
-        "points": 12,
+        "end": "2026-09-12",
+        "points": 13,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": 0.84,
-        "1M": 6.07,
+        "1W": 1.29,
+        "1M": 1.57,
         "3M": {
           "null": true,
           "reason": "insufficient_history"
@@ -112,6 +112,10 @@
         {
           "date": "2026-09-05",
           "value": 995.78
+        },
+        {
+          "date": "2026-09-12",
+          "value": 1008.62
         }
       ],
       "code": "RCI",
@@ -122,7 +126,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3639.22,
-      "as_of": "2026-09-11",
+      "as_of": "2026-09-12",
       "fresh_through": "2026-09-11",
       "base": {
         "value": 1000.0,
@@ -1159,7 +1163,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3366.46,
-      "as_of": "2026-09-11",
+      "as_of": "2026-09-12",
       "fresh_through": "2026-09-11",
       "base": {
         "value": 1000.0,
@@ -2195,22 +2199,22 @@
       "name": "Commodities",
       "status": "live",
       "cadence": "weekly",
-      "value": 984.84,
-      "as_of": "2026-09-11",
-      "fresh_through": "2026-09-05",
+      "value": 970.68,
+      "as_of": "2026-09-12",
+      "fresh_through": "2026-09-12",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-09-05",
-        "points": 12,
+        "end": "2026-09-12",
+        "points": 13,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": -0.54,
-        "1M": 0.84,
+        "1W": -1.44,
+        "1M": -1.76,
         "3M": {
           "null": true,
           "reason": "insufficient_history"
@@ -2276,6 +2280,10 @@
         {
           "date": "2026-09-05",
           "value": 984.84
+        },
+        {
+          "date": "2026-09-12",
+          "value": 970.68
         }
       ],
       "code": "RCMI",
@@ -2287,7 +2295,7 @@
       "status": "stale",
       "cadence": "monthly",
       "value": 2627.2528,
-      "as_of": "2026-09-11",
+      "as_of": "2026-09-12",
       "fresh_through": "2026-07",
       "base": {
         "value": 1000.0,
@@ -2375,7 +2383,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 2678.76,
-      "as_of": "2026-09-11",
+      "as_of": "2026-09-12",
       "fresh_through": "2026-09-11",
       "base": {
         "value": 1000.0,
@@ -3412,7 +3420,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 1678.9,
-      "as_of": "2026-09-11",
+      "as_of": "2026-09-12",
       "fresh_through": "2026-09-11",
       "base": {
         "value": 1000.0,
@@ -4449,7 +4457,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3761.29,
-      "as_of": "2026-09-11",
+      "as_of": "2026-09-12",
       "fresh_through": "2026-09-11",
       "base": {
         "value": 1000.0,
@@ -5486,7 +5494,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 2928.57,
-      "as_of": "2026-09-11",
+      "as_of": "2026-09-12",
       "fresh_through": "2026-09-11",
       "base": {
         "value": 1000.0,
