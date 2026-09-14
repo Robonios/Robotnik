@@ -1,6 +1,6 @@
 # Robotnik Data Quality — Weekly Report
-**Generated:** 07-Sep-2026 00:40 UTC
-**Period:** 31-Aug to 07-Sep-2026
+**Generated:** 14-Sep-2026 00:43 UTC
+**Period:** 07-Sep to 14-Sep-2026
 
 ## 🟢 Ready for Reinstatement
 No entities ready for reinstatement.
