@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-15T23:59:30.807992Z",
+    "generated_at": "2026-09-16T13:57:15.237595Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -32,7 +32,7 @@
       "status": "live",
       "cadence": "weekly",
       "value": 1008.62,
-      "as_of": "2026-09-15",
+      "as_of": "2026-09-16",
       "fresh_through": "2026-09-12",
       "base": {
         "value": 1000.0,
@@ -126,7 +126,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3425.17,
-      "as_of": "2026-09-15",
+      "as_of": "2026-09-16",
       "fresh_through": "2026-09-15",
       "base": {
         "value": 1000.0,
@@ -1163,7 +1163,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3192.55,
-      "as_of": "2026-09-15",
+      "as_of": "2026-09-16",
       "fresh_through": "2026-09-15",
       "base": {
         "value": 1000.0,
@@ -2200,7 +2200,7 @@
       "status": "live",
       "cadence": "weekly",
       "value": 970.68,
-      "as_of": "2026-09-15",
+      "as_of": "2026-09-16",
       "fresh_through": "2026-09-12",
       "base": {
         "value": 1000.0,
@@ -2292,19 +2292,19 @@
     "private": {
       "name": "Robotnik Private Capital Index",
       "code": "RPCI",
-      "status": "stale",
+      "status": "live",
       "cadence": "monthly",
-      "value": 2627.2528,
-      "as_of": "2026-09-15",
-      "fresh_through": "2026-07",
+      "value": 2945.0561,
+      "as_of": "2026-09-16",
+      "fresh_through": "2026-08",
       "base": {
         "value": 1000.0,
         "date": "2025-03-31"
       },
       "span": {
         "start": "2024-01",
-        "end": "2026-07",
-        "points": 31,
+        "end": "2026-08",
+        "points": 32,
         "display_start": "2024-01",
         "calibration_excluded": 12
       },
@@ -2313,9 +2313,9 @@
           "null": true,
           "reason": "not_applicable_for_cadence"
         },
-        "1M": -2.43,
-        "3M": -9.7,
-        "1Y": 126.37,
+        "1M": 12.1,
+        "3M": 10.26,
+        "1Y": 146.7,
         "3Y": {
           "null": true,
           "reason": "insufficient_history"
@@ -2326,10 +2326,6 @@
         }
       },
       "series": [
-        {
-          "date": "2025-08",
-          "value": 1193.79
-        },
         {
           "date": "2025-09",
           "value": 1268.1254
@@ -2373,6 +2369,10 @@
         {
           "date": "2026-07",
           "value": 2627.2528
+        },
+        {
+          "date": "2026-08",
+          "value": 2945.0561
         }
       ]
     }
@@ -2383,7 +2383,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 2687.5,
-      "as_of": "2026-09-15",
+      "as_of": "2026-09-16",
       "fresh_through": "2026-09-15",
       "base": {
         "value": 1000.0,
@@ -3420,7 +3420,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 1651.38,
-      "as_of": "2026-09-15",
+      "as_of": "2026-09-16",
       "fresh_through": "2026-09-15",
       "base": {
         "value": 1000.0,
@@ -4457,7 +4457,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3535.48,
-      "as_of": "2026-09-15",
+      "as_of": "2026-09-16",
       "fresh_through": "2026-09-15",
       "base": {
         "value": 1000.0,
@@ -5494,7 +5494,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 2816.33,
-      "as_of": "2026-09-15",
+      "as_of": "2026-09-16",
       "fresh_through": "2026-09-15",
       "base": {
         "value": 1000.0,

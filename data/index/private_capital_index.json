@@ -3,7 +3,7 @@
   "index_code": "RPCI",
   "base_date": "2025-03-31",
   "base_value": 1000.0,
-  "fetched_at": "2026-08-14T21:33:45.125558+00:00",
+  "fetched_at": "2026-09-16T13:57:15.191668+00:00",
   "method": "5-component composite, 3M trailing window, monthly recalc",
   "components": {
     "capital_deployed": {
@@ -34,10 +34,10 @@
       "description": "Unique investor count in 3M window; new-in-24M investors weighted 1.25x"
     }
   },
-  "current_month": "2026-07",
-  "current_value": 2627.2528,
-  "current_value_3m_trailing": 2663.6587,
-  "current_value_6m_trailing": 2539.126,
+  "current_month": "2026-08",
+  "current_value": 2945.0561,
+  "current_value_3m_trailing": 2754.9701,
+  "current_value_6m_trailing": 2701.7151,
   "series": [
     {
       "month": "2023-01",
@@ -1027,6 +1027,29 @@
       "component_5_multiplier_applied": true,
       "value_3m_trailing": 2663.6587,
       "value_6m_trailing": 2539.126
+    },
+    {
+      "month": "2026-08",
+      "month_key": "2026-08",
+      "year": 2026,
+      "month_num": 8,
+      "window_start": "2026-06-01",
+      "window_end": "2026-08-31",
+      "value": 2945.0561,
+      "components": {
+        "capital_deployed": 4034.4096,
+        "deal_count": 2729.1667,
+        "stage_weighted_activity": 2806.8182,
+        "round_size_vs_trailing": 1172.088,
+        "investor_breadth": 3113.8211
+      },
+      "deal_count_raw": 131,
+      "capital_deployed_raw_usd": 20743300000.0,
+      "calibration": false,
+      "weighting": "5-component (full)",
+      "component_5_multiplier_applied": true,
+      "value_3m_trailing": 2754.9701,
+      "value_6m_trailing": 2701.7151
     }
   ]
 }
