@@ -1,16 +1,16 @@
 {
-  "calculated_at": "2026-09-25T00:16:20.231501+00:00",
+  "calculated_at": "2026-09-26T00:23:00.773270+00:00",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 3865.15,
-    "daily_change_pct": -0.27,
+    "value": 3894.86,
+    "daily_change_pct": 0.78,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
     "entities": 211
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 3865.15,
+    "value": 3894.86,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
     "entities": 211
@@ -18,22 +18,22 @@
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 4000.0,
+      "value": 4032.05,
       "entities": 80
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
-      "value": 1678.9,
+      "value": 1685.19,
       "entities": 64
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 2778.35,
+      "value": 2768.04,
       "entities": 36
     },
     "materials": {
       "name": "Robotnik Materials Index",
-      "value": 3000.0,
+      "value": 3020.62,
       "entities": 31
     }
   },
@@ -81,14 +81,14 @@
       "weight_pct": 5.0
     },
     {
-      "ticker": "INTC",
-      "name": "Intel",
+      "ticker": "ASML",
+      "name": "ASML Holding ADR",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
     {
-      "ticker": "ASML",
-      "name": "ASML Holding ADR",
+      "ticker": "INTC",
+      "name": "Intel",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
@@ -96,7 +96,7 @@
       "ticker": "688825 C1",
       "name": "ChangXin Memory Technologies (CXMT)",
       "sector": "Semiconductor",
-      "weight_pct": 4.5161
+      "weight_pct": 4.4397
     }
   ]
 }
