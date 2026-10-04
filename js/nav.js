@@ -10,7 +10,8 @@
     // { href: 'signals.html', page: 'signals', label: 'Frontier Signals', online: false },
     { href: 'commodities.html', page: 'commodities', label: 'Commodities', online: false },
     { href: 'research.html', page: 'research', label: 'Research', online: true },
-    { href: 'recreation.html', page: 'recreation', label: 'Recreation Bay', online: true },
+    // retired for now (restore: uncomment)
+    // { href: 'recreation.html', page: 'recreation', label: 'Recreation Bay', online: true },
   ];
 
   const links = navItems.map(item => {
@@ -142,6 +143,8 @@
     '</div>';
   document.body.appendChild(footerEl);
 
+  // Recreation Bay mobile placeholder: retired for now (restore: uncomment the block below)
+  /*
   // ─────────────────────────────────────────────────────────────────
   // Recreation Bay: on mobile, the Tetris game is unplayable. Render a
   // placeholder over the game-section and hide the rest of the layout.
@@ -181,6 +184,7 @@
     // Re-evaluate on resize for orientation changes / desktop resize testing.
     window.addEventListener('resize', applyRecreationMobileState);
   }
+  */
 
   // Early Access modal (shared across all pages)
   // Submissions POST to a Google Apps Script web app bound to a

@@ -15,9 +15,9 @@ SITEMAP_PATH = ROOT / "sitemap.xml"
 BASE_URL = "https://robotnik.world"
 
 # Canonical public pages (must match js/nav.js + what we actually want indexed).
-# Orphan pages (intelligence.html, tetris.html) are intentionally excluded —
+# Orphan pages (intelligence.html) are intentionally excluded —
 # they're not in the nav and shouldn't be advertised.
-# Retired surfaces (report-1Q26.html, thesis.html, the 1Q26 PDF) are hard-excluded
+# Retired surfaces (report-1Q26.html, thesis.html, recreation.html, the 1Q26 PDF) are hard-excluded
 # via the RETIRED set below — never emitted, even if an entry lingers in PAGES.
 PAGES = [
     # (path,                                                   priority, changefreq)
@@ -43,7 +43,6 @@ PAGES = [
     ("portfolio.html",                                          "0.5",    "yearly"),
     ("signals.html",                                            "0.5",    "yearly"),
     ("commodities.html",                                        "0.5",    "yearly"),
-    ("recreation.html",                                         "0.3",    "yearly"),
 ]
 
 
@@ -74,6 +73,7 @@ def last_commit_date(relpath: str) -> str:
 RETIRED = {
     "report-1Q26.html",
     "thesis.html",
+    "recreation.html",
     "reports/1Q26-State-of-the-Frontier-Stack.pdf",
 }
 
