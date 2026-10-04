@@ -77,6 +77,16 @@ RETIRED = {
     "reports/1Q26-State-of-the-Frontier-Stack.pdf",
 }
 
+# Hidden surfaces: Portfolio and Frontier Signals. Hidden from navigation (js/nav.js)
+# and from the sitemap, but NOT retired. Each page stays reachable by its direct URL and
+# carries <meta name="robots" content="noindex"> so it is not indexed. These are live
+# placeholder pages, not redirect stubs. Reveal later by uncommenting their nav entries
+# and removing them from this set. Skipped in the build loop exactly as RETIRED is.
+HIDDEN = {
+    "portfolio.html",
+    "signals.html",
+}
+
 
 def build_sitemap() -> str:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -84,7 +94,7 @@ def build_sitemap() -> str:
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for entry in PAGES:
         path, priority, changefreq = entry[0], entry[1], entry[2]
-        if path in RETIRED:
+        if path in RETIRED or path in HIDDEN:
             continue
         # Optional 4th element: source file to read lastmod from, used when the
         # public URL is extensionless and so does not match a file on disk.

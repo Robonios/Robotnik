@@ -5,8 +5,9 @@
     { href: 'index.html', page: 'home', label: 'Home', online: true },
     { href: 'assets.html', page: 'assets', label: 'Frontier Assets', online: true },
     { href: 'funding.html', page: 'funding', label: 'Funding Ops', online: true },
-    { href: 'portfolio.html', page: 'portfolio', label: 'Portfolio', online: false },
-    { href: 'signals.html', page: 'signals', label: 'Frontier Signals', online: false },
+    // hidden for now (reveal: uncomment)
+    // { href: 'portfolio.html', page: 'portfolio', label: 'Portfolio', online: false },
+    // { href: 'signals.html', page: 'signals', label: 'Frontier Signals', online: false },
     { href: 'commodities.html', page: 'commodities', label: 'Commodities', online: false },
     { href: 'research.html', page: 'research', label: 'Research', online: true },
     { href: 'recreation.html', page: 'recreation', label: 'Recreation Bay', online: true },
