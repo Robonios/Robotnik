@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "updated_at": "2026-09-06T09:17:11.615156+00:00Z",
-    "count": 22,
+    "updated_at": "2026-10-04T11:06:42.107517+00:00Z",
+    "count": 25,
     "purpose": "v2 split_factor misses bonus/scrip/rights; these names' HISTORY routes to Yahoo"
   },
   "tickers": {
@@ -211,6 +211,42 @@
       ],
       "detected_by": "sweep_v2_vs_yahoo",
       "recorded_at": "2026-09-06T09:17:11.615141+00:00Z"
+    },
+    "8035 JP": {
+      "reason": "corporate_action_miss \u2014 v2 under-adjusts vs Yahoo (sustained-ratio sweep)",
+      "yahoo_symbol": "8035.T",
+      "evidence": [
+        {
+          "old_ratio": 5.0,
+          "recent_ratio": 1.0
+        }
+      ],
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-10-04T11:06:42.106074+00:00Z"
+    },
+    "5706 JP": {
+      "reason": "corporate_action_miss \u2014 v2 under-adjusts vs Yahoo (sustained-ratio sweep)",
+      "yahoo_symbol": "5706.T",
+      "evidence": [
+        {
+          "old_ratio": 10.0,
+          "recent_ratio": 1.0
+        }
+      ],
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-10-04T11:06:42.106964+00:00Z"
+    },
+    "6622 JP": {
+      "reason": "corporate_action_miss \u2014 v2 under-adjusts vs Yahoo (sustained-ratio sweep)",
+      "yahoo_symbol": "6622.T",
+      "evidence": [
+        {
+          "old_ratio": 5.0,
+          "recent_ratio": 1.0
+        }
+      ],
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-10-04T11:06:42.107511+00:00Z"
     }
   }
 }
