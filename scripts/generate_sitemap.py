@@ -6,6 +6,7 @@ Designed to run in CI on every push to main (see .github/workflows/
 fetch-data.yml) so the sitemap stays in sync without manual steps.
 """
 
+import json
 import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
@@ -13,6 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SITEMAP_PATH = ROOT / "sitemap.xml"
 BASE_URL = "https://robotnik.world"
+PUBLISHED_PATH = ROOT / "data" / "assets" / "published.json"  # published asset profiles
 
 # Canonical public pages (must match js/nav.js + what we actually want indexed).
 # Orphan pages (intelligence.html) are intentionally excluded —
@@ -108,6 +110,17 @@ def build_sitemap() -> str:
         lines.append(f"    <lastmod>{last_commit_date(src)}</lastmod>")
         lines.append(f"    <changefreq>{changefreq}</changefreq>")
         lines.append(f"    <priority>{priority}</priority>")
+        lines.append("  </url>")
+    # Published asset profiles. data/assets/published.json is the single source of
+    # truth; only published profiles have a shell and are advertised here, so an
+    # unpublished profile is neither built nor listed.
+    for slug in json.loads(PUBLISHED_PATH.read_text()):
+        src = "assets/{}.html".format(slug)
+        lines.append("  <url>")
+        lines.append(f"    <loc>{BASE_URL}/assets/{slug}.html</loc>")
+        lines.append(f"    <lastmod>{last_commit_date(src)}</lastmod>")
+        lines.append("    <changefreq>monthly</changefreq>")
+        lines.append("    <priority>0.6</priority>")
         lines.append("  </url>")
     lines.append("</urlset>")
     lines.append("")

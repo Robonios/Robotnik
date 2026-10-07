@@ -39,6 +39,7 @@ WEIGHTS_PATH = ROOT / "data" / "index" / "weights.json"
 CIK_PATH = ROOT / "data" / "registries" / "cik_map.json"
 OUT_DIR = ROOT / "data" / "assets"
 CONTENT_DIR = OUT_DIR / "content"          # authored narrative sidecars, deep-merged over the structured shard
+PUBLISHED_PATH = OUT_DIR / "published.json"  # single source of truth: sorted slugs that have a sidecar
 
 SCHEMA_VERSION = "asset-profile/2.0"
 
@@ -148,6 +149,18 @@ def deep_merge(base, over):
             out[k] = deep_merge(out[k], v) if (isinstance(out.get(k), dict) and isinstance(v, dict)) else v
         return out
     return over
+
+
+def write_manifest():
+    """Write data/assets/published.json: the single source of truth for which
+    profiles are published, defined as the slugs that have an authored sidecar in
+    data/assets/content/. Every reachable-profile surface reads this one file (the
+    Frontier Assets listing, the shell builder, the sitemap generator and the
+    in-profile dependency resolver), so publishing stays "author the sidecar, run
+    the build". Returns the sorted slug list."""
+    published = sorted(p.stem for p in CONTENT_DIR.glob("*.json"))
+    PUBLISHED_PATH.write_text(json.dumps(published, indent=2, ensure_ascii=False) + "\n")
+    return published
 
 
 def main():
@@ -388,6 +401,10 @@ def main():
         len(dirty), written - len(dirty)))
     for i in sorted(dirty):
         print("  {:16s} -> {}".format(i, dirty[i]))
+
+    published = write_manifest()
+    print("\npublished manifest: {} slugs -> {}".format(
+        len(published), PUBLISHED_PATH.relative_to(ROOT)))
 
 
 if __name__ == "__main__":

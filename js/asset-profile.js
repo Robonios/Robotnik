@@ -25,6 +25,7 @@
   // Render-scoped state, set in boot() before render():
   var _preview = false;    // ?preview=pro -> show authored Pro content in full (review only)
   var _resolver = null;    // search_index-backed edge-label -> slug resolver for chart links
+  var _published = null;   // set of published slugs (data/assets/published.json); gates chart links
 
   // sector -> accent hue. The template self-colours from the shard; --sector is
   // set on the profile root so every accent derives from one entity fact.
@@ -336,6 +337,15 @@
     });
     return { resolve: function (label) { var s = map[normName(label)]; return (s && s !== false) ? s : null; } };
   }
+  // published.json is the source of truth for which profiles have a shell. The
+  // dependency chart links a node only when its resolved slug is published, so a
+  // completed profile never emits a link to an unpublished or non-existent one.
+  function buildPublishedSet(list) {
+    var arr = (list && list.published) || list || [];
+    var set = Object.create(null);
+    if (Array.isArray(arr)) arr.forEach(function (slug) { set[slug] = true; });
+    return set;
+  }
   var TIER_PAGE = '/research/value-chain-taxonomy';
 
   // ── data-driven dependency chart (free headline figure) ──
@@ -345,7 +355,7 @@
     var inner = '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="8" class="node"/>'
       + '<text x="' + (x + 14) + '" y="' + (y + 23) + '" class="node-t">' + esc(title) + '</text>'
       + (note ? '<text x="' + (x + 14) + '" y="' + (y + 41) + '" class="node-s">' + esc(note) + '</text>' : '');
-    if (slug) {
+    if (slug && _published && _published[slug]) {
       return '<a class="node-link" href="/assets/' + encodeURIComponent(slug) + '.html">'
         + '<title>Open ' + esc(title) + ' profile</title>' + inner + '</a>';
     }
@@ -781,9 +791,12 @@
       fetch('/data/assets/' + encodeURIComponent(slug) + '.json?v=' + Date.now())
         .then(function (r) { if (!r.ok) throw new Error('shard ' + r.status); return r.json(); }),
       fetch('/data/registries/search_index.json?v=' + Date.now())
+        .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+      fetch('/data/assets/published.json?v=' + Date.now())
         .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
     ]).then(function (res) {
       _resolver = buildResolver(res[1]);
+      _published = buildPublishedSet(res[2]);
       render(mount, res[0]);
     }).catch(function (e) {
       mount.innerHTML = '<div class="ap-fail">Profile not available yet for <strong>' + esc(slug) + '</strong>.</div>';

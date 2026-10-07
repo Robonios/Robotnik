@@ -31,7 +31,7 @@ ROOT = Path(__file__).resolve().parent.parent
 REG_PATH = ROOT / "data" / "registries" / "entity_registry.json"
 ENR_PATH = ROOT / "data" / "markets" / "enrichment_data.json"
 PAGE_PATH = ROOT / "assets.html"
-CONTENT_DIR = ROOT / "data" / "assets" / "content"
+PUBLISHED_PATH = ROOT / "data" / "assets" / "published.json"
 
 BEGIN = "<!-- BEGIN GENERATED: asset table — scripts/build_assets_page.py — do not hand-edit -->"
 END = "<!-- END GENERATED: asset table -->"
@@ -83,7 +83,10 @@ def esc(value):
 def load():
     reg = json.loads(REG_PATH.read_text())
     enr = json.loads(ENR_PATH.read_text())
-    authored = {p.stem for p in CONTENT_DIR.glob("*.json")}
+    # Published set = data/assets/published.json, the single source of truth
+    # (generated from the authored sidecars by build_asset_profiles.py). A row is
+    # linked only when its slug is published; every constituent still gets a row.
+    authored = set(json.loads(PUBLISHED_PATH.read_text()))
     return reg, enr, authored
 
 
