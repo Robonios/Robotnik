@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T14:01:46.735085+00:00",
+  "generated_at": "2026-10-17T20:06:36.341867+00:00",
   "note": "Authoritative RPCI round-scope, emitted by calculate_private_index.py. The funding page reads this to separate primary capital from lifecycle exits — do not hand-maintain a parallel list.",
   "excluded_rounds": [
     "",
@@ -137,6 +137,11 @@
       "company": "MDA Space / CLS",
       "date": "2026-07-08",
       "reason": "EXCLUDE: public acquirer (MDA CN)"
+    },
+    {
+      "company": "RealSense",
+      "date": "2026-09-22",
+      "reason": "EXCLUDE: public acquirer (CGNX)"
     }
   ]
 }
