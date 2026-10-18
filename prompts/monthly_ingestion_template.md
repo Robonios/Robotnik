@@ -1,6 +1,6 @@
 # Monthly Funding Ingestion — Agent Prompt Template
 
-**Locked at:** v1.2 (2026-08-14)
+**Locked at:** v1.3 (2026-10-18)
 **Use for:** all monthly ingestion runs (first Sunday of each month) and any backfill / supplemental passes.
 
 This template encodes the schema, classification, and **anti-fabrication** rules that emerged from the v1.0 backfill experience. Copy verbatim into each research agent's prompt; only swap the `## Window` block.
@@ -249,6 +249,21 @@ Print a brief summary at the end: deal count, total $ disclosed, top 5 by size, 
 
 ---
 
+## Interruption recovery — re-verify inherited rows (MANDATORY)
+
+Sweeps get interrupted (usage limits, machine sleep, API timeouts). An agent's incremental writes survive, but rows it wrote **before** its own verification pass were never checked. Resuming a heavy transcript often fails, so the orchestrator re-spawns a fresh agent seeded with the partial shard.
+
+A re-spawned agent MUST **re-verify every inherited row against its citation** — not merely preserve it. For each inherited row, confirm:
+
+1. **The citation names the funding event.** Open the URL. A product page, partnership release, stealth-exit page, press-release index, or aggregator profile is NOT a funding announcement. Replace it with a source stating company + round + amount + date, or set `source_status: pending`.
+2. **The round label has primary support.** If no primary source names a series/stage, the round is `Undisclosed` — never inherit an aggregator's letter (see Rule 7).
+3. **The date is inside the window**, taken from the source's announcement date (Rule 5).
+4. **The amount is committed capital** — not a maximum, not a facility "up to" a cap, not a cumulative multi-round total, and not a figure bundling a government award with private money.
+
+Report inherited rows in the hand-back **separately** from newly-found rows, with the verification outcome for each. Preserving an unverified inherited row is a defect, not a saving.
+
+---
+
 ## Pre-merge validation gate (orchestrator)
 
 Run **before** merging the sector shards into `data/funding/rounds.json`, so mechanical defects surface before rows enter the dataset. Assemble the five `/tmp/{window_slug}_research/{sector}.json` shards into one candidate array and validate it:
@@ -291,3 +306,4 @@ After all sectors complete, the orchestrator will produce a monthly summary with
 - **2026-05-12 (v1.1.1):** Added Rules 8, 9, 10 covering data-quality patterns surfaced in v1.1.1 CSV review: (8) investor placeholder ban — no "Multiple"/"Various"/"Existing investors" filler in lead/co fields; unknown → `Undisclosed` / empty. (9) canonical-name check against `investor_name_map.csv` before writing investor names; corporate-vs-venture-arm distinct globally. (10) `robotnik_take` ↔ `company_description` cross-check before submitting (transposition pattern caught 7× across the dataset). Note: `total_raised_m` and `total_number_of_raises` are retained internally but no longer in CSV export — they computed only from 2023+ coverage and under-counted companies with pre-2023 history.
 - **2026-07-06 (v1.1.2):** Rule 9 repointed. The curated `investor_name_map.csv` was retired in the data-exposure cleanup (commit `afe10397`) and no longer exists in the repo; the old Rule 9 link pointed at a deleted file, so sweep agents silently fell back to a derived list (surfaced during the June 2026 sweep). Rule 9 now canonicalizes investor names against the spellings already present in `data/funding/rounds.json` (the living canonical corpus). No change to the canonicalization principles themselves (corporate-vs-venture-arm distinct, no duplicate spellings).
 - **2026-08-14 (v1.2):** Added the **Pre-merge validation gate** — `scripts/validate_funding_ingest.py --online --advisory` run on the assembled candidate rows before merge, mechanically enforcing the URL (Rules 1/3) and date (Rule 5) anti-fabrication rules and flagging weak-citation / null-amount rows. Complemented by a `.githooks/pre-commit` hook that runs the offline four rules on the merged `rounds.json` at commit (catches new-vs-existing duplicates). Built from the full-dataset RPCI citation audit (46 defects across 1,404 rows); the guard's first run on the committed tree surfaced a live duplicate (Astranis, Series D $200M double-counted across 2023-04-11 / 2024-07-24) and a new date error the audit missed (Manna Air Delivery, recorded 2026-04-01 vs a 2026-03-10 citation).
+- **2026-10-18 (v1.3):** Added **Interruption recovery — re-verify inherited rows (MANDATORY)**. The September 2026 sweep was interrupted by an overnight machine-sleep; three sector agents were re-spawned fresh and instructed to preserve their partial shards. Those preserved-but-unverified rows proved to be the sweep's ONLY defect source: **4 of 11 inherited rows carried a defect, against 0 of 45 rows produced by fresh agents** — Cornelis Networks (product-page citation, round label with no primary support), Positron AI (amount counted an "up to $500M" Series C-1 facility as deployed capital), Ayar Labs (aggregator-derived "Series E (extension)" where the company release names no stage), Kepler Computing (citation mis-framed a $245M CHIPS letter-of-intent as part of the private raise; "Strategic" label unsupported). A re-spawned agent must now re-verify every inherited row against its citation — citation names the funding event, round label has primary support, date in window, amount is committed capital — rather than merely preserving it.
