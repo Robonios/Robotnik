@@ -46,7 +46,7 @@
       <div class="sidebar-bottom">
         <div class="sidebar-tagline" style="font-size:11px;letter-spacing:0.02em;">
           <div style="color:var(--yellow);font-size:11px;letter-spacing:0.06em;font-weight:700;">ROBOTNIK</div>
-          <div style="margin-top:0.4rem;color:var(--text);font-size:12px;line-height:1.5;letter-spacing:0;">Frontier-tech intelligence: Public assets, commodities, and private market data, supply-chain mapping, and bottleneck risk analysis across semiconductors, robotics, space, and critical materials.</div>
+          <div style="margin-top:0.4rem;color:var(--text);font-size:12px;line-height:1.5;letter-spacing:0;">The live intelligence model of the frontier technology stack: markets, capital, materials, and dependencies across semiconductors, robotics, space, and critical materials.</div>
         </div>
       </div>
     </aside>
@@ -92,7 +92,7 @@
         </nav>
         <div class="mobile-nav-tagline">
           <div style="color:var(--yellow);font-weight:700;letter-spacing:0.06em;">ROBOTNIK</div>
-          <div style="margin-top:0.4rem;color:var(--text);font-size:12px;line-height:1.5;letter-spacing:0;">Frontier-tech intelligence: Public assets, commodities, and private market data, supply-chain mapping, and bottleneck risk analysis across semiconductors, robotics, space, and critical materials.</div>
+          <div style="margin-top:0.4rem;color:var(--text);font-size:12px;line-height:1.5;letter-spacing:0;">The live intelligence model of the frontier technology stack: markets, capital, materials, and dependencies across semiconductors, robotics, space, and critical materials.</div>
         </div>
       </div>
     </div>
@@ -200,7 +200,7 @@
   modalDiv.innerHTML = '' +
     '<div style="background:#0A0A0F;border:1px solid #333;border-radius:8px;padding:1.75rem 2rem 1.5rem;max-width:520px;width:100%;position:relative;font-family:\'Mulish\',sans-serif;margin:auto;">' +
       '<button type="button" id="ea-close-btn" aria-label="Close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:18px;cursor:pointer;line-height:1;">&#10005;</button>' +
-      '<h3 style="color:#F5D921;font-size:12px;letter-spacing:0.1em;margin:0 0 0.5rem;font-family:\'Space Grotesk\',sans-serif;">Start the conversation</h3>' +
+      '<h3 style="color:#F5D921;font-size:12px;letter-spacing:0.1em;margin:0 0 0.5rem;font-family:\'Space Grotesk\',sans-serif;">Request access</h3>' +
       '<p style="color:#8B92A5;font-size:11px;line-height:1.55;margin:0 0 1.25rem;">' +
         'Tell us what you\'re working on and we\'ll be in touch.' +
       '</p>' +

@@ -77,7 +77,7 @@
           (hasY ? '<span class="top-rci-chg ' + (up ? 'up' : 'down') + '">' + (up ? '+' : '') + oneY.toFixed(2) + '%</span>' : '') +
         '</a>';
     }
-    wrap.innerHTML = ticker + '<button class="btn-access" type="button">Contact</button>';
+    wrap.innerHTML = ticker + '<button class="btn-access" type="button">Request access</button>';
     bar.appendChild(wrap);
     wrap.querySelector('.btn-access').addEventListener('click', openAccess);
   }
