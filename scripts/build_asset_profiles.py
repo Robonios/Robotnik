@@ -2,9 +2,16 @@
 """
 Robotnik Frontier Assets — per-entity profile shard generator
 =============================================================
-Emits data/assets/{slug}.json for every ACTIVE registry entity except the
-disputed Resonac/Hodogaya/Daicel constituent (registry key "4112 JP", or
-Resonac's "4004" if a parallel re-key has landed — matched on both, skipped).
+Emits data/assets/{slug}.json for every PUBLISHED profile: the slugs that have an
+authored sidecar in data/assets/content/ (listed in data/assets/published.json).
+GitHub Pages serves the whole tracked tree, so a shard for an unpublished entity
+would be public even with no page linking to it. Public runs therefore write
+published shards only and delete any other shard left in data/assets/.
+
+--include-unpublished --out-dir DIR writes every ACTIVE registry entity to DIR,
+which must be outside the public tree (for the private preview). The disputed
+Resonac/Hodogaya/Daicel constituent (registry key "4112 JP", or Resonac's "4004"
+if a parallel re-key has landed) is skipped in both modes.
 
 One shard per entity, nine-layer schema (identity, classification, bottleneck,
 dependency, market_context, capital, policy, geographic, editorial) under a meta
@@ -23,8 +30,9 @@ Join key (public): public_ticker, falling back to the registry id. Cerebras is t
 sole id != ticker case (id "cerebras-systems", ticker "CBRS"); enrichment/weights
 are ticker-keyed, so the ticker join is authoritative.
 
-Output: data/assets/{slug}.json. This script does NOT git-commit or git-add.
+Output: data/assets/{slug}.json (published only). This script does NOT git-commit or git-add.
 """
+import argparse
 import json
 import re
 import sys
@@ -163,7 +171,26 @@ def write_manifest():
     return published
 
 
+def parse_args():
+    ap = argparse.ArgumentParser(description="Build asset profile shards.")
+    ap.add_argument("--include-unpublished", action="store_true",
+                    help="write every active entity, not only published profiles "
+                         "(requires --out-dir outside the public tree)")
+    ap.add_argument("--out-dir", type=Path, default=OUT_DIR,
+                    help="output directory (default: data/assets)")
+    args = ap.parse_args()
+    out_dir = args.out_dir.resolve()
+    public_tree = out_dir == OUT_DIR.resolve() or ROOT.resolve() in out_dir.parents or out_dir == ROOT.resolve()
+    if args.include_unpublished and public_tree:
+        print("Refusing --include-unpublished inside the repository: GitHub Pages "
+              "would serve every shard. Pass an --out-dir outside the repository.", file=sys.stderr)
+        sys.exit(4)
+    return args.include_unpublished, out_dir
+
+
 def main():
+    include_unpublished, out_dir = parse_args()
+    published_set = {p.stem for p in CONTENT_DIR.glob("*.json")}
     reg = json.loads(REG_PATH.read_text())
     enr = json.loads(ENR_PATH.read_text())
     weights_doc = json.loads(WEIGHTS_PATH.read_text())
@@ -224,10 +251,11 @@ def main():
             print("  {!r} and {!r} -> {!r}".format(a, b, s), file=sys.stderr)
         sys.exit(2)
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_dir.mkdir(parents=True, exist_ok=True)
 
     written = 0
     merged = 0
+    withheld = 0
     skipped = []
     states = defaultdict(int)
 
@@ -237,6 +265,9 @@ def main():
             continue
         typ = v["type"]
         slug = slug_map[rid]
+        if not include_unpublished and slug not in published_set:
+            withheld += 1                           # unpublished: no public shard
+            continue
         join_key = v.get("public_ticker") or rid    # ticker for public; id otherwise
 
         e = enr.get(join_key) if isinstance(enr.get(join_key), dict) else None
@@ -373,7 +404,7 @@ def main():
             sys.exit(3)
         scan_chart_payload(shard, slug)
 
-        (OUT_DIR / "{}.json".format(slug)).write_text(
+        (out_dir / "{}.json".format(slug)).write_text(
             json.dumps(shard, indent=2, ensure_ascii=False) + "\n")
         written += 1
 
@@ -385,13 +416,25 @@ def main():
             states["capital:" + cap_state] += 1
         states["universe:" + universe_status] += 1
 
+    # ── prune: public runs leave no unpublished shard in the served tree ──
+    pruned = []
+    if not include_unpublished:
+        for p in sorted(out_dir.glob("*.json")):
+            if p.name == PUBLISHED_PATH.name:
+                continue
+            if p.stem not in published_set:
+                p.unlink()
+                pruned.append(p.stem)
+
     # ── run report ──
     print("=" * 64)
     print("ROBOTNIK ASSET PROFILE SHARDS")
     print("=" * 64)
     print("active entities:      {}".format(len(active)))
     print("skipped (disputed):   {}".format(skipped))
-    print("shards written:       {}  -> {}".format(written, OUT_DIR.relative_to(ROOT)))
+    print("shards written:       {}  -> {}".format(written, out_dir))
+    print("withheld (unpublished): {}".format(withheld))
+    print("pruned stale shards:  {}".format(len(pruned)))
     print("with authored sidecar: {}  (from {})".format(merged, CONTENT_DIR.relative_to(ROOT)))
     print("\nstate distribution:")
     for k in sorted(states):
