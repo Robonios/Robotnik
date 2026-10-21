@@ -222,7 +222,7 @@ def main():
         else:
             status = "stale"; n_stale += 1; stale.append((tk, chosen, last))
         out[tk] = {"symbol": chosen, "version": "v2", "status": status,
-                   "last_date": last, "last_close": last_close,
+                   "last_date": last,   # no last_close: vendor prices never enter the published tree
                    "candidates_tried": tried, "country": country}
         if i % 50 == 0:
             print("  [{}/{}] fresh={} stale={} unresolved={}".format(
