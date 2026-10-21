@@ -31,10 +31,15 @@ base_price_usd:
     change only); else stop before any fetch. The secret must name exactly the
     published constituents, with positive numbers, and must equal any base_price_usd
     still published.
+  * The record binds the bases: every run publishes base_prices_sha256, the
+    SHA-256 of canonical_base_prices() (see there for the exact form). A later run
+    stops before any fetch unless the bases it reads hash to that value, so a
+    mistyped or stale secret (e.g. after a re-baseline) can never be used.
   * A constituent with no fresh price carries its PRIOR PUBLISHED relative_to_base,
     which is published at full float precision so the carry is exact.
   * A genesis run (no usable prior record, or COMMODITIES_GENESIS=1) writes its new
-    base prices only to COMMODITIES_GENESIS_BASES_OUT, which must be set.
+    base prices, as the canonical string, only to COMMODITIES_GENESIS_BASES_OUT,
+    which must name a file inside the gitignored data/private/.
 
 Constituents (20 priced) — §8 routing
   * 12 via MarketStack v2 /commodities (exchange benchmarks + China-domestic
@@ -56,10 +61,12 @@ Usage / env affordances
     COMMODITIES_GENESIS=1           force a genesis re-baseline (weights review)
     COMMODITIES_BASE_PRICES=<json>  base prices {commodity: base_price_usd} (secret)
     COMMODITIES_GENESIS_BASES_OUT=<path>  where a genesis run writes its new base
-                                    prices (required for genesis; keep it private)
+                                    prices; required for genesis, must be a file in
+                                    data/private/ (relative paths: from the repo root)
 """
 
 import bisect
+import hashlib
 import json
 import math
 import os
@@ -96,6 +103,8 @@ MARK_DATE_OVERRIDE = os.environ.get("COMMODITIES_MARK_DATE")   # sim/test: pin t
 FORCE_GENESIS      = os.environ.get("COMMODITIES_GENESIS") == "1"
 BASE_PRICES_ENV    = "COMMODITIES_BASE_PRICES"                 # secret: {commodity: base_price_usd}
 GENESIS_BASES_OUT  = os.environ.get("COMMODITIES_GENESIS_BASES_OUT")
+BASE_HASH_KEY      = "base_prices_sha256"                       # published binding of the bases
+PRIVATE_DIR        = ROOT / "data" / "private"                  # gitignored
 
 # ── Constituents ───────────────────────────────────────────────────────────
 # (commodity, reference_weight_pct, source, basis, fetch_key)
@@ -382,14 +391,67 @@ def _is_pos_num(v):
             and math.isfinite(v) and v > 0)
 
 
+def canonical_base_prices(bases):
+    """The exact string base_prices_sha256 covers: JSON with keys sorted, no
+    whitespace (separators "," and ":"), ASCII only, every value converted to a
+    float and written in Python's shortest round-trip repr (as json.dumps writes
+    floats, e.g. 17980 -> 17980.0), UTF-8 encoded. Pasting this string into the
+    secret is valid; so is any JSON with the same names and values."""
+    return json.dumps({k: float(v) for k, v in bases.items()}, sort_keys=True,
+                      separators=(",", ":"), ensure_ascii=True, allow_nan=False)
+
+
+def base_prices_sha256(bases):
+    return hashlib.sha256(canonical_base_prices(bases).encode("utf-8")).hexdigest()
+
+
+def genesis_bases_path():
+    """COMMODITIES_GENESIS_BASES_OUT as a resolved path, confined to a file inside
+    the gitignored data/private/ (relative paths are taken from the repo root, and
+    symlinks are resolved, so nothing can point outside it). Stops otherwise."""
+    if not GENESIS_BASES_OUT:
+        _stop(["This run would re-baseline the index (genesis: no usable prior record, or "
+               "COMMODITIES_GENESIS=1).",
+               "Its new base prices are never published, so set COMMODITIES_GENESIS_BASES_OUT "
+               "to a file in data/private/ to receive them, then replace the {} secret.".format(
+                   BASE_PRICES_ENV)])
+    p = Path(GENESIS_BASES_OUT)
+    p = (p if p.is_absolute() else ROOT / p).resolve()
+    private = PRIVATE_DIR.resolve()
+    if private not in p.parents or p.is_dir():
+        _stop(["COMMODITIES_GENESIS_BASES_OUT must name a file inside data/private/ "
+               "(gitignored); refusing {}.".format(GENESIS_BASES_OUT)])
+    return p
+
+
 def resolve_base_prices(prior):
     """{commodity: base_price_usd} for every constituent of the prior record, and
     the source used. Read order: the COMMODITIES_BASE_PRICES secret; else the
     base_price_usd still on the published constituents (the first run after the
-    change only); else stop. Every check runs before any fetch."""
+    change only); else stop. The bases must then hash to the record's
+    base_prices_sha256 when it carries one; a record with neither the hash nor the
+    legacy fields cannot vouch for any bases, so the run stops. Every check runs
+    before any fetch, and no message contains a value."""
     names = [c["commodity"] for c in prior["constituents"]]
     published = {c["commodity"]: c["base_price_usd"] for c in prior["constituents"]
                  if "base_price_usd" in c}
+    bases, source = _read_base_prices(names, published)
+    record_hash = prior.get(BASE_HASH_KEY)
+    if record_hash is not None:
+        if base_prices_sha256(bases) != record_hash:
+            _stop(["The base prices from {} do not match the {} in the published record.".format(
+                       source, BASE_HASH_KEY),
+                   "The secret is mistyped or stale (for example, not replaced after a "
+                   "re-baseline). It must hold the bases this record was built on.",
+                   SECRET_HINT])
+    elif not published:
+        _stop(["The published record carries neither base_price_usd nor {}, so no base "
+               "prices can be verified against it.".format(BASE_HASH_KEY),
+               "Restore the record's {} (see docs/RAW_PRICE_HANDLING.md).".format(BASE_HASH_KEY)])
+    return bases, source
+
+
+def _read_base_prices(names, published):
     raw = os.environ.get(BASE_PRICES_ENV, "").strip()
     if raw:
         try:
@@ -444,12 +506,7 @@ def main():
     prior = None if FORCE_GENESIS else load_existing(OUT_PATH)
     genesis = not (prior and prior.get("constituents") and prior.get("series"))
     if genesis:
-        if not GENESIS_BASES_OUT:
-            _stop(["This run would re-baseline the index (genesis: no usable prior record, or "
-                   "COMMODITIES_GENESIS=1).",
-                   "Its new base prices are never published, so set COMMODITIES_GENESIS_BASES_OUT "
-                   "to a private path to receive them, then update the {} secret.".format(
-                       BASE_PRICES_ENV)])
+        bases_out = genesis_bases_path()            # confined to data/private/, else stop
         stored_base, base_source = {}, "genesis (new bases from this run's prices)"
     else:
         stored_base, base_source = resolve_base_prices(prior)
@@ -622,14 +679,16 @@ def main():
     record["series"] = series
     record["last_update"] = {"action": action, "mark": today, "value": index_value, "at": now_iso}
     record["calculated_at"] = now_iso
+    # Bind the record to the bases it was built on (every run; see canonical_base_prices).
+    used_bases = {c["commodity"]: base_by[c["commodity"]] for c in constituents}
+    record[BASE_HASH_KEY] = base_prices_sha256(used_bases)
 
     if genesis:
-        # New bases go only to the private path (never printed or published), and
-        # before the record, so a published genesis record always has its bases.
-        bases_out = Path(GENESIS_BASES_OUT)
+        # New bases go only to the confined private path, as the canonical string
+        # (never printed or published), and before the record, so a published
+        # genesis record always has its bases somewhere.
         bases_out.parent.mkdir(parents=True, exist_ok=True)
-        bases_out.write_text(json.dumps({c["commodity"]: round(base_by[c["commodity"]], 6)
-                                         for c in constituents}))
+        bases_out.write_text(canonical_base_prices(used_bases))
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT_PATH, "w") as f:
         json.dump(record, f, indent=2)

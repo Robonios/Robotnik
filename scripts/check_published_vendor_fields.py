@@ -23,7 +23,12 @@ Detection (case-insensitive):
   * key-less price series: lists of [date, number, ...] or {date, number} rows
     under a ticker-like key, under a generic series key (series, history, data,
     ...) of an object that names an instrument (ticker, symbol, isin, ...), or at
-    the top level of a file whose path names prices or history.
+    the top level of a file whose path names prices or history;
+  * any tracked or staged file under data/private/ (gitignored, local-only);
+  * --strict only: a {commodity: number} map with at least MIN_COMMODITY_KEYS
+    commodity names (read from the calculator's PRICED / PENDING lists), such as
+    a copy of the base prices. Strict only, because such a map cannot be told
+    apart from a legitimate one (weights, say) by its shape alone.
 
 Not flagged, on purpose: high / low (bottleneck grade counts use HIGH / LOW), mcap
 (an index LEVEL in bottleneck_weighted_composite.json), fx_rate_to_usd (ECB
@@ -42,6 +47,7 @@ Usage:
     python scripts/check_published_vendor_fields.py --strict   # no allowances at all
 CHECK_VENDOR_FIELDS_TODAY=YYYY-MM-DD overrides today's date (tests only).
 """
+import ast
 import json
 import os
 import re
@@ -66,7 +72,15 @@ FORBIDDEN_PATTERNS = [re.compile(p) for p in (
     # MarketStack vendor % change windows: percentage_day, percentage_week, percentage_month ...
     r"^percentage_(day|daily|week|weekly|month|monthly|quarter|year|yearly|ytd|[0-9]+[dwmy])$",
     r"^market_?caps?(_usd|_native|_local)?$",  # market_cap, market_caps, marketcap, market_cap_usd
+    r"(^|_)values?_(usd|native)$",             # quarantine watch: last_fetch_value_usd, recent_values_usd
 )]
+# The gitignored home of local-only raw outputs: any TRACKED file here is a leak.
+PRIVATE_PREFIX = "data/private/"
+# --strict only: a {commodity: number} map (e.g. a copy of the base prices) in any
+# tracked file. Commodity names are read from the calculator's PRICED / PENDING
+# lists without importing it; the rule needs MIN_COMMODITY_KEYS of them in one map.
+COMMODITY_SOURCE = "scripts/calculate_commodities_index.py"
+MIN_COMMODITY_KEYS = 3
 GENERIC_SERIES_KEYS = {"series", "history", "data", "points", "values", "rows", "bars", "quotes"}
 INSTRUMENT_KEYS = {"ticker", "symbol", "isin", "marketstack_symbol", "yahoo_symbol",
                    "eodhd_ticker", "eodhd_symbol", "coingecko_id", "commodity"}
@@ -74,6 +88,7 @@ TICKER_LIKE = re.compile(r"^[A-Z0-9][A-Z0-9 .\-]{0,14}$")
 PRICE_PATH = re.compile(r"price|close|ohlc|spark|history", re.I)
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}")
 SERIES_LABEL = "(price series)"
+MAP_LABEL = "(commodity price map)"
 
 # Allowances apply up to and including this date (UTC), then fail.
 ALLOWANCE_EXPIRY = "2026-10-31"
@@ -101,11 +116,29 @@ def _git(args):
 
 
 def _files(staged):
+    """Every tracked (or staged) path, of any type."""
     if staged:
-        names = _git(["diff", "--cached", "--name-only", "-z", "--diff-filter=ACMR"])
-    else:
-        names = _git(["ls-files", "-z"])
-    return [f for f in names if f.endswith(SUFFIXES)]
+        return _git(["diff", "--cached", "--name-only", "-z", "--diff-filter=ACMR"])
+    return _git(["ls-files", "-z"])
+
+
+def _commodity_names():
+    """Lower-case commodity names from the calculator's PRICED / PENDING list
+    literals (parsed, never imported), or None if they cannot be read."""
+    try:
+        with open(COMMODITY_SOURCE, encoding="utf-8") as fh:
+            tree = ast.parse(fh.read())
+    except (OSError, SyntaxError):
+        return None
+    names = set()
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and any(
+                isinstance(t, ast.Name) and t.id in ("PRICED", "PENDING") for t in node.targets):
+            for elt in getattr(node.value, "elts", []):
+                first = elt.elts[0] if isinstance(elt, ast.Tuple) and elt.elts else None
+                if isinstance(first, ast.Constant) and isinstance(first.value, str):
+                    names.add(first.value.lower())
+    return names or None
 
 
 def _forbidden(key):
@@ -134,10 +167,14 @@ def _note(found, label, here):
     found[label] = (n + 1, first)
 
 
-def _scan(node, path, found):
+def _scan(node, path, found, commodities=None):
     """Collect {key or series label: (count, first JSON path)} at any depth."""
     if isinstance(node, dict):
         instrument = any(isinstance(k, str) and k.lower() in INSTRUMENT_KEYS for k in node)
+        if commodities:
+            hits = [k for k in node if isinstance(k, str) and k.lower() in commodities]
+            if len(hits) >= MIN_COMMODITY_KEYS and all(_num(node[k]) for k in hits):
+                _note(found, MAP_LABEL, path or "<top level>")
         for k, v in node.items():
             here = "{}.{}".format(path, k) if path else str(k)
             if isinstance(k, str) and _forbidden(k):
@@ -145,10 +182,10 @@ def _scan(node, path, found):
             elif isinstance(k, str) and _dated_rows(v) and (
                     TICKER_LIKE.match(k) or (instrument and k.lower() in GENERIC_SERIES_KEYS)):
                 _note(found, SERIES_LABEL, here)
-            _scan(v, here, found)
+            _scan(v, here, found, commodities)
     elif isinstance(node, list):
         for i, v in enumerate(node):
-            _scan(v, "{}[{}]".format(path, i), found)
+            _scan(v, "{}[{}]".format(path, i), found, commodities)
 
 
 def main():
@@ -157,8 +194,18 @@ def main():
     today = os.environ.get("CHECK_VENDOR_FIELDS_TODAY") or \
         datetime.now(timezone.utc).strftime("%Y-%m-%d")
     expired = today > ALLOWANCE_EXPIRY
-    files = _files(staged)
+    paths = _files(staged)
+    files = [f for f in paths if f.endswith(SUFFIXES)]
     failures, warnings, unreadable, seen = [], [], [], {}
+    # A tracked or staged file under data/private/ is a leak whatever it holds.
+    failures += ["{}: tracked under {} (gitignored, local-only; never commit it)".format(
+        f, PRIVATE_PREFIX) for f in paths if f.startswith(PRIVATE_PREFIX)]
+    commodities = None
+    if strict:
+        commodities = _commodity_names()
+        if not commodities:
+            failures.append("{}: cannot read the commodity names (PRICED / PENDING) for the "
+                            "{} rule".format(COMMODITY_SOURCE, MAP_LABEL))
     for f in files:
         try:
             with open(f, encoding="utf-8") as fh:
@@ -169,7 +216,7 @@ def main():
         found = {}
         if PRICE_PATH.search(f) and _dated_rows(doc):
             _note(found, SERIES_LABEL, "<top level>")
-        _scan(doc, "", found)
+        _scan(doc, "", found, commodities)
         seen[f] = {k.lower() for k in found}
         for k, (n, first) in sorted(found.items()):
             line = "{}: {} x{} (first at {})".format(f, k, n, first)
