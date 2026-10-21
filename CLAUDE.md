@@ -62,11 +62,14 @@ Root `*.html` — one page each: `index` (home, Frontier Stack map), `assets` (p
 
 - `data/home.json` — placeholder home-page contract; the Frontier Stack map renders synthetic dots from its `cells[]` (no live `assets[]` feed).
 - `assets.html` — placeholder page (per-asset profiles in development); the live screener is archived at `archive/assets-screener/`.
-- `portfolio.html`, `signals.html`, `commodities.html` — greyed "coming soon" placeholders (`nav.js` `online: false`).
+- `portfolio.html`, `signals.html` — hidden: commented out of the `nav.js` nav table, excluded from the sitemap, and `noindex`; files kept. `recreation.html` — retired the same way. `commodities.html` — greyed "Soon" placeholder (`nav.js` `online: false`).
 
 ## Conventions
 
 - Prose: British English, no em-dashes, impersonal register, no bylines.
 - Archive: `archive/*` is gitignored except `news/` and `research/`; new tracked files elsewhere under `archive/` need `git add -f`.
-- Git: Claude Code works directly on `main` and may move files and stage changes (`git add`, `git rm --cached`, `git mv`), but commits are always Robert's. Claude does not commit or push.
-- Read-only audit before any consequential change; Robert reviews and commits after the audit.
+- Git (from 21 October 2026): Claude works on one short-lived branch per task, cut from the latest `main` and named `claude/<task>-<date>`, then opens a pull request. Robert reviews and merges on GitHub; nothing reaches `main` or the live site without his merge. Claude never pushes to `main`, never reuses a branch name, and rebases onto `main` immediately before a pull request is merged. Merged branches are deleted.
+- Generated files are never edited in a pull request. The workflows alone write `data/index/*`, `data/prices/*`, `data/news.json`, `data/research.json`, `data/filings.json`, `data/reports.json`, `data/quarantine/weekly_report.md`, `data/registries/search_index.json`, and `sitemap.xml`. A change that needs new outputs changes the inputs or scripts and lets the next run regenerate them.
+- Hand-maintained files inside paths the daily run also commits (`data/registries/`, `data/markets/`, `data/funding/`) can be edited in a pull request, but the pull request is rebased onto `main` and merged promptly so it never sits behind several daily runs.
+- Before merging a pull request, Robert's local copy has no uncommitted changes; after merging, he pulls `main` in GitHub Desktop.
+- Read-only audit before any consequential change. Each pull request is checked against its task's acceptance criteria before Robert reviews it.
