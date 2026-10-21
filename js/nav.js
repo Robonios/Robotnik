@@ -5,10 +5,8 @@
     { href: 'index.html', page: 'home', label: 'Home', online: true },
     { href: 'assets.html', page: 'assets', label: 'Frontier Assets', online: true },
     { href: 'funding.html', page: 'funding', label: 'Funding Ops', online: true },
-    // hidden for now (reveal: uncomment)
-    // { href: 'portfolio.html', page: 'portfolio', label: 'Portfolio', online: false },
-    // { href: 'signals.html', page: 'signals', label: 'Frontier Signals', online: false },
-    { href: 'commodities.html', page: 'commodities', label: 'Commodities', online: false },
+    // Portfolio, Frontier Signals and Commodities retired 2026-10 (task 2a):
+    // each URL is a noindex redirect stub; the features belong to the private preview.
     { href: 'research.html', page: 'research', label: 'Research', online: true },
     // retired for now (restore: uncomment)
     // { href: 'recreation.html', page: 'recreation', label: 'Recreation Bay', online: true },
