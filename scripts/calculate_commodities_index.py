@@ -21,6 +21,21 @@ Idempotency: a re-run in the same ISO week updates that week's point in place;
 it never double-appends, and the genesis/base point is immutable. A constituent
 with no fresh price this run holds its last observation (§8) and is flagged.
 
+Raw prices are never published or printed (CLAUDE.md served-data rule; Actions
+logs of a public repository are public). The record carries no usd_price and no
+base_price_usd:
+  * Base prices come from the COMMODITIES_BASE_PRICES environment variable (the
+    repository secret of that name in CI): a JSON object {commodity:
+    base_price_usd}. Read order on a weekly run: the secret if set; else the
+    base_price_usd still on the published constituents (the first run after the
+    change only); else stop before any fetch. The secret must name exactly the
+    published constituents, with positive numbers, and must equal any base_price_usd
+    still published.
+  * A constituent with no fresh price carries its PRIOR PUBLISHED relative_to_base,
+    which is published at full float precision so the carry is exact.
+  * A genesis run (no usable prior record, or COMMODITIES_GENESIS=1) writes its new
+    base prices only to COMMODITIES_GENESIS_BASES_OUT, which must be set.
+
 Constituents (20 priced) — §8 routing
   * 12 via MarketStack v2 /commodities (exchange benchmarks + China-domestic
     CNY for Silicon/Titanium/Phosphorus, FX-converted)
@@ -39,10 +54,14 @@ Usage / env affordances
     COMMODITIES_INDEX_OUT=<path>    read-and-write this record elsewhere (dry-run)
     COMMODITIES_MARK_DATE=<YYYY-MM-DD>  pin the weekly mark (sim/test)
     COMMODITIES_GENESIS=1           force a genesis re-baseline (weights review)
+    COMMODITIES_BASE_PRICES=<json>  base prices {commodity: base_price_usd} (secret)
+    COMMODITIES_GENESIS_BASES_OUT=<path>  where a genesis run writes its new base
+                                    prices (required for genesis; keep it private)
 """
 
 import bisect
 import json
+import math
 import os
 import re
 import sys
@@ -75,6 +94,8 @@ FX_STALE_WARN_DAYS = 7
 
 MARK_DATE_OVERRIDE = os.environ.get("COMMODITIES_MARK_DATE")   # sim/test: pin the mark
 FORCE_GENESIS      = os.environ.get("COMMODITIES_GENESIS") == "1"
+BASE_PRICES_ENV    = "COMMODITIES_BASE_PRICES"                 # secret: {commodity: base_price_usd}
+GENESIS_BASES_OUT  = os.environ.get("COMMODITIES_GENESIS_BASES_OUT")
 
 # ── Constituents ───────────────────────────────────────────────────────────
 # (commodity, reference_weight_pct, source, basis, fetch_key)
@@ -342,6 +363,74 @@ def load_existing(path):
         return None
 
 
+# ── base prices: secret -> published fields (first run only) -> stop ────────
+SECRET_HINT = ("Set the {} repository secret to the JSON object {{commodity: base_price_usd}} "
+               "(see docs/RAW_PRICE_HANDLING.md).".format(BASE_PRICES_ENV))
+
+
+def _stop(lines, fetched=False):
+    """Fail loudly. Messages name commodities only, never a price (logs are public)."""
+    sys.stderr.write("\nERROR: commodities index not advanced; {}nothing written.\n".format(
+        "" if fetched else "nothing fetched, "))
+    for line in lines:
+        sys.stderr.write("  {}\n".format(line))
+    sys.exit(1)
+
+
+def _is_pos_num(v):
+    return (isinstance(v, (int, float)) and not isinstance(v, bool)
+            and math.isfinite(v) and v > 0)
+
+
+def resolve_base_prices(prior):
+    """{commodity: base_price_usd} for every constituent of the prior record, and
+    the source used. Read order: the COMMODITIES_BASE_PRICES secret; else the
+    base_price_usd still on the published constituents (the first run after the
+    change only); else stop. Every check runs before any fetch."""
+    names = [c["commodity"] for c in prior["constituents"]]
+    published = {c["commodity"]: c["base_price_usd"] for c in prior["constituents"]
+                 if "base_price_usd" in c}
+    raw = os.environ.get(BASE_PRICES_ENV, "").strip()
+    if raw:
+        try:
+            secret = json.loads(raw)
+        except ValueError:
+            _stop(["{} is set but is not valid JSON.".format(BASE_PRICES_ENV), SECRET_HINT])
+        if not isinstance(secret, dict):
+            _stop(["{} must be a JSON object, not a {}.".format(
+                BASE_PRICES_ENV, type(secret).__name__), SECRET_HINT])
+        problems = []
+        missing = sorted(set(names) - set(secret))
+        extra = sorted(set(secret) - set(names))
+        invalid = sorted(n for n in names if n in secret and not _is_pos_num(secret[n]))
+        if missing:
+            problems.append("missing: {}".format(", ".join(missing)))
+        if extra:
+            problems.append("not a published constituent: {}".format(", ".join(extra)))
+        if invalid:
+            problems.append("not a positive number: {}".format(", ".join(invalid)))
+        if published and not problems:
+            # First run after the change: the record still carries the bases, so the
+            # secret must reproduce them exactly.
+            differ = sorted(n for n in names if published.get(n) != secret[n])
+            if differ:
+                problems.append("differs from the published base_price_usd: {}".format(
+                    ", ".join(differ)))
+        if problems:
+            _stop(["{} does not match the published record ({} constituents):".format(
+                BASE_PRICES_ENV, len(names))] + problems + [SECRET_HINT])
+        return {n: secret[n] for n in names}, "secret {}".format(BASE_PRICES_ENV)
+    if published:
+        invalid = sorted(n for n in names if not _is_pos_num(published.get(n)))
+        if invalid:
+            _stop(["the published base_price_usd is missing or invalid for: {}".format(
+                ", ".join(invalid)), SECRET_HINT])
+        return ({n: published[n] for n in names},
+                "published record (first run after the change; base_price_usd is now dropped)")
+    _stop(["{} is not set, and the published record no longer carries base_price_usd.".format(
+        BASE_PRICES_ENV), SECRET_HINT])
+
+
 def main():
     print("=" * 64)
     print("ROBOTNIK COMMODITIES INDEX")
@@ -349,6 +438,22 @@ def main():
 
     today = MARK_DATE_OVERRIDE or datetime.now(timezone.utc).strftime("%Y-%m-%d")
     now_iso = datetime.now(timezone.utc).isoformat().replace("+00:00", "") + "Z"
+
+    # ── 0. Prior record + base prices, resolved BEFORE any fetch, so a run that
+    #       cannot advance stops without spending the MarketStack pull ──────────
+    prior = None if FORCE_GENESIS else load_existing(OUT_PATH)
+    genesis = not (prior and prior.get("constituents") and prior.get("series"))
+    if genesis:
+        if not GENESIS_BASES_OUT:
+            _stop(["This run would re-baseline the index (genesis: no usable prior record, or "
+                   "COMMODITIES_GENESIS=1).",
+                   "Its new base prices are never published, so set COMMODITIES_GENESIS_BASES_OUT "
+                   "to a private path to receive them, then update the {} secret.".format(
+                       BASE_PRICES_ENV)])
+        stored_base, base_source = {}, "genesis (new bases from this run's prices)"
+    else:
+        stored_base, base_source = resolve_base_prices(prior)
+    print("\nBase prices from: {}".format(base_source))
 
     # ── 1. Refresh FX, fetch current spot ───────────────────────────────────
     for ccy in ("CNY",):                 # only non-USD quote currency in the set
@@ -384,9 +489,6 @@ def main():
             flags.append("STALE FIXING: {} flat 0.00% over week & month "
                          "(illiquid/stale fixing).".format(commodity))
 
-    prior = None if FORCE_GENESIS else load_existing(OUT_PATH)
-    genesis = not (prior and prior.get("constituents") and prior.get("series"))
-
     # ── 3. Resolve base prices + fixed live weights ─────────────────────────
     if genesis:
         priced = [(c, w) for (c, w, s, b, k) in PRICED if c in snaps]
@@ -400,7 +502,7 @@ def main():
         base_date = prior["base_date"]
         weight_by = normalize_weights(
             {c["commodity"]: c["live_weight_pct"] / 100.0 for c in prior["constituents"]})  # un-round stored 4dp → Σ exactly 1.0
-        base_by = {c["commodity"]: c["base_price_usd"] for c in prior["constituents"]}
+        base_by = stored_base                          # secret, or the legacy fields (step 0)
         priced_ref_sum = prior.get("priced_reference_weight_pct", 0.0)
 
     # ── 4. Build constituent records + index = 1000 * Σ(w * cur/base) ────────
@@ -414,30 +516,36 @@ def main():
         snap = snaps.get(commodity)
         carried = False
         if snap is None:
-            # No fresh price — hold last observation (§8) from the prior record.
+            # No fresh price: hold the last observation (§8) by carrying the PRIOR
+            # PUBLISHED relative_to_base (derived, already public), never a raw price.
             pc = prior_by.get(commodity)
             if not pc:
                 missing.append((commodity, source, "no fresh price and no prior to carry"))
                 continue
+            rel = pc.get("relative_to_base")
+            if not (isinstance(rel, (int, float)) and not isinstance(rel, bool)
+                    and math.isfinite(rel)):
+                _stop(["{} has no fresh price and the prior record has no usable "
+                       "relative_to_base to carry.".format(commodity)], fetched=True)
             carried = True
-            snap = {k: pc.get(k) for k in ("native_price", "native_unit", "native_currency",
-                                           "fx_rate_to_usd", "fx_date_used", "usd_price",
+            snap = {k: pc.get(k) for k in ("native_currency", "fx_rate_to_usd", "fx_date_used",
                                            "price_unit_usd", "quote_date", "source_timestamp")}
             flags.append("CARRIED: {} held last observation (no fresh price this run).".format(commodity))
-        rel = snap["usd_price"] / base_usd if base_usd else 1.0
+        else:
+            rel = snap["usd_price"] / base_usd if base_usd else 1.0
         contrib_fp = weight_by[commodity] * rel        # full precision (the index basis)
         idx_sum += contrib_fp
         c = {
             "commodity": commodity,
             "source": SOURCE_LABEL[source],
             "basis": basis,
-            # native_price / native_unit omitted from published output (ToS: no raw
-            # native spot price on the served tree); usd_price and base are derived.
+            # Raw prices (native spot, USD spot, base) are never published (ToS;
+            # CLAUDE.md served-data rule). relative_to_base is derived and published
+            # at full float precision, so next week's carry of it is exact.
             "native_currency": snap["native_currency"],
             "fx_rate_to_usd": snap["fx_rate_to_usd"], "fx_date_used": snap["fx_date_used"],
-            "usd_price": round(snap["usd_price"], 6), "price_unit_usd": snap["price_unit_usd"],
-            "base_price_usd": round(base_usd, 6),                # immutable launch base
-            "relative_to_base": round(rel, 6),
+            "price_unit_usd": snap["price_unit_usd"],
+            "relative_to_base": rel,
             "live_weight_pct": round(weight_by[commodity] * 100.0, 6),
             "reference_weight_pct": ref_w,
             "weight_contribution": round(contrib_fp, 8),
@@ -515,21 +623,27 @@ def main():
     record["last_update"] = {"action": action, "mark": today, "value": index_value, "at": now_iso}
     record["calculated_at"] = now_iso
 
+    if genesis:
+        # New bases go only to the private path (never printed or published), and
+        # before the record, so a published genesis record always has its bases.
+        bases_out = Path(GENESIS_BASES_OUT)
+        bases_out.parent.mkdir(parents=True, exist_ok=True)
+        bases_out.write_text(json.dumps({c["commodity"]: round(base_by[c["commodity"]], 6)
+                                         for c in constituents}))
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT_PATH, "w") as f:
         json.dump(record, f, indent=2)
 
     # ── 7. Surface ──────────────────────────────────────────────────────────
+    # Relatives and weights only (both published); no raw price is printed.
     print("\nMODE: {}   base {} = {:.2f}".format("GENESIS" if genesis else "WEEKLY", base_date, BASE_VALUE))
-    print("{:14s} {:>5s} {:>15s} {:>15s} {:>9s} {:>7s}".format(
-        "COMMODITY", "CCY", "USD now", "USD base", "REL", "LIVE%"))
-    print("-" * 84)
+    print("{:14s} {:>5s} {:>9s} {:>7s}".format("COMMODITY", "CCY", "REL", "LIVE%"))
+    print("-" * 52)
     for c in constituents:
-        print("{:14s} {:>5s} {:>15.4f} {:>15.4f} {:>9.5f} {:>6.2f}%{}".format(
-            c["commodity"], c["native_currency"], c["usd_price"],
-            c["base_price_usd"], c["relative_to_base"], c["live_weight_pct"],
+        print("{:14s} {:>5s} {:>9.5f} {:>6.2f}%{}".format(
+            c["commodity"], c["native_currency"], c["relative_to_base"], c["live_weight_pct"],
             "  <cap>" if c["capped"] else ("  carry" if c["carried_last_observation"] else "")))
-    print("-" * 84)
+    print("-" * 52)
     print("Priced: {}/{}   weights sum: {:.4f}%   Gallium: {}%   max: {:.4f}%".format(
         len(constituents), len(PRICED), weight_sum, gallium_w, max_w))
     print("INDEX VALUE: {:.2f}   ({:+.2f} vs base 1000.00)   series action: {}".format(
@@ -544,6 +658,9 @@ def main():
     except ValueError:
         _shown = OUT_PATH
     print("\nWrote -> {}".format(_shown))
+    if genesis:
+        print("New base prices -> {} (not printed). Paste that file's contents into the {} "
+              "secret before the next weekly run.".format(GENESIS_BASES_OUT, BASE_PRICES_ENV))
     print("=" * 64)
 
 

@@ -180,7 +180,8 @@ def load_all_history():
                 # the weighted return — skip it rather than corrupt the
                 # series. Log so the miss is visible in the run output.
                 if close > MAX_LOAD_USD:
-                    print(f"  WARN: skipping implausible close {close} for {ticker} on {d}")
+                    # The value is not printed: Actions logs of a public repo are public.
+                    print(f"  WARN: skipping implausible close (> {MAX_LOAD_USD:,} USD) for {ticker} on {d}")
                     continue
                 price_matrix[d][ticker] = close
         except Exception:
@@ -645,9 +646,10 @@ def main():
 
     print(f"  Eligible entities: {len(eligible)} / {len(entities)} (min mcap: ${MIN_MARKET_CAP:,.0f})")
     if excluded_micro:
+        # Tickers only: raw market caps never go in the (public) Actions log.
         print(f"  Excluded (below min mcap): {len(excluded_micro)} entities")
         for e in sorted(excluded_micro, key=lambda x: x['market_cap_usd'], reverse=True)[:5]:
-            print(f"    {e['ticker']:12s} ${e['market_cap_usd']:>12,.0f}  {e['name']}")
+            print(f"    {e['ticker']:12s} {e['name']}")
 
     # ── compute capped weights ───────────────────────────────────────
     weights = compute_capped_weights(eligible)
@@ -956,7 +958,6 @@ def main():
     composite_value = unified_series[-1]["value"] if unified_series else BASE_VALUE
     composite_series = unified_series
     actual_base_date = NORMALISE_DATE
-    base_prices = {t: prices_by_ticker[t] for t in shares_by_ticker if t in prices_by_ticker}
     eq_series = unified_series
     eq_value = composite_value
     eq_actual_base = NORMALISE_DATE
@@ -984,12 +985,14 @@ def main():
         raise RuntimeError(msg)
 
     # ── base_date.json ───────────────────────────────────────────────
+    # No `base_prices`: that field was each name's latest raw USD close (from
+    # all_prices.json, rewritten every run, never a base-date close) and nothing
+    # read it back. Raw vendor prices never go in a published file (CLAUDE.md).
     base_data = {
         "base_date": NORMALISE_DATE,
         "base_value": BASE_VALUE,
         "raw_base_date": actual_base_date,
         "normalise_date": NORMALISE_DATE,
-        "base_prices": base_prices,
         "base_weights": weights,
         "entity_count": len(eligible),
         "equities_only_base_date": eq_actual_base,

@@ -235,6 +235,10 @@ jobs:
           git config user.name "Robotnik Pipeline"
           git config user.email "data@robotniks.com"
           git add data/prices/ data/index/ data/markets/ data/registries/ data/news.json data/funding/
+          # Served-data gate: nothing staged may carry a raw vendor field (price, close,
+          # market cap, % change, P/E, sparkline). A failure here stops the job before the
+          # commit, so nothing is published. See docs/RAW_PRICE_HANDLING.md.
+          python scripts/check_published_vendor_fields.py --staged
           if git diff --cached --quiet; then
             echo "No price/index/news changes — skipping commit"
           else

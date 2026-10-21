@@ -18,3 +18,9 @@ jobs:
           python-version: '3.12'
       - name: Reject conflict markers (#55 guard)
         run: python scripts/check_conflict_markers.py
+      # Served-data rule (CLAUDE.md): no tracked JSON may carry a raw vendor field. The
+      # listed allowances (legacy fields awaiting their writer's next run, one known
+      # exposure) warn until 31 October 2026 and fail after it; anything else fails now.
+      # This reports on the pushed commit; it gates nothing by itself.
+      - name: Reject raw vendor fields in published JSON
+        run: python scripts/check_published_vendor_fields.py
