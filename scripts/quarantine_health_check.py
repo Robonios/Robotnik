@@ -6,6 +6,10 @@ Produces a markdown summary of data quality status for the past 7 days.
 
 Output: data/quarantine/weekly_report.md
 Usage:  python scripts/quarantine_health_check.py
+
+The report is committed and served, so it lists tickers, dates, counts and
+statuses only: never a fetched value, and never a rejection reason (those quote
+the rejected raw value). CLAUDE.md served-data rule.
 """
 
 import json
@@ -120,7 +124,6 @@ def main():
             lines.append(f"- **{ticker}** ({info.get('name', '')})")
             lines.append(f"  - Quarantined: {info.get('quarantine_date')}")
             lines.append(f"  - Clean fetches: {info.get('consecutive_clean_fetches')}")
-            lines.append(f"  - Recent USD values: {info.get('recent_values_usd', [])}")
             lines.append(f"  - Command: `python scripts/reinstate_quarantined.py '{ticker}'`")
     else:
         lines.append("No entities ready for reinstatement.")
@@ -161,8 +164,9 @@ def main():
     lines.append("## ⚠️ Quarantine Candidates (3+ Consecutive Rejections)")
     if candidates:
         for ticker, info in candidates.items():
-            lines.append(f"- **{ticker}**: {info.get('rejection_count', '?')} rejections, "
-                         f"reason: {info.get('latest_reason', 'N/A')}")
+            # Count and status only: rejection reasons quote the rejected raw value.
+            lines.append(f"- **{ticker}**: {info.get('rejection_count', '?')} rejections "
+                         f"({info.get('signal') or 'rejected'})")
     else:
         lines.append("No new candidates this week.")
     lines.append("")

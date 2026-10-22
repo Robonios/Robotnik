@@ -111,3 +111,21 @@ data/index/market_caps.json
 data/markets/marketstack_coverage_report.json
 data/markets/marketstack_coverage_report.md
 data/markets/coverage_report.json
+
+# ── Raw-price handling (2026-10-21) ──────────────────────────────────────────
+# Local-only outputs that carry raw vendor values (parity_guard.py's report, a
+# genesis run's new commodity base prices) go to data/private/, never the
+# published tree. See docs/RAW_PRICE_HANDLING.md.
+data/private/
+# Dry-run outputs: ROBOTNIK_INDEX_OUT (a directory), COMMODITIES_INDEX_OUT and
+# COMPOSITE_INDEX_OUT (files) accept any path. Inside the repository, point them
+# at data/private/ or at a path whose name contains "dryrun" or "staging"; these
+# patterns keep that output out of every commit.
+**/*dryrun*/
+**/*dry-run*/
+**/*dry_run*/
+**/*dryrun*.json
+**/*dry-run*.json
+**/*dry_run*.json
+data/**/*staging*/
+data/**/*staging*.json

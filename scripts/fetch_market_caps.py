@@ -415,10 +415,11 @@ def main():
         f.write("\nTotal errors: {}\n".format(len(errors)))
     print("Errors: {} (logged to {})".format(len(errors), ERROR_LOG))
 
-    # Print top 10
+    # Print top 10: tickers only, since Actions logs of a public repo are public
+    # and raw market caps never appear on a public surface.
     print("\nTop 10 by market cap:")
     for i, m in enumerate(all_mcaps[:10]):
-        print("  {}. {} — ${:,.0f}".format(i + 1, m["ticker"], m["market_cap_usd"]))
+        print("  {}. {}".format(i + 1, m["ticker"]))
 
 if __name__ == "__main__":
     main()

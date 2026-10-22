@@ -111,8 +111,9 @@ def cmd_overrides():
                 "source": "Yahoo (override)",
             }
             ok += 1
-            print("  OK  {:14s} ({:14s}) {} {} → ${} @ {}".format(
-                ticker, yahoo_sym, row["price"], native_ccy, usd_price, row["date"]))
+            # No prices in the log: Actions logs of a public repo are public.
+            print("  OK  {:14s} ({:14s}) {} @ {}".format(
+                ticker, yahoo_sym, native_ccy, row["date"]))
         except YahooFetchError as e:
             failed += 1
             print("  FAIL {:14s} ({:14s}) {}".format(ticker, yahoo_sym, str(e)[:80]))

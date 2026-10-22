@@ -18,6 +18,10 @@ Scope / cadence (within API budget):
 Flags |MS_usd / Yahoo_usd - 1| > THRESHOLD (default 4%). Writes a report and
 exits non-zero when any flag fires (CI-visible), unless --report-only.
 
+The report holds both vendors' raw USD prices, so it is written to the gitignored
+data/private/ and never published (CLAUDE.md served-data rule); the console shows
+tickers, dates and the % divergence only.
+
 Usage:
   python scripts/parity_guard.py --daily
   python scripts/parity_guard.py --weekly [--report-only]
@@ -38,7 +42,7 @@ from fetch_prices import EQUITIES
 
 WEIGHTS_PATH = ROOT / "data" / "index" / "weights.json"
 OVERRIDES_PATH = ROOT / "data" / "registries" / "data_source_overrides.json"
-OUT_PATH = ROOT / "data" / "index" / "parity_guard_report.json"
+OUT_PATH = ROOT / "data" / "private" / "parity_guard_report.json"   # gitignored: raw prices
 THRESHOLD = 0.04          # 4% MS-vs-Yahoo disagreement → flag
 
 
@@ -151,14 +155,13 @@ def main():
         if md and yd and md == yd:
             corruption.append({"ticker": tk, "date": md, "ms_usd": round(mv, 4),
                                "yahoo_usd": round(yv, 4), "diff_pct": round(diff * 100, 2)})
-            print("  CORRUPTION {:10s} [{}] MS ${:.2f} vs Yahoo ${:.2f} ({:+.1f}%)".format(
-                tk, md, mv, yv, diff * 100))
+            print("  CORRUPTION {:10s} [{}] MS vs Yahoo {:+.1f}%".format(tk, md, diff * 100))
         else:
             lag.append({"ticker": tk, "ms_date": md, "yahoo_date": yd,
                         "ms_usd": round(mv, 4), "yahoo_usd": round(yv, 4),
                         "diff_pct": round(diff * 100, 2)})
-            print("  lag        {:10s} MS[{}] ${:.2f} vs Yahoo[{}] ${:.2f} ({:+.1f}%) — dates differ, not gated".format(
-                tk, md, mv, yd, yv, diff * 100))
+            print("  lag        {:10s} MS[{}] vs Yahoo[{}] {:+.1f}% - dates differ, not gated".format(
+                tk, md, yd, diff * 100))
 
     report = {
         "scope": scope, "checked": checked,
@@ -167,6 +170,7 @@ def main():
         "corruption": corruption, "lag": lag, "error_detail": errors[:40],
         "run_at": datetime.now(timezone.utc).isoformat() + "Z",
     }
+    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_text(json.dumps(report, indent=2))
     print("PARITY: {} checked | {} CORRUPTION | {} lag (expected) | {} errors → {}".format(
         checked, len(corruption), len(lag), len(errors), OUT_PATH.relative_to(ROOT)))

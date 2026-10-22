@@ -12,6 +12,11 @@ name: Robotnik Weekly Commodities + Composite
 # regenerate index_summary.json, so the push is rebase-before-push and the
 # summary is REBUILT after any rebase — it is a pure function of the data files,
 # so a rebase reconciles cleanly with no hand-merge of generated JSON.
+#
+# Raw prices are never published: the fixed base prices reach the calculator from
+# the COMMODITIES_BASE_PRICES repository secret (calculator step only), and the
+# commit is gated by scripts/check_published_vendor_fields.py --staged. See
+# docs/RAW_PRICE_HANDLING.md.
 
 on:
   schedule:
@@ -51,6 +56,10 @@ jobs:
       #   index = 1000 * Σ(live_weight_i * usd_price_i/base_i)
       # and appends (idempotent: a same-week re-run updates in place).
       - name: Calculate Commodities Index (weekly forward-append)
+        env:
+          # JSON {commodity: base_price_usd}; never printed or published. Unset, the
+          # first run reads the base_price_usd still in the record, later runs stop.
+          COMMODITIES_BASE_PRICES: ${{ secrets.COMMODITIES_BASE_PRICES }}
         run: python scripts/calculate_commodities_index.py
 
       # Composite: forward-append the 75/25 blend point from the prior mark's frozen
@@ -67,6 +76,9 @@ jobs:
           git config user.name "Robotnik Pipeline"
           git config user.email "data@robotniks.com"
           git add data/index/commodities_index.json data/index/composite_index.json data/index/index_summary.json
+          # Served-data gate: nothing staged may carry a raw vendor field; a failure
+          # stops the job before the commit, so nothing is published.
+          python scripts/check_published_vendor_fields.py --staged
           if git diff --cached --quiet; then
             echo "No weekly index changes — skipping commit"
             exit 0
@@ -96,6 +108,7 @@ jobs:
             fi
             python scripts/build_index_summary.py
             git add data/index/index_summary.json
+            python scripts/check_published_vendor_fields.py --staged
             git commit --amend --no-edit
           done
           echo "pushed"
