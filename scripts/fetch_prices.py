@@ -128,7 +128,6 @@ EQUITIES = [
     ("PENG", "Penguin Solutions", "Semiconductor", "United States"),
     ("POWI", "Power Integrations", "Semiconductor", "United States"),
     ("PLAB", "Photronics", "Semiconductor", "United States"),
-    ("QRVO", "Qorvo", "Semiconductor", "United States"),
     ("RMBS", "Rambus", "Semiconductor", "United States"),
     ("RGTI", "Rigetti Computing", "Semiconductor", "United States"),
     ("SLAB", "Silicon Laboratories", "Semiconductor", "United States"),
