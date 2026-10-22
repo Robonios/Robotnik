@@ -90,11 +90,35 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      # E4 reads each name's last bar from data/prices/history, which is gitignored and
+      # lives only in fetch-data.yml's cache. Without it E4 saw no history and passed in
+      # silence: Qorvo, delisted on 5 October 2026, stayed in the index unflagged. Restore
+      # the newest cache read-only (the same paths as fetch-data.yml, which the cache
+      # version depends on) and fail if it is missing or short.
+      - name: Restore the price-history cache (read-only)
+        uses: actions/cache/restore@v5
+        with:
+          path: |
+            data/prices/history
+            data/index/market_caps.json
+          key: robotnik-price-history-v1-${{ github.run_id }}
+          restore-keys: |
+            robotnik-price-history-v1-
+      - name: Guard - price history present for E4
+        run: |
+          MIN=300
+          N=$(find data/prices/history -maxdepth 1 -name '*.json' 2>/dev/null | wc -l | tr -d ' ')
+          if [ "$N" -lt "$MIN" ]; then
+            echo "::error::Price history holds ${N} files, expected >= ${MIN}: the fetch-data.yml cache did not restore, so E4 (frozen series) cannot run."
+            exit 1
+          fi
+          echo "Price history restored: ${N} files."
       # Stdlib + repo modules only, no pip install. Exit 1 => an actionable lifecycle
       # finding (E4 escalation, E10 gap, or an unacknowledged E2) => this job fails => the
       # workflow goes RED. E4 escalations are also written to auto_quarantine_candidates.json
       # (which the weekly quarantine report reads). Yahoo is blocked from CI, so E4's both-
-      # vendors-frozen corroboration degrades to the map fresh->stale signal here; the
-      # Yahoo arm runs out-of-band (local / manual dispatch).
+      # vendors-frozen corroboration degrades here to the map fresh->stale signal and, for
+      # a name with no Yahoo symbol, to MarketStack v2 serving nothing newer than the
+      # history; the Yahoo arm runs out-of-band (local / manual dispatch).
       - name: Entity-lifecycle check (E2 route / E4 frozen+exit / E10 graduation)
         run: python scripts/check_entity_lifecycle.py
