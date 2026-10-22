@@ -13,8 +13,10 @@ follow an entity change actually happened. This closes the unwatched transitions
                           luck). Runs POST-hoc (default) OR PRE-commit (--validate), so a
                           proposed map can be vetted before it is applied.
   E4  frozen series + exit — a constituent that stopped trading (SkyWater: delisted, frozen
-                          two and a half weeks, then a FATAL). Lone freeze = candidate;
-                          corroboration promotes it to an auto-quarantine escalation.
+                          two and a half weeks, then a FATAL; Qorvo: acquired, frozen and
+                          unflagged). Lone freeze = candidate; corroboration promotes it to
+                          an auto-quarantine escalation. Needs data/prices/history, which
+                          staleness-monitor.yml restores from the fetch-data.yml cache.
   E10 graduation         — a company listed in our own funding data but never admitted to
                           the public universe (the ten IPOs).
 
@@ -197,8 +199,9 @@ def check_regression(ap, proposed_path=None):
 # ── E4: frozen series + exit signals, with corroboration ────────────────────
 def check_frozen(ap):
     """Per active-public name: trading days since its last bar. > tolerance = candidate;
-    corroboration (both vendors frozen, or the map flipped fresh->stale) escalates it to an
-    auto-quarantine, the delisting signal. Returns (candidates, escalations)."""
+    corroboration (both vendors frozen, the map flipped fresh->stale, or, for a name with no
+    Yahoo symbol, MarketStack v2 serving nothing newer) escalates it to an auto-quarantine,
+    the delisting signal. Returns (candidates, escalations)."""
     from resolve_marketstack_symbols import candidates_for, v2_latest
     from fetch_yahoo import fetch_yahoo_daily, YahooFetchError
     import time
@@ -219,10 +222,12 @@ def check_frozen(ap):
         both_frozen = None
         country = ap[tk].get("country", "")
         v2_last = ylast = None
+        v2_errs = []
         for c in candidates_for(tk, country, None):
             dt, _c, _e = v2_latest(c); time.sleep(0.2)
             if dt:
                 v2_last = dt; break
+            v2_errs.append(_e)
         ysym = (mp.get(tk, {}) or {}).get("symbol") or None
         # best-effort Yahoo probe via the override symbol if present, else the code
         yq = None
@@ -238,10 +243,21 @@ def check_frozen(ap):
             except Exception:
                 ylast = None
         both_frozen = bool((v2_last and _d(v2_last) <= _d(ld)) and (ylast and _d(ylast) <= _d(ld)))
+        # A name with no Yahoo symbol has only MarketStack to ask, and its history comes
+        # from MarketStack. v2 serving nothing newer than that history is then the vendor
+        # corroboration available; the tolerance already allows for thin trading. Without
+        # it a MarketStack-routed constituent could never escalate: Qorvo, delisted on
+        # 5 October 2026, stayed in the index unflagged.
+        # An API error (no key, a timeout) proves nothing, so only an answer counts: a
+        # bar no newer than the history, or no real bar at all.
+        ms_answered = v2_last is not None or (bool(v2_errs) and all(
+            e in ("no_rows", "no_nonzero_close") for e in v2_errs))
+        ms_only_frozen = bool(not yq and ms_answered
+                              and (v2_last is None or _d(v2_last) <= _d(ld)))
         rec = {"ticker": tk, "last_bar": ld, "frozen_tdays": frozen_td,
                "v2_last": v2_last, "yahoo_last": ylast, "map_flip": map_flip,
-               "both_frozen": both_frozen}
-        if map_flip or both_frozen:
+               "both_frozen": both_frozen, "ms_only_frozen": ms_only_frozen}
+        if map_flip or both_frozen or ms_only_frozen:
             escalations.append(rec)
         else:
             candidates.append(rec)
@@ -323,13 +339,22 @@ def check_graduation(reg):
 
 
 # ── candidate feed (weekly report reads this file) ──────────────────────────
+def frozen_signal(e):
+    """The corroboration that escalated an E4 record."""
+    if e.get("both_frozen"):
+        return "both-vendors-frozen"
+    if e.get("map_flip"):
+        return "map-fresh->stale"
+    return "marketstack-frozen"
+
+
 def feed_candidates(escalations):
     if not escalations:
         return
     cand = load_json(AUTO_CANDIDATES, {}) or {}
     now = datetime.now(timezone.utc).isoformat() + "Z"
     for e in escalations:
-        sig = "both-vendors-frozen" if e["both_frozen"] else "map-fresh->stale"
+        sig = frozen_signal(e)
         cand[e["ticker"]] = {
             "source": "entity_lifecycle_check",
             "reason": "frozen {} trading days; corroborated ({}) -> suspected delisting".format(
@@ -339,6 +364,30 @@ def feed_candidates(escalations):
     os.makedirs(os.path.dirname(AUTO_CANDIDATES), exist_ok=True)
     with open(AUTO_CANDIDATES, "w") as f:
         json.dump(cand, f, indent=2)
+
+
+def annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new):
+    """In GitHub Actions, print each finding as an annotation, so the run summary says
+    why the workflow is red without opening the log. Acknowledged findings print as
+    warnings; unaddressed ones as errors. Dates and tickers only, never a price."""
+    if os.environ.get("GITHUB_ACTIONS") != "true":
+        return
+    new_e4 = {e["ticker"] for e in e4_new}
+    for tk, sym, d in e2_new:
+        print("::warning::E2 route: {} has a Yahoo override, but MarketStack v2 serves {} "
+              "fresh ({}). Migration candidate.".format(tk, sym, d))
+    for e in e4_esc:
+        print("::{}::E4 frozen: {} has no bar since {} ({} trading days; {}). Suspected "
+              "delisting or acquisition: review its membership.".format(
+                  "error" if e["ticker"] in new_e4 else "warning", e["ticker"], e["last_bar"],
+                  e["frozen_tdays"], frozen_signal(e)))
+    for e in e4_cand:
+        print("::warning::E4 watch: {} has no bar since {} ({} trading days), not yet "
+              "corroborated.".format(e["ticker"], e["last_bar"], e["frozen_tdays"]))
+    for g in e10_new:
+        print("::error::E10 graduation: {} is listed in the funding data ({}) but absent "
+              "from the public universe. Admit it, or acknowledge it in "
+              "data/quarantine/lifecycle_acknowledged.json.".format(g["company"], g["date"]))
 
 
 # ── main ────────────────────────────────────────────────────────────────────
@@ -384,6 +433,7 @@ def main():
     e4_new = _new("E4", e4_esc, lambda e: e["ticker"])
     e10_new = _new("E10", e10, lambda g: g.get("entity_id") or g.get("company"))
     actionable = bool(e2_new or e4_new or e10_new)
+    annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new)
 
     if as_json:
         print(json.dumps({
@@ -415,7 +465,7 @@ def main():
     print("\nE4 frozen series / exit signals (tolerance {} trading days):".format(FROZEN_TOLERANCE_TDAYS))
     if e4_esc:
         for e in e4_esc:
-            sig = "both vendors frozen" if e["both_frozen"] else "map fresh->stale"
+            sig = frozen_signal(e)
             print("   [ESCALATE] {:14} frozen {}td since {} — {} — AUTO-QUARANTINE CANDIDATE".format(
                 e["ticker"], e["frozen_tdays"], e["last_bar"], sig))
     if e4_cand:

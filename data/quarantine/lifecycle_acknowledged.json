@@ -17,6 +17,12 @@
         "HAWK": "HawkEye 360 - MS serves HAWK but its history is ticker-reuse contaminated (a predecessor penny-stock tail before 2026-05).",
         "RSW LN": "Renishaw - MS returns the ticker metadata but a null close (GBp); Yahoo (RSW.L) returns a clean close."
       }
+    },
+    "E10_deferred": {
+      "note": "Listed companies whose admission to the public universe is decided but deferred. Remove an entry in the pull request that admits the company.",
+      "names": {
+        "enflame": "Enflame - listed on the Shanghai STAR Market on 2026-09-02 (funding data, added 2026-10-18). Robert decided on 2026-10-22 to admit it once the private-preview setup is complete."
+      }
     }
   },
   "E2": [
@@ -42,5 +48,7 @@
     "VOYG"
   ],
   "E4": [],
-  "E10": []
+  "E10": [
+    "enflame"
+  ]
 }
