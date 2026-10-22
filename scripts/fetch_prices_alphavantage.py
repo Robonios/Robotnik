@@ -15,7 +15,6 @@ Output:
 
 Notes:
   - Free tier: 25 requests/day (standard), 5 requests/min
-  - Your key: 28PQRNYC645BX7PR
   - For 20 tickers, this uses 20 of your 25 daily calls
   - Run once per day after market close (4:30 PM ET)
   - To automate: use cron, GitHub Actions, or a simple scheduler
