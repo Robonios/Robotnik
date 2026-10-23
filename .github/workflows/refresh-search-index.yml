@@ -66,5 +66,6 @@ jobs:
           python scripts/build_search_index.py
           git add data/registries/search_index.json      # narrow: this file ONLY
           git commit -m "data: regenerate search_index.json from registry $(date -u +%Y-%m-%d)"
-          git pull --rebase origin main                   # rebase the lone file onto latest main
-          git push
+          # Rebase the lone file onto latest main and push, retrying if another
+          # workflow pushes in between.
+          bash scripts/git_push_with_rebase.sh
