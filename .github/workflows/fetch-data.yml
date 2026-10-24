@@ -115,7 +115,7 @@ jobs:
       # backstop so bad data is never processed/published. NOTE: pause this cron during
       # big out-of-band pushes (#55-class) so there is nothing for the push to collide with.
       - name: Reject conflict markers (#55 guard)
-        run: python scripts/check_conflict_markers.py
+        run: python scripts/run_step.py -- python scripts/check_conflict_markers.py
 
       # ── PRICES: MarketStack (PR, daily-FX, split-adjusted) + Yahoo overrides
       #    + assemble. fetch_prices_marketstack writes equities.json (MS),
@@ -123,22 +123,22 @@ jobs:
       #    combines with tokens into all_prices.json. EODHD is OFF this path.
       - name: Fetch prices (MarketStack + Yahoo overrides + assemble)
         run: |
-          python scripts/fetch_prices_marketstack.py
-          python scripts/fetch_yahoo_overrides.py --overrides
-          python scripts/assemble_all_prices.py
+          python scripts/run_step.py -- python scripts/fetch_prices_marketstack.py
+          python scripts/run_step.py -- python scripts/fetch_yahoo_overrides.py --overrides
+          python scripts/run_step.py -- python scripts/assemble_all_prices.py
 
       - name: Fetch market caps (Yahoo)
-        run: python scripts/fetch_market_caps.py
+        run: python scripts/run_step.py -- python scripts/fetch_market_caps.py
 
       - name: Refresh price history (MarketStack + Yahoo overrides, merges)
         # --refresh pulls the last 45 days per ticker and merges with the on-disk
         # 5-year series; the Yahoo pass refreshes the override names' history.
         run: |
-          python scripts/fetch_price_history_marketstack.py --refresh
-          python scripts/fetch_yahoo_overrides.py --history-overrides
+          python scripts/run_step.py -- python scripts/fetch_price_history_marketstack.py --refresh
+          python scripts/run_step.py -- python scripts/fetch_yahoo_overrides.py --history-overrides
 
       - name: Backfill any newly-added tickers (no-op when universe stable)
-        run: python scripts/fetch_price_history_marketstack.py --backfill
+        run: python scripts/run_step.py -- python scripts/fetch_price_history_marketstack.py --backfill
 
       # Persist the refreshed + backfilled history (and market_caps kept-stale carry-
       # over) for the next run. Runs before calculate_index, so a later index failure
@@ -153,20 +153,20 @@ jobs:
           key: robotnik-price-history-v1-${{ github.run_id }}
 
       - name: Fetch benchmark prices (MarketStack, split-adjusted PR)
-        run: python scripts/fetch_benchmarks.py
+        run: python scripts/run_step.py -- python scripts/fetch_benchmarks.py
 
       - name: Calculate Robotnik Index
-        run: python scripts/calculate_index.py
+        run: python scripts/run_step.py -- python scripts/calculate_index.py
 
       # Permanent parallel check: a from-scratch second implementation of the
       # index methodology must agree with calculate_index.py to <0.01 on every
       # point. Two implementations that must always agree — a publish gate, not
       # a vendor change. Catches code drift the benchmark check cannot.
       - name: Verify index (independent reconstruction must match)
-        run: python scripts/verify_index_reconstruction.py
+        run: python scripts/run_step.py -- python scripts/verify_index_reconstruction.py
 
       - name: Calculate bottleneck-weighted composite (own Δ=0 self-check)
-        run: python scripts/calculate_bottleneck_composite.py
+        run: python scripts/run_step.py -- python scripts/calculate_bottleneck_composite.py
 
       # Standing MS-vs-Yahoo cross-check — catches the next RTX/Ibiden. Runs
       # AFTER the index so it gates the commit (corruption → job fails → no
@@ -175,9 +175,9 @@ jobs:
       - name: MS-vs-Yahoo parity guard
         run: |
           if [ "$(date -u +%u)" = "7" ]; then
-            python scripts/parity_guard.py --weekly
+            python scripts/run_step.py -- python scripts/parity_guard.py --weekly
           else
-            python scripts/parity_guard.py --daily
+            python scripts/run_step.py -- python scripts/parity_guard.py --daily
           fi
 
       # Standing corporate-action sweep (#55, weekly Sunday). v2 `split_factor` adjusts
@@ -190,7 +190,7 @@ jobs:
       - name: Corporate-action sweep (weekly v2-vs-Yahoo backstop)
         if: github.event.schedule == '0 5 * * 0' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
-        run: python scripts/sweep_v2_vs_yahoo.py
+        run: python scripts/run_step.py -- python scripts/sweep_v2_vs_yahoo.py
 
       # Coverage-hole CONTIGUITY surface (#64, weekly). The freshness floor catches a
       # stale TAIL; this catches a hole in the MIDDLE of an active series (MS's recurring
@@ -200,7 +200,7 @@ jobs:
       - name: Coverage-hole contiguity surface (weekly gap-fill --dry)
         if: github.event.schedule == '0 5 * * 0' || github.event_name == 'workflow_dispatch'
         continue-on-error: true
-        run: python scripts/gap_fill_from_yahoo.py
+        run: python scripts/run_step.py -- python scripts/gap_fill_from_yahoo.py
 
       # (fundamentals step removed — EODHD descheduled at A2; data frozen, re-sourcing deferred)
 
@@ -218,16 +218,16 @@ jobs:
       # (earnings-calendar step removed — EODHD descheduled at A2; re-sourcing deferred)
 
       - name: Calculate public markets metrics
-        run: python scripts/calculate_metrics.py
+        run: python scripts/run_step.py -- python scripts/calculate_metrics.py
 
       - name: Build home-page index summary (final build step — reads the published series only)
-        run: python scripts/build_index_summary.py
+        run: python scripts/run_step.py -- python scripts/build_index_summary.py
 
       - name: Install dependencies for news
         run: pip install feedparser
 
       - name: Fetch news (RSS feeds — daily)
-        run: python scripts/fetch_news.py
+        run: python scripts/run_step.py -- python scripts/fetch_news.py
         continue-on-error: true
 
       - name: Commit price, index & news data
@@ -238,7 +238,7 @@ jobs:
           # Served-data gate: nothing staged may carry a raw vendor field (price, close,
           # market cap, % change, P/E, sparkline). A failure here stops the job before the
           # commit, so nothing is published. See docs/RAW_PRICE_HANDLING.md.
-          python scripts/check_published_vendor_fields.py --staged
+          python scripts/run_step.py -- python scripts/check_published_vendor_fields.py --staged
           if git diff --cached --quiet; then
             echo "No price/index/news changes — skipping commit"
           else
