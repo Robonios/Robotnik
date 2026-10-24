@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-23T00:28:08.927736Z",
+    "generated_at": "2026-10-24T12:36:51.621826Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -31,23 +31,23 @@
       "name": "Robotnik Composite Index",
       "status": "live",
       "cadence": "weekly",
-      "value": 975.36,
-      "as_of": "2026-10-23",
-      "fresh_through": "2026-10-17",
+      "value": 941.15,
+      "as_of": "2026-10-24",
+      "fresh_through": "2026-10-24",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-10-17",
-        "points": 18,
+        "end": "2026-10-24",
+        "points": 19,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": -10.4,
-        "1M": -3.3,
-        "3M": 0.96,
+        "1W": -3.51,
+        "1M": -7.11,
+        "3M": -3.3,
         "1Y": {
           "null": true,
           "reason": "insufficient_history"
@@ -133,6 +133,10 @@
         {
           "date": "2026-10-17",
           "value": 975.36
+        },
+        {
+          "date": "2026-10-24",
+          "value": 941.15
         }
       ],
       "code": "RCI",
@@ -143,7 +147,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3166.21,
-      "as_of": "2026-10-23",
+      "as_of": "2026-10-24",
       "fresh_through": "2026-10-22",
       "base": {
         "value": 1000.0,
@@ -1180,7 +1184,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 2956.79,
-      "as_of": "2026-10-23",
+      "as_of": "2026-10-24",
       "fresh_through": "2026-10-22",
       "base": {
         "value": 1000.0,
@@ -2216,23 +2220,23 @@
       "name": "Commodities",
       "status": "live",
       "cadence": "weekly",
-      "value": 1112.0,
-      "as_of": "2026-10-23",
-      "fresh_through": "2026-10-17",
+      "value": 1097.89,
+      "as_of": "2026-10-24",
+      "fresh_through": "2026-10-24",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-10-17",
-        "points": 18,
+        "end": "2026-10-24",
+        "points": 19,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": 0.05,
-        "1M": 14.56,
-        "3M": 13.57,
+        "1W": -1.27,
+        "1M": 13.65,
+        "3M": 12.45,
         "1Y": {
           "null": true,
           "reason": "insufficient_history"
@@ -2318,6 +2322,10 @@
         {
           "date": "2026-10-17",
           "value": 1112.0
+        },
+        {
+          "date": "2026-10-24",
+          "value": 1097.89
         }
       ],
       "code": "RCMI",
@@ -2329,7 +2337,7 @@
       "status": "live",
       "cadence": "monthly",
       "value": 2916.7245,
-      "as_of": "2026-10-23",
+      "as_of": "2026-10-24",
       "fresh_through": "2026-09",
       "base": {
         "value": 1000.0,
@@ -2417,7 +2425,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 2342.11,
-      "as_of": "2026-10-23",
+      "as_of": "2026-10-24",
       "fresh_through": "2026-10-22",
       "base": {
         "value": 1000.0,
@@ -3454,7 +3462,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 1527.27,
-      "as_of": "2026-10-23",
+      "as_of": "2026-10-24",
       "fresh_through": "2026-10-22",
       "base": {
         "value": 1000.0,
@@ -4491,7 +4499,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 3270.97,
-      "as_of": "2026-10-23",
+      "as_of": "2026-10-24",
       "fresh_through": "2026-10-22",
       "base": {
         "value": 1000.0,
@@ -5528,7 +5536,7 @@
       "status": "live",
       "cadence": "daily",
       "value": 2673.47,
-      "as_of": "2026-10-23",
+      "as_of": "2026-10-24",
       "fresh_through": "2026-10-22",
       "base": {
         "value": 1000.0,
