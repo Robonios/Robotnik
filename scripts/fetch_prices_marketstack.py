@@ -19,6 +19,7 @@ Usage:
 
 import json
 import os
+import re
 import sys
 import time
 from datetime import datetime
@@ -118,6 +119,20 @@ def handle_route_gaps(gaps):
           "for human review); pipeline CONTINUES. Suspected delisting / re-ticker. A human "
           "confirms: exclude (delisted), re-key (re-ticker), or add an override.".format(
           len(gaps), ", ".join(gaps)), file=sys.stderr)
+
+
+def annotate_failures(failed):
+    """In GitHub Actions, list every name MarketStack could not price, with its reason, as
+    one warning annotation: the job log can't be read through the API, and a name that
+    drops here can halt the index at the reverse-parity guard. Tickers, symbols and
+    reasons only, never a price; anything that looks like an API key is redacted."""
+    if not failed or os.environ.get("GITHUB_ACTIONS") != "true":
+        return
+    parts = ["{} ({}: {})".format(f.get("ticker"), f.get("ms_symbol") or "no symbol", f.get("reason"))
+             for f in failed]
+    msg = "MarketStack could not price {} name(s): {}".format(len(failed), "; ".join(parts))
+    msg = re.sub(r"access_key=[^&\s]+", "access_key=***", msg)
+    print("::warning::" + " ".join(msg.split()).replace("%", "%25"), flush=True)
 
 
 def main():
@@ -258,6 +273,7 @@ def main():
     print("  API calls used: {}".format(call_count()))
     print("  Output: {}".format(OUTPUT_PATH.relative_to(ROOT)))
     print("=" * 60)
+    annotate_failures(failed)
 
     # Systemic-failure guard (write-then-gate): equities.json with failed_detail
     # is already persisted above for diagnosis; now fail loud if MS resolved zero

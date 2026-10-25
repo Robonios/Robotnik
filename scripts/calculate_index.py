@@ -593,12 +593,26 @@ def main():
     _elig_eids = {_eid(e["ticker"]) for e in eligible}
     _missing = _non_excl_public - _elig_eids - _documented
     if _missing:
+        # Why each name is missing, by category only: a raw market cap never goes in
+        # the public Actions log.
+        _mcap_by = {e["ticker"]: e.get("market_cap_usd") for e in entities}
+
+        def _why(eid):
+            tk = (_rev_reg.get(eid) or {}).get("public_ticker") or eid
+            if tk not in _mcap_by:
+                return "no market cap"
+            if (_mcap_by[tk] or 0) < MIN_MARKET_CAP:
+                return "market cap below the minimum"
+            if tk not in prices_by_ticker:
+                return "no current price"
+            return "other"
         raise IndexGuardrailError(
             "Reverse-parity violation — {} non-excluded frontier name(s) MISSING from "
             "the index (no market cap / no weight). Backfill the cap (scripts/"
             "backfill_market_caps.py) or fix membership, or document the reason in "
             "data/registries/index_membership_exceptions.json: {}".format(
-                len(_missing), sorted(_missing)[:20]))
+                len(_missing), ", ".join("{} ({})".format(m, _why(m))
+                                          for m in sorted(_missing)[:20])))
 
     # ── Lifecycle-parity guard (publish-blocking, Workstream C) ───────
     # Only lifecycle_status=="public" entities may be in the index; private /
