@@ -121,11 +121,31 @@ jobs:
       #    + assemble. fetch_prices_marketstack writes equities.json (MS),
       #    fetch_yahoo_overrides merges the override names, assemble_all_prices
       #    combines with tokens into all_prices.json. EODHD is OFF this path.
+      # The previous run's assembled prices. assemble_all_prices.py keeps a name's
+      # last price, flagged stale, when the vendor misses it for a day, so one gap
+      # degrades to a slightly-stale price, not a failed index. It reads that price
+      # from data/prices/all_prices.json, which has been gitignored since 22 August,
+      # so in CI it found nothing and one unpriced name halted the index (23 October).
+      # Its 14-day age floor still bounds the carry-forward.
+      - name: Restore the previous run's assembled prices
+        uses: actions/cache/restore@v5
+        with:
+          path: data/prices/all_prices.json
+          key: robotnik-all-prices-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            robotnik-all-prices-v1-
+
       - name: Fetch prices (MarketStack + Yahoo overrides + assemble)
         run: |
           python scripts/run_step.py -- python scripts/fetch_prices_marketstack.py
           python scripts/run_step.py -- python scripts/fetch_yahoo_overrides.py --overrides
           python scripts/run_step.py -- python scripts/assemble_all_prices.py
+
+      - name: Save the assembled prices for the next run
+        uses: actions/cache/save@v5
+        with:
+          path: data/prices/all_prices.json
+          key: robotnik-all-prices-v1-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Fetch market caps (Yahoo)
         run: python scripts/run_step.py -- python scripts/fetch_market_caps.py
