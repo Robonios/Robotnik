@@ -168,14 +168,14 @@ def main():
         w = capped_weights(ents)
         # Chain-linked daily-return (enter-at-first-price), matching production's
         # backfill_index_chained: idx[k] = idx[k-1] * weighted-avg daily ratio over
-        # constituents live on BOTH k-1 and k; idx rounded each step to 2dp. ffill
+        # constituents live on BOTH k-1 and k; raw kept at full precision. ffill
         # is None until a constituent's first real bar, so a late IPO contributes
         # no return on its entry day (no dilution jump).
         raw = []
         idx = 1.0
         for k in range(len(trading)):
             if k == 0:
-                raw.append(round(idx, 2)); continue
+                raw.append(idx); continue
             num = den = 0.0
             for tk, wt in w.items():
                 arr = ffill.get(tk)
@@ -189,7 +189,7 @@ def main():
                         r = 1.0
                     num += wt * r; den += wt
             idx *= (num / den) if den > 0 else 1.0
-            raw.append(round(idx, 2))
+            raw.append(idx)
         # normalise to 1000 on NORMALISE_DATE (exact match; 2025-03-31 present)
         if NORMALISE_DATE in didx:
             base_v = raw[didx[NORMALISE_DATE]]

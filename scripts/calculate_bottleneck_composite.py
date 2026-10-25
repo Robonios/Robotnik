@@ -120,7 +120,7 @@ def _selfcheck_chain(entities, weights, price_matrix, all_dates, base_date_str, 
     raw, idx = [], 1.0
     for k, d in enumerate(all_dates):
         if k == 0:
-            raw.append(round(idx, 2)); continue
+            raw.append(idx); continue
         num = den = 0.0
         for t in tickers:
             w = weights.get(t, 0.0)
@@ -135,7 +135,7 @@ def _selfcheck_chain(entities, weights, price_matrix, all_dates, base_date_str, 
                     r = 1.0
                 num += w * r; den += w
         idx *= (num / den) if den > 0 else 1.0
-        raw.append(round(idx, 2))
+        raw.append(idx)
     raw2 = [{"date": d, "value": v} for d, v in zip(all_dates, raw) if d >= base_date_str]
     norm, _, _ = normalise_series(raw2)
     nm = {pt["date"]: pt["value"] for pt in norm}

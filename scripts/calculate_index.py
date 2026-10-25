@@ -284,7 +284,7 @@ def backfill_index_chained(sector_entities, weights, price_matrix, all_dates):
             if p is not None and p > 0:
                 last_known[t] = p
         if k == 0:
-            series.append({"date": d, "value": round(idx, 2)})
+            series.append({"date": d, "value": idx})
             prev_known = dict(last_known)
             continue
         num = den = 0.0
@@ -317,7 +317,10 @@ def backfill_index_chained(sector_entities, weights, price_matrix, all_dates):
                 num += w * r
                 den += w
         idx *= (num / den) if den > 0 else 1.0
-        series.append({"date": d, "value": round(idx, 2)})
+        # Full precision: the raw chain starts at 1.0, so rounding it to 2 decimals
+        # here quantised every published sub-index into steps of 0.2-0.6% once
+        # normalise_series scaled it to 1000. Rounding happens after scaling.
+        series.append({"date": d, "value": idx})
         prev_known = dict(last_known)
     return series
 
