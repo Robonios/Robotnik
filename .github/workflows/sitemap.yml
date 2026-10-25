@@ -13,17 +13,22 @@ on:
       - '.github/workflows/sitemap.yml'
   workflow_dispatch: {}
 
+# Serialise runs: two runs pushing at once would race.
+concurrency:
+  group: sitemap
+  cancel-in-progress: false
+
 jobs:
   regenerate:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0  # full history so `git log --format=%cI` resolves lastmod
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
@@ -39,5 +44,7 @@ jobs:
             echo "sitemap.xml unchanged — skipping commit"
           else
             git commit -m "chore(seo): regenerate sitemap.xml"
-            git push
+            # Another workflow triggered by the same push (refresh-search-index.yml)
+            # can push first; rebase and retry instead of failing.
+            bash scripts/git_push_with_rebase.sh
           fi

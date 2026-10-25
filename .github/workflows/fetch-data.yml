@@ -243,7 +243,7 @@ jobs:
             echo "No price/index/news changes — skipping commit"
           else
             git commit -m "data: daily price & index update $(date -u +%Y-%m-%d)"
-            git push
+            bash scripts/git_push_with_rebase.sh
           fi
 
   fetch-intel:
@@ -304,7 +304,7 @@ jobs:
             echo "No intel changes — skipping commit"
           else
             git commit -m "data: weekly intel update $(date -u +%Y-%m-%d)"
-            git push
+            bash scripts/git_push_with_rebase.sh
           fi
 
   # ── Weekly health check (Sunday 23:00 UTC) ──
@@ -329,5 +329,5 @@ jobs:
             echo "No changes"
           else
             git commit -m "report: weekly quarantine health check $(date -u +%Y-%m-%d)"
-            git push
+            bash scripts/git_push_with_rebase.sh
           fi
