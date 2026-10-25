@@ -532,5 +532,41 @@
     ],
     "reason": "HawkEye 360, NYSE HAWK. MarketStack SERVES HAWK but its history is TICKER-REUSE contaminated: bars from 2021-07-22 belong to a prior ~$0.04 penny-stock entity, then an 850x jump on 2026-05-07 (0.04 -> 34) marks HawkEye 360 taking over the ticker at its actual first trade. MS returns the legacy entity for the pre-2026-05 tail (cf. the 6600/6680 HK slot-reissue class). Yahoo HAWK correctly starts 2026-05-07 (HawkEye only). Route live+history to Yahoo for a clean single-source series.",
     "added_date": "2026-08-20"
+  },
+  "AI FP": {
+    "provider": "yahoo",
+    "yahoo_symbol": "AI.PA",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Air Liquide. MarketStack v2 has rejected AI.PA with HTTP 422 (no_valid_symbols_provided) since 23 October 2026, while ETL.PA and SESG.PA still resolve; the daily index stopped at its reverse-parity guard. Route live and history to Yahoo (AI.PA); migrate back when the entity-lifecycle check (E2) shows v2 serving it fresh again.",
+    "added_date": "2026-10-25"
+  },
+  "EXA FP": {
+    "provider": "yahoo",
+    "yahoo_symbol": "EXA.PA",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Exail Technologies. MarketStack v2 has rejected EXA.PA with HTTP 422 (no_valid_symbols_provided) since 23 October 2026, while ETL.PA and SESG.PA still resolve; the daily index stopped at its reverse-parity guard. Route live and history to Yahoo (EXA.PA); migrate back when the entity-lifecycle check (E2) shows v2 serving it fresh again.",
+    "added_date": "2026-10-25"
+  },
+  "SOI FP": {
+    "provider": "yahoo",
+    "yahoo_symbol": "SOI.PA",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Soitec. MarketStack v2 has rejected SOI.PA with HTTP 422 (no_valid_symbols_provided) since 23 October 2026, while ETL.PA and SESG.PA still resolve; the daily index stopped at its reverse-parity guard. Route live and history to Yahoo (SOI.PA); migrate back when the entity-lifecycle check (E2) shows v2 serving it fresh again.",
+    "added_date": "2026-10-25"
+  },
+  "SU FP": {
+    "provider": "yahoo",
+    "yahoo_symbol": "SU.PA",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Schneider Electric (excluded from the universe, still in the fetch list). MarketStack v2 has rejected SU.PA with HTTP 422 (no_valid_symbols_provided) since 23 October 2026, while ETL.PA and SESG.PA still resolve; the daily index stopped at its reverse-parity guard. Route live and history to Yahoo (SU.PA); migrate back when the entity-lifecycle check (E2) shows v2 serving it fresh again.",
+    "added_date": "2026-10-25"
   }
 }
