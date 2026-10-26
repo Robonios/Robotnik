@@ -92,18 +92,14 @@ MAP_LABEL = "(commodity price map)"
 
 # Allowances apply up to and including this date (UTC), then fail.
 ALLOWANCE_EXPIRY = "2026-10-31"
-# Legacy fields the next run of their writer removes: calculate_index.py (daily) for
-# base_date.json, calculate_commodities_index.py (weekly) for commodities_index.json.
-# Full-tree mode only: a file the pipeline stages was written by the current code.
-TRANSITIONAL = {
-    "data/index/base_date.json": {"base_prices"},
-    "data/index/commodities_index.json": {"usd_price", "base_price_usd"},
-}
-# Raw fields already present in files this change does not touch. Both modes.
-KNOWN_EXPOSURES = {
-    # last close per symbol; removed on branch claude/remove-exposed-items-20261021.
-    "data/registries/marketstack_symbols.json": {"last_close"},
-}
+# Legacy fields that the next run of their writer removes. Full-tree mode only: a file
+# the pipeline stages was written by the current code. Empty since 26 October 2026: the
+# daily run of 23 October cleared base_date.json, the weekly run of 24 October cleared
+# commodities_index.json.
+TRANSITIONAL = {}
+# Raw fields already present in files that a change does not touch. Both modes. Empty
+# since 26 October 2026: #10 removed last_close from marketstack_symbols.json.
+KNOWN_EXPOSURES = {}
 
 
 def _git(args):

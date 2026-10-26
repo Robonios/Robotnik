@@ -32,7 +32,7 @@ It reads every tracked JSON file (untracked and gitignored files are not served 
 
 - Gated commits: the daily data commit (`fetch-data.yml`, fetch-prices job) and the weekly commodities and composite commit (`weekly-commodities-composite.yml`). Both run `--staged` after `git add`; a failure stops the job before it commits.
 - Checked, not gated: every push and pull request, through `conflict-marker-check.yml`. A push to `main` is live before the check reports. A pull request is blocked only if branch protection requires the check. The intel commit (`fetch-intel` job), the search-index commit (`refresh-search-index.yml`) and commits made by hand get only this check.
-- Allowances: `base_prices` in `base_date.json` and `usd_price` / `base_price_usd` in `commodities_index.json` until their writers next run, and `last_close` in `data/registries/marketstack_symbols.json` (removed on another branch). All warn until 31 October 2026 and fail after it.
+- Allowances: none since 26 October 2026. The temporary allowances for `base_prices` in `base_date.json`, `usd_price` and `base_price_usd` in `commodities_index.json`, and `last_close` in `data/registries/marketstack_symbols.json` ended when their writers next ran and when #10 merged. Any raw vendor field now fails.
 
 ## Merge order and residual exposure
 
