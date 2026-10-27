@@ -81,15 +81,6 @@ def fetch_from_override(ticker, override):
         if not sym:
             raise ValueError(f"Override for {ticker} missing 'yahoo_symbol'")
         return fetch_latest_from_yahoo(sym), sym
-    if provider == "alpha_vantage":
-        from fetch_alpha_vantage import fetch_latest_from_av  # future extension
-        sym = override.get("av_symbol")
-        api_key = os.environ.get("ALPHA_VANTAGE_API_KEY", "")
-        if not sym:
-            raise ValueError(f"Override for {ticker} missing 'av_symbol'")
-        if not api_key:
-            raise RuntimeError("ALPHA_VANTAGE_API_KEY not set")
-        return fetch_latest_from_av(sym, api_key), sym
     raise ValueError(f"Unknown override provider '{provider}' for {ticker}")
 
 # ---------------------------------------------------------------------------

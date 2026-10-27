@@ -20,7 +20,6 @@ def load_env():
 
 load_env()
 
-ALPHA_VANTAGE_API_KEY = os.environ.get("ALPHA_VANTAGE_API_KEY", "")
 OPENALEX_API_KEY = os.environ.get("OPENALEX_API_KEY", "")
 # EODHD_API_KEY load removed — EODHD fully decommissioned from the pipeline (step0-A2);
 # no consumers remained. Re-add a soft .get() here only if EODHD is ever re-sourced.
