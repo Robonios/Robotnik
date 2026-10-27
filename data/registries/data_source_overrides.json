@@ -568,5 +568,23 @@
     ],
     "reason": "Schneider Electric (excluded from the universe, still in the fetch list). MarketStack v2 has rejected SU.PA with HTTP 422 (no_valid_symbols_provided) since 23 October 2026, while ETL.PA and SESG.PA still resolve; the daily index stopped at its reverse-parity guard. Route live and history to Yahoo (SU.PA); migrate back when the entity-lifecycle check (E2) shows v2 serving it fresh again.",
     "added_date": "2026-10-25"
+  },
+  "SPCX": {
+    "provider": "yahoo",
+    "yahoo_symbol": "SPCX",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "SpaceX, Nasdaq SPCX, first trade 2026-06-12. Added with no MarketStack resolution attempted, as for CBRS: recent listings have lagged MarketStack's catalogue. Yahoo serves the US listing. E2 flags the override if MarketStack v2 serves SPCX fresh.",
+    "added_date": "2026-10-27"
+  },
+  "688836 C1": {
+    "provider": "yahoo",
+    "yahoo_symbol": "688836.SS",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Unitree Robotics, SSE STAR 688836, first trade 2026-08-19. Routed as the other recent STAR listings (CXMT 688825, Moore Threads 688795), whose MarketStack v2 .SS symbols return HTTP 422. Yahoo 688836.SS returns a CNY close; USD via daily FX. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-10-27"
   }
 }

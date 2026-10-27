@@ -57,10 +57,14 @@ PRICES_PATH  = ROOT / "data" / "prices" / "all_prices.json"
 MCAP_PATH    = INDEX_DIR / "market_caps.json"
 ENRICHMENT_PATH = ROOT / "data" / "markets" / "enrichment_data.json"
 REGISTRY_PATH   = ROOT / "data" / "registries" / "entity_registry.json"
-COMPOSITE_PATH  = INDEX_DIR / "robotnik_index.json"
+# The index family's outputs: data/index, or the dry-run folder ROBOTNIK_INDEX_OUT
+# that calculate_index.py also writes to. Inputs are always read from the live tree.
+OUT_DIR         = Path(os.environ.get("ROBOTNIK_INDEX_OUT") or INDEX_DIR)
+COMPOSITE_PATH  = OUT_DIR / "robotnik_index.json"
+WEIGHTS_PATH    = OUT_DIR / "weights.json"
 
-OUT_PATH        = INDEX_DIR / "bottleneck_weighted_composite.json"
-OUT_DIVERGENCE  = INDEX_DIR / "bottleneck_composite_divergence.log"
+OUT_PATH        = OUT_DIR / "bottleneck_weighted_composite.json"
+OUT_DIVERGENCE  = OUT_DIR / "bottleneck_composite_divergence.log"
 
 BASE_VALUE      = 1000.0
 NORMALISE_DATE  = "2025-03-31"
@@ -97,7 +101,7 @@ SECTOR_MAP = {
 # Reuse the EXACT chain-link + reorg logic from the standard index so the two
 # composites are methodologically identical — the divergence is then tilt-only.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from calculate_index import backfill_index_chained, REORG_EVENTS  # noqa: E402
+from calculate_index import backfill_index_chained, weight_regimes, REORG_EVENTS  # noqa: E402
 from index_dates import (SUB_INDEX_FLOOR, trading_days, snapshot_data_date,  # noqa: E402
                          extend_axis_for_snapshot, sub_index_base)
 
@@ -108,6 +112,16 @@ def _selfcheck_chain(entities, weights, price_matrix, all_dates, base_date_str, 
     own Δ=0 verification (not just 'it ran'), same discipline as the standard
     index's reconstruction."""
     tickers = [e["ticker"] for e in entities]
+    # weights: one dict, or [(start, dict)] regimes (admissions), chosen per date here
+    # independently of backfill_index_chained.
+    table = sorted(weights, key=lambda r: r[0] or "") if isinstance(weights, list) else [(None, weights)]
+
+    def weights_on(d):
+        chosen = table[0][1]
+        for start, w_r in table:
+            if start is None or start <= d:
+                chosen = w_r
+        return chosen
     ff = {}
     for t in tickers:
         arr, last = [], None
@@ -122,8 +136,9 @@ def _selfcheck_chain(entities, weights, price_matrix, all_dates, base_date_str, 
         if k == 0:
             raw.append(idx); continue
         num = den = 0.0
+        w_d = weights_on(d)
         for t in tickers:
-            w = weights.get(t, 0.0)
+            w = w_d.get(t, 0.0)
             if w <= 0:
                 continue
             pp, pc = ff[t][k - 1], ff[t][k]
@@ -329,6 +344,25 @@ def main():
 
     excluded = {k for k, v in registry.items()
                 if isinstance(v, dict) and v.get("status") in ("excluded", "data_quarantine")}
+    # Identity and lifecycle, as calculate_index.py resolves them: a market-cap ticker
+    # maps to its registry entity through public_ticker (identity for native-public
+    # names), and only lifecycle_status "public" is eligible. Without this gate a listed
+    # company still held as pre-IPO (SpaceX, Unitree) would enter this index but not the
+    # standard one.
+    pubtkr2eid = {v.get("public_ticker"): k for k, v in registry.items()
+                  if isinstance(v, dict) and v.get("public_ticker")}
+    lifecycle = {k: v.get("lifecycle_status") for k, v in registry.items() if isinstance(v, dict)}
+
+    def _eid(t):
+        return pubtkr2eid.get(t, t)
+
+    def rating_of(t):
+        """The enrichment record for a market-cap ticker: keyed by ticker, or by the
+        registry id for a company that kept its id through a listing."""
+        for key in (t, _eid(t)):
+            if isinstance(enrichment.get(key), dict):
+                return enrichment[key]
+        return {}
 
     # Token isolation: tokens are a legacy content/research watchlist and must
     # NEVER enter any equity aggregation. Primary isolation is type=="token"
@@ -343,15 +377,31 @@ def main():
     eligible = [e for e in entities
                 if e["market_cap_usd"] >= MIN_MARKET_CAP
                 and e["ticker"] in prices_by_ticker
-                and e["ticker"] not in excluded
-                and e["ticker"] not in token_tickers
-                and e.get("sector") != "Token"]
+                and _eid(e["ticker"]) not in excluded
+                and e.get("status") not in ("excluded", "data_quarantine")
+                and _eid(e["ticker"]) not in token_tickers
+                and e.get("sector") != "Token"
+                and lifecycle.get(_eid(e["ticker"])) == "public"]
+
+    # Parity guard (publish-blocking): this index holds exactly the standard index's
+    # constituents, which calculate_index.py has just written to weights.json.
+    try:
+        standard = {w["ticker"] for w in load_json(WEIGHTS_PATH)["weights"]}
+    except Exception as exc:
+        print("  ERROR: cannot read {} for the parity check: {}".format(WEIGHTS_PATH, exc),
+              file=sys.stderr)
+        sys.exit(1)
+    mine = {e["ticker"] for e in eligible}
+    if mine != standard:
+        print("  ERROR: universe parity violation: only here {}; only in the standard index {}".format(
+            sorted(mine - standard)[:10], sorted(standard - mine)[:10]), file=sys.stderr)
+        sys.exit(1)
 
     # Route sector by REGISTRY (== index, pure-registry): cosmetic here (the bottleneck
     # basket is a single chain, not sub-index-routed) but keeps the family labels aligned.
     for e in eligible:
         tk = e["ticker"]
-        rv = registry.get(tk)
+        rv = registry.get(_eid(tk))
         rs = rv.get("sector") if isinstance(rv, dict) else None
         if rs:
             e["sector"] = SECTOR_MAP.get(rs, rs)
@@ -363,7 +413,7 @@ def main():
     bn_distribution = defaultdict(int)
     for e in eligible:
         ticker = e["ticker"]
-        rated = enrichment.get(ticker, {}) if isinstance(enrichment.get(ticker), dict) else {}
+        rated = rating_of(ticker)
         bn = rated.get("bottleneck_risk")
         m = BOTTLENECK_MULTIPLIERS.get(bn, 1.0)
         raw_weights[ticker] = e["market_cap_usd"] * m
@@ -385,6 +435,19 @@ def main():
 
     # ── load history + shared date-axis (index_dates: == standard index) ──
     price_matrix, ticker_meta, all_dates = load_all_history()
+    # Admissions (registry index_entry_date, == standard index): an admitted company
+    # counts from its entry date only, so it enters this chain at its first price on
+    # or after that date.
+    admitted = {}
+    for e in eligible:
+        rv = registry.get(_eid(e["ticker"]))
+        start = rv.get("index_entry_date") if isinstance(rv, dict) else None
+        if start:
+            admitted[e["ticker"]] = str(start)
+    for d, day in price_matrix.items():
+        for t, start in admitted.items():
+            if d < start:
+                day.pop(t, None)
     elig_tk = {e["ticker"] for e in eligible}
     _traded = lambda t, d: t in price_matrix.get(d, {})
     all_dates = trading_days(all_dates, elig_tk, _traded)
@@ -401,7 +464,8 @@ def main():
     inject_date = extend_axis_for_snapshot(all_dates, price_matrix, data_date)
     if inject_date:
         for t, p in prices_by_ticker.items():
-            if p is not None and 0 < p <= 5000:
+            if p is not None and 0 < p <= 5000 and not (
+                    t in admitted and inject_date < admitted[t]):
                 price_matrix[inject_date][t] = p
 
     # ── base date (shared fixed floor == standard) ──
@@ -414,8 +478,17 @@ def main():
         raw = [pt for pt in raw if pt["date"] >= base_date_str]
         s, _, _ = normalise_series(raw)
         return s
-    series = _chain(weights)            # bottleneck-tilted
-    mcap_series = _chain(mcap_weights)  # mcap baseline single-basket (tilt-only reference)
+    # Admissions: before an entry date the weights are computed as if the company
+    # were absent, as in the standard index (weight_regimes).
+    if admitted:
+        chain_weights = weight_regimes(eligible, admitted, lambda ents: compute_capped_weights(
+            {e["ticker"]: raw_weights[e["ticker"]] for e in ents}))
+        chain_mcap_weights = weight_regimes(eligible, admitted, lambda ents: compute_capped_weights(
+            {e["ticker"]: e["market_cap_usd"] for e in ents}))
+    else:
+        chain_weights, chain_mcap_weights = weights, mcap_weights
+    series = _chain(chain_weights)            # bottleneck-tilted
+    mcap_series = _chain(chain_mcap_weights)  # mcap baseline single-basket (tilt-only reference)
     if not series:
         print("  ERROR: empty series produced", file=sys.stderr); sys.exit(1)
     last_value = series[-1]["value"]
@@ -423,7 +496,7 @@ def main():
     print("  Last value (mcap basis): {} ({})".format(mcap_series[-1]["value"], mcap_series[-1]["date"]))
 
     # ── self-check: independent dense-array recompute must match (Δ=0) ──
-    ok, worst = _selfcheck_chain(eligible, weights, price_matrix, all_dates, base_date_str, series)
+    ok, worst = _selfcheck_chain(eligible, chain_weights, price_matrix, all_dates, base_date_str, series)
     print("  Self-check (independent recompute): {} (max|Δ|={:.4f})".format("MATCH" if ok else "DRIFT", worst))
     if not ok:
         print("  ERROR: bottleneck self-check FAILED — aborting", file=sys.stderr); sys.exit(1)
@@ -441,11 +514,8 @@ def main():
         [{"ticker": t,
           "name": next((e["name"] for e in eligible if e["ticker"] == t), t),
           "sector": next((e["sector"] for e in eligible if e["ticker"] == t), None),
-          "bottleneck_risk": (enrichment.get(t, {}) if isinstance(enrichment.get(t), dict) else {}).get("bottleneck_risk"),
-          "multiplier": BOTTLENECK_MULTIPLIERS.get(
-              (enrichment.get(t, {}) if isinstance(enrichment.get(t), dict) else {}).get("bottleneck_risk"),
-              1.0
-          ),
+          "bottleneck_risk": rating_of(t).get("bottleneck_risk"),
+          "multiplier": BOTTLENECK_MULTIPLIERS.get(rating_of(t).get("bottleneck_risk"), 1.0),
           "weight_pct": round(w * 100, 4)}
          for t, w in weights.items()],
         key=lambda x: x["weight_pct"], reverse=True
@@ -460,11 +530,10 @@ def main():
         "current_value": last_value,
         "current_date": series[-1]["date"],
         "entity_count": len(eligible),
-        "rated_entity_count": sum(1 for e in eligible
-                                  if (enrichment.get(e["ticker"], {}) if isinstance(enrichment.get(e["ticker"]), dict) else {}).get("bottleneck_risk")),
+        "rated_entity_count": sum(1 for e in eligible if rating_of(e["ticker"]).get("bottleneck_risk")),
         "rating_coverage_pct": round(
-            sum(1 for e in eligible
-                if (enrichment.get(e["ticker"], {}) if isinstance(enrichment.get(e["ticker"]), dict) else {}).get("bottleneck_risk")) / len(eligible) * 100, 1
+            sum(1 for e in eligible if rating_of(e["ticker"]).get("bottleneck_risk"))
+            / len(eligible) * 100, 1
         ),
         "headline_publishable_threshold_pct": 80,
         "bottleneck_multipliers": BOTTLENECK_MULTIPLIERS,

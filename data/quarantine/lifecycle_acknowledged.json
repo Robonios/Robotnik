@@ -23,6 +23,13 @@
       "names": {
         "enflame": "Enflame - listed on the Shanghai STAR Market on 2026-09-02 (funding data, added 2026-10-18). Robert decided on 2026-10-22 to admit it once the private-preview setup is complete."
       }
+    },
+    "E11_deferred": {
+      "note": "Listed companies the registry still holds as pre-IPO, whose admission is in progress. Remove an entry in the pull request that admits the company.",
+      "names": {
+        "spacex": "SpaceX - listed on Nasdaq (SPCX) on 2026-06-12. Robert decided on 2026-10-27 to admit it; its data is collected first, then the registry change admits it with an index_entry_date.",
+        "unitree-robotics": "Unitree Robotics - listed on the Shanghai STAR Market (688836) on 2026-08-19. Admitted in the same pull request as SpaceX."
+      }
     }
   },
   "E2": [
@@ -50,5 +57,9 @@
   "E4": [],
   "E10": [
     "enflame"
+  ],
+  "E11": [
+    "spacex",
+    "unitree-robotics"
   ]
 }

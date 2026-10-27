@@ -28,7 +28,7 @@ math or representation bug still surfaces here.
 Usage:  python scripts/verify_index_reconstruction.py
 Exit 0 = reconstruction matches production within tolerance; non-zero = drift.
 """
-import json, sys
+import json, os, sys
 from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
@@ -38,6 +38,8 @@ from index_dates import trading_days, sub_index_base  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 IDX  = ROOT / "data" / "index"
 HIST = ROOT / "data" / "prices" / "history"
+# Production's outputs: data/index, or the dry-run folder calculate_index.py wrote to.
+PROD = Path(os.environ.get("ROBOTNIK_INDEX_OUT") or IDX)
 
 # ── methodology constants (must equal production) ────────────────────────
 MIN_MCAP        = 10_000_000
@@ -84,8 +86,8 @@ def main():
     mc  = load(IDX / "market_caps.json")["market_caps"]
     ap  = load(ROOT / "data" / "prices" / "all_prices.json")["prices"]
     reg = load(ROOT / "data" / "registries" / "entity_registry.json")
-    prod = load(IDX / "robotnik_index.json")
-    prod_sub = load(IDX / "sub_indices.json")
+    prod = load(PROD / "robotnik_index.json")
+    prod_sub = load(PROD / "sub_indices.json")
 
     price_now = {p["ticker"]: p["price"] for p in ap if p.get("price") is not None}
     tokens = {k for k, v in reg.items()
@@ -139,6 +141,19 @@ def main():
                 s[dt] = c
         if s: series[tk] = s
 
+    # ── admissions (registry index_entry_date, adopted 27 October 2026) ──────
+    # An admitted company counts from its entry date only: its earlier closes are
+    # dropped here, so it enters at its first close on or after the date.
+    admit = {}
+    for e in elig:
+        rv = reg.get(_eid(e["ticker"]))
+        start = rv.get("index_entry_date") if isinstance(rv, dict) else None
+        if start:
+            admit[e["ticker"]] = str(start)
+    for tk, start in admit.items():
+        if tk in series:
+            series[tk] = {dt: c for dt, c in series[tk].items() if dt >= start}
+
     all_dates = sorted({dt for s in series.values() for dt in s})
 
     # ── trading-day filter (shared index_dates rule): >=50% eligible coverage ─
@@ -166,6 +181,12 @@ def main():
         ents = {e["ticker"]: e["market_cap_usd"] for e in elig if e["sector"] == sector}
         if not ents: return None
         w = capped_weights(ents)
+        # Admissions: before an entry date, weights as if the company were absent; from
+        # it, weights with it. One table of (start, weights), searched per date below.
+        cuts = sorted({admit[t] for t in ents if t in admit})
+        table = [(c, capped_weights({t: m for t, m in ents.items()
+                                     if t not in admit or (c is not None and admit[t] <= c)}))
+                 for c in [None] + cuts]
         # Chain-linked daily-return (enter-at-first-price), matching production's
         # backfill_index_chained: idx[k] = idx[k-1] * weighted-avg daily ratio over
         # constituents live on BOTH k-1 and k; raw kept at full precision. ffill
@@ -177,7 +198,10 @@ def main():
             if k == 0:
                 raw.append(idx); continue
             num = den = 0.0
-            for tk, wt in w.items():
+            wk = table[0][1]
+            for c, wc in table:
+                if c is None or c <= trading[k]: wk = wc
+            for tk, wt in wk.items():
                 arr = ffill.get(tk)
                 if not arr: continue
                 pp, pc = arr[k - 1], arr[k]
@@ -216,15 +240,25 @@ def main():
             shares[e["ticker"]] = m / cp
             sector_of[e["ticker"]] = e["sector"].lower()
     edates = trading[bi:]            # emit from sub_base (chain warmed up earlier) == production
+    # Entry adjustment (methodology, 27 October 2026): on an admitted company's first
+    # priced day the blend is valued with and without it, and the ratio joins a
+    # running divisor, so its market value moves the sector shares without a step.
     comp_raw = []
+    div = 1.0
+    seen = set()
     for dt in edates:
         i = didx[dt]
         smcap = {k: 0.0 for k in COMPOSITE_SECTORS}
+        new = {k: 0.0 for k in COMPOSITE_SECTORS}
+        newcomers = set()
         for tk, sh in shares.items():
             sec = sector_of.get(tk)
             if sec in smcap:
                 p = ffill.get(tk, [None]*len(trading))[i]
-                if p is not None and p > 0: smcap[sec] += sh * p
+                if p is not None and p > 0:
+                    smcap[sec] += sh * p
+                    if tk in admit and tk not in seen:
+                        new[sec] += sh * p; newcomers.add(tk)
         tot = sum(smcap.values())
         if tot <= 0: continue
         val = 0.0; contrib = 0
@@ -232,7 +266,14 @@ def main():
             sv = subs.get(k, {}).get(dt)
             if sv is None: continue
             val += (smcap[k]/tot) * sv; contrib += 1
-        if contrib: comp_raw.append((dt, round(val, 2)))   # production rounds composite raw (line 648)
+        if not contrib: continue
+        if newcomers:
+            rest = tot - sum(new.values())
+            old = sum((smcap[k] - new[k]) / rest * subs[k][dt]
+                      for k in COMPOSITE_SECTORS if rest > 0 and dt in subs.get(k, {}))
+            if old > 0: div *= val / old
+            seen |= newcomers
+        comp_raw.append((dt, round(val / div, 2)))   # production rounds composite raw
     # renormalise composite to 1000 on NORMALISE_DATE (defensive, as production)
     cmap = dict(comp_raw)
     base_v = cmap.get(NORMALISE_DATE) or next((v for dt, v in comp_raw if dt >= NORMALISE_DATE), None)
