@@ -134,8 +134,10 @@
   });
 
   renderIdx();
-  fetch(SUMMARY, { cache: 'no-cache' })
-    .then(function (r) { if (!r.ok) throw new Error(SUMMARY + ': HTTP ' + r.status); return r.json(); })
+  // One request feeds the tiles, the index family and the stack map.
+  var feed = fetch(SUMMARY, { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw new Error(SUMMARY + ': HTTP ' + r.status); return r.json(); });
+  feed
     .then(function (j) {
       var ix = (j && j.indexes) || {}, latest = '';
       IDX.forEach(function (d) {
@@ -170,28 +172,23 @@
   $('marq').innerHTML = once + once;
 
   /* ---------- the stack map: index members per cell, tiers in the locked order ---------- */
-  // STOPGAP: these per-cell counts are hard-coded from the v1 data inventory, as in the
-  // mock. They belong in a feed (market_layer.json, or counts from the entity registry)
-  // and should be read from it once it exists. Rows run Materials, Semiconductors,
-  // Robotics, Space; columns follow TIERS.
+  // Rows run Materials, Semiconductors, Robotics, Space; columns follow TIERS. The grid is
+  // drawn at once and the counts arrive with the feed: stack.cells in index_summary.json,
+  // built daily from the index membership (data/index/weights.json).
   var SECT = [
-    { n: 'Materials', k: '--ma', c: [30, 0, 0, 1, 0, 0, 0, 0] },
-    { n: 'Semiconductors', k: '--se', c: [1, 32, 18, 13, 15, 0, 0, 1] },
-    { n: 'Robotics', k: '--ro', c: [0, 0, 0, 0, 22, 34, 1, 7] },
-    { n: 'Space', k: '--sp', c: [0, 0, 0, 0, 6, 17, 13, 0] }
+    { n: 'Materials', k: '--ma' }, { n: 'Semiconductors', k: '--se' },
+    { n: 'Robotics', k: '--ro' }, { n: 'Space', k: '--sp' }
   ];
-  var map = $('map'), h = '<div class="th" aria-hidden="true"></div>';
-  TIERS.forEach(function (n, i) { h += '<div class="th"><b>0' + (i + 1) + '</b><span>' + esc(n) + '</span></div>'; });
-  SECT.forEach(function (s, r) {
-    h += '<div class="sl" style="--sc:var(' + s.k + ')"><i style="background:var(' + s.k + ')"></i>' + s.n + '</div>';
-    s.c.forEach(function (v, c) {
-      var id = 'm' + r + '_' + c;
-      if (v >= 3) h += '<div class="cell full" id="' + id + '" style="--sc:var(' + s.k + ')"><div class="n">' + v + '</div><div class="u">companies</div></div>';
-      else if (v > 0) h += '<div class="cell thin" id="' + id + '"><div class="n">' + v + ' company</div><div class="u">Figures withheld</div></div>';
-      else h += '<div class="cell" id="' + id + '"></div>';
-    });
-  });
-  map.innerHTML = h + '<svg class="trace" id="trace" aria-hidden="true"></svg>';
+  // FALLBACK, to be removed once the published index_summary.json carries `stack` (the
+  // first run of build_index_summary.py after this change writes it). Index members per
+  // cell from the v1 data inventory, checked against the index of 27 Oct 2026 and
+  // corrected there (Semiconductors / IP & Design 31). Shown only when the feed has no
+  // stack or fails to load.
+  var FALLBACK = { asOf: '2026-10-27', c: [
+    [30, 0, 0, 1, 0, 0, 0, 0],
+    [1, 31, 18, 13, 15, 0, 0, 1],
+    [0, 0, 0, 0, 22, 34, 1, 7],
+    [0, 0, 0, 0, 6, 17, 13, 0]] };
 
   // ILLUSTRATIVE trace, labelled as such on the page: an export control on semiconductor
   // capital equipment, followed downstream. To be replaced by a real dated event once
@@ -199,7 +196,51 @@
   var SRC = [1, 2], HITS = [[1, 3], [1, 4], [2, 4], [3, 4], [2, 5], [3, 5]];
   var EDGES = [[[1, 2], [1, 3]], [[1, 3], [1, 4]], [[1, 4], [2, 4], 0.34], [[1, 4], [3, 4], 0.6], [[2, 4], [2, 5]], [[3, 4], [3, 5]]];
   var SRCID = 'm' + SRC[0] + '_' + SRC[1];
-  $(SRCID).insertAdjacentHTML('beforeend', '<span class="tag">Export control</span>');
+  var TAG = '<span class="tag">Export control</span>';
+
+  var map = $('map'), h = '<div class="th" aria-hidden="true"></div>';
+  TIERS.forEach(function (n, i) { h += '<div class="th"><b>0' + (i + 1) + '</b><span>' + esc(n) + '</span></div>'; });
+  SECT.forEach(function (s, r) {
+    h += '<div class="sl" style="--sc:var(' + s.k + ')"><i style="background:var(' + s.k + ')"></i>' + s.n + '</div>';
+    TIERS.forEach(function (t, c) {
+      var id = 'm' + r + '_' + c;
+      h += '<div class="cell" id="' + id + '">' + (id === SRCID ? TAG : '') + '</div>';
+    });
+  });
+  map.innerHTML = h + '<svg class="trace" id="trace" aria-hidden="true"></svg>';
+
+  // stack.cells as a grid of counts, rows in SECT order and columns in TIERS order; a cell
+  // naming a sector or tier the page does not draw is left out.
+  function countsFrom(stack) {
+    if (!stack || !Array.isArray(stack.cells)) return null;
+    var names = SECT.map(function (s) { return s.n; });
+    var grid = SECT.map(function () { return TIERS.map(function () { return 0; }); });
+    stack.cells.forEach(function (cell) {
+      var r = names.indexOf(cell && cell.sector), c = TIERS.indexOf(cell && cell.tier);
+      if (r >= 0 && c >= 0 && isNum(cell.members)) grid[r][c] = cell.members;
+    });
+    return grid;
+  }
+  // Three or more members show the count; one or two are withheld; empty cells stay inert.
+  function fillMap(stack) {
+    var grid = countsFrom(stack), live = !!grid, asOf = live ? stack.as_of : FALLBACK.asOf;
+    if (!live) grid = FALLBACK.c;
+    SECT.forEach(function (s, r) {
+      grid[r].forEach(function (v, c) {
+        var el = $('m' + r + '_' + c), full = v >= 3, thin = v > 0 && v < 3;
+        el.classList.toggle('full', full);
+        el.classList.toggle('thin', thin);
+        if (full) el.style.setProperty('--sc', 'var(' + s.k + ')'); else el.style.removeProperty('--sc');
+        el.innerHTML = (full ? '<div class="n">' + v + '</div><div class="u">companies</div>'
+          : thin ? '<div class="n">' + v + (v === 1 ? ' company' : ' companies') + '</div><div class="u">Figures withheld</div>'
+          : '') + (el.id === SRCID ? TAG : '');
+      });
+    });
+    $('mapnote').textContent = 'Counts: index members per cell' + (fmtDate(asOf) ? ', as of ' + fmtDate(asOf) : '') + '. The trace is illustrative.';
+    drawPoster(grid);
+    drawTrace();
+  }
+
   var trace = $('trace');
   function cellBox(rc) { var el = $('m' + rc[0] + '_' + rc[1]); return { x: el.offsetLeft, y: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight }; }
   function drawTrace() {
@@ -260,14 +301,20 @@
   $('replay').addEventListener('click', function () { loopOff(); play(); loopOn(); });
 
   /* ---------- walkthrough poster: the map in miniature ---------- */
-  var vp = '';
-  SECT.forEach(function (s, r) {
-    s.c.forEach(function (v, c) {
-      var hit = (r === 1 && c >= 2 && c <= 4) || ((r === 2 || r === 3) && (c === 4 || c === 5));
-      vp += '<i class="' + (hit ? 'h' : v >= 3 ? 'f' : '') + '"></i>';
+  function drawPoster(grid) {
+    var vp = '';
+    grid.forEach(function (row, r) {
+      row.forEach(function (v, c) {
+        var hit = (r === 1 && c >= 2 && c <= 4) || ((r === 2 || r === 3) && (c === 4 || c === 5));
+        vp += '<i class="' + (hit ? 'h' : v >= 3 ? 'f' : '') + '"></i>';
+      });
     });
-  });
-  $('vposter').innerHTML = vp;
+    $('vposter').innerHTML = vp;
+  }
+  drawPoster(SECT.map(function () { return TIERS.map(function () { return 0; }); }));
+
+  // The map's counts: the feed's stack, or the fallback when it has none or fails to load.
+  feed.then(function (j) { fillMap(j && j.stack); }, function () { fillMap(null); });
 
   /* ---------- the robots: head sheet inside a glass helmet; glances, blinks, spins on click ---------- */
   var BOT = 'assets/robot/';
