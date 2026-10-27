@@ -7,6 +7,12 @@ script reports, per series, how far the dry run departs from main: common dates,
 largest absolute difference and its date, the first date that differs, and the two
 latest levels. It also lists constituents added to or dropped from weights.json.
 
+The Composite is forward-only and is not recomputed here. Its next weekly return takes
+the Public Equities level stored on its last point (eq_leg), so a change that restates
+Public Equities at that date passes into the Composite's next return. The script reports
+that shift at the Composite's last two points: the next run anchors on the last point,
+or on the one before it when it re-runs the current week.
+
 Index levels, index differences and tickers only: never a price or a market cap, since
 the Actions log of a public repository is public. In GitHub Actions each line is a
 notice annotation, which the checks API returns.
@@ -52,6 +58,30 @@ def compare(name, base, dry):
     return worst <= TOLERANCE and set(base) == set(dry)
 
 
+def nearest_prior(series, day):
+    """The series value on the latest date on or before day, or None."""
+    dates = [d for d in series if d <= day]
+    return series[max(dates)] if dates else None
+
+
+def composite_carry(base, pe_base, pe_dry):
+    path = base / "composite_index.json"
+    if not path.exists():
+        say("Composite: no composite_index.json on main; not checked")
+        return
+    doc = json.loads(path.read_text())
+    w_eq = (doc.get("weights") or {}).get("equities", 0.75)
+    for pt in (doc.get("series") or [])[-2:]:
+        b, d = nearest_prior(pe_base, pt["date"]), nearest_prior(pe_dry, pt["date"])
+        if not b or not d:
+            say("Composite point {}: no Public Equities level on or before it".format(pt["date"]))
+            continue
+        shift = d / b - 1
+        say("Composite point {}: this change restates Public Equities there by {:+.2%}; a "
+            "Composite return anchored on this point would include {:+.2%} that is not a "
+            "market move (equity weight {:g})".format(pt["date"], shift, w_eq * shift, w_eq))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", required=True, help="folder holding main's data/index files")
@@ -59,8 +89,8 @@ def main():
     args = ap.parse_args()
     base, dry = Path(args.base), Path(args.dry)
 
-    same = compare("Public Equities", series_of(base / "robotnik_index.json"),
-                   series_of(dry / "robotnik_index.json"))
+    pe_base, pe_dry = series_of(base / "robotnik_index.json"), series_of(dry / "robotnik_index.json")
+    same = compare("Public Equities", pe_base, pe_dry)
     subs_b = json.loads((base / "sub_indices.json").read_text())
     subs_d = json.loads((dry / "sub_indices.json").read_text())
     for key in sorted(set(subs_b) | set(subs_d)):
@@ -74,6 +104,7 @@ def main():
     say("Constituents: main {}, dry run {}; added {}; dropped {}".format(
         len(wb), len(wd), sorted(wd - wb) or "none", sorted(wb - wd) or "none"))
     same &= wb == wd
+    composite_carry(base, pe_base, pe_dry)
     say("Dry run {} main.".format("matches" if same else "differs from"))
     return 0
 

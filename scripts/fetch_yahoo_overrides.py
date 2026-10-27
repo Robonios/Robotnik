@@ -13,7 +13,10 @@ Modes:
   --history-overrides   Daily history for each override ticker; writes one
                         data/prices/history/{ticker}.json per entry, merging
                         with on-disk history (same shape as the MarketStack
-                        history fetcher).
+                        history fetcher). A ticker with no history file yet, such
+                        as a new admission, gets the 5-year range on its first run;
+                        the compact refresh (100 days) would start it short of its
+                        listing day, and the missing bars would never be fetched.
 
 Usage:
     python scripts/fetch_yahoo_overrides.py --overrides
@@ -152,11 +155,14 @@ def cmd_history_overrides(backfill=False):
     print("=" * 60)
     cc.refresh_all(backfill=backfill, fetcher=fetch_fx_daily)
 
-    size = "5y" if backfill else "compact"
-    ok = failed = 0
+    ok = failed = first_runs = 0
     for ticker, yahoo_sym, entry in targets:
         fname = ticker_to_filename(ticker)
         hpath = HISTORY_DIR / "{}.json".format(fname)
+        # No history yet (a new admission): take the full range, not the compact one.
+        first = not hpath.exists()
+        size = "5y" if (backfill or first) else "compact"
+        first_runs += first and not backfill
         try:
             data = fetch_yahoo_daily(yahoo_sym, output_size=size)
             native_ccy = data.get("currency")
@@ -201,7 +207,8 @@ def cmd_history_overrides(backfill=False):
             print("  FAIL {:14s} ({:14s}) {}".format(ticker, yahoo_sym, str(e)[:80]))
         time.sleep(INTER_CALL_SLEEP)
 
-    print("\nRESULT: {} ok, {} failed".format(ok, failed))
+    print("\nRESULT: {} ok, {} failed; {} new ticker(s) fetched over 5 years".format(
+        ok, failed, first_runs))
 
 
 def main():
