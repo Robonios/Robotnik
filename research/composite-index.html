@@ -45,7 +45,7 @@
       "description": "How Robotnik's composite index blends the listed frontier stack's market value with its raw-material dependence, three-quarters to one-quarter, into a single headline.",
       "url": "https://robotnik.world/research/composite-index",
       "datePublished": "2026-06-27",
-      "dateModified": "2026-06-27",
+      "dateModified": "2026-10-27",
       "image": "https://robotnik.world/og/default.png",
       "author": { "@type": "Organization", "@id": "https://robotnik.world/#organization", "name": "Robotnik" },
       "publisher": { "@id": "https://robotnik.world/#organization" }
@@ -199,11 +199,13 @@
 
     <p>A blend cannot exist before both its legs do. The public-equities leg runs back to 2021, but the commodities leg is forward-only and launched only in June 2026, so the commodities leg sets the floor: there is no period before that date on which both legs can be blended. The composite therefore has no history before its launch and makes no attempt to manufacture any. It is as shallow as its youngest leg, days old, and the published series is still short and accruing.</p>
 
-    <h2>How the legs are sampled and frozen</h2>
+    <h2>How the legs are sampled</h2>
 
     <p>The two legs run on different cadences. The equity index updates daily; the commodities index updates weekly. The composite is weekly, and it advances on the commodities mark, taking the equity leg at its nearest-prior value on that date. So the composite is paced by its smaller leg, not its larger one: a reader might assume the daily equity leg makes the composite daily, but the weekly commodities leg sets the clock.</p>
 
-    <p>Each published composite point stores the two leg samples it was struck from, and the next period's return is taken from those frozen samples, never by re-sampling the underlying history. This is the same no-recompute discipline the rest of the family follows, and here it has a specific payoff: if the equity index is later restated, a corrected past value cannot move a composite point that has already published. The series is append-only and reproducible, each point fixed by the leg samples frozen into it.</p>
+    <p>Each weekly return takes both of its ends from the legs' current series: the equity leg at its nearest-prior value on the previous mark and on the new one, and the commodities leg on each mark. A point that has published is never recomputed, so a later restatement of the equity index cannot move it. Because both ends of each return come from the same series, a restatement cannot pass into the next return either. Each point records the leg values it was struck from, so the series stays reproducible.</p>
+
+    <p>Until October 2026 each return was taken from the values stored on the previous point. A restatement of the equity index at that point then passed into the next weekly return as a move that did not happen. On adopting the current rule, the points published under the earlier one were recomputed once, before launch.</p>
 
     <h2>The headline, and when it leads</h2>
 

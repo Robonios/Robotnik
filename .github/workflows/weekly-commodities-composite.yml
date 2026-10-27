@@ -62,9 +62,10 @@ jobs:
           COMMODITIES_BASE_PRICES: ${{ secrets.COMMODITIES_BASE_PRICES }}
         run: python scripts/calculate_commodities_index.py
 
-      # Composite: forward-append the 75/25 blend point from the prior mark's frozen
-      # leg samples (equities = robotnik_index.json nearest-prior; commodities leg =
-      # the point just appended above). Forward-only; prior points never recomputed.
+      # Composite: forward-append the 75/25 blend point, taking both ends of the weekly
+      # return from the current leg series (equities = robotnik_index.json nearest-prior;
+      # commodities leg = the point just appended above). Forward-only; published points
+      # are never recomputed, except once on adopting version 1.1 (REBUILD_ON_ADOPTION).
       - name: Calculate Composite Index (75/25 weekly forward-append)
         run: python scripts/calculate_composite_index.py
 
