@@ -17,15 +17,12 @@ BASE_URL = "https://robotnik.world"
 PUBLISHED_PATH = ROOT / "data" / "assets" / "published.json"  # published asset profiles
 
 # Canonical public pages (must match js/nav.js + what we actually want indexed).
-# Orphan pages (intelligence.html) are intentionally excluded —
-# they're not in the nav and shouldn't be advertised.
-# Retired surfaces (report-1Q26.html, thesis.html, recreation.html, the 1Q26 PDF) are hard-excluded
-# via the RETIRED set below — never emitted, even if an entry lingers in PAGES.
+# Retired surfaces (see RETIRED below) are hard-excluded: never emitted, even if
+# an entry lingers in PAGES.
 PAGES = [
     # (path,                                                   priority, changefreq)
     ("",                                                        "1.0",    "daily"),    # homepage (index.html)
     ("about",                                                   "0.6",    "monthly", "about.html"),  # /about (extensionless), lastmod from about.html
-    ("news.html",                                               "0.8",    "daily"),
     ("research.html",                                           "0.8",    "monthly"),
     # Reference library articles: extensionless canonical URL served by GitHub
     # Pages; lastmod is read from the .html file via the optional 4th element.
@@ -42,9 +39,6 @@ PAGES = [
     ("research/sources-and-provenance",                         "0.8",    "monthly", "research/sources-and-provenance.html"),
     ("assets.html",                                             "0.8",    "weekly"),
     ("funding.html",                                            "0.8",    "weekly"),
-    ("portfolio.html",                                          "0.5",    "yearly"),
-    ("signals.html",                                            "0.5",    "yearly"),
-    ("commodities.html",                                        "0.5",    "yearly"),
 ]
 
 
@@ -69,24 +63,20 @@ def last_commit_date(relpath: str) -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 
-# Retired surfaces — the HTML pages are served as noindex redirect stubs, the PDF
-# is simply withdrawn; never advertise any of them in the sitemap. Durable:
-# skipped even if an entry is still present in / re-added to PAGES above.
+# Retired surfaces: the HTML pages are served as noindex redirect stubs and the PDF
+# is withdrawn, so none is ever advertised in the sitemap. Durable: skipped even if
+# an entry is still present in, or re-added to, PAGES above.
 RETIRED = {
     "report-1Q26.html",
     "thesis.html",
     "recreation.html",
     "reports/1Q26-State-of-the-Frontier-Stack.pdf",
-}
-
-# Hidden surfaces: Portfolio and Frontier Signals. Hidden from navigation (js/nav.js)
-# and from the sitemap, but NOT retired. Each page stays reachable by its direct URL and
-# carries <meta name="robots" content="noindex"> so it is not indexed. These are live
-# placeholder pages, not redirect stubs. Reveal later by uncommenting their nav entries
-# and removing them from this set. Skipped in the build loop exactly as RETIRED is.
-HIDDEN = {
+    # Retired 2026-10 (task 2a): redirect stubs, noindex.
+    "news.html",
+    "intelligence.html",
     "portfolio.html",
     "signals.html",
+    "commodities.html",
 }
 
 
@@ -96,7 +86,7 @@ def build_sitemap() -> str:
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for entry in PAGES:
         path, priority, changefreq = entry[0], entry[1], entry[2]
-        if path in RETIRED or path in HIDDEN:
+        if path in RETIRED:
             continue
         # Optional 4th element: source file to read lastmod from, used when the
         # public URL is extensionless and so does not match a file on disk.
