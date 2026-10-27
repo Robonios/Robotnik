@@ -1,0 +1,33 @@
+name: Public-asset guard
+
+# GitHub Pages serves every tracked file, so an unpublished profile's data file or
+# page is public the moment it is committed, linked or not. This check fails if any
+# profile shard, profile page or sitemap entry goes beyond data/assets/published.json.
+on:
+  push:
+    paths:
+      - 'data/assets/**'
+      - 'assets/**'
+      - 'sitemap.xml'
+      - 'scripts/build_asset_profiles.py'
+      - 'scripts/check_public_assets.py'
+      - '.github/workflows/public-assets-guard.yml'
+  pull_request:
+    paths:
+      - 'data/assets/**'
+      - 'assets/**'
+      - 'sitemap.xml'
+      - 'scripts/build_asset_profiles.py'
+      - 'scripts/check_public_assets.py'
+      - '.github/workflows/public-assets-guard.yml'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Only published profiles are public
+        run: python scripts/check_public_assets.py
