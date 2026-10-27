@@ -58,8 +58,10 @@ MCAP_PATH    = INDEX_DIR / "market_caps.json"
 ENRICHMENT_PATH = ROOT / "data" / "markets" / "enrichment_data.json"
 REGISTRY_PATH   = ROOT / "data" / "registries" / "entity_registry.json"
 # The index family's outputs: data/index, or the dry-run folder ROBOTNIK_INDEX_OUT
-# that calculate_index.py also writes to. Inputs are always read from the live tree.
-OUT_DIR         = Path(os.environ.get("ROBOTNIK_INDEX_OUT") or INDEX_DIR)
+# that calculate_index.py also writes to (a relative path is taken from the repository
+# root). Inputs are always read from the live tree.
+OUT_DIR         = (ROOT / os.environ["ROBOTNIK_INDEX_OUT"]
+                   if os.environ.get("ROBOTNIK_INDEX_OUT") else INDEX_DIR)
 COMPOSITE_PATH  = OUT_DIR / "robotnik_index.json"
 WEIGHTS_PATH    = OUT_DIR / "weights.json"
 
@@ -553,8 +555,9 @@ def main():
     with open(OUT_DIVERGENCE, "w") as f:
         f.write("\n".join(flag_lines) + "\n")
 
-    print("  Output: {}".format(OUT_PATH.relative_to(ROOT)))
-    print("  Output: {}".format(OUT_DIVERGENCE.relative_to(ROOT)))
+    for out in (OUT_PATH, OUT_DIVERGENCE):
+        shown = out.relative_to(ROOT) if out.is_relative_to(ROOT) else out
+        print("  Output: {}".format(shown))
 
     # ── top 5 weights, top 5 bottleneck winners ──
     print("\n  Top 5 weights overall:")

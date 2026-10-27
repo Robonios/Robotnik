@@ -38,8 +38,9 @@ from index_dates import trading_days, sub_index_base  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 IDX  = ROOT / "data" / "index"
 HIST = ROOT / "data" / "prices" / "history"
-# Production's outputs: data/index, or the dry-run folder calculate_index.py wrote to.
-PROD = Path(os.environ.get("ROBOTNIK_INDEX_OUT") or IDX)
+# Production's outputs: data/index, or the dry-run folder calculate_index.py wrote to
+# (a relative ROBOTNIK_INDEX_OUT is taken from the repository root).
+PROD = ROOT / os.environ["ROBOTNIK_INDEX_OUT"] if os.environ.get("ROBOTNIK_INDEX_OUT") else IDX
 
 # ── methodology constants (must equal production) ────────────────────────
 MIN_MCAP        = 10_000_000

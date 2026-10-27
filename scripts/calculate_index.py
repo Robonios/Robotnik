@@ -31,7 +31,10 @@ HISTORY_DIR = os.path.join(ROOT_DIR, "data", "prices", "history")
 # Output dir for the index family. Defaults to INDEX_DIR; a dry-run/staging run
 # sets ROBOTNIK_INDEX_OUT to write the restated family elsewhere while the INPUTS
 # (market_caps, all_prices, registry, history) are still read from the live tree.
-OUT_DIR = os.environ.get("ROBOTNIK_INDEX_OUT") or INDEX_DIR
+# A relative ROBOTNIK_INDEX_OUT is taken from the repository root, whatever the
+# working directory, as in the other two index scripts.
+OUT_DIR = (os.path.join(ROOT_DIR, os.environ["ROBOTNIK_INDEX_OUT"])
+           if os.environ.get("ROBOTNIK_INDEX_OUT") else INDEX_DIR)
 
 MCAP_PATH    = os.path.join(INDEX_DIR, "market_caps.json")
 PRICES_PATH  = os.path.join(ROOT_DIR, "data", "prices", "all_prices.json")
