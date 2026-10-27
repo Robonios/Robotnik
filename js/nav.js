@@ -96,7 +96,11 @@
     </div>
   `;
 
-  document.getElementById('nav-container').innerHTML = sidebar + topBar + mobileOverlay;
+  // The public front door (index.html) has its own top navigation and footer, and no
+  // #nav-container. There the sidebar, top bar, mobile menu and footer are skipped;
+  // the request-access form below is built on every page.
+  var navContainer = document.getElementById('nav-container');
+  if (navContainer) navContainer.innerHTML = sidebar + topBar + mobileOverlay;
 
   // ─────────────────────────────────────────────────────────────────
   // Hamburger menu wiring
@@ -139,7 +143,7 @@
     '<div class="site-footer-row">' +
       '<div class="site-footer-copyright"><a href="/about" style="color:var(--text-dim);text-decoration:none;margin-right:0.9rem;">About</a>&copy; Robotnik 2026</div>' +
     '</div>';
-  document.body.appendChild(footerEl);
+  if (navContainer) document.body.appendChild(footerEl);
 
   // Recreation Bay mobile placeholder: retired for now (restore: uncomment the block below)
   /*

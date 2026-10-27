@@ -50,7 +50,8 @@ COMPOSITE_BLEND_PATH = os.path.join(INDEX_DIR, "composite_index.json")     # Com
 
 RETURN_CONVENTION = ("nearest-prior-trading-day; per period P the anchor is the latest "
                      "published series date <= (as_of - P); return = (value/anchor - 1) * 100, "
-                     "rounded to 2dp; daily P in {1W=7d,1M,3M,1Y,3Y,5Y}, monthly RPCI in {1M,3M,1Y,3Y,5Y}")
+                     "rounded to 2dp; daily P in {1D=1d,1W=7d,1M,3M,1Y,3Y,5Y}, weekly P in "
+                     "{1W=7d,1M,3M,1Y,3Y,5Y}, monthly RPCI in {1M,3M,1Y,3Y,5Y}")
 TRADING_DAY_CONVENTION = ("as_of is the latest session in the published series — already the "
                           ">=50% / 98-of-197 quorum trading day from index_dates.py; the summary "
                           "anchors returns on the series' own dates, so it cannot drift from it")
@@ -100,15 +101,20 @@ DAILY_PERIODS = [
     ("3Y", lambda d: _years_before(d, 3)),
     ("5Y", lambda d: _years_before(d, 5)),
 ]
+# Daily-cadence entries also carry the one-day move (1D). Its anchor is the latest
+# published date <= (latest - 1 day), the prior session, under the same nearest-prior
+# convention, rounding and null shape as every other period. Weekly entries keep
+# DAILY_PERIODS, so they carry no 1D.
+DAILY_CADENCE_PERIODS = [("1D", lambda d: d - timedelta(days=1))] + DAILY_PERIODS
 
 
-def daily_returns(series):
+def daily_returns(series, periods=DAILY_PERIODS):
     """Nearest-prior-trading-day returns computed on the series' OWN dates."""
     dv = {_d(p["date"]): float(p["value"]) for p in series}
     ds = sorted(dv)
     latest, lv = ds[-1], dv[ds[-1]]
     out = {}
-    for name, fn in DAILY_PERIODS:
+    for name, fn in periods:
         i = bisect.bisect_right(ds, fn(latest))
         if i == 0:
             out[name] = {"null": True, "reason": "insufficient_history"}
@@ -162,7 +168,7 @@ def daily_entry(name, value, series, base, run_date, entity_count=None, code=Non
         "base": base,
         "span": {"start": series[0]["date"], "end": series[-1]["date"],
                  "points": len(series), "floor": SUB_INDEX_FLOOR},
-        "returns": daily_returns(series),
+        "returns": daily_returns(series, DAILY_CADENCE_PERIODS),
         "series": trailing_1y_daily(series),
     }
     if code:
