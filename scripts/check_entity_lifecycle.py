@@ -394,7 +394,7 @@ def check_listings(reg, titles, today=None):
         names = {_name_key(x) for x in [v.get("name")] + (v.get("aliases") or [])} - {""}
         hits = sorted({t for n in names for t in (titles or {}).get(n, [])})
         if hits:
-            found.append({"entity": k, "lifecycle": life, "signal": "sec",
+            found.append({"entity": k, "lifecycle": life, "signal": "sec", "tickers": hits,
                           "detail": "SEC registrant {}".format(", ".join(hits[:3]))})
             continue
         if life.startswith("pre_ipo"):
@@ -513,7 +513,14 @@ def main():
     e2_new = _new("E2", e2, lambda f: f[0])
     e4_new = _new("E4", e4_esc, lambda e: e["ticker"])
     e10_new = _new("E10", e10, lambda g: g.get("entity_id") or g.get("company"))
-    e11_new = _new("E11", e11, lambda f: f["entity"])
+    # E11 takes two kinds of acknowledgement: the entity id (an admission in progress),
+    # or "entity:TICKER" for an SEC match checked and found to be another company. The
+    # second covers only the registrants named, so a new match for the same entity still
+    # reds the run.
+    e11_acked = set(ack.get("E11") or [])
+    e11_new = [f for f in e11 if f["entity"] not in e11_acked
+               and not (f.get("tickers") and all("{}:{}".format(f["entity"], t) in e11_acked
+                                                 for t in f["tickers"]))]
     actionable = bool(e2_new or e4_new or e10_new or e11_new)
     annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new, e11_new)
 
