@@ -31,7 +31,10 @@ HISTORY_DIR = os.path.join(ROOT_DIR, "data", "prices", "history")
 # Output dir for the index family. Defaults to INDEX_DIR; a dry-run/staging run
 # sets ROBOTNIK_INDEX_OUT to write the restated family elsewhere while the INPUTS
 # (market_caps, all_prices, registry, history) are still read from the live tree.
-OUT_DIR = os.environ.get("ROBOTNIK_INDEX_OUT") or INDEX_DIR
+# A relative ROBOTNIK_INDEX_OUT is taken from the repository root, whatever the
+# working directory, as in the other two index scripts.
+OUT_DIR = (os.path.join(ROOT_DIR, os.environ["ROBOTNIK_INDEX_OUT"])
+           if os.environ.get("ROBOTNIK_INDEX_OUT") else INDEX_DIR)
 
 MCAP_PATH    = os.path.join(INDEX_DIR, "market_caps.json")
 PRICES_PATH  = os.path.join(ROOT_DIR, "data", "prices", "all_prices.json")
@@ -141,6 +144,63 @@ def compute_capped_weights(entities, cap=CAP_LIMIT):
             weights[t] += excess * (uncapped[t] / uncapped_total)
 
     return weights
+
+
+def admission_dates(registry, tickers, eid):
+    """Ticker -> index_entry_date, for each given ticker whose registry entity carries
+    one (adopted 27 October 2026). A company admitted with an entry date counts from
+    that date only: its earlier bars are dropped (drop_before_admission), so it enters
+    at its first price on or after the date and the chain-link adds no step, and the
+    sector blend in main() rescales once so its market value adds no step either.
+    A malformed date stops the run."""
+    out = {}
+    for t in tickers:
+        rec = registry.get(eid(t))
+        start = rec.get("index_entry_date") if isinstance(rec, dict) else None
+        if not start:
+            continue
+        try:
+            ok = datetime.strptime(str(start), "%Y-%m-%d").strftime("%Y-%m-%d") == start
+        except ValueError:
+            ok = False
+        if not ok:
+            raise IndexGuardrailError(
+                "Admission STOP: {} has index_entry_date {!r}; expected YYYY-MM-DD".format(
+                    eid(t), start))
+        out[t] = start
+    return out
+
+
+def _notice(msg):
+    """A line of output; in GitHub Actions also a notice annotation, which the checks
+    API returns. Tickers, dates and index ratios only."""
+    print("  " + msg)
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        print("::notice::" + msg, flush=True)
+
+
+def weight_regimes(entities, admitted, weigh):
+    """[(start, weights)]: the weights in force from each start date, None for the first.
+    Before an admitted company's entry date the weights are computed as if it were
+    absent, so its admission leaves the published history before that date unchanged;
+    on the entry date the regime switches, and the chain-link adds no step."""
+    starts = sorted({admitted[e["ticker"]] for e in entities if e["ticker"] in admitted})
+    regimes = []
+    for start in [None] + starts:
+        active = [e for e in entities if e["ticker"] not in admitted
+                  or (start is not None and admitted[e["ticker"]] <= start)]
+        regimes.append((start, weigh(active)))
+    return regimes
+
+
+def drop_before_admission(price_matrix, admitted):
+    """Remove each admitted ticker's bars dated before its entry date."""
+    if not admitted:
+        return
+    for d, day in price_matrix.items():
+        for t, start in admitted.items():
+            if d < start:
+                day.pop(t, None)
 
 
 def load_all_history():
@@ -273,7 +333,10 @@ def backfill_index_chained(sector_entities, weights, price_matrix, all_dates):
     (caller normalises to 1000 on NORMALISE_DATE).
     """
     tickers = [e["ticker"] for e in sector_entities]
-    wt = {t: weights.get(t, 0.0) for t in tickers}
+    # weights: one dict, or [(start, dict)] regimes from weight_regimes (admissions).
+    regimes = weights if isinstance(weights, list) else [(None, weights)]
+    regimes = sorted(regimes, key=lambda r: r[0] or "")
+    wt = {t: regimes[0][1].get(t, 0.0) for t in tickers}
     last_known, prev_known = {}, {}
     series = []
     idx = 1.0
@@ -287,6 +350,12 @@ def backfill_index_chained(sector_entities, weights, price_matrix, all_dates):
             series.append({"date": d, "value": idx})
             prev_known = dict(last_known)
             continue
+        if len(regimes) > 1:
+            current = regimes[0][1]
+            for start, w_r in regimes:
+                if start is None or start <= d:
+                    current = w_r
+            wt = {t: current.get(t, 0.0) for t in tickers}
         num = den = 0.0
         for t in tickers:
             w = wt[t]
@@ -674,6 +743,13 @@ def main():
     # ── load price history ───────────────────────────────────────────
     price_matrix, ticker_meta, all_dates = load_all_history()
 
+    # Admissions with an entry date count from that date only (see admission_dates).
+    admitted = admission_dates(_reg, [e["ticker"] for e in eligible], _eid)
+    drop_before_admission(price_matrix, admitted)
+    if admitted:
+        _notice("Admissions: {}".format(", ".join(
+            "{} from {}".format(t, d) for t, d in sorted(admitted.items()))))
+
     # ── Guard: every eligible constituent must have a matching history key ──
     # load_all_history keys price_matrix on each file's internal ticker. If an
     # eligible name's ticker has no bar on ANY date, its price history is
@@ -760,7 +836,8 @@ def main():
                     if prior and prior > 0 and abs(price / prior - 1) > 0.5:
                         index_quarantine.add(ticker)
                         skipped += 1
-            if ticker not in index_quarantine:
+            if ticker not in index_quarantine and not (
+                    ticker in admitted and inject_date < admitted[ticker]):
                 price_matrix[inject_date][ticker] = price
 
     injected = (len(prices_by_ticker) - skipped) if inject_date else 0
@@ -862,7 +939,10 @@ def main():
             # so mid-series clipping distorts the level. The dod guardrail blocks
             # a genuine daily spike at its source instead.
             sub_series_raw = backfill_index_chained(
-                sector_entities, sector_weights, price_matrix, all_dates
+                sector_entities,
+                weight_regimes(sector_entities, admitted, compute_capped_weights)
+                if any(e["ticker"] in admitted for e in sector_entities) else sector_weights,
+                price_matrix, all_dates
             )
             # Emit only from the robust-coverage base date. The chain warms up
             # (carry-forward + compounding) over the earliest ~20 dates, but the
@@ -935,12 +1015,23 @@ def main():
     # Price carry-forward so a ticker that's missing on a given day
     # still contributes its last-known price to sector mcap. Same
     # behaviour as backfill_index() uses for index computation.
+    #
+    # Entry adjustment (adopted 27 October 2026): a company admitted with an entry date
+    # adds its market value to its sector's share on its first priced day, which would
+    # move this level-weighted blend with no price change (SpaceX alone: about 3%). On
+    # that day the blend is computed with and without the entrants, and every value
+    # from then on is divided by the running product of those ratios, so the level is
+    # continuous. Companies admitted before the rule (no entry date) are unaffected.
     last_known_price = {}
     composite_pts = []
+    divisor = 1.0
+    live_admitted = set()
     for d in composite_dates:
         for t, p in price_matrix.get(d, {}).items():
             last_known_price[t] = p
         sector_mcap = {k: 0.0 for k in COMPOSITE_SECTORS}
+        entrant_mcap = {k: 0.0 for k in COMPOSITE_SECTORS}
+        entrants = []
         for t, shares in shares_by_ticker.items():
             sec = sector_of.get(t)
             if sec not in sector_mcap:
@@ -949,6 +1040,9 @@ def main():
             if p is None or p <= 0:
                 continue
             sector_mcap[sec] += shares * p
+            if t in admitted and t not in live_admitted:
+                entrant_mcap[sec] += shares * p
+                entrants.append(t)
         total = sum(sector_mcap.values())
         if total <= 0:
             continue
@@ -963,7 +1057,20 @@ def main():
             contributing += 1
         if contributing == 0:
             continue
-        composite_pts.append({"date": d, "value": round(composite_value_t, 2)})
+        if entrants:
+            rest = total - sum(entrant_mcap.values())
+            without = 0.0
+            if rest > 0:
+                for k in COMPOSITE_SECTORS:
+                    sub_val = sub_by_date.get(k, {}).get(d)
+                    if sub_val is not None:
+                        without += (sector_mcap[k] - entrant_mcap[k]) / rest * sub_val
+            if without > 0:
+                divisor *= composite_value_t / without
+                _notice("Entry adjustment on {} for {}: blend ratio {:.6f}, divided out".format(
+                    d, ", ".join(sorted(entrants)), composite_value_t / without))
+            live_admitted.update(entrants)
+        composite_pts.append({"date": d, "value": round(composite_value_t / divisor, 2)})
 
     unified_series = composite_pts
     # Renormalise defensively: sub-indices are each 1000 on 2025-03-31

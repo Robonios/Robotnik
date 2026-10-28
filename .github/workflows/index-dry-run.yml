@@ -1,0 +1,92 @@
+name: Index dry run
+
+# On a pull request that changes the index calculation or its registry inputs, this
+# recomputes the index family from the daily pipeline's cached inputs into
+# data/private/dryrun, which is gitignored and never committed, and compares the result
+# with the series main last published. It shows what a change does to every published
+# value before the change is merged.
+#
+# Read-only and secret-free: it restores the caches fetch-data.yml saves on main (a
+# pull request may read the default branch's caches), runs the pull request's own code,
+# and reports derived index levels and tickers only, never a price or a market cap.
+# It runs for branches of this repository only, so a fork's code never touches the cache.
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/calculate_index.py'
+      - 'scripts/verify_index_reconstruction.py'
+      - 'scripts/calculate_bottleneck_composite.py'
+      - 'scripts/index_dates.py'
+      - 'scripts/compare_index_dry_run.py'
+      - 'data/registries/entity_registry.json'
+      - 'data/registries/index_membership_exceptions.json'
+      - 'data/markets/enrichment_data.json'
+      - '.github/workflows/index-dry-run.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  dry-run:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the pull request
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Check out main's published index files
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: base
+          persist-credentials: false
+          sparse-checkout: data/index
+
+      - name: Restore the price history and market caps
+        uses: actions/cache/restore@v5
+        with:
+          path: |
+            data/prices/history
+            data/index/market_caps.json
+          key: robotnik-price-history-v1-dryrun-${{ github.run_id }}
+          restore-keys: |
+            robotnik-price-history-v1-
+
+      - name: Restore the assembled prices
+        uses: actions/cache/restore@v5
+        with:
+          path: data/prices/all_prices.json
+          key: robotnik-all-prices-v1-dryrun-${{ github.run_id }}
+          restore-keys: |
+            robotnik-all-prices-v1-
+
+      - name: Stop unless the caches restored
+        run: |
+          N=$(find data/prices/history -maxdepth 1 -name '*.json' 2>/dev/null | wc -l | tr -d ' ')
+          if [ "$N" -lt 300 ] || [ ! -f data/index/market_caps.json ] || [ ! -f data/prices/all_prices.json ]; then
+            echo "::error::Dry run: the pipeline's caches did not restore (${N} history files). Nothing was compared."
+            exit 1
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Recompute the index family into data/private/dryrun
+        env:
+          ROBOTNIK_INDEX_OUT: data/private/dryrun
+        run: |
+          python scripts/run_step.py -- python scripts/calculate_index.py
+          python scripts/run_step.py -- python scripts/verify_index_reconstruction.py
+          python scripts/run_step.py -- python scripts/calculate_bottleneck_composite.py
+
+      - name: Compare with main's published series
+        run: python scripts/compare_index_dry_run.py --base base/data/index --dry data/private/dryrun

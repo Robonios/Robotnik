@@ -19,20 +19,27 @@ follow an entity change actually happened. This closes the unwatched transitions
                           staleness-monitor.yml restores from the fetch-data.yml cache.
   E10 graduation         — a company listed in our own funding data but never admitted to
                           the public universe (the ten IPOs).
+  E11 listing watch      — a company the registry holds as private or pre-IPO that has
+                          listed (SpaceX: Nasdaq 12 June 2026; Unitree: STAR 19 August 2026;
+                          both sat as pre-IPO for months, because E10 skips pre-IPO names and
+                          reads listings from the funding data only). Two signals: its name
+                          matches an SEC registrant (company_tickers.json), or it has been
+                          pre-IPO for more than PRE_IPO_REVIEW_DAYS since its filing date.
 
 NOT re-implemented here (already guarded — do not rebuild): E1 route-existence (the
 completeness gate in fetch_prices_marketstack), E5 weights / E6 market_caps / E7 history
 (reverse-parity guard in calculate_index), E8 search_index / E9 cik_map (the two
 `--check` drift guards).
 
-Severity: WARN. Actionable findings (E3 regressions, E4 escalations, E10 gaps) set exit 1
+Severity: WARN. Actionable findings (E3 regressions, E4 escalations, E10 gaps, E11 listings) set exit 1
 so the workflow goes RED and the warning is seen; E4 escalations are also written to
 data/quarantine/auto_quarantine_candidates.json, which the weekly quarantine report reads.
 The E2 migration backlog is reported but, being standing debt, does not by itself red the
 daily run unless --strict.
 
 Modes:
-  (default)         daily sweep: E2, E4 (+exit), E10.
+  (default)         daily sweep: E2, E4 (+exit), E10, E11. E11 reads the SEC list over the
+                    network; if it can't be fetched, only the pre-IPO age signal runs.
   --validate [MAP]  E3 only: compare a proposed map (default: the working-tree
                     marketstack_symbols.json) against the COMMITTED map (git HEAD) and
                     exit 1 on any regression. For use right after resolve_marketstack_symbols
@@ -42,6 +49,7 @@ Modes:
 """
 import json
 import os
+import re
 import subprocess
 import sys
 from datetime import datetime, timezone, date
@@ -338,6 +346,69 @@ def check_graduation(reg):
     return gaps
 
 
+# ── E11: listing watch (private or pre-IPO -> listed) ────────────────────────
+PRE_IPO_REVIEW_DAYS = 45      # days after a pre-IPO filing before a listing is due a check
+_SUFFIX_WORDS = {"inc", "incorporated", "corp", "corporation", "co", "company", "ltd",
+                 "limited", "plc", "holdings", "holding", "group", "sa", "nv", "ag", "se",
+                 "spa", "llc", "lp", "the", "class", "a", "b", "adr", "ads"}
+
+
+def _name_key(s):
+    """'Space Exploration Technologies Corp.' -> 'space exploration technologies'."""
+    words = re.sub(r"[^a-z0-9 ]", " ", str(s or "").lower().replace("&", " and ")).split()
+    return " ".join(w for w in words if w not in _SUFFIX_WORDS)
+
+
+def load_sec_titles():
+    """{normalised registrant name: [tickers]} from SEC company_tickers.json, or None
+    when the list can't be fetched."""
+    try:
+        from build_cik_map import load_sec, SECUnavailable
+    except Exception:
+        return None
+    try:
+        sec = load_sec()
+    except SECUnavailable:
+        return None
+    titles = {}
+    for tkr, (_cik, title) in sec.items():
+        k = _name_key(title)
+        if k:
+            titles.setdefault(k, []).append(tkr)
+    return titles
+
+
+def check_listings(reg, titles, today=None):
+    """E11: each non-excluded entity held as private or pre-IPO whose name or an alias
+    matches an SEC registrant exactly (after dropping corporate suffixes), and each
+    pre-IPO entity whose filing date (valuation_as_of) is more than PRE_IPO_REVIEW_DAYS
+    old or missing. Both mean: check whether it has listed, and admit it if so."""
+    today = today or date.today()
+    found = []
+    for k, v in reg.items():
+        if not isinstance(v, dict) or v.get("status") is not None:
+            continue
+        life = v.get("lifecycle_status") or ("private" if v.get("type") == "private" else None)
+        if life not in ("private", "pre_ipo_filed", "pre_ipo_priced"):
+            continue
+        names = {_name_key(x) for x in [v.get("name")] + (v.get("aliases") or [])} - {""}
+        hits = sorted({t for n in names for t in (titles or {}).get(n, [])})
+        if hits:
+            found.append({"entity": k, "lifecycle": life, "signal": "sec",
+                          "detail": "SEC registrant {}".format(", ".join(hits[:3]))})
+            continue
+        if life.startswith("pre_ipo"):
+            since = str(v.get("valuation_as_of") or "")[:10]
+            try:
+                age = (today - date.fromisoformat(since)).days
+            except ValueError:
+                age = None
+            if age is None or age > PRE_IPO_REVIEW_DAYS:
+                found.append({"entity": k, "lifecycle": life, "signal": "age",
+                              "detail": "pre-IPO since {}".format(since or "an unknown date")})
+    return found
+
+
 # ── candidate feed (weekly report reads this file) ──────────────────────────
 def frozen_signal(e):
     """The corroboration that escalated an E4 record."""
@@ -366,7 +437,7 @@ def feed_candidates(escalations):
         json.dump(cand, f, indent=2)
 
 
-def annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new):
+def annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new, e11_new=()):
     """In GitHub Actions, print each finding as an annotation, so the run summary says
     why the workflow is red without opening the log. Acknowledged findings print as
     warnings; unaddressed ones as errors. Dates and tickers only, never a price."""
@@ -388,6 +459,11 @@ def annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new):
         print("::error::E10 graduation: {} is listed in the funding data ({}) but absent "
               "from the public universe. Admit it, or acknowledge it in "
               "data/quarantine/lifecycle_acknowledged.json.".format(g["company"], g["date"]))
+    for f in e11_new:
+        print("::error::E11 listing watch: {} is held as {} ({}). Check whether it has "
+              "listed and admit it, or acknowledge it in "
+              "data/quarantine/lifecycle_acknowledged.json.".format(
+                  f["entity"], f["lifecycle"], f["detail"]))
 
 
 # ── main ────────────────────────────────────────────────────────────────────
@@ -418,6 +494,11 @@ def main():
     e2, e2_kept = check_route_optimality(ap)
     e4_cand, e4_esc = check_frozen(ap)
     e10 = check_graduation(reg)
+    titles = load_sec_titles()
+    if titles is None and os.environ.get("GITHUB_ACTIONS") == "true":
+        print("::warning::E11 listing watch: the SEC list could not be fetched; only the "
+              "pre-IPO age signal ran.")
+    e11 = check_listings(reg, titles)
     feed_candidates(e4_esc)
 
     # Acknowledgment baseline (data/quarantine/lifecycle_acknowledged.json = {"E2": [...],
@@ -432,8 +513,9 @@ def main():
     e2_new = _new("E2", e2, lambda f: f[0])
     e4_new = _new("E4", e4_esc, lambda e: e["ticker"])
     e10_new = _new("E10", e10, lambda g: g.get("entity_id") or g.get("company"))
-    actionable = bool(e2_new or e4_new or e10_new)
-    annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new)
+    e11_new = _new("E11", e11, lambda f: f["entity"])
+    actionable = bool(e2_new or e4_new or e10_new or e11_new)
+    annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new, e11_new)
 
     if as_json:
         print(json.dumps({
@@ -443,6 +525,7 @@ def main():
             "E4_frozen_candidates": e4_cand,
             "E4_escalations": e4_esc,
             "E10_graduation_gaps": e10,
+            "E11_listing_watch": e11,
             "actionable": actionable,
         }, indent=2))
         return 1 if actionable else 0
@@ -481,10 +564,19 @@ def main():
                 str(g["company"])[:26], g["lifecycle"], g["note"], g["date"]))
     else:
         print("   none — every IPO'd name in funding is admitted.")
-    n_ack = (len(e2) - len(e2_new)) + (len(e4_esc) - len(e4_new)) + (len(e10) - len(e10_new))
+    print("\nE11 listing watch (private or pre-IPO names that may have listed; SEC list {}):".format(
+        "read" if titles is not None else "unavailable, age signal only"))
+    if e11:
+        for f in e11:
+            print("   [CHECK] {:26} lifecycle={:13} {}".format(f["entity"][:26], f["lifecycle"], f["detail"]))
+    else:
+        print("   none.")
+    n_ack = ((len(e2) - len(e2_new)) + (len(e4_esc) - len(e4_new)) + (len(e10) - len(e10_new))
+             + (len(e11) - len(e11_new)))
     print("\n" + "-" * 78)
-    print("RESULT: {} unaddressed finding(s) — E2={} E4={} E10={}{} (exit {})".format(
-        len(e2_new) + len(e4_new) + len(e10_new), len(e2_new), len(e4_new), len(e10_new),
+    print("RESULT: {} unaddressed finding(s) — E2={} E4={} E10={} E11={}{} (exit {})".format(
+        len(e2_new) + len(e4_new) + len(e10_new) + len(e11_new), len(e2_new), len(e4_new),
+        len(e10_new), len(e11_new),
         "  [{} acknowledged]".format(n_ack) if n_ack else "", 1 if actionable else 0))
     return 1 if actionable else 0
 
