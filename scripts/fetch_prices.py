@@ -439,13 +439,16 @@ EQUITIES = [
     ("HAWK", "HawkEye 360", "Space", "United States"),
     ("688795 C1", "Moore Threads", "Semiconductors", "China"),
 
-    # ── Listings found 27 October 2026 (E11): DATA-FETCH stage. Added so the price,
-    # history and market-cap fetchers collect them while the registry still holds
-    # both as pre-IPO; the registry change that admits them, with an index_entry_date,
-    # follows once their data is in the caches. Both route to Yahoo via
-    # data_source_overrides.json.
+    # ── Listings found 27 and 28 October 2026 (E11): DATA-FETCH stage. Added so the
+    # price, history and market-cap fetchers collect them while the registry still
+    # holds them as private or pre-IPO; the registry change that admits them, with an
+    # index_entry_date, follows once their data is in the caches. All route to Yahoo
+    # via data_source_overrides.json.
     ("SPCX", "SpaceX", "Space", "United States"),                 # Nasdaq, first trade 2026-06-12
     ("688836 C1", "Unitree Robotics", "Robotics", "China"),      # SSE STAR, first trade 2026-08-19
+    ("INFQ", "Infleqtion", "Semiconductors", "United States"),   # NYSE, first trade 2026-02-17 (de-SPAC)
+    ("SWMR", "Swarmer", "Robotics", "United States"),            # Nasdaq, IPO closed March 2026
+    ("STDN", "Standard Nuclear", "Materials", "United States"),  # NYSE, first trade 2026-07-16
 ]
 
 

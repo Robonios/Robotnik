@@ -9208,7 +9208,9 @@
     "lifecycle_status": "public",
     "public_ticker": "688795 C1",
     "membership_audit": "2026-08-20",
-    "transition_note": "private->public via Moore Threads SSE STAR listing (688795). Immutable entity_id; lifecycle field-update only. Priced via Yahoo override (v2 .SS 422s, .XSHG serves - ladder gap)."
+    "transition_note": "private->public via Moore Threads SSE STAR listing (688795). Immutable entity_id; lifecycle field-update only. Priced via Yahoo override (v2 .SS 422s, .XSHG serves - ladder gap). First trade 2025-12-05; index_entry_date set to the listing day on 2026-10-28 (Robert). Its Yahoo history, which started on 2026-03-27, is refetched over the full range from then on.",
+    "ipo_date": "2025-12-05",
+    "index_entry_date": "2025-12-05"
   },
   "moonshot-ai": {
     "id": "moonshot-ai",
@@ -9642,7 +9644,8 @@
     "aliases": [
       "POSITRON",
       "Positron",
-      "positron"
+      "positron",
+      "Positron AI"
     ],
     "last_round": "Series B",
     "total_raised_m": 230.0,

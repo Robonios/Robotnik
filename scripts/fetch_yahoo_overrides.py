@@ -17,6 +17,9 @@ Modes:
                         as a new admission, gets the 5-year range on its first run;
                         the compact refresh (100 days) would start it short of its
                         listing day, and the missing bars would never be fetched.
+                        A history that starts inside the 5-year window also gets
+                        the full range, merged: a young listing gets the same bars
+                        back, and a history cut short when it was added heals.
 
 Usage:
     python scripts/fetch_yahoo_overrides.py --overrides
@@ -134,6 +137,15 @@ def cmd_overrides():
     print("Output: {}".format(EQUITIES_PATH.relative_to(ROOT)))
 
 
+def _first_bar(hpath):
+    """The first bar's date in a history file, or None if it can't be read."""
+    try:
+        series = json.loads(hpath.read_text()).get("series") or []
+        return str(series[0]["date"])[:10] if series else None
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
 def cmd_history_overrides(backfill=False):
     """Fetch history for each override ticker and write per-ticker JSON."""
     targets = load_active_overrides()
@@ -155,14 +167,22 @@ def cmd_history_overrides(backfill=False):
     print("=" * 60)
     cc.refresh_all(backfill=backfill, fetcher=fetch_fx_daily)
 
-    ok = failed = first_runs = 0
+    ok = failed = first_runs = short_runs = 0
+    # A history whose first bar falls after this date starts inside the 5-year window.
+    window_start = (date.today() - timedelta(days=365 * 5 - 30)).isoformat()
     for ticker, yahoo_sym, entry in targets:
         fname = ticker_to_filename(ticker)
         hpath = HISTORY_DIR / "{}.json".format(fname)
         # No history yet (a new admission): take the full range, not the compact one.
         first = not hpath.exists()
-        size = "5y" if (backfill or first) else "compact"
+        # A history starting inside the window is a young listing or one cut short when
+        # it was added (Moore Threads, from 2026-03-27 against a 2025-12-05 listing):
+        # take the full range and merge.
+        start = None if first else _first_bar(hpath)
+        short = bool(start) and start > window_start
+        size = "5y" if (backfill or first or short) else "compact"
         first_runs += first and not backfill
+        short_runs += short and not backfill
         try:
             data = fetch_yahoo_daily(yahoo_sym, output_size=size)
             native_ccy = data.get("currency")
@@ -207,8 +227,8 @@ def cmd_history_overrides(backfill=False):
             print("  FAIL {:14s} ({:14s}) {}".format(ticker, yahoo_sym, str(e)[:80]))
         time.sleep(INTER_CALL_SLEEP)
 
-    print("\nRESULT: {} ok, {} failed; {} new ticker(s) fetched over 5 years".format(
-        ok, failed, first_runs))
+    print("\nRESULT: {} ok, {} failed; {} new ticker(s) and {} history(ies) starting inside "
+          "the window fetched over 5 years".format(ok, failed, first_runs, short_runs))
 
 
 def main():

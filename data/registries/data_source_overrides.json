@@ -586,5 +586,32 @@
     ],
     "reason": "Unitree Robotics, SSE STAR 688836, first trade 2026-08-19. Routed as the other recent STAR listings (CXMT 688825, Moore Threads 688795), whose MarketStack v2 .SS symbols return HTTP 422. Yahoo 688836.SS returns a CNY close; USD via daily FX. E2 flags the override if MarketStack v2 serves it fresh.",
     "added_date": "2026-10-27"
+  },
+  "INFQ": {
+    "provider": "yahoo",
+    "yahoo_symbol": "INFQ",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Infleqtion, NYSE INFQ, first trade 2026-02-17 after its merger with Churchill Capital Corp X. Yahoo's history may carry the SPAC's bars before that date; the index_entry_date drops them. Added with no MarketStack resolution attempted, as for CBRS and SPCX: recent listings have lagged MarketStack's catalogue. Yahoo serves the US listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-10-28"
+  },
+  "SWMR": {
+    "provider": "yahoo",
+    "yahoo_symbol": "SWMR",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Swarmer, Nasdaq SWMR, IPO closed March 2026 (first trade date to be read from the history). Added with no MarketStack resolution attempted, as for CBRS and SPCX: recent listings have lagged MarketStack's catalogue. Yahoo serves the US listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-10-28"
+  },
+  "STDN": {
+    "provider": "yahoo",
+    "yahoo_symbol": "STDN",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Standard Nuclear, NYSE STDN, first trade 2026-07-16. Added with no MarketStack resolution attempted, as for CBRS and SPCX: recent listings have lagged MarketStack's catalogue. Yahoo serves the US listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-10-28"
   }
 }
