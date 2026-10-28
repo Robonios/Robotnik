@@ -1,0 +1,271 @@
+/* Robotnik front door (index.html), from approved mock v6 of 27 October 2026.
+   A light page: the product keeps the dark theme in css/style.css, which this page
+   does not load. The request-access form comes from js/nav.js and styles itself. */
+:root{
+  --bg:#ECEBE6;--cell:#F4F3EF;--cell-2:#FAF9F6;--line:#D2CFC6;--line-2:#B9B5AB;
+  --ink:#121418;--ink-2:#3E434C;--mute:#676C75;--faint:#979BA2;
+  --brand:#F5D921;--red:#B8352A;
+  --up:#13744A;--dn:#BE353B;
+  --se:#2C64C9;--ro:#0E7D66;--sp:#C9522E;--ma:#7247BF;
+  --disp:"Space Grotesk",system-ui,sans-serif;--body:"Mulish",system-ui,sans-serif;--num:"Roboto Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.23,1,.32,1);--pad:44px;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;color:var(--ink);font-family:var(--disp);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 28px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+.num{font-family:var(--num);font-weight:500;font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* the frame: a ruled sheet, every band a grid of hairline cells */
+.frame{max-width:1440px;margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.band{display:grid;gap:1px;background:var(--line);border-bottom:1px solid var(--line)}
+.band>*{background:var(--bg);min-width:0}
+.c8{grid-template-columns:repeat(8,minmax(0,1fr))}
+.s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}.s8{grid-column:span 8}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--ink);margin:0}
+.eyebrow::before{content:'';width:8px;height:8px;background:var(--ink);flex:none}
+/* corner marks, as on a drawing sheet */
+.marks{position:relative}
+.marks::before,.marks::after{content:'';position:absolute;width:12px;height:12px;pointer-events:none;border:0 solid var(--line-2)}
+.marks::before{left:12px;top:12px;border-left-width:1.5px;border-top-width:1.5px}
+.marks::after{right:12px;bottom:12px;border-right-width:1.5px;border-bottom-width:1.5px}
+
+/* buttons: square, one clipped corner */
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border:0;cursor:pointer;font-weight:600;font-size:15px;background:var(--brand);color:var(--ink);clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);transition:transform 160ms var(--ease),filter 150ms ease}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:var(--ink);color:var(--bg)}
+/* the clipped corner clips an outside outline, so the focus ring sits inside */
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:-6px}
+.btn.ghost:focus-visible{outline-color:var(--bg)}
+@media(hover:hover) and (pointer:fine){.btn:hover{filter:brightness(1.04) saturate(1.05)}.btn.ghost:hover{filter:none;background:#262a31}}
+.btn svg{flex:none}
+
+/* nav */
+.nav{grid-template-columns:repeat(8,minmax(0,1fr));height:72px}
+.nav>*{display:flex;align-items:center;padding:0 24px}
+.brand{gap:11px;font-weight:600;font-size:18px;letter-spacing:-.01em}
+.brand i{width:12px;height:12px;background:var(--brand);transform:rotate(45deg);box-shadow:0 0 0 1px rgba(18,20,24,.12)}
+.links{gap:4px}
+.links a{font-size:15px;font-weight:500;color:var(--ink-2);padding:8px 12px;transition:background 150ms ease,color 150ms ease}
+@media(hover:hover) and (pointer:fine){.links a:hover{background:var(--cell);color:var(--ink)}}
+.nav .cta{justify-content:flex-end;padding-right:16px}
+
+/* hero */
+.hero>.copy{padding:56px var(--pad) 48px;display:flex;flex-direction:column;min-height:600px}
+.hero h1{font-size:clamp(44px,5.5vw,82px);font-weight:600;line-height:.98;letter-spacing:-.04em;margin:36px 0 0;text-wrap:balance;max-width:11.5em}
+.hero .lede{font-family:var(--body);font-size:18px;line-height:1.55;color:var(--ink-2);margin:auto 0 0;padding-top:36px;max-width:46ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.stage{position:relative;overflow:hidden;background:var(--cell)}
+.stage .lab{position:absolute;left:26px;top:22px;font-size:13px;font-weight:500;color:var(--mute);display:flex;gap:8px;align-items:center}
+.stage .lab b{font-weight:500;color:var(--ink)}
+.stage .hint{position:absolute;right:26px;top:22px;font-size:13px;color:var(--faint);transition:color 150ms ease}
+
+/* the robot: a pre-rendered body and a sprite of head angles. The aspect ratio is the
+   body size in assets/robot/robot.json; js/front-door.js reads that file, sizes and
+   places the head and glass layers from it, and fades the head in once its sheet loads. */
+.robot{position:absolute;left:50%;bottom:-6%;height:min(96%,610px);width:auto;transform:translateX(-50%);aspect-ratio:559/815;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.robot img{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none}
+.rb-h{position:absolute;background-repeat:no-repeat;background-position:0 0;pointer-events:none;opacity:0;transition:opacity 260ms var(--ease)}
+.rb-h.on{opacity:1}
+.rb-g{position:absolute;background-repeat:no-repeat;background-size:100% 100%;pointer-events:none}
+.robot:focus-visible{outline-offset:-6px}
+@media(hover:hover) and (pointer:fine){.stage:has(.robot:hover) .hint{color:var(--ink)}}
+
+/* index tiles */
+.ihead{grid-template-columns:repeat(8,minmax(0,1fr))}
+.ihead>div{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;font-size:13px;color:var(--mute)}
+.ihead .end{justify-content:flex-end}
+.ihead .eyebrow{font-size:13px}
+.tiles{grid-template-columns:repeat(5,minmax(0,1fr))}
+.tile{position:relative;display:grid;grid-template-rows:auto auto auto 1fr;padding:18px 22px 0;min-height:176px;cursor:pointer;transition:background 160ms ease}
+.tile .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.tile .nm{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tile .cd{font-size:12.5px;color:var(--mute);white-space:nowrap}
+.tile .v{font-size:30px;line-height:1.1;margin-top:14px;letter-spacing:-.02em}
+.tile .ch{font-size:14px;margin-top:6px;display:flex;align-items:baseline;gap:8px}
+.tile .ch i{font-style:normal;font-family:var(--disp);font-size:12.5px;color:var(--faint)}
+.tile.up .ch span{color:var(--up)}.tile.dn .ch span{color:var(--dn)}
+.tile svg{align-self:end;display:block;width:calc(100% + 44px);margin:12px -22px 0;height:52px}
+.tile{--k:var(--mute)}.tile.up{--k:var(--up)}.tile.dn{--k:var(--dn)}
+.tile .ln{fill:none;stroke:var(--k);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.tile .ar{fill:var(--k);opacity:.1}
+.tile .go{position:absolute;right:20px;bottom:62px;font-size:13px;font-weight:500;opacity:0;transform:translateX(-4px);transition:opacity 160ms ease,transform 200ms var(--ease)}
+@media(hover:hover) and (pointer:fine){.tile:hover{background:var(--cell-2)}.tile:hover .go{opacity:1;transform:none}}
+.tile:active{background:var(--cell)}
+.tile:focus-visible{outline-offset:-2px}
+.tile .ch .na{color:var(--mute)}
+/* a stale index keeps its last value, marked delayed with its age (index_summary.json freshness_rule) */
+.tile.stale .ch{flex-wrap:wrap;row-gap:4px}
+.dl{font-family:var(--disp);font-weight:600;font-size:11.5px;color:var(--ink);background:color-mix(in srgb,var(--brand) 42%,var(--cell));padding:1px 6px;white-space:nowrap}
+
+/* facts */
+.facts>div{padding:30px 24px 32px}
+.facts .big{font-variant-numeric:tabular-nums;font-size:clamp(34px,3.2vw,46px);font-weight:600;letter-spacing:-.035em;line-height:1}
+.facts .lab{font-family:var(--body);font-size:14.5px;line-height:1.5;color:var(--mute);margin-top:12px;max-width:30ch}
+
+/* marquee of the eight tiers */
+.marq{overflow:hidden;white-space:nowrap;padding:26px 0;background:var(--bg)}
+.marq .track{display:inline-flex;gap:56px;padding-left:56px;animation:marq 70s linear infinite}
+.marq span{font-size:clamp(34px,4vw,60px);font-weight:600;letter-spacing:-.035em;display:inline-flex;align-items:baseline;gap:14px}
+.marq span small{font-family:var(--num);font-size:.32em;font-weight:500;letter-spacing:0;color:var(--mute);transform:translateY(-1.2em)}
+.marq span::after{content:'';width:.22em;height:.22em;background:var(--brand);margin-left:42px;align-self:center;box-shadow:0 0 0 1px rgba(18,20,24,.15)}
+@keyframes marq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marq .track{animation:none}}
+@media(hover:hover){.marq:hover .track{animation-play-state:paused}}
+
+/* section heads */
+.shead>div{padding:64px var(--pad) 40px}
+.shead h2{font-size:clamp(32px,3.4vw,50px);font-weight:600;line-height:1.02;letter-spacing:-.035em;margin:22px 0 0;text-wrap:balance}
+.shead p{font-family:var(--body);font-size:17px;line-height:1.55;color:var(--ink-2);margin:0;max-width:52ch}
+.shead .r{display:flex;flex-direction:column;justify-content:flex-end;gap:20px}
+
+/* the stack map */
+.one{grid-template-columns:1fr}
+.mapwrap{position:relative;background:var(--bg)}
+.mapscroll{overflow-x:auto}
+.mapscroll:focus-visible{outline-offset:-2px}
+.map{position:relative;display:grid;grid-template-columns:168px repeat(8,minmax(0,1fr));gap:1px;background:var(--line);min-width:980px}
+.map>div{background:var(--bg);min-height:96px;position:relative}
+.map .th{min-height:0;padding:14px 14px 16px;display:flex;flex-direction:column;gap:6px}
+.map .th b{font-family:var(--num);font-weight:500;font-size:12px;color:var(--mute)}
+.map .th span{font-size:13.5px;font-weight:500;line-height:1.25}
+.map .sl{display:flex;align-items:center;gap:10px;padding:0 18px;font-size:15px;font-weight:600}
+.map .sl i{width:10px;height:10px;flex:none}
+.map .cell{padding:14px;transition:background 260ms ease,box-shadow 260ms ease}
+.map .cell.full{background:color-mix(in srgb,var(--sc) 9%,var(--cell))}
+.map .cell.full .n{font-family:var(--num);font-weight:500;font-size:24px;letter-spacing:-.02em;line-height:1}
+.map .cell.full .u{font-size:12.5px;color:var(--mute);margin-top:6px}
+.map .cell.full::before{content:'';position:absolute;right:12px;top:12px;width:7px;height:7px;background:var(--sc)}
+.map .cell.thin{background:var(--bg)}
+.map .cell.thin::after{content:'';position:absolute;inset:8px;border:1.5px dashed var(--line-2);pointer-events:none}
+.map .cell.thin .n{font-size:13px;font-weight:500;color:var(--ink-2)}
+.map .cell.thin .u{font-size:12px;color:var(--faint);margin-top:4px;line-height:1.3}
+.map .cell.hit{background:color-mix(in srgb,var(--brand) 42%,var(--cell));box-shadow:inset 0 0 0 2px var(--ink)}
+.map .cell.src{background:var(--brand);box-shadow:inset 0 0 0 2px var(--ink)}
+.map .tag{position:absolute;left:10px;bottom:10px;background:var(--ink);color:var(--bg);font-size:11.5px;font-weight:600;padding:3px 7px;white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 260ms var(--ease)}
+.map.on .tag{opacity:1;transform:none}
+.trace{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.trace .ln{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:1;stroke-dashoffset:1}
+.map.on .trace .ln{stroke-dashoffset:0;transition:stroke-dashoffset 380ms var(--ease)}
+.trace .hd{fill:var(--ink);opacity:0}
+.map.on .trace .hd{opacity:1;transition:opacity 120ms ease}
+.mapfoot{grid-template-columns:repeat(8,minmax(0,1fr))}
+.mapfoot>div{padding:16px 24px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;font-size:13px;color:var(--mute)}
+.key{display:inline-flex;align-items:center;gap:8px}
+.key i{width:14px;height:14px;display:inline-block}
+.key .kf{background:color-mix(in srgb,var(--se) 14%,var(--cell));box-shadow:inset 0 0 0 1px var(--line)}
+.key .kt{border:1.5px dashed var(--line-2)}
+.key .ke{background:var(--bg);box-shadow:inset 0 0 0 1px var(--line)}
+.key .kh{background:color-mix(in srgb,var(--brand) 42%,var(--cell));box-shadow:inset 0 0 0 1.5px var(--ink)}
+.replay{margin-left:auto;border:0;background:none;padding:6px 0;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;display:inline-flex;gap:8px;align-items:center}
+.replay:active{transform:scale(.97)}
+
+/* demo video */
+.video{position:relative;aspect-ratio:16/8;background:var(--cell);overflow:hidden;display:grid;place-items:center}
+.vposter{position:absolute;inset:12% 10% 20%;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(4,1fr);gap:6px;opacity:.6}
+.vposter i{background:var(--bg);box-shadow:inset 0 0 0 1px var(--line)}
+.vposter i.f{background:color-mix(in srgb,var(--se) 10%,var(--cell))}
+.vposter i.h{background:color-mix(in srgb,var(--brand) 40%,var(--cell));box-shadow:inset 0 0 0 1.5px var(--ink)}
+.play{position:relative;z-index:2;width:92px;height:92px;border:0;border-radius:50%;background:var(--brand);cursor:pointer;display:grid;place-items:center;box-shadow:0 0 0 1px rgba(18,20,24,.12),0 12px 30px -12px rgba(18,20,24,.35);transition:transform 180ms var(--ease)}
+.play:active{transform:scale(.96)}
+@media(hover:hover) and (pointer:fine){.play:hover{transform:scale(1.04)}}
+.play svg{margin-left:5px}
+.vmeta{position:absolute;left:24px;right:24px;bottom:20px;display:flex;justify-content:space-between;font-size:13.5px;color:var(--mute)}
+.vmeta b{color:var(--ink);font-weight:500}
+
+/* steps */
+.steps>div{padding:30px 24px 36px}
+.steps .k{font-family:var(--num);font-size:13px;color:var(--mute)}
+.steps h3{font-size:19px;font-weight:600;letter-spacing:-.015em;margin:44px 0 10px;line-height:1.2}
+.steps p{font-family:var(--body);font-size:15.5px;line-height:1.55;color:var(--ink-2);margin:0}
+
+/* index family */
+.fam .row{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr) minmax(0,2fr) minmax(0,2fr);gap:24px;align-items:baseline;padding:22px 24px;background:var(--bg);transition:background 900ms ease}
+.fam .row.flash{background:color-mix(in srgb,var(--brand) 36%,var(--bg));transition:background 120ms ease}
+.fam .n{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.fam .w{font-family:var(--body);font-size:15.5px;color:var(--ink-2)}
+.fam .c{font-size:14px;color:var(--mute)}
+.fam .x{text-align:right;font-size:15px}
+.fam .x span{display:block;font-size:13px}
+.fam .x .up{color:var(--up)}.fam .x .dn{color:var(--dn)}.fam .x .na{color:var(--mute)}
+.fam .x .dl{display:inline-block;margin-top:6px}
+.fam .row:focus-visible{outline-offset:-2px}
+
+/* methods */
+.lib a,.lib div{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:20px 24px;background:var(--bg);transition:background 150ms ease}
+.lib .t{font-size:18px;font-weight:500;letter-spacing:-.01em}
+.lib .k{font-family:var(--body);font-size:14px;color:var(--mute);margin-left:14px}
+.lib .st{font-size:14px;font-weight:600}
+.lib div .t{color:var(--mute)}.lib div .st{font-weight:500;color:var(--faint)}
+@media(hover:hover) and (pointer:fine){.lib a:hover{background:var(--cell-2)}}
+.lib a:focus-visible{outline-offset:-2px}
+
+/* close */
+.close>.copy{padding:72px var(--pad);display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:420px}
+.close h2{font-size:clamp(36px,4.4vw,64px);font-weight:600;line-height:1;letter-spacing:-.04em;margin:22px 0 0;max-width:13em;text-wrap:balance}
+.close .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.close .stage .robot{height:min(94%,520px)}
+footer.band>div{padding:22px 24px;display:flex;align-items:center;gap:24px;font-size:14px;color:var(--mute)}
+footer .l{justify-content:flex-end}
+footer .brand{display:flex;font-size:15px}
+footer .brand i{width:10px;height:10px}
+.linkish{border:0;background:none;padding:0;cursor:pointer;font:inherit;color:inherit}
+
+/* the request-access form (js/nav.js) is dark: give its focus ring the brand colour */
+#early-access-modal :focus-visible{outline-color:var(--brand)}
+
+/* responsive */
+@media(max-width:1100px){
+  :root{--pad:32px}
+  .links a{padding:8px 8px;font-size:14px}
+  .tile{padding:16px 16px 0}.tile svg{width:calc(100% + 32px);margin:12px -16px 0}.tile .v{font-size:25px}.tile .cd{display:none}
+}
+@media(max-width:860px){
+  :root{--pad:22px}
+  body{padding:0}
+  .frame{border:0}
+  .c8,.nav,.ihead,.mapfoot{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .s2,.s3,.s4,.s5,.s8{grid-column:span 2}
+  .nav{height:64px}.nav .links{display:none}.nav .brand{grid-column:span 1}.nav .cta{grid-column:span 1;padding-right:12px}
+  .nav .btn{height:42px;padding:0 16px;font-size:14px}
+  .hero>.copy{min-height:0;padding:40px var(--pad) 36px}
+  .hero h1{margin-top:28px}
+  .hero .lede{margin-top:0;padding-top:24px;font-size:17px}
+  .hero .stage{height:min(108vw,470px)}
+  .hero h1{font-size:clamp(40px,8.4vw,64px)}
+  .ihead>div{padding:12px 20px;grid-column:span 1!important}.ihead>div:last-child{justify-content:flex-end}
+  /* as wide as its tracks, so the hairlines and the pinned sector labels run the full scroll */
+  .map{grid-template-columns:138px repeat(8,114px);min-width:0;width:max-content}
+  .map .sl{position:sticky;left:0;z-index:2;padding:0 12px;font-size:13.5px;gap:8px}
+  .map .tag{font-size:11px;padding:3px 6px;left:8px;bottom:8px}.map>div:first-child{position:sticky;left:0;z-index:2}
+  .stage .hint{display:none}
+  .tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:1px}
+  .tiles::-webkit-scrollbar{display:none}
+  .tile{flex:0 0 min(66%,280px);scroll-snap-align:start;min-height:168px}
+  .facts.c8>div{grid-column:span 1}
+  .marq{padding:18px 0}
+  .shead>div{padding:48px var(--pad) 28px}.shead>div+div{padding-top:0}
+  .mapfoot>div{grid-column:span 2}
+  .steps.c8>div{grid-column:span 2}
+  .steps h3{margin-top:22px}
+  .fam .row{grid-template-columns:1fr;gap:4px}.fam .x{text-align:left}
+  .lib a,.lib div{flex-direction:column;gap:4px}.lib .k{margin-left:0;display:block}
+  .close>.copy{min-height:0;padding:48px var(--pad)}
+  .close .stage{height:360px}
+  footer.band>div{grid-column:span 2}footer .l{justify-content:flex-start}
+  .video{aspect-ratio:4/3}
+}
+
+/* reduced motion: everything holds still. The robots keep their resting pose, the
+   trace shows its end state and the marquee stops. */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .btn:active,.play:active,.replay:active,.play:hover{transform:none!important}
+  .tile .go{transform:none}
+  .robot{cursor:default}
+  .stage .hint{display:none}
+}

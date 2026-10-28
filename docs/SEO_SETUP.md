@@ -90,7 +90,7 @@ If an OG image doesn't appear, the usual cause is caching on the platform side. 
 
 ## 5. Open Graph image — follow-up
 
-The current OG images in `/og/` (`default.png`, `home.png`, `research.png`, `frontier-assets.png`) are composed from `cosmonaut-bg.png` plus a wordmark overlay. They're functional but if you want higher-production versions:
+The home page uses `/og/front-door.png`, a render of the front door's hero. The OG images `default.png`, `research.png` and `frontier-assets.png` in `/og/` are composed from `cosmonaut-bg.png` plus a wordmark overlay. They're functional but if you want higher-production versions:
 
 - The design spec is **1200×630 PNG**. LinkedIn and X use the same dimensions.
 - Per-page variants for News, Funding, Portfolio, Signals, Commodities, Recreation Bay would be nice-to-have — currently those all point to `/og/default.png`.

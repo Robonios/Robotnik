@@ -19,6 +19,10 @@ Sources (the only inputs):
   data/index/bottleneck_weighted_composite.json -> Bottleneck-Weighted (live)
   data/index/sub_indices.json                 -> Space/Robotics/Semiconductors/Materials (live)
   data/index/private_capital_index.json       -> RPCI (monthly, live; 2023 calibration excluded)
+  data/index/weights.json + data/registries/entity_registry.json
+                                              -> stack: index members per sector and
+                                                 value-chain tier, for the front door's map
+                                                 (counts and labels only, no weights)
 
 The trading-day axis is each series' OWN published dates (produced by
 index_dates.py via calculate_index), so the summary cannot drift from the series.
@@ -47,10 +51,20 @@ SUB_PATH        = os.path.join(INDEX_DIR, "sub_indices.json")
 RPCI_PATH       = os.path.join(INDEX_DIR, "private_capital_index.json")
 COMMODITIES_PATH     = os.path.join(INDEX_DIR, "commodities_index.json")   # Commodities (weekly) -> live
 COMPOSITE_BLEND_PATH = os.path.join(INDEX_DIR, "composite_index.json")     # Composite 75/25 blend (weekly) -> live
+WEIGHTS_PATH    = os.path.join(INDEX_DIR, "weights.json")               # index membership -> stack
+REGISTRY_PATH   = os.path.join(ROOT_DIR, "data", "registries", "entity_registry.json")
+
+# The front door's stack map: rows in its display order, tiers in the locked order of the
+# value-chain taxonomy (Deployment & Operation 7th, Software & Services 8th).
+STACK_SECTORS = ["Materials", "Semiconductors", "Robotics", "Space"]
+STACK_TIERS = ["Upstream Materials", "IP & Design", "Capital Equipment",
+               "Fabrication & Manufacturing", "Components & Subsystems",
+               "System Integration", "Deployment & Operation", "Software & Services"]
 
 RETURN_CONVENTION = ("nearest-prior-trading-day; per period P the anchor is the latest "
                      "published series date <= (as_of - P); return = (value/anchor - 1) * 100, "
-                     "rounded to 2dp; daily P in {1W=7d,1M,3M,1Y,3Y,5Y}, monthly RPCI in {1M,3M,1Y,3Y,5Y}")
+                     "rounded to 2dp; daily P in {1D=1d,1W=7d,1M,3M,1Y,3Y,5Y}, weekly P in "
+                     "{1W=7d,1M,3M,1Y,3Y,5Y}, monthly RPCI in {1M,3M,1Y,3Y,5Y}")
 TRADING_DAY_CONVENTION = ("as_of is the latest session in the published series — already the "
                           ">=50% / 98-of-197 quorum trading day from index_dates.py; the summary "
                           "anchors returns on the series' own dates, so it cannot drift from it")
@@ -100,15 +114,20 @@ DAILY_PERIODS = [
     ("3Y", lambda d: _years_before(d, 3)),
     ("5Y", lambda d: _years_before(d, 5)),
 ]
+# Daily-cadence entries also carry the one-day move (1D). Its anchor is the latest
+# published date <= (latest - 1 day), the prior session, under the same nearest-prior
+# convention, rounding and null shape as every other period. Weekly entries keep
+# DAILY_PERIODS, so they carry no 1D.
+DAILY_CADENCE_PERIODS = [("1D", lambda d: d - timedelta(days=1))] + DAILY_PERIODS
 
 
-def daily_returns(series):
+def daily_returns(series, periods=DAILY_PERIODS):
     """Nearest-prior-trading-day returns computed on the series' OWN dates."""
     dv = {_d(p["date"]): float(p["value"]) for p in series}
     ds = sorted(dv)
     latest, lv = ds[-1], dv[ds[-1]]
     out = {}
-    for name, fn in DAILY_PERIODS:
+    for name, fn in periods:
         i = bisect.bisect_right(ds, fn(latest))
         if i == 0:
             out[name] = {"null": True, "reason": "insufficient_history"}
@@ -162,7 +181,7 @@ def daily_entry(name, value, series, base, run_date, entity_count=None, code=Non
         "base": base,
         "span": {"start": series[0]["date"], "end": series[-1]["date"],
                  "points": len(series), "floor": SUB_INDEX_FLOOR},
-        "returns": daily_returns(series),
+        "returns": daily_returns(series, DAILY_CADENCE_PERIODS),
         "series": trailing_1y_daily(series),
     }
     if code:
@@ -236,6 +255,43 @@ def rpci_entry(src, run_date):
     }
 
 
+def stack_entry(weights, registry):
+    """Index members per sector and value-chain tier, for the front door's stack map.
+
+    Counts and labels only: no weights. Each constituent in weights.json maps to its
+    registry entity through public_ticker, falling back to the ticker as the entity id
+    (as _eid does in calculate_index.py), and takes that entity's sector and value_chain.
+    A constituent outside the four sectors or the eight tiers (a Launch Services name,
+    say) goes under `unplaced` with a workflow warning, and never fails the run.
+    """
+    pub2eid = {v.get("public_ticker"): k for k, v in registry.items()
+               if isinstance(v, dict) and v.get("public_ticker")}
+    members = weights.get("weights") or []
+    counts, unplaced = {}, []
+    for row in members:
+        ticker = row.get("ticker")
+        ent = registry.get(pub2eid.get(ticker, ticker))
+        ent = ent if isinstance(ent, dict) else {}
+        sector, tier = ent.get("sector"), ent.get("value_chain")
+        if sector in STACK_SECTORS and tier in STACK_TIERS:
+            counts[(sector, tier)] = counts.get((sector, tier), 0) + 1
+        else:
+            unplaced.append({"ticker": ticker, "sector": sector, "tier": tier})
+            where = "({} / {})".format(sector, tier) if ent else "(not in the entity registry)"
+            print("::warning::index constituent {} {} is outside the stack map's four sectors "
+                  "and eight tiers; listed under stack.unplaced in index_summary.json"
+                  .format(ticker, where).replace("%", "%25"), flush=True)
+    return {
+        "as_of": str(weights.get("calculated_at") or "")[:10] or None,
+        "tiers": STACK_TIERS,
+        "sectors": STACK_SECTORS,
+        "constituents": len(members),
+        "cells": [{"sector": s, "tier": t, "members": counts[(s, t)]}
+                  for s in STACK_SECTORS for t in STACK_TIERS if (s, t) in counts],
+        "unplaced": unplaced,
+    }
+
+
 def main():
     run_now = datetime.now(timezone.utc)
     run_date = run_now.date()            # as_of stamp + cadence-freshness reference
@@ -279,6 +335,14 @@ def main():
         sectors[label.lower()] = daily_entry(label, v["current_value"], v["series"], base,
                                              run_date, entity_count=v.get("entity_count"))
 
+    # The stack map is secondary to the index levels: if its inputs cannot be read, warn
+    # and omit it, and the front door draws its own fallback counts.
+    try:
+        stack = stack_entry(load(WEIGHTS_PATH), load(REGISTRY_PATH))
+    except (OSError, ValueError, AttributeError) as exc:
+        stack = None
+        print("::warning::stack map not built: {}".format(exc).replace("%", "%25"), flush=True)
+
     out = {
         "_meta": {
             "generated_at": run_now.isoformat().replace("+00:00", "Z"),
@@ -292,6 +356,7 @@ def main():
                 "bottleneck": "data/index/bottleneck_weighted_composite.json",
                 "sectors": "data/index/sub_indices.json",
                 "private": "data/index/private_capital_index.json",
+                "stack": "data/index/weights.json, data/registries/entity_registry.json",
             },
             "status_enum": ["live", "stale", "calibrating", "soon"],
             "return_reasons": ["insufficient_history", "not_applicable_for_cadence"],
@@ -304,6 +369,8 @@ def main():
         "indexes": indexes,
         "sectors": sectors,
     }
+    if stack is not None:
+        out["stack"] = stack
 
     with open(OUT_PATH, "w") as f:
         json.dump(out, f, indent=2)
