@@ -48,6 +48,17 @@ Constituents (20 priced) — §8 routing
     chokepoints Ga/Ge/In/Nd (Western quote) + Pr/Dy/Tb/Antimony
   * 9 PRICE-PENDING — disclosed, excluded until a source is secured.
 
+Freshness
+  * strategicmetalsinvest carries a partner price forward until a newer one
+    arrives, while its price list shows a daily update date; from launch to late
+    September 2026 it held all eight prices this way. Each metal's own page dates
+    its partner price, which becomes the constituent's quote_date and
+    source_price_date.
+  * A partner price older than SOURCE_STALE_DAYS at the mark, or any relative
+    unchanged since a mark STALE_WEEKS or more back (unchanged_since), is flagged
+    STALE SOURCE; their live weight is stale_weight_pct, and
+    check_commodities_freshness.py reds the weekly run at STALE_WEIGHT_STOP.
+
 Output: data/index/commodities_index.json   (this script does NOT git-commit)
 
 Usage / env affordances
@@ -95,6 +106,15 @@ SINGLE_NAME_CAP  = 0.12                  # §6.1 live single-name cap
 MS_BASE_URL      = "https://api.marketstack.com/v2/commodities"
 MS_RATE_SLEEP    = 63                    # ~1 call/min on the commodities endpoint
 SMI_URL          = "https://strategicmetalsinvest.com/current-strategic-metals-prices/"
+# Each metal's own page names the date of the industry-partner price behind the quote.
+# The source carries a price forward until a newer one arrives, while the main page's
+# "Last updated" moves daily, so only this date says how old a price is.
+SMI_METAL_URL    = "https://strategicmetalsinvest.com/{}-prices/"
+SMI_PRICE_DATE   = re.compile(r"latest available industry-partner (?:price|valuation)[^.]{0,80}?"
+                              r"dated\s+([A-Z][a-z]{2,8}\.?\s+\d{1,2},?\s+\d{4})")
+SOURCE_STALE_DAYS = 14   # a price older than this at the mark is flagged as carried by the source
+STALE_WEEKS       = 3    # weeks with an identical relative before a constituent counts as stale
+STALE_WEIGHT_STOP = 25.0 # % of live weight stale before the freshness check reds the run
 SMI_UA           = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
                     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36")
 FX_STALE_WARN_DAYS = 7
@@ -245,6 +265,43 @@ def fetch_smi(labels):
     return prices, last_updated, ("USD/kg header" if hdr >= 0 else "no header anchor")
 
 
+def _parse_month_date(text):
+    """'Oct 6, 2026' / 'Oct 26 2026' / 'October 6 2026' -> '2026-10-06', or None."""
+    t = re.sub(r"[.,]", " ", text or "")
+    for fmt in ("%b %d %Y", "%B %d %Y"):
+        try:
+            return datetime.strptime(" ".join(t.split()), fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            continue
+    return None
+
+
+def fetch_smi_price_dates(labels):
+    """{label: 'YYYY-MM-DD' or None}: the date of the industry-partner price behind each
+    strategicmetalsinvest quote, read from the metal's own page. Honours
+    COMMODITIES_SMI_CACHE ('_price_dates') for sim/test. A page that can't be read or
+    parsed gives None, which the run flags."""
+    cache_path = os.environ.get("COMMODITIES_SMI_CACHE")
+    if cache_path:
+        raw = json.loads(Path(cache_path).read_text())
+        dates = raw.get("_price_dates") or {}
+        return {k: dates.get(k) for k in labels}
+    out = {}
+    for label in labels:
+        url = SMI_METAL_URL.format(label.lower())
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": SMI_UA})
+            html = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+        except Exception as exc:                      # network or HTTP error: date unknown
+            sys.stderr.write("[commodities] {} price date unavailable: {}\n".format(label, str(exc)[:80]))
+            out[label] = None
+            continue
+        text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
+        m = SMI_PRICE_DATE.search(text)
+        out[label] = _parse_month_date(m.group(1)) if m else None
+    return out
+
+
 # ── §6.1 live weights (genesis only): renormalise across priced, then 12% cap ─
 def compute_capped_weights(ref_by_name, cap=SINGLE_NAME_CAP):
     """Renormalise reference weights to 1.0, then iterative single-name cap with
@@ -290,7 +347,7 @@ def normalize_weights(weight_by, cap=SINGLE_NAME_CAP):
 
 
 # ── per-constituent current snapshot (shared by genesis + weekly) ───────────
-def build_snapshot(source, key, ms_rows, smi_prices, smi_updated, today):
+def build_snapshot(source, key, ms_rows, smi_prices, smi_updated, today, smi_dates=None):
     """Return (snapshot|None, fx_stale_flag|None, miss_reason|None)."""
     if source == "marketstack":
         row = ms_rows.get(key)
@@ -309,7 +366,8 @@ def build_snapshot(source, key, ms_rows, smi_prices, smi_updated, today):
         native_price = smi_prices[key]
         native_ccy, native_unit = "USD", "kg"
         src_ts = smi_updated
-        quote_date = today
+        # The partner price's own date, not the page's update date (see SMI_METAL_URL).
+        quote_date = (smi_dates or {}).get(key) or today
 
     try:
         usd_price = cc.to_usd(native_price, native_ccy, quote_date)
@@ -334,6 +392,7 @@ def build_snapshot(source, key, ms_rows, smi_prices, smi_updated, today):
         "usd_price": round(usd_price, 6),
         "price_unit_usd": "USD/{}".format(native_unit) if native_unit else "USD",
         "quote_date": quote_date, "source_timestamp": src_ts,
+        "source_price_date": (smi_dates or {}).get(key) if source == "smi" else None,
     }
     return snap, fx_flag, None
 
@@ -524,11 +583,15 @@ def main():
     smi_prices, smi_updated, smi_note = fetch_smi(smi_keys)
     print("  last updated: {} ({}); resolved {}/{}".format(
         smi_updated, smi_note, len(smi_prices), len(smi_keys)))
+    smi_dates = fetch_smi_price_dates(smi_keys)
+    print("  partner price dates read: {}/{}".format(
+        sum(1 for v in smi_dates.values() if v), len(smi_keys)))
 
     # ── 2. Current snapshot per constituent ─────────────────────────────────
     snaps, missing, flags = {}, [], []
     for commodity, ref_w, source, basis, key in PRICED:
-        snap, fx_flag, miss = build_snapshot(source, key, ms_rows, smi_prices, smi_updated, today)
+        snap, fx_flag, miss = build_snapshot(source, key, ms_rows, smi_prices, smi_updated, today,
+                                             smi_dates)
         if miss:
             missing.append((commodity, source, miss))
             continue
@@ -586,7 +649,8 @@ def main():
                        "relative_to_base to carry.".format(commodity)], fetched=True)
             carried = True
             snap = {k: pc.get(k) for k in ("native_currency", "fx_rate_to_usd", "fx_date_used",
-                                           "price_unit_usd", "quote_date", "source_timestamp")}
+                                           "price_unit_usd", "quote_date", "source_timestamp",
+                                           "source_price_date")}
             flags.append("CARRIED: {} held last observation (no fresh price this run).".format(commodity))
         else:
             rel = snap["usd_price"] / base_usd if base_usd else 1.0
@@ -609,6 +673,18 @@ def main():
             "quote_date": snap["quote_date"], "source_timestamp": snap["source_timestamp"],
             "carried_last_observation": carried,
         }
+        if source == "smi":
+            c["source_price_date"] = snap.get("source_price_date")
+        # The mark since which the relative has not moved at all: a price the source has
+        # stopped moving looks like this, whatever its update date says. A same-week
+        # re-run compares with that week's own record, so it keeps the date.
+        pc_prev = prior_by.get(commodity) or {}
+        prior_rel = pc_prev.get("relative_to_base")
+        if genesis or prior_rel is None or rel != prior_rel:
+            c["unchanged_since"] = today
+        else:
+            c["unchanged_since"] = (pc_prev.get("unchanged_since")
+                                    or (prior or {}).get("current_date") or today)
         if genesis:
             c["renormalised_weight_pct"] = round(ref_w / priced_ref_sum * 100.0, 4)
             c["capped"] = abs(weight_by[commodity] - SINGLE_NAME_CAP) < 1e-9
@@ -619,6 +695,28 @@ def main():
         constituents.append(c)
 
     constituents.sort(key=lambda x: x["live_weight_pct"], reverse=True)
+
+    # Source freshness: a strategicmetalsinvest price older than SOURCE_STALE_DAYS at the
+    # mark, or any relative unchanged for STALE_WEEKS, is stale. Flagged, and summed into
+    # stale_weight_pct, which check_commodities_freshness.py turns into a red run.
+    mark_day = date.fromisoformat(today)
+    stale_weight = 0.0
+    for c in constituents:
+        why = []
+        if c["source"] == SOURCE_LABEL["smi"]:
+            spd = c.get("source_price_date")
+            if not spd:
+                flags.append("PRICE DATE UNKNOWN: {}: the source's partner price date could not be "
+                             "read.".format(c["commodity"]))
+            elif (mark_day - date.fromisoformat(spd)).days > SOURCE_STALE_DAYS:
+                why.append("partner price dated {}, {} days before the mark, carried forward by the "
+                           "source".format(spd, (mark_day - date.fromisoformat(spd)).days))
+        weeks = (mark_day - date.fromisoformat(c["unchanged_since"])).days // 7
+        if weeks >= STALE_WEEKS:
+            why.append("relative unchanged for {} weeks".format(weeks))
+        if why:
+            stale_weight += c["live_weight_pct"]
+            flags.append("STALE SOURCE: {}: {}.".format(c["commodity"], "; ".join(why)))
     index_value = round(BASE_VALUE * idx_sum, 2)        # full-precision basis → exactly 1000.0 at genesis
     weight_sum = round(sum(weight_by[c["commodity"]] for c in constituents) * 100.0, 6)  # normalized → 100.0
     gallium_w = next((c["live_weight_pct"] for c in constituents if c["commodity"] == "Gallium"), None)
@@ -676,6 +774,8 @@ def main():
     record["constituents"] = constituents
     record["sources"] = sources
     record["flags"] = flags
+    record["stale_weight_pct"] = round(stale_weight, 4)
+    record["stale_weight_stop_pct"] = STALE_WEIGHT_STOP
     record["series"] = series
     record["last_update"] = {"action": action, "mark": today, "value": index_value, "at": now_iso}
     record["calculated_at"] = now_iso
@@ -712,6 +812,8 @@ def main():
         print("\nFLAGS ({}):".format(len(flags)))
         for fl in flags:
             print("  ! {}".format(fl))
+    print("Stale weight: {:.2f}% of the live weight (the freshness check reds the run at {:.0f}%)"
+          .format(stale_weight, STALE_WEIGHT_STOP))
     try:
         _shown = OUT_PATH.relative_to(ROOT)
     except ValueError:
