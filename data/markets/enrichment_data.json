@@ -1607,5 +1607,11 @@
     "bottleneck_risk": "MEDIUM",
     "bottleneck_description": "Peak frontier position is back-end and advanced-packaging materials, where Resonac is a top-three CMP slurry maker (its copper GPX series qualified at TSMC) and number two in epoxy moulding compound, and is investing in CoWoS, HBM and RDL planarization. These are oligopolistic positions where a fab can requalify onto a competing slurry or compound at a switching cost. A supplier others can substitute at a requalification cost, which is what MEDIUM means.",
     "confidence": "MEDIUM"
+  },
+  "SPCX": {
+    "bottleneck_risk": "CRITICAL",
+    "key_customers": "Starlink subscribers; NASA and US national-security launch; commercial satellite operators",
+    "key_suppliers": "Largely vertically integrated (engines, satellites, user terminals)",
+    "robotnik_notes": "CRITICAL via adversarial verifier: dominant launch (Falcon 9 majority of global launch mass) + Starlink = access-to-orbit chokepoint. Carried from the registry at admission (2026-10-29)."
   }
 }

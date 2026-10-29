@@ -26,13 +26,7 @@
     },
     "E11_deferred": {
       "note": "Listed companies the registry still holds as pre-IPO, whose admission is in progress. Remove an entry in the pull request that admits the company.",
-      "names": {
-        "spacex": "SpaceX - listed on Nasdaq (SPCX) on 2026-06-12. Robert decided on 2026-10-27 to admit it; its data is collected first, then the registry change admits it with an index_entry_date.",
-        "unitree-robotics": "Unitree Robotics - listed on the Shanghai STAR Market (688836) on 2026-08-19. Admitted in the same pull request as SpaceX.",
-        "infleqtion": "Infleqtion - listed on the NYSE (INFQ) on 2026-02-17 after its merger with Churchill Capital Corp X; found by E11 on 2026-10-28. Admitted with SpaceX and Unitree, entering on its listing day (Robert, 2026-10-27).",
-        "swarmer": "Swarmer - listed on Nasdaq (SWMR) in March 2026; found by E11 on 2026-10-28. Admitted with SpaceX and Unitree, entering on its first trading day.",
-        "standard-nuclear": "Standard Nuclear - listed on the NYSE (STDN) on 2026-07-16; found by E11 on 2026-10-28. Admitted with SpaceX and Unitree, entering on its listing day."
-      }
+      "names": {}
     },
     "E11_false_match": {
       "note": "SEC matches checked and found to be a different company. Each is acknowledged as entity:TICKER, so a new registrant matching the same entity still reds the run.",
@@ -68,11 +62,6 @@
     "enflame"
   ],
   "E11": [
-    "infleqtion",
-    "positron:POSC",
-    "spacex",
-    "standard-nuclear",
-    "swarmer",
-    "unitree-robotics"
+    "positron:POSC"
   ]
 }
