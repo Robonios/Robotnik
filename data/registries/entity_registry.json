@@ -10577,10 +10577,10 @@
   "swarmer": {
     "id": "swarmer",
     "name": "Swarmer",
-    "type": "private",
+    "type": "public",
     "sector": "Robotics",
     "subsector": "Autonomous Systems & Drones",
-    "country": "Israel",
+    "country": "USA",
     "city": null,
     "eodhd_ticker": null,
     "coingecko_id": null,
@@ -10594,8 +10594,11 @@
     "total_raised_m": 15.0,
     "value_chain": "System Integration",
     "entity_id": "swarmer",
-    "lifecycle_status": "private",
-    "public_ticker": null
+    "lifecycle_status": "public",
+    "public_ticker": "SWMR",
+    "ipo_date": "2026-03-01",
+    "index_entry_date": "2026-03-01",
+    "transition_note": "private->public via listing (SWMR, Nasdaq, first trade 2026-03-01). Found by the E11 listing watch and admitted on 2026-10-29 with index_entry_date on the listing day (Robert, 2026-10-27). Immutable entity_id; lifecycle field-update only. Country corrected from Israel: headquartered in Austin, Texas."
   },
   "nth-cycle": {
     "id": "nth-cycle",
@@ -10668,7 +10671,7 @@
   "unitree-robotics": {
     "id": "unitree-robotics",
     "name": "Unitree Robotics",
-    "type": "private",
+    "type": "public",
     "sector": "Robotics",
     "subsector": "Humanoid & Service Robots",
     "country": "China",
@@ -10686,15 +10689,18 @@
     "total_raised_m": 610.0,
     "value_chain": "System Integration",
     "entity_id": "unitree-robotics",
-    "lifecycle_status": "pre_ipo_filed",
-    "public_ticker": null,
+    "lifecycle_status": "public",
+    "public_ticker": "688836 C1",
     "filing_valuation_m": null,
     "valuation_source": "Shanghai STAR draft S-1 (accepted 2026-03-20); valuation not cleanly disclosed → null (no fabrication)",
     "valuation_as_of": "2026-03-20",
     "bottleneck_risk": "HIGH",
     "rating_provisional": true,
     "rating_note": "PROVISIONAL — leading Chinese humanoid/quadruped maker; finalize in Workstream D.",
-    "note": "Shanghai STAR draft S-1 accepted 2026-03-20; pre-IPO, NOT in any index."
+    "note": "Shanghai STAR draft S-1 accepted 2026-03-20; listed 2026-08-19; in the index from that day.",
+    "ipo_date": "2026-08-19",
+    "index_entry_date": "2026-08-19",
+    "transition_note": "private->public via listing (688836 C1, SSE STAR, first trade 2026-08-19). Found by the E11 listing watch and admitted on 2026-10-29 with index_entry_date on the listing day (Robert, 2026-10-27). Immutable entity_id; lifecycle field-update only."
   },
   "kandou-ai": {
     "id": "kandou-ai",
@@ -11780,7 +11786,7 @@
   "infleqtion": {
     "id": "infleqtion",
     "name": "Infleqtion",
-    "type": "private",
+    "type": "public",
     "sector": "Semiconductors",
     "subsector": "Fabless Design",
     "country": "USA",
@@ -11797,8 +11803,11 @@
     "total_raised_m": null,
     "value_chain": "IP & Design",
     "entity_id": "infleqtion",
-    "lifecycle_status": "private",
-    "public_ticker": null
+    "lifecycle_status": "public",
+    "public_ticker": "INFQ",
+    "ipo_date": "2026-02-17",
+    "index_entry_date": "2026-02-17",
+    "transition_note": "private->public via listing (INFQ, NYSE, first trade 2026-02-17). Found by the E11 listing watch and admitted on 2026-10-29 with index_entry_date on the listing day (Robert, 2026-10-27). Immutable entity_id; lifecycle field-update only. Listed through its merger with Churchill Capital Corp X; bars before the listing day (the SPAC's) are dropped by index_entry_date."
   },
   "anduril-industries": {
     "id": "anduril-industries",
@@ -11895,7 +11904,7 @@
   "standard-nuclear": {
     "id": "standard-nuclear",
     "name": "Standard Nuclear",
-    "type": "private",
+    "type": "public",
     "sector": "Materials",
     "subsector": "Structural Materials",
     "country": "USA",
@@ -11912,8 +11921,11 @@
     "total_raised_m": null,
     "value_chain": "Upstream Materials",
     "entity_id": "standard-nuclear",
-    "lifecycle_status": "private",
-    "public_ticker": null
+    "lifecycle_status": "public",
+    "public_ticker": "STDN",
+    "ipo_date": "2026-07-16",
+    "index_entry_date": "2026-07-16",
+    "transition_note": "private->public via listing (STDN, NYSE, first trade 2026-07-16). Found by the E11 listing watch and admitted on 2026-10-29 with index_entry_date on the listing day (Robert, 2026-10-27). Immutable entity_id; lifecycle field-update only."
   },
   "cyclic-materials": {
     "id": "cyclic-materials",
@@ -13015,9 +13027,9 @@
     "id": "spacex",
     "entity_id": "spacex",
     "name": "SpaceX",
-    "type": "private",
+    "type": "public",
     "sector": "Space",
-    "subsector": "Launch & Propulsion",
+    "subsector": "Satellite Communications",
     "country": "United States",
     "city": null,
     "eodhd_ticker": null,
@@ -13027,15 +13039,18 @@
       "SpaceX",
       "Space Exploration Technologies Corp"
     ],
-    "value_chain": "Launch Services",
-    "lifecycle_status": "pre_ipo_filed",
-    "public_ticker": null,
+    "value_chain": "Deployment & Operation",
+    "lifecycle_status": "public",
+    "public_ticker": "SPCX",
     "filing_valuation_m": 1750000,
     "valuation_source": "Form S-1 (filed 2026-05-20)",
     "valuation_as_of": "2026-05-20",
     "bottleneck_risk": "CRITICAL",
     "rating_note": "CRITICAL via adversarial verifier: dominant launch (Falcon 9 majority of global launch mass) + Starlink = access-to-orbit chokepoint.",
-    "note": "S-1 filed 2026-05-20; ~$1.75T is a FILING/TARGET valuation (metadata), NOT a market cap; pre-IPO, NOT in any index."
+    "note": "S-1 filed 2026-05-20; ~$1.75T is a FILING/TARGET valuation (metadata), NOT a market cap; listed 2026-06-12; in the index from that day.",
+    "ipo_date": "2026-06-12",
+    "index_entry_date": "2026-06-12",
+    "transition_note": "private->public via listing (SPCX, Nasdaq, first trade 2026-06-12). Found by the E11 listing watch and admitted on 2026-10-29 with index_entry_date on the listing day (Robert, 2026-10-27). Immutable entity_id; lifecycle field-update only. Tier moved from Launch Services, outside the locked set, to Deployment & Operation: Starlink was 61% of 2025 revenue (S-1), the centre of gravity under R5 (Robert, 2026-10-28)."
   },
   "7731 JP": {
     "id": "7731 JP",
