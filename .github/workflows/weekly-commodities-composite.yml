@@ -113,3 +113,9 @@ jobs:
             git commit --amend --no-edit
           done
           echo "pushed"
+
+      # After the commit, so the week's index still publishes: a stale share of the live
+      # weight at or above the record's stale_weight_stop_pct reds the run, and every
+      # stale constituent shows as a warning.
+      - name: Check the commodity sources are fresh
+        run: python scripts/check_commodities_freshness.py
