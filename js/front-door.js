@@ -179,17 +179,6 @@
     { n: 'Materials', k: '--ma' }, { n: 'Semiconductors', k: '--se' },
     { n: 'Robotics', k: '--ro' }, { n: 'Space', k: '--sp' }
   ];
-  // FALLBACK, to be removed once the published index_summary.json carries `stack` (the
-  // first run of build_index_summary.py after this change writes it). Index members per
-  // cell from the v1 data inventory, checked against the index of 27 Oct 2026 and
-  // corrected there (Semiconductors / IP & Design 31). Shown only when the feed has no
-  // stack or fails to load.
-  var FALLBACK = { asOf: '2026-10-27', c: [
-    [30, 0, 0, 1, 0, 0, 0, 0],
-    [1, 31, 18, 13, 15, 0, 0, 1],
-    [0, 0, 0, 0, 22, 34, 1, 7],
-    [0, 0, 0, 0, 6, 17, 13, 0]] };
-
   // ILLUSTRATIVE trace, labelled as such on the page: an export control on semiconductor
   // capital equipment, followed downstream. To be replaced by a real dated event once
   // events.json exists (task 3b).
@@ -222,9 +211,11 @@
     return grid;
   }
   // Three or more members show the count; one or two are withheld; empty cells stay inert.
+  // Without the feed's stack the cells stay empty and the note says the counts are missing:
+  // the page never shows counts it did not read.
   function fillMap(stack) {
-    var grid = countsFrom(stack), live = !!grid, asOf = live ? stack.as_of : FALLBACK.asOf;
-    if (!live) grid = FALLBACK.c;
+    var grid = countsFrom(stack), live = !!grid;
+    if (!live) grid = SECT.map(function () { return TIERS.map(function () { return 0; }); });
     SECT.forEach(function (s, r) {
       grid[r].forEach(function (v, c) {
         var el = $('m' + r + '_' + c), full = v >= 3, thin = v > 0 && v < 3;
@@ -236,7 +227,9 @@
           : '') + (el.id === SRCID ? TAG : '');
       });
     });
-    $('mapnote').textContent = 'Counts: index members per cell' + (fmtDate(asOf) ? ', as of ' + fmtDate(asOf) : '') + '. The trace is illustrative.';
+    $('mapnote').textContent = live
+      ? 'Counts: index members per cell' + (fmtDate(stack.as_of) ? ', as of ' + fmtDate(stack.as_of) : '') + '. The trace is illustrative.'
+      : 'Index member counts are unavailable at the moment. The trace is illustrative.';
     drawPoster(grid);
     drawTrace();
   }
@@ -313,7 +306,7 @@
   }
   drawPoster(SECT.map(function () { return TIERS.map(function () { return 0; }); }));
 
-  // The map's counts: the feed's stack, or the fallback when it has none or fails to load.
+  // The map's counts come from the feed's stack; without it the map says so.
   feed.then(function (j) { fillMap(j && j.stack); }, function () { fillMap(null); });
 
   /* ---------- the robots: head sheet inside a glass helmet; glances, blinks, spins on click ---------- */

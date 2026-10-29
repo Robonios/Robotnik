@@ -61,7 +61,7 @@ Root `*.html` — one page each: `index` (the public front door, light theme, ta
 
 ## Known placeholders
 
-- `index.html` — the stack map falls back to hard-coded counts, dated 27 October 2026, until the published `index_summary.json` carries `stack`. The event trace on the map is illustrative until `events.json` (task 3b) supplies a real event, and the walkthrough video is a placeholder.
+- `index.html` — the event trace on the stack map is illustrative until `events.json` (task 3b) supplies a real event, and the walkthrough video is a placeholder.
 - `assets.html` — placeholder page (per-asset profiles in development); the retired screener is in git history and in the private preview repo (`archive/public-site/assets-screener/`).
 - `portfolio.html`, `signals.html`, `commodities.html` — noindex redirect stubs since task 2a, out of the nav and the sitemap. `recreation.html` — retired.
 
