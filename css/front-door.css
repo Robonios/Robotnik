@@ -3,7 +3,7 @@
    does not load. The request-access form comes from js/nav.js and styles itself. */
 :root{
   --bg:#ECEBE6;--cell:#F4F3EF;--cell-2:#FAF9F6;--line:#D2CFC6;--line-2:#B9B5AB;
-  --ink:#121418;--ink-2:#3E434C;--mute:#676C75;--faint:#979BA2;
+  --ink:#121418;--ink-2:#3E434C;--mute:#62666C;--faint:#979BA2;
   --brand:#F5D921;--red:#B8352A;
   --up:#13744A;--dn:#BE353B;
   --se:#2C64C9;--ro:#0E7D66;--sp:#C9522E;--ma:#7247BF;
@@ -62,7 +62,7 @@ button{font:inherit;color:inherit}
 .stage{position:relative;overflow:hidden;background:var(--cell)}
 .stage .lab{position:absolute;left:26px;top:22px;font-size:13px;font-weight:500;color:var(--mute);display:flex;gap:8px;align-items:center}
 .stage .lab b{font-weight:500;color:var(--ink)}
-.stage .hint{position:absolute;right:26px;top:22px;font-size:13px;color:var(--faint);transition:color 150ms ease}
+.stage .hint{position:absolute;right:26px;top:22px;font-size:13px;color:var(--mute);transition:color 150ms ease}
 
 /* the robot: a pre-rendered body and a sprite of head angles. The aspect ratio is the
    body size in assets/robot/robot.json; js/front-door.js reads that file, sizes and
@@ -87,7 +87,7 @@ button{font:inherit;color:inherit}
 .tile .cd{font-size:12.5px;color:var(--mute);white-space:nowrap}
 .tile .v{font-size:30px;line-height:1.1;margin-top:14px;letter-spacing:-.02em}
 .tile .ch{font-size:14px;margin-top:6px;display:flex;align-items:baseline;gap:8px}
-.tile .ch i{font-style:normal;font-family:var(--disp);font-size:12.5px;color:var(--faint)}
+.tile .ch i{font-style:normal;font-family:var(--disp);font-size:12.5px;color:var(--mute)}
 .tile.up .ch span{color:var(--up)}.tile.dn .ch span{color:var(--dn)}
 .tile svg{align-self:end;display:block;width:calc(100% + 44px);margin:12px -22px 0;height:52px}
 .tile{--k:var(--mute)}.tile.up{--k:var(--up)}.tile.dn{--k:var(--dn)}
@@ -143,7 +143,7 @@ button{font:inherit;color:inherit}
 .map .cell.thin{background:var(--bg)}
 .map .cell.thin::after{content:'';position:absolute;inset:8px;border:1.5px dashed var(--line-2);pointer-events:none}
 .map .cell.thin .n{font-size:13px;font-weight:500;color:var(--ink-2)}
-.map .cell.thin .u{font-size:12px;color:var(--faint);margin-top:4px;line-height:1.3}
+.map .cell.thin .u{font-size:12px;color:var(--mute);margin-top:4px;line-height:1.3}
 .map .cell.hit{background:color-mix(in srgb,var(--brand) 42%,var(--cell));box-shadow:inset 0 0 0 2px var(--ink)}
 .map .cell.src{background:var(--brand);box-shadow:inset 0 0 0 2px var(--ink)}
 .map .tag{position:absolute;left:10px;bottom:10px;background:var(--ink);color:var(--bg);font-size:11.5px;font-weight:600;padding:3px 7px;white-space:nowrap;opacity:0;transform:translateY(4px);transition:opacity 200ms ease,transform 260ms var(--ease)}
@@ -200,7 +200,7 @@ button{font:inherit;color:inherit}
 .lib .t{font-size:18px;font-weight:500;letter-spacing:-.01em}
 .lib .k{font-family:var(--body);font-size:14px;color:var(--mute);margin-left:14px}
 .lib .st{font-size:14px;font-weight:600}
-.lib div .t{color:var(--mute)}.lib div .st{font-weight:500;color:var(--faint)}
+.lib div .t{color:var(--mute)}.lib div .st{font-weight:500;color:var(--mute)}
 @media(hover:hover) and (pointer:fine){.lib a:hover{background:var(--cell-2)}}
 .lib a:focus-visible{outline-offset:-2px}
 
