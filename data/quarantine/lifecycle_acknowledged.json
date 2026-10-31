@@ -6,7 +6,8 @@
       "what": "The v2-migration backlog. Every ticker in the E2 list below is resolvable on MarketStack v2 (returns a fresh bar) but is deliberately held on a Yahoo override. This is DEFERRED WORK, not a suppressed defect.",
       "why_held": "Migrating a constituent from Yahoo to v2 must be validated PER NAME - the Yahoo->v2 history seam (continuity across the switch) has to be checked one name at a time and NOT bulk-removed, so the overrides stay until each seam is verified.",
       "how_to_clear": "Remove a ticker from the E2 list once its override has been migrated to v2 and the history seam validated. A DIFFERENT override that later becomes v2-fresh is a NEW E2 finding, absent from this list, and will red the run until it is reviewed and either migrated or acknowledged.",
-      "surfaced_2026-08-29": 20
+      "surfaced_2026-08-29": 20,
+      "surfaced_2026-10-30": 3
     },
     "E2_kept_correctness": {
       "note": "NOT migration work and NOT acknowledged. Recorded here only so they are never mistaken for the backlog above. These overrides return a fresh v2 bar but are retained for CORRECTNESS - the v2 bar is wrong or untrustworthy - so they must NEVER be migrated. The check classifies them automatically from the override's `reason` field (KEEP_REASONS in check_entity_lifecycle.py) and lists them under 'kept', separate from findings; this block is the human-facing record.",
@@ -55,6 +56,9 @@
     "KDK",
     "KRMN",
     "PENG",
+    "SPCX",
+    "STDN",
+    "SWMR",
     "VOYG"
   ],
   "E4": [],
