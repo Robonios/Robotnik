@@ -1,9 +1,9 @@
 {
   "name": "Robotnik Composite Index",
   "code": "RCI",
-  "version": "1.0 \u2014 forward-only launch (genesis base)",
+  "version": "1.1: each weekly return taken from the current leg series at both marks",
   "methodology": "Composite Index methodology \u2014 75/25 public-equities / commodities blend",
-  "method": "Composite_t = Composite_{t-1} * (1 + 0.75*r_equities + 0.25*r_commodities); 75/25 weights reset each period (periodic rebalancing); weekly EOW marks from the commodities leg; daily equity leg sampled nearest-prior; forward-only from the commodities launch (no pre-launch equity history blended)",
+  "method": "Composite_t = Composite_{t-1} * (1 + 0.75*r_equities + 0.25*r_commodities); 75/25 weights reset each period (periodic rebalancing); weekly marks from the commodities leg; daily equity leg sampled nearest-prior; both ends of each return taken from the current leg series; published points never recomputed; forward-only from the commodities launch",
   "frequency": "weekly",
   "rebalancing": "periodic \u2014 weights reset to 75/25 each period",
   "weights": {
@@ -14,149 +14,202 @@
     "equities": {
       "name": "Public Equities",
       "source": "data/index/robotnik_index.json",
-      "leg_current_value": 3166.21,
-      "leg_current_date": "2026-10-22"
+      "leg_current_value": 3146.5,
+      "leg_current_date": "2026-10-30"
     },
     "commodities": {
       "name": "Robotnik Commodities Index",
       "source": "data/index/commodities_index.json",
-      "leg_current_value": 1097.89,
-      "leg_current_date": "2026-10-24"
+      "leg_current_value": 1087.73,
+      "leg_current_date": "2026-10-31"
     }
   },
   "base_date": "2026-06-17",
   "base_value": 1000.0,
-  "current_value": 941.15,
-  "current_date": "2026-10-24",
-  "points": 19,
+  "current_value": 877.4,
+  "current_date": "2026-10-31",
+  "points": 20,
   "forward_only": true,
   "series": [
     {
       "date": "2026-06-17",
       "value": 1000.0,
-      "eq_leg": 3567.94,
+      "eq_leg": 3877.94,
       "comm_leg": 1000.0
     },
     {
       "date": "2026-06-27",
-      "value": 985.99,
-      "eq_leg": 3529.33,
-      "comm_leg": 976.42
+      "value": 978.52,
+      "eq_leg": 3797.38,
+      "comm_leg": 976.42,
+      "eq_anchor": 3877.94,
+      "comm_anchor": 1000.0
     },
     {
       "date": "2026-07-04",
-      "value": 956.58,
-      "eq_leg": 3391.24,
-      "comm_leg": 974.52
+      "value": 955.3,
+      "eq_leg": 3679.71,
+      "comm_leg": 974.52,
+      "eq_anchor": 3797.38,
+      "comm_anchor": 976.42
     },
     {
       "date": "2026-07-11",
-      "value": 966.06,
-      "eq_leg": 3430.74,
-      "comm_leg": 979.11
+      "value": 964.12,
+      "eq_leg": 3719.23,
+      "comm_leg": 979.11,
+      "eq_anchor": 3679.71,
+      "comm_anchor": 974.52
     },
     {
       "date": "2026-07-18",
-      "value": 973.29,
-      "eq_leg": 3468.22,
-      "comm_leg": 976.35
+      "value": 892.67,
+      "eq_leg": 3355.2,
+      "comm_leg": 976.35,
+      "eq_anchor": 3719.23,
+      "comm_anchor": 979.11
     },
     {
       "date": "2026-07-25",
-      "value": 965.63,
-      "eq_leg": 3430.32,
-      "comm_leg": 977.63
+      "value": 899.22,
+      "eq_leg": 3386.58,
+      "comm_leg": 977.63,
+      "eq_anchor": 3355.2,
+      "comm_anchor": 976.35
     },
     {
       "date": "2026-08-01",
-      "value": 938.83,
-      "eq_leg": 3304.54,
-      "comm_leg": 976.65
+      "value": 887.28,
+      "eq_leg": 3327.76,
+      "comm_leg": 976.65,
+      "eq_anchor": 3386.58,
+      "comm_anchor": 977.63
     },
     {
       "date": "2026-08-08",
-      "value": 993.05,
-      "eq_leg": 3546.11,
-      "comm_leg": 988.06
+      "value": 929.55,
+      "eq_leg": 3526.18,
+      "comm_leg": 988.06,
+      "eq_anchor": 3327.76,
+      "comm_anchor": 976.65
     },
     {
       "date": "2026-08-15",
-      "value": 1022.76,
-      "eq_leg": 3684.37,
-      "comm_leg": 990.74
+      "value": 954.31,
+      "eq_leg": 3648.24,
+      "comm_leg": 990.74,
+      "eq_anchor": 3526.18,
+      "comm_anchor": 988.06
     },
     {
       "date": "2026-08-22",
-      "value": 985.98,
-      "eq_leg": 3503.75,
-      "comm_leg": 993.92
+      "value": 925.75,
+      "eq_leg": 3498.76,
+      "comm_leg": 993.92,
+      "eq_anchor": 3648.24,
+      "comm_anchor": 990.74
     },
     {
       "date": "2026-08-29",
-      "value": 987.48,
-      "eq_leg": 3515.27,
-      "comm_leg": 990.15
+      "value": 911.45,
+      "eq_leg": 3431.11,
+      "comm_leg": 990.15,
+      "eq_anchor": 3498.76,
+      "comm_anchor": 993.92
     },
     {
       "date": "2026-09-05",
-      "value": 995.78,
-      "eq_leg": 3560.94,
-      "comm_leg": 984.84
+      "value": 916.62,
+      "eq_leg": 3463.2,
+      "comm_leg": 984.84,
+      "eq_anchor": 3431.11,
+      "comm_anchor": 990.15
     },
     {
       "date": "2026-09-12",
-      "value": 1008.62,
-      "eq_leg": 3639.22,
-      "comm_leg": 970.68
+      "value": 923.34,
+      "eq_leg": 3513.65,
+      "comm_leg": 970.68,
+      "eq_anchor": 3463.2,
+      "comm_anchor": 984.84
     },
     {
       "date": "2026-09-19",
-      "value": 1013.14,
-      "eq_leg": 3666.72,
-      "comm_leg": 966.06
+      "value": 925.99,
+      "eq_leg": 3532.65,
+      "comm_leg": 966.06,
+      "eq_anchor": 3513.65,
+      "comm_anchor": 970.68
     },
     {
       "date": "2026-09-26",
-      "value": 1060.83,
-      "eq_leg": 3894.86,
-      "comm_leg": 967.65
+      "value": 969.35,
+      "eq_leg": 3751.28,
+      "comm_leg": 967.65,
+      "eq_anchor": 3532.65,
+      "comm_anchor": 966.06
     },
     {
       "date": "2026-10-03",
-      "value": 1099.92,
-      "eq_leg": 3896.11,
-      "comm_leg": 1109.33
+      "value": 1023.12,
+      "eq_leg": 3845.62,
+      "comm_leg": 1109.33,
+      "eq_anchor": 3751.28,
+      "comm_anchor": 967.65
     },
     {
       "date": "2026-10-10",
-      "value": 1088.6,
-      "eq_leg": 3840.19,
-      "comm_leg": 1111.41
+      "value": 988.19,
+      "eq_leg": 3668.18,
+      "comm_leg": 1111.41,
+      "eq_anchor": 3845.62,
+      "comm_anchor": 1109.33
     },
     {
       "date": "2026-10-17",
-      "value": 975.36,
-      "eq_leg": 3306.89,
-      "comm_leg": 1112.0
+      "value": 901.64,
+      "eq_leg": 3239.17,
+      "comm_leg": 1112.0,
+      "eq_anchor": 3668.18,
+      "comm_anchor": 1111.41
     },
     {
       "date": "2026-10-24",
-      "value": 941.15,
-      "eq_leg": 3166.21,
-      "comm_leg": 1097.89
+      "value": 878.15,
+      "eq_leg": 3140.37,
+      "comm_leg": 1097.89,
+      "eq_anchor": 3239.17,
+      "comm_anchor": 1112.0
+    },
+    {
+      "date": "2026-10-31",
+      "value": 877.4,
+      "eq_leg": 3146.5,
+      "comm_leg": 1087.73,
+      "eq_anchor": 3140.37,
+      "comm_anchor": 1097.89
     }
   ],
-  "calculated_at": "2026-10-24T12:36:51.568008Z",
+  "calculated_at": "2026-10-31T14:27:01.567948Z",
   "last_update": {
     "action": "appended",
-    "at": "2026-10-24T12:36:51.568008Z",
-    "anchor_date": "2026-10-17",
-    "mark": "2026-10-24",
-    "r_eq_pct": -4.2541,
-    "r_comm_pct": -1.2689,
-    "eq_anchor": 3306.89,
-    "eq_now": 3166.21,
-    "comm_anchor": 1112.0,
-    "comm_now": 1097.89
+    "at": "2026-10-31T14:27:01.567948Z",
+    "anchor_date": "2026-10-24",
+    "mark": "2026-10-31",
+    "r_eq_pct": 0.1952,
+    "r_comm_pct": -0.9254,
+    "eq_anchor": 3140.37,
+    "eq_now": 3146.5,
+    "comm_anchor": 1097.89,
+    "comm_now": 1087.73
+  },
+  "restatement": {
+    "from_version": "1.0 \u2014 forward-only launch (genesis base)",
+    "to_version": "1.1",
+    "points": 19,
+    "date": "2026-10-24",
+    "value_before": 941.15,
+    "value_after": 878.15,
+    "at": "2026-10-31T14:27:01.567630Z"
   }
 }

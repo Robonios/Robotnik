@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-31T01:27:14.304394Z",
+    "generated_at": "2026-10-31T14:27:01.609009Z",
     "generator": "scripts/build_index_summary.py",
     "purpose": "read-only contract for the home-page Index Family + Sector Performance; single writer = this script, single reader = the site (site reads, never computes)",
     "sources": {
@@ -32,23 +32,23 @@
       "name": "Robotnik Composite Index",
       "status": "live",
       "cadence": "weekly",
-      "value": 941.15,
+      "value": 877.4,
       "as_of": "2026-10-31",
-      "fresh_through": "2026-10-24",
+      "fresh_through": "2026-10-31",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-10-24",
-        "points": 19,
+        "end": "2026-10-31",
+        "points": 20,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": -3.51,
-        "1M": -7.11,
-        "3M": -3.3,
+        "1W": -0.09,
+        "1M": -9.49,
+        "3M": -2.43,
         "1Y": {
           "null": true,
           "reason": "insufficient_history"
@@ -69,75 +69,79 @@
         },
         {
           "date": "2026-06-27",
-          "value": 985.99
+          "value": 978.52
         },
         {
           "date": "2026-07-04",
-          "value": 956.58
+          "value": 955.3
         },
         {
           "date": "2026-07-11",
-          "value": 966.06
+          "value": 964.12
         },
         {
           "date": "2026-07-18",
-          "value": 973.29
+          "value": 892.67
         },
         {
           "date": "2026-07-25",
-          "value": 965.63
+          "value": 899.22
         },
         {
           "date": "2026-08-01",
-          "value": 938.83
+          "value": 887.28
         },
         {
           "date": "2026-08-08",
-          "value": 993.05
+          "value": 929.55
         },
         {
           "date": "2026-08-15",
-          "value": 1022.76
+          "value": 954.31
         },
         {
           "date": "2026-08-22",
-          "value": 985.98
+          "value": 925.75
         },
         {
           "date": "2026-08-29",
-          "value": 987.48
+          "value": 911.45
         },
         {
           "date": "2026-09-05",
-          "value": 995.78
+          "value": 916.62
         },
         {
           "date": "2026-09-12",
-          "value": 1008.62
+          "value": 923.34
         },
         {
           "date": "2026-09-19",
-          "value": 1013.14
+          "value": 925.99
         },
         {
           "date": "2026-09-26",
-          "value": 1060.83
+          "value": 969.35
         },
         {
           "date": "2026-10-03",
-          "value": 1099.92
+          "value": 1023.12
         },
         {
           "date": "2026-10-10",
-          "value": 1088.6
+          "value": 988.19
         },
         {
           "date": "2026-10-17",
-          "value": 975.36
+          "value": 901.64
         },
         {
           "date": "2026-10-24",
-          "value": 941.15
+          "value": 878.15
+        },
+        {
+          "date": "2026-10-31",
+          "value": 877.4
         }
       ],
       "code": "RCI",
@@ -2223,23 +2227,23 @@
       "name": "Commodities",
       "status": "live",
       "cadence": "weekly",
-      "value": 1097.89,
+      "value": 1087.73,
       "as_of": "2026-10-31",
-      "fresh_through": "2026-10-24",
+      "fresh_through": "2026-10-31",
       "base": {
         "value": 1000.0,
         "date": "2026-06-17"
       },
       "span": {
         "start": "2026-06-17",
-        "end": "2026-10-24",
-        "points": 19,
+        "end": "2026-10-31",
+        "points": 20,
         "floor": "2026-06-17"
       },
       "returns": {
-        "1W": -1.27,
-        "1M": 13.65,
-        "3M": 12.45,
+        "1W": -0.93,
+        "1M": 12.41,
+        "3M": 11.26,
         "1Y": {
           "null": true,
           "reason": "insufficient_history"
@@ -2329,6 +2333,10 @@
         {
           "date": "2026-10-24",
           "value": 1097.89
+        },
+        {
+          "date": "2026-10-31",
+          "value": 1087.73
         }
       ],
       "code": "RCMI",
