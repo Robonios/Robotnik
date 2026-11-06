@@ -1,0 +1,35 @@
+name: Site metadata guard
+
+# llms.txt may list only public pages, and each listed page must carry schema.org
+# structured data (task 4d). Every JSON-LD block on the site must parse.
+on:
+  push:
+    paths:
+      - '*.html'
+      - 'research/**'
+      - 'llms.txt'
+      - 'sitemap.xml'
+      - 'scripts/check_site_metadata.py'
+      - '.github/workflows/site-metadata-guard.yml'
+  pull_request:
+    paths:
+      - '*.html'
+      - 'research/**'
+      - 'llms.txt'
+      - 'sitemap.xml'
+      - 'scripts/check_site_metadata.py'
+      - '.github/workflows/site-metadata-guard.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: llms.txt lists public pages with structured data
+        run: python scripts/check_site_metadata.py
