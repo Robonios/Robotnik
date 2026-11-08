@@ -703,5 +703,14 @@
     ],
     "reason": "Lygend Resources & Technology, HKEX 2245. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. MarketStack's HK feed is frozen, so Yahoo is required.",
     "added_date": "2026-11-08"
+  },
+  "5802 JP": {
+    "provider": "yahoo",
+    "yahoo_symbol": "5802.T",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Sumitomo Electric Industries, TSE 5802. Ruled in on 2026-11-08 (contested ruling: InP substrates rate HIGH); added at the data-fetch stage with no MarketStack resolution attempted, as for the event-named companies. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
   }
 }
