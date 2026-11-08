@@ -1613,5 +1613,93 @@
     "key_customers": "Starlink subscribers; NASA and US national-security launch; commercial satellite operators",
     "key_suppliers": "Largely vertically integrated (engines, satellites, user terminals)",
     "robotnik_notes": "CRITICAL via adversarial verifier: dominant launch (Falcon 9 majority of global launch mass) + Starlink = access-to-orbit chokepoint. Carried from the registry at admission (2026-10-29)."
+  },
+  "LITE": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak frontier position is indium phosphide lasers for AI optics: 100G and 200G EMLs, 200G CW lasers for silicon photonics and UHP lasers for co-packaged optics. Demand runs well ahead of supply across the industry, the other qualified makers are also capacity-bound, and a new InP fab takes years, so a customer cannot replace Lumentum's volume in the near term, which is what HIGH means.",
+    "key_customers": "Hyperscale cloud providers (optical circuit switches under a multi-year agreement); transceiver makers (lasers for 800G to 1.6T modules); NVIDIA (lasers for co-packaged optics); telecom systems vendors (narrow-linewidth and pump lasers)",
+    "key_suppliers": "Sumitomo Electric (InP substrates); JX Advanced Metals (InP substrates); AXT (InP substrates under a capacity reservation to 2031); in-house InP wafer fabs in Japan and North Carolina",
+    "robotnik_notes": "FY2026 revenue was $3.0bn, up 83%. Lumentum expects EML shipments to remain significantly behind demand at the end of 2026, CW lasers to stay short and pump lasers to remain sold out. Coherent, Broadcom, Mitsubishi Electric and Sumitomo Electric also make high-speed EMLs, but all are capacity-bound, so the switching path is years, not quarters. The constraint also sits one step upstream: InP substrates come from three makers, and Lumentum has reserved AXT capacity to 2031 and still expects to need more. HIGH rather than CRITICAL because qualified second sources exist; HIGH rather than MEDIUM because none has spare capacity.",
+    "confidence": "MEDIUM"
+  },
+  "AXTI": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak frontier position is indium phosphide substrates, the wafers under the InP lasers and photodetectors in AI optics. AXT is the second-largest maker and, with Sumitomo Electric, holds almost 80% of world supply; capacity is short, new plants take two to three years and switching requires requalification, which is what HIGH means.",
+    "key_customers": "Coherent (InP substrates); Lumentum (InP substrates under a capacity reservation to 2031); VPEC (InP substrates); LandMark Optoelectronics (InP substrates)",
+    "key_suppliers": "in-house joint ventures in China (indium, gallium and germanium feedstock)",
+    "robotnik_notes": "Most AXT substrates are made in China, so exports have needed Chinese licences since February 2025; permit delays have disrupted supply to Taiwanese optical makers, and the price of a 6-inch InP wafer has risen about 250%. That exposure raises the risk to customers rather than lowering AXT's position: its output cannot be replaced while Sumitomo Electric and JX Advanced Metals are sold out, which is why Lumentum paid to reserve its capacity. HIGH rather than CRITICAL because two qualified makers exist outside it. AXT also makes GaAs and germanium substrates.",
+    "confidence": "MEDIUM"
+  },
+  "2449 TT": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is final test and burn-in of AI accelerators, where King Yuan is Taiwan's largest independent test house and NVIDIA's long-standing tester. A customer can move test to other OSATs or in-house lines at a requalification cost, which is what MEDIUM means.",
+    "key_customers": "NVIDIA (AI GPU test with prepaid US capacity); other AI GPU and ASIC makers",
+    "key_suppliers": "Advantest (test systems); in-house burn-in and liquid-cooling equipment",
+    "robotnik_notes": "NVIDIA prepaid in October 2026 to reserve capacity in King Yuan's US expansion of up to $1.4bn, built through its subsidiary AeternZ Semiconductor Testing, and King Yuan raised capital spending to a record for AI GPU and ASIC test. Its edge is in-house burn-in equipment, liquid cooling and volume test management as accelerator power rises. ASE and Amkor, which also holds a prepayment-backed NVIDIA agreement, can absorb test work, so the friction is qualification and capacity rather than a unique capability.",
+    "confidence": "MEDIUM"
+  },
+  "RCAT": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is the US Army's Short Range Reconnaissance programme of record, which Red Cat's Teal Black Widow won from Skydio in November 2024 against a target of 5,880 systems over five years. Qualification creates real switching friction, but the Army has changed this programme's supplier before, which is what MEDIUM means.",
+    "key_customers": "US Army (Short Range Reconnaissance programme of record); allied defence and security providers",
+    "key_suppliers": "Teledyne FLIR (Prism AI software); Palladyne AI (autonomy software)",
+    "robotnik_notes": "Red Cat (Teal Drones, FlightWave Aerospace) builds the Black Widow small UAS in the US, which US defence buyers require and most Chinese hardware cannot meet. The small-drone field is crowded (Skydio, AeroVironment, Anduril and many FPV makers), so the moat is programme-of-record qualification and US production, not technology.",
+    "confidence": "MEDIUM"
+  },
+  "USAR": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is US sintered NdFeB magnet production and, through Less Common Metals, ex-China rare-earth metals and alloys. The first Stillwater line was commissioned in March 2026 and ramps to 600 t a year by the end of 2026 and 1,200 t in early 2027: small against demand, with Japanese and other Western makers as alternatives, which is what MEDIUM means at this stage.",
+    "key_customers": "Motor and actuator makers (sintered NdFeB magnets from the second quarter of 2026)",
+    "key_suppliers": "Less Common Metals (owned maker of rare-earth metals in the UK); Round Top deposit in Texas (planned feedstock)",
+    "robotnik_notes": "One of the first US magnet lines beside MP Materials' build-out. Western magnet supply is nascent, so any qualified line outside China matters to defence and robotics buyers, but volumes are small and the ramp is unproven. Confidence is LOW until production and customers are disclosed.",
+    "confidence": "LOW"
+  },
+  "603799": {
+    "bottleneck_risk": "MEDIUM",
+    "bottleneck_description": "Peak frontier position is cobalt refining and battery precursors: China's second-largest cobalt producer, integrated from DRC mining through Indonesian HPAL (Huafei, 15,000 t a year of cobalt) to precursors. China refines about 70% of the world's cobalt across several large groups, so a buyer can switch among them at a qualification cost, which is what MEDIUM means.",
+    "key_customers": "CATL (precursors); LG Chem (precursor joint venture); POSCO Future M (precursor joint venture); other cathode makers",
+    "key_suppliers": "in-house DRC cobalt mining; Indonesian HPAL joint ventures (laterite nickel ore); Tsingshan (HPAL partner); in-house Arcadia mine in Zimbabwe (lithium)",
+    "robotnik_notes": "Huayou spans mining, refining, precursors and cathodes across the DRC, Indonesia and Zimbabwe. Cobalt supply tightened under the DRC's export quotas and refining is concentrated in China, but Huayou is one of several integrated Chinese groups (with CMOC, GEM and Jinchuan), so its output is substitutable at a cost. Arcadia made its first lithium salt exports from Zimbabwe in April 2026.",
+    "confidence": "MEDIUM"
+  },
+  "2245 HK": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Peak frontier position is Indonesian battery nickel (MHP and nickel sulphate) within about 400,000 t a year of nickel metal equivalent at Obi Island, much of it nickel pig iron for stainless steel. Indonesian nickel has many large producers and is in surplus, so a buyer can switch readily, which is what LOW means.",
+    "key_customers": "Stainless steel makers (nickel pig iron); battery precursor makers (MHP plus nickel sulphate)",
+    "key_suppliers": "Harita Group (nickel ore from Obi Island)",
+    "robotnik_notes": "Obi Island is one of Indonesia's major integrated nickel centres; phase 2 RKEF lines added 185,000 t a year in 2026. Nickel's constraint is Indonesian policy and scrutiny of HPAL rather than scarcity of supply.",
+    "confidence": "MEDIUM"
+  },
+  "002240": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Peak frontier position is lithium salts (carbonate and hydroxide) from its own spodumene, including a majority stake in Sabi Star in Zimbabwe (about 300,000 t of concentrate a year). Lithium conversion has many Chinese producers and buyers can switch at little cost, which is what LOW means.",
+    "key_customers": "Cathode and battery makers in China (lithium salts)",
+    "key_suppliers": "in-house Sabi Star mine in Zimbabwe (spodumene); third-party spodumene suppliers",
+    "robotnik_notes": "Zimbabwe halted lithium ore and concentrate exports in February 2026 to force local processing, which tightens converters' feedstock for a time but does not make any single converter a chokepoint.",
+    "confidence": "MEDIUM"
+  },
+  "002497": {
+    "bottleneck_risk": "LOW",
+    "bottleneck_description": "Peak frontier position is battery-grade lithium hydroxide and carbonate, with about 130,000 t a year of lithium salt capacity from the end of 2025, fed partly from Kamativi in Zimbabwe (about 350,000 t of concentrate a year). Many converters compete and buyers can requalify, which is what LOW means.",
+    "key_customers": "Tesla, LG Energy Solution, SK On, Panasonic, CATL (lithium salts under long-term agreements)",
+    "key_suppliers": "Kamativi mine in Zimbabwe (spodumene); Australian spodumene suppliers",
+    "robotnik_notes": "Yahua also runs a civil-explosives business; lithium is now its centre of gravity. Long-term agreements are its main sales basis, and its top customers took 90% of 2024 revenue. It received a Zimbabwe export quota in April 2026 and is building lithium sulphate processing there.",
+    "confidence": "MEDIUM"
+  },
+  "002738": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak frontier position is caesium: Sinomine owns Tanco in Canada, which holds about two-thirds of the world's pollucite reserves, and Bikita in Zimbabwe, a near-monopoly on caesium mining and processing. Caesium goes into atomic clocks, photoelectric devices and specialty chemicals, and buyers have no qualified source outside it, which is what HIGH means.",
+    "key_customers": "Oil and gas service providers (caesium formate drilling fluids); atomic clock makers (caesium salts); specialty chemical makers (caesium plus rubidium salts); lithium salt makers (Bikita spodumene)",
+    "key_suppliers": "in-house Tanco mine in Canada (pollucite); in-house Bikita mine in Zimbabwe (spodumene plus pollucite); in-house Tsumeb smelter in Namibia (germanium plus gallium recovery)",
+    "robotnik_notes": "HIGH rather than CRITICAL because caesium's frontier uses need small volumes and Chinese caesium extraction from brines may add supply. The Tsumeb polymetallic project, with over 700 t of contained germanium, adds a germanium and gallium source outside China, under Chinese ownership. Lithium from Bikita is the larger business; the grade follows the peak position, not revenue share.",
+    "confidence": "MEDIUM"
+  },
+  "5802 JP": {
+    "bottleneck_risk": "HIGH",
+    "bottleneck_description": "Peak frontier position is indium phosphide substrates: Sumitomo Electric is the largest maker and, with AXT, holds almost 80% of world supply. Its production sits outside China's export licensing, the market is short, new plants take two to three years and switching requires requalification, which is what HIGH means.",
+    "key_customers": "Lumentum (InP substrates); LandMark Optoelectronics (InP substrates under a long-term contract); in-house lasers and optical devices",
+    "key_suppliers": "Indium and compound-semiconductor raw material suppliers",
+    "robotnik_notes": "Much of its InP output feeds its own optical devices as well as merchant customers, and it has reported no production impact from China's InP export controls. Car wiring harnesses are its centre of gravity; the grade follows the peak position, not revenue share. HIGH rather than CRITICAL because AXT and JX Advanced Metals are qualified alternatives, though both are constrained.",
+    "confidence": "HIGH"
   }
 }
