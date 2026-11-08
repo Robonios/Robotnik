@@ -449,6 +449,23 @@ EQUITIES = [
     ("INFQ", "Infleqtion", "Semiconductors", "United States"),   # NYSE, first trade 2026-02-17 (de-SPAC)
     ("SWMR", "Swarmer", "Robotics", "United States"),            # Nasdaq, IPO closed March 2026
     ("STDN", "Standard Nuclear", "Materials", "United States"),  # NYSE, first trade 2026-07-16
+
+    # ── Event-named companies ruled in on 6 November 2026: DATA-FETCH stage. The
+    # registry holds them as excluded with exclude_reason "admission_pending" while
+    # the price, history and market-cap fetchers collect their data; the registry
+    # change that admits them, with index_entry_date on the admission date, follows
+    # once their data is in the caches. All route to Yahoo via
+    # data_source_overrides.json.
+    ("LITE", "Lumentum Holdings", "Semiconductors", "United States"),
+    ("AXTI", "AXT Inc", "Materials", "United States"),
+    ("2449 TT", "King Yuan Electronics", "Semiconductors", "Taiwan"),
+    ("RCAT", "Red Cat Holdings", "Robotics", "United States"),
+    ("USAR", "USA Rare Earth", "Materials", "United States"),
+    ("603799", "Zhejiang Huayou Cobalt", "Materials", "China"),
+    ("2245 HK", "Lygend Resources & Technology", "Materials", "China"),
+    ("002240", "Chengxin Lithium Group", "Materials", "China"),
+    ("002497", "Sichuan Yahua Industrial Group", "Materials", "China"),
+    ("002738", "Sinomine Resource Group", "Materials", "China"),
 ]
 
 

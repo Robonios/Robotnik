@@ -51,9 +51,11 @@ Root `*.html` — one page each: `index` (the public front door, light theme, ta
 
 ## Universe (`data/registries/entity_registry.json`)
 
-- 610 entries, keyed by id. 465 active, 145 excluded (29 October 2026).
+- 647 entries, keyed by id. 469 active, 178 excluded (8 November 2026).
 - Active rule: `status == null`. Excluded: `status == "excluded"` (carries `exclude_reason`, e.g. `non_frontier`).
-- Active by type: 216 public, 43 token, 206 private.
+  - `admission_pending`: ruled in, held out while the fetchers collect its price history. The registry change that admits it sets `index_entry_date` to the admission date. Ten names since 8 November 2026: Lumentum, AXT, King Yuan Electronics, Red Cat, USA Rare Earth, Huayou Cobalt, Lygend, Chengxin Lithium, Yahua and Sinomine.
+  - `contested`: an outside-core company whose peak position may or may not rate HIGH, held out until Robert rules: Sumitomo Electric and IHI.
+- Active by type: 216 public, 43 token, 210 private.
 - Join keys: for public entities registry `id` == ticker (also `public_ticker`, `eodhd_ticker`); tokens join by `coingecko_id`; private entities have no market-side file.
 - Index membership authority: `data/index/weights.json`: 215 constituents, the active public set less the names `index_membership_exceptions.json` documents (Stardust Power, below the $10M floor). A company enters on its `index_entry_date`, its listing day.
 - Bottleneck / control-point store: `data/markets/enrichment_data.json` (202 of 216 active public companies rated; also aggregated into `bottleneck_weighted_composite.json`).
