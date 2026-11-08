@@ -466,6 +466,10 @@ EQUITIES = [
     ("002240", "Chengxin Lithium Group", "Materials", "China"),
     ("002497", "Sichuan Yahua Industrial Group", "Materials", "China"),
     ("002738", "Sinomine Resource Group", "Materials", "China"),
+
+    # ── Contested name ruled in on 8 November 2026 (InP substrates rate HIGH):
+    # DATA-FETCH stage, as above. Routes to Yahoo via data_source_overrides.json.
+    ("5802 JP", "Sumitomo Electric Industries", "Materials", "Japan"),
 ]
 
 
