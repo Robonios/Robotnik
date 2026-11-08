@@ -613,5 +613,95 @@
     ],
     "reason": "Standard Nuclear, NYSE STDN, first trade 2026-07-16. Added with no MarketStack resolution attempted, as for CBRS and SPCX: recent listings have lagged MarketStack's catalogue. Yahoo serves the US listing. E2 flags the override if MarketStack v2 serves it fresh.",
     "added_date": "2026-10-28"
+  },
+  "LITE": {
+    "provider": "yahoo",
+    "yahoo_symbol": "LITE",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Lumentum, Nasdaq LITE. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
+  },
+  "AXTI": {
+    "provider": "yahoo",
+    "yahoo_symbol": "AXTI",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "AXT Inc, Nasdaq AXTI. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
+  },
+  "RCAT": {
+    "provider": "yahoo",
+    "yahoo_symbol": "RCAT",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Red Cat Holdings, Nasdaq RCAT. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
+  },
+  "USAR": {
+    "provider": "yahoo",
+    "yahoo_symbol": "USAR",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "USA Rare Earth, Nasdaq USAR. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
+  },
+  "2449 TT": {
+    "provider": "yahoo",
+    "yahoo_symbol": "2449.TW",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "King Yuan Electronics, TWSE 2449. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
+  },
+  "603799": {
+    "provider": "yahoo",
+    "yahoo_symbol": "603799.SS",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Zhejiang Huayou Cobalt, SSE 603799. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
+  },
+  "002240": {
+    "provider": "yahoo",
+    "yahoo_symbol": "002240.SZ",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Chengxin Lithium Group, SZSE 002240. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
+  },
+  "002497": {
+    "provider": "yahoo",
+    "yahoo_symbol": "002497.SZ",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Sichuan Yahua Industrial Group, SZSE 002497. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
+  },
+  "002738": {
+    "provider": "yahoo",
+    "yahoo_symbol": "002738.SZ",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Sinomine Resource Group, SZSE 002738. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. E2 flags the override if MarketStack v2 serves it fresh.",
+    "added_date": "2026-11-08"
+  },
+  "2245 HK": {
+    "provider": "yahoo",
+    "yahoo_symbol": "2245.HK",
+    "applies_to_vendors": [
+      "marketstack"
+    ],
+    "reason": "Lygend Resources & Technology, HKEX 2245. Ruled in on 2026-11-06 (event-named companies); added at the data-fetch stage with no MarketStack resolution attempted, as for the October listings. Yahoo serves the listing. MarketStack's HK feed is frozen, so Yahoo is required.",
+    "added_date": "2026-11-08"
   }
 }
