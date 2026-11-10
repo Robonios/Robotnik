@@ -7,7 +7,8 @@
       "why_held": "Migrating a constituent from Yahoo to v2 must be validated PER NAME - the Yahoo->v2 history seam (continuity across the switch) has to be checked one name at a time and NOT bulk-removed, so the overrides stay until each seam is verified.",
       "how_to_clear": "Remove a ticker from the E2 list once its override has been migrated to v2 and the history seam validated. A DIFFERENT override that later becomes v2-fresh is a NEW E2 finding, absent from this list, and will red the run until it is reviewed and either migrated or acknowledged.",
       "surfaced_2026-08-29": 20,
-      "surfaced_2026-10-30": 3
+      "surfaced_2026-10-30": 3,
+      "surfaced_2026-11-10": 11
     },
     "E2_kept_correctness": {
       "note": "NOT migration work and NOT acknowledged. Recorded here only so they are never mistaken for the backlog above. These overrides return a fresh v2 bar but are retained for CORRECTNESS - the v2 bar is wrong or untrustworthy - so they must NEVER be migrated. The check classifies them automatically from the override's `reason` field (KEEP_REASONS in check_entity_lifecycle.py) and lists them under 'kept', separate from findings; this block is the human-facing record.",
@@ -27,7 +28,9 @@
     },
     "E11_deferred": {
       "note": "Listed companies the registry still holds as pre-IPO, whose admission is in progress. Remove an entry in the pull request that admits the company.",
-      "names": {}
+      "names": {
+        "agility-robotics": "Agility Robotics - listed on Nasdaq (AGLT) on 2026-11-05, after its merger with Churchill Capital Corp XI closed on 2026-11-04 (SEC 8-K, 2026-11-06); found by E11 on 2026-11-10. Its data is collected first, then the registry change admits it, entering on its first trading day."
+      }
     },
     "E11_false_match": {
       "note": "SEC matches checked and found to be a different company. Each is acknowledged as entity:TICKER, so a new registrant matching the same entity still reds the run.",
@@ -38,27 +41,38 @@
   },
   "E2": [
     "000660 KS",
+    "002240",
+    "002497",
+    "002738",
     "005930 KS",
     "090360 KS",
     "098460 KS",
     "189300 KS",
+    "2245 HK",
     "2252 HK",
+    "2449 TT",
     "2454 TT",
+    "5802 JP",
     "600584",
+    "603799",
     "7741 JP",
     "8046 TT",
     "ATS AV",
     "AUTO NO",
+    "AXTI",
     "CBRS",
     "FLY",
     "GFS",
     "IFX GR",
     "KDK",
     "KRMN",
+    "LITE",
     "PENG",
+    "RCAT",
     "SPCX",
     "STDN",
     "SWMR",
+    "USAR",
     "VOYG"
   ],
   "E4": [],
@@ -66,6 +80,7 @@
     "enflame"
   ],
   "E11": [
+    "agility-robotics",
     "positron:POSC"
   ]
 }

@@ -470,6 +470,12 @@ EQUITIES = [
     # ── Contested name ruled in on 8 November 2026 (InP substrates rate HIGH):
     # DATA-FETCH stage, as above. Routes to Yahoo via data_source_overrides.json.
     ("5802 JP", "Sumitomo Electric Industries", "Materials", "Japan"),
+
+    # ── Listing found 10 November 2026 (E11): DATA-FETCH stage, as for the October
+    # listings. The registry still holds it as private; the registry change that
+    # admits it, entering on its first trading day, follows once its data is in the
+    # caches. Routes to Yahoo via data_source_overrides.json.
+    ("AGLT", "Agility Robotics", "Robotics", "United States"),   # Nasdaq, first trade 2026-11-05 (de-SPAC)
 ]
 
 
