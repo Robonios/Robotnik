@@ -2,12 +2,14 @@
 """
 Unit tests for scripts/index_dates.py — the shared date-axis rules.
 ===================================================================
-Synthetic fixtures only (NO live data). Exercises the four centralized rules:
+Synthetic fixtures only (NO live data). Exercises the five centralized rules:
 
   1. Quorum            — a date with >=98/197 eligible is kept; <98 is dropped.
   2. Fixed floor       — resolves to 2021-05-07 and does NOT advance with wall-clock.
   3. Injection gate    — a sub-quorum thin session (the 06-08 case) is gated, not admitted.
   4. Trading-day filter— weekends / holidays are excluded.
+  5. Pending entries   — a company admitted ahead of its entry date waits for a bar on
+                         or after it; one with no history is left to the history-key guard.
 
 Run:  python3 scripts/index_dates_test.py      (verbose: add -v)
 Stdlib unittest only — matches the repo's no-build-tools constraint.
@@ -181,6 +183,34 @@ class TradingDayFilter(unittest.TestCase):
         axis = ix.trading_days(sorted(pm), ELIG, traded_for(pm))
         self.assertEqual(axis, ["2021-05-06", "2021-05-07", "2021-05-10"])  # 05-08 dropped
         self.assertEqual(ix.sub_index_base(axis, ELIG, traded_for(pm)), "2021-05-07")
+
+
+class PendingEntries(unittest.TestCase):
+    """Rule 5 — a company admitted ahead of its entry date waits for a bar on or after it."""
+
+    ENTRY = {"NEW": "2026-11-12", "OLD": "2026-06-12"}
+
+    def test_waits_until_history_reaches_the_entry_date(self):
+        self.assertEqual(ix.pending_entries(self.ENTRY, {"NEW": "2026-11-10", "OLD": "2026-11-10"}),
+                         {"NEW": "2026-11-12"})
+
+    def test_enters_on_a_bar_on_or_after_the_date(self):
+        for last in ("2026-11-12", "2026-11-13"):
+            self.assertEqual(ix.pending_entries(self.ENTRY, {"NEW": last, "OLD": last}), {})
+
+    def test_no_history_is_left_to_the_history_key_guard(self):
+        self.assertEqual(ix.pending_entries(self.ENTRY, {"OLD": "2026-11-10"}), {})
+
+    def test_last_bar_dates(self):
+        pm = {"2026-11-09": {"A": 1.0, "B": 1.0}, "2026-11-10": {"A": 1.0}}
+        self.assertEqual(ix.last_bar_dates(pm), {"A": "2026-11-10", "B": "2026-11-09"})
+
+    def test_all_three_consumers_apply_it(self):
+        here = os.path.dirname(os.path.abspath(__file__))
+        for name in ("calculate_index.py", "calculate_bottleneck_composite.py",
+                     "verify_index_reconstruction.py"):
+            with open(os.path.join(here, name)) as f:
+                self.assertIn("pending_entries(", f.read(), name)
 
 
 if __name__ == "__main__":

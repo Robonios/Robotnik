@@ -51,14 +51,14 @@ Root `*.html` — one page each: `index` (the public front door, light theme, ta
 
 ## Universe (`data/registries/entity_registry.json`)
 
-- 647 entries, keyed by id. 469 active, 178 excluded (8 November 2026).
+- 647 entries, keyed by id. 480 active, 167 excluded (10 November 2026).
 - Active rule: `status == null`. Excluded: `status == "excluded"` (carries `exclude_reason`, e.g. `non_frontier`).
-  - `admission_pending`: ruled in, held out while the fetchers collect its price history. The registry change that admits it sets `index_entry_date` to the admission date. Eleven names since 8 November 2026: Lumentum, AXT, King Yuan Electronics, Red Cat, USA Rare Earth, Huayou Cobalt, Lygend, Chengxin Lithium, Yahua, Sinomine and Sumitomo Electric.
+  - `admission_pending`: ruled in, held out while the fetchers collect its price history. The registry change that admits it sets `index_entry_date` to a day after the latest published index day. Until the company's price history reaches that date it stays out of the index (`index_dates.pending_entries`), so the change can merge on any day before it without moving a published value. None open: the eleven held since 8 November 2026 (Lumentum, AXT, King Yuan Electronics, Red Cat, USA Rare Earth, Huayou Cobalt, Lygend, Chengxin Lithium, Yahua, Sinomine and Sumitomo Electric) were admitted on 10 November 2026 with `index_entry_date` 2026-11-12.
   - `contested`: an outside-core company whose peak position may or may not rate HIGH, held out until ruled. None open: on 8 November 2026 Sumitomo Electric was ruled in and IHI out, as a `supply_chain_node`.
-- Active by type: 216 public, 43 token, 210 private.
+- Active by type: 227 public, 43 token, 210 private.
 - Join keys: for public entities registry `id` == ticker (also `public_ticker`, `eodhd_ticker`); tokens join by `coingecko_id`; private entities have no market-side file.
-- Index membership authority: `data/index/weights.json`: 215 constituents, the active public set less the names `index_membership_exceptions.json` documents (Stardust Power, below the $10M floor). A company enters on its `index_entry_date`, its listing day.
-- Bottleneck / control-point store: `data/markets/enrichment_data.json` (202 of 216 active public companies rated; also aggregated into `bottleneck_weighted_composite.json`).
+- Index membership authority: `data/index/weights.json`: 215 constituents, 226 once the eleven admitted on 10 November 2026 enter on 12 November; the active public set less the names `index_membership_exceptions.json` documents (Stardust Power, below the $10M floor). A company enters on its `index_entry_date`: its listing day for a listing found late, or a day after the latest published index day for any other admission.
+- Bottleneck / control-point store: `data/markets/enrichment_data.json` (213 of 227 active public companies rated; also aggregated into `bottleneck_weighted_composite.json`).
 - Value-chain tiers in use (8), the locked set in order: Upstream Materials, IP & Design, Capital Equipment, Fabrication & Manufacturing, Components & Subsystems, System Integration, Deployment & Operation, Software & Services. SpaceX, the only Launch Services entry, moved to Deployment & Operation on admission.
 
 ## Known placeholders

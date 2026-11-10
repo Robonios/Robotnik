@@ -33,7 +33,7 @@ from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from index_dates import trading_days, sub_index_base  # noqa: E402
+from index_dates import trading_days, sub_index_base, pending_entries  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 IDX  = ROOT / "data" / "index"
@@ -151,6 +151,14 @@ def main():
         start = rv.get("index_entry_date") if isinstance(rv, dict) else None
         if start:
             admit[e["ticker"]] = str(start)
+    # A company admitted ahead of its entry date, with no close on or after it yet,
+    # stays out of this check too (index_dates.pending_entries, == production).
+    pending = pending_entries(admit, {tk: max(s) for tk, s in series.items()})
+    if pending:
+        elig = [e for e in elig if e["ticker"] not in pending]
+        elig_tk = {e["ticker"] for e in elig}
+        N = len(elig)
+        admit = {tk: d for tk, d in admit.items() if tk not in pending}
     for tk, start in admit.items():
         if tk in series:
             series[tk] = {dt: c for dt, c in series[tk].items() if dt >= start}

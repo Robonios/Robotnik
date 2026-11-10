@@ -105,7 +105,8 @@ SECTOR_MAP = {
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from calculate_index import backfill_index_chained, weight_regimes, REORG_EVENTS  # noqa: E402
 from index_dates import (SUB_INDEX_FLOOR, trading_days, snapshot_data_date,  # noqa: E402
-                         extend_axis_for_snapshot, sub_index_base)
+                         extend_axis_for_snapshot, sub_index_base,
+                         last_bar_dates, pending_entries)
 
 
 def _selfcheck_chain(entities, weights, price_matrix, all_dates, base_date_str, prod_series):
@@ -385,6 +386,22 @@ def main():
                 and e.get("sector") != "Token"
                 and lifecycle.get(_eid(e["ticker"])) == "public"]
 
+    # History first: a company admitted ahead of its entry date, with no bar on or
+    # after the date yet, stays out of this run (index_dates.pending_entries, ==
+    # standard index), so the universe still matches weights.json below.
+    price_matrix, ticker_meta, all_dates = load_all_history()
+    entry = {}
+    for e in eligible:
+        rv = registry.get(_eid(e["ticker"]))
+        start = rv.get("index_entry_date") if isinstance(rv, dict) else None
+        if start:
+            entry[e["ticker"]] = str(start)
+    pending = pending_entries(entry, last_bar_dates(price_matrix))
+    if pending:
+        eligible = [e for e in eligible if e["ticker"] not in pending]
+        print("  Admitted ahead of entry, not yet in the index: {}".format(", ".join(
+            "{} from {}".format(t, d) for t, d in sorted(pending.items()))))
+
     # Parity guard (publish-blocking): this index holds exactly the standard index's
     # constituents, which calculate_index.py has just written to weights.json.
     try:
@@ -435,8 +452,7 @@ def main():
     weights = compute_capped_weights(raw_weights)                       # bottleneck-tilted
     mcap_weights = compute_capped_weights({e["ticker"]: e["market_cap_usd"] for e in eligible})
 
-    # ── load history + shared date-axis (index_dates: == standard index) ──
-    price_matrix, ticker_meta, all_dates = load_all_history()
+    # ── shared date-axis (index_dates: == standard index); history loaded above ──
     # Admissions (registry index_entry_date, == standard index): an admitted company
     # counts from its entry date only, so it enters this chain at its first price on
     # or after that date.
