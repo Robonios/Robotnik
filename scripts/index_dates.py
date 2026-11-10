@@ -12,7 +12,10 @@ calculate_bottleneck_composite.py, and verify_index_reconstruction.py:
   - the live-snapshot injection guard: a snapshot date enters the published axis
     ONLY if it is genuinely NEW (not already a price_matrix key). A date that
     exists in history but was dropped by the quorum filter is a thin/partial
-    session and stays GATED.
+    session and stays GATED,
+  - admissions not yet in force (pending_entries): a company admitted ahead of
+    its index_entry_date stays out of the index until its price history reaches
+    the date.
 
 Before this module the rules were re-implemented per script and had drifted:
 calculate_bottleneck_composite tested `data_date not in all_dates` for the
@@ -99,3 +102,32 @@ def sub_index_base(all_dates, eligible, traded,
         if d >= floor and sum(1 for t in eligible if traded(t, d)) >= need:
             return d
     return all_dates[0] if all_dates else None
+
+
+def last_bar_dates(price_matrix):
+    """Ticker -> its latest bar date in a date-keyed {date: {ticker: close}} matrix."""
+    last = {}
+    for d in sorted(price_matrix):
+        for t in price_matrix[d]:
+            last[t] = d
+    return last
+
+
+def pending_entries(entry_dates, last_bar):
+    """Admissions not yet in force: {ticker: entry date} for each ticker in
+    `entry_dates` (ticker -> index_entry_date) whose price history has bars, but
+    none on or after its entry date.
+
+    A company can be admitted ahead of its entry date, so the registry change may
+    merge on any day before that date. Until its price history reaches the date,
+    the company stays out of the run: out of the eligible set, the weights and the
+    trading-day quorum, so every output is what it would be without the admission.
+    From the first run whose history has a bar on or after the date, it counts from
+    that bar, as calculate_index.admission_dates describes.
+
+    `last_bar` maps ticker -> latest bar date in the history before admission
+    filtering (index_dates.last_bar_dates). A ticker with no history at all is not
+    pending: calculate_index's history-key guard still stops the run for it.
+    """
+    return {t: d for t, d in entry_dates.items()
+            if last_bar.get(t) and last_bar[t] < d}

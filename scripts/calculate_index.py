@@ -25,7 +25,8 @@ if SCRIPT_DIR not in sys.path:
     sys.path.insert(0, SCRIPT_DIR)
 from index_dates import (SUB_INDEX_FLOOR, TRADING_COVERAGE,  # noqa: E402
                          trading_days, snapshot_data_date,
-                         extend_axis_for_snapshot, sub_index_base)
+                         extend_axis_for_snapshot, sub_index_base,
+                         last_bar_dates, pending_entries)
 INDEX_DIR  = os.path.join(ROOT_DIR, "data", "index")
 HISTORY_DIR = os.path.join(ROOT_DIR, "data", "prices", "history")
 # Output dir for the index family. Defaults to INDEX_DIR; a dry-run/staging run
@@ -745,6 +746,16 @@ def main():
 
     # Admissions with an entry date count from that date only (see admission_dates).
     admitted = admission_dates(_reg, [e["ticker"] for e in eligible], _eid)
+    # A company admitted ahead of its entry date, with no bar on or after the date
+    # yet, stays out of this run altogether (index_dates.pending_entries): every
+    # output is then what it would be without the admission.
+    pending = pending_entries(admitted, last_bar_dates(price_matrix))
+    if pending:
+        eligible = [e for e in eligible if e["ticker"] not in pending]
+        admitted = {t: d for t, d in admitted.items() if t not in pending}
+        weights = compute_capped_weights(eligible)
+        _notice("Admitted ahead of entry, not yet in the index: {}".format(", ".join(
+            "{} from {}".format(t, d) for t, d in sorted(pending.items()))))
     drop_before_admission(price_matrix, admitted)
     if admitted:
         _notice("Admissions: {}".format(", ".join(
