@@ -51,15 +51,15 @@ Root `*.html` — one page each: `index` (the public front door, light theme, ta
 
 ## Universe (`data/registries/entity_registry.json`)
 
-- 647 entries, keyed by id. 480 active, 167 excluded (10 November 2026).
+- 647 entries, keyed by id. 480 active, 167 excluded (11 November 2026).
 - Active rule: `status == null`. Excluded: `status == "excluded"` (carries `exclude_reason`, e.g. `non_frontier`).
   - `admission_pending`: ruled in, held out while the fetchers collect its price history. The registry change that admits it sets `index_entry_date` to a day after the latest published index day. Until the company's price history reaches that date it stays out of the index (`index_dates.pending_entries`), so the change can merge on any day before it without moving a published value. None open: the eleven held since 8 November 2026 (Lumentum, AXT, King Yuan Electronics, Red Cat, USA Rare Earth, Huayou Cobalt, Lygend, Chengxin Lithium, Yahua, Sinomine and Sumitomo Electric) were admitted on 10 November 2026 with `index_entry_date` 2026-11-12.
   - `contested`: an outside-core company whose peak position may or may not rate HIGH, held out until ruled. None open: on 8 November 2026 Sumitomo Electric was ruled in and IHI out, as a `supply_chain_node`.
-  - Listing in progress: Agility Robotics, active as private, has traded on Nasdaq (AGLT) since 5 November 2026, after its merger with Churchill Capital Corp XI; the listing watch (E11) found it on 10 November. The fetchers collect its price history first; the registry change that admits it, entering on its first trading day, follows.
-- Active by type: 227 public, 43 token, 210 private.
+  - Listings: none in progress. Agility Robotics, which has traded on Nasdaq (AGLT) since 5 November 2026 after its merger with Churchill Capital Corp XI, was found by the listing watch (E11) on 10 November and admitted on 11 November with `index_entry_date` on its listing day.
+- Active by type: 228 public, 43 token, 209 private.
 - Join keys: for public entities registry `id` == ticker (also `public_ticker`, `eodhd_ticker`); tokens join by `coingecko_id`; private entities have no market-side file.
-- Index membership authority: `data/index/weights.json`: 215 constituents, 226 once the eleven admitted on 10 November 2026 enter on 12 November; the active public set less the names `index_membership_exceptions.json` documents (Stardust Power, below the $10M floor). A company enters on its `index_entry_date`: its listing day for a listing found late, or a day after the latest published index day for any other admission.
-- Bottleneck / control-point store: `data/markets/enrichment_data.json` (213 of 227 active public companies rated; also aggregated into `bottleneck_weighted_composite.json`).
+- Index membership authority: `data/index/weights.json`: 216 constituents with Agility Robotics, 227 once the eleven admitted on 10 November 2026 enter on 12 November; the active public set less the names `index_membership_exceptions.json` documents (Stardust Power, below the $10M floor). A company enters on its `index_entry_date`: its listing day for a listing found late, or a day after the latest published index day for any other admission.
+- Bottleneck / control-point store: `data/markets/enrichment_data.json` (213 of 228 active public companies rated, Agility Robotics not yet; also aggregated into `bottleneck_weighted_composite.json`).
 - Value-chain tiers in use (8), the locked set in order: Upstream Materials, IP & Design, Capital Equipment, Fabrication & Manufacturing, Components & Subsystems, System Integration, Deployment & Operation, Software & Services. SpaceX, the only Launch Services entry, moved to Deployment & Operation on admission.
 
 ## Known placeholders
