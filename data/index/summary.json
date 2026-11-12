@@ -1,40 +1,40 @@
 {
-  "calculated_at": "2026-11-11T01:46:15.744246+00:00",
+  "calculated_at": "2026-11-12T02:43:48.888150+00:00",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 2950.27,
-    "daily_change_pct": 0.92,
+    "value": 3101.72,
+    "daily_change_pct": 4.85,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 215
+    "entities": 222
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 2950.27,
+    "value": 3101.72,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 215
+    "entities": 222
   },
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 3048.95,
-      "entities": 80
+      "value": 3214.61,
+      "entities": 81
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
-      "value": 1531.0,
+      "value": 1556.06,
       "entities": 66
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 2551.47,
+      "value": 2594.73,
       "entities": 37
     },
     "materials": {
       "name": "Robotnik Materials Index",
-      "value": 2492.26,
-      "entities": 32
+      "value": 2562.28,
+      "entities": 38
     }
   },
   "top_10_weights": [
@@ -69,14 +69,14 @@
       "weight_pct": 5.0
     },
     {
-      "ticker": "AMD",
-      "name": "Advanced Micro Devices",
+      "ticker": "MU",
+      "name": "Micron Technology",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
     {
-      "ticker": "MU",
-      "name": "Micron Technology",
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
@@ -96,7 +96,7 @@
       "ticker": "688825 C1",
       "name": "ChangXin Memory Technologies (CXMT)",
       "sector": "Semiconductor",
-      "weight_pct": 3.6653
+      "weight_pct": 3.6926
     }
   ]
 }
