@@ -1,39 +1,39 @@
 {
-  "calculated_at": "2026-11-12T02:43:48.888150+00:00",
+  "calculated_at": "2026-11-13T02:24:03.269811+00:00",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 3101.72,
-    "daily_change_pct": 4.85,
+    "value": 3068.19,
+    "daily_change_pct": -0.95,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 222
+    "entities": 223
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 3101.72,
+    "value": 3068.19,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 222
+    "entities": 223
   },
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 3214.61,
+      "value": 3189.25,
       "entities": 81
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
-      "value": 1556.06,
-      "entities": 66
+      "value": 1516.36,
+      "entities": 67
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 2594.73,
+      "value": 2506.27,
       "entities": 37
     },
     "materials": {
       "name": "Robotnik Materials Index",
-      "value": 2562.28,
+      "value": 2528.25,
       "entities": 38
     }
   },
@@ -69,14 +69,14 @@
       "weight_pct": 5.0
     },
     {
-      "ticker": "MU",
-      "name": "Micron Technology",
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
     {
-      "ticker": "AMD",
-      "name": "Advanced Micro Devices",
+      "ticker": "MU",
+      "name": "Micron Technology",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
@@ -90,13 +90,13 @@
       "ticker": "ASML",
       "name": "ASML Holding ADR",
       "sector": "Semiconductor",
-      "weight_pct": 5.0
+      "weight_pct": 4.946
     },
     {
       "ticker": "688825 C1",
       "name": "ChangXin Memory Technologies (CXMT)",
       "sector": "Semiconductor",
-      "weight_pct": 3.6926
+      "weight_pct": 3.5821
     }
   ]
 }
