@@ -1,40 +1,40 @@
 {
-  "calculated_at": "2026-11-13T02:24:03.269811+00:00",
+  "calculated_at": "2026-11-14T02:00:51.103557+00:00",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 3068.19,
-    "daily_change_pct": -0.95,
+    "value": 2987.53,
+    "daily_change_pct": -2.39,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 223
+    "entities": 227
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 3068.19,
+    "value": 2987.53,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
-    "entities": 223
+    "entities": 227
   },
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 3189.25,
-      "entities": 81
+      "value": 3103.35,
+      "entities": 82
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
-      "value": 1516.36,
-      "entities": 67
+      "value": 1502.68,
+      "entities": 68
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 2506.27,
+      "value": 2460.89,
       "entities": 37
     },
     "materials": {
       "name": "Robotnik Materials Index",
-      "value": 2528.25,
-      "entities": 38
+      "value": 2496.7,
+      "entities": 40
     }
   },
   "top_10_weights": [
@@ -69,14 +69,14 @@
       "weight_pct": 5.0
     },
     {
-      "ticker": "AMD",
-      "name": "Advanced Micro Devices",
+      "ticker": "MU",
+      "name": "Micron Technology",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
     {
-      "ticker": "MU",
-      "name": "Micron Technology",
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
@@ -90,13 +90,13 @@
       "ticker": "ASML",
       "name": "ASML Holding ADR",
       "sector": "Semiconductor",
-      "weight_pct": 4.946
+      "weight_pct": 5.0
     },
     {
       "ticker": "688825 C1",
       "name": "ChangXin Memory Technologies (CXMT)",
       "sector": "Semiconductor",
-      "weight_pct": 3.5821
+      "weight_pct": 3.5327
     }
   ]
 }
