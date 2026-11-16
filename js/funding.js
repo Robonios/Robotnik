@@ -382,7 +382,8 @@ function renderTrendsChart(currentRounds){
   var allMonths=getMonthKeys(chartMonths);
   var mbs=monthlyBySector(chartRounds);
 
-  var sectors=['Semiconductors','Robotics','Space','Materials'];
+  // Materials first, down the dependency chain, as on the front door's stack map.
+  var sectors=['Materials','Semiconductors','Robotics','Space'];
   var datasets=sectors.map(function(s){
     var data=allMonths.map(function(m){return mbs[m]&&mbs[m][s]?Math.round(mbs[m][s]):0});
     // Build per-bar opacity
