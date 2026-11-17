@@ -4,8 +4,8 @@
   "status": "preliminary \u2014 directional signal only, not headline-publishable",
   "base_date": "2025-03-31",
   "base_value": 1000.0,
-  "current_value": 2846.81,
-  "current_date": "2026-11-13",
+  "current_value": 2707.78,
+  "current_date": "2026-11-16",
   "entity_count": 227,
   "rated_entity_count": 213,
   "rating_coverage_pct": 93.8,
@@ -5969,18 +5969,16 @@
     {
       "date": "2026-11-13",
       "value": 2846.81
+    },
+    {
+      "date": "2026-11-16",
+      "value": 2707.78
     }
   ],
   "divergence_vs_mcap_composite": {
     "monthly_flag_threshold_pct": 5.0,
     "months_flagged": 0,
     "per_day_sample": [
-      {
-        "date": "2026-10-05",
-        "bw": 3489.12,
-        "mcap": 3613.04,
-        "divergence_pct": -3.43
-      },
       {
         "date": "2026-10-06",
         "bw": 3492.99,
@@ -6154,8 +6152,14 @@
         "bw": 2846.81,
         "mcap": 2923.7,
         "divergence_pct": -2.63
+      },
+      {
+        "date": "2026-11-16",
+        "bw": 2707.78,
+        "mcap": 2780.29,
+        "divergence_pct": -2.608
       }
     ]
   },
-  "calculated_at": "2026-11-15T12:38:26.019296+00:00"
+  "calculated_at": "2026-11-17T04:27:11.146347+00:00"
 }
