@@ -1,16 +1,16 @@
 {
-  "calculated_at": "2026-11-17T04:27:08.847117+00:00",
+  "calculated_at": "2026-11-18T03:22:06.510199+00:00",
   "composite": {
     "name": "Robotnik Composite Index",
-    "value": 2824.04,
-    "daily_change_pct": -5.57,
+    "value": 2787.93,
+    "daily_change_pct": -0.89,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
     "entities": 227
   },
   "equities_only": {
     "name": "Robotnik Composite Index (Equities Only)",
-    "value": 2824.04,
+    "value": 2787.93,
     "base_date": "2025-03-31",
     "base_value": 1000.0,
     "entities": 227
@@ -18,22 +18,22 @@
   "sub_indices": {
     "semiconductor": {
       "name": "Robotnik Semiconductor Index",
-      "value": 2927.34,
+      "value": 2897.82,
       "entities": 82
     },
     "robotics": {
       "name": "Robotnik Robotics Index",
-      "value": 1455.81,
+      "value": 1419.24,
       "entities": 68
     },
     "space": {
       "name": "Robotnik Space Index",
-      "value": 2360.17,
+      "value": 2322.11,
       "entities": 37
     },
     "materials": {
       "name": "Robotnik Materials Index",
-      "value": 2392.67,
+      "value": 2315.3,
       "entities": 40
     }
   },
@@ -45,15 +45,15 @@
       "weight_pct": 5.0
     },
     {
-      "ticker": "TSM",
-      "name": "TSMC ADR",
-      "sector": "Semiconductor",
-      "weight_pct": 5.0
-    },
-    {
       "ticker": "SPCX",
       "name": "SpaceX",
       "sector": "Space",
+      "weight_pct": 5.0
+    },
+    {
+      "ticker": "TSM",
+      "name": "TSMC ADR",
+      "sector": "Semiconductor",
       "weight_pct": 5.0
     },
     {
@@ -69,14 +69,14 @@
       "weight_pct": 5.0
     },
     {
-      "ticker": "MU",
-      "name": "Micron Technology",
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
     {
-      "ticker": "AMD",
-      "name": "Advanced Micro Devices",
+      "ticker": "MU",
+      "name": "Micron Technology",
       "sector": "Semiconductor",
       "weight_pct": 5.0
     },
@@ -90,13 +90,13 @@
       "ticker": "ASML",
       "name": "ASML Holding ADR",
       "sector": "Semiconductor",
-      "weight_pct": 5.0
+      "weight_pct": 4.9086
     },
     {
       "ticker": "688825 C1",
       "name": "ChangXin Memory Technologies (CXMT)",
       "sector": "Semiconductor",
-      "weight_pct": 3.5323
+      "weight_pct": 3.4184
     }
   ]
 }
