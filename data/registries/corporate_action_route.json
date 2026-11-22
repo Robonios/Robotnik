@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "updated_at": "2026-10-04T11:06:42.107517+00:00Z",
-    "count": 25,
+    "updated_at": "2026-11-22T13:14:29.092519+00:00Z",
+    "count": 26,
     "purpose": "v2 split_factor misses bonus/scrip/rights; these names' HISTORY routes to Yahoo"
   },
   "tickers": {
@@ -247,6 +247,18 @@
       ],
       "detected_by": "sweep_v2_vs_yahoo",
       "recorded_at": "2026-10-04T11:06:42.107511+00:00Z"
+    },
+    "6861 JP": {
+      "reason": "corporate_action_miss \u2014 v2 under-adjusts vs Yahoo (sustained-ratio sweep)",
+      "yahoo_symbol": "6861.T",
+      "evidence": [
+        {
+          "old_ratio": 5.0,
+          "recent_ratio": 1.0
+        }
+      ],
+      "detected_by": "sweep_v2_vs_yahoo",
+      "recorded_at": "2026-11-22T13:14:29.092507+00:00Z"
     }
   }
 }
