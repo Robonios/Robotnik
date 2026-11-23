@@ -1,6 +1,6 @@
 # Robotnik Data Quality — Weekly Report
-**Generated:** 16-Nov-2026 02:33 UTC
-**Period:** 09-Nov to 16-Nov-2026
+**Generated:** 23-Nov-2026 03:29 UTC
+**Period:** 16-Nov to 23-Nov-2026
 
 ## 🟢 Ready for Reinstatement
 No entities ready for reinstatement.
@@ -15,7 +15,8 @@ No entities quarantined.
 No new candidates this week.
 
 ## 📊 Index-Side Quarantine Events This Week
-No index-side quarantine events this week.
+- 2026-11-17: **DVLT** — index-side validation
+- 2026-11-19: **6861 JP** — index-side validation
 
 ## 📋 Fetcher Rejection Summary (7 days)
 No rejection log found.
