@@ -1,0 +1,27 @@
+name: History seam scan (temp)
+
+# Temporary read-only audit: restores the price-history cache and reports split-like steps.
+# Prints tickers, dates and ratios only. Removed before the branch's pull request.
+on:
+  push:
+    branches: [claude/split-seams-20261123]
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Restore the price-history cache (read-only)
+        uses: actions/cache/restore@v5
+        with:
+          path: |
+            data/prices/history
+            data/index/market_caps.json
+          key: robotnik-price-history-v1-scan-${{ github.run_id }}
+          restore-keys: |
+            robotnik-price-history-v1-
+      - name: Seam check
+        run: python3 scripts/check_history_seams.py
