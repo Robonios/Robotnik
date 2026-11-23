@@ -44,14 +44,13 @@
   var CRIT = { low: '#46B49A', medium: '#E3B341', high: '#E8894A', critical: '#E5484D' };
   var CRIT_STEPS = ['low', 'medium', 'high', 'critical'];
 
-  // Space Mono is not part of the site-wide font load; the profile is the only
-  // surface that uses it, so the template loads it (same mechanism: a <head>
-  // stylesheet link), scoped to where it is needed.
+  // Space Mono, which only the profile uses, is in the site's own css/fonts.css
+  // with the other fonts. A page that doesn't load that stylesheet gets it here.
   function injectFont() {
-    if (document.querySelector('link[data-ap-font]')) return;
+    if (document.querySelector('link[data-ap-font], link[href$="/css/fonts.css"]')) return;
     var l = document.createElement('link');
     l.rel = 'stylesheet';
-    l.href = 'https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap';
+    l.href = '/css/fonts.css';
     l.setAttribute('data-ap-font', '1');
     document.head.appendChild(l);
   }

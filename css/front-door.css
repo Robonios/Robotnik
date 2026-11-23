@@ -1,6 +1,6 @@
 /* Robotnik front door (index.html), from approved mock v6 of 27 October 2026.
    A light page: the product keeps the dark theme in css/style.css, which this page
-   does not load. The request-access form comes from js/nav.js and styles itself. */
+   does not load. The waitlist form comes from js/nav.js and styles itself. */
 :root{
   --bg:#ECEBE6;--cell:#F4F3EF;--cell-2:#FAF9F6;--line:#D2CFC6;--line-2:#B9B5AB;
   --ink:#121418;--ink-2:#3E434C;--mute:#62666C;--faint:#979BA2;
@@ -215,7 +215,7 @@ footer .brand{display:flex;font-size:15px}
 footer .brand i{width:10px;height:10px}
 .linkish{border:0;background:none;padding:0;cursor:pointer;font:inherit;color:inherit}
 
-/* the request-access form (js/nav.js) is dark: give its focus ring the brand colour */
+/* the waitlist form (js/nav.js) is dark: give its focus ring the brand colour */
 #early-access-modal :focus-visible{outline-color:var(--brand)}
 
 /* responsive */
