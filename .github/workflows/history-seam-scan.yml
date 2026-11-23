@@ -4,7 +4,7 @@ name: History seam scan (temp)
 # Prints tickers, dates and ratios only. Removed before the branch's pull request.
 on:
   push:
-    branches: [claude/split-seams-20261123]
+    branches: [claude/history-seams-20261123]
 
 permissions:
   contents: read
@@ -23,5 +23,23 @@ jobs:
           key: robotnik-price-history-v1-scan-${{ github.run_id }}
           restore-keys: |
             robotnik-price-history-v1-
-      - name: Seam check
-        run: python3 scripts/check_history_seams.py
+      - name: Seam report before the repair
+        run: python3 scripts/check_history_seams.py | grep -E " JP |RESULT|HISTORY" || true
+      - name: Repair (this runner's copy only; the cache is not saved)
+        run: |
+          python3 scripts/repair_history_seams.py
+          python3 scripts/repair_history_seams.py --apply
+          python3 scripts/repair_history_seams.py --apply
+      - name: Seam report after the repair
+        run: python3 scripts/check_history_seams.py | grep -E " JP |RESULT|HISTORY" || true
+      - name: E12 on the repaired copy
+        run: |
+          python3 - <<'PY'
+          import sys
+          sys.path.insert(0, "scripts")
+          import check_entity_lifecycle as lc
+          found = lc.check_seams(lc.index_members())
+          print("E12 findings:", len(found))
+          for f in found:
+              print("  ", f)
+          PY
