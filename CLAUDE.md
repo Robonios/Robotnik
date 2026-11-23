@@ -77,3 +77,4 @@ Root `*.html` — one page each: `index` (the public front door, light theme, ta
 - Hand-maintained files inside paths the daily run also commits (`data/registries/`, `data/markets/`, `data/funding/`) can be edited in a pull request, but the pull request is rebased onto `main` and merged promptly so it never sits behind several daily runs.
 - Before merging a pull request, Robert's local copy has no uncommitted changes; after merging, he pulls `main` in GitHub Desktop.
 - Read-only audit before any consequential change. Each pull request is checked against its task's acceptance criteria before Robert reviews it.
+- Failure alerts: a failed scheduled or `main` run of a data, monitoring or deploy workflow opens an issue titled "Failed: <workflow>" (`.github/workflows/failure-alert.yml`); further failures comment on it, and the next success closes it. Open "Failed:" issues are the first thing to check.
