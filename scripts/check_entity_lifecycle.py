@@ -25,6 +25,11 @@ follow an entity change actually happened. This closes the unwatched transitions
                           reads listings from the funding data only). Two signals: its name
                           matches an SEC registrant (company_tickers.json), or it has been
                           pre-IPO for more than PRE_IPO_REVIEW_DAYS since its filing date.
+                          A filer's proposed ticker can reach the SEC list before its shares
+                          trade (Nscale's NSCL was there in November 2026, on an unpriced S-1),
+                          so for a name held as pre-IPO the match counts only once its EDGAR
+                          filings show the offering reaching the market (LISTING_FORMS) or
+                          withdrawn (RW); otherwise the age signal stands.
 
 NOT re-implemented here (already guarded — do not rebuild): E1 route-existence (the
 completeness gate in fetch_prices_marketstack), E5 weights / E6 market_caps / E7 history
@@ -52,6 +57,7 @@ import os
 import re
 import subprocess
 import sys
+import urllib.request
 from datetime import datetime, timezone, date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -348,6 +354,13 @@ def check_graduation(reg):
 
 # ── E11: listing watch (private or pre-IPO -> listed) ────────────────────────
 PRE_IPO_REVIEW_DAYS = 45      # days after a pre-IPO filing before a listing is due a check
+EDGAR_SUBMISSIONS = "https://data.sec.gov/submissions/CIK{}.json"
+SEC_USER_AGENT = "Robotniks/1.0 (robotniks.com, data@robotniks.com)"
+# Forms that mean a filed offering has reached the market: the exchange registration
+# (8-A12B), the exchange's certification (CERT*), the SEC's notice of effectiveness (EFFECT)
+# and the final prospectus (424B1, 424B4). RW withdraws the registration statement.
+LISTING_FORMS = ("8-A12B", "CERTNYS", "CERTNAS", "CERTARCA", "EFFECT", "424B1", "424B4")
+WITHDRAWAL_FORMS = ("RW",)
 _SUFFIX_WORDS = {"inc", "incorporated", "corp", "corporation", "co", "company", "ltd",
                  "limited", "plc", "holdings", "holding", "group", "sa", "nv", "ag", "se",
                  "spa", "llc", "lp", "the", "class", "a", "b", "adr", "ads"}
@@ -360,29 +373,58 @@ def _name_key(s):
 
 
 def load_sec_titles():
-    """{normalised registrant name: [tickers]} from SEC company_tickers.json, or None
-    when the list can't be fetched."""
+    """({normalised registrant name: [tickers]}, {ticker: CIK}) from SEC
+    company_tickers.json, or (None, {}) when the list can't be fetched."""
     try:
         from build_cik_map import load_sec, SECUnavailable
     except Exception:
-        return None
+        return None, {}
     try:
         sec = load_sec()
     except SECUnavailable:
-        return None
-    titles = {}
-    for tkr, (_cik, title) in sec.items():
+        return None, {}
+    titles, ciks = {}, {}
+    for tkr, (cik, title) in sec.items():
+        ciks[tkr] = cik
         k = _name_key(title)
         if k:
             titles.setdefault(k, []).append(tkr)
-    return titles
+    return titles, ciks
 
 
-def check_listings(reg, titles, today=None):
-    """E11: each non-excluded entity held as private or pre-IPO whose name or an alias
-    matches an SEC registrant exactly (after dropping corporate suffixes), and each
-    pre-IPO entity whose filing date (valuation_as_of) is more than PRE_IPO_REVIEW_DAYS
-    old or missing. Both mean: check whether it has listed, and admit it if so."""
+def sec_filings(cik):
+    """[(form, filing date)] from a registrant's recent EDGAR filings. Raises on failure."""
+    req = urllib.request.Request(EDGAR_SUBMISSIONS.format(str(cik).zfill(10)), headers={
+        "User-Agent": SEC_USER_AGENT, "Accept": "application/json"})
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        recent = (json.loads(resp.read().decode()).get("filings") or {}).get("recent") or {}
+    return list(zip(recent.get("form") or [], recent.get("filingDate") or []))
+
+
+def offering_news(tickers, ciks, since, filings=sec_filings):
+    """For a pre-IPO name's SEC matches: (the listing or withdrawal forms filed on or after
+    `since`, as [(date, form, ticker)], and the tickers whose filings could not be read)."""
+    news, unread = [], []
+    for t in tickers:
+        try:
+            rows = filings(ciks[t]) if ciks.get(t) else None
+        except Exception:
+            rows = None
+        if rows is None:
+            unread.append(t)
+            continue
+        news += [(d, f, t) for f, d in rows
+                 if str(d) >= since and f in LISTING_FORMS + WITHDRAWAL_FORMS]
+    return sorted(news), unread
+
+
+def check_listings(reg, titles, today=None, ciks=None, filings=sec_filings):
+    """E11: each non-excluded entity held as private whose name or an alias matches an SEC
+    registrant exactly (after dropping corporate suffixes); each entity held as pre-IPO
+    whose match has filed a listing or withdrawal form since its filing date
+    (valuation_as_of), or whose filings could not be read; and each pre-IPO entity whose
+    filing date is more than PRE_IPO_REVIEW_DAYS old or missing. All mean: check whether
+    it has listed, and admit it if so."""
     today = today or date.today()
     found = []
     for k, v in reg.items():
@@ -393,12 +435,24 @@ def check_listings(reg, titles, today=None):
             continue
         names = {_name_key(x) for x in [v.get("name")] + (v.get("aliases") or [])} - {""}
         hits = sorted({t for n in names for t in (titles or {}).get(n, [])})
-        if hits:
+        since = str(v.get("valuation_as_of") or "")[:10]
+        if hits and life.startswith("pre_ipo"):
+            # The filer's own proposed ticker is expected in the SEC list before it trades;
+            # its EDGAR filings say when the offering reaches the market.
+            news, unread = offering_news(hits, ciks or {}, since, filings)
+            if news or unread:
+                detail = "; ".join(["SEC registrant {} filed {} on {}".format(t, f, d)
+                                    for d, f, t in news[:3]]
+                                   + ["SEC registrant {}: its EDGAR filings could not be "
+                                      "read".format(t) for t in unread[:3]])
+                found.append({"entity": k, "lifecycle": life, "signal": "sec-filing",
+                              "tickers": hits, "detail": detail})
+                continue
+        elif hits:
             found.append({"entity": k, "lifecycle": life, "signal": "sec", "tickers": hits,
                           "detail": "SEC registrant {}".format(", ".join(hits[:3]))})
             continue
         if life.startswith("pre_ipo"):
-            since = str(v.get("valuation_as_of") or "")[:10]
             try:
                 age = (today - date.fromisoformat(since)).days
             except ValueError:
@@ -494,11 +548,11 @@ def main():
     e2, e2_kept = check_route_optimality(ap)
     e4_cand, e4_esc = check_frozen(ap)
     e10 = check_graduation(reg)
-    titles = load_sec_titles()
+    titles, ciks = load_sec_titles()
     if titles is None and os.environ.get("GITHUB_ACTIONS") == "true":
         print("::warning::E11 listing watch: the SEC list could not be fetched; only the "
               "pre-IPO age signal ran.")
-    e11 = check_listings(reg, titles)
+    e11 = check_listings(reg, titles, ciks=ciks)
     feed_candidates(e4_esc)
 
     # Acknowledgment baseline (data/quarantine/lifecycle_acknowledged.json = {"E2": [...],
