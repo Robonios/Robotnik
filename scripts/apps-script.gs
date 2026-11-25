@@ -24,7 +24,11 @@
  *             {"status": "error", "message": "..."}  on failure
  *
  * Behaviour
- *   - All user-facing fields are mandatory.
+ *   - Name, email, organisation and the source page are mandatory; the
+ *     waitlist form (November 2026) asks for role and a message as optional
+ *     and no longer asks for LinkedIn or the referral. Until this version is
+ *     redeployed, js/nav.js sends a placeholder for each of those four, so
+ *     the April deployment, which requires them, accepts the form.
  *   - Basic email format check.
  *   - LinkedIn URL is accepted as-is; if it doesn't contain
  *     "linkedin.com/in/" we log a note but don't reject.
@@ -39,10 +43,7 @@ const HEADERS = [
 ];
 
 // Keys in the posted JSON that must be present and non-empty.
-const REQUIRED_FIELDS = [
-  'name', 'email', 'organisation', 'role',
-  'linkedin', 'use_case', 'how_did_you_hear', 'source_page',
-];
+const REQUIRED_FIELDS = ['name', 'email', 'organisation', 'source_page'];
 
 function doPost(e) {
   try {
@@ -76,7 +77,7 @@ function doPost(e) {
     // LinkedIn URL is soft-checked: log if it doesn't look like a
     // profile URL, but still accept — the column preserves whatever
     // the user entered so Robert can follow up regardless.
-    const linkedin = payload.linkedin.trim();
+    const linkedin = String(payload.linkedin || '').trim();
     if (linkedin.indexOf('linkedin.com/in/') === -1) {
       console.log('LinkedIn URL did not match expected pattern:', linkedin);
     }
@@ -86,10 +87,10 @@ function doPost(e) {
       payload.name.trim(),
       email,
       payload.organisation.trim(),
-      payload.role.trim(),
+      String(payload.role || '').trim(),
       linkedin,
-      payload.use_case.trim(),
-      payload.how_did_you_hear.trim(),
+      String(payload.use_case || '').trim(),
+      String(payload.how_did_you_hear || '').trim(),
       payload.source_page.trim(),
       (payload.user_agent || '').toString().slice(0, 500),
     ];

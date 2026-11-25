@@ -3,7 +3,7 @@
      figure on them comes from that feed; the page computes none.
    - The tier marquee, the stack map with its illustrative trace, the walkthrough poster.
    - Two robots, layered from the files in assets/robot/ and placed by robot.json.
-   - Every Request access button, and Contact, opens the request-access form that
+   - Every Join the waitlist button, and Contact, opens the waitlist form that
      js/nav.js builds (openEarlyAccess). */
 (function () {
   'use strict';
@@ -17,7 +17,7 @@
     });
   }
 
-  /* ---------- request access ---------- */
+  /* ---------- waitlist ---------- */
   [].forEach.call(document.querySelectorAll('[data-access]'), function (b) {
     b.addEventListener('click', function (e) {
       e.preventDefault();

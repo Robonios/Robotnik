@@ -512,8 +512,16 @@ function renderNotable(p,periodLabel){
   }
   // Period phrasing: "in the last 3 months" vs "across the full dataset (since Jan 2023)"
   var phrase=currentPeriod==='ALL'?'across the full dataset (since Jan 2023)':'in the last '+periodLabel;
+  var n=function(x){return Number(x).toLocaleString('en-GB');};
+  // One sector can lead on both counts; then the sentence says so rather than "but" itself.
+  var leader=bestAvgSector===mostActive
+    ? esc(mostActive)+' dominates deal flow with '+n(mostActiveRounds)+' rounds and also commands the highest average deal size, at '+fmtM(Math.round(bestAvg))+' per round. '
+    : esc(mostActive)+' dominates deal flow with '+n(mostActiveRounds)+' rounds, but '+esc(bestAvgSector)+' commands the highest average deal size at '+fmtM(Math.round(bestAvg))+' per round. ';
+  var mega=megas===0 ? 'No round exceeded $500M.'
+    : megas===1 ? '<strong>One mega-round<\/strong> exceeding $500M signals deep conviction in frontier compute and physical AI infrastructure.'
+    : '<strong>'+n(megas)+' mega-rounds<\/strong> exceeding $500M signal deep conviction in frontier compute and physical AI infrastructure.';
   document.getElementById('notable-card').innerHTML=
-    'Tovarishch, <strong>'+p.num_rounds+' frontier stack rounds<\/strong> detected '+phrase+', deploying <strong>'+fmtM(p.total_capital_m)+'<\/strong> of capital. '+esc(mostActive)+' dominates deal flow with '+mostActiveRounds+' rounds, but '+esc(bestAvgSector)+' commands the highest average deal size at '+fmtM(Math.round(bestAvg))+' per round. <strong>'+megas+' mega-rounds<\/strong> exceeding $500M signal deep conviction in frontier compute and physical AI infrastructure.';
+    'Tovarishch, <strong>'+n(p.num_rounds)+' frontier stack rounds<\/strong> detected '+phrase+', deploying <strong>'+fmtM(p.total_capital_m)+'<\/strong> of capital. '+leader+mega;
 }
 
 // ===== Lifecycle Exits =====

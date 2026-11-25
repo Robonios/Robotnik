@@ -98,7 +98,7 @@
 
   // The public front door (index.html) has its own top navigation and footer, and no
   // #nav-container. There the sidebar, top bar, mobile menu and footer are skipped;
-  // the request-access form below is built on every page.
+  // the waitlist form below is built on every page.
   var navContainer = document.getElementById('nav-container');
   if (navContainer) navContainer.innerHTML = sidebar + topBar + mobileOverlay;
 
@@ -202,9 +202,9 @@
   modalDiv.innerHTML = '' +
     '<div style="background:#0A0A0F;border:1px solid #333;border-radius:8px;padding:1.75rem 2rem 1.5rem;max-width:520px;width:100%;position:relative;font-family:\'Mulish\',sans-serif;margin:auto;">' +
       '<button type="button" id="ea-close-btn" aria-label="Close" style="position:absolute;top:12px;right:16px;background:none;border:none;color:#888;font-size:18px;cursor:pointer;line-height:1;">&#10005;</button>' +
-      '<h3 style="color:#F5D921;font-size:12px;letter-spacing:0.1em;margin:0 0 0.5rem;font-family:\'Space Grotesk\',sans-serif;">Request access</h3>' +
+      '<h3 style="color:#F5D921;font-size:12px;letter-spacing:0.1em;margin:0 0 0.5rem;font-family:\'Space Grotesk\',sans-serif;">Join the waitlist</h3>' +
       '<p style="color:#8B92A5;font-size:11px;line-height:1.55;margin:0 0 1.25rem;">' +
-        'Tell us what you\'re working on and we\'ll be in touch.' +
+        'Leave your details and we\'ll tell you when the next pilots open.' +
       '</p>' +
       '<form id="early-access-form" novalidate style="display:flex;flex-direction:column;gap:0.9rem;">' +
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">' +
@@ -217,18 +217,18 @@
           '<div><label style="' + labelStyle + '" for="ea-role">Role</label>' +
             '<input type="text" id="ea-role" name="role" autocomplete="organization-title" placeholder="Your job title" style="' + inputStyle + '"></div>' +
         '</div>' +
-        '<div><label style="' + labelStyle + '" for="ea-usecase">Message' + reqDot + '</label>' +
-          '<textarea id="ea-usecase" name="use_case" required rows="4" placeholder="Request access, a demo, or an introduction, or tell us what you need." style="' + inputStyle + 'resize:vertical;min-height:84px;line-height:1.5;"></textarea></div>' +
+        '<div><label style="' + labelStyle + '" for="ea-usecase">Message</label>' +
+          '<textarea id="ea-usecase" name="use_case" rows="4" placeholder="Optional: what you would use Robotnik for, or a question." style="' + inputStyle + 'resize:vertical;min-height:84px;line-height:1.5;"></textarea></div>' +
         '<input type="hidden" name="source_page" id="ea-source-page">' +
         '<div id="ea-error" role="alert" style="display:none;color:#ef4444;font-size:11px;line-height:1.4;"></div>' +
-        '<button type="submit" id="ea-submit-btn" style="margin-top:0.25rem;padding:0.7rem;background:#F5D921;color:#0A0A0F;font-family:\'Space Grotesk\',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;border:none;border-radius:3px;cursor:pointer;text-transform:uppercase;">Submit your request</button>' +
+        '<button type="submit" id="ea-submit-btn" style="margin-top:0.25rem;padding:0.7rem;background:#F5D921;color:#0A0A0F;font-family:\'Space Grotesk\',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.08em;border:none;border-radius:3px;cursor:pointer;text-transform:uppercase;">Join the waitlist</button>' +
       '</form>' +
       '<div id="ea-success" style="display:none;padding:1rem 0 0.25rem;">' +
-        '<p style="color:#22c55e;font-size:13px;font-weight:600;margin:0 0 0.5rem;">Thank you for your interest.</p>' +
-        '<p style="color:#8B92A5;font-size:11px;line-height:1.5;margin:0;">We\'ll be in touch shortly.</p>' +
+        '<p style="color:#22c55e;font-size:13px;font-weight:600;margin:0 0 0.5rem;">You\'re on the waitlist.</p>' +
+        '<p style="color:#8B92A5;font-size:11px;line-height:1.5;margin:0;">We\'ll be in touch when the next pilots open.</p>' +
       '</div>' +
       '<p style="color:#5A6178;font-size:9px;line-height:1.5;margin:1rem 0 0;">' +
-        'Submissions are stored in Robotnik\'s Google Workspace solely to respond to your enquiry. No IP address or cookies are logged.' +
+        'Your details are stored in Robotnik\'s Google Workspace, only to contact you about access and to answer your message. No IP address or cookies are logged.' +
       '</p>' +
     '</div>';
   document.body.appendChild(modalDiv);
@@ -252,12 +252,19 @@
       form.reportValidity();
       return;
     }
+    // The deployed Apps Script (April 2026) requires role, linkedin, use_case and
+    // how_did_you_hear to be non-empty, though the form no longer asks for LinkedIn or
+    // the referral and leaves role and message optional. Each gets a placeholder that
+    // says so, which the sheet keeps as written. scripts/apps-script.gs drops those
+    // requirements; the placeholders do no harm once it is redeployed.
     var data = {
       name:             document.getElementById('ea-name').value.trim(),
       email:            document.getElementById('ea-email').value.trim(),
       organisation:     document.getElementById('ea-org').value.trim(),
-      role:             document.getElementById('ea-role').value.trim(),
-      use_case:         document.getElementById('ea-usecase').value.trim(),
+      role:             document.getElementById('ea-role').value.trim() || 'Not given',
+      linkedin:         'Not asked',
+      use_case:         document.getElementById('ea-usecase').value.trim() || 'Not given',
+      how_did_you_hear: 'Not asked',
       source_page:      window.location.pathname || '/',
       user_agent:       (navigator && navigator.userAgent) || '',
     };
