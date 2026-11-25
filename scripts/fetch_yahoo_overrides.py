@@ -39,6 +39,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from fetch_yahoo import fetch_yahoo_daily, fetch_latest_from_yahoo, YahooFetchError
 from fetch_fx import fetch_fx_daily   # ECB-primary FX (CI-resilient); override PRICES stay on Yahoo
 import currency_convert as cc
+from history_rebase import note_rebase, rebase_stored
 
 OVERRIDES_PATH = ROOT / "data" / "registries" / "data_source_overrides.json"
 EQUITIES_PATH  = ROOT / "data" / "prices" / "equities.json"
@@ -203,7 +204,12 @@ def cmd_history_overrides(backfill=False):
             if not backfill and hpath.exists():
                 try:
                     existing = json.loads(hpath.read_text())
-                    by_date = {r["date"]: r for r in existing.get("series", [])}
+                    # A split inside the refreshed window: bring the older stored bars
+                    # onto the window's basis first, so the merge leaves no step.
+                    stored, factor = rebase_stored(existing.get("series", []), series_rows)
+                    if factor:
+                        note_rebase(ticker, factor)
+                    by_date = {r["date"]: r for r in stored}
                     for r in series_rows:
                         by_date[r["date"]] = r
                     series_rows = [by_date[d] for d in sorted(by_date)]

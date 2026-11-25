@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "purpose": "Splits whose seam the stored price history may still carry: scripts/repair_history_seams.py finds the one unreverted step of about 1/factor before each ex-date and divides the bars before it by the factor. Hand-maintained; add a split only once its ex-date and ratio are checked against the exchange's notice.",
+    "updated": "2026-11-23",
+    "fields": "ticker (registry id), ex_date (first day of trading in the split shares), factor (new shares per old share), source"
+  },
+  "splits": [
+    {
+      "ticker": "4062 JP",
+      "ex_date": "2026-09-29",
+      "factor": 2,
+      "source": "Nikkei Inc., Nikkei Stock Average PAF changes of 4 September 2026 (Ibiden, 1:2 stock split): https://indexes.nikkei.co.jp/nkave/archives/news/20260904E_1.pdf"
+    },
+    {
+      "ticker": "5706 JP",
+      "ex_date": "2026-09-29",
+      "factor": 10,
+      "source": "Tokyo Stock Exchange, rights list for September 2026 (Mitsui Kinzoku, ex-rights 29 September, 1:10 stock split): https://www.jpx.co.jp/english/markets/statistics-equities/monthly/vk0khi000002qu3s-att/17_kenri2609.pdf"
+    },
+    {
+      "ticker": "8035 JP",
+      "ex_date": "2026-09-29",
+      "factor": 5,
+      "source": "Tokyo Stock Exchange, rights list for September 2026 (Tokyo Electron, ex-rights 29 September, 1:5 stock split): https://www.jpx.co.jp/english/markets/statistics-equities/monthly/vk0khi000002qu3s-att/17_kenri2609.pdf"
+    },
+    {
+      "ticker": "6861 JP",
+      "ex_date": "2026-11-19",
+      "factor": 5,
+      "source": "Osaka Exchange, adjustment of securities options (Keyence, 1:5 stock split; trading in the split shares from 19 November 2026): https://www.jpx.co.jp/english/news/2020/20260105-01.html"
+    }
+  ]
+}

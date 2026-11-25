@@ -36,6 +36,12 @@
       "names": {
         "positron:POSC": "Positron Corp (POSC, OTC; SEC CIK 0000844985) is a nuclear-medicine imaging company, not Positron the AI-chip start-up, which raised a Series B in February 2026 and is private. Checked 2026-10-28."
       }
+    },
+    "E12_real_moves": {
+      "note": "Index members whose history steps like a split on a date when the stock really moved that much. Each is acknowledged as ticker:date, so a new step for the same name still reds the run.",
+      "names": {
+        "MNTS:2026-05-26": "Momentus closed up almost 110% on 26 May 2026, a real move (Barchart and Yahoo Finance, 'This tiny space stock just exploded'); its last reverse split was 1-for-17.85 on 18 December 2025. Checked 2026-11-23."
+      }
     }
   },
   "E2": [
@@ -81,5 +87,8 @@
   ],
   "E11": [
     "positron:POSC"
+  ],
+  "E12": [
+    "MNTS:2026-05-26"
   ]
 }

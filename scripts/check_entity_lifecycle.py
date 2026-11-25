@@ -30,20 +30,28 @@ follow an entity change actually happened. This closes the unwatched transitions
                           so for a name held as pre-IPO the match counts only once its EDGAR
                           filings show the offering reaching the market (LISTING_FORMS) or
                           withdrawn (RW); otherwise the age signal stands.
+  E12 history seam       — an index member whose stored history steps by about 1/k (or k)
+                          in one bar, not undone by the next, within SEAM_LOOKBACK_DAYS. A
+                          split inside a refresh window used to leave one where the window
+                          began (Ibiden: 50% on 1 May 2026, for its split of 29 September).
+                          history_rebase.py now prevents them; repair_history_seams.py
+                          repairs a listed split's seam. A finding means a split to check
+                          and list there, or a real move to acknowledge.
 
 NOT re-implemented here (already guarded — do not rebuild): E1 route-existence (the
 completeness gate in fetch_prices_marketstack), E5 weights / E6 market_caps / E7 history
 (reverse-parity guard in calculate_index), E8 search_index / E9 cik_map (the two
 `--check` drift guards).
 
-Severity: WARN. Actionable findings (E3 regressions, E4 escalations, E10 gaps, E11 listings) set exit 1
+Severity: WARN. Actionable findings (E3 regressions, E4 escalations, E10 gaps, E11 listings,
+E12 seams) set exit 1
 so the workflow goes RED and the warning is seen; E4 escalations are also written to
 data/quarantine/auto_quarantine_candidates.json, which the weekly quarantine report reads.
 The E2 migration backlog is reported but, being standing debt, does not by itself red the
 daily run unless --strict.
 
 Modes:
-  (default)         daily sweep: E2, E4 (+exit), E10, E11. E11 reads the SEC list over the
+  (default)         daily sweep: E2, E4 (+exit), E10, E11, E12. E11 reads the SEC list over the
                     network; if it can't be fetched, only the pre-IPO age signal runs.
   --validate [MAP]  E3 only: compare a proposed map (default: the working-tree
                     marketstack_symbols.json) against the COMMITTED map (git HEAD) and
@@ -58,7 +66,7 @@ import re
 import subprocess
 import sys
 import urllib.request
-from datetime import datetime, timezone, date
+from datetime import datetime, timezone, date, timedelta
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
@@ -70,6 +78,7 @@ ROUNDS = os.path.join(ROOT, "data", "funding", "rounds.json")
 HISTORY_DIR = os.path.join(ROOT, "data", "prices", "history")
 AUTO_CANDIDATES = os.path.join(ROOT, "data", "quarantine", "auto_quarantine_candidates.json")
 ACK_PATH = os.path.join(ROOT, "data", "quarantine", "lifecycle_acknowledged.json")
+WEIGHTS = os.path.join(ROOT, "data", "index", "weights.json")
 
 FROZEN_TOLERANCE_TDAYS = 10   # trading days a series may legitimately go without a new bar
                               # (thin frontier names skip days; >10 is a real freeze). A lone
@@ -463,6 +472,60 @@ def check_listings(reg, titles, today=None, ciks=None, filings=sec_filings):
     return found
 
 
+# ── E12: history seams (a split step left in the stored history) ─────────────
+SEAM_LOOKBACK_DAYS = 200   # a refresh left a seam at most ~150 days before the run
+SEAM_TOL = 0.12            # |ratio x k - 1| (or |ratio / k - 1|) for a step to look like a split
+SEAM_FACTORS = (2, 3, 4, 5, 6, 8, 10, 15, 20, 25, 30, 40, 50, 100)
+
+
+def _seam_label(r):
+    for k in SEAM_FACTORS:
+        if abs(r * k - 1) <= SEAM_TOL:
+            return "{}-for-1 split".format(k)
+        if abs(r / k - 1) <= SEAM_TOL:
+            return "1-for-{} consolidation".format(k)
+    return None
+
+
+def _closes(ticker):
+    d = load_json(hist_path(ticker)) or {}
+    series = d.get("series") or []
+    if isinstance(series, dict):
+        rows = [(k, v.get("close") if isinstance(v, dict) else v) for k, v in series.items()]
+    else:
+        rows = [(p.get("date"), p.get("close")) for p in series if isinstance(p, dict)]
+    return sorted((str(k)[:10], c) for k, c in rows
+                  if k and isinstance(c, (int, float)) and not isinstance(c, bool) and c > 0)
+
+
+def check_seams(members, today=None):
+    """E12: each index member whose history steps, on a date within SEAM_LOOKBACK_DAYS, by a
+    ratio that looks like a split or consolidation and is not undone by the next bar."""
+    since = ((today or date.today()) - timedelta(days=SEAM_LOOKBACK_DAYS)).isoformat()
+    found = []
+    for t in sorted(members):
+        rows = _closes(t)
+        for i in range(1, len(rows)):
+            if rows[i][0] < since:
+                continue
+            r = rows[i][1] / rows[i - 1][1]
+            label = _seam_label(r)
+            if not label:
+                continue
+            if i + 1 < len(rows) and abs(r * rows[i + 1][1] / rows[i][1] - 1) <= SEAM_TOL:
+                continue                       # a bad print the next bar undoes
+            if i >= 2 and abs(r * rows[i - 1][1] / rows[i - 2][1] - 1) <= SEAM_TOL:
+                continue                       # the bar undoing a bad print
+            found.append({"ticker": t, "date": rows[i][0], "ratio": round(r, 4), "label": label})
+    return found
+
+
+def index_members():
+    w = load_json(WEIGHTS, {}) or {}
+    rows = w.get("weights") if isinstance(w, dict) else w
+    return {r.get("ticker") for r in (rows or []) if isinstance(r, dict) and r.get("ticker")}
+
+
 # ── candidate feed (weekly report reads this file) ──────────────────────────
 def frozen_signal(e):
     """The corroboration that escalated an E4 record."""
@@ -491,7 +554,7 @@ def feed_candidates(escalations):
         json.dump(cand, f, indent=2)
 
 
-def annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new, e11_new=()):
+def annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new, e11_new=(), e12_new=()):
     """In GitHub Actions, print each finding as an annotation, so the run summary says
     why the workflow is red without opening the log. Acknowledged findings print as
     warnings; unaddressed ones as errors. Dates and tickers only, never a price."""
@@ -518,6 +581,11 @@ def annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new, e11_new=()):
               "listed and admit it, or acknowledge it in "
               "data/quarantine/lifecycle_acknowledged.json.".format(
                   f["entity"], f["lifecycle"], f["detail"]))
+    for f in e12_new:
+        print("::error::E12 history seam: {} steps {:.4f} on {}, like a {}. If it is a split, "
+              "list it in data/registries/history_seam_repairs.json; if a real move, "
+              "acknowledge {}:{} in data/quarantine/lifecycle_acknowledged.json.".format(
+                  f["ticker"], f["ratio"], f["date"], f["label"], f["ticker"], f["date"]))
 
 
 # ── main ────────────────────────────────────────────────────────────────────
@@ -553,6 +621,7 @@ def main():
         print("::warning::E11 listing watch: the SEC list could not be fetched; only the "
               "pre-IPO age signal ran.")
     e11 = check_listings(reg, titles, ciks=ciks)
+    e12 = check_seams(index_members())
     feed_candidates(e4_esc)
 
     # Acknowledgment baseline (data/quarantine/lifecycle_acknowledged.json = {"E2": [...],
@@ -575,8 +644,10 @@ def main():
     e11_new = [f for f in e11 if f["entity"] not in e11_acked
                and not (f.get("tickers") and all("{}:{}".format(f["entity"], t) in e11_acked
                                                  for t in f["tickers"]))]
-    actionable = bool(e2_new or e4_new or e10_new or e11_new)
-    annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new, e11_new)
+    e12_acked = set(ack.get("E12") or [])
+    e12_new = [f for f in e12 if "{}:{}".format(f["ticker"], f["date"]) not in e12_acked]
+    actionable = bool(e2_new or e4_new or e10_new or e11_new or e12_new)
+    annotate_findings(e2_new, e4_cand, e4_esc, e4_new, e10_new, e11_new, e12_new)
 
     if as_json:
         print(json.dumps({
@@ -587,6 +658,7 @@ def main():
             "E4_escalations": e4_esc,
             "E10_graduation_gaps": e10,
             "E11_listing_watch": e11,
+            "E12_history_seams": e12,
             "actionable": actionable,
         }, indent=2))
         return 1 if actionable else 0
@@ -632,12 +704,19 @@ def main():
             print("   [CHECK] {:26} lifecycle={:13} {}".format(f["entity"][:26], f["lifecycle"], f["detail"]))
     else:
         print("   none.")
+    print("\nE12 history seams (index members, last {} days):".format(SEAM_LOOKBACK_DAYS))
+    if e12:
+        for f in e12:
+            print("   [CHECK] {:14} {} ratio {:.4f}  {}".format(
+                f["ticker"], f["date"], f["ratio"], f["label"]))
+    else:
+        print("   none.")
     n_ack = ((len(e2) - len(e2_new)) + (len(e4_esc) - len(e4_new)) + (len(e10) - len(e10_new))
-             + (len(e11) - len(e11_new)))
+             + (len(e11) - len(e11_new)) + (len(e12) - len(e12_new)))
     print("\n" + "-" * 78)
-    print("RESULT: {} unaddressed finding(s) — E2={} E4={} E10={} E11={}{} (exit {})".format(
-        len(e2_new) + len(e4_new) + len(e10_new) + len(e11_new), len(e2_new), len(e4_new),
-        len(e10_new), len(e11_new),
+    print("RESULT: {} unaddressed finding(s) — E2={} E4={} E10={} E11={} E12={}{} (exit {})".format(
+        len(e2_new) + len(e4_new) + len(e10_new) + len(e11_new) + len(e12_new), len(e2_new),
+        len(e4_new), len(e10_new), len(e11_new), len(e12_new),
         "  [{} acknowledged]".format(n_ack) if n_ack else "", 1 if actionable else 0))
     return 1 if actionable else 0
 

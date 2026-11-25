@@ -160,6 +160,13 @@ jobs:
       - name: Backfill any newly-added tickers (no-op when universe stable)
         run: python scripts/run_step.py -- python scripts/fetch_price_history_marketstack.py --backfill
 
+      # A split inside a refresh window used to leave the older stored bars on the old
+      # basis (history_rebase.py now prevents it). This repairs the seams of the splits
+      # listed in data/registries/history_seam_repairs.json; a repaired history is left
+      # alone, so the step is a no-op once each listed seam is gone.
+      - name: Repair listed split seams in the price history
+        run: python scripts/run_step.py -- python scripts/repair_history_seams.py --apply
+
       # Persist the refreshed + backfilled history (and market_caps kept-stale carry-
       # over) for the next run. Runs before calculate_index, so a later index failure
       # never loses the freshly-fetched history. Unique run-id key => always saves.

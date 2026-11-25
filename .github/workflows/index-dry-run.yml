@@ -22,6 +22,8 @@ on:
       - 'data/registries/entity_registry.json'
       - 'data/registries/index_membership_exceptions.json'
       - 'data/markets/enrichment_data.json'
+      - 'data/registries/history_seam_repairs.json'
+      - 'scripts/repair_history_seams.py'
       - '.github/workflows/index-dry-run.yml'
 
 permissions:
@@ -80,6 +82,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Repair listed split seams in this runner's copy of the history
+        run: python scripts/run_step.py -- python scripts/repair_history_seams.py --apply
       - name: Recompute the index family into data/private/dryrun
         env:
           ROBOTNIK_INDEX_OUT: data/private/dryrun

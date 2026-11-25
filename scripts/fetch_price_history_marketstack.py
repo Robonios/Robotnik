@@ -36,6 +36,7 @@ from marketstack_client import (
 from fetch_prices import EQUITIES
 from guard_corporate_actions import load_route as load_ca_route
 import currency_convert as cc
+from history_rebase import note_rebase, rebase_stored
 from fetch_fx import fetch_fx_daily   # ECB-primary FX (CI-resilient), Yahoo fallback for TWD
 
 HISTORY_DIR = ROOT / "data" / "prices" / "history"
@@ -204,6 +205,12 @@ def main():
                 "volume": r.get("volume"),
             })
 
+        # A split inside the refreshed window: bring the older stored bars onto the
+        # window's basis first, so the merge leaves no step (history_rebase.py).
+        stored, factor = rebase_stored(existing.get("series", []), conv_rows)
+        if factor:
+            existing = dict(existing, series=stored)
+            note_rebase(ticker, factor)
         merged_series = merge_series(existing, conv_rows)
         out = {
             "ticker": ticker,
