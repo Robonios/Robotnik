@@ -247,6 +247,16 @@ jobs:
       - name: Calculate public markets metrics
         run: python scripts/run_step.py -- python scripts/calculate_metrics.py
 
+      # RPCI is monthly, but it is rebuilt every run from data/funding/rounds.json so a
+      # merged funding ingest reaches the index without a hand-run calculator (generated
+      # files are never edited in a pull request). Reads market_caps.json from the cache
+      # restored above. A failure must not stop the price and index publication, so the
+      # step continues on error and the last step of the job fails it after the commit.
+      - name: Calculate Private Capital Index (from data/funding/rounds.json)
+        id: rpci
+        continue-on-error: true
+        run: python scripts/run_step.py -- python scripts/calculate_private_index.py
+
       - name: Build home-page index summary (final build step — reads the published series only)
         run: python scripts/run_step.py -- python scripts/build_index_summary.py
 
@@ -272,6 +282,12 @@ jobs:
             git commit -m "data: daily price & index update $(date -u +%Y-%m-%d)"
             bash scripts/git_push_with_rebase.sh
           fi
+
+      - name: Fail the run if the Private Capital Index step failed
+        if: steps.rpci.outcome == 'failure'
+        run: |
+          echo "::error::calculate_private_index.py failed; the published RPCI was not rebuilt. See data/index/private_capital_index_guardrails.log and the step's annotation."
+          exit 1
 
   fetch-intel:
     runs-on: ubuntu-latest

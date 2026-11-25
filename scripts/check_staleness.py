@@ -80,8 +80,15 @@ MONITORED = [
     ("data/research.json",                            "fetch_research.py",                 "weekly",  ("field", "updated")),
     ("data/filings.json",                             "fetch_filings.py",                  "weekly",  ("field", "updated")),
     ("data/reports.json",                             "fetch_reports.py",                  "weekly",  ("field", "updated")),
-    # -- monthly: RPCI, manual sweep (no cron) --
+    # -- RPCI: rebuilt every weekday run (fetch-data.yml) from data/funding/rounds.json.
+    #    fetched_at is a writer-liveness stamp. Held at the monthly tolerance so the
+    #    first regenerated run after this change clears the backlog without an alert;
+    #    the run itself fails loudly if the calculator does (final step of fetch-prices).
     ("data/index/private_capital_index.json",         "calculate_private_index.py",        "monthly", ("field", "fetched_at")),
+    # -- monthly: funding ingest, manual (prompts/monthly_ingestion_template.md) --
+    #    Carries the "ingest overdue" signal the RPCI stamp held while RPCI was hand-run:
+    #    rounds.json 'updated' (a bare date) moves only when an ingest merges.
+    ("data/funding/rounds.json",                      "monthly funding ingest (manual PR)", "monthly", ("field", "updated")),
 ]
 
 # Deliberately NOT monitored (printed for transparency, and audited 2026-08-15).
