@@ -8,12 +8,13 @@ Robotnik is a frontier-technology intelligence platform covering robotics, semic
 - Data pipeline: Python scripts in `scripts/` fetch and compute, writing JSON into `data/`; the frontend reads it via `fetch()`.
 - Config: `.env` loaded by `scripts/config.py` (stdlib only). Vendor keys: EODHD, MarketStack, CoinGecko, OpenAlex.
 - Dev server: `python3 -m http.server 8000` (launch config `robotniks-site`).
+- Deploy: `.github/workflows/pages.yml` publishes `_site/`, which `scripts/build_site.py` assembles from an allowlist (the pages, their assets, and the data files the pages read) and `scripts/check_site.py` checks: every reference resolves, nothing withheld is published, no raw vendor field. It deploys once Settings > Pages > Source is GitHub Actions; until then the branch build serves the whole tracked tree. A page that reads a new data file adds it to `DATA` in `build_site.py`.
 
 ## HARD CONSTRAINT — vendor data (ToS)
 
 ToS: no raw vendor price, % change, market cap, P/E or sparkline from MarketStack/Yahoo may be displayed on any public surface. Price may appear only in derived, relative or categorical form, pending licence verification.
 
-Served-data rule: GitHub Pages serves the entire tracked tree, so the constraint extends to every published file, not only rendered pages. The published tree carries no raw vendor field (price, % change, market cap, P/E, sparkline, native spot price) in any JSON. Raw pipeline inputs (the `data/prices/` substrate, `market_caps.json`, `robotnik_public_markets.json`, `enriched_equities.json`) live gitignored in the working tree only; published index files carry derived levels, series, returns and weights, never raw market cap or native spot prices.
+Served-data rule: while the repository is public, every tracked file is public on GitHub, and until the Pages source is GitHub Actions the site serves the entire tracked tree too. So the constraint extends to every tracked file, not only rendered pages. The published tree carries no raw vendor field (price, % change, market cap, P/E, sparkline, native spot price) in any JSON. Raw pipeline inputs (the `data/prices/` substrate, `market_caps.json`, `robotnik_public_markets.json`, `enriched_equities.json`) live gitignored in the working tree only; published index files carry derived levels, series, returns and weights, never raw market cap or native spot prices.
 
 ## Directory map (verified 2026-07-03)
 

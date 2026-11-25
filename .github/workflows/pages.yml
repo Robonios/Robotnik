@@ -1,0 +1,90 @@
+name: Deploy site
+
+# Publishes robotnik.world from _site/, which scripts/build_site.py assembles: the pages,
+# their assets and the data files the pages read. Nothing else in the repository is served.
+# scripts/check_site.py checks the result first, on every pull request as well.
+#
+# Deploying needs Settings > Pages > Build and deployment > Source: GitHub Actions. Until
+# then the deploy job stops with a notice, and the branch build keeps serving the site.
+#
+# The data workflows commit with the workflow token, which starts no push workflow, so this
+# one also runs when each of them completes, and always deploys the latest main.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: {}
+  workflow_run:
+    workflows:
+      - Robotnik Data Pipeline
+      - Robotnik Weekly Commodities + Composite
+      - Refresh Search Index
+      - Regenerate sitemap.xml
+      - Staleness Monitor
+    types: [completed]
+
+permissions:
+  contents: read
+
+# Deploys queue behind each other; a pull request's check runs on its own.
+concurrency:
+  group: site-${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event_name != 'pull_request' && 'main' || '' }}
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Assemble the site
+        run: python scripts/build_site.py
+
+      - name: Check the site
+        run: python scripts/check_site.py
+
+      - name: Upload the site
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check that Pages deploys from GitHub Actions
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! build_type=$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type'); then
+            echo "::error::Could not read the Pages settings."
+            exit 1
+          fi
+          echo "build_type=$build_type" >> "$GITHUB_OUTPUT"
+          if [ "$build_type" != "workflow" ]; then
+            echo "::notice::Pages builds from the branch ('$build_type'), so nothing is deployed. Set Settings > Pages > Source to GitHub Actions, then run this workflow."
+          fi
+
+      - name: Deploy
+        id: deployment
+        if: steps.source.outputs.build_type == 'workflow'
+        uses: actions/deploy-pages@v5
