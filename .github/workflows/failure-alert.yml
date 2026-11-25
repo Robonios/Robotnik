@@ -1,0 +1,67 @@
+name: Failure alert
+
+# A failed scheduled or main-branch run of a data, monitoring or deploy workflow opens an
+# issue, so the failure reaches the repository's watchers by email. A later failure of the
+# same workflow comments on the open issue, and its next success closes it. The issue names
+# the failed jobs and steps and links the run; it never copies a log line.
+on:
+  workflow_run:
+    workflows:
+      - Robotnik Data Pipeline
+      - Robotnik Weekly Commodities + Composite
+      - Staleness Monitor
+      - Entity Lifecycle (on change)
+      - Refresh Search Index
+      - Regenerate sitemap.xml
+      - Deploy site
+    types: [completed]
+
+permissions:
+  actions: read
+  issues: write
+
+concurrency:
+  group: failure-alert-${{ github.event.workflow_run.workflow_id }}
+  cancel-in-progress: false
+
+jobs:
+  alert:
+    if: >-
+      github.event.workflow_run.event != 'pull_request' &&
+      github.event.workflow_run.head_repository.full_name == github.repository &&
+      github.event.workflow_run.head_branch == github.event.repository.default_branch &&
+      contains(fromJSON('["failure", "timed_out", "startup_failure", "success"]'), github.event.workflow_run.conclusion)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open, update or close the alert issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          NAME: ${{ github.event.workflow_run.name }}
+          URL: ${{ github.event.workflow_run.html_url }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          STARTED: ${{ github.event.workflow_run.run_started_at }}
+        run: |
+          set -euo pipefail
+          title="Failed: $NAME"
+          open=$(gh api "repos/$REPO/issues?state=open&per_page=100" --paginate \
+            --jq ".[] | select(.pull_request == null and .title == \"$title\") | .number" | sed -n 1p)
+          if [ "$CONCLUSION" = "success" ]; then
+            if [ -n "$open" ]; then
+              gh api "repos/$REPO/issues/$open/comments" -X POST -f body="Passed again: $URL" > /dev/null
+              gh api "repos/$REPO/issues/$open" -X PATCH -f state=closed -f state_reason=completed > /dev/null
+            fi
+            exit 0
+          fi
+          failed=$(gh api "repos/$REPO/actions/runs/$RUN_ID/jobs?per_page=100" --jq '.jobs[]
+            | select(.conclusion == "failure" or .conclusion == "timed_out")
+            | "- " + .name + ([.steps[] | select(.conclusion == "failure") | .name] as $s
+                | if ($s | length) > 0 then ": " + ($s | join(", ")) else "" end)')
+          body="$(printf 'The run of %s that started %s ended: %s.\n\n%s\n\n%s\n' \
+            "$NAME" "${STARTED:0:16}" "$CONCLUSION" "${failed:-No job reported a failed step.}" "$URL")"
+          if [ -n "$open" ]; then
+            gh api "repos/$REPO/issues/$open/comments" -X POST -f body="$body" > /dev/null
+          else
+            gh api "repos/$REPO/issues" -X POST -f title="$title" -f body="$body" > /dev/null
+          fi
