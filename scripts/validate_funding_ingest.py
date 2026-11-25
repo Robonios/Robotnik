@@ -21,7 +21,10 @@ advisory checks that fall out of the same pass:
                        no deal row at all, in rounds.json or the candidate: its
                        history is unrecorded, or its rows sit under another
                        entity_id (Robotnik Automation's 2023 sale and Deep
-                       Robotics' rounds, both found on 25 November 2026)
+                       Robotics' rounds, both found on 25 November 2026).
+                       A member searched and found to have no deal to record
+                       carries a dated `deal_audit` note in the registry and
+                       is skipped
 
 Severity:
   FAIL          hard defect, CI-blocking            (R1, R2, R3, R4-reliable)
@@ -307,12 +310,14 @@ def run(online=False, tol_url=14, tol_fetch=30, tol_embargo=30, limit_online=Non
             have |= {r.get("entity_id") for r in load_rows()}
         reg = json.load(open(REGISTRY))
         for e in sorted(reg.values(), key=lambda e: e["id"]):
-            if e.get("type") == "private" and e.get("status") is None and e["id"] not in have:
+            if (e.get("type") == "private" and e.get("status") is None
+                    and e["id"] not in have and not e.get("deal_audit")):
                 add("A7-uncovered", "WARN",
                     {"company": e.get("name") or e["id"], "date": None, "round": "",
                      "amount_m": None, "source": None},
                     f"active private member '{e['id']}' has no deal row: record its "
-                    f"deals, or point its rows' entity_id at this id")
+                    f"deals, point its rows' entity_id at this id, or, if a search "
+                    f"finds none, record a dated deal_audit note in the registry")
 
     # ---- R3 : duplicate (company, round, amount) -------------------------- #
     buckets = defaultdict(list)
