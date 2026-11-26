@@ -17,10 +17,18 @@ advisory checks that fall out of the same pass:
                        company-profile page (CB Insights, Crunchbase org,
                        PitchBook, Tracxn, DePIN Hub project, ...)
   A6  null-amount      (advisory) an index-eligible round carries no amount
+  A7  uncovered        (advisory) an active private member of the universe has
+                       no deal row at all, in rounds.json or the candidate: its
+                       history is unrecorded, or its rows sit under another
+                       entity_id (Robotnik Automation's 2023 sale and Deep
+                       Robotics' rounds, both found on 25 November 2026).
+                       A member searched and found to have no deal to record
+                       carries a dated `deal_audit` note in the registry and
+                       is skipped
 
 Severity:
   FAIL          hard defect, CI-blocking            (R1, R2, R3, R4-reliable)
-  WARN          advisory, non-blocking              (A5, A6, R4-soft)
+  WARN          advisory, non-blocking              (A5, A6, A7, R4-soft)
   UNVERIFIABLE  fetch blocked / no date parseable    never fails the build
 
 Design notes
@@ -50,6 +58,7 @@ from urllib.error import HTTPError, URLError
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROUNDS = os.path.join(ROOT, "data/funding/rounds.json")
 SCOPE = os.path.join(ROOT, "data/index/rpci_scope.json")
+REGISTRY = os.path.join(ROOT, "data/registries/entity_registry.json")
 
 # --------------------------------------------------------------------------- #
 # helpers
@@ -294,6 +303,22 @@ def run(online=False, tol_url=14, tol_fetch=30, tol_embargo=30, limit_online=Non
                 add("A6-nullamount", "WARN", r,
                     "index-eligible round with no amount (cannot contribute capital)")
 
+    # ---- A7 : universe coverage (registry vs deal log) --------------------- #
+    if advisory:
+        have = {r.get("entity_id") for r in rows}
+        if path:                                    # a candidate shard adds to the log
+            have |= {r.get("entity_id") for r in load_rows()}
+        reg = json.load(open(REGISTRY))
+        for e in sorted(reg.values(), key=lambda e: e["id"]):
+            if (e.get("type") == "private" and e.get("status") is None
+                    and e["id"] not in have and not e.get("deal_audit")):
+                add("A7-uncovered", "WARN",
+                    {"company": e.get("name") or e["id"], "date": None, "round": "",
+                     "amount_m": None, "source": None},
+                    f"active private member '{e['id']}' has no deal row: record its "
+                    f"deals, point its rows' entity_id at this id, or, if a search "
+                    f"finds none, record a dated deal_audit note in the registry")
+
     # ---- R3 : duplicate (company, round, amount) -------------------------- #
     buckets = defaultdict(list)
     for r in rows:
@@ -411,7 +436,8 @@ def main():
     ap.add_argument("--only", nargs="*", default=None,
                     help="restrict R4b to companies matching these substrings")
     ap.add_argument("--advisory", action="store_true",
-                    help="also run advisory checks A5 (weak citation) + A6 (null amount)")
+                    help="also run advisory checks A5 (weak citation), A6 (null amount) "
+                         "and A7 (private members with no deal rows)")
     ap.add_argument("--path", default=None,
                     help="validate a candidate file instead of the committed rounds.json "
                          "(e.g. a pre-merge monthly-sweep shard)")
