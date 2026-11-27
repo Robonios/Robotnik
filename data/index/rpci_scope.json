@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T04:00:15.501257+00:00",
+  "generated_at": "2026-11-27T03:59:47.631901+00:00",
   "note": "Authoritative RPCI round-scope, emitted by calculate_private_index.py. The funding page reads this to separate primary capital from lifecycle exits — do not hand-maintain a parallel list.",
   "excluded_rounds": [
     "",
@@ -142,6 +142,11 @@
       "company": "RealSense",
       "date": "2026-09-22",
       "reason": "EXCLUDE: public acquirer (CGNX)"
+    },
+    {
+      "company": "Robotnik Automation",
+      "date": "2023-01-13",
+      "reason": "EXCLUDE: acquirer not in Robotnik universe"
     }
   ]
 }
